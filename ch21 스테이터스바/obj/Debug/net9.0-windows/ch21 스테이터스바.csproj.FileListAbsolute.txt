@@ -18,3 +18,4 @@ C:\Users\udune\Desktop\WPF\ch21 스테이터스바\obj\Debug\net9.0-windows\refi
 C:\Users\udune\Desktop\WPF\ch21 스테이터스바\obj\Debug\net9.0-windows\ch21 스테이터스바.pdb
 C:\Users\udune\Desktop\WPF\ch21 스테이터스바\obj\Debug\net9.0-windows\ch21 스테이터스바.genruntimeconfig.cache
 C:\Users\udune\Desktop\WPF\ch21 스테이터스바\obj\Debug\net9.0-windows\ref\ch21 스테이터스바.dll
+C:\Users\udune\Desktop\WPF\ch21 스테이터스바\obj\Debug\net9.0-windows\ch21 스테이터스바.sourcelink.json

@@ -97,3 +97,5 @@
 | ch17 그리드 | Grid | 5 | 완료 |
 | ch18 유니폼그리드 | UniformGrid | 5 | 완료 |
 | ch19 캔버스 | Canvas | 5 | 완료 |
+| ch20 프로그레스바 | ProgressBar | 5 | 완료 |
+| ch21 스테이터스바 | StatusBar | 5 | 완료 |

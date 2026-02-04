@@ -3,16 +3,7 @@
   "WorkspaceRootPath": "C:\\Users\\udune\\Desktop\\WPF\\HelloWPF\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{6DD72027-2BD2-47C3-A529-38CC3116D600}|..\\ch19 \uCE94\uBC84\uC2A4\\ch19 \uCE94\uBC84\uC2A4.csproj|c:\\users\\udune\\desktop\\wpf\\ch19 \uCE94\uBC84\uC2A4\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{6DD72027-2BD2-47C3-A529-38CC3116D600}|..\\ch19 \uCE94\uBC84\uC2A4\\ch19 \uCE94\uBC84\uC2A4.csproj|c:\\users\\udune\\desktop\\wpf\\ch19 \uCE94\uBC84\uC2A4\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{334656D9-269C-41D7-AA0C-E22727C0A048}|..\\ch18 \uC720\uB2C8\uD3FC\uADF8\uB9AC\uB4DC\\ch18 \uC720\uB2C8\uD3FC\uADF8\uB9AC\uB4DC.csproj|c:\\users\\udune\\desktop\\wpf\\ch18 \uC720\uB2C8\uD3FC\uADF8\uB9AC\uB4DC\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{334656D9-269C-41D7-AA0C-E22727C0A048}|..\\ch18 \uC720\uB2C8\uD3FC\uADF8\uB9AC\uB4DC\\ch18 \uC720\uB2C8\uD3FC\uADF8\uB9AC\uB4DC.csproj|c:\\users\\udune\\desktop\\wpf\\ch18 \uC720\uB2C8\uD3FC\uADF8\uB9AC\uB4DC\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{8836CB2F-A0D2-4C12-8F1E-DD104991ADF9}|..\\ch22 \uD234\uBC14\\ch22 \uD234\uBC14.csproj|c:\\users\\udune\\desktop\\wpf\\ch22 \uD234\uBC14\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     }
   ],
   "DocumentGroupContainers": [
@@ -22,7 +13,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 4,
+          "SelectedChildIndex": 3,
           "Children": [
             {
               "$type": "Bookmark",
@@ -38,50 +29,15 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "MainWindow.xaml.cs",
-              "DocumentMoniker": "C:\\Users\\udune\\Desktop\\WPF\\ch19 \uCE94\uBC84\uC2A4\\MainWindow.xaml.cs",
-              "RelativeDocumentMoniker": "..\\ch19 \uCE94\uBC84\uC2A4\\MainWindow.xaml.cs",
-              "ToolTip": "C:\\Users\\udune\\Desktop\\WPF\\ch19 \uCE94\uBC84\uC2A4\\MainWindow.xaml.cs",
-              "RelativeToolTip": "..\\ch19 \uCE94\uBC84\uC2A4\\MainWindow.xaml.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-03T08:24:50.442Z"
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 0,
               "Title": "MainWindow.xaml",
-              "DocumentMoniker": "C:\\Users\\udune\\Desktop\\WPF\\ch19 \uCE94\uBC84\uC2A4\\MainWindow.xaml",
-              "RelativeDocumentMoniker": "..\\ch19 \uCE94\uBC84\uC2A4\\MainWindow.xaml",
-              "ToolTip": "C:\\Users\\udune\\Desktop\\WPF\\ch19 \uCE94\uBC84\uC2A4\\MainWindow.xaml",
-              "RelativeToolTip": "..\\ch19 \uCE94\uBC84\uC2A4\\MainWindow.xaml",
+              "DocumentMoniker": "C:\\Users\\udune\\Desktop\\WPF\\ch22 \uD234\uBC14\\MainWindow.xaml",
+              "RelativeDocumentMoniker": "..\\ch22 \uD234\uBC14\\MainWindow.xaml",
+              "ToolTip": "C:\\Users\\udune\\Desktop\\WPF\\ch22 \uD234\uBC14\\MainWindow.xaml",
+              "RelativeToolTip": "..\\ch22 \uD234\uBC14\\MainWindow.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2026-02-03T08:20:35.528Z",
+              "WhenOpened": "2026-02-04T04:23:53.222Z",
               "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "MainWindow.xaml.cs",
-              "DocumentMoniker": "C:\\Users\\udune\\Desktop\\WPF\\ch18 \uC720\uB2C8\uD3FC\uADF8\uB9AC\uB4DC\\MainWindow.xaml.cs",
-              "RelativeDocumentMoniker": "..\\ch18 \uC720\uB2C8\uD3FC\uADF8\uB9AC\uB4DC\\MainWindow.xaml.cs",
-              "ToolTip": "C:\\Users\\udune\\Desktop\\WPF\\ch18 \uC720\uB2C8\uD3FC\uADF8\uB9AC\uB4DC\\MainWindow.xaml.cs",
-              "RelativeToolTip": "..\\ch18 \uC720\uB2C8\uD3FC\uADF8\uB9AC\uB4DC\\MainWindow.xaml.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-03T04:41:06.314Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "MainWindow.xaml",
-              "DocumentMoniker": "C:\\Users\\udune\\Desktop\\WPF\\ch18 \uC720\uB2C8\uD3FC\uADF8\uB9AC\uB4DC\\MainWindow.xaml",
-              "RelativeDocumentMoniker": "..\\ch18 \uC720\uB2C8\uD3FC\uADF8\uB9AC\uB4DC\\MainWindow.xaml",
-              "ToolTip": "C:\\Users\\udune\\Desktop\\WPF\\ch18 \uC720\uB2C8\uD3FC\uADF8\uB9AC\uB4DC\\MainWindow.xaml",
-              "RelativeToolTip": "..\\ch18 \uC720\uB2C8\uD3FC\uADF8\uB9AC\uB4DC\\MainWindow.xaml",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2026-02-03T04:06:45.579Z"
             }
           ]
         },

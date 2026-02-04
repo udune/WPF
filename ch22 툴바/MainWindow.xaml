@@ -1,531 +1,587 @@
-﻿<Window x:Class="ch22_툴바.MainWindow"
+<Window x:Class="ch22_툴바.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ch22_툴바"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    
-    <!-- 
-        DockPanel: ToolBar를 상단에 고정하기 위한 레이아웃 패널
-        ToolBar는 일반적으로 화면 상단에 배치됩니다.
-    -->
-    <DockPanel>
-        <!-- 
-            ToolBarTray: 여러 ToolBar를 포함하는 컨테이너
-            ToolBar를 드래그하여 재배치 가능
-        -->
-        <ToolBarTray DockPanel.Dock="Top">
-            <!-- 
-                ToolBarTray 기본 개념:
-                - 여러 ToolBar를 포함하는 컨테이너
-                - ToolBar의 위치를 변경할 수 있음 (드래그 앤 드롭)
-                - 여러 행(Band)으로 ToolBar 배치 가능
-                - 일반적으로 Window 상단에 배치
-                
-                DockPanel.Dock="Top":
-                - DockPanel의 상단에 배치
-                - 전체 너비를 차지
-                - 표준 애플리케이션 레이아웃
-                
-                ToolBarTray의 특징:
-                1. ToolBar 재배치:
-                   - 각 ToolBar의 왼쪽 그립(grip)을 드래그
-                   - 같은 행 내에서 이동
-                   - 다른 행으로 이동
-                
-                2. 다중 행(Band):
-                   - 여러 ToolBar를 다른 행에 배치
-                   - Band 속성으로 행 지정
-                   - BandIndex로 같은 행 내 순서 지정
-                
-                3. Overflow:
-                   - 공간이 부족하면 자동으로 Overflow 메뉴 생성
-                   - 숨겨진 항목을 드롭다운으로 표시
-                
-                시각적 구조:
-                ┌────────────────────────────────────┐
-                │ ≡ [버튼1] [버튼2] ≡ [버튼3] [버튼4]│ ← ToolBarTray
-                │   ToolBar 1        ToolBar 2       │
-                └────────────────────────────────────┘
-                ↑ 그립 (드래그 핸들)
-            -->
-            
-            <!-- ToolBar: 명령 버튼과 컨트롤의 그룹 -->
-            <ToolBar>
-                <!-- 
-                    ToolBar:
-                    - 관련된 명령과 컨트롤을 그룹화
-                    - 아이콘 버튼, 텍스트 버튼, ComboBox 등 포함 가능
-                    - 자주 사용하는 기능에 빠른 접근 제공
-                    
-                    ToolBar 기본 개념:
-                    - 가로로 나열된 명령 버튼들
-                    - 아이콘과 텍스트로 시각적 표현
-                    - 메뉴보다 빠른 접근성
-                    - Separator로 논리적 그룹 구분 가능
-                    
-                    ToolBar vs Menu:
-                    - ToolBar: 자주 사용하는 기능, 시각적, 빠른 접근
-                    - Menu: 모든 기능, 계층 구조, 체계적 분류
-                    
-                    ToolBar vs Ribbon:
-                    - ToolBar: 간단한 기능, 단일 행
-                    - Ribbon: 복잡한 기능, 탭과 그룹, 대형 애플리케이션
-                    
-                    일반적인 ToolBar 구성:
-                    ┌────────────────────────────────┐
-                    │ [새로만들기] [열기] [저장] ... │
-                    └────────────────────────────────┘
-                -->
-                
-                <!-- 아이콘 버튼 -->
-                <Button>
-                    <Image Width="20" Source="https://cdn0.iconfinder.com/data/icons/business-startup-10/50/61-512.png"></Image>
-                </Button>
-                <!-- 
-                    Button with Image:
-                    - ToolBar의 대표적인 구성 요소
-                    - 아이콘으로 기능을 직관적으로 표현
-                    
-                    Image 속성:
-                    
-                    Width="20":
-                    - 아이콘의 너비 (20픽셀)
-                    - ToolBar 아이콘은 일반적으로 16-24픽셀
-                    - 통일된 크기 사용 권장
-                    
-                    Source="URL":
-                    - 이미지 소스 (웹 URL)
-                    - 온라인 아이콘 사용
-                    - 실제 프로젝트에서는 로컬 리소스 사용 권장
-                    
-                    실제 사용 예 (로컬 리소스):
-                    <Button ToolTip="새 문서">
-                        <Image Width="20" Source="Images/New.png"/>
-                    </Button>
-                    
-                    ToolBar 버튼 모범 사례:
-                    - 아이콘 + ToolTip 제공
-                    - 일관된 아이콘 크기
-                    - 명확한 시각적 표현
-                    - Click 이벤트로 명령 실행
-                    
-                    접근성:
-                    - ToolTip으로 기능 설명
-                    - AutomationProperties.Name 설정
-                    - 키보드 단축키 지원 (Command)
-                -->
-                
-                <!-- 텍스트 레이블 -->
-                <TextBlock VerticalAlignment="Center">폰트사이즈:</TextBlock>
-                <!-- 
-                    TextBlock in ToolBar:
-                    - 레이블이나 설명 텍스트
-                    - 다음 컨트롤의 용도 설명
-                    
-                    VerticalAlignment="Center":
-                    - 수직 중앙 정렬
-                    - ToolBar 내 다른 컨트롤과 정렬
-                    - 깔끔한 시각적 배치
-                    
-                    "폰트사이즈:":
-                    - ComboBox의 레이블
-                    - 사용자에게 선택 항목 설명
-                    
-                    ToolBar에서 TextBlock 사용:
-                    - 컨트롤 레이블
-                    - 구분 텍스트
-                    - 상태 정보
-                    
-                    예시:
-                    <TextBlock>줌:</TextBlock>
-                    <ComboBox>...</ComboBox>
-                -->
-                
-                <!-- ComboBox: 폰트 크기 선택 -->
-                <ComboBox x:Name="cb">
-                    <!-- 
-                        ComboBox in ToolBar:
-                        - 드롭다운 선택 컨트롤
-                        - 여러 옵션 중 선택
-                        - ToolBar에서 설정 변경에 사용
-                        
-                        x:Name="cb":
-                        - 코드 비하인드에서 접근하기 위한 이름
-                        - 데이터 바인딩의 소스로 사용 (ElementName)
-                        
-                        ToolBar의 ComboBox 용도:
-                        - 폰트 선택
-                        - 폰트 크기 선택
-                        - 줌 레벨 선택
-                        - 스타일 선택
-                        - 정렬 방식 선택
-                        
-                        일반적인 ToolBar ComboBox 항목:
-                        - 폰트 이름: Arial, Times New Roman, ...
-                        - 폰트 크기: 8, 10, 12, 14, 16, ...
-                        - 줌: 50%, 75%, 100%, 125%, 150%, ...
-                    -->
-                    
-                    <ComboBoxItem IsSelected="True">10</ComboBoxItem>
-                    <!-- 
-                        ComboBoxItem:
-                        - ComboBox의 개별 항목
-                        
-                        IsSelected="True":
-                        - 기본 선택 항목
-                        - 애플리케이션 시작 시 선택된 상태
-                        - 폰트 크기 10이 기본값
-                        
-                        "10":
-                        - 폰트 크기 10포인트
-                        - TextBlock의 Content
-                        - 데이터 바인딩으로 TextBox에 적용됨
-                    -->
-                    
-                    <ComboBoxItem>12</ComboBoxItem>
-                    <!-- 폰트 크기 12포인트 -->
-                    
-                    <ComboBoxItem>14</ComboBoxItem>
-                    <!-- 폰트 크기 14포인트 -->
-                    
-                    <ComboBoxItem>16</ComboBoxItem>
-                    <!-- 
-                        폰트 크기 16포인트
-                        
-                        선택 항목:
-                        - 10 (기본값)
-                        - 12
-                        - 14
-                        - 16
-                        
-                        사용자가 선택하면:
-                        - cb.Text가 선택된 값으로 변경
-                        - 데이터 바인딩으로 TextBox.FontSize 자동 업데이트
-                    -->
-                </ComboBox>
-            </ToolBar>
-        </ToolBarTray>
-        
-        <!-- TextBox: 메인 콘텐츠 영역 -->
-        <TextBox FontSize="{Binding ElementName=cb, Path=Text}"></TextBox>
-        <!-- 
-            TextBox:
-            - 텍스트 입력 영역
-            - DockPanel의 나머지 공간을 모두 차지 (LastChildFill=True, 기본값)
-            
-            FontSize 데이터 바인딩:
-            {Binding ElementName=cb, Path=Text}
-            
-            데이터 바인딩 구성요소:
-            
-            1. ElementName="cb":
-               - 바인딩 소스 지정
-               - ComboBox "cb"에 바인딩
-            
-            2. Path=Text:
-               - ComboBox의 Text 속성에 바인딩
-               - 선택된 ComboBoxItem의 Content가 Text
-            
-            3. FontSize 속성:
-               - TextBox의 글꼴 크기
-               - cb.Text 값으로 자동 설정
-               - 문자열 → double 자동 변환
-            
-            동작 흐름:
-            1. ComboBox에서 항목 선택 (예: "14")
-            2. cb.Text가 "14"로 변경
-            3. 데이터 바인딩이 자동으로 감지
-            4. TextBox.FontSize가 14로 설정
-            5. TextBox의 글꼴 크기가 시각적으로 변경
-            
-            예시:
-            - ComboBox에서 "10" 선택 → FontSize = 10
-            - ComboBox에서 "12" 선택 → FontSize = 12
-            - ComboBox에서 "14" 선택 → FontSize = 14
-            - ComboBox에서 "16" 선택 → FontSize = 16
-            
-            데이터 바인딩의 장점:
-            - 코드 비하인드 불필요
-            - 자동 동기화
-            - 선언적 방식
-            - 유지보수 용이
-            
-            타입 변환:
-            - Text는 문자열 ("10", "12", ...)
-            - FontSize는 double (10.0, 12.0, ...)
-            - WPF가 자동으로 타입 변환
-            
-            주의사항:
-            - Text가 숫자가 아니면 바인딩 오류
-            - ComboBoxItem의 Content가 숫자 문자열이어야 함
-            - 유효성 검사가 없으므로 실제 프로젝트에서는 개선 필요
-        -->
-    </DockPanel>
-    
-    <!--
-        ToolBar 추가 기능 및 활용:
-        
-        1. 기본 ToolBar:
-           <ToolBar>
-               <Button Content="새로 만들기"/>
-               <Button Content="열기"/>
-               <Button Content="저장"/>
-           </ToolBar>
-        
-        2. 아이콘 버튼:
-           <ToolBar>
-               <Button ToolTip="새 문서">
-                   <Image Source="Images/New.png" Width="16"/>
-               </Button>
-               <Button ToolTip="열기">
-                   <Image Source="Images/Open.png" Width="16"/>
-               </Button>
-               <Button ToolTip="저장">
-                   <Image Source="Images/Save.png" Width="16"/>
-               </Button>
-           </ToolBar>
-        
-        3. Separator로 그룹 구분:
-           <ToolBar>
-               <Button ToolTip="새로 만들기">
-                   <Image Source="Images/New.png"/>
-               </Button>
-               <Button ToolTip="열기">
-                   <Image Source="Images/Open.png"/>
-               </Button>
-               <Separator/>
-               <Button ToolTip="잘라내기">
-                   <Image Source="Images/Cut.png"/>
-               </Button>
-               <Button ToolTip="복사">
-                   <Image Source="Images/Copy.png"/>
-               </Button>
-               <Button ToolTip="붙여넣기">
-                   <Image Source="Images/Paste.png"/>
-               </Button>
-           </ToolBar>
-        
-        4. 여러 ToolBar (ToolBarTray):
-           <ToolBarTray>
-               <ToolBar Band="0">
-                   <Button Content="파일"/>
-                   <Button Content="편집"/>
-               </ToolBar>
-               <ToolBar Band="0">
-                   <Button Content="서식"/>
-                   <Button Content="보기"/>
-               </ToolBar>
-               <ToolBar Band="1">
-                   <Button Content="도구"/>
-               </ToolBar>
-           </ToolBarTray>
-        
-        5. 다양한 컨트롤 포함:
-           <ToolBar>
-               <Button>새로 만들기</Button>
-               <Separator/>
-               <ComboBox Width="100">
-                   <ComboBoxItem>Arial</ComboBoxItem>
-                   <ComboBoxItem>Times New Roman</ComboBoxItem>
-               </ComboBox>
-               <ComboBox Width="60">
-                   <ComboBoxItem>10</ComboBoxItem>
-                   <ComboBoxItem>12</ComboBoxItem>
-               </ComboBox>
-               <Separator/>
-               <ToggleButton Content="B" FontWeight="Bold"/>
-               <ToggleButton Content="I" FontStyle="Italic"/>
-               <ToggleButton Content="U" TextDecorations="Underline"/>
-           </ToolBar>
-        
-        실전 활용 예제:
-        
-        1. 텍스트 편집기 ToolBar:
-           <ToolBarTray>
-               <ToolBar>
-                   <Button ToolTip="새 문서">
-                       <Image Source="Images/New.png"/>
-                   </Button>
-                   <Button ToolTip="열기">
-                       <Image Source="Images/Open.png"/>
-                   </Button>
-                   <Button ToolTip="저장">
-                       <Image Source="Images/Save.png"/>
-                   </Button>
-                   <Separator/>
-                   <Button ToolTip="인쇄">
-                       <Image Source="Images/Print.png"/>
-                   </Button>
-               </ToolBar>
-               
-               <ToolBar>
-                   <Button ToolTip="실행 취소">
-                       <Image Source="Images/Undo.png"/>
-                   </Button>
-                   <Button ToolTip="다시 실행">
-                       <Image Source="Images/Redo.png"/>
-                   </Button>
-                   <Separator/>
-                   <Button ToolTip="잘라내기">
-                       <Image Source="Images/Cut.png"/>
-                   </Button>
-                   <Button ToolTip="복사">
-                       <Image Source="Images/Copy.png"/>
-                   </Button>
-                   <Button ToolTip="붙여넣기">
-                       <Image Source="Images/Paste.png"/>
-                   </Button>
-               </ToolBar>
-               
-               <ToolBar>
-                   <TextBlock VerticalAlignment="Center">폰트:</TextBlock>
-                   <ComboBox Width="120">
-                       <ComboBoxItem>Arial</ComboBoxItem>
-                       <ComboBoxItem>Times New Roman</ComboBoxItem>
-                       <ComboBoxItem>Courier New</ComboBoxItem>
-                   </ComboBox>
-                   <TextBlock VerticalAlignment="Center" Margin="5,0,0,0">크기:</TextBlock>
-                   <ComboBox Width="60">
-                       <ComboBoxItem>8</ComboBoxItem>
-                       <ComboBoxItem>10</ComboBoxItem>
-                       <ComboBoxItem>12</ComboBoxItem>
-                       <ComboBoxItem>14</ComboBoxItem>
-                       <ComboBoxItem>16</ComboBoxItem>
-                   </ComboBox>
-                   <Separator/>
-                   <ToggleButton ToolTip="굵게" FontWeight="Bold" Width="24">B</ToggleButton>
-                   <ToggleButton ToolTip="기울임꼴" FontStyle="Italic" Width="24">I</ToggleButton>
-                   <ToggleButton ToolTip="밑줄" Width="24">U</ToggleButton>
-               </ToolBar>
-           </ToolBarTray>
-        
-        2. 이미지 편집기 ToolBar:
-           <ToolBarTray>
-               <ToolBar>
-                   <Button ToolTip="선택 도구">
-                       <Image Source="Images/Select.png"/>
-                   </Button>
-                   <Button ToolTip="브러시">
-                       <Image Source="Images/Brush.png"/>
-                   </Button>
-                   <Button ToolTip="지우개">
-                       <Image Source="Images/Eraser.png"/>
-                   </Button>
-                   <Button ToolTip="텍스트">
-                       <Image Source="Images/Text.png"/>
-                   </Button>
-               </ToolBar>
-               
-               <ToolBar>
-                   <TextBlock VerticalAlignment="Center">색상:</TextBlock>
-                   <Button Width="24" Height="24" Background="Black"/>
-                   <Button Width="24" Height="24" Background="Red"/>
-                   <Button Width="24" Height="24" Background="Green"/>
-                   <Button Width="24" Height="24" Background="Blue"/>
-               </ToolBar>
-               
-               <ToolBar>
-                   <TextBlock VerticalAlignment="Center">브러시 크기:</TextBlock>
-                   <Slider Width="100" Minimum="1" Maximum="50" Value="5"/>
-               </ToolBar>
-           </ToolBarTray>
-        
-        3. 미디어 플레이어 ToolBar:
-           <ToolBar>
-               <Button ToolTip="재생">
-                   <Image Source="Images/Play.png" Width="24"/>
-               </Button>
-               <Button ToolTip="일시정지">
-                   <Image Source="Images/Pause.png" Width="24"/>
-               </Button>
-               <Button ToolTip="정지">
-                   <Image Source="Images/Stop.png" Width="24"/>
-               </Button>
-               <Separator/>
-               <Button ToolTip="이전">
-                   <Image Source="Images/Previous.png" Width="20"/>
-               </Button>
-               <Button ToolTip="다음">
-                   <Image Source="Images/Next.png" Width="20"/>
-               </Button>
-               <Separator/>
-               <TextBlock VerticalAlignment="Center">볼륨:</TextBlock>
-               <Slider Width="100" Minimum="0" Maximum="100" Value="50"/>
-           </ToolBar>
-        
-        ToolBar 스타일링:
-        
-        1. 배경색 변경:
-           <ToolBar Background="LightGray">
-           </ToolBar>
-        
-        2. ToolBar 버튼 스타일:
-           <ToolBar>
-               <ToolBar.Resources>
-                   <Style TargetType="Button">
-                       <Setter Property="Margin" Value="2"/>
-                       <Setter Property="Padding" Value="5"/>
-                   </Style>
-               </ToolBar.Resources>
-           </ToolBar>
-        
-        3. ToolBarTray 고정 (재배치 방지):
-           <ToolBarTray IsLocked="True">
-               <ToolBar>
-               </ToolBar>
-           </ToolBarTray>
-        
-        ToolBar의 장단점:
-        
-        장점:
-        - 자주 사용하는 기능에 빠른 접근
-        - 시각적 아이콘으로 직관적
-        - 재배치 가능 (사용자 커스터마이징)
-        - 다양한 컨트롤 포함 가능
-        
-        단점:
-        - 화면 공간 차지
-        - 너무 많은 버튼은 복잡함
-        - 작은 화면에서 Overflow 발생
-        
-        모범 사례:
-        
-        1. 아이콘 일관성:
-           - 같은 크기 (16x16 또는 24x24)
-           - 같은 스타일
-           - 명확한 의미
-        
-        2. ToolTip 제공:
-           - 모든 버튼에 ToolTip
-           - 간결한 설명
-           - 단축키 표시
-        
-        3. 논리적 그룹:
-           - Separator로 구분
-           - 관련 기능끼리 묶기
-           - 여러 ToolBar로 분리
-        
-        4. 적절한 개수:
-           - 너무 많은 버튼 피하기
-           - 자주 사용하는 기능만
-           - 10-15개 이내 권장
-        
-        5. 명령 패턴:
-           - Command 바인딩 사용
-           - 재사용 가능한 명령
-           - CanExecute로 활성화 제어
-        
-        성능 고려사항:
-        - 이미지는 리소스로 임베드
-        - 너무 많은 ToolBar 피하기
-        - 복잡한 컨트롤 제한
-        
-        접근성:
-        - ToolTip으로 설명
-        - AutomationProperties 설정
-        - 키보드 단축키 지원
-    -->
+        Title="ch22 ToolBar 튜토리얼" Height="600" Width="850">
+
+    <Window.Resources>
+        <Style x:Key="CodeExpanderStyle" TargetType="Expander">
+            <Setter Property="Header" Value="코드 보기"/>
+            <Setter Property="Margin" Value="0,0,0,12"/>
+            <Setter Property="IsExpanded" Value="False"/>
+        </Style>
+        <Style x:Key="CodeTextBoxStyle" TargetType="TextBox">
+            <Setter Property="IsReadOnly" Value="True"/>
+            <Setter Property="FontFamily" Value="Consolas"/>
+            <Setter Property="FontSize" Value="12"/>
+            <Setter Property="Background" Value="#1E1E1E"/>
+            <Setter Property="Foreground" Value="#DCDCDC"/>
+            <Setter Property="Padding" Value="10"/>
+            <Setter Property="TextWrapping" Value="Wrap"/>
+            <Setter Property="AcceptsReturn" Value="True"/>
+            <Setter Property="VerticalScrollBarVisibility" Value="Auto"/>
+            <Setter Property="MaxHeight" Value="300"/>
+            <Setter Property="BorderBrush" Value="#333333"/>
+            <Setter Property="BorderThickness" Value="1"/>
+        </Style>
+    </Window.Resources>
+
+    <TabControl>
+        <!-- 탭 1: 기본 사용법 -->
+        <TabItem Header="기본 사용법">
+            <ScrollViewer VerticalScrollBarVisibility="Auto" Padding="20">
+                <StackPanel>
+                    <TextBlock Text="ToolBar 기본 사용법" FontSize="18" FontWeight="Bold" Margin="0,0,0,15"/>
+
+                    <TextBlock Text="ToolBar는 명령 버튼들을 그룹화하여 표시하는 컨트롤입니다. ToolBarTray 안에 배치하면 사용자가 드래그하여 위치를 변경할 수 있습니다."
+                               TextWrapping="Wrap" Margin="0,0,0,15"/>
+
+                    <!-- 예제 1: 기본 ToolBar -->
+                    <GroupBox Header="기본 ToolBar" Margin="0,0,0,15">
+                        <StackPanel>
+                            <ToolBar Height="30">
+                                <Button Content="새로 만들기"/>
+                                <Button Content="열기"/>
+                                <Button Content="저장"/>
+                            </ToolBar>
+                            <Expander Style="{StaticResource CodeExpanderStyle}">
+                                <TextBox Style="{StaticResource CodeTextBoxStyle}"
+                                         Text="&lt;ToolBar&gt;&#10;    &lt;Button Content=&quot;새로 만들기&quot;/&gt;&#10;    &lt;Button Content=&quot;열기&quot;/&gt;&#10;    &lt;Button Content=&quot;저장&quot;/&gt;&#10;&lt;/ToolBar&gt;"/>
+                            </Expander>
+                        </StackPanel>
+                    </GroupBox>
+
+                    <!-- 예제 2: ToolBarTray 사용 -->
+                    <GroupBox Header="ToolBarTray (드래그 가능)" Margin="0,0,0,15">
+                        <StackPanel>
+                            <TextBlock Text="ToolBarTray 안의 ToolBar는 드래그하여 위치를 변경할 수 있습니다." Margin="0,0,0,10"/>
+                            <Border BorderBrush="Gray" BorderThickness="1" Height="120">
+                                <DockPanel>
+                                    <ToolBarTray DockPanel.Dock="Top">
+                                        <ToolBar Header="파일">
+                                            <Button Content="새로 만들기"/>
+                                            <Button Content="열기"/>
+                                            <Button Content="저장"/>
+                                        </ToolBar>
+                                        <ToolBar Header="편집">
+                                            <Button Content="잘라내기"/>
+                                            <Button Content="복사"/>
+                                            <Button Content="붙여넣기"/>
+                                        </ToolBar>
+                                    </ToolBarTray>
+                                    <TextBlock Text="(콘텐츠 영역)" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="Gray"/>
+                                </DockPanel>
+                            </Border>
+                            <Expander Style="{StaticResource CodeExpanderStyle}">
+                                <TextBox Style="{StaticResource CodeTextBoxStyle}"
+                                         Text="&lt;DockPanel&gt;&#10;    &lt;ToolBarTray DockPanel.Dock=&quot;Top&quot;&gt;&#10;        &lt;ToolBar Header=&quot;파일&quot;&gt;&#10;            &lt;Button Content=&quot;새로 만들기&quot;/&gt;&#10;            &lt;Button Content=&quot;열기&quot;/&gt;&#10;            &lt;Button Content=&quot;저장&quot;/&gt;&#10;        &lt;/ToolBar&gt;&#10;        &lt;ToolBar Header=&quot;편집&quot;&gt;&#10;            &lt;Button Content=&quot;잘라내기&quot;/&gt;&#10;            &lt;Button Content=&quot;복사&quot;/&gt;&#10;            &lt;Button Content=&quot;붙여넣기&quot;/&gt;&#10;        &lt;/ToolBar&gt;&#10;    &lt;/ToolBarTray&gt;&#10;    &lt;!-- 콘텐츠 --&gt;&#10;&lt;/DockPanel&gt;"/>
+                            </Expander>
+                        </StackPanel>
+                    </GroupBox>
+
+                    <!-- 예제 3: Separator 사용 -->
+                    <GroupBox Header="Separator로 구분" Margin="0,0,0,15">
+                        <StackPanel>
+                            <ToolBar Height="30">
+                                <Button Content="새로 만들기"/>
+                                <Button Content="열기"/>
+                                <Button Content="저장"/>
+                                <Separator/>
+                                <Button Content="잘라내기"/>
+                                <Button Content="복사"/>
+                                <Button Content="붙여넣기"/>
+                                <Separator/>
+                                <Button Content="실행 취소"/>
+                                <Button Content="다시 실행"/>
+                            </ToolBar>
+                            <Expander Style="{StaticResource CodeExpanderStyle}">
+                                <TextBox Style="{StaticResource CodeTextBoxStyle}"
+                                         Text="&lt;ToolBar&gt;&#10;    &lt;Button Content=&quot;새로 만들기&quot;/&gt;&#10;    &lt;Button Content=&quot;열기&quot;/&gt;&#10;    &lt;Button Content=&quot;저장&quot;/&gt;&#10;    &lt;Separator/&gt;&#10;    &lt;Button Content=&quot;잘라내기&quot;/&gt;&#10;    &lt;Button Content=&quot;복사&quot;/&gt;&#10;    &lt;Button Content=&quot;붙여넣기&quot;/&gt;&#10;    &lt;Separator/&gt;&#10;    &lt;Button Content=&quot;실행 취소&quot;/&gt;&#10;&lt;/ToolBar&gt;"/>
+                            </Expander>
+                        </StackPanel>
+                    </GroupBox>
+
+                    <!-- 예제 4: Header 속성 -->
+                    <GroupBox Header="Header 속성" Margin="0,0,0,15">
+                        <StackPanel>
+                            <ToolBarTray>
+                                <ToolBar Header="서식">
+                                    <Button Content="굵게"/>
+                                    <Button Content="기울임"/>
+                                    <Button Content="밑줄"/>
+                                </ToolBar>
+                            </ToolBarTray>
+                            <TextBlock Text="※ Header는 ToolBar 왼쪽에 작은 핸들로 표시됩니다." FontStyle="Italic" Foreground="Gray" Margin="0,5,0,0"/>
+                            <Expander Style="{StaticResource CodeExpanderStyle}">
+                                <TextBox Style="{StaticResource CodeTextBoxStyle}"
+                                         Text="&lt;ToolBarTray&gt;&#10;    &lt;ToolBar Header=&quot;서식&quot;&gt;&#10;        &lt;Button Content=&quot;굵게&quot;/&gt;&#10;        &lt;Button Content=&quot;기울임&quot;/&gt;&#10;        &lt;Button Content=&quot;밑줄&quot;/&gt;&#10;    &lt;/ToolBar&gt;&#10;&lt;/ToolBarTray&gt;"/>
+                            </Expander>
+                        </StackPanel>
+                    </GroupBox>
+                </StackPanel>
+            </ScrollViewer>
+        </TabItem>
+
+        <!-- 탭 2: 다양한 컨트롤 -->
+        <TabItem Header="다양한 컨트롤">
+            <ScrollViewer VerticalScrollBarVisibility="Auto" Padding="20">
+                <StackPanel>
+                    <TextBlock Text="ToolBar에 다양한 컨트롤 배치" FontSize="18" FontWeight="Bold" Margin="0,0,0,15"/>
+
+                    <!-- 예제 1: 도형으로 아이콘 표현 -->
+                    <GroupBox Header="도형으로 아이콘 버튼" Margin="0,0,0,15">
+                        <StackPanel>
+                            <ToolBar Height="35">
+                                <Button ToolTip="새 문서" Padding="5">
+                                    <Rectangle Width="16" Height="16" Fill="SteelBlue"/>
+                                </Button>
+                                <Button ToolTip="폴더 열기" Padding="5">
+                                    <Rectangle Width="16" Height="14" Fill="Goldenrod" RadiusX="2" RadiusY="2"/>
+                                </Button>
+                                <Button ToolTip="저장" Padding="5">
+                                    <Polygon Points="8,0 16,8 8,16 0,8" Fill="Green"/>
+                                </Button>
+                                <Separator/>
+                                <Button ToolTip="삭제" Padding="5">
+                                    <Ellipse Width="16" Height="16" Fill="Crimson"/>
+                                </Button>
+                            </ToolBar>
+                            <Expander Style="{StaticResource CodeExpanderStyle}">
+                                <TextBox Style="{StaticResource CodeTextBoxStyle}"
+                                         Text="&lt;ToolBar&gt;&#10;    &lt;Button ToolTip=&quot;새 문서&quot; Padding=&quot;5&quot;&gt;&#10;        &lt;Rectangle Width=&quot;16&quot; Height=&quot;16&quot; Fill=&quot;SteelBlue&quot;/&gt;&#10;    &lt;/Button&gt;&#10;    &lt;Button ToolTip=&quot;폴더 열기&quot; Padding=&quot;5&quot;&gt;&#10;        &lt;Rectangle Width=&quot;16&quot; Height=&quot;14&quot; Fill=&quot;Goldenrod&quot;/&gt;&#10;    &lt;/Button&gt;&#10;    &lt;Button ToolTip=&quot;저장&quot; Padding=&quot;5&quot;&gt;&#10;        &lt;Polygon Points=&quot;8,0 16,8 8,16 0,8&quot; Fill=&quot;Green&quot;/&gt;&#10;    &lt;/Button&gt;&#10;&lt;/ToolBar&gt;"/>
+                            </Expander>
+                        </StackPanel>
+                    </GroupBox>
+
+                    <!-- 예제 2: ComboBox -->
+                    <GroupBox Header="ComboBox와 TextBox" Margin="0,0,0,15">
+                        <StackPanel>
+                            <ToolBar Height="35">
+                                <TextBlock Text="글꼴:" VerticalAlignment="Center" Margin="5,0"/>
+                                <ComboBox Width="100" SelectedIndex="0">
+                                    <ComboBoxItem Content="맑은 고딕"/>
+                                    <ComboBoxItem Content="굴림"/>
+                                    <ComboBoxItem Content="돋움"/>
+                                    <ComboBoxItem Content="바탕"/>
+                                </ComboBox>
+                                <Separator/>
+                                <TextBlock Text="크기:" VerticalAlignment="Center" Margin="5,0"/>
+                                <ComboBox x:Name="fontSizeCombo" Width="60" SelectedIndex="2">
+                                    <ComboBoxItem Content="8"/>
+                                    <ComboBoxItem Content="10"/>
+                                    <ComboBoxItem Content="12"/>
+                                    <ComboBoxItem Content="14"/>
+                                    <ComboBoxItem Content="16"/>
+                                </ComboBox>
+                                <Separator/>
+                                <TextBlock Text="검색:" VerticalAlignment="Center" Margin="5,0"/>
+                                <TextBox Width="120"/>
+                            </ToolBar>
+                            <Expander Style="{StaticResource CodeExpanderStyle}">
+                                <TextBox Style="{StaticResource CodeTextBoxStyle}"
+                                         Text="&lt;ToolBar&gt;&#10;    &lt;TextBlock Text=&quot;글꼴:&quot; VerticalAlignment=&quot;Center&quot;/&gt;&#10;    &lt;ComboBox Width=&quot;100&quot; SelectedIndex=&quot;0&quot;&gt;&#10;        &lt;ComboBoxItem Content=&quot;맑은 고딕&quot;/&gt;&#10;        &lt;ComboBoxItem Content=&quot;굴림&quot;/&gt;&#10;    &lt;/ComboBox&gt;&#10;    &lt;Separator/&gt;&#10;    &lt;TextBlock Text=&quot;크기:&quot; VerticalAlignment=&quot;Center&quot;/&gt;&#10;    &lt;ComboBox Width=&quot;60&quot;&gt;...&lt;/ComboBox&gt;&#10;    &lt;Separator/&gt;&#10;    &lt;TextBlock Text=&quot;검색:&quot;/&gt;&#10;    &lt;TextBox Width=&quot;120&quot;/&gt;&#10;&lt;/ToolBar&gt;"/>
+                            </Expander>
+                        </StackPanel>
+                    </GroupBox>
+
+                    <!-- 예제 3: ToggleButton과 CheckBox -->
+                    <GroupBox Header="ToggleButton과 CheckBox" Margin="0,0,0,15">
+                        <StackPanel>
+                            <ToolBar Height="35">
+                                <ToggleButton Content="B" FontWeight="Bold" Width="30" ToolTip="굵게"/>
+                                <ToggleButton Content="I" FontStyle="Italic" Width="30" ToolTip="기울임"/>
+                                <ToggleButton Width="30" ToolTip="밑줄">
+                                    <TextBlock Text="U" TextDecorations="Underline"/>
+                                </ToggleButton>
+                                <Separator/>
+                                <CheckBox Content="자동 저장" VerticalAlignment="Center"/>
+                                <Separator/>
+                                <RadioButton Content="왼쪽" GroupName="Align" VerticalAlignment="Center" Margin="5,0"/>
+                                <RadioButton Content="가운데" GroupName="Align" VerticalAlignment="Center" IsChecked="True" Margin="5,0"/>
+                                <RadioButton Content="오른쪽" GroupName="Align" VerticalAlignment="Center" Margin="5,0"/>
+                            </ToolBar>
+                            <Expander Style="{StaticResource CodeExpanderStyle}">
+                                <TextBox Style="{StaticResource CodeTextBoxStyle}"
+                                         Text="&lt;ToolBar&gt;&#10;    &lt;ToggleButton Content=&quot;B&quot; FontWeight=&quot;Bold&quot; Width=&quot;30&quot;/&gt;&#10;    &lt;ToggleButton Content=&quot;I&quot; FontStyle=&quot;Italic&quot; Width=&quot;30&quot;/&gt;&#10;    &lt;ToggleButton Width=&quot;30&quot;&gt;&#10;        &lt;TextBlock Text=&quot;U&quot; TextDecorations=&quot;Underline&quot;/&gt;&#10;    &lt;/ToggleButton&gt;&#10;    &lt;Separator/&gt;&#10;    &lt;CheckBox Content=&quot;자동 저장&quot;/&gt;&#10;    &lt;Separator/&gt;&#10;    &lt;RadioButton Content=&quot;왼쪽&quot; GroupName=&quot;Align&quot;/&gt;&#10;    &lt;RadioButton Content=&quot;가운데&quot; GroupName=&quot;Align&quot;/&gt;&#10;&lt;/ToolBar&gt;"/>
+                            </Expander>
+                        </StackPanel>
+                    </GroupBox>
+
+                    <!-- 예제 4: Slider와 ProgressBar -->
+                    <GroupBox Header="Slider와 ProgressBar" Margin="0,0,0,15">
+                        <StackPanel>
+                            <ToolBar Height="35">
+                                <TextBlock Text="볼륨:" VerticalAlignment="Center" Margin="5,0"/>
+                                <Slider x:Name="volumeSlider" Width="100" Minimum="0" Maximum="100" Value="50"
+                                        VerticalAlignment="Center" ValueChanged="VolumeSlider_ValueChanged"/>
+                                <TextBlock x:Name="volumeText" Text="50%" VerticalAlignment="Center" Width="35"/>
+                                <Separator/>
+                                <TextBlock Text="진행:" VerticalAlignment="Center" Margin="5,0"/>
+                                <ProgressBar Width="100" Height="15" Value="65"/>
+                                <TextBlock Text="65%" VerticalAlignment="Center" Margin="5,0"/>
+                            </ToolBar>
+                            <Expander Style="{StaticResource CodeExpanderStyle}">
+                                <TextBox Style="{StaticResource CodeTextBoxStyle}"
+                                         Text="&lt;ToolBar&gt;&#10;    &lt;TextBlock Text=&quot;볼륨:&quot; VerticalAlignment=&quot;Center&quot;/&gt;&#10;    &lt;Slider Width=&quot;100&quot; Minimum=&quot;0&quot; Maximum=&quot;100&quot; Value=&quot;50&quot;/&gt;&#10;    &lt;TextBlock Text=&quot;50%&quot;/&gt;&#10;    &lt;Separator/&gt;&#10;    &lt;TextBlock Text=&quot;진행:&quot;/&gt;&#10;    &lt;ProgressBar Width=&quot;100&quot; Height=&quot;15&quot; Value=&quot;65&quot;/&gt;&#10;    &lt;TextBlock Text=&quot;65%&quot;/&gt;&#10;&lt;/ToolBar&gt;"/>
+                            </Expander>
+                        </StackPanel>
+                    </GroupBox>
+                </StackPanel>
+            </ScrollViewer>
+        </TabItem>
+
+        <!-- 탭 3: 오버플로우 -->
+        <TabItem Header="오버플로우">
+            <ScrollViewer VerticalScrollBarVisibility="Auto" Padding="20">
+                <StackPanel>
+                    <TextBlock Text="ToolBar 오버플로우" FontSize="18" FontWeight="Bold" Margin="0,0,0,15"/>
+
+                    <TextBlock Text="ToolBar 너비가 부족할 때 항목들이 오버플로우 메뉴로 이동합니다. ToolBar.OverflowMode 연결 속성으로 동작을 제어합니다."
+                               TextWrapping="Wrap" Margin="0,0,0,15"/>
+
+                    <!-- 예제 1: 기본 오버플로우 -->
+                    <GroupBox Header="기본 오버플로우 동작" Margin="0,0,0,15">
+                        <StackPanel>
+                            <TextBlock Text="ToolBar 너비를 좁게 설정하면 오른쪽에 오버플로우 버튼(▼)이 나타납니다." Margin="0,0,0,10"/>
+                            <ToolBar Width="250" HorizontalAlignment="Left">
+                                <Button Content="새로 만들기"/>
+                                <Button Content="열기"/>
+                                <Button Content="저장"/>
+                                <Button Content="잘라내기"/>
+                                <Button Content="복사"/>
+                                <Button Content="붙여넣기"/>
+                                <Button Content="실행 취소"/>
+                            </ToolBar>
+                            <Expander Style="{StaticResource CodeExpanderStyle}">
+                                <TextBox Style="{StaticResource CodeTextBoxStyle}"
+                                         Text="&lt;!-- 너비가 좁으면 자동으로 오버플로우 --&gt;&#10;&lt;ToolBar Width=&quot;250&quot;&gt;&#10;    &lt;Button Content=&quot;새로 만들기&quot;/&gt;&#10;    &lt;Button Content=&quot;열기&quot;/&gt;&#10;    &lt;Button Content=&quot;저장&quot;/&gt;&#10;    &lt;Button Content=&quot;잘라내기&quot;/&gt;&#10;    &lt;Button Content=&quot;복사&quot;/&gt;&#10;    &lt;Button Content=&quot;붙여넣기&quot;/&gt;&#10;    &lt;Button Content=&quot;실행 취소&quot;/&gt;&#10;&lt;/ToolBar&gt;"/>
+                            </Expander>
+                        </StackPanel>
+                    </GroupBox>
+
+                    <!-- 예제 2: OverflowMode 속성 -->
+                    <GroupBox Header="OverflowMode 속성" Margin="0,0,0,15">
+                        <StackPanel>
+                            <TextBlock TextWrapping="Wrap" Margin="0,0,0,10">
+                                <Run FontWeight="Bold">AsNeeded</Run>: 공간 부족 시 오버플로우 (기본값)
+                                <LineBreak/><Run FontWeight="Bold">Always</Run>: 항상 오버플로우 메뉴로
+                                <LineBreak/><Run FontWeight="Bold">Never</Run>: 절대 오버플로우 안 함
+                            </TextBlock>
+                            <ToolBar Width="300" HorizontalAlignment="Left">
+                                <Button Content="AsNeeded" ToolBar.OverflowMode="AsNeeded"/>
+                                <Button Content="Always" ToolBar.OverflowMode="Always"/>
+                                <Button Content="Never" ToolBar.OverflowMode="Never"/>
+                                <Button Content="AsNeeded" ToolBar.OverflowMode="AsNeeded"/>
+                                <Button Content="AsNeeded" ToolBar.OverflowMode="AsNeeded"/>
+                            </ToolBar>
+                            <Expander Style="{StaticResource CodeExpanderStyle}">
+                                <TextBox Style="{StaticResource CodeTextBoxStyle}"
+                                         Text="&lt;ToolBar Width=&quot;300&quot;&gt;&#10;    &lt;Button Content=&quot;AsNeeded&quot;&#10;            ToolBar.OverflowMode=&quot;AsNeeded&quot;/&gt;&#10;    &lt;Button Content=&quot;Always&quot;&#10;            ToolBar.OverflowMode=&quot;Always&quot;/&gt;&#10;    &lt;Button Content=&quot;Never&quot;&#10;            ToolBar.OverflowMode=&quot;Never&quot;/&gt;&#10;&lt;/ToolBar&gt;"/>
+                            </Expander>
+                        </StackPanel>
+                    </GroupBox>
+
+                    <!-- 예제 3: 항상 오버플로우 예제 -->
+                    <GroupBox Header="자주 사용하지 않는 명령은 Always" Margin="0,0,0,15">
+                        <StackPanel>
+                            <TextBlock Text="자주 사용하는 명령은 툴바에, 드물게 사용하는 명령은 오버플로우에 배치합니다." Margin="0,0,0,10"/>
+                            <ToolBar Width="350" HorizontalAlignment="Left">
+                                <Button Content="새로 만들기" ToolBar.OverflowMode="Never"/>
+                                <Button Content="열기" ToolBar.OverflowMode="Never"/>
+                                <Button Content="저장" ToolBar.OverflowMode="Never"/>
+                                <Separator/>
+                                <Button Content="인쇄 미리보기" ToolBar.OverflowMode="Always"/>
+                                <Button Content="페이지 설정" ToolBar.OverflowMode="Always"/>
+                                <Button Content="속성" ToolBar.OverflowMode="Always"/>
+                            </ToolBar>
+                            <TextBlock Text="※ '인쇄 미리보기', '페이지 설정', '속성'은 항상 오버플로우 메뉴에 있습니다."
+                                       FontStyle="Italic" Foreground="Gray" Margin="0,5,0,0"/>
+                            <Expander Style="{StaticResource CodeExpanderStyle}">
+                                <TextBox Style="{StaticResource CodeTextBoxStyle}"
+                                         Text="&lt;ToolBar Width=&quot;350&quot;&gt;&#10;    &lt;!-- 자주 사용 - Never로 항상 표시 --&gt;&#10;    &lt;Button Content=&quot;새로 만들기&quot; ToolBar.OverflowMode=&quot;Never&quot;/&gt;&#10;    &lt;Button Content=&quot;열기&quot; ToolBar.OverflowMode=&quot;Never&quot;/&gt;&#10;    &lt;Button Content=&quot;저장&quot; ToolBar.OverflowMode=&quot;Never&quot;/&gt;&#10;    &lt;Separator/&gt;&#10;    &lt;!-- 드물게 사용 - Always로 오버플로우에 --&gt;&#10;    &lt;Button Content=&quot;인쇄 미리보기&quot; ToolBar.OverflowMode=&quot;Always&quot;/&gt;&#10;    &lt;Button Content=&quot;페이지 설정&quot; ToolBar.OverflowMode=&quot;Always&quot;/&gt;&#10;&lt;/ToolBar&gt;"/>
+                            </Expander>
+                        </StackPanel>
+                    </GroupBox>
+                </StackPanel>
+            </ScrollViewer>
+        </TabItem>
+
+        <!-- 탭 4: 배치와 Band -->
+        <TabItem Header="배치와 Band">
+            <ScrollViewer VerticalScrollBarVisibility="Auto" Padding="20">
+                <StackPanel>
+                    <TextBlock Text="ToolBar 배치와 Band" FontSize="18" FontWeight="Bold" Margin="0,0,0,15"/>
+
+                    <!-- 예제 1: Band와 BandIndex -->
+                    <GroupBox Header="Band와 BandIndex" Margin="0,0,0,15">
+                        <StackPanel>
+                            <TextBlock TextWrapping="Wrap" Margin="0,0,0,10">
+                                <Run FontWeight="Bold">Band</Run>: 툴바가 위치할 행 (0부터 시작)
+                                <LineBreak/><Run FontWeight="Bold">BandIndex</Run>: 같은 Band 내에서의 순서
+                            </TextBlock>
+                            <ToolBarTray Height="70">
+                                <ToolBar Band="0" BandIndex="0" Header="Band0-0">
+                                    <Button Content="A"/>
+                                    <Button Content="B"/>
+                                </ToolBar>
+                                <ToolBar Band="0" BandIndex="1" Header="Band0-1">
+                                    <Button Content="C"/>
+                                    <Button Content="D"/>
+                                </ToolBar>
+                                <ToolBar Band="1" BandIndex="0" Header="Band1-0">
+                                    <Button Content="E"/>
+                                    <Button Content="F"/>
+                                    <Button Content="G"/>
+                                </ToolBar>
+                            </ToolBarTray>
+                            <Expander Style="{StaticResource CodeExpanderStyle}">
+                                <TextBox Style="{StaticResource CodeTextBoxStyle}"
+                                         Text="&lt;ToolBarTray&gt;&#10;    &lt;!-- 첫 번째 행 --&gt;&#10;    &lt;ToolBar Band=&quot;0&quot; BandIndex=&quot;0&quot;&gt;&#10;        &lt;Button Content=&quot;A&quot;/&gt;&lt;Button Content=&quot;B&quot;/&gt;&#10;    &lt;/ToolBar&gt;&#10;    &lt;ToolBar Band=&quot;0&quot; BandIndex=&quot;1&quot;&gt;&#10;        &lt;Button Content=&quot;C&quot;/&gt;&lt;Button Content=&quot;D&quot;/&gt;&#10;    &lt;/ToolBar&gt;&#10;    &lt;!-- 두 번째 행 --&gt;&#10;    &lt;ToolBar Band=&quot;1&quot; BandIndex=&quot;0&quot;&gt;&#10;        &lt;Button Content=&quot;E&quot;/&gt;&lt;Button Content=&quot;F&quot;/&gt;&#10;    &lt;/ToolBar&gt;&#10;&lt;/ToolBarTray&gt;"/>
+                            </Expander>
+                        </StackPanel>
+                    </GroupBox>
+
+                    <!-- 예제 2: ToolBarTray 방향 -->
+                    <GroupBox Header="ToolBarTray Orientation" Margin="0,0,0,15">
+                        <StackPanel>
+                            <TextBlock Text="ToolBarTray의 Orientation을 Vertical로 설정하면 세로 배치됩니다." Margin="0,0,0,10"/>
+                            <Border BorderBrush="Gray" BorderThickness="1" Height="150">
+                                <DockPanel>
+                                    <ToolBarTray DockPanel.Dock="Left" Orientation="Vertical" Width="80">
+                                        <ToolBar Band="0">
+                                            <Button Content="A" Width="50"/>
+                                            <Button Content="B" Width="50"/>
+                                            <Button Content="C" Width="50"/>
+                                        </ToolBar>
+                                    </ToolBarTray>
+                                    <TextBlock Text="(콘텐츠 영역)" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="Gray"/>
+                                </DockPanel>
+                            </Border>
+                            <Expander Style="{StaticResource CodeExpanderStyle}">
+                                <TextBox Style="{StaticResource CodeTextBoxStyle}"
+                                         Text="&lt;DockPanel&gt;&#10;    &lt;ToolBarTray DockPanel.Dock=&quot;Left&quot;&#10;                 Orientation=&quot;Vertical&quot; Width=&quot;80&quot;&gt;&#10;        &lt;ToolBar Band=&quot;0&quot;&gt;&#10;            &lt;Button Content=&quot;A&quot; Width=&quot;50&quot;/&gt;&#10;            &lt;Button Content=&quot;B&quot; Width=&quot;50&quot;/&gt;&#10;            &lt;Button Content=&quot;C&quot; Width=&quot;50&quot;/&gt;&#10;        &lt;/ToolBar&gt;&#10;    &lt;/ToolBarTray&gt;&#10;    &lt;!-- 콘텐츠 --&gt;&#10;&lt;/DockPanel&gt;"/>
+                            </Expander>
+                        </StackPanel>
+                    </GroupBox>
+
+                    <!-- 예제 3: IsLocked -->
+                    <GroupBox Header="IsLocked (드래그 잠금)" Margin="0,0,0,15">
+                        <StackPanel>
+                            <TextBlock Text="IsLocked=True로 설정하면 사용자가 ToolBar를 드래그할 수 없습니다." Margin="0,0,0,10"/>
+                            <ToolBarTray IsLocked="True">
+                                <ToolBar Header="잠금됨">
+                                    <Button Content="새로 만들기"/>
+                                    <Button Content="열기"/>
+                                    <Button Content="저장"/>
+                                </ToolBar>
+                                <ToolBar Header="잠금됨">
+                                    <Button Content="잘라내기"/>
+                                    <Button Content="복사"/>
+                                    <Button Content="붙여넣기"/>
+                                </ToolBar>
+                            </ToolBarTray>
+                            <Expander Style="{StaticResource CodeExpanderStyle}">
+                                <TextBox Style="{StaticResource CodeTextBoxStyle}"
+                                         Text="&lt;!-- IsLocked=True: 드래그 불가 --&gt;&#10;&lt;ToolBarTray IsLocked=&quot;True&quot;&gt;&#10;    &lt;ToolBar Header=&quot;잠금됨&quot;&gt;&#10;        &lt;Button Content=&quot;새로 만들기&quot;/&gt;&#10;        &lt;Button Content=&quot;열기&quot;/&gt;&#10;    &lt;/ToolBar&gt;&#10;    &lt;ToolBar Header=&quot;잠금됨&quot;&gt;&#10;        &lt;Button Content=&quot;잘라내기&quot;/&gt;&#10;        &lt;Button Content=&quot;복사&quot;/&gt;&#10;    &lt;/ToolBar&gt;&#10;&lt;/ToolBarTray&gt;"/>
+                            </Expander>
+                        </StackPanel>
+                    </GroupBox>
+
+                    <!-- 예제 4: 코드로 IsLocked 토글 -->
+                    <GroupBox Header="코드로 IsLocked 토글" Margin="0,0,0,15">
+                        <StackPanel>
+                            <ToolBarTray x:Name="toggleableTray">
+                                <ToolBar Header="파일">
+                                    <Button Content="새로 만들기"/>
+                                    <Button Content="열기"/>
+                                </ToolBar>
+                                <ToolBar Header="편집">
+                                    <Button Content="잘라내기"/>
+                                    <Button Content="복사"/>
+                                </ToolBar>
+                            </ToolBarTray>
+                            <CheckBox x:Name="lockCheckBox" Content="ToolBar 잠금" Margin="0,10,0,0"
+                                      Checked="LockCheckBox_Checked" Unchecked="LockCheckBox_Unchecked"/>
+                            <Expander Style="{StaticResource CodeExpanderStyle}">
+                                <TextBox Style="{StaticResource CodeTextBoxStyle}"
+                                         Text="&lt;!-- XAML --&gt;&#10;&lt;ToolBarTray x:Name=&quot;toggleableTray&quot;&gt;...&lt;/ToolBarTray&gt;&#10;&lt;CheckBox Content=&quot;ToolBar 잠금&quot;&#10;          Checked=&quot;LockCheckBox_Checked&quot;&#10;          Unchecked=&quot;LockCheckBox_Unchecked&quot;/&gt;&#10;&#10;// C# 코드비하인드&#10;private void LockCheckBox_Checked(object sender, RoutedEventArgs e)&#10;{&#10;    toggleableTray.IsLocked = true;&#10;}&#10;private void LockCheckBox_Unchecked(object sender, RoutedEventArgs e)&#10;{&#10;    toggleableTray.IsLocked = false;&#10;}"/>
+                            </Expander>
+                        </StackPanel>
+                    </GroupBox>
+                </StackPanel>
+            </ScrollViewer>
+        </TabItem>
+
+        <!-- 탭 5: 실용 예제 -->
+        <TabItem Header="실용 예제">
+            <ScrollViewer VerticalScrollBarVisibility="Auto" Padding="20">
+                <StackPanel>
+                    <TextBlock Text="ToolBar 실용 예제" FontSize="18" FontWeight="Bold" Margin="0,0,0,15"/>
+
+                    <!-- 예제 1: 텍스트 에디터 툴바 -->
+                    <GroupBox Header="텍스트 에디터 스타일" Margin="0,0,0,15">
+                        <StackPanel>
+                            <Border BorderBrush="Gray" BorderThickness="1" Height="200">
+                                <DockPanel>
+                                    <ToolBarTray DockPanel.Dock="Top" IsLocked="True">
+                                        <ToolBar Band="0">
+                                            <Button Content="새로 만들기" Padding="5,2"/>
+                                            <Button Content="열기" Padding="5,2"/>
+                                            <Button Content="저장" Padding="5,2"/>
+                                            <Separator/>
+                                            <Button Content="잘라내기" Padding="5,2"/>
+                                            <Button Content="복사" Padding="5,2"/>
+                                            <Button Content="붙여넣기" Padding="5,2"/>
+                                            <Separator/>
+                                            <Button Content="실행 취소" Padding="5,2"/>
+                                            <Button Content="다시 실행" Padding="5,2"/>
+                                        </ToolBar>
+                                        <ToolBar Band="1">
+                                            <ComboBox Width="120" SelectedIndex="0">
+                                                <ComboBoxItem Content="맑은 고딕"/>
+                                                <ComboBoxItem Content="굴림"/>
+                                            </ComboBox>
+                                            <ComboBox Width="50" SelectedIndex="2">
+                                                <ComboBoxItem Content="8"/>
+                                                <ComboBoxItem Content="10"/>
+                                                <ComboBoxItem Content="12"/>
+                                                <ComboBoxItem Content="14"/>
+                                            </ComboBox>
+                                            <Separator/>
+                                            <ToggleButton Content="B" FontWeight="Bold" Width="25"/>
+                                            <ToggleButton Content="I" FontStyle="Italic" Width="25"/>
+                                            <ToggleButton Width="25">
+                                                <TextBlock Text="U" TextDecorations="Underline"/>
+                                            </ToggleButton>
+                                        </ToolBar>
+                                    </ToolBarTray>
+                                    <TextBox AcceptsReturn="True" TextWrapping="Wrap"
+                                             Text="텍스트를 입력하세요..." VerticalScrollBarVisibility="Auto"/>
+                                </DockPanel>
+                            </Border>
+                            <Expander Style="{StaticResource CodeExpanderStyle}">
+                                <TextBox Style="{StaticResource CodeTextBoxStyle}"
+                                         Text="&lt;DockPanel&gt;&#10;    &lt;ToolBarTray DockPanel.Dock=&quot;Top&quot; IsLocked=&quot;True&quot;&gt;&#10;        &lt;ToolBar Band=&quot;0&quot;&gt;&#10;            &lt;Button Content=&quot;새로 만들기&quot;/&gt;&#10;            &lt;Button Content=&quot;열기&quot;/&gt;&lt;Button Content=&quot;저장&quot;/&gt;&#10;            &lt;Separator/&gt;&#10;            &lt;Button Content=&quot;잘라내기&quot;/&gt;...&#10;        &lt;/ToolBar&gt;&#10;        &lt;ToolBar Band=&quot;1&quot;&gt;&#10;            &lt;ComboBox&gt;...&lt;/ComboBox&gt;&#10;            &lt;ToggleButton Content=&quot;B&quot; FontWeight=&quot;Bold&quot;/&gt;&#10;        &lt;/ToolBar&gt;&#10;    &lt;/ToolBarTray&gt;&#10;    &lt;TextBox AcceptsReturn=&quot;True&quot;/&gt;&#10;&lt;/DockPanel&gt;"/>
+                            </Expander>
+                        </StackPanel>
+                    </GroupBox>
+
+                    <!-- 예제 2: 미디어 플레이어 스타일 -->
+                    <GroupBox Header="미디어 플레이어 스타일" Margin="0,0,0,15">
+                        <StackPanel>
+                            <ToolBar Height="40" Background="#2D2D30">
+                                <Button Padding="10,5" Background="Transparent" BorderThickness="0">
+                                    <Polygon Points="0,0 12,7 0,14" Fill="White"/>
+                                </Button>
+                                <Button Padding="10,5" Background="Transparent" BorderThickness="0">
+                                    <Rectangle Width="10" Height="14" Fill="White"/>
+                                </Button>
+                                <Button Padding="10,5" Background="Transparent" BorderThickness="0">
+                                    <StackPanel Orientation="Horizontal">
+                                        <Rectangle Width="4" Height="14" Fill="White"/>
+                                        <Polygon Points="0,0 8,7 0,14" Fill="White" Margin="2,0,0,0"/>
+                                    </StackPanel>
+                                </Button>
+                                <Separator/>
+                                <Slider Width="150" Minimum="0" Maximum="100" Value="35" VerticalAlignment="Center"/>
+                                <TextBlock Text="01:23 / 03:45" Foreground="White" VerticalAlignment="Center" Margin="10,0"/>
+                                <Separator/>
+                                <TextBlock Text="볼륨" Foreground="White" VerticalAlignment="Center" Margin="5,0"/>
+                                <Slider Width="80" Minimum="0" Maximum="100" Value="70" VerticalAlignment="Center"/>
+                            </ToolBar>
+                            <Expander Style="{StaticResource CodeExpanderStyle}">
+                                <TextBox Style="{StaticResource CodeTextBoxStyle}"
+                                         Text="&lt;ToolBar Height=&quot;40&quot; Background=&quot;#2D2D30&quot;&gt;&#10;    &lt;!-- 재생 버튼 --&gt;&#10;    &lt;Button Padding=&quot;10,5&quot; Background=&quot;Transparent&quot;&gt;&#10;        &lt;Polygon Points=&quot;0,0 12,7 0,14&quot; Fill=&quot;White&quot;/&gt;&#10;    &lt;/Button&gt;&#10;    &lt;!-- 정지 버튼 --&gt;&#10;    &lt;Button Padding=&quot;10,5&quot; Background=&quot;Transparent&quot;&gt;&#10;        &lt;Rectangle Width=&quot;10&quot; Height=&quot;14&quot; Fill=&quot;White&quot;/&gt;&#10;    &lt;/Button&gt;&#10;    &lt;Separator/&gt;&#10;    &lt;!-- 진행 슬라이더 --&gt;&#10;    &lt;Slider Width=&quot;150&quot; Value=&quot;35&quot;/&gt;&#10;    &lt;TextBlock Text=&quot;01:23 / 03:45&quot; Foreground=&quot;White&quot;/&gt;&#10;&lt;/ToolBar&gt;"/>
+                            </Expander>
+                        </StackPanel>
+                    </GroupBox>
+
+                    <!-- 예제 3: 브라우저 스타일 -->
+                    <GroupBox Header="브라우저 스타일" Margin="0,0,0,15">
+                        <StackPanel>
+                            <ToolBar Height="35">
+                                <Button Content="◀" Width="30" ToolTip="뒤로"/>
+                                <Button Content="▶" Width="30" ToolTip="앞으로"/>
+                                <Button Content="↻" Width="30" ToolTip="새로고침"/>
+                                <Button Content="⌂" Width="30" ToolTip="홈"/>
+                                <Separator/>
+                                <TextBox x:Name="urlTextBox" Width="400" Text="https://www.example.com" VerticalContentAlignment="Center"/>
+                                <Button Content="이동" Padding="10,2" Click="Navigate_Click"/>
+                                <Separator/>
+                                <Button Content="☆" Width="30" ToolTip="북마크"/>
+                            </ToolBar>
+                            <Expander Style="{StaticResource CodeExpanderStyle}">
+                                <TextBox Style="{StaticResource CodeTextBoxStyle}"
+                                         Text="&lt;ToolBar&gt;&#10;    &lt;Button Content=&quot;◀&quot; Width=&quot;30&quot; ToolTip=&quot;뒤로&quot;/&gt;&#10;    &lt;Button Content=&quot;▶&quot; Width=&quot;30&quot; ToolTip=&quot;앞으로&quot;/&gt;&#10;    &lt;Button Content=&quot;↻&quot; Width=&quot;30&quot; ToolTip=&quot;새로고침&quot;/&gt;&#10;    &lt;Button Content=&quot;⌂&quot; Width=&quot;30&quot; ToolTip=&quot;홈&quot;/&gt;&#10;    &lt;Separator/&gt;&#10;    &lt;TextBox Width=&quot;400&quot; Text=&quot;https://...&quot;/&gt;&#10;    &lt;Button Content=&quot;이동&quot;/&gt;&#10;    &lt;Separator/&gt;&#10;    &lt;Button Content=&quot;☆&quot; ToolTip=&quot;북마크&quot;/&gt;&#10;&lt;/ToolBar&gt;"/>
+                            </Expander>
+                        </StackPanel>
+                    </GroupBox>
+
+                    <!-- 예제 4: 그리기 도구 스타일 -->
+                    <GroupBox Header="그리기 도구 스타일" Margin="0,0,0,15">
+                        <StackPanel>
+                            <ToolBar Height="40">
+                                <RadioButton GroupName="Tool" IsChecked="True" Padding="5">
+                                    <StackPanel>
+                                        <Polygon Points="2,14 7,0 12,14" Stroke="Black" StrokeThickness="1" Fill="Transparent"/>
+                                        <TextBlock Text="선택" FontSize="10" HorizontalAlignment="Center"/>
+                                    </StackPanel>
+                                </RadioButton>
+                                <RadioButton GroupName="Tool" Padding="5">
+                                    <StackPanel>
+                                        <Line X1="0" Y1="14" X2="14" Y2="0" Stroke="Black" StrokeThickness="2"/>
+                                        <TextBlock Text="펜" FontSize="10" HorizontalAlignment="Center"/>
+                                    </StackPanel>
+                                </RadioButton>
+                                <RadioButton GroupName="Tool" Padding="5">
+                                    <StackPanel>
+                                        <Rectangle Width="14" Height="14" Stroke="Black" Fill="Transparent"/>
+                                        <TextBlock Text="사각형" FontSize="10" HorizontalAlignment="Center"/>
+                                    </StackPanel>
+                                </RadioButton>
+                                <RadioButton GroupName="Tool" Padding="5">
+                                    <StackPanel>
+                                        <Ellipse Width="14" Height="14" Stroke="Black" Fill="Transparent"/>
+                                        <TextBlock Text="원" FontSize="10" HorizontalAlignment="Center"/>
+                                    </StackPanel>
+                                </RadioButton>
+                                <Separator/>
+                                <TextBlock Text="색상:" VerticalAlignment="Center" Margin="5,0"/>
+                                <ComboBox Width="80" SelectedIndex="0">
+                                    <ComboBoxItem>
+                                        <StackPanel Orientation="Horizontal">
+                                            <Rectangle Width="14" Height="14" Fill="Black"/>
+                                            <TextBlock Text=" 검정" />
+                                        </StackPanel>
+                                    </ComboBoxItem>
+                                    <ComboBoxItem>
+                                        <StackPanel Orientation="Horizontal">
+                                            <Rectangle Width="14" Height="14" Fill="Red"/>
+                                            <TextBlock Text=" 빨강"/>
+                                        </StackPanel>
+                                    </ComboBoxItem>
+                                    <ComboBoxItem>
+                                        <StackPanel Orientation="Horizontal">
+                                            <Rectangle Width="14" Height="14" Fill="Blue"/>
+                                            <TextBlock Text=" 파랑"/>
+                                        </StackPanel>
+                                    </ComboBoxItem>
+                                </ComboBox>
+                                <Separator/>
+                                <TextBlock Text="두께:" VerticalAlignment="Center" Margin="5,0"/>
+                                <Slider Width="80" Minimum="1" Maximum="10" Value="2" VerticalAlignment="Center"/>
+                            </ToolBar>
+                            <Expander Style="{StaticResource CodeExpanderStyle}">
+                                <TextBox Style="{StaticResource CodeTextBoxStyle}"
+                                         Text="&lt;ToolBar&gt;&#10;    &lt;RadioButton GroupName=&quot;Tool&quot; IsChecked=&quot;True&quot;&gt;&#10;        &lt;StackPanel&gt;&#10;            &lt;Polygon Points=&quot;2,14 7,0 12,14&quot; Stroke=&quot;Black&quot;/&gt;&#10;            &lt;TextBlock Text=&quot;선택&quot; FontSize=&quot;10&quot;/&gt;&#10;        &lt;/StackPanel&gt;&#10;    &lt;/RadioButton&gt;&#10;    &lt;RadioButton GroupName=&quot;Tool&quot;&gt;&#10;        &lt;StackPanel&gt;&#10;            &lt;Rectangle .../&gt;&lt;TextBlock Text=&quot;사각형&quot;/&gt;&#10;        &lt;/StackPanel&gt;&#10;    &lt;/RadioButton&gt;&#10;    &lt;Separator/&gt;&#10;    &lt;TextBlock Text=&quot;색상:&quot;/&gt;&#10;    &lt;ComboBox&gt;...&lt;/ComboBox&gt;&#10;&lt;/ToolBar&gt;"/>
+                            </Expander>
+                        </StackPanel>
+                    </GroupBox>
+                </StackPanel>
+            </ScrollViewer>
+        </TabItem>
+    </TabControl>
 </Window>
