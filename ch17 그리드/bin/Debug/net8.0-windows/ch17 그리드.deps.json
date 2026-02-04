@@ -1,0 +1,23 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v8.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v8.0": {
+      "ch17 그리드/1.0.0": {
+        "runtime": {
+          "ch17 그리드.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "ch17 그리드/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

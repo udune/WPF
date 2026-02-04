@@ -1,0 +1,388 @@
+﻿<Window x:Class="ch15_랩패널.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ch15_랩패널"
+        mc:Ignorable="d"
+        Title="ch15 WrapPanel 튜토리얼" Height="600" Width="850">
+
+    <Window.Resources>
+        <Style x:Key="CodeExpanderStyle" TargetType="Expander">
+            <Setter Property="Header" Value="코드 보기"/>
+            <Setter Property="Margin" Value="0,0,0,12"/>
+            <Setter Property="IsExpanded" Value="False"/>
+        </Style>
+        <Style x:Key="CodeTextBoxStyle" TargetType="TextBox">
+            <Setter Property="IsReadOnly" Value="True"/>
+            <Setter Property="FontFamily" Value="Consolas"/>
+            <Setter Property="FontSize" Value="12"/>
+            <Setter Property="Background" Value="#1E1E1E"/>
+            <Setter Property="Foreground" Value="#DCDCDC"/>
+            <Setter Property="Padding" Value="10"/>
+            <Setter Property="TextWrapping" Value="Wrap"/>
+            <Setter Property="AcceptsReturn" Value="True"/>
+            <Setter Property="VerticalScrollBarVisibility" Value="Auto"/>
+            <Setter Property="MaxHeight" Value="300"/>
+            <Setter Property="BorderBrush" Value="#333333"/>
+            <Setter Property="BorderThickness" Value="1"/>
+        </Style>
+        <Style x:Key="DemoButtonStyle" TargetType="Button">
+            <Setter Property="Padding" Value="12,6"/>
+            <Setter Property="Margin" Value="4"/>
+            <Setter Property="MinWidth" Value="70"/>
+        </Style>
+    </Window.Resources>
+
+    <TabControl>
+
+        <!-- 탭 1: 기본 사용법 -->
+        <TabItem Header="기본 사용법">
+            <ScrollViewer VerticalScrollBarVisibility="Auto">
+                <StackPanel Margin="20">
+                    <TextBlock Text="1. 기본 WrapPanel (Horizontal)" FontSize="18" FontWeight="Bold" Margin="0,0,0,10"/>
+
+                    <GroupBox Header="공간이 부족하면 자동 줄바꿈 (창 크기를 줄여보세요)" Margin="0,0,0,8">
+                        <WrapPanel Background="LightGray">
+                            <Button Content="버튼 1" Style="{StaticResource DemoButtonStyle}"/>
+                            <Button Content="버튼 2" Style="{StaticResource DemoButtonStyle}"/>
+                            <Button Content="버튼 3" Style="{StaticResource DemoButtonStyle}"/>
+                            <Button Content="버튼 4" Style="{StaticResource DemoButtonStyle}"/>
+                            <Button Content="버튼 5" Style="{StaticResource DemoButtonStyle}"/>
+                            <Button Content="버튼 6" Style="{StaticResource DemoButtonStyle}"/>
+                            <Button Content="버튼 7" Style="{StaticResource DemoButtonStyle}"/>
+                            <Button Content="버튼 8" Style="{StaticResource DemoButtonStyle}"/>
+                        </WrapPanel>
+                    </GroupBox>
+                    <Expander Style="{StaticResource CodeExpanderStyle}">
+                        <TextBox Style="{StaticResource CodeTextBoxStyle}" Text="&lt;WrapPanel&gt;&#10;    &lt;Button Content=&quot;버튼 1&quot;/&gt;&#10;    &lt;Button Content=&quot;버튼 2&quot;/&gt;&#10;    &lt;Button Content=&quot;버튼 3&quot;/&gt;&#10;    &lt;Button Content=&quot;버튼 4&quot;/&gt;&#10;    ...&#10;&lt;/WrapPanel&gt;&#10;&#10;&lt;!-- Orientation 기본값은 Horizontal --&gt;&#10;&lt;!-- 가로로 배치하다 공간 부족 시 다음 줄로 이동 --&gt;"/>
+                    </Expander>
+
+                    <TextBlock Text="2. Orientation=Vertical" FontSize="18" FontWeight="Bold" Margin="0,10,0,10"/>
+
+                    <GroupBox Header="세로로 배치하다 공간 부족 시 다음 열로 이동" Margin="0,0,0,8">
+                        <WrapPanel Orientation="Vertical" Height="120" Background="LightGray">
+                            <Button Content="버튼 1" Style="{StaticResource DemoButtonStyle}"/>
+                            <Button Content="버튼 2" Style="{StaticResource DemoButtonStyle}"/>
+                            <Button Content="버튼 3" Style="{StaticResource DemoButtonStyle}"/>
+                            <Button Content="버튼 4" Style="{StaticResource DemoButtonStyle}"/>
+                            <Button Content="버튼 5" Style="{StaticResource DemoButtonStyle}"/>
+                            <Button Content="버튼 6" Style="{StaticResource DemoButtonStyle}"/>
+                            <Button Content="버튼 7" Style="{StaticResource DemoButtonStyle}"/>
+                            <Button Content="버튼 8" Style="{StaticResource DemoButtonStyle}"/>
+                        </WrapPanel>
+                    </GroupBox>
+                    <Expander Style="{StaticResource CodeExpanderStyle}">
+                        <TextBox Style="{StaticResource CodeTextBoxStyle}" Text="&lt;WrapPanel Orientation=&quot;Vertical&quot; Height=&quot;120&quot;&gt;&#10;    &lt;Button Content=&quot;버튼 1&quot;/&gt;&#10;    &lt;Button Content=&quot;버튼 2&quot;/&gt;&#10;    ...&#10;&lt;/WrapPanel&gt;&#10;&#10;&lt;!-- 세로로 배치하다 높이 초과 시 다음 열로 이동 --&gt;"/>
+                    </Expander>
+
+                    <TextBlock Text="3. StackPanel과 비교" FontSize="18" FontWeight="Bold" Margin="0,10,0,10"/>
+
+                    <GroupBox Header="StackPanel은 줄바꿈 없음 vs WrapPanel은 자동 줄바꿈" Margin="0,0,0,8">
+                        <StackPanel>
+                            <TextBlock Text="StackPanel (넘쳐도 줄바꿈 안 됨)" FontWeight="Bold" Margin="0,0,0,4"/>
+                            <StackPanel Orientation="Horizontal" Background="#FFCDD2" Height="40">
+                                <Button Content="A" Style="{StaticResource DemoButtonStyle}"/>
+                                <Button Content="B" Style="{StaticResource DemoButtonStyle}"/>
+                                <Button Content="C" Style="{StaticResource DemoButtonStyle}"/>
+                                <Button Content="D" Style="{StaticResource DemoButtonStyle}"/>
+                                <Button Content="E" Style="{StaticResource DemoButtonStyle}"/>
+                                <Button Content="F" Style="{StaticResource DemoButtonStyle}"/>
+                                <Button Content="G" Style="{StaticResource DemoButtonStyle}"/>
+                                <Button Content="H" Style="{StaticResource DemoButtonStyle}"/>
+                            </StackPanel>
+                            <TextBlock Text="WrapPanel (자동 줄바꿈)" FontWeight="Bold" Margin="0,12,0,4"/>
+                            <WrapPanel Background="#C8E6C9">
+                                <Button Content="A" Style="{StaticResource DemoButtonStyle}"/>
+                                <Button Content="B" Style="{StaticResource DemoButtonStyle}"/>
+                                <Button Content="C" Style="{StaticResource DemoButtonStyle}"/>
+                                <Button Content="D" Style="{StaticResource DemoButtonStyle}"/>
+                                <Button Content="E" Style="{StaticResource DemoButtonStyle}"/>
+                                <Button Content="F" Style="{StaticResource DemoButtonStyle}"/>
+                                <Button Content="G" Style="{StaticResource DemoButtonStyle}"/>
+                                <Button Content="H" Style="{StaticResource DemoButtonStyle}"/>
+                            </WrapPanel>
+                        </StackPanel>
+                    </GroupBox>
+                    <Expander Style="{StaticResource CodeExpanderStyle}">
+                        <TextBox Style="{StaticResource CodeTextBoxStyle}" Text="&lt;!-- StackPanel: 넘쳐도 줄바꿈 없음, 잘림 --&gt;&#10;&lt;StackPanel Orientation=&quot;Horizontal&quot;&gt;&#10;    &lt;Button Content=&quot;A&quot;/&gt; &lt;Button Content=&quot;B&quot;/&gt; ...&#10;&lt;/StackPanel&gt;&#10;&#10;&lt;!-- WrapPanel: 공간 부족 시 자동 줄바꿈 --&gt;&#10;&lt;WrapPanel&gt;&#10;    &lt;Button Content=&quot;A&quot;/&gt; &lt;Button Content=&quot;B&quot;/&gt; ...&#10;&lt;/WrapPanel&gt;"/>
+                    </Expander>
+                </StackPanel>
+            </ScrollViewer>
+        </TabItem>
+
+        <!-- 탭 2: ItemWidth / ItemHeight -->
+        <TabItem Header="ItemWidth / ItemHeight">
+            <ScrollViewer VerticalScrollBarVisibility="Auto">
+                <StackPanel Margin="20">
+                    <TextBlock Text="1. ItemWidth (균일한 너비)" FontSize="18" FontWeight="Bold" Margin="0,0,0,10"/>
+
+                    <GroupBox Header="모든 자식 요소에 동일한 너비 적용" Margin="0,0,0,8">
+                        <WrapPanel ItemWidth="100" Background="LightGray">
+                            <Button Content="짧은" Margin="4" Padding="4"/>
+                            <Button Content="조금 긴 텍스트" Margin="4" Padding="4"/>
+                            <Button Content="A" Margin="4" Padding="4"/>
+                            <Button Content="매우 긴 텍스트 버튼" Margin="4" Padding="4"/>
+                            <Button Content="중간" Margin="4" Padding="4"/>
+                        </WrapPanel>
+                    </GroupBox>
+                    <Expander Style="{StaticResource CodeExpanderStyle}">
+                        <TextBox Style="{StaticResource CodeTextBoxStyle}" Text="&lt;WrapPanel ItemWidth=&quot;100&quot;&gt;&#10;    &lt;Button Content=&quot;짧은&quot;/&gt;&#10;    &lt;Button Content=&quot;조금 긴 텍스트&quot;/&gt;&#10;    &lt;Button Content=&quot;A&quot;/&gt;&#10;    &lt;Button Content=&quot;매우 긴 텍스트 버튼&quot;/&gt;&#10;    &lt;Button Content=&quot;중간&quot;/&gt;&#10;&lt;/WrapPanel&gt;&#10;&#10;&lt;!-- 모든 자식이 100px 너비 셀 안에 배치됨 --&gt;"/>
+                    </Expander>
+
+                    <TextBlock Text="2. ItemHeight (균일한 높이)" FontSize="18" FontWeight="Bold" Margin="0,10,0,10"/>
+
+                    <GroupBox Header="모든 자식 요소에 동일한 높이 적용" Margin="0,0,0,8">
+                        <WrapPanel ItemHeight="50" Background="LightGray">
+                            <Button Content="버튼 1" Margin="4" Padding="8,4" VerticalAlignment="Top"/>
+                            <Button Content="버튼 2" Margin="4" Padding="8,4" VerticalAlignment="Center"/>
+                            <Button Content="버튼 3" Margin="4" Padding="8,4" VerticalAlignment="Bottom"/>
+                            <Button Content="버튼 4" Margin="4" Padding="8,4" VerticalAlignment="Stretch"/>
+                        </WrapPanel>
+                    </GroupBox>
+                    <Expander Style="{StaticResource CodeExpanderStyle}">
+                        <TextBox Style="{StaticResource CodeTextBoxStyle}" Text="&lt;WrapPanel ItemHeight=&quot;50&quot;&gt;&#10;    &lt;Button Content=&quot;Top&quot; VerticalAlignment=&quot;Top&quot;/&gt;&#10;    &lt;Button Content=&quot;Center&quot; VerticalAlignment=&quot;Center&quot;/&gt;&#10;    &lt;Button Content=&quot;Bottom&quot; VerticalAlignment=&quot;Bottom&quot;/&gt;&#10;    &lt;Button Content=&quot;Stretch&quot; VerticalAlignment=&quot;Stretch&quot;/&gt;&#10;&lt;/WrapPanel&gt;&#10;&#10;&lt;!-- ItemHeight 안에서 VerticalAlignment로 정렬 가능 --&gt;"/>
+                    </Expander>
+
+                    <TextBlock Text="3. ItemWidth + ItemHeight (그리드 효과)" FontSize="18" FontWeight="Bold" Margin="0,10,0,10"/>
+
+                    <GroupBox Header="균일한 셀 크기로 그리드처럼 배치" Margin="0,0,0,8">
+                        <WrapPanel ItemWidth="120" ItemHeight="50" Background="LightGray">
+                            <Button Content="항목 1" Margin="4" Padding="4" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                            <Button Content="항목 2" Margin="4" Padding="4" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                            <Button Content="항목 3" Margin="4" Padding="4" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                            <Button Content="항목 4" Margin="4" Padding="4" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                            <Button Content="항목 5" Margin="4" Padding="4" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                            <Button Content="항목 6" Margin="4" Padding="4" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                        </WrapPanel>
+                    </GroupBox>
+                    <Expander Style="{StaticResource CodeExpanderStyle}">
+                        <TextBox Style="{StaticResource CodeTextBoxStyle}" Text="&lt;WrapPanel ItemWidth=&quot;120&quot; ItemHeight=&quot;50&quot;&gt;&#10;    &lt;Button Content=&quot;항목 1&quot; HorizontalAlignment=&quot;Stretch&quot; VerticalAlignment=&quot;Stretch&quot;/&gt;&#10;    &lt;Button Content=&quot;항목 2&quot; HorizontalAlignment=&quot;Stretch&quot; VerticalAlignment=&quot;Stretch&quot;/&gt;&#10;    ...&#10;&lt;/WrapPanel&gt;&#10;&#10;&lt;!-- ItemWidth + ItemHeight로 균일한 그리드 레이아웃 구현 --&gt;"/>
+                    </Expander>
+                </StackPanel>
+            </ScrollViewer>
+        </TabItem>
+
+        <!-- 탭 3: 실용 패턴 -->
+        <TabItem Header="실용 패턴">
+            <ScrollViewer VerticalScrollBarVisibility="Auto">
+                <StackPanel Margin="20">
+                    <TextBlock Text="1. 태그(Tag) 목록" FontSize="18" FontWeight="Bold" Margin="0,0,0,10"/>
+
+                    <GroupBox Header="태그 스타일 버튼 목록 (자동 줄바꿈)" Margin="0,0,0,8">
+                        <WrapPanel>
+                            <Border Background="#E3F2FD" CornerRadius="12" Padding="10,4" Margin="4">
+                                <TextBlock Text="C#" Foreground="#1565C0"/>
+                            </Border>
+                            <Border Background="#E8F5E9" CornerRadius="12" Padding="10,4" Margin="4">
+                                <TextBlock Text="WPF" Foreground="#2E7D32"/>
+                            </Border>
+                            <Border Background="#FFF3E0" CornerRadius="12" Padding="10,4" Margin="4">
+                                <TextBlock Text="XAML" Foreground="#E65100"/>
+                            </Border>
+                            <Border Background="#FCE4EC" CornerRadius="12" Padding="10,4" Margin="4">
+                                <TextBlock Text="MVVM" Foreground="#C62828"/>
+                            </Border>
+                            <Border Background="#F3E5F5" CornerRadius="12" Padding="10,4" Margin="4">
+                                <TextBlock Text="데이터바인딩" Foreground="#6A1B9A"/>
+                            </Border>
+                            <Border Background="#E0F7FA" CornerRadius="12" Padding="10,4" Margin="4">
+                                <TextBlock Text=".NET" Foreground="#00695C"/>
+                            </Border>
+                        </WrapPanel>
+                    </GroupBox>
+                    <Expander Style="{StaticResource CodeExpanderStyle}">
+                        <TextBox Style="{StaticResource CodeTextBoxStyle}" Text="&lt;WrapPanel&gt;&#10;    &lt;Border Background=&quot;#E3F2FD&quot; CornerRadius=&quot;12&quot; Padding=&quot;10,4&quot; Margin=&quot;4&quot;&gt;&#10;        &lt;TextBlock Text=&quot;C#&quot; Foreground=&quot;#1565C0&quot;/&gt;&#10;    &lt;/Border&gt;&#10;    &lt;Border Background=&quot;#E8F5E9&quot; CornerRadius=&quot;12&quot; Padding=&quot;10,4&quot; Margin=&quot;4&quot;&gt;&#10;        &lt;TextBlock Text=&quot;WPF&quot; Foreground=&quot;#2E7D32&quot;/&gt;&#10;    &lt;/Border&gt;&#10;    ...&#10;&lt;/WrapPanel&gt;"/>
+                    </Expander>
+
+                    <TextBlock Text="2. 이미지 갤러리 패턴" FontSize="18" FontWeight="Bold" Margin="0,10,0,10"/>
+
+                    <GroupBox Header="균일한 크기의 카드형 갤러리" Margin="0,0,0,8">
+                        <WrapPanel ItemWidth="150" ItemHeight="100">
+                            <Border Background="#BBDEFB" Margin="4" CornerRadius="4">
+                                <TextBlock Text="사진 1" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            </Border>
+                            <Border Background="#C8E6C9" Margin="4" CornerRadius="4">
+                                <TextBlock Text="사진 2" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            </Border>
+                            <Border Background="#FFE0B2" Margin="4" CornerRadius="4">
+                                <TextBlock Text="사진 3" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            </Border>
+                            <Border Background="#F8BBD0" Margin="4" CornerRadius="4">
+                                <TextBlock Text="사진 4" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            </Border>
+                            <Border Background="#D1C4E9" Margin="4" CornerRadius="4">
+                                <TextBlock Text="사진 5" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            </Border>
+                        </WrapPanel>
+                    </GroupBox>
+                    <Expander Style="{StaticResource CodeExpanderStyle}">
+                        <TextBox Style="{StaticResource CodeTextBoxStyle}" Text="&lt;WrapPanel ItemWidth=&quot;150&quot; ItemHeight=&quot;100&quot;&gt;&#10;    &lt;Border Background=&quot;#BBDEFB&quot; Margin=&quot;4&quot; CornerRadius=&quot;4&quot;&gt;&#10;        &lt;TextBlock Text=&quot;사진 1&quot; HorizontalAlignment=&quot;Center&quot; VerticalAlignment=&quot;Center&quot;/&gt;&#10;    &lt;/Border&gt;&#10;    ...&#10;&lt;/WrapPanel&gt;&#10;&#10;&lt;!-- ItemWidth/ItemHeight로 균일한 카드 크기 유지 --&gt;"/>
+                    </Expander>
+
+                    <TextBlock Text="3. 다양한 크기의 자식 요소" FontSize="18" FontWeight="Bold" Margin="0,10,0,10"/>
+
+                    <GroupBox Header="자식마다 크기가 달라도 자동 줄바꿈" Margin="0,0,0,8">
+                        <WrapPanel Background="#F5F5F5">
+                            <Button Content="Short" Width="60" Height="30" Margin="4"/>
+                            <Button Content="Medium Button" Width="120" Height="40" Margin="4"/>
+                            <Button Content="Wide" Width="180" Height="35" Margin="4"/>
+                            <Button Content="Tall" Width="70" Height="60" Margin="4"/>
+                            <Button Content="Small" Width="50" Height="25" Margin="4"/>
+                            <Button Content="Extra Wide Button" Width="200" Height="35" Margin="4"/>
+                        </WrapPanel>
+                    </GroupBox>
+                    <Expander Style="{StaticResource CodeExpanderStyle}">
+                        <TextBox Style="{StaticResource CodeTextBoxStyle}" Text="&lt;WrapPanel&gt;&#10;    &lt;Button Content=&quot;Short&quot; Width=&quot;60&quot; Height=&quot;30&quot;/&gt;&#10;    &lt;Button Content=&quot;Medium&quot; Width=&quot;120&quot; Height=&quot;40&quot;/&gt;&#10;    &lt;Button Content=&quot;Wide&quot; Width=&quot;180&quot; Height=&quot;35&quot;/&gt;&#10;    ...&#10;&lt;/WrapPanel&gt;&#10;&#10;&lt;!-- ItemWidth/ItemHeight 미지정 시 각 자식의 고유 크기 사용 --&gt;"/>
+                    </Expander>
+                </StackPanel>
+            </ScrollViewer>
+        </TabItem>
+
+        <!-- 탭 4: 스타일과 외관 -->
+        <TabItem Header="스타일과 외관">
+            <ScrollViewer VerticalScrollBarVisibility="Auto">
+                <StackPanel Margin="20">
+                    <TextBlock Text="1. Background" FontSize="18" FontWeight="Bold" Margin="0,0,0,10"/>
+
+                    <GroupBox Header="WrapPanel에 배경색 적용" Margin="0,0,0,8">
+                        <StackPanel>
+                            <WrapPanel Background="LightBlue" Margin="0,0,0,8">
+                                <Button Content="A" Style="{StaticResource DemoButtonStyle}"/>
+                                <Button Content="B" Style="{StaticResource DemoButtonStyle}"/>
+                                <Button Content="C" Style="{StaticResource DemoButtonStyle}"/>
+                            </WrapPanel>
+                            <WrapPanel Background="#FFE0B2">
+                                <Button Content="D" Style="{StaticResource DemoButtonStyle}"/>
+                                <Button Content="E" Style="{StaticResource DemoButtonStyle}"/>
+                                <Button Content="F" Style="{StaticResource DemoButtonStyle}"/>
+                            </WrapPanel>
+                        </StackPanel>
+                    </GroupBox>
+                    <Expander Style="{StaticResource CodeExpanderStyle}">
+                        <TextBox Style="{StaticResource CodeTextBoxStyle}" Text="&lt;WrapPanel Background=&quot;LightBlue&quot;&gt;&#10;    &lt;Button Content=&quot;A&quot;/&gt;&#10;    &lt;Button Content=&quot;B&quot;/&gt;&#10;&lt;/WrapPanel&gt;&#10;&#10;&lt;WrapPanel Background=&quot;#FFE0B2&quot;&gt;&#10;    &lt;Button Content=&quot;D&quot;/&gt;&#10;    &lt;Button Content=&quot;E&quot;/&gt;&#10;&lt;/WrapPanel&gt;"/>
+                    </Expander>
+
+                    <TextBlock Text="2. HorizontalAlignment / VerticalAlignment" FontSize="18" FontWeight="Bold" Margin="0,10,0,10"/>
+
+                    <GroupBox Header="WrapPanel 자체의 정렬" Margin="0,0,0,8">
+                        <StackPanel>
+                            <WrapPanel Background="#E3F2FD" HorizontalAlignment="Left" Margin="0,0,0,4">
+                                <Button Content="Left" Style="{StaticResource DemoButtonStyle}"/>
+                                <Button Content="정렬" Style="{StaticResource DemoButtonStyle}"/>
+                            </WrapPanel>
+                            <WrapPanel Background="#E8F5E9" HorizontalAlignment="Center" Margin="0,0,0,4">
+                                <Button Content="Center" Style="{StaticResource DemoButtonStyle}"/>
+                                <Button Content="정렬" Style="{StaticResource DemoButtonStyle}"/>
+                            </WrapPanel>
+                            <WrapPanel Background="#FFF3E0" HorizontalAlignment="Right">
+                                <Button Content="Right" Style="{StaticResource DemoButtonStyle}"/>
+                                <Button Content="정렬" Style="{StaticResource DemoButtonStyle}"/>
+                            </WrapPanel>
+                        </StackPanel>
+                    </GroupBox>
+                    <Expander Style="{StaticResource CodeExpanderStyle}">
+                        <TextBox Style="{StaticResource CodeTextBoxStyle}" Text="&lt;WrapPanel HorizontalAlignment=&quot;Left&quot;&gt; ... &lt;/WrapPanel&gt;&#10;&lt;WrapPanel HorizontalAlignment=&quot;Center&quot;&gt; ... &lt;/WrapPanel&gt;&#10;&lt;WrapPanel HorizontalAlignment=&quot;Right&quot;&gt; ... &lt;/WrapPanel&gt;"/>
+                    </Expander>
+
+                    <TextBlock Text="3. FlowDirection" FontSize="18" FontWeight="Bold" Margin="0,10,0,10"/>
+
+                    <GroupBox Header="RightToLeft로 배치 방향 반전" Margin="0,0,0,8">
+                        <StackPanel>
+                            <TextBlock Text="LeftToRight (기본)" FontWeight="Bold" Margin="0,0,0,4"/>
+                            <WrapPanel Background="#E3F2FD" Margin="0,0,0,8">
+                                <Button Content="1" Style="{StaticResource DemoButtonStyle}"/>
+                                <Button Content="2" Style="{StaticResource DemoButtonStyle}"/>
+                                <Button Content="3" Style="{StaticResource DemoButtonStyle}"/>
+                                <Button Content="4" Style="{StaticResource DemoButtonStyle}"/>
+                                <Button Content="5" Style="{StaticResource DemoButtonStyle}"/>
+                            </WrapPanel>
+                            <TextBlock Text="RightToLeft" FontWeight="Bold" Margin="0,0,0,4"/>
+                            <WrapPanel FlowDirection="RightToLeft" Background="#FFF3E0">
+                                <Button Content="1" Style="{StaticResource DemoButtonStyle}"/>
+                                <Button Content="2" Style="{StaticResource DemoButtonStyle}"/>
+                                <Button Content="3" Style="{StaticResource DemoButtonStyle}"/>
+                                <Button Content="4" Style="{StaticResource DemoButtonStyle}"/>
+                                <Button Content="5" Style="{StaticResource DemoButtonStyle}"/>
+                            </WrapPanel>
+                        </StackPanel>
+                    </GroupBox>
+                    <Expander Style="{StaticResource CodeExpanderStyle}">
+                        <TextBox Style="{StaticResource CodeTextBoxStyle}" Text="&lt;!-- 기본: 왼쪽에서 오른쪽 --&gt;&#10;&lt;WrapPanel&gt;&#10;    &lt;Button Content=&quot;1&quot;/&gt; &lt;Button Content=&quot;2&quot;/&gt; ...&#10;&lt;/WrapPanel&gt;&#10;&#10;&lt;!-- 오른쪽에서 왼쪽 --&gt;&#10;&lt;WrapPanel FlowDirection=&quot;RightToLeft&quot;&gt;&#10;    &lt;Button Content=&quot;1&quot;/&gt; &lt;Button Content=&quot;2&quot;/&gt; ...&#10;&lt;/WrapPanel&gt;"/>
+                    </Expander>
+                </StackPanel>
+            </ScrollViewer>
+        </TabItem>
+
+        <!-- 탭 5: 코드비하인드 -->
+        <TabItem Header="코드비하인드">
+            <ScrollViewer VerticalScrollBarVisibility="Auto">
+                <StackPanel Margin="20">
+                    <TextBlock Text="1. 동적으로 자식 요소 추가" FontSize="18" FontWeight="Bold" Margin="0,0,0,10"/>
+
+                    <GroupBox Header="버튼 클릭으로 WrapPanel에 요소 추가 (줄바꿈 확인)" Margin="0,0,0,8">
+                        <StackPanel>
+                            <WrapPanel x:Name="wpDynamic" Background="#F5F5F5" MinHeight="40" Margin="0,0,0,8"/>
+                            <StackPanel Orientation="Horizontal">
+                                <Button Content="버튼 추가" Click="AddItem_Click" Padding="12,6" Margin="0,0,8,0"/>
+                                <Button Content="전체 삭제" Click="ClearItems_Click" Padding="12,6"/>
+                            </StackPanel>
+                            <TextBlock x:Name="tbDynamicCount" Text="자식 요소: 0개" FontSize="13" Margin="0,6,0,0"/>
+                        </StackPanel>
+                    </GroupBox>
+                    <Expander Style="{StaticResource CodeExpanderStyle}">
+                        <TextBox Style="{StaticResource CodeTextBoxStyle}" Text="&lt;!-- XAML --&gt;&#10;&lt;WrapPanel x:Name=&quot;wpDynamic&quot; Background=&quot;#F5F5F5&quot;/&gt;&#10;&lt;Button Content=&quot;버튼 추가&quot; Click=&quot;AddItem_Click&quot;/&gt;&#10;&lt;Button Content=&quot;전체 삭제&quot; Click=&quot;ClearItems_Click&quot;/&gt;&#10;&lt;TextBlock x:Name=&quot;tbDynamicCount&quot;/&gt;&#10;&#10;// C# 코드비하인드&#10;private int itemCount = 0;&#10;private void AddItem_Click(object sender, RoutedEventArgs e)&#10;{&#10;    itemCount++;&#10;    wpDynamic.Children.Add(new Button&#10;    {&#10;        Content = &quot;항목 &quot; + itemCount,&#10;        Margin = new Thickness(4),&#10;        Padding = new Thickness(12, 6, 12, 6)&#10;    });&#10;    tbDynamicCount.Text = &quot;자식 요소: &quot; + wpDynamic.Children.Count + &quot;개&quot;;&#10;}&#10;private void ClearItems_Click(object sender, RoutedEventArgs e)&#10;{&#10;    wpDynamic.Children.Clear();&#10;    itemCount = 0;&#10;    tbDynamicCount.Text = &quot;자식 요소: 0개&quot;;&#10;}"/>
+                    </Expander>
+
+                    <TextBlock Text="2. Orientation 동적 변경" FontSize="18" FontWeight="Bold" Margin="0,10,0,10"/>
+
+                    <GroupBox Header="Horizontal / Vertical 전환" Margin="0,0,0,8">
+                        <StackPanel>
+                            <WrapPanel x:Name="wpOrientation" Background="#E8F5E9" MinHeight="80" Height="120">
+                                <Button Content="A" Style="{StaticResource DemoButtonStyle}"/>
+                                <Button Content="B" Style="{StaticResource DemoButtonStyle}"/>
+                                <Button Content="C" Style="{StaticResource DemoButtonStyle}"/>
+                                <Button Content="D" Style="{StaticResource DemoButtonStyle}"/>
+                                <Button Content="E" Style="{StaticResource DemoButtonStyle}"/>
+                                <Button Content="F" Style="{StaticResource DemoButtonStyle}"/>
+                            </WrapPanel>
+                            <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
+                                <Button Content="Horizontal" Click="SetWrapHorizontal_Click" Padding="12,6" Margin="0,0,8,0"/>
+                                <Button Content="Vertical" Click="SetWrapVertical_Click" Padding="12,6"/>
+                            </StackPanel>
+                            <TextBlock x:Name="tbWrapOrientation" Text="현재: Horizontal" FontSize="13" Margin="0,6,0,0"/>
+                        </StackPanel>
+                    </GroupBox>
+                    <Expander Style="{StaticResource CodeExpanderStyle}">
+                        <TextBox Style="{StaticResource CodeTextBoxStyle}" Text="&lt;!-- XAML --&gt;&#10;&lt;WrapPanel x:Name=&quot;wpOrientation&quot; Height=&quot;120&quot;&gt;&#10;    &lt;Button Content=&quot;A&quot;/&gt; ... &lt;Button Content=&quot;F&quot;/&gt;&#10;&lt;/WrapPanel&gt;&#10;&lt;Button Content=&quot;Horizontal&quot; Click=&quot;SetWrapHorizontal_Click&quot;/&gt;&#10;&lt;Button Content=&quot;Vertical&quot; Click=&quot;SetWrapVertical_Click&quot;/&gt;&#10;&#10;// C# 코드비하인드&#10;private void SetWrapHorizontal_Click(object sender, RoutedEventArgs e)&#10;{&#10;    wpOrientation.Orientation = Orientation.Horizontal;&#10;    tbWrapOrientation.Text = &quot;현재: Horizontal&quot;;&#10;}&#10;private void SetWrapVertical_Click(object sender, RoutedEventArgs e)&#10;{&#10;    wpOrientation.Orientation = Orientation.Vertical;&#10;    tbWrapOrientation.Text = &quot;현재: Vertical&quot;;&#10;}"/>
+                    </Expander>
+
+                    <TextBlock Text="3. ItemWidth 동적 변경" FontSize="18" FontWeight="Bold" Margin="0,10,0,10"/>
+
+                    <GroupBox Header="슬라이더로 ItemWidth 조절" Margin="0,0,0,8">
+                        <StackPanel>
+                            <WrapPanel x:Name="wpItemWidth" ItemWidth="100" Background="#FFF3E0" MinHeight="60">
+                                <Button Content="항목 1" Margin="4" Padding="4" HorizontalAlignment="Stretch"/>
+                                <Button Content="항목 2" Margin="4" Padding="4" HorizontalAlignment="Stretch"/>
+                                <Button Content="항목 3" Margin="4" Padding="4" HorizontalAlignment="Stretch"/>
+                                <Button Content="항목 4" Margin="4" Padding="4" HorizontalAlignment="Stretch"/>
+                                <Button Content="항목 5" Margin="4" Padding="4" HorizontalAlignment="Stretch"/>
+                                <Button Content="항목 6" Margin="4" Padding="4" HorizontalAlignment="Stretch"/>
+                            </WrapPanel>
+                            <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
+                                <TextBlock Text="ItemWidth: " VerticalAlignment="Center"/>
+                                <Slider x:Name="sliderItemWidth" Minimum="60" Maximum="250" Value="100" Width="300"
+                                        ValueChanged="sliderItemWidth_ValueChanged" VerticalAlignment="Center"/>
+                                <TextBlock x:Name="tbItemWidth" Text="100" VerticalAlignment="Center" Margin="8,0,0,0"/>
+                            </StackPanel>
+                        </StackPanel>
+                    </GroupBox>
+                    <Expander Style="{StaticResource CodeExpanderStyle}">
+                        <TextBox Style="{StaticResource CodeTextBoxStyle}" Text="&lt;!-- XAML --&gt;&#10;&lt;WrapPanel x:Name=&quot;wpItemWidth&quot; ItemWidth=&quot;100&quot;&gt;&#10;    &lt;Button Content=&quot;항목 1&quot;/&gt; ...&#10;&lt;/WrapPanel&gt;&#10;&lt;Slider x:Name=&quot;sliderItemWidth&quot; Minimum=&quot;60&quot; Maximum=&quot;250&quot;&#10;        ValueChanged=&quot;sliderItemWidth_ValueChanged&quot;/&gt;&#10;&#10;// C# 코드비하인드&#10;private void sliderItemWidth_ValueChanged(object sender,&#10;    RoutedPropertyChangedEventArgs&lt;double&gt; e)&#10;{&#10;    if (wpItemWidth != null)&#10;    {&#10;        wpItemWidth.ItemWidth = sliderItemWidth.Value;&#10;        tbItemWidth.Text = ((int)sliderItemWidth.Value).ToString();&#10;    }&#10;}"/>
+                    </Expander>
+                </StackPanel>
+            </ScrollViewer>
+        </TabItem>
+
+    </TabControl>
+</Window>

@@ -1,0 +1,490 @@
+﻿<!-- 
+    ch16 독패널 - WPF DockPanel 레이아웃 컨트롤의 기능을 보여주는 예제 파일
+    DockPanel은 자식 요소들을 부모 컨테이너의 가장자리(상하좌우)에 도킹(고정)시키는 레이아웃 컨트롤입니다.
+    전형적인 애플리케이션 레이아웃(상단 메뉴바, 좌측 사이드바, 하단 상태바, 중앙 콘텐츠)을 쉽게 구현할 수 있습니다.
+-->
+<Window x:Class="ch16_독패널.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ch16_독패널"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    
+    <!-- 
+        DockPanel: 자식 요소들을 가장자리에 배치하는 레이아웃 컨트롤
+    -->
+    <DockPanel LastChildFill="True">
+        <!-- 
+            DockPanel 기본 개념:
+            - Panel의 한 종류로 자식 요소들을 부모의 가장자리에 고정(Dock)
+            - DockPanel.Dock 첨부 속성으로 도킹 위치 지정
+            - Left, Top, Right, Bottom 중 선택
+            - 배치 순서가 중요함 (먼저 배치된 요소가 더 많은 공간 차지)
+            
+            DockPanel.Dock 속성:
+            - Left: 왼쪽 가장자리에 도킹
+            - Top: 위쪽 가장자리에 도킹
+            - Right: 오른쪽 가장자리에 도킹
+            - Bottom: 아래쪽 가장자리에 도킹
+            
+            LastChildFill="True":
+            - true: 마지막 자식 요소가 남은 공간을 모두 채움 (기본값)
+            - false: 마지막 자식도 지정된 Dock 위치에 배치
+            
+            시각적 표현 (LastChildFill="True"):
+            ┌─────────────────────┐
+            │      Top            │
+            ├───┬─────────────┬───┤
+            │   │             │   │
+            │Left│   Center   │Right
+            │   │ (LastChild) │   │
+            ├───┴─────────────┴───┤
+            │      Bottom         │
+            └─────────────────────┘
+            
+            배치 순서의 중요성:
+            먼저 배치된 요소가 해당 방향의 전체 너비/높이를 차지합니다.
+            나중에 배치된 요소는 남은 공간에만 배치됩니다.
+        -->
+        
+        <!-- 
+            왼쪽에 첫 번째 버튼 도킹
+        -->
+        <Button DockPanel.Dock="Left">왼쪽</Button>
+        <!-- 
+            DockPanel.Dock="Left":
+            - 이 버튼을 DockPanel의 왼쪽 가장자리에 배치
+            - 위에서 아래까지 전체 높이를 차지
+            - 너비는 콘텐츠 크기에 맞춤 (또는 Width 속성으로 지정 가능)
+            
+            결과:
+            ┌──┬─────────────────┐
+            │왼쪽│                │
+            │  │                │
+            │  │                │
+            └──┴─────────────────┘
+        -->
+        
+        <!-- 
+            왼쪽에 두 번째 버튼 도킹
+        -->
+        <Button DockPanel.Dock="Left">왼쪽</Button>
+        <!-- 
+            두 번째 Left 도킹:
+            - 첫 번째 "왼쪽" 버튼의 오른쪽에 배치됨
+            - 역시 위에서 아래까지 전체 높이를 차지
+            
+            결과:
+            ┌──┬──┬──────────────┐
+            │왼쪽│왼쪽│            │
+            │  │  │            │
+            │  │  │            │
+            └──┴──┴──────────────┘
+            
+            여러 개의 같은 방향 도킹:
+            - 같은 방향에 여러 요소를 도킹할 수 있음
+            - 추가된 순서대로 안쪽으로 배치됨
+            - Left: 왼쪽에서 오른쪽으로
+            - Top: 위에서 아래로
+            - Right: 오른쪽에서 왼쪽으로
+            - Bottom: 아래에서 위로
+        -->
+        
+        <!-- 
+            상단에 첫 번째 버튼 도킹
+        -->
+        <Button DockPanel.Dock="Top">상단</Button>
+        <!-- 
+            DockPanel.Dock="Top":
+            - 이 버튼을 DockPanel의 위쪽 가장자리에 배치
+            - 하지만 왼쪽의 두 버튼이 이미 배치되어 있으므로
+            - 남은 공간(두 왼쪽 버튼 오른쪽)의 상단에만 배치됨
+            
+            결과:
+            ┌──┬──┬──────────────┐
+            │왼쪽│왼쪽│    상단     │
+            │  │  ├──────────────┤
+            │  │  │              │
+            └──┴──┴──────────────┘
+            
+            배치 순서의 영향:
+            만약 Top을 Left보다 먼저 배치했다면:
+            ┌────────────────────┐
+            │       상단          │
+            ├──┬──┬──────────────┤
+            │왼쪽│왼쪽│            │
+            │  │  │            │
+            └──┴──┴──────────────┘
+        -->
+        
+        <!-- 
+            상단에 두 번째 버튼 도킹
+        -->
+        <Button DockPanel.Dock="Top">상단</Button>
+        <!-- 
+            두 번째 Top 도킹:
+            - 첫 번째 "상단" 버튼 아래에 배치됨
+            
+            현재까지 결과:
+            ┌──┬──┬──────────────┐
+            │왼쪽│왼쪽│    상단     │
+            │  │  ├──────────────┤
+            │  │  │    상단     │
+            │  │  ├──────────────┤
+            │  │  │              │
+            └──┴──┴──────────────┘
+        -->
+        
+        <!-- 
+            오른쪽에 첫 번째 버튼 도킹
+        -->
+        <Button DockPanel.Dock="Right">오른쪽</Button>
+        <!-- 
+            DockPanel.Dock="Right":
+            - 오른쪽 가장자리에 배치
+            - 이미 Left와 Top이 배치되어 있으므로
+            - 남은 공간의 오른쪽에만 배치됨
+            
+            현재까지 결과:
+            ┌──┬──┬──────────┬──┐
+            │왼쪽│왼쪽│  상단   │오른│
+            │  │  ├──────────┤쪽│
+            │  │  │  상단   │  │
+            │  │  ├──────────┤  │
+            │  │  │          │  │
+            └──┴──┴──────────┴──┘
+        -->
+        
+        <!-- 
+            오른쪽에 두 번째 버튼 도킹
+        -->
+        <Button DockPanel.Dock="Right">오른쪽</Button>
+        <!-- 
+            두 번째 Right 도킹:
+            - 첫 번째 "오른쪽" 버튼의 왼쪽에 배치됨
+            
+            현재까지 결과:
+            ┌──┬──┬──────┬──┬──┐
+            │왼쪽│왼쪽│상단 │오른│오른│
+            │  │  ├──────┤쪽│쪽│
+            │  │  │상단 │  │  │
+            │  │  ├──────┤  │  │
+            │  │  │      │  │  │
+            └──┴──┴──────┴──┴──┘
+        -->
+        
+        <!-- 
+            하단에 첫 번째 버튼 도킹
+        -->
+        <Button DockPanel.Dock="Bottom">하단</Button>
+        <!-- 
+            DockPanel.Dock="Bottom":
+            - 아래쪽 가장자리에 배치
+            - 남은 공간(Left, Top, Right가 차지한 나머지)의 하단에 배치
+            
+            현재까지 결과:
+            ┌──┬──┬──────┬──┬──┐
+            │왼쪽│왼쪽│상단 │오른│오른│
+            │  │  ├──────┤쪽│쪽│
+            │  │  │상단 │  │  │
+            │  │  ├──────┤  │  │
+            │  │  │      │  │  │
+            │  │  ├──────┤  │  │
+            │  │  │ 하단 │  │  │
+            └──┴──┴──────┴──┴──┘
+        -->
+        
+        <!-- 
+            하단에 두 번째 버튼 도킹
+        -->
+        <Button DockPanel.Dock="Bottom">하단</Button>
+        <!-- 
+            두 번째 Bottom 도킹:
+            - 첫 번째 "하단" 버튼 위에 배치됨
+            
+            현재까지 결과:
+            ┌──┬──┬──────┬──┬──┐
+            │왼쪽│왼쪽│상단 │오른│오른│
+            │  │  ├──────┤쪽│쪽│
+            │  │  │상단 │  │  │
+            │  │  ├──────┤  │  │
+            │  │  │      │  │  │
+            │  │  ├──────┤  │  │
+            │  │  │ 하단 │  │  │
+            │  │  ├──────┤  │  │
+            │  │  │ 하단 │  │  │
+            └──┴──┴──────┴──┴──┘
+        -->
+        
+        <!-- 
+            마지막 자식: StackPanel
+            LastChildFill="True"이므로 남은 중앙 공간을 모두 채웁니다.
+        -->
+        <StackPanel>
+            <!-- 
+                마지막 자식 요소:
+                - DockPanel.Dock 속성이 없음
+                - LastChildFill="True"이므로 남은 모든 공간을 차지
+                - 중앙 콘텐츠 영역이 됨
+                
+                최종 결과:
+                ┌──┬──┬──────┬──┬──┐
+                │왼쪽│왼쪽│상단 │오른│오른│
+                │  │  ├──────┤쪽│쪽│
+                │  │  │상단 │  │  │
+                │  │  ├──────┤  │  │
+                │  │  │중앙  │  │  │
+                │  │  │콘텐츠│  │  │
+                │  │  ├──────┤  │  │
+                │  │  │ 하단 │  │  │
+                │  │  ├──────┤  │  │
+                │  │  │ 하단 │  │  │
+                └──┴──┴──────┴──┴──┘
+                
+                LastChildFill="False"였다면:
+                - 마지막 자식도 DockPanel.Dock이 필요
+                - 지정하지 않으면 Left로 기본 배치
+            -->
+            
+            <!-- 
+                중첩된 DockPanel
+                DockPanel 안에 또 다른 DockPanel을 배치할 수 있습니다.
+            -->
+            <DockPanel>
+                <!-- 
+                    이 DockPanel은 Dock 속성이 지정되지 않았습니다.
+                    기본적으로 Left로 동작하지만,
+                    부모가 StackPanel이므로 StackPanel의 배치 규칙을 따릅니다.
+                    
+                    중첩 DockPanel의 특징:
+                    - 자체적인 도킹 영역을 가짐
+                    - 부모의 영향을 받으면서도 독립적인 레이아웃
+                    
+                    주의: 이 예제의 버튼들은 DockPanel.Dock이 지정되지 않았으므로
+                    기본 동작(Left)으로 배치되거나 부모 DockPanel의 LastChildFill 영향을 받습니다.
+                -->
+                <Button>버튼</Button>
+                <Button>버튼</Button>
+                <Button>버튼</Button>
+                <!-- 
+                    Dock 속성이 없는 자식들:
+                    - 첫 번째와 두 번째는 Left로 기본 배치될 수 있음
+                    - 마지막(세 번째)은 LastChildFill에 따라 남은 공간 차지
+                    
+                    더 명확한 예제:
+                    <DockPanel>
+                        <Button DockPanel.Dock="Left">왼쪽</Button>
+                        <Button DockPanel.Dock="Right">오른쪽</Button>
+                        <Button>중앙</Button> <!-- 남은 공간 차지 -->
+                    </DockPanel>
+                -->
+            </DockPanel>
+        </StackPanel>
+    </DockPanel>
+    
+    <!--
+        DockPanel 추가 유용한 속성:
+        
+        1. LastChildFill (마지막 자식 채우기):
+           - true: 마지막 자식이 남은 공간을 모두 채움 (기본값)
+           - false: 마지막 자식도 Dock 속성에 따라 배치
+           
+           예제 - LastChildFill="False":
+           <DockPanel LastChildFill="False">
+               <Button DockPanel.Dock="Top">상단</Button>
+               <Button DockPanel.Dock="Bottom">하단</Button>
+               <Button DockPanel.Dock="Left">왼쪽</Button>
+               <Button DockPanel.Dock="Right">오른쪽</Button>
+               <Button DockPanel.Dock="Left">중앙도 왼쪽에</Button>
+           </DockPanel>
+        
+        2. DockPanel.Dock 첨부 속성:
+           - Left, Top, Right, Bottom
+           - 자식 요소에만 설정 가능
+           - 설정하지 않으면 기본값(Left)
+           
+        실전 활용 예제:
+        
+        1. 전형적인 애플리케이션 레이아웃:
+           <DockPanel>
+               <!-- 상단 메뉴바 -->
+               <Menu DockPanel.Dock="Top">
+                   <MenuItem Header="파일"/>
+                   <MenuItem Header="편집"/>
+                   <MenuItem Header="보기"/>
+               </Menu>
+               
+               <!-- 상단 툴바 -->
+               <ToolBar DockPanel.Dock="Top">
+                   <Button Content="새로 만들기"/>
+                   <Button Content="열기"/>
+                   <Button Content="저장"/>
+               </ToolBar>
+               
+               <!-- 하단 상태바 -->
+               <StatusBar DockPanel.Dock="Bottom">
+                   <TextBlock Text="준비"/>
+               </StatusBar>
+               
+               <!-- 왼쪽 사이드바 -->
+               <TreeView DockPanel.Dock="Left" Width="200">
+                   <!-- 트리 항목들 -->
+               </TreeView>
+               
+               <!-- 중앙 콘텐츠 영역 -->
+               <TextBox AcceptsReturn="True" 
+                        VerticalScrollBarVisibility="Auto"/>
+           </DockPanel>
+        
+        2. Visual Studio 스타일 레이아웃:
+           <DockPanel>
+               <Menu DockPanel.Dock="Top"/>
+               <ToolBarTray DockPanel.Dock="Top"/>
+               <StatusBar DockPanel.Dock="Bottom"/>
+               <TreeView DockPanel.Dock="Left" Width="250"/>
+               <GridSplitter DockPanel.Dock="Left" Width="3"/>
+               <TabControl DockPanel.Dock="Right" Width="300"/>
+               <GridSplitter DockPanel.Dock="Right" Width="3"/>
+               <Grid> <!-- 중앙 에디터 영역 -->
+               </Grid>
+           </DockPanel>
+        
+        3. 대화상자 레이아웃:
+           <DockPanel>
+               <!-- 하단 버튼 영역 -->
+               <StackPanel DockPanel.Dock="Bottom" 
+                          Orientation="Horizontal"
+                          HorizontalAlignment="Right"
+                          Margin="10">
+                   <Button Content="확인" Width="80" Margin="5"/>
+                   <Button Content="취소" Width="80" Margin="5"/>
+               </StackPanel>
+               
+               <!-- 중앙 콘텐츠 -->
+               <Grid Margin="10">
+                   <!-- 폼 필드들 -->
+               </Grid>
+           </DockPanel>
+        
+        4. 검색 UI:
+           <DockPanel>
+               <!-- 상단 검색바 -->
+               <Grid DockPanel.Dock="Top" Height="50">
+                   <TextBox Margin="10"/>
+                   <Button Content="검색" HorizontalAlignment="Right"/>
+               </Grid>
+               
+               <!-- 왼쪽 필터 패널 -->
+               <Expander DockPanel.Dock="Left" 
+                        Header="필터" 
+                        Width="200">
+                   <!-- 필터 옵션들 -->
+               </Expander>
+               
+               <!-- 중앙 검색 결과 -->
+               <ListBox>
+                   <!-- 검색 결과 항목들 -->
+               </ListBox>
+           </DockPanel>
+        
+        5. 이메일 클라이언트 레이아웃:
+           <DockPanel>
+               <!-- 상단 리본 -->
+               <StackPanel DockPanel.Dock="Top" Height="100">
+                   <!-- 리본 컨트롤들 -->
+               </StackPanel>
+               
+               <!-- 왼쪽 폴더 목록 -->
+               <TreeView DockPanel.Dock="Left" Width="200"/>
+               
+               <!-- 중앙-왼쪽 메일 목록 -->
+               <ListBox DockPanel.Dock="Left" Width="300">
+                   <!-- 메일 항목들 -->
+               </ListBox>
+               
+               <!-- 중앙-오른쪽 메일 본문 -->
+               <Grid>
+                   <!-- 메일 내용 -->
+               </Grid>
+           </DockPanel>
+        
+        6. 분할 뷰:
+           <DockPanel>
+               <Grid DockPanel.Dock="Top" Height="300">
+                   <!-- 상단 콘텐츠 -->
+               </Grid>
+               <GridSplitter DockPanel.Dock="Top" 
+                            Height="5"
+                            HorizontalAlignment="Stretch"/>
+               <Grid>
+                   <!-- 하단 콘텐츠 -->
+               </Grid>
+           </DockPanel>
+        
+        배치 순서의 중요성:
+        
+        예제 1 - Top을 먼저 배치:
+        <DockPanel>
+            <Button DockPanel.Dock="Top" Height="50">상단</Button>
+            <Button DockPanel.Dock="Left" Width="100">왼쪽</Button>
+            <TextBlock>중앙</TextBlock>
+        </DockPanel>
+        결과: 상단 버튼이 전체 너비를 차지
+        
+        예제 2 - Left를 먼저 배치:
+        <DockPanel>
+            <Button DockPanel.Dock="Left" Width="100">왼쪽</Button>
+            <Button DockPanel.Dock="Top" Height="50">상단</Button>
+            <TextBlock>중앙</TextBlock>
+        </DockPanel>
+        결과: 왼쪽 버튼이 전체 높이를 차지
+        
+        DockPanel의 장단점:
+        
+        장점:
+        - 전형적인 앱 레이아웃 구현에 최적
+        - 메뉴, 툴바, 상태바 배치가 직관적
+        - 코드가 명확하고 이해하기 쉬움
+        - 반응형으로 크기 자동 조정
+        
+        단점:
+        - 복잡한 레이아웃에는 Grid가 더 적합
+        - 정확한 크기 제어가 어려움
+        - 배치 순서에 민감함
+        
+        다른 레이아웃 패널과의 비교:
+        
+        DockPanel vs Grid:
+        - DockPanel: 가장자리 배치, 간단한 레이아웃
+        - Grid: 행/열 기반, 복잡한 레이아웃
+        
+        DockPanel vs StackPanel:
+        - DockPanel: 가장자리 고정 + 중앙 채우기
+        - StackPanel: 순차적 배치만
+        
+        성능 팁:
+        - DockPanel은 매우 효율적인 레이아웃
+        - 중첩을 최소화하면 성능 향상
+        - Grid보다 단순한 레이아웃에서는 DockPanel이 더 빠름
+        
+        GridSplitter와 함께 사용:
+        <DockPanel>
+            <TreeView DockPanel.Dock="Left" Width="200"/>
+            <GridSplitter DockPanel.Dock="Left" 
+                         Width="5"
+                         HorizontalAlignment="Stretch"/>
+            <TextBox/>
+        </DockPanel>
+        
+        주의: GridSplitter도 Dock 속성으로 배치해야 함
+        
+        동적 Dock 변경:
+        코드에서 DockPanel.Dock 속성을 변경할 수 있습니다.
+        
+        C#:
+        DockPanel.SetDock(myButton, Dock.Top);
+        Dock currentDock = DockPanel.GetDock(myButton);
+    -->
+</Window>

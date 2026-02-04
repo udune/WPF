@@ -1,0 +1,312 @@
+﻿using System.Text;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Data;
+using System.Windows.Documents;
+using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
+using System.Windows.Shapes;
+
+namespace ch32_스타일
+{
+    /// <summary>
+    /// MainWindow.xaml에 대한 상호작용 논리
+    /// Dictionary1.xaml에 정의된 전역 스타일을 사용하는 메인 윈도우입니다.
+    /// </summary>
+    public partial class MainWindow : Window
+    {
+        /// <summary>
+        /// MainWindow 생성자
+        /// 윈도우가 생성될 때 호출되어 초기화 작업을 수행합니다.
+        /// </summary>
+        public MainWindow()
+        {
+            InitializeComponent();
+            /*
+             * InitializeComponent() 호출 후:
+             * 1. XAML 로드 및 파싱
+             * 2. Grid 생성
+             * 3. Button 생성
+             * 4. StaticResource "버튼스타일" 조회
+             *    - Application.Resources 검색
+             *    - MergedDictionaries 확인
+             *    - Dictionary1.xaml에서 "버튼스타일" 발견
+             * 5. 스타일 적용
+             *    - Cursor: Hand
+             *    - Background: Salmon
+             *    - Foreground: White
+             *    - Width: 150, Height: 50
+             *    - FontSize: 20, FontWeight: Bold
+             *    - Margin: 10
+             *    - Template: 둥근 모서리 Border
+             * 6. UI 렌더링
+             * 
+             * 전역 리소스 로드:
+             * App.xaml:
+             * <Application.Resources>
+             *     <ResourceDictionary>
+             *         <ResourceDictionary.MergedDictionaries>
+             *             <ResourceDictionary Source="Dictionary1.xaml"/>
+             *         </ResourceDictionary.MergedDictionaries>
+             *     </ResourceDictionary>
+             * </Application.Resources>
+             * 
+             * Dictionary1.xaml 로드:
+             * - 애플리케이션 시작 시 한 번만
+             * - 모든 Window, Page, UserControl에서 접근 가능
+             * - StaticResource는 컴파일 타임에 해결
+             */
+        }
+        
+        /*
+         * 런타임 스타일 조작 예제:
+         * 
+         * ========== 1. 스타일 동적 변경 ==========
+         * 
+         * private void ChangeStyle_Click(object sender, RoutedEventArgs e)
+         * {
+         *     var button = sender as Button;
+         *     
+         *     // 다른 스타일로 변경
+         *     button.Style = (Style)Application.Current.Resources["버튼스타일2"];
+         * }
+         * 
+         * XAML:
+         * <Button Style="{StaticResource 버튼스타일}" Click="ChangeStyle_Click">
+         *     버튼
+         * </Button>
+         * 
+         * 클릭 시:
+         * - Salmon → LightGreen 배경으로 변경
+         * 
+         * ========== 2. 스타일 속성 읽기 ==========
+         * 
+         * private void GetStyleInfo()
+         * {
+         *     var style = (Style)Resources["버튼스타일"];
+         *     
+         *     foreach (var setter in style.Setters)
+         *     {
+         *         if (setter is Setter s)
+         *         {
+         *             Debug.WriteLine($"{s.Property.Name}: {s.Value}");
+         *         }
+         *     }
+         * }
+         * 
+         * 출력:
+         * Cursor: Hand
+         * Background: #FFFA8072 (Salmon)
+         * Foreground: #FFFFFFFF (White)
+         * Width: 150
+         * ...
+         * 
+         * ========== 3. 런타임 스타일 생성 ==========
+         * 
+         * private void CreateStyle_Click(object sender, RoutedEventArgs e)
+         * {
+         *     var style = new Style(typeof(Button));
+         *     
+         *     style.Setters.Add(new Setter(Button.BackgroundProperty, Brushes.Blue));
+         *     style.Setters.Add(new Setter(Button.ForegroundProperty, Brushes.White));
+         *     style.Setters.Add(new Setter(Button.WidthProperty, 200.0));
+         *     style.Setters.Add(new Setter(Button.HeightProperty, 60.0));
+         *     
+         *     // 전역 리소스에 추가
+         *     Application.Current.Resources.Add("DynamicButtonStyle", style);
+         *     
+         *     // 버튼에 적용
+         *     var button = sender as Button;
+         *     button.Style = style;
+         * }
+         * 
+         * ========== 4. 스타일 제거 ==========
+         * 
+         * private void RemoveStyle_Click(object sender, RoutedEventArgs e)
+         * {
+         *     var button = sender as Button;
+         *     button.Style = null; // 기본 스타일로 복원
+         * }
+         * 
+         * ========== 5. 테마 전환 ==========
+         * 
+         * private void SwitchTheme(string themeName)
+         * {
+         *     var dictionaries = Application.Current.Resources.MergedDictionaries;
+         *     
+         *     // 기존 Dictionary1.xaml 제거
+         *     var oldDict = dictionaries.FirstOrDefault(d => 
+         *         d.Source?.OriginalString == "Dictionary1.xaml");
+         *     if (oldDict != null)
+         *         dictionaries.Remove(oldDict);
+         *     
+         *     // 새 테마 추가
+         *     var newDict = new ResourceDictionary
+         *     {
+         *         Source = new Uri($"{themeName}.xaml", UriKind.Relative)
+         *     };
+         *     dictionaries.Add(newDict);
+         * }
+         * 
+         * 사용:
+         * SwitchTheme("DarkTheme");
+         * 
+         * 주의:
+         * - StaticResource는 변경 안 됨
+         * - DynamicResource 사용해야 함
+         * 
+         * ========== 6. DynamicResource로 변경 ==========
+         * 
+         * XAML:
+         * <Button Style="{DynamicResource 버튼스타일}">버튼</Button>
+         * 
+         * 코드:
+         * private void UpdateStyle()
+         * {
+         *     var newStyle = new Style(typeof(Button));
+         *     newStyle.Setters.Add(new Setter(Button.BackgroundProperty, Brushes.Red));
+         *     
+         *     Application.Current.Resources["버튼스타일"] = newStyle;
+         *     // DynamicResource 버튼이 자동으로 업데이트됨
+         * }
+         * 
+         * ========== 7. 스타일 병합 ==========
+         * 
+         * private void MergeStyles()
+         * {
+         *     var baseStyle = (Style)Resources["버튼스타일"];
+         *     
+         *     var newStyle = new Style(typeof(Button), baseStyle);
+         *     newStyle.Setters.Add(new Setter(Button.WidthProperty, 300.0));
+         *     
+         *     myButton.Style = newStyle;
+         * }
+         * 
+         * ========== 8. 조건부 스타일 적용 ==========
+         * 
+         * private void ApplyConditionalStyle(Button button, bool isPrimary)
+         * {
+         *     string styleKey = isPrimary ? "버튼스타일" : "버튼스타일2";
+         *     button.Style = (Style)Application.Current.Resources[styleKey];
+         * }
+         * 
+         * ========== 9. 모든 버튼 스타일 변경 ==========
+         * 
+         * private void ChangeAllButtonStyles()
+         * {
+         *     foreach (var button in FindVisualChildren<Button>(this))
+         *     {
+         *         button.Style = (Style)Resources["버튼스타일2"];
+         *     }
+         * }
+         * 
+         * private static IEnumerable<T> FindVisualChildren<T>(DependencyObject parent) 
+         *     where T : DependencyObject
+         * {
+         *     if (parent == null) yield break;
+         *     
+         *     for (int i = 0; i < VisualTreeHelper.GetChildrenCount(parent); i++)
+         *     {
+         *         var child = VisualTreeHelper.GetChild(parent, i);
+         *         
+         *         if (child is T typedChild)
+         *             yield return typedChild;
+         *         
+         *         foreach (var descendant in FindVisualChildren<T>(child))
+         *             yield return descendant;
+         *     }
+         * }
+         * 
+         * ========== 10. 스타일 존재 확인 ==========
+         * 
+         * private bool HasStyle(string styleKey)
+         * {
+         *     return Application.Current.Resources.Contains(styleKey);
+         * }
+         * 
+         * 사용:
+         * if (HasStyle("버튼스타일"))
+         * {
+         *     button.Style = (Style)Resources["버튼스타일"];
+         * }
+         * 
+         * ========== 실전 활용 시나리오 ==========
+         * 
+         * 1. 설정에 따른 테마 로드:
+         * public MainWindow()
+         * {
+         *     InitializeComponent();
+         *     
+         *     var theme = Properties.Settings.Default.Theme;
+         *     LoadTheme(theme);
+         * }
+         * 
+         * private void LoadTheme(string themeName)
+         * {
+         *     var dict = new ResourceDictionary
+         *     {
+         *         Source = new Uri($"Themes/{themeName}.xaml", UriKind.Relative)
+         *     };
+         *     Application.Current.Resources.MergedDictionaries.Add(dict);
+         * }
+         * 
+         * 2. 버튼 상태에 따른 스타일:
+         * private void UpdateButtonState(Button button, bool isActive)
+         * {
+         *     string styleKey = isActive ? "ActiveButtonStyle" : "InactiveButtonStyle";
+         *     button.Style = (Style)Resources[styleKey];
+         * }
+         * 
+         * 3. 사용자 권한에 따른 스타일:
+         * private void ApplyUserStyle(bool isAdmin)
+         * {
+         *     string styleKey = isAdmin ? "AdminButtonStyle" : "UserButtonStyle";
+         *     
+         *     foreach (var button in FindVisualChildren<Button>(this))
+         *     {
+         *         button.Style = (Style)Resources[styleKey];
+         *     }
+         * }
+         * 
+         * 4. 애니메이션과 함께 스타일 변경:
+         * private async void AnimateStyleChange(Button button)
+         * {
+         *     // 페이드 아웃
+         *     var fadeOut = new DoubleAnimation(1, 0, TimeSpan.FromMilliseconds(300));
+         *     button.BeginAnimation(OpacityProperty, fadeOut);
+         *     await Task.Delay(300);
+         *     
+         *     // 스타일 변경
+         *     button.Style = (Style)Resources["버튼스타일2"];
+         *     
+         *     // 페이드 인
+         *     var fadeIn = new DoubleAnimation(0, 1, TimeSpan.FromMilliseconds(300));
+         *     button.BeginAnimation(OpacityProperty, fadeIn);
+         * }
+         * 
+         * ========== 주의사항 ==========
+         * 
+         * 1. StaticResource vs DynamicResource:
+         *    - StaticResource: 컴파일 타임, 빠름
+         *    - DynamicResource: 런타임, 느림, 변경 가능
+         * 
+         * 2. 스타일 변경 시점:
+         *    - InitializeComponent() 이후
+         *    - 리소스 로드 완료 후
+         * 
+         * 3. 메모리:
+         *    - 불필요한 스타일은 제거
+         *    - 리소스 딕셔너리 관리
+         * 
+         * 4. 성능:
+         *    - 복잡한 템플릿은 성능 저하
+         *    - 필요한 기능만 추가
+         * 
+         * 5. 예외 처리:
+         *    - 스타일 키 존재 확인
+         *    - try-catch로 안전하게
+         */
+    }
+}

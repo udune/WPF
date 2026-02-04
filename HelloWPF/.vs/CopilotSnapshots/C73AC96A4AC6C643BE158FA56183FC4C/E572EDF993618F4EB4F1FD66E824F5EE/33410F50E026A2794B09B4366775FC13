@@ -1,0 +1,45 @@
+﻿using System.Windows;
+
+/*
+ * AssemblyInfo.cs - WPF 애플리케이션의 테마 정보 설정 파일
+ * 
+ * 코드 리뷰:
+ * 
+ * 설명:
+ * 이 파일은 WPF 애플리케이션의 테마 리소스 딕셔너리 위치를 정의합니다.
+ * .NET Core/.NET 5+ WPF 프로젝트에서 자동 생성되는 표준 파일입니다.
+ * 
+ * ThemeInfo 속성 분석:
+ * 
+ * 1. 첫 번째 매개변수: ResourceDictionaryLocation.None
+ *    - 테마별 리소스 딕셔너리(예: Aero, Luna 등)의 위치를 지정
+ *    - None: 테마별 리소스 딕셔너리를 사용하지 않음
+ *    - 리소스를 찾을 때: Page → Application → 테마별 리소스 순서로 검색
+ * 
+ * 2. 두 번째 매개변수: ResourceDictionaryLocation.SourceAssembly
+ *    - 제네릭 리소스 딕셔너리의 위치를 지정
+ *    - SourceAssembly: 현재 어셈블리에 제네릭 리소스가 포함되어 있음
+ *    - 리소스를 찾을 때: Page → App → 테마별 리소스 → 제네릭 리소스 순서로 검색
+ * 
+ * 현재 설정의 의미:
+ * - 테마별 리소스를 사용하지 않고, 제네릭 리소스는 현재 어셈블리에서 찾습니다.
+ * - 대부분의 간단한 WPF 애플리케이션에 적합한 기본 설정입니다.
+ * 
+ * 언제 수정이 필요한가?
+ * 1. 커스텀 컨트롤 라이브러리를 만들 때
+ * 2. 테마별로 다른 스타일을 제공하고 싶을 때
+ * 3. 외부 어셈블리의 리소스를 참조해야 할 때
+ * 
+ * 참고:
+ * - 일반적인 애플리케이션 개발에서는 이 파일을 수정할 필요가 거의 없습니다.
+ * - 스타일과 리소스는 App.xaml의 Application.Resources에 정의하는 것이 더 일반적입니다.
+ */
+
+[assembly: ThemeInfo(
+    ResourceDictionaryLocation.None,            //where theme specific resource dictionaries are located
+                                                //(used if a resource is not found in the page,
+                                                // or application resource dictionaries)
+    ResourceDictionaryLocation.SourceAssembly   //where the generic resource dictionary is located
+                                                //(used if a resource is not found in the page,
+                                                // app, or any theme specific resource dictionaries)
+)]

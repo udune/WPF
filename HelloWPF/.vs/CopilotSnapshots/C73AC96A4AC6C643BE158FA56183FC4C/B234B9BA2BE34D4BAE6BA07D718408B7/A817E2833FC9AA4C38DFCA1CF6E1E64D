@@ -1,0 +1,33 @@
+﻿using System.Windows;
+
+namespace HelloWPF
+{
+    /// <summary>
+    /// MainWindow.xaml에 대한 상호작용 논리
+    /// WPF 애플리케이션의 메인 윈도우 클래스
+    /// </summary>
+    public partial class MainWindow : Window
+    {
+        /// <summary>
+        /// MainWindow 생성자
+        /// 윈도우가 생성될 때 호출되어 초기화 작업을 수행합니다.
+        /// </summary>
+        public MainWindow()
+        {
+            // XAML에 정의된 UI 요소들을 초기화합니다.
+            // 이 메서드는 MainWindow.xaml 파일의 내용을 로드하고 파싱합니다.
+            InitializeComponent();
+
+            // 버튼의 표시 텍스트를 "버튼입니다"로 설정합니다.
+            // btn은 XAML에서 x:Name="btn"으로 정의된 Button 컨트롤을 참조합니다.
+            btn.Content = "버튼입니다";
+            
+            // 레이블의 표시 텍스트를 "레이블입니다"로 설정합니다.
+            // lbl은 XAML에서 x:Name="lbl"으로 정의된 Label 컨트롤을 참조합니다.
+            lbl.Content = "레이블입니다";
+            
+            // 참고: 이 방식은 간단한 데모용으로는 적합하지만,
+            // 실제 프로젝트에서는 MVVM 패턴과 데이터 바인딩을 사용하는 것이 권장됩니다.
+        }
+    }
+}

@@ -1,0 +1,313 @@
+﻿<!-- 
+    ch11 데이트피커 - WPF DatePicker 컨트롤의 다양한 기능을 보여주는 예제 파일
+    DatePicker는 콤팩트한 날짜 선택 컨트롤로, 텍스트 박스와 드롭다운 달력을 결합한 형태입니다.
+    Calendar보다 공간을 적게 차지하며, 단일 날짜 선택에 최적화되어 있습니다.
+-->
+<Window x:Class="ch11_데이트피커.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ch11_데이트피커"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <StackPanel>
+            <!-- 
+                예제 1: DatePicker 기본 사용법
+                가장 간단한 형태의 DatePicker로, 모든 속성이 기본값으로 설정됩니다.
+            -->
+            <DatePicker/>
+            <!-- 
+                DatePicker 기본 동작:
+                - 텍스트 박스 형태로 표시됨
+                - 오른쪽에 작은 달력 아이콘(드롭다운 버튼)이 있음
+                - 아이콘을 클릭하면 Calendar 팝업이 열림
+                - 텍스트 박스에 직접 날짜 입력도 가능
+                - 기본적으로 선택된 날짜가 없음 (null 상태)
+                
+                Calendar와의 차이점:
+                - DatePicker: 콤팩트한 텍스트 박스 + 드롭다운 달력
+                - Calendar: 항상 확장된 달력 표시
+                - DatePicker: 공간 효율적, 폼 입력에 적합
+                - Calendar: 시각적으로 명확, 날짜 범위 선택 가능
+            -->
+            
+            <!-- 
+                예제 2: 다양한 속성과 이벤트를 가진 DatePicker
+                초기값, 날짜 형식, 이름, 이벤트 핸들러를 설정한 완전한 예제입니다.
+            -->
+            <DatePicker SelectedDate="2025-02-18"
+                        SelectedDateFormat="Long"
+                        x:Name="dp"
+                        SelectedDateChanged="dp_SelectedDateChanged"
+                        />
+            <!-- 
+                DatePicker 속성 상세 설명:
+                
+                SelectedDate="2025-02-18": 
+                - 초기 선택 날짜를 2025년 2월 18일로 설정
+                - DateTime? (nullable DateTime) 타입
+                - 날짜 형식: yyyy-MM-dd, MM/dd/yyyy, dd.MM.yyyy 등 다양한 형식 지원
+                - 선택된 날짜가 없으면 null
+                
+                SelectedDateFormat="Long": 
+                - 텍스트 박스에 표시되는 날짜의 형식을 지정
+                - Short: 간단한 날짜 형식 (예: 2025-02-18, 기본값)
+                - Long: 자세한 날짜 형식 (예: 2025년 2월 18일 화요일)
+                - 문화권(Culture)에 따라 표시 형식이 달라짐
+                
+                Short vs Long 비교:
+                - Short: "2025-02-18" 또는 "02/18/2025" (간결)
+                - Long: "2025년 2월 18일 화요일" (상세)
+                - 사용자 경험에 따라 선택
+                
+                x:Name="dp": 
+                - 코드 비하인드에서 접근할 수 있는 고유 식별자
+                - 이벤트 핸들러에서 SelectedDate에 접근
+                - 다른 컨트롤과 데이터 바인딩 가능
+                
+                SelectedDateChanged="dp_SelectedDateChanged": 
+                - 사용자가 날짜를 선택하거나 변경할 때 발생하는 이벤트
+                - 달력에서 날짜 클릭, 텍스트 박스 직접 입력 모두 포함
+                - 코드에서 SelectedDate를 변경해도 이벤트 발생
+            -->
+            
+            <!-- 
+                예제 3: 이벤트 핸들러를 통한 날짜 표시
+                코드 비하인드에서 선택된 날짜를 TextBlock에 표시합니다.
+            -->
+            <TextBlock x:Name="tb">텍스트블럭</TextBlock>
+            <!-- 
+                x:Name="tb": 
+                - dp_SelectedDateChanged 이벤트 핸들러에서 Text 속성을 변경
+                - 선택된 날짜를 동적으로 표시
+            -->
+            
+            <!-- 
+                예제 4: 데이터 바인딩을 통한 날짜 표시
+                XAML에서 직접 DatePicker의 Text를 TextBlock에 바인딩합니다.
+            -->
+            <TextBlock Text="{Binding ElementName=dp, Path=Text}"></TextBlock>
+            <!-- 
+                데이터 바인딩 상세 설명:
+                
+                Text="{Binding ...}": 
+                - 데이터 바인딩 구문
+                - TextBlock의 Text 속성을 다른 컨트롤의 속성에 연결
+                
+                ElementName=dp: 
+                - 바인딩할 소스 요소의 이름
+                - "dp"라는 이름의 DatePicker 컨트롤을 참조
+                
+                Path=Text: 
+                - 바인딩할 속성의 경로
+                - DatePicker의 Text 속성 (string 타입)
+                - Text는 텍스트 박스에 표시되는 문자열
+                - SelectedDateFormat에 따라 형식이 결정됨
+                
+                Path=Text vs Path=SelectedDate:
+                - Text: 텍스트 박스에 표시되는 형식화된 문자열
+                  예: "2025년 2월 18일 화요일" (Long 형식)
+                - SelectedDate: DateTime? 타입의 날짜 값
+                  예: 2/18/2025 12:00:00 AM
+                
+                바인딩의 동작:
+                - DatePicker의 날짜가 변경되면 즉시 TextBlock에 반영됨
+                - 자동으로 동기화되므로 코드 비하인드 불필요
+                - SelectedDateFormat이 Long이므로 상세한 날짜 형식으로 표시
+                
+                결과:
+                - DatePicker에서 날짜를 선택하면
+                - TextBlock에 "2025년 2월 18일 화요일" 형태로 표시됨
+                - 실시간으로 업데이트됨
+            -->
+        </StackPanel>
+    </Grid>
+    
+    <!--
+        DatePicker 컨트롤의 추가 유용한 속성:
+        
+        1. DisplayDate (표시할 날짜):
+           - 드롭다운 달력을 열 때 처음 표시될 월/년
+           - SelectedDate와 독립적
+           
+           예제:
+           <DatePicker DisplayDate="2024-01-01"/>
+           <!-- 달력을 열면 2024년 1월이 표시됨 -->
+        
+        2. DisplayDateStart / DisplayDateEnd (표시 범위):
+           - 선택 가능한 날짜 범위 제한
+           - 범위 밖의 날짜는 비활성화됨
+           
+           예제:
+           <DatePicker DisplayDateStart="2024-01-01" 
+                       DisplayDateEnd="2024-12-31"/>
+           <!-- 2024년만 선택 가능 -->
+        
+        3. BlackoutDates (비활성 날짜):
+           - 선택할 수 없는 특정 날짜나 범위 지정
+           - Calendar와 동일한 방식
+           
+           예제:
+           <DatePicker>
+               <DatePicker.BlackoutDates>
+                   <CalendarDateRange Start="2025-01-01" End="2025-01-05"/>
+               </DatePicker.BlackoutDates>
+           </DatePicker>
+        
+        4. IsTodayHighlighted (오늘 날짜 강조):
+           - true: 오늘 날짜를 특별한 색으로 강조 (기본값)
+           - false: 오늘 날짜를 일반 날짜처럼 표시
+           
+           예제:
+           <DatePicker IsTodayHighlighted="True"/>
+        
+        5. FirstDayOfWeek (주의 첫 번째 요일):
+           - 드롭다운 달력의 첫 번째 열에 표시될 요일
+           
+           예제:
+           <DatePicker FirstDayOfWeek="Monday"/>
+        
+        6. IsDropDownOpen (드롭다운 상태):
+           - true: 달력이 펼쳐진 상태
+           - false: 달력이 닫힌 상태
+           - 코드에서 프로그래밍 방식으로 제어 가능
+           
+           예제:
+           <DatePicker IsDropDownOpen="True"/>
+           <!-- 처음부터 달력이 열린 상태로 표시 -->
+        
+        7. Text (텍스트 박스 내용):
+           - 텍스트 박스에 표시되는 문자열
+           - SelectedDateFormat에 따라 자동 형식화
+           - 직접 설정도 가능하지만 유효한 날짜 형식이어야 함
+        
+        주요 이벤트:
+        
+        1. SelectedDateChanged:
+           - 선택된 날짜가 변경될 때 발생
+           - 달력 클릭, 텍스트 직접 입력 모두 포함
+        
+        2. CalendarOpened:
+           - 드롭다운 달력이 열릴 때 발생
+        
+        3. CalendarClosed:
+           - 드롭다운 달력이 닫힐 때 발생
+        
+        4. DateValidationError:
+           - 잘못된 날짜 형식 입력 시 발생
+           - 유효성 검증에 활용
+        
+        주요 속성:
+        
+        1. SelectedDate (DateTime?):
+           - 현재 선택된 날짜
+           - null 가능 (선택된 날짜가 없을 때)
+        
+        2. Text (string):
+           - 텍스트 박스에 표시되는 문자열
+           - 형식화된 날짜 또는 사용자 입력
+        
+        코드에서 사용 예제:
+        
+        // 특정 날짜 선택
+        dp.SelectedDate = new DateTime(2025, 2, 18);
+        
+        // 오늘 날짜 선택
+        dp.SelectedDate = DateTime.Today;
+        
+        // 선택된 날짜 확인
+        if (dp.SelectedDate.HasValue)
+        {
+            DateTime selected = dp.SelectedDate.Value;
+            MessageBox.Show($"선택된 날짜: {selected:yyyy-MM-dd}");
+        }
+        
+        // 날짜 초기화
+        dp.SelectedDate = null;
+        
+        // BlackoutDates 동적 추가
+        dp.BlackoutDates.Add(new CalendarDateRange(
+            new DateTime(2025, 3, 1),
+            new DateTime(2025, 3, 5)));
+        
+        // 드롭다운 열기/닫기
+        dp.IsDropDownOpen = true;
+        
+        실전 활용 예제:
+        
+        1. 생년월일 입력:
+           <Label>생년월일</Label>
+           <DatePicker SelectedDateFormat="Long"
+                       DisplayDateEnd="{x:Static sys:DateTime.Today}"/>
+           <!-- 미래 날짜 선택 불가 -->
+        
+        2. 예약 날짜 선택:
+           <Label>예약 날짜</Label>
+           <DatePicker DisplayDateStart="{x:Static sys:DateTime.Today}">
+               <DatePicker.BlackoutDates>
+                   <!-- 이미 예약된 날짜들 -->
+               </DatePicker.BlackoutDates>
+           </DatePicker>
+        
+        3. 기간 입력 (시작일/종료일):
+           <StackPanel>
+               <Label>시작일</Label>
+               <DatePicker x:Name="dpStart"/>
+               <Label>종료일</Label>
+               <DatePicker x:Name="dpEnd"/>
+           </StackPanel>
+        
+        4. 폼 입력:
+           <Grid>
+               <Grid.RowDefinitions>
+                   <RowDefinition Height="Auto"/>
+                   <RowDefinition Height="Auto"/>
+               </Grid.RowDefinitions>
+               <Grid.ColumnDefinitions>
+                   <ColumnDefinition Width="Auto"/>
+                   <ColumnDefinition Width="*"/>
+               </Grid.ColumnDefinitions>
+               
+               <Label Grid.Row="0" Grid.Column="0">이름:</Label>
+               <TextBox Grid.Row="0" Grid.Column="1"/>
+               
+               <Label Grid.Row="1" Grid.Column="0">생년월일:</Label>
+               <DatePicker Grid.Row="1" Grid.Column="1"/>
+           </Grid>
+        
+        스타일링:
+        
+        예제:
+        <DatePicker Background="LightBlue"
+                    BorderBrush="DarkBlue"
+                    BorderThickness="2"
+                    FontSize="14"/>
+        
+        DatePicker vs Calendar 선택 가이드:
+        
+        DatePicker를 사용하는 경우:
+        - 폼 입력에서 날짜를 받을 때
+        - 공간이 제한적일 때
+        - 단일 날짜만 필요할 때
+        - 텍스트로 날짜를 입력하고 싶을 때
+        
+        Calendar를 사용하는 경우:
+        - 날짜를 시각적으로 명확히 보여주고 싶을 때
+        - 날짜 범위를 선택해야 할 때
+        - 여러 날짜를 동시에 선택해야 할 때
+        - 공간이 충분할 때
+        
+        일반적인 사용 패턴:
+        - 회원가입: DatePicker (생년월일)
+        - 예약 시스템: DatePicker (간단한 날짜 선택)
+        - 캘린더 앱: Calendar (전체 일정 보기)
+        - 휴가 계획: Calendar (날짜 범위)
+        
+        접근성 고려사항:
+        - SelectedDateFormat="Long"은 스크린 리더에 더 친화적
+        - 키보드로도 날짜 입력 가능 (텍스트 박스)
+        - 화살표 키로 날짜 증가/감소 가능
+    -->
+</Window>

@@ -1,0 +1,456 @@
+﻿using System.Text;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Data;
+using System.Windows.Documents;
+using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
+using System.Windows.Shapes;
+
+namespace ch14_스택패널
+{
+    /// <summary>
+    /// Interaction logic for MainWindow.xaml
+    /// StackPanel 레이아웃 컨트롤의 다양한 정렬 방식을 시연하는 메인 윈도우
+    /// </summary>
+    public partial class MainWindow : Window
+    {
+        /// <summary>
+        /// MainWindow 생성자
+        /// 윈도우가 생성될 때 호출되어 초기화 작업을 수행합니다.
+        /// </summary>
+        public MainWindow()
+        {
+            // XAML에 정의된 UI 요소들을 초기화합니다.
+            InitializeComponent();
+            
+            /*
+             * 이 예제는 순수하게 XAML로 구현되어 있어
+             * 코드 비하인드에 특별한 로직이 없습니다.
+             * 
+             * 하지만 실제 프로젝트에서는 StackPanel을 
+             * 코드에서 동적으로 조작하는 경우가 많습니다.
+             */
+        }
+        
+        /*
+         * StackPanel 코드 비하인드 활용 예제:
+         * 
+         * 1. 동적으로 버튼 추가:
+         * 
+         *    private void AddButton_Click(object sender, RoutedEventArgs e)
+         *    {
+         *        // XAML에서 x:Name="myStackPanel"로 지정된 StackPanel에 접근
+         *        Button newButton = new Button
+         *        {
+         *            Content = $"버튼 {myStackPanel.Children.Count + 1}",
+         *            Margin = new Thickness(5),
+         *            HorizontalAlignment = HorizontalAlignment.Center
+         *        };
+         *        
+         *        newButton.Click += NewButton_Click;
+         *        myStackPanel.Children.Add(newButton);
+         *    }
+         *    
+         *    private void NewButton_Click(object sender, RoutedEventArgs e)
+         *    {
+         *        if (sender is Button button)
+         *        {
+         *            MessageBox.Show($"{button.Content} 클릭됨!");
+         *        }
+         *    }
+         * 
+         * 2. 동적으로 폼 필드 생성:
+         * 
+         *    private void GenerateForm()
+         *    {
+         *        StackPanel formPanel = new StackPanel
+         *        {
+         *            Margin = new Thickness(10)
+         *        };
+         *        
+         *        string[] fields = { "이름", "이메일", "전화번호", "주소" };
+         *        
+         *        foreach (string field in fields)
+         *        {
+         *            // 레이블 추가
+         *            Label label = new Label
+         *            {
+         *                Content = field + ":",
+         *                FontWeight = FontWeights.Bold
+         *            };
+         *            formPanel.Children.Add(label);
+         *            
+         *            // 텍스트박스 추가
+         *            TextBox textBox = new TextBox
+         *            {
+         *                Margin = new Thickness(0, 0, 0, 10),
+         *                Name = field.Replace(" ", "")
+         *            };
+         *            formPanel.Children.Add(textBox);
+         *        }
+         *        
+         *        // 제출 버튼 추가
+         *        Button submitButton = new Button
+         *        {
+         *            Content = "제출",
+         *            HorizontalAlignment = HorizontalAlignment.Right,
+         *            Padding = new Thickness(20, 5, 20, 5)
+         *        };
+         *        submitButton.Click += SubmitButton_Click;
+         *        formPanel.Children.Add(submitButton);
+         *        
+         *        // 메인 컨테이너에 폼 추가
+         *        mainContainer.Children.Add(formPanel);
+         *    }
+         *    
+         *    private void SubmitButton_Click(object sender, RoutedEventArgs e)
+         *    {
+         *        MessageBox.Show("폼이 제출되었습니다!");
+         *    }
+         * 
+         * 3. 리스트 항목 동적 생성:
+         * 
+         *    private void LoadItems(List<string> items)
+         *    {
+         *        itemsStackPanel.Children.Clear();
+         *        
+         *        foreach (string item in items)
+         *        {
+         *            Border border = new Border
+         *            {
+         *                Background = new SolidColorBrush(Colors.LightGray),
+         *                BorderBrush = new SolidColorBrush(Colors.Gray),
+         *                BorderThickness = new Thickness(1),
+         *                Margin = new Thickness(5),
+         *                Padding = new Thickness(10)
+         *            };
+         *            
+         *            StackPanel itemPanel = new StackPanel
+         *            {
+         *                Orientation = Orientation.Horizontal
+         *            };
+         *            
+         *            TextBlock textBlock = new TextBlock
+         *            {
+         *                Text = item,
+         *                VerticalAlignment = VerticalAlignment.Center,
+         *                Margin = new Thickness(0, 0, 10, 0)
+         *            };
+         *            
+         *            Button deleteButton = new Button
+         *            {
+         *                Content = "삭제",
+         *                Tag = item
+         *            };
+         *            deleteButton.Click += DeleteButton_Click;
+         *            
+         *            itemPanel.Children.Add(textBlock);
+         *            itemPanel.Children.Add(deleteButton);
+         *            border.Child = itemPanel;
+         *            
+         *            itemsStackPanel.Children.Add(border);
+         *        }
+         *    }
+         *    
+         *    private void DeleteButton_Click(object sender, RoutedEventArgs e)
+         *    {
+         *        if (sender is Button button && button.Parent is StackPanel parent 
+         *            && parent.Parent is Border border)
+         *        {
+         *            itemsStackPanel.Children.Remove(border);
+         *        }
+         *    }
+         * 
+         * 4. 방향 전환 (Orientation 변경):
+         * 
+         *    private void ToggleOrientation_Click(object sender, RoutedEventArgs e)
+         *    {
+         *        if (myStackPanel.Orientation == Orientation.Vertical)
+         *        {
+         *            myStackPanel.Orientation = Orientation.Horizontal;
+         *            toggleButton.Content = "세로로 변경";
+         *        }
+         *        else
+         *        {
+         *            myStackPanel.Orientation = Orientation.Vertical;
+         *            toggleButton.Content = "가로로 변경";
+         *        }
+         *    }
+         * 
+         * 5. 자식 요소 검색 및 수정:
+         * 
+         *    private void HighlightButtons()
+         *    {
+         *        foreach (UIElement child in myStackPanel.Children)
+         *        {
+         *            if (child is Button button)
+         *            {
+         *                button.Background = new SolidColorBrush(Colors.Yellow);
+         *                button.FontWeight = FontWeights.Bold;
+         *            }
+         *        }
+         *    }
+         *    
+         *    private void ResetButtons()
+         *    {
+         *        foreach (UIElement child in myStackPanel.Children)
+         *        {
+         *            if (child is Button button)
+         *            {
+         *                button.ClearValue(Button.BackgroundProperty);
+         *                button.ClearValue(Button.FontWeightProperty);
+         *            }
+         *        }
+         *    }
+         * 
+         * 6. 특정 위치에 요소 삽입:
+         * 
+         *    private void InsertAtTop_Click(object sender, RoutedEventArgs e)
+         *    {
+         *        TextBlock newItem = new TextBlock
+         *        {
+         *            Text = "새 항목 (맨 위)",
+         *            Background = new SolidColorBrush(Colors.LightBlue),
+         *            Padding = new Thickness(5),
+         *            Margin = new Thickness(2)
+         *        };
+         *        
+         *        myStackPanel.Children.Insert(0, newItem);
+         *    }
+         *    
+         *    private void InsertAtBottom_Click(object sender, RoutedEventArgs e)
+         *    {
+         *        TextBlock newItem = new TextBlock
+         *        {
+         *            Text = "새 항목 (맨 아래)",
+         *            Background = new SolidColorBrush(Colors.LightGreen),
+         *            Padding = new Thickness(5),
+         *            Margin = new Thickness(2)
+         *        };
+         *        
+         *        myStackPanel.Children.Add(newItem);
+         *    }
+         * 
+         * 7. 애니메이션과 함께 요소 추가:
+         * 
+         *    private void AddWithAnimation_Click(object sender, RoutedEventArgs e)
+         *    {
+         *        Button newButton = new Button
+         *        {
+         *            Content = "새 버튼",
+         *            Opacity = 0
+         *        };
+         *        
+         *        myStackPanel.Children.Add(newButton);
+         *        
+         *        // 페이드 인 애니메이션
+         *        DoubleAnimation fadeIn = new DoubleAnimation
+         *        {
+         *            From = 0,
+         *            To = 1,
+         *            Duration = TimeSpan.FromMilliseconds(500)
+         *        };
+         *        
+         *        newButton.BeginAnimation(OpacityProperty, fadeIn);
+         *    }
+         * 
+         * 8. 조건부 렌더링:
+         * 
+         *    private void UpdateMenu(bool isAdmin)
+         *    {
+         *        menuStackPanel.Children.Clear();
+         *        
+         *        // 모든 사용자에게 보이는 메뉴
+         *        menuStackPanel.Children.Add(new Button { Content = "홈" });
+         *        menuStackPanel.Children.Add(new Button { Content = "프로필" });
+         *        
+         *        // 관리자에게만 보이는 메뉴
+         *        if (isAdmin)
+         *        {
+         *            menuStackPanel.Children.Add(new Button { Content = "관리자 패널" });
+         *            menuStackPanel.Children.Add(new Button { Content = "설정" });
+         *        }
+         *        
+         *        menuStackPanel.Children.Add(new Button { Content = "로그아웃" });
+         *    }
+         * 
+         * 9. 데이터 바인딩과 함께 사용:
+         * 
+         *    private void LoadDataItems(List<DataItem> items)
+         *    {
+         *        dataStackPanel.Children.Clear();
+         *        
+         *        foreach (var item in items)
+         *        {
+         *            StackPanel itemPanel = new StackPanel
+         *            {
+         *                Orientation = Orientation.Horizontal,
+         *                Margin = new Thickness(5)
+         *            };
+         *            
+         *            TextBlock nameBlock = new TextBlock
+         *            {
+         *                Text = item.Name,
+         *                Width = 100
+         *            };
+         *            
+         *            TextBlock valueBlock = new TextBlock
+         *            {
+         *                Text = item.Value.ToString(),
+         *                Width = 50
+         *            };
+         *            
+         *            ProgressBar progressBar = new ProgressBar
+         *            {
+         *                Value = item.Progress,
+         *                Width = 100,
+         *                Height = 20
+         *            };
+         *            
+         *            itemPanel.Children.Add(nameBlock);
+         *            itemPanel.Children.Add(valueBlock);
+         *            itemPanel.Children.Add(progressBar);
+         *            
+         *            dataStackPanel.Children.Add(itemPanel);
+         *        }
+         *    }
+         * 
+         * 10. 드래그 앤 드롭으로 순서 변경:
+         * 
+         *     private UIElement? draggedElement;
+         *     
+         *     private void Element_MouseDown(object sender, MouseButtonEventArgs e)
+         *     {
+         *         draggedElement = sender as UIElement;
+         *         if (draggedElement != null)
+         *         {
+         *             DragDrop.DoDragDrop(draggedElement, draggedElement, DragDropEffects.Move);
+         *         }
+         *     }
+         *     
+         *     private void StackPanel_Drop(object sender, DragEventArgs e)
+         *     {
+         *         if (draggedElement != null && sender is StackPanel panel)
+         *         {
+         *             Point dropPosition = e.GetPosition(panel);
+         *             int newIndex = GetInsertIndex(panel, dropPosition);
+         *             
+         *             panel.Children.Remove(draggedElement);
+         *             panel.Children.Insert(newIndex, draggedElement);
+         *             
+         *             draggedElement = null;
+         *         }
+         *     }
+         *     
+         *     private int GetInsertIndex(StackPanel panel, Point position)
+         *     {
+         *         int index = 0;
+         *         double currentPosition = 0;
+         *         
+         *         foreach (UIElement child in panel.Children)
+         *         {
+         *             if (panel.Orientation == Orientation.Vertical)
+         *             {
+         *                 currentPosition += child.RenderSize.Height;
+         *                 if (position.Y < currentPosition)
+         *                     break;
+         *             }
+         *             else
+         *             {
+         *                 currentPosition += child.RenderSize.Width;
+         *                 if (position.X < currentPosition)
+         *                     break;
+         *             }
+         *             index++;
+         *         }
+         *         
+         *         return index;
+         *     }
+         * 
+         * StackPanel 코드 조작 관련 중요 사항:
+         * 
+         * 1. Children 컬렉션:
+         *    - UIElementCollection 타입
+         *    - Add, Insert, Remove, Clear 메서드 제공
+         *    - Count 속성으로 자식 개수 확인
+         *    - 인덱스로 접근 가능 (panel.Children[0])
+         * 
+         * 2. 성능 고려사항:
+         *    - 많은 요소를 추가/제거할 때는 BeginInit/EndInit 사용 고려
+         *    - UI 스레드에서만 조작 가능
+         *    - 많은 항목은 VirtualizingStackPanel 사용
+         * 
+         * 3. Orientation 변경:
+         *    - 런타임에 동적으로 변경 가능
+         *    - 자식 요소의 정렬도 함께 고려해야 함
+         * 
+         * 4. 자식 요소 타입 체크:
+         *    - is 패턴 매칭 사용
+         *    - as 캐스팅 후 null 체크
+         *    - 다양한 타입의 자식 처리 가능
+         * 
+         * 5. 이벤트 처리:
+         *    - 동적으로 추가된 요소에도 이벤트 핸들러 등록 가능
+         *    - Tag 속성으로 데이터 전달
+         *    - 람다식이나 익명 메서드 사용 가능
+         * 
+         * 6. 스타일 적용:
+         *    - 프로그래밍 방식으로 스타일 적용 가능
+         *    - Resources에서 스타일 찾아서 적용
+         *    - 개별 속성 직접 설정
+         * 
+         * 예제 - 스타일 적용:
+         * 
+         * private void ApplyStyle()
+         * {
+         *     Style buttonStyle = (Style)FindResource("MyButtonStyle");
+         *     
+         *     foreach (UIElement child in myStackPanel.Children)
+         *     {
+         *         if (child is Button button)
+         *         {
+         *             button.Style = buttonStyle;
+         *         }
+         *     }
+         * }
+         * 
+         * 7. 애니메이션:
+         *    - 요소 추가/제거 시 애니메이션 효과 가능
+         *    - Storyboard 사용
+         *    - TranslateTransform, ScaleTransform 등 활용
+         * 
+         * 8. 비동기 작업:
+         *    - 데이터 로드 후 UI 업데이트는 Dispatcher 사용
+         *    - async/await 패턴
+         * 
+         * 예제 - 비동기 로드:
+         * 
+         * private async void LoadDataAsync()
+         * {
+         *     var data = await LoadFromDatabaseAsync();
+         *     
+         *     Dispatcher.Invoke(() =>
+         *     {
+         *         myStackPanel.Children.Clear();
+         *         foreach (var item in data)
+         *         {
+         *             myStackPanel.Children.Add(CreateItemUI(item));
+         *         }
+         *     });
+         * }
+         * 
+         * 9. 메모리 관리:
+         *    - 사용하지 않는 요소는 Children에서 제거
+         *    - 이벤트 핸들러 정리
+         *    - 리소스 해제
+         * 
+         * 10. 디버깅:
+         *     - Children.Count로 자식 개수 확인
+         *     - GetType()으로 자식 타입 확인
+         *     - Visual Tree 검사 도구 사용
+         */
+    }
+}

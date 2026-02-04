@@ -1,0 +1,53 @@
+﻿<!-- 
+    MainWindow.xaml - MVVM 프로젝트의 메인 윈도우
+    이 프로젝트에서는 실제로 사용되지 않습니다.
+    App.xaml의 StartupUri가 PersonView.xaml로 설정되어 있어 이 윈도우는 표시되지 않습니다.
+    
+    StartupUri:
+    - App.xaml에서 지정
+    - StartupUri="Views/PersonView.xaml"
+    - Page를 직접 시작
+    - Window 생략 가능 (WPF 특수 케이스)
+    
+    일반적인 MVVM 프로젝트:
+    - MainWindow가 Frame 호스팅
+    - Frame이 Page 표시
+    - NavigationService로 페이지 전환
+-->
+<Window x:Class="ch34_MVVM.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ch34_MVVM"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <!-- 
+        Window:
+        - WPF 애플리케이션의 최상위 컨테이너
+        - 이 예제에서는 사용 안 됨
+        
+        일반적인 MVVM 구조:
+        <Window ...>
+            <Frame x:Name="MainFrame" NavigationUIVisibility="Hidden"/>
+        </Window>
+        
+        코드 비하인드:
+        MainFrame.Navigate(new PersonView());
+    -->
+    
+    <Grid>
+        <!-- 
+            빈 Grid:
+            - 이 윈도우는 표시되지 않음
+            - App.xaml의 StartupUri 설정 때문
+            
+            Frame 사용 예:
+            <Grid>
+                <Frame x:Name="MainFrame" 
+                       NavigationUIVisibility="Hidden"
+                       Content="{Binding CurrentPage}"/>
+            </Grid>
+        -->
+    </Grid>
+</Window>

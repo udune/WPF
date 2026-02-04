@@ -1,0 +1,108 @@
+﻿<!-- 
+    App.xaml - 화면이동 프레임 학습 애플리케이션의 진입점
+    WPF 애플리케이션의 전역 설정 및 리소스를 정의합니다.
+-->
+<Application x:Class="ch29_화면이동_프레임.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:ch29_화면이동_프레임"
+             StartupUri="MainWindow.xaml">
+    <!-- 
+        Application 속성 설명:
+        
+        x:Class: 코드 비하인드 파일(App.xaml.cs)과 연결
+        StartupUri: 애플리케이션 시작 시 표시될 윈도우 지정
+        xmlns:local: 현재 프로젝트의 네임스페이스 참조
+    -->
+    
+    <!-- 
+        Application.Resources: 애플리케이션 전역 리소스 정의 영역
+        
+        Frame과 Page 관련 전역 리소스 예제:
+        <Application.Resources>
+            ========== Page 전환 애니메이션 ==========
+            
+            Fade In 애니메이션:
+            <Storyboard x:Key="FadeInAnimation">
+                <DoubleAnimation Storyboard.TargetProperty="Opacity"
+                                From="0" To="1" Duration="0:0:0.3"/>
+            </Storyboard>
+            
+            Slide In 애니메이션:
+            <Storyboard x:Key="SlideInAnimation">
+                <DoubleAnimation Storyboard.TargetProperty="(UIElement.RenderTransform).(TranslateTransform.X)"
+                                From="100" To="0" Duration="0:0:0.3">
+                    <DoubleAnimation.EasingFunction>
+                        <QuadraticEase EasingMode="EaseOut"/>
+                    </DoubleAnimation.EasingFunction>
+                </DoubleAnimation>
+            </Storyboard>
+            
+            사용:
+            frm.Navigated += (s, e) =>
+            {
+                var storyboard = FindResource("FadeInAnimation") as Storyboard;
+                storyboard.Begin(frm);
+            };
+            
+            ========== Frame Style ==========
+            
+            <Style x:Key="CustomFrameStyle" TargetType="Frame">
+                <Setter Property="BorderBrush" Value="Gray"/>
+                <Setter Property="BorderThickness" Value="1"/>
+                <Setter Property="Margin" Value="5"/>
+                <Setter Property="NavigationUIVisibility" Value="Hidden"/>
+            </Style>
+            
+            사용:
+            <Frame Style="{StaticResource CustomFrameStyle}"/>
+            
+            ========== Page 공통 Style ==========
+            
+            <Style x:Key="BasePageStyle" TargetType="Page">
+                <Setter Property="FontSize" Value="14"/>
+                <Setter Property="FontFamily" Value="Malgun Gothic"/>
+                <Setter Property="Padding" Value="20"/>
+            </Style>
+            
+            사용:
+            <Page Style="{StaticResource BasePageStyle}">
+            
+            ========== NavigationService 헬퍼 ==========
+            
+            INavigationService 인터페이스 구현을 전역으로 관리
+            
+            ========== 실전 활용 예제 ==========
+            
+            1. 페이지 전환 효과:
+               <Application.Resources>
+                   <ResourceDictionary>
+                       <ResourceDictionary.MergedDictionaries>
+                           <ResourceDictionary Source="Styles/PageTransitions.xaml"/>
+                       </ResourceDictionary.MergedDictionaries>
+                   </ResourceDictionary>
+               </Application.Resources>
+            
+            2. 공통 컨버터:
+               <local:PageTypeToStringConverter x:Key="PageTypeConverter"/>
+            
+            3. 전역 ViewModel:
+               <local:NavigationViewModel x:Key="NavigationVM"/>
+            
+            ========== 주의사항 ==========
+            
+            1. 리소스 수명:
+               - 애플리케이션이 종료될 때까지 유지
+            
+            2. Page 스타일:
+               - 모든 Page에 자동 적용
+               - 개별 Page에서 재정의 가능
+            
+            3. Frame 설정:
+               - NavigationUIVisibility 전역 설정 가능
+        </Application.Resources>
+    -->
+    <Application.Resources>
+         <!-- 현재 비어 있음 - 필요시 전역 Style, Animation, Converter 추가 -->
+    </Application.Resources>
+</Application>

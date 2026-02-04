@@ -1,0 +1,482 @@
+﻿using System.Text;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Data;
+using System.Windows.Documents;
+using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
+using System.Windows.Shapes;
+
+namespace ch18_유니폼그리드
+{
+    /// <summary>
+    /// MainWindow.xaml에 대한 상호작용 논리
+    /// UniformGrid 레이아웃 컨트롤의 균등 분할 기능을 시연하는 메인 윈도우
+    /// </summary>
+    public partial class MainWindow : Window
+    {
+        /// <summary>
+        /// MainWindow 생성자
+        /// 윈도우가 생성될 때 호출되어 초기화 작업을 수행합니다.
+        /// </summary>
+        public MainWindow()
+        {
+            // XAML에 정의된 UI 요소들을 초기화합니다.
+            InitializeComponent();
+            
+            /*
+             * 이 예제는 순수하게 XAML로 구현되어 있어
+             * 코드 비하인드에 특별한 로직이 없습니다.
+             * 
+             * 하지만 실제 프로젝트에서는 UniformGrid를 
+             * 코드에서 동적으로 생성하거나
+             * 자식 요소를 동적으로 추가하는 경우가 많습니다.
+             * 특히 계산기, 키패드, 색상 팔레트 등을 만들 때 유용합니다.
+             */
+        }
+        
+        /*
+         * UniformGrid 코드 비하인드 활용 예제:
+         * 
+         * 1. 동적으로 UniformGrid 생성:
+         * 
+         *    private void CreateUniformGrid()
+         *    {
+         *        UniformGrid uniformGrid = new UniformGrid
+         *        {
+         *            Columns = 3,
+         *            Rows = 3,
+         *            Margin = new Thickness(10)
+         *        };
+         *        
+         *        // 버튼 추가
+         *        for (int i = 1; i <= 9; i++)
+         *        {
+         *            Button btn = new Button
+         *            {
+         *                Content = $"버튼{i}",
+         *                Margin = new Thickness(5),
+         *                FontSize = 16
+         *            };
+         *            btn.Click += Button_Click;
+         *            uniformGrid.Children.Add(btn);
+         *        }
+         *        
+         *        this.Content = uniformGrid;
+         *    }
+         *    
+         *    private void Button_Click(object sender, RoutedEventArgs e)
+         *    {
+         *        if (sender is Button button)
+         *        {
+         *            MessageBox.Show($"{button.Content} 클릭됨!");
+         *        }
+         *    }
+         * 
+         * 2. 계산기 키패드 생성:
+         * 
+         *    private void CreateCalculatorKeypad()
+         *    {
+         *        UniformGrid keypad = new UniformGrid
+         *        {
+         *            Columns = 3,
+         *            Rows = 4
+         *        };
+         *        
+         *        string[] keys = { "7", "8", "9", "4", "5", "6", "1", "2", "3", "*", "0", "#" };
+         *        
+         *        foreach (string key in keys)
+         *        {
+         *            Button btn = new Button
+         *            {
+         *                Content = key,
+         *                FontSize = 24,
+         *                FontWeight = FontWeights.Bold,
+         *                Margin = new Thickness(2)
+         *            };
+         *            btn.Click += Keypad_Click;
+         *            keypad.Children.Add(btn);
+         *        }
+         *        
+         *        this.Content = keypad;
+         *    }
+         *    
+         *    private void Keypad_Click(object sender, RoutedEventArgs e)
+         *    {
+         *        if (sender is Button button)
+         *        {
+         *            string key = button.Content.ToString();
+         *            // 키 입력 처리
+         *            MessageBox.Show($"{key} 입력");
+         *        }
+         *    }
+         * 
+         * 3. 색상 팔레트 생성:
+         * 
+         *    private void CreateColorPalette()
+         *    {
+         *        UniformGrid palette = new UniformGrid
+         *        {
+         *            Columns = 8,
+         *            Rows = 8
+         *        };
+         *        
+         *        // 64가지 색상 생성
+         *        for (int r = 0; r < 8; r++)
+         *        {
+         *            for (int g = 0; g < 8; g++)
+         *            {
+         *                byte red = (byte)(r * 36);
+         *                byte green = (byte)(g * 36);
+         *                byte blue = 128; // 고정값
+         *                
+         *                Border colorBox = new Border
+         *                {
+         *                    Background = new SolidColorBrush(Color.FromRgb(red, green, blue)),
+         *                    BorderBrush = new SolidColorBrush(Colors.Black),
+         *                    BorderThickness = new Thickness(1),
+         *                    Margin = new Thickness(2),
+         *                    Cursor = Cursors.Hand,
+         *                    Tag = Color.FromRgb(red, green, blue)
+         *                };
+         *                
+         *                colorBox.MouseLeftButtonDown += ColorBox_Click;
+         *                palette.Children.Add(colorBox);
+         *            }
+         *        }
+         *        
+         *        this.Content = palette;
+         *    }
+         *    
+         *    private void ColorBox_Click(object sender, MouseButtonEventArgs e)
+         *    {
+         *        if (sender is Border border && border.Tag is Color color)
+         *        {
+         *            MessageBox.Show($"선택된 색상: R={color.R}, G={color.G}, B={color.B}");
+         *        }
+         *    }
+         * 
+         * 4. 이미지 갤러리 생성:
+         * 
+         *    private void CreateImageGallery(string[] imagePaths)
+         *    {
+         *        UniformGrid gallery = new UniformGrid
+         *        {
+         *            Columns = 3
+         *        };
+         *        
+         *        foreach (string imagePath in imagePaths)
+         *        {
+         *            Border imageBorder = new Border
+         *            {
+         *                BorderBrush = new SolidColorBrush(Colors.Gray),
+         *                BorderThickness = new Thickness(2),
+         *                Margin = new Thickness(5)
+         *            };
+         *            
+         *            Image image = new Image
+         *            {
+         *                Source = new BitmapImage(new Uri(imagePath, UriKind.Relative)),
+         *                Stretch = Stretch.UniformToFill
+         *            };
+         *            
+         *            image.MouseLeftButtonDown += Image_Click;
+         *            imageBorder.Child = image;
+         *            gallery.Children.Add(imageBorder);
+         *        }
+         *        
+         *        this.Content = new ScrollViewer { Content = gallery };
+         *    }
+         *    
+         *    private void Image_Click(object sender, MouseButtonEventArgs e)
+         *    {
+         *        if (sender is Image image)
+         *        {
+         *            MessageBox.Show("이미지 클릭됨");
+         *        }
+         *    }
+         * 
+         * 5. 타일 메뉴 생성:
+         * 
+         *    private void CreateTileMenu()
+         *    {
+         *        UniformGrid tileMenu = new UniformGrid
+         *        {
+         *            Columns = 2,
+         *            Rows = 2,
+         *            Margin = new Thickness(20)
+         *        };
+         *        
+         *        var menuItems = new[]
+         *        {
+         *            new { Icon = "📊", Text = "통계", Color = Colors.LightBlue },
+         *            new { Icon = "⚙️", Text = "설정", Color = Colors.LightGreen },
+         *            new { Icon = "📁", Text = "파일", Color = Colors.LightCoral },
+         *            new { Icon = "ℹ️", Text = "정보", Color = Colors.LightYellow }
+         *        };
+         *        
+         *        foreach (var item in menuItems)
+         *        {
+         *            Button tileButton = new Button
+         *            {
+         *                Background = new SolidColorBrush(item.Color),
+         *                Margin = new Thickness(10),
+         *                Tag = item.Text
+         *            };
+         *            
+         *            StackPanel panel = new StackPanel
+         *            {
+         *                HorizontalAlignment = HorizontalAlignment.Center,
+         *                VerticalAlignment = VerticalAlignment.Center
+         *            };
+         *            
+         *            TextBlock icon = new TextBlock
+         *            {
+         *                Text = item.Icon,
+         *                FontSize = 48,
+         *                HorizontalAlignment = HorizontalAlignment.Center
+         *            };
+         *            
+         *            TextBlock text = new TextBlock
+         *            {
+         *                Text = item.Text,
+         *                FontSize = 20,
+         *                HorizontalAlignment = HorizontalAlignment.Center,
+         *                Margin = new Thickness(0, 10, 0, 0)
+         *            };
+         *            
+         *            panel.Children.Add(icon);
+         *            panel.Children.Add(text);
+         *            tileButton.Content = panel;
+         *            
+         *            tileButton.Click += TileButton_Click;
+         *            tileMenu.Children.Add(tileButton);
+         *        }
+         *        
+         *        this.Content = tileMenu;
+         *    }
+         *    
+         *    private void TileButton_Click(object sender, RoutedEventArgs e)
+         *    {
+         *        if (sender is Button button)
+         *        {
+         *            MessageBox.Show($"{button.Tag} 메뉴 선택됨");
+         *        }
+         *    }
+         * 
+         * 6. 게임 보드 생성 (오목, 체스):
+         * 
+         *    private void CreateGameBoard(int size)
+         *    {
+         *        UniformGrid board = new UniformGrid
+         *        {
+         *            Columns = size,
+         *            Rows = size
+         *        };
+         *        
+         *        for (int row = 0; row < size; row++)
+         *        {
+         *            for (int col = 0; col < size; col++)
+         *            {
+         *                Button cell = new Button
+         *                {
+         *                    Background = (row + col) % 2 == 0 
+         *                        ? new SolidColorBrush(Colors.White) 
+         *                        : new SolidColorBrush(Colors.LightGray),
+         *                    BorderBrush = new SolidColorBrush(Colors.Black),
+         *                    BorderThickness = new Thickness(1),
+         *                    Tag = new Point(row, col)
+         *                };
+         *                
+         *                cell.Click += Cell_Click;
+         *                board.Children.Add(cell);
+         *            }
+         *        }
+         *        
+         *        this.Content = board;
+         *    }
+         *    
+         *    private void Cell_Click(object sender, RoutedEventArgs e)
+         *    {
+         *        if (sender is Button button && button.Tag is Point position)
+         *        {
+         *            MessageBox.Show($"셀 클릭: ({position.X}, {position.Y})");
+         *            // 게임 로직 처리
+         *        }
+         *    }
+         * 
+         * 7. 아이콘 그리드 생성:
+         * 
+         *    private void CreateIconGrid(string[] iconPaths)
+         *    {
+         *        UniformGrid iconGrid = new UniformGrid
+         *        {
+         *            Columns = 4
+         *        };
+         *        
+         *        foreach (string iconPath in iconPaths)
+         *        {
+         *            Button iconButton = new Button
+         *            {
+         *                Margin = new Thickness(5),
+         *                Padding = new Thickness(10)
+         *            };
+         *            
+         *            Image icon = new Image
+         *            {
+         *                Source = new BitmapImage(new Uri(iconPath, UriKind.Relative)),
+         *                Width = 48,
+         *                Height = 48
+         *            };
+         *            
+         *            iconButton.Content = icon;
+         *            iconButton.Click += IconButton_Click;
+         *            iconGrid.Children.Add(iconButton);
+         *        }
+         *        
+         *        this.Content = iconGrid;
+         *    }
+         *    
+         *    private void IconButton_Click(object sender, RoutedEventArgs e)
+         *    {
+         *        MessageBox.Show("아이콘 클릭됨");
+         *    }
+         * 
+         * 8. 동적으로 행/열 변경:
+         * 
+         *    private UniformGrid myUniformGrid;
+         *    
+         *    private void ChangeLayout_Click(object sender, RoutedEventArgs e)
+         *    {
+         *        // 2x2 → 3x3 → 4x4 → 2x2 순환
+         *        if (myUniformGrid.Columns == 2)
+         *        {
+         *            myUniformGrid.Columns = 3;
+         *            myUniformGrid.Rows = 3;
+         *        }
+         *        else if (myUniformGrid.Columns == 3)
+         *        {
+         *            myUniformGrid.Columns = 4;
+         *            myUniformGrid.Rows = 4;
+         *        }
+         *        else
+         *        {
+         *            myUniformGrid.Columns = 2;
+         *            myUniformGrid.Rows = 2;
+         *        }
+         *    }
+         * 
+         * 9. 요소 추가/제거:
+         * 
+         *    private void AddElement_Click(object sender, RoutedEventArgs e)
+         *    {
+         *        Button newButton = new Button
+         *        {
+         *            Content = $"버튼{myUniformGrid.Children.Count + 1}",
+         *            Margin = new Thickness(5)
+         *        };
+         *        myUniformGrid.Children.Add(newButton);
+         *    }
+         *    
+         *    private void RemoveElement_Click(object sender, RoutedEventArgs e)
+         *    {
+         *        if (myUniformGrid.Children.Count > 0)
+         *        {
+         *            myUniformGrid.Children.RemoveAt(myUniformGrid.Children.Count - 1);
+         *        }
+         *    }
+         *    
+         *    private void ClearElements_Click(object sender, RoutedEventArgs e)
+         *    {
+         *        myUniformGrid.Children.Clear();
+         *    }
+         * 
+         * 10. UniformGrid 정보 가져오기:
+         * 
+         *     private void GetGridInfo_Click(object sender, RoutedEventArgs e)
+         *     {
+         *         StringBuilder info = new StringBuilder();
+         *         
+         *         info.AppendLine($"열 개수: {myUniformGrid.Columns}");
+         *         info.AppendLine($"행 개수: {myUniformGrid.Rows}");
+         *         info.AppendLine($"FirstColumn: {myUniformGrid.FirstColumn}");
+         *         info.AppendLine($"자식 요소 수: {myUniformGrid.Children.Count}");
+         *         info.AppendLine($"실제 너비: {myUniformGrid.ActualWidth:F2}");
+         *         info.AppendLine($"실제 높이: {myUniformGrid.ActualHeight:F2}");
+         *         
+         *         if (myUniformGrid.Columns > 0 && myUniformGrid.Rows > 0)
+         *         {
+         *             double cellWidth = myUniformGrid.ActualWidth / myUniformGrid.Columns;
+         *             double cellHeight = myUniformGrid.ActualHeight / myUniformGrid.Rows;
+         *             info.AppendLine($"셀 너비: {cellWidth:F2}");
+         *             info.AppendLine($"셀 높이: {cellHeight:F2}");
+         *         }
+         *         
+         *         MessageBox.Show(info.ToString(), "UniformGrid 정보");
+         *     }
+         * 
+         * UniformGrid 코드 조작 관련 중요 사항:
+         * 
+         * 1. 속성 설정:
+         *    - uniformGrid.Columns = 3;
+         *    - uniformGrid.Rows = 4;
+         *    - uniformGrid.FirstColumn = 1;
+         * 
+         * 2. 자식 요소 관리:
+         *    - uniformGrid.Children.Add(element)
+         *    - uniformGrid.Children.Remove(element)
+         *    - uniformGrid.Children.Clear()
+         *    - uniformGrid.Children.Count
+         * 
+         * 3. 위치 계산:
+         *    - 순차적으로 배치되므로 인덱스로 위치 계산
+         *    - index / Columns = 행 번호
+         *    - index % Columns = 열 번호
+         * 
+         * 예제:
+         * int GetRow(int index) => index / myUniformGrid.Columns;
+         * int GetColumn(int index) => index % myUniformGrid.Columns;
+         * 
+         * 4. 셀 크기 계산:
+         *    - 셀 너비 = ActualWidth / Columns
+         *    - 셀 높이 = ActualHeight / Rows
+         * 
+         * 5. 동적 생성 패턴:
+         *    - Columns만 지정하고 Rows는 자동 계산 (추천)
+         *    - 또는 Rows만 지정
+         *    - 둘 다 지정하면 고정된 구조
+         * 
+         * 6. 성능:
+         *    - UniformGrid는 매우 효율적
+         *    - 레이아웃 계산이 단순함
+         *    - 많은 자식 요소에도 빠름
+         * 
+         * 7. MVVM 패턴:
+         *    - ItemsControl.ItemsPanel로 UniformGrid 사용
+         * 
+         * 예제:
+         * <ItemsControl ItemsSource="{Binding Items}">
+         *     <ItemsControl.ItemsPanel>
+         *         <ItemsPanelTemplate>
+         *             <UniformGrid Columns="3"/>
+         *         </ItemsPanelTemplate>
+         *     </ItemsControl.ItemsPanel>
+         * </ItemsControl>
+         * 
+         * 8. 애니메이션:
+         *    - 자식 요소에 애니메이션 적용 가능
+         *    - Columns/Rows 변경 시 부드러운 전환
+         * 
+         * 9. 이벤트 처리:
+         *    - 각 자식에 개별 이벤트 핸들러
+         *    - Tag 속성으로 데이터 전달
+         * 
+         * 10. 디버깅:
+         *     - Snoop이나 Live Visual Tree로 레이아웃 검사
+         *     - 셀 크기 확인
+         *     - 자식 요소 수 확인
+         */
+    }
+}

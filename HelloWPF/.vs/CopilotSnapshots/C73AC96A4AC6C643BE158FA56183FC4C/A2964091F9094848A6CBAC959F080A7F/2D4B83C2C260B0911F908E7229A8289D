@@ -1,0 +1,24 @@
+﻿<Window x:Class="ch12_슬라이더.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ch12_슬라이더"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <StackPanel VerticalAlignment="Center" Background="Salmon">
+            <TextBlock x:Name="tb" 
+                       Text="텍스트 블럭"
+                       FontSize="{Binding ElementName=sld, Path=Value}"/>
+            <Slider x:Name="sld" 
+                    ValueChanged="sld_ValueChanged"
+                    TickPlacement="TopLeft"
+                    IsSnapToTickEnabled="True"
+                    Minimum="10"
+                    Maximum="100"
+                    TickFrequency="10">
+            </Slider>
+        </StackPanel>
+    </Grid>
+</Window>

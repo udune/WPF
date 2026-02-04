@@ -1,0 +1,23 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v8.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v8.0": {
+      "ch7 이미지/1.0.0": {
+        "runtime": {
+          "ch7 이미지.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "ch7 이미지/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

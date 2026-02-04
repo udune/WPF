@@ -1,0 +1,539 @@
+﻿using System.Text;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Data;
+using System.Windows.Documents;
+using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
+using System.Windows.Shapes;
+
+namespace ch15_랩패널
+{
+    /// <summary>
+    /// MainWindow.xaml에 대한 상호작용 논리
+    /// WrapPanel 레이아웃 컨트롤의 자동 줄바꿈 기능을 시연하는 메인 윈도우
+    /// </summary>
+    public partial class MainWindow : Window
+    {
+        /// <summary>
+        /// MainWindow 생성자
+        /// 윈도우가 생성될 때 호출되어 초기화 작업을 수행합니다.
+        /// </summary>
+        public MainWindow()
+        {
+            // XAML에 정의된 UI 요소들을 초기화합니다.
+            InitializeComponent();
+            
+            /*
+             * 이 예제는 순수하게 XAML로 구현되어 있어
+             * 코드 비하인드에 특별한 로직이 없습니다.
+             * 
+             * 하지만 실제 프로젝트에서는 WrapPanel을 
+             * 코드에서 동적으로 조작하는 경우가 많습니다.
+             * 특히 태그, 칩, 필터 등을 동적으로 추가/제거할 때 유용합니다.
+             */
+        }
+        
+        /*
+         * WrapPanel 코드 비하인드 활용 예제:
+         * 
+         * 1. 동적으로 태그/칩 추가:
+         * 
+         *    private void AddTag_Click(object sender, RoutedEventArgs e)
+         *    {
+         *        string tagName = tagTextBox.Text;
+         *        if (string.IsNullOrWhiteSpace(tagName))
+         *            return;
+         *        
+         *        // 태그 칩 생성
+         *        Border tagChip = new Border
+         *        {
+         *            Background = new SolidColorBrush(Colors.LightBlue),
+         *            CornerRadius = new CornerRadius(15),
+         *            Padding = new Thickness(10, 5, 10, 5),
+         *            Margin = new Thickness(5),
+         *            BorderBrush = new SolidColorBrush(Colors.DarkBlue),
+         *            BorderThickness = new Thickness(1)
+         *        };
+         *        
+         *        // 태그 내용 (텍스트 + 삭제 버튼)
+         *        StackPanel chipContent = new StackPanel
+         *        {
+         *            Orientation = Orientation.Horizontal
+         *        };
+         *        
+         *        TextBlock textBlock = new TextBlock
+         *        {
+         *            Text = tagName,
+         *            VerticalAlignment = VerticalAlignment.Center,
+         *            Margin = new Thickness(0, 0, 5, 0)
+         *        };
+         *        
+         *        Button removeButton = new Button
+         *        {
+         *            Content = "×",
+         *            Background = Brushes.Transparent,
+         *            BorderThickness = new Thickness(0),
+         *            FontSize = 16,
+         *            Cursor = Cursors.Hand,
+         *            Padding = new Thickness(5, 0, 5, 0)
+         *        };
+         *        
+         *        // 삭제 버튼 클릭 시 태그 제거
+         *        removeButton.Click += (s, args) =>
+         *        {
+         *            myWrapPanel.Children.Remove(tagChip);
+         *        };
+         *        
+         *        chipContent.Children.Add(textBlock);
+         *        chipContent.Children.Add(removeButton);
+         *        tagChip.Child = chipContent;
+         *        
+         *        // WrapPanel에 추가
+         *        myWrapPanel.Children.Add(tagChip);
+         *        
+         *        // 입력 필드 초기화
+         *        tagTextBox.Clear();
+         *    }
+         * 
+         * 2. 이미지 갤러리 동적 생성:
+         * 
+         *    private void LoadImages(string[] imagePaths)
+         *    {
+         *        galleryWrapPanel.Children.Clear();
+         *        
+         *        foreach (string imagePath in imagePaths)
+         *        {
+         *            Border imageBorder = new Border
+         *            {
+         *                Width = 150,
+         *                Height = 150,
+         *                Margin = new Thickness(5),
+         *                BorderBrush = new SolidColorBrush(Colors.Gray),
+         *                BorderThickness = new Thickness(1),
+         *                Background = new SolidColorBrush(Colors.White)
+         *            };
+         *            
+         *            Image image = new Image
+         *            {
+         *                Source = new BitmapImage(new Uri(imagePath, UriKind.Relative)),
+         *                Stretch = Stretch.UniformToFill
+         *            };
+         *            
+         *            image.MouseLeftButtonDown += Image_MouseLeftButtonDown;
+         *            imageBorder.Child = image;
+         *            galleryWrapPanel.Children.Add(imageBorder);
+         *        }
+         *    }
+         *    
+         *    private void Image_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+         *    {
+         *        if (sender is Image image)
+         *        {
+         *            // 이미지 클릭 시 처리 (확대 보기 등)
+         *            MessageBox.Show("이미지를 클릭했습니다!");
+         *        }
+         *    }
+         * 
+         * 3. 제품 카드 동적 생성:
+         * 
+         *    private void LoadProducts(List<Product> products)
+         *    {
+         *        productWrapPanel.Children.Clear();
+         *        
+         *        foreach (var product in products)
+         *        {
+         *            Border productCard = new Border
+         *            {
+         *                Width = 200,
+         *                Height = 250,
+         *                Margin = new Thickness(10),
+         *                BorderBrush = new SolidColorBrush(Colors.LightGray),
+         *                BorderThickness = new Thickness(1),
+         *                CornerRadius = new CornerRadius(5),
+         *                Background = new SolidColorBrush(Colors.White)
+         *            };
+         *            
+         *            StackPanel cardContent = new StackPanel();
+         *            
+         *            // 제품 이미지
+         *            Image productImage = new Image
+         *            {
+         *                Source = new BitmapImage(new Uri(product.ImagePath, UriKind.Relative)),
+         *                Height = 150,
+         *                Stretch = Stretch.UniformToFill
+         *            };
+         *            
+         *            // 제품명
+         *            TextBlock nameBlock = new TextBlock
+         *            {
+         *                Text = product.Name,
+         *                FontWeight = FontWeights.Bold,
+         *                Margin = new Thickness(10, 10, 10, 5),
+         *                TextWrapping = TextWrapping.Wrap
+         *            };
+         *            
+         *            // 가격
+         *            TextBlock priceBlock = new TextBlock
+         *            {
+         *                Text = $"₩{product.Price:N0}",
+         *                Foreground = new SolidColorBrush(Colors.DarkBlue),
+         *                Margin = new Thickness(10, 0, 10, 10)
+         *            };
+         *            
+         *            // 구매 버튼
+         *            Button buyButton = new Button
+         *            {
+         *                Content = "구매",
+         *                Margin = new Thickness(10),
+         *                Tag = product
+         *            };
+         *            buyButton.Click += BuyButton_Click;
+         *            
+         *            cardContent.Children.Add(productImage);
+         *            cardContent.Children.Add(nameBlock);
+         *            cardContent.Children.Add(priceBlock);
+         *            cardContent.Children.Add(buyButton);
+         *            
+         *            productCard.Child = cardContent;
+         *            productWrapPanel.Children.Add(productCard);
+         *        }
+         *    }
+         *    
+         *    private void BuyButton_Click(object sender, RoutedEventArgs e)
+         *    {
+         *        if (sender is Button button && button.Tag is Product product)
+         *        {
+         *            MessageBox.Show($"{product.Name}을(를) 구매합니다!");
+         *        }
+         *    }
+         * 
+         * 4. 필터 칩 관리:
+         * 
+         *    private List<string> selectedFilters = new List<string>();
+         *    
+         *    private void FilterCheckBox_Checked(object sender, RoutedEventArgs e)
+         *    {
+         *        if (sender is CheckBox checkBox)
+         *        {
+         *            string filterName = checkBox.Content.ToString();
+         *            selectedFilters.Add(filterName);
+         *            AddFilterChip(filterName);
+         *        }
+         *    }
+         *    
+         *    private void AddFilterChip(string filterName)
+         *    {
+         *        Border chip = new Border
+         *        {
+         *            Background = new SolidColorBrush(Colors.LightGreen),
+         *            CornerRadius = new CornerRadius(12),
+         *            Padding = new Thickness(10, 5, 10, 5),
+         *            Margin = new Thickness(5),
+         *            Tag = filterName
+         *        };
+         *        
+         *        StackPanel content = new StackPanel 
+         *        { 
+         *            Orientation = Orientation.Horizontal 
+         *        };
+         *        
+         *        content.Children.Add(new TextBlock { Text = filterName });
+         *        
+         *        Button removeBtn = new Button
+         *        {
+         *            Content = "×",
+         *            Margin = new Thickness(5, 0, 0, 0),
+         *            Background = Brushes.Transparent,
+         *            BorderThickness = new Thickness(0)
+         *        };
+         *        
+         *        removeBtn.Click += (s, e) =>
+         *        {
+         *            filterWrapPanel.Children.Remove(chip);
+         *            selectedFilters.Remove(filterName);
+         *            ApplyFilters();
+         *        };
+         *        
+         *        content.Children.Add(removeBtn);
+         *        chip.Child = content;
+         *        filterWrapPanel.Children.Add(chip);
+         *        
+         *        ApplyFilters();
+         *    }
+         *    
+         *    private void ApplyFilters()
+         *    {
+         *        // 선택된 필터 적용 로직
+         *        MessageBox.Show($"적용된 필터: {string.Join(", ", selectedFilters)}");
+         *    }
+         * 
+         * 5. 색상 팔레트:
+         * 
+         *    private void GenerateColorPalette()
+         *    {
+         *        colorWrapPanel.Children.Clear();
+         *        
+         *        Color[] colors = 
+         *        {
+         *            Colors.Red, Colors.Orange, Colors.Yellow,
+         *            Colors.Green, Colors.Blue, Colors.Purple,
+         *            Colors.Pink, Colors.Brown, Colors.Gray,
+         *            Colors.Black, Colors.White, Colors.Cyan
+         *        };
+         *        
+         *        foreach (Color color in colors)
+         *        {
+         *            Border colorBox = new Border
+         *            {
+         *                Width = 50,
+         *                Height = 50,
+         *                Background = new SolidColorBrush(color),
+         *                BorderBrush = new SolidColorBrush(Colors.Black),
+         *                BorderThickness = new Thickness(1),
+         *                Margin = new Thickness(5),
+         *                Cursor = Cursors.Hand,
+         *                Tag = color
+         *            };
+         *            
+         *            colorBox.MouseLeftButtonDown += ColorBox_MouseLeftButtonDown;
+         *            colorWrapPanel.Children.Add(colorBox);
+         *        }
+         *    }
+         *    
+         *    private void ColorBox_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+         *    {
+         *        if (sender is Border border && border.Tag is Color color)
+         *        {
+         *            selectedColorDisplay.Fill = new SolidColorBrush(color);
+         *            colorNameLabel.Content = color.ToString();
+         *        }
+         *    }
+         * 
+         * 6. 아이콘 툴바 동적 생성:
+         * 
+         *    private void CreateToolbar()
+         *    {
+         *        var tools = new[]
+         *        {
+         *            new { Icon = "💾", Tooltip = "저장", Action = (Action)Save },
+         *            new { Icon = "📂", Tooltip = "열기", Action = (Action)Open },
+         *            new { Icon = "🖨️", Tooltip = "인쇄", Action = (Action)Print },
+         *            new { Icon = "✂️", Tooltip = "잘라내기", Action = (Action)Cut },
+         *            new { Icon = "📋", Tooltip = "복사", Action = (Action)Copy },
+         *            new { Icon = "📌", Tooltip = "붙여넣기", Action = (Action)Paste }
+         *        };
+         *        
+         *        foreach (var tool in tools)
+         *        {
+         *            Button toolButton = new Button
+         *            {
+         *                Content = tool.Icon,
+         *                Width = 40,
+         *                Height = 40,
+         *                Margin = new Thickness(2),
+         *                FontSize = 20,
+         *                ToolTip = tool.Tooltip
+         *            };
+         *            
+         *            toolButton.Click += (s, e) => tool.Action();
+         *            toolbarWrapPanel.Children.Add(toolButton);
+         *        }
+         *    }
+         *    
+         *    private void Save() => MessageBox.Show("저장");
+         *    private void Open() => MessageBox.Show("열기");
+         *    private void Print() => MessageBox.Show("인쇄");
+         *    private void Cut() => MessageBox.Show("잘라내기");
+         *    private void Copy() => MessageBox.Show("복사");
+         *    private void Paste() => MessageBox.Show("붙여넣기");
+         * 
+         * 7. 검색 결과 표시:
+         * 
+         *    private void Search_Click(object sender, RoutedEventArgs e)
+         *    {
+         *        string searchText = searchTextBox.Text;
+         *        var results = SearchItems(searchText);
+         *        
+         *        resultWrapPanel.Children.Clear();
+         *        
+         *        if (results.Count == 0)
+         *        {
+         *            TextBlock noResults = new TextBlock
+         *            {
+         *                Text = "검색 결과가 없습니다.",
+         *                Margin = new Thickness(10),
+         *                FontStyle = FontStyles.Italic
+         *            };
+         *            resultWrapPanel.Children.Add(noResults);
+         *        }
+         *        else
+         *        {
+         *            foreach (var result in results)
+         *            {
+         *                Border resultItem = new Border
+         *                {
+         *                    Background = new SolidColorBrush(Colors.LightYellow),
+         *                    BorderBrush = new SolidColorBrush(Colors.Gold),
+         *                    BorderThickness = new Thickness(1),
+         *                    CornerRadius = new CornerRadius(5),
+         *                    Padding = new Thickness(10),
+         *                    Margin = new Thickness(5)
+         *                };
+         *                
+         *                TextBlock resultText = new TextBlock
+         *                {
+         *                    Text = result,
+         *                    TextWrapping = TextWrapping.Wrap
+         *                };
+         *                
+         *                resultItem.Child = resultText;
+         *                resultWrapPanel.Children.Add(resultItem);
+         *            }
+         *        }
+         *    }
+         *    
+         *    private List<string> SearchItems(string query)
+         *    {
+         *        // 실제 검색 로직
+         *        return new List<string> { "결과1", "결과2", "결과3" };
+         *    }
+         * 
+         * 8. 애니메이션과 함께 추가:
+         * 
+         *    private void AddItemWithAnimation(UIElement item)
+         *    {
+         *        item.Opacity = 0;
+         *        myWrapPanel.Children.Add(item);
+         *        
+         *        // 페이드 인 애니메이션
+         *        DoubleAnimation fadeIn = new DoubleAnimation
+         *        {
+         *            From = 0,
+         *            To = 1,
+         *            Duration = TimeSpan.FromMilliseconds(300)
+         *        };
+         *        
+         *        // 스케일 애니메이션
+         *        ScaleTransform scale = new ScaleTransform(0.5, 0.5);
+         *        item.RenderTransform = scale;
+         *        item.RenderTransformOrigin = new Point(0.5, 0.5);
+         *        
+         *        DoubleAnimation scaleAnimation = new DoubleAnimation
+         *        {
+         *            From = 0.5,
+         *            To = 1,
+         *            Duration = TimeSpan.FromMilliseconds(300)
+         *        };
+         *        
+         *        item.BeginAnimation(UIElement.OpacityProperty, fadeIn);
+         *        scale.BeginAnimation(ScaleTransform.ScaleXProperty, scaleAnimation);
+         *        scale.BeginAnimation(ScaleTransform.ScaleYProperty, scaleAnimation);
+         *    }
+         * 
+         * 9. Orientation 동적 변경:
+         * 
+         *    private void ToggleOrientation_Click(object sender, RoutedEventArgs e)
+         *    {
+         *        if (myWrapPanel.Orientation == Orientation.Horizontal)
+         *        {
+         *            myWrapPanel.Orientation = Orientation.Vertical;
+         *            toggleButton.Content = "가로 배치로 변경";
+         *        }
+         *        else
+         *        {
+         *            myWrapPanel.Orientation = Orientation.Horizontal;
+         *            toggleButton.Content = "세로 배치로 변경";
+         *        }
+         *    }
+         * 
+         * 10. 드래그 앤 드롭으로 재정렬:
+         * 
+         *     private UIElement? draggedElement;
+         *     
+         *     private void Item_MouseDown(object sender, MouseButtonEventArgs e)
+         *     {
+         *         draggedElement = sender as UIElement;
+         *         if (draggedElement != null)
+         *         {
+         *             DragDrop.DoDragDrop(draggedElement, draggedElement, DragDropEffects.Move);
+         *         }
+         *     }
+         *     
+         *     private void WrapPanel_Drop(object sender, DragEventArgs e)
+         *     {
+         *         if (draggedElement != null && sender is WrapPanel panel)
+         *         {
+         *             Point dropPosition = e.GetPosition(panel);
+         *             int newIndex = GetDropIndex(panel, dropPosition);
+         *             
+         *             panel.Children.Remove(draggedElement);
+         *             panel.Children.Insert(newIndex, draggedElement);
+         *             
+         *             draggedElement = null;
+         *         }
+         *     }
+         *     
+         *     private int GetDropIndex(WrapPanel panel, Point position)
+         *     {
+         *         // 드롭 위치에 가장 가까운 인덱스 계산
+         *         int index = 0;
+         *         foreach (UIElement child in panel.Children)
+         *         {
+         *             Point childPosition = child.TransformToAncestor(panel).Transform(new Point(0, 0));
+         *             
+         *             if (panel.Orientation == Orientation.Horizontal)
+         *             {
+         *                 if (position.X < childPosition.X + child.RenderSize.Width / 2)
+         *                     break;
+         *             }
+         *             else
+         *             {
+         *                 if (position.Y < childPosition.Y + child.RenderSize.Height / 2)
+         *                     break;
+         *             }
+         *             index++;
+         *         }
+         *         return index;
+         *     }
+         * 
+         * WrapPanel 코드 조작 관련 중요 사항:
+         * 
+         * 1. Children 컬렉션:
+         *    - UIElementCollection 타입
+         *    - Add, Insert, Remove, Clear 메서드
+         *    - Count 속성으로 자식 개수 확인
+         * 
+         * 2. 동적 추가 시 고려사항:
+         *    - Width/Height 명시적 설정 권장
+         *    - Margin으로 적절한 간격 유지
+         *    - Tag 속성으로 데이터 연결
+         * 
+         * 3. 반응형 처리:
+         *    - 창 크기 변경 시 자동 재배치됨
+         *    - ItemWidth/ItemHeight로 일관된 크기 유지
+         *    - SizeChanged 이벤트로 추가 처리 가능
+         * 
+         * 4. 성능 최적화:
+         *    - 많은 항목 추가 시 BeginInit/EndInit 사용
+         *    - 가상화가 필요하면 ListBox나 ListView 사용 고려
+         *    - UI 스레드 외부에서는 Dispatcher 사용
+         * 
+         * 5. 스타일링:
+         *    - 프로그래밍 방식으로 스타일 적용 가능
+         *    - 동적 생성 시 일관된 디자인 유지
+         *    - Resources에서 스타일 재사용
+         * 
+         * 6. 이벤트 처리:
+         *    - 동적 요소에도 이벤트 핸들러 등록 가능
+         *    - 람다식으로 간결하게 처리
+         *    - 메모리 누수 방지를 위해 이벤트 정리 필요
+         * 
+         * 7. 데이터 바인딩:
+         *    - ItemsControl.ItemsPanel로 WrapPanel 사용 가능
+         *    - MVVM 패턴에서 활용
+         */
+    }
+}

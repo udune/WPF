@@ -1,0 +1,336 @@
+﻿<Application x:Class="ch34_MVVM.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:ch34_MVVM"
+             StartupUri="Views/PersonView.xaml">
+    <!-- 
+        Application:
+        - WPF 애플리케이션의 루트 요소
+        - 전역 설정 및 리소스
+        
+        StartupUri="Views/PersonView.xaml":
+        - 애플리케이션 시작 시 표시할 화면
+        - PersonView.xaml (Page)
+        - MainWindow.xaml 대신 사용
+        
+        일반적인 설정:
+        StartupUri="MainWindow.xaml"
+        - MainWindow가 Frame 호스팅
+        - Frame이 Page 표시
+        
+        이 예제:
+        StartupUri="Views/PersonView.xaml"
+        - PersonView를 직접 표시
+        - Window 없이 Page만 표시 (WPF 특수 케이스)
+        
+        StartupUri vs Startup 이벤트:
+        
+        StartupUri (선언적):
+        <Application StartupUri="MainWindow.xaml"/>
+        - 간단
+        - 추가 로직 불가
+        
+        Startup 이벤트 (명령적):
+        <Application Startup="Application_Startup"/>
+        
+        private void Application_Startup(object sender, StartupEventArgs e)
+        {
+            var mainWindow = new MainWindow();
+            mainWindow.Show();
+        }
+        
+        - 초기화 로직 추가 가능
+        - DI 컨테이너 설정
+        - 조건부 시작 화면
+    -->
+    
+    <Application.Resources>
+        <!-- 
+            Application.Resources:
+            - 애플리케이션 전역 리소스
+            - 모든 Window와 Page에서 사용 가능
+            - Style, DataTemplate, Converter 등
+            
+            현재 비어 있음
+            
+            MVVM 전역 리소스 예제:
+            
+            ========== 1. DataTemplate (View-ViewModel 매핑) ========= =
+            
+            <DataTemplate DataType="{x:Type vm:PersonViewModel}">
+                <views:PersonView/>
+            </DataTemplate>
+            
+            <DataTemplate DataType="{x:Type vm:SettingsViewModel}">
+                <views:SettingsView/>
+            </DataTemplate>
+            
+            사용:
+            <ContentControl Content="{Binding CurrentViewModel}"/>
+            
+            CurrentViewModel:
+            - PersonViewModel → PersonView 자동 표시
+            - SettingsViewModel → SettingsView 자동 표시
+            
+            ========== 2. Converter ========= =
+            
+            <local:BooleanToVisibilityConverter x:Key="BoolToVisConverter"/>
+            <local:NullToBooleanConverter x:Key="NullToBoolConverter"/>
+            
+            사용:
+            <TextBox IsEnabled="{Binding SelectedPerson, 
+                                        Converter={StaticResource NullToBoolConverter}}"/>
+            
+            ========== 3. Style ========= =
+            
+            <Style TargetType="Button">
+                <Setter Property="Padding" Value="10,5"/>
+                <Setter Property="Margin" Value="5"/>
+                <Setter Property="MinWidth" Value="80"/>
+            </Style>
+            
+            <Style TargetType="TextBox">
+                <Setter Property="Margin" Value="5"/>
+                <Setter Property="Padding" Value="5"/>
+            </Style>
+            
+            ========== 4. Color 및 Brush ========= =
+            
+            <SolidColorBrush x:Key="PrimaryBrush" Color="#2196F3"/>
+            <SolidColorBrush x:Key="SecondaryBrush" Color="#FFC107"/>
+            <SolidColorBrush x:Key="ErrorBrush" Color="#F44336"/>
+            
+            사용:
+            <Button Background="{StaticResource PrimaryBrush}"/>
+            
+            ========== 5. ResourceDictionary 병합 ========= =
+            
+            <Application.Resources>
+                <ResourceDictionary>
+                    <ResourceDictionary.MergedDictionaries>
+                        <ResourceDictionary Source="Styles/ButtonStyles.xaml"/>
+                        <ResourceDictionary Source="Styles/TextBoxStyles.xaml"/>
+                        <ResourceDictionary Source="Converters/Converters.xaml"/>
+                    </ResourceDictionary.MergedDictionaries>
+                </ResourceDictionary>
+            </Application.Resources>
+            
+            장점:
+            - 리소스 분리
+            - 재사용성
+            - 유지보수성
+            
+            ========== 6. ViewModelLocator (MVVM Light) ========= =
+            
+            <local:ViewModelLocator x:Key="Locator"/>
+            
+            사용:
+            DataContext="{Binding Source={StaticResource Locator}, Path=PersonViewModel}"
+            
+            ViewModelLocator:
+            public class ViewModelLocator
+            {
+                public PersonViewModel PersonViewModel => 
+                    ServiceLocator.Current.GetInstance<PersonViewModel>();
+                
+                public SettingsViewModel SettingsViewModel => 
+                    ServiceLocator.Current.GetInstance<SettingsViewModel>();
+            }
+            
+            ========== 7. 전역 Command ========= =
+            
+            <RoutedUICommand x:Key="ExitCommand" Text="종료"/>
+            <RoutedUICommand x:Key="SaveCommand" Text="저장"/>
+            
+            사용:
+            <KeyBinding Command="{StaticResource ExitCommand}" Key="Q" Modifiers="Ctrl"/>
+            
+            ========== App.xaml.cs 고급 패턴 ========= =
+            
+            App.xaml:
+            <Application Startup="Application_Startup"
+                        Exit="Application_Exit"
+                        DispatcherUnhandledException="Application_DispatcherUnhandledException"/>
+            
+            App.xaml.cs:
+            public partial class App : Application
+            {
+                private IServiceProvider _serviceProvider;
+                
+                protected override void OnStartup(StartupEventArgs e)
+                {
+                    base.OnStartup(e);
+                    
+                    // DI 컨테이너 설정
+                    var services = new ServiceCollection();
+                    ConfigureServices(services);
+                    _serviceProvider = services.BuildServiceProvider();
+                    
+                    // MainWindow 표시
+                    var mainWindow = _serviceProvider.GetRequiredService<MainWindow>();
+                    mainWindow.Show();
+                }
+                
+                private void ConfigureServices(IServiceCollection services)
+                {
+                    // ViewModels
+                    services.AddTransient<PersonViewModel>();
+                    services.AddTransient<MainViewModel>();
+                    
+                    // Views
+                    services.AddTransient<MainWindow>();
+                    services.AddTransient<PersonView>();
+                    
+                    // Services
+                    services.AddSingleton<INavigationService, NavigationService>();
+                    services.AddSingleton<IDialogService, DialogService>();
+                    services.AddScoped<IPersonService, PersonService>();
+                }
+                
+                private void Application_Exit(object sender, ExitEventArgs e)
+                {
+                    // 정리 작업
+                    if (_serviceProvider is IDisposable disposable)
+                    {
+                        disposable.Dispose();
+                    }
+                }
+                
+                private void Application_DispatcherUnhandledException(
+                    object sender, 
+                    DispatcherUnhandledExceptionEventArgs e)
+                {
+                    // 전역 예외 처리
+                    MessageBox.Show($"오류 발생: {e.Exception.Message}", 
+                                   "오류", 
+                                   MessageBoxButton.OK, 
+                                   MessageBoxImage.Error);
+                    e.Handled = true;
+                }
+            }
+            
+            ========== Single Instance 애플리케이션 ========= =
+            
+            public partial class App : Application
+            {
+                private static Mutex _mutex;
+                
+                protected override void OnStartup(StartupEventArgs e)
+                {
+                    const string appName = "MyMVVMApp";
+                    bool createdNew;
+                    
+                    _mutex = new Mutex(true, appName, out createdNew);
+                    
+                    if (!createdNew)
+                    {
+                        MessageBox.Show("애플리케이션이 이미 실행 중입니다.");
+                        Application.Current.Shutdown();
+                        return;
+                    }
+                    
+                    base.OnStartup(e);
+                }
+            }
+            
+            ========== 테마 전환 ========= =
+            
+            public partial class App : Application
+            {
+                public void SwitchTheme(string themeName)
+                {
+                    var uri = new Uri($"Themes/{themeName}.xaml", UriKind.Relative);
+                    var resourceDict = Application.LoadComponent(uri) as ResourceDictionary;
+                    
+                    Resources.MergedDictionaries.Clear();
+                    Resources.MergedDictionaries.Add(resourceDict);
+                }
+            }
+            
+            사용:
+            (Application.Current as App)?.SwitchTheme("Dark");
+            
+            ========== 언어 전환 ========= =
+            
+            public partial class App : Application
+            {
+                public void SwitchLanguage(string cultureName)
+                {
+                    var culture = new CultureInfo(cultureName);
+                    Thread.CurrentThread.CurrentCulture = culture;
+                    Thread.CurrentThread.CurrentUICulture = culture;
+                    
+                    // 리소스 다시 로드
+                    var uri = new Uri($"Languages/{cultureName}.xaml", UriKind.Relative);
+                    var resourceDict = Application.LoadComponent(uri) as ResourceDictionary;
+                    
+                    Resources.MergedDictionaries.Clear();
+                    Resources.MergedDictionaries.Add(resourceDict);
+                }
+            }
+            
+            ========== MVVM 프로젝트 구조 ========= =
+            
+            MyMVVMApp/
+            ├── App.xaml                    (애플리케이션 진입점)
+            ├── App.xaml.cs                 (전역 설정)
+            ├── Models/                     (데이터 모델)
+            │   ├── PersonModel.cs
+            │   └── ...
+            ├── Views/                      (UI)
+            │   ├── MainWindow.xaml
+            │   ├── PersonView.xaml
+            │   └── ...
+            ├── ViewModels/                 (뷰 로직)
+            │   ├── MainViewModel.cs
+            │   ├── PersonViewModel.cs
+            │   └── ...
+            ├── Commands/                   (명령)
+            │   ├── RelayCommand.cs
+            │   ├── PersonCommand.cs
+            │   └── ...
+            ├── Services/                   (서비스)
+            │   ├── INavigationService.cs
+            │   ├── NavigationService.cs
+            │   ├── IDialogService.cs
+            │   └── ...
+            ├── Converters/                 (값 변환기)
+            │   ├── BooleanToVisibilityConverter.cs
+            │   └── ...
+            ├── Behaviors/                  (동작)
+            │   ├── FocusBehavior.cs
+            │   └── ...
+            ├── Styles/                     (스타일)
+            │   ├── ButtonStyles.xaml
+            │   ├── TextBoxStyles.xaml
+            │   └── ...
+            └── Resources/                  (리소스)
+                ├── Images/
+                └── Fonts/
+            
+            ========== 주의사항 ========= =
+            
+            1. StartupUri vs Startup:
+               - StartupUri: 간단한 경우
+               - Startup: 초기화 로직 필요 시
+            
+            2. 전역 리소스:
+               - 과도한 리소스는 시작 시간 증가
+               - 필요한 것만 포함
+            
+            3. DI 컨테이너:
+               - Microsoft.Extensions.DependencyInjection
+               - 테스트 용이
+               - 느슨한 결합
+            
+            4. 예외 처리:
+               - DispatcherUnhandledException
+               - TaskScheduler.UnobservedTaskException
+               - AppDomain.UnhandledException
+            
+            5. 리소스 정리:
+               - OnExit에서 IDisposable 정리
+               - 파일 핸들, 데이터베이스 연결 등
+        -->
+    </Application.Resources>
+</Application>

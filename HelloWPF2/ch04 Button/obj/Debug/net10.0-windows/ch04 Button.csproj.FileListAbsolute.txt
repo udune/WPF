@@ -1,0 +1,20 @@
+C:\Users\udune\Desktop\WPF\HelloWPF2\ch04 Button\bin\Debug\net10.0-windows\ch04 Button.exe
+C:\Users\udune\Desktop\WPF\HelloWPF2\ch04 Button\bin\Debug\net10.0-windows\ch04 Button.deps.json
+C:\Users\udune\Desktop\WPF\HelloWPF2\ch04 Button\bin\Debug\net10.0-windows\ch04 Button.runtimeconfig.json
+C:\Users\udune\Desktop\WPF\HelloWPF2\ch04 Button\bin\Debug\net10.0-windows\ch04 Button.dll
+C:\Users\udune\Desktop\WPF\HelloWPF2\ch04 Button\bin\Debug\net10.0-windows\ch04 Button.pdb
+C:\Users\udune\Desktop\WPF\HelloWPF2\ch04 Button\obj\Debug\net10.0-windows\MainWindow.g.cs
+C:\Users\udune\Desktop\WPF\HelloWPF2\ch04 Button\obj\Debug\net10.0-windows\App.g.cs
+C:\Users\udune\Desktop\WPF\HelloWPF2\ch04 Button\obj\Debug\net10.0-windows\ch04 Button_MarkupCompile.cache
+C:\Users\udune\Desktop\WPF\HelloWPF2\ch04 Button\obj\Debug\net10.0-windows\ch04 Button_MarkupCompile.lref
+C:\Users\udune\Desktop\WPF\HelloWPF2\ch04 Button\obj\Debug\net10.0-windows\MainWindow.baml
+C:\Users\udune\Desktop\WPF\HelloWPF2\ch04 Button\obj\Debug\net10.0-windows\ch04 Button.g.resources
+C:\Users\udune\Desktop\WPF\HelloWPF2\ch04 Button\obj\Debug\net10.0-windows\ch04 Button.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\udune\Desktop\WPF\HelloWPF2\ch04 Button\obj\Debug\net10.0-windows\ch04 Button.AssemblyInfoInputs.cache
+C:\Users\udune\Desktop\WPF\HelloWPF2\ch04 Button\obj\Debug\net10.0-windows\ch04 Button.AssemblyInfo.cs
+C:\Users\udune\Desktop\WPF\HelloWPF2\ch04 Button\obj\Debug\net10.0-windows\ch04 Button.csproj.CoreCompileInputs.cache
+C:\Users\udune\Desktop\WPF\HelloWPF2\ch04 Button\obj\Debug\net10.0-windows\ch04 Button.dll
+C:\Users\udune\Desktop\WPF\HelloWPF2\ch04 Button\obj\Debug\net10.0-windows\refint\ch04 Button.dll
+C:\Users\udune\Desktop\WPF\HelloWPF2\ch04 Button\obj\Debug\net10.0-windows\ch04 Button.pdb
+C:\Users\udune\Desktop\WPF\HelloWPF2\ch04 Button\obj\Debug\net10.0-windows\ch04 Button.genruntimeconfig.cache
+C:\Users\udune\Desktop\WPF\HelloWPF2\ch04 Button\obj\Debug\net10.0-windows\ref\ch04 Button.dll

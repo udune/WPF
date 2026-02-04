@@ -1,0 +1,78 @@
+﻿using System.Configuration;
+using System.Data;
+using System.Windows;
+
+namespace ch6_패스워드박스
+{
+    /// <summary>
+    /// App.xaml에 대한 상호작용 논리
+    /// WPF 애플리케이션의 전역 애플리케이션 클래스
+    /// PasswordBox 컨트롤 학습을 위한 애플리케이션
+    /// </summary>
+    /*
+     * App 클래스 설명:
+     * 
+     * 이 클래스는 WPF 애플리케이션의 진입점 역할을 합니다.
+     * Application 클래스를 상속받아 애플리케이션의 수명 주기를 관리합니다.
+     * 
+     * 주요 역할:
+     * 1. 애플리케이션 시작 시 StartupUri로 지정된 윈도우를 표시
+     * 2. 전역 리소스 관리 (App.xaml의 Application.Resources)
+     * 3. 애플리케이션 수준의 이벤트 처리 (시작, 종료, 예외 등)
+     * 4. 모든 윈도우와 리소스의 라이프사이클 관리
+     * 
+     * partial 키워드:
+     * - App.xaml 파일과 함께 하나의 클래스를 구성합니다.
+     * - XAML 파일의 선언적 정의와 이 코드 비하인드를 결합합니다.
+     * 
+     * 현재 구조:
+     * - 기본 구현만 포함된 간단한 애플리케이션입니다.
+     * - PasswordBox 컨트롤의 기능을 학습하는 것이 주 목적입니다.
+     * - 추가적인 전역 초기화나 이벤트 처리가 필요하지 않습니다.
+     * 
+     * 참고 - 사용하지 않는 using 문:
+     * - System.Configuration: App.config 파일 읽기에 사용 (현재 미사용)
+     * - System.Data: 데이터베이스 작업에 사용 (현재 미사용)
+     * - System.Windows: WPF 핵심 클래스 (Application 클래스 사용)
+     * 
+     * 확장 가능한 기능:
+     * 
+     * 1. OnStartup 오버라이드 - 애플리케이션 시작 시 초기화:
+     *    protected override void OnStartup(StartupEventArgs e)
+     *    {
+     *        base.OnStartup(e);
+     *        // 전역 설정, 서비스 초기화, 로깅 설정 등
+     *    }
+     * 
+     * 2. OnExit 오버라이드 - 애플리케이션 종료 시 정리:
+     *    protected override void OnExit(ExitEventArgs e)
+     *    {
+     *        base.OnExit(e);
+     *        // 리소스 해제, 설정 저장, 연결 종료 등
+     *    }
+     * 
+     * 3. DispatcherUnhandledException - 처리되지 않은 예외 처리:
+     *    public App()
+     *    {
+     *        this.DispatcherUnhandledException += App_DispatcherUnhandledException;
+     *    }
+     *    
+     *    private void App_DispatcherUnhandledException(object sender, 
+     *        System.Windows.Threading.DispatcherUnhandledExceptionEventArgs e)
+     *    {
+     *        MessageBox.Show($"오류 발생: {e.Exception.Message}", "오류");
+     *        e.Handled = true; // 예외를 처리했음을 표시
+     *    }
+     * 
+     * PasswordBox 관련 참고:
+     * - PasswordBox는 보안상의 이유로 Password 속성을 바인딩할 수 없습니다.
+     * - 비밀번호 데이터는 메모리에 평문으로 저장되지 않도록 SecureString 사용을 권장합니다.
+     * - 전역 보안 정책이나 비밀번호 검증 로직을 App 클래스에서 관리할 수 있습니다.
+     */
+    public partial class App : Application
+    {
+        // 현재는 추가 구현이 없는 기본 상태입니다.
+        // PasswordBox 컨트롤의 기본 사용법 학습에 초점을 맞추고 있습니다.
+    }
+
+}

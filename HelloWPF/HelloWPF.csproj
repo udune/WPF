@@ -1,0 +1,31 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="ch21 스테이터스바\**" />
+    <Compile Remove="ch35 MariaDB연동\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Remove="ch21 스테이터스바\**" />
+    <EmbeddedResource Remove="ch35 MariaDB연동\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Page Remove="ch21 스테이터스바\**" />
+    <Page Remove="ch35 MariaDB연동\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="ch21 스테이터스바\**" />
+    <None Remove="ch35 MariaDB연동\**" />
+  </ItemGroup>
+
+</Project>

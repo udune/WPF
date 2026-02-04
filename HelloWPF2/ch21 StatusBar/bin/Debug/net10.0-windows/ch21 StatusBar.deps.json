@@ -1,0 +1,23 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v10.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v10.0": {
+      "ch21 StatusBar/1.0.0": {
+        "runtime": {
+          "ch21 StatusBar.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "ch21 StatusBar/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

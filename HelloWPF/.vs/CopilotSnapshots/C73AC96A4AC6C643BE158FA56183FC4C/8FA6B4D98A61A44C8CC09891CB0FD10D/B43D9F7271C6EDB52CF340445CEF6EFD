@@ -1,0 +1,142 @@
+﻿<!-- 
+    ch7 이미지 - WPF Image 컨트롤의 다양한 사용법을 보여주는 예제 파일
+    Image 컨트롤은 이미지를 표시하는 컨트롤로, 외부 URL, 로컬 파일, 리소스 파일 등
+    다양한 소스에서 이미지를 로드할 수 있습니다.
+-->
+<Window x:Class="ch7_이미지.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ch7_이미지"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <!-- StackPanel: 자식 요소들을 세로 방향으로 순차적으로 배치 -->
+        <StackPanel>
+            <!-- 
+                예제 1: 외부 URL에서 이미지 로드 + 마우스 이벤트
+                인터넷에서 직접 이미지를 불러와 표시합니다.
+            -->
+            <Image
+                Width="100"
+                x:Name="img"
+                MouseEnter="img_MouseEnter"
+                Source="https://cdn3.iconfinder.com/data/icons/geek-3/24/Decepticon_transformers_movie_robot-512.png"/>
+            <!-- 
+                Image 속성 설명:
+                
+                Width="100": 이미지 너비를 100픽셀로 설정
+                             - Height를 지정하지 않으면 원본 이미지의 종횡비(aspect ratio)를 유지하며 자동 조정
+                
+                x:Name="img": 코드 비하인드에서 접근할 수 있는 고유 식별자
+                              - 마우스 이벤트 핸들러에서 이 Image의 Source를 변경할 수 있음
+                
+                MouseEnter="img_MouseEnter": 마우스가 이미지 위로 올라왔을 때 실행되는 이벤트 핸들러
+                                             - 마우스 호버 시 다른 이미지로 교체하는 효과 구현
+                
+                Source: 이미지의 소스(출처)를 지정
+                        - 외부 URL: 인터넷 상의 이미지 주소 (예: https://...)
+                        - 상대 경로: 프로젝트 내 파일 (예: /img/1.png)
+                        - 절대 경로: 파일 시스템의 전체 경로
+                        - 리소스: 임베디드 리소스 (pack://application:,,,/...)
+                
+                참고:
+                - 외부 URL 사용 시 네트워크 연결이 필요하며, 이미지 로딩에 시간이 걸릴 수 있음
+                - 이미지가 없거나 로드 실패 시 빈 공간으로 표시됨
+            -->
+            
+            <!-- 
+                예제 2: Button 안에 Image와 TextBlock을 포함한 복합 콘텐츠
+                Button은 단순 텍스트뿐만 아니라 이미지와 텍스트를 함께 표시할 수 있습니다.
+            -->
+            <Button Width="100">
+                <!-- 
+                    ContentControl: Button의 콘텐츠를 담는 컨테이너
+                    Button.Content에 직접 StackPanel을 넣어도 되지만 명시적으로 ContentControl 사용
+                -->
+                <ContentControl>
+                    <!-- StackPanel: Image와 TextBlock을 세로로 배치 -->
+                    <StackPanel>
+                        <!-- 안드로이드 로봇 이미지 (외부 URL) -->
+                        <Image Source="https://cdn2.iconfinder.com/data/icons/free-1/128/Android__logo__robot-512.png"/>
+                        <!-- 이미지 아래에 표시되는 텍스트 -->
+                        <TextBlock HorizontalAlignment="Center">로봇</TextBlock>
+                        <!-- 
+                            용도:
+                            - 아이콘과 텍스트를 함께 표시하는 버튼 만들기
+                            - 툴바나 리본 메뉴의 버튼에 자주 사용되는 패턴
+                            - 사용자에게 시각적으로 명확한 기능 표시
+                        -->
+                    </StackPanel>
+                </ContentControl>
+            </Button>
+            
+            <!-- 
+                예제 3: 로컬 파일에서 이미지 로드
+                프로젝트 내에 포함된 이미지 파일을 표시합니다.
+            -->
+            <Image Width="100" Source="/img/1.png"/>
+            <!-- 
+                Source="/img/1.png" 경로 설명:
+                
+                - "/" 시작: 프로젝트 루트 디렉토리를 기준으로 한 상대 경로
+                - "img" 폴더 안의 "1.png" 파일을 참조
+                
+                로컬 이미지 파일 사용 방법:
+                1. 프로젝트에 이미지 파일을 추가 (예: img/1.png)
+                2. 파일 속성에서 "빌드 작업(Build Action)"을 "Resource"로 설정
+                3. XAML에서 상대 경로로 참조
+                
+                장점:
+                - 네트워크 연결 불필요
+                - 빠른 로딩 속도
+                - 애플리케이션과 함께 배포됨
+                - 오프라인 환경에서도 작동
+                
+                경로 형식:
+                - 상대 경로: "img/1.png" 또는 "/img/1.png"
+                - Pack URI: "pack://application:,,,/img/1.png"
+                - 다른 어셈블리: "pack://application:,,,/AssemblyName;component/img/1.png"
+            -->
+        </StackPanel>
+    </Grid>
+    
+    <!--
+        Image 컨트롤의 추가 유용한 속성:
+        
+        Stretch 속성 (이미지 크기 조정 방식):
+        - None: 원본 크기 그대로 표시
+        - Fill: 컨트롤 크기에 맞춰 늘림 (종횡비 무시)
+        - Uniform: 종횡비를 유지하며 컨트롤에 맞춤 (기본값)
+        - UniformToFill: 종횡비를 유지하며 컨트롤을 채움 (잘릴 수 있음)
+        
+        예제:
+        <Image Source="image.png" Stretch="UniformToFill"/>
+        
+        StretchDirection 속성:
+        - UpOnly: 확대만 허용
+        - DownOnly: 축소만 허용
+        - Both: 확대와 축소 모두 허용 (기본값)
+        
+        유용한 이벤트:
+        - MouseEnter/MouseLeave: 마우스 호버 효과
+        - MouseDown/MouseUp: 클릭 이벤트
+        - ImageFailed: 이미지 로드 실패 시
+        
+        성능 최적화:
+        - DecodePixelWidth/DecodePixelHeight: 메모리 절약을 위해 디코딩 크기 제한
+        - CacheOption: 이미지 캐싱 옵션 설정
+        
+        예제 - 디코딩 크기 제한:
+        <Image>
+            <Image.Source>
+                <BitmapImage UriSource="large.jpg" DecodePixelWidth="200"/>
+            </Image.Source>
+        </Image>
+        
+        애니메이션 GIF 지원:
+        - WPF의 기본 Image 컨트롤은 애니메이션 GIF를 지원하지 않음
+        - 애니메이션 GIF를 사용하려면 별도의 라이브러리 필요 (예: WpfAnimatedGif)
+    -->
+</Window>

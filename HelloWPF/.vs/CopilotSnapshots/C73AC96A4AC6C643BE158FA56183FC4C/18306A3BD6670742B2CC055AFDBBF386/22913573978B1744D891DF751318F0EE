@@ -1,0 +1,25 @@
+﻿<!-- 
+    App.xaml - Button 학습 애플리케이션의 진입점
+    WPF 애플리케이션의 전역 설정 및 리소스를 정의합니다.
+-->
+<Application x:Class="ch4_버튼.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:ch4_버튼"
+             StartupUri="MainWindow.xaml">
+    <!-- 
+        Application 속성 설명:
+        
+        x:Class: 코드 비하인드 파일(App.xaml.cs)과 연결
+        StartupUri: 애플리케이션 시작 시 표시될 윈도우 지정
+        xmlns:local: 현재 프로젝트의 네임스페이스 참조
+    -->
+    
+    <!-- 
+        Application.Resources: 애플리케이션 전역 리소스 정의 영역
+        여기에 정의된 리소스는 모든 윈도우와 컨트롤에서 사용 가능합니다.
+    -->
+    <Application.Resources>
+         <!-- 현재 비어 있음 - 필요시 전역 스타일이나 리소스 추가 -->
+    </Application.Resources>
+</Application>

@@ -1,0 +1,20 @@
+C:\Users\udune\Desktop\WPF\HelloWPF2\ch24 ContextMenu\obj\Debug\net10.0-windows\MainWindow.g.cs
+C:\Users\udune\Desktop\WPF\HelloWPF2\ch24 ContextMenu\obj\Debug\net10.0-windows\App.g.cs
+C:\Users\udune\Desktop\WPF\HelloWPF2\ch24 ContextMenu\obj\Debug\net10.0-windows\ch24 ContextMenu_MarkupCompile.cache
+C:\Users\udune\Desktop\WPF\HelloWPF2\ch24 ContextMenu\obj\Debug\net10.0-windows\ch24 ContextMenu_MarkupCompile.lref
+C:\Users\udune\Desktop\WPF\HelloWPF2\ch24 ContextMenu\bin\Debug\net10.0-windows\ch24 ContextMenu.exe
+C:\Users\udune\Desktop\WPF\HelloWPF2\ch24 ContextMenu\bin\Debug\net10.0-windows\ch24 ContextMenu.deps.json
+C:\Users\udune\Desktop\WPF\HelloWPF2\ch24 ContextMenu\bin\Debug\net10.0-windows\ch24 ContextMenu.runtimeconfig.json
+C:\Users\udune\Desktop\WPF\HelloWPF2\ch24 ContextMenu\bin\Debug\net10.0-windows\ch24 ContextMenu.dll
+C:\Users\udune\Desktop\WPF\HelloWPF2\ch24 ContextMenu\bin\Debug\net10.0-windows\ch24 ContextMenu.pdb
+C:\Users\udune\Desktop\WPF\HelloWPF2\ch24 ContextMenu\obj\Debug\net10.0-windows\MainWindow.baml
+C:\Users\udune\Desktop\WPF\HelloWPF2\ch24 ContextMenu\obj\Debug\net10.0-windows\ch24 ContextMenu.g.resources
+C:\Users\udune\Desktop\WPF\HelloWPF2\ch24 ContextMenu\obj\Debug\net10.0-windows\ch24 ContextMenu.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\udune\Desktop\WPF\HelloWPF2\ch24 ContextMenu\obj\Debug\net10.0-windows\ch24 ContextMenu.AssemblyInfoInputs.cache
+C:\Users\udune\Desktop\WPF\HelloWPF2\ch24 ContextMenu\obj\Debug\net10.0-windows\ch24 ContextMenu.AssemblyInfo.cs
+C:\Users\udune\Desktop\WPF\HelloWPF2\ch24 ContextMenu\obj\Debug\net10.0-windows\ch24 ContextMenu.csproj.CoreCompileInputs.cache
+C:\Users\udune\Desktop\WPF\HelloWPF2\ch24 ContextMenu\obj\Debug\net10.0-windows\ch24 ContextMenu.dll
+C:\Users\udune\Desktop\WPF\HelloWPF2\ch24 ContextMenu\obj\Debug\net10.0-windows\refint\ch24 ContextMenu.dll
+C:\Users\udune\Desktop\WPF\HelloWPF2\ch24 ContextMenu\obj\Debug\net10.0-windows\ch24 ContextMenu.pdb
+C:\Users\udune\Desktop\WPF\HelloWPF2\ch24 ContextMenu\obj\Debug\net10.0-windows\ch24 ContextMenu.genruntimeconfig.cache
+C:\Users\udune\Desktop\WPF\HelloWPF2\ch24 ContextMenu\obj\Debug\net10.0-windows\ref\ch24 ContextMenu.dll

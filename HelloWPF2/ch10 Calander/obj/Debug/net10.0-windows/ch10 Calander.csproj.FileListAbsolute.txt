@@ -1,0 +1,20 @@
+C:\Users\udune\Desktop\WPF\HelloWPF2\ch10 Calander\bin\Debug\net10.0-windows\ch10 Calander.exe
+C:\Users\udune\Desktop\WPF\HelloWPF2\ch10 Calander\bin\Debug\net10.0-windows\ch10 Calander.deps.json
+C:\Users\udune\Desktop\WPF\HelloWPF2\ch10 Calander\bin\Debug\net10.0-windows\ch10 Calander.runtimeconfig.json
+C:\Users\udune\Desktop\WPF\HelloWPF2\ch10 Calander\bin\Debug\net10.0-windows\ch10 Calander.dll
+C:\Users\udune\Desktop\WPF\HelloWPF2\ch10 Calander\bin\Debug\net10.0-windows\ch10 Calander.pdb
+C:\Users\udune\Desktop\WPF\HelloWPF2\ch10 Calander\obj\Debug\net10.0-windows\MainWindow.g.cs
+C:\Users\udune\Desktop\WPF\HelloWPF2\ch10 Calander\obj\Debug\net10.0-windows\App.g.cs
+C:\Users\udune\Desktop\WPF\HelloWPF2\ch10 Calander\obj\Debug\net10.0-windows\ch10 Calander_MarkupCompile.cache
+C:\Users\udune\Desktop\WPF\HelloWPF2\ch10 Calander\obj\Debug\net10.0-windows\ch10 Calander_MarkupCompile.lref
+C:\Users\udune\Desktop\WPF\HelloWPF2\ch10 Calander\obj\Debug\net10.0-windows\MainWindow.baml
+C:\Users\udune\Desktop\WPF\HelloWPF2\ch10 Calander\obj\Debug\net10.0-windows\ch10 Calander.g.resources
+C:\Users\udune\Desktop\WPF\HelloWPF2\ch10 Calander\obj\Debug\net10.0-windows\ch10 Calander.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\udune\Desktop\WPF\HelloWPF2\ch10 Calander\obj\Debug\net10.0-windows\ch10 Calander.AssemblyInfoInputs.cache
+C:\Users\udune\Desktop\WPF\HelloWPF2\ch10 Calander\obj\Debug\net10.0-windows\ch10 Calander.AssemblyInfo.cs
+C:\Users\udune\Desktop\WPF\HelloWPF2\ch10 Calander\obj\Debug\net10.0-windows\ch10 Calander.csproj.CoreCompileInputs.cache
+C:\Users\udune\Desktop\WPF\HelloWPF2\ch10 Calander\obj\Debug\net10.0-windows\ch10 Calander.dll
+C:\Users\udune\Desktop\WPF\HelloWPF2\ch10 Calander\obj\Debug\net10.0-windows\refint\ch10 Calander.dll
+C:\Users\udune\Desktop\WPF\HelloWPF2\ch10 Calander\obj\Debug\net10.0-windows\ch10 Calander.pdb
+C:\Users\udune\Desktop\WPF\HelloWPF2\ch10 Calander\obj\Debug\net10.0-windows\ch10 Calander.genruntimeconfig.cache
+C:\Users\udune\Desktop\WPF\HelloWPF2\ch10 Calander\obj\Debug\net10.0-windows\ref\ch10 Calander.dll

@@ -1,0 +1,406 @@
+﻿using System.Text;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Data;
+using System.Windows.Documents;
+using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
+using System.Windows.Shapes;
+
+namespace ch21_스테이터스바;
+
+/// <summary>
+/// MainWindow.xaml에 대한 상호작용 논리
+/// StatusBar 컨트롤의 상태 표시 기능을 시연하는 메인 윈도우
+/// </summary>
+public partial class MainWindow : Window
+{
+    /// <summary>
+    /// MainWindow 생성자
+    /// 윈도우가 생성될 때 호출되어 초기화 작업을 수행합니다.
+    /// </summary>
+    public MainWindow()
+    {
+        // XAML에 정의된 UI 요소들을 초기화합니다.
+        InitializeComponent();
+        
+        /*
+         * 이 예제는 기본적인 StatusBar 사용법을 보여줍니다.
+         * - Slider로 진행 상태 시뮬레이션
+         * - StatusBarItem에 동적 메시지 표시
+         * - ProgressBar로 시각적 진행률 표시
+         * 
+         * 실제 프로젝트에서는:
+         * - 실시간 상태 정보 업데이트
+         * - 시간 표시 (DispatcherTimer)
+         * - 네트워크 연결 상태
+         * - 파일 처리 진행률
+         * - 문서 정보 (줄/열 번호)
+         */
+    }
+
+    /// <summary>
+    /// Slider의 ValueChanged 이벤트 핸들러
+    /// 슬라이더 값이 변경될 때 StatusBar의 상태를 업데이트합니다.
+    /// </summary>
+    /// <param name="sender">이벤트를 발생시킨 객체 (Slider)</param>
+    /// <param name="e">이벤트 데이터 (OldValue, NewValue 포함)</param>
+    private void sl_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+    {
+        // 슬라이더 값이 100(완료)인지 체크
+        if (sl.Value == 100)
+        {
+            sb.Content = "완료";
+            // StatusBarItem의 내용을 "완료"로 변경
+            // 작업이 100% 완료되었음을 사용자에게 알림
+        }
+        else
+        {
+            sb.Content = "로딩중..";
+            // StatusBarItem의 내용을 "로딩중.."으로 변경
+            // 아직 작업이 진행 중임을 표시
+        }
+
+        pb.Value = sl.Value;
+        // ProgressBar의 값을 Slider 값과 동기화
+        // 슬라이더 위치에 따라 ProgressBar도 함께 업데이트
+        
+        /*
+         * 동작 흐름:
+         * 
+         * 1. 사용자가 슬라이더를 이동
+         * 2. ValueChanged 이벤트 발생
+         * 3. sl.Value 확인
+         * 4. sl.Value == 100이면 "완료", 아니면 "로딩중.."
+         * 5. pb.Value를 sl.Value로 설정하여 동기화
+         * 
+         * 예시:
+         * - sl.Value = 0  → sb.Content = "로딩중..", pb.Value = 0
+         * - sl.Value = 50 → sb.Content = "로딩중..", pb.Value = 50
+         * - sl.Value = 100 → sb.Content = "완료", pb.Value = 100
+         * 
+         * 개선 가능한 점:
+         * - 퍼센트 표시 추가: sb.Content = $"로딩중.. {sl.Value:0}%"
+         * - 중간 단계 상태 추가 (25%, 50%, 75%)
+         * - 완료 시 다른 시각적 효과 (색상 변경 등)
+         */
+    }
+    
+    /*
+     * StatusBar 코드 비하인드 활용 예제:
+     * 
+     * 1. StatusBarItem 내용 동적 변경:
+     * 
+     *    private void UpdateStatus(string message)
+     *    {
+     *        sb.Content = message;
+     *    }
+     *    
+     *    private void SaveFile_Click(object sender, RoutedEventArgs e)
+     *    {
+     *        UpdateStatus("파일 저장 중...");
+     *        // 파일 저장 로직
+     *        UpdateStatus("파일이 저장되었습니다.");
+     *    }
+     * 
+     * 2. 실시간 시간 표시:
+     * 
+     *    private System.Windows.Threading.DispatcherTimer timeTimer;
+     *    
+     *    private void InitializeTimeDisplay()
+     *    {
+     *        timeTimer = new System.Windows.Threading.DispatcherTimer();
+     *        timeTimer.Interval = TimeSpan.FromSeconds(1);
+     *        timeTimer.Tick += TimeTimer_Tick;
+     *        timeTimer.Start();
+     *    }
+     *    
+     *    private void TimeTimer_Tick(object? sender, EventArgs e)
+     *    {
+     *        timeStatusItem.Content = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
+     *    }
+     * 
+     * 3. 진행률과 퍼센트 표시:
+     * 
+     *    private void UpdateProgress(int percentage)
+     *    {
+     *        pb.Value = percentage;
+     *        sb.Content = $"진행 중... {percentage}%";
+     *        
+     *        if (percentage == 100)
+     *        {
+     *            sb.Content = "완료!";
+     *        }
+     *    }
+     *    
+     *    private async void ProcessData_Click(object sender, RoutedEventArgs e)
+     *    {
+     *        for (int i = 0; i <= 100; i++)
+     *        {
+     *            UpdateProgress(i);
+     *            await Task.Delay(50);
+     *        }
+     *    }
+     * 
+     * 4. 여러 StatusBarItem 업데이트:
+     * 
+     *    private void UpdateMultipleStatus(string status, int lineNumber, int columnNumber)
+     *    {
+     *        statusItem1.Content = status;
+     *        lineStatusItem.Content = $"줄: {lineNumber}";
+     *        columnStatusItem.Content = $"열: {columnNumber}";
+     *    }
+     * 
+     * 5. 네트워크 연결 상태 표시:
+     * 
+     *    private void UpdateConnectionStatus(bool isConnected)
+     *    {
+     *        if (isConnected)
+     *        {
+     *            connectionStatusItem.Content = "● 연결됨";
+     *            // connectionStatusItem.Foreground = Brushes.Green;
+     *        }
+     *        else
+     *        {
+     *            connectionStatusItem.Content = "● 연결 끊김";
+     *            // connectionStatusItem.Foreground = Brushes.Red;
+     *        }
+     *    }
+     * 
+     * 6. 파일 정보 표시:
+     * 
+     *    private void DisplayFileInfo(string filename, long fileSize)
+     *    {
+     *        fileNameItem.Content = $"파일: {filename}";
+     *        fileSizeItem.Content = $"크기: {FormatFileSize(fileSize)}";
+     *    }
+     *    
+     *    private string FormatFileSize(long bytes)
+     *    {
+     *        string[] sizes = { "B", "KB", "MB", "GB" };
+     *        double len = bytes;
+     *        int order = 0;
+     *        
+     *        while (len >= 1024 && order < sizes.Length - 1)
+     *        {
+     *            order++;
+     *            len /= 1024;
+     *        }
+     *        
+     *        return $"{len:0.##} {sizes[order]}";
+     *    }
+     * 
+     * 7. 텍스트 편집기 줄/열 번호 표시:
+     * 
+     *    private void TextBox_SelectionChanged(object sender, RoutedEventArgs e)
+     *    {
+     *        if (sender is TextBox textBox)
+     *        {
+     *            int line = textBox.GetLineIndexFromCharacterIndex(textBox.SelectionStart) + 1;
+     *            int column = textBox.SelectionStart - 
+     *                        textBox.GetCharacterIndexFromLineIndex(line - 1) + 1;
+     *            
+     *            lineStatusItem.Content = $"줄: {line}";
+     *            columnStatusItem.Content = $"열: {column}";
+     *        }
+     *    }
+     * 
+     * 8. 작업 진행 상태 메시지:
+     * 
+     *    private async void LongRunningTask_Click(object sender, RoutedEventArgs e)
+     *    {
+     *        var steps = new[]
+     *        {
+     *            "데이터 로딩 중...",
+     *            "데이터 처리 중...",
+     *            "결과 계산 중...",
+     *            "결과 저장 중...",
+     *            "완료"
+     *        };
+     *        
+     *        for (int i = 0; i < steps.Length; i++)
+     *        {
+     *            sb.Content = steps[i];
+     *            pb.Value = (i + 1) * 100 / steps.Length;
+     *            await Task.Delay(1000);
+     *        }
+     *    }
+     * 
+     * 9. 아이콘과 함께 상태 표시:
+     * 
+     *    private void SetStatusWithIcon(string iconPath, string message)
+     *    {
+     *        var stackPanel = new StackPanel 
+     *        { 
+     *            Orientation = Orientation.Horizontal 
+     *        };
+     *        
+     *        var image = new Image
+     *        {
+     *            Source = new BitmapImage(new Uri(iconPath, UriKind.Relative)),
+     *            Width = 16,
+     *            Height = 16
+     *        };
+     *        
+     *        var textBlock = new TextBlock
+     *        {
+     *            Text = message,
+     *            Margin = new Thickness(5, 0, 0, 0)
+     *        };
+     *        
+     *        stackPanel.Children.Add(image);
+     *        stackPanel.Children.Add(textBlock);
+     *        
+     *        sb.Content = stackPanel;
+     *    }
+     * 
+     * 10. 다운로드 진행 상태 (속도, 남은 시간):
+     * 
+     *     private DateTime downloadStartTime;
+     *     private long totalBytes;
+     *     private long downloadedBytes;
+     *     
+     *     private void UpdateDownloadStatus(long downloaded, long total)
+     *     {
+     *         downloadedBytes = downloaded;
+     *         totalBytes = total;
+     *         
+     *         double percentage = (double)downloaded / total * 100;
+     *         pb.Value = percentage;
+     *         
+     *         // 다운로드 속도 계산
+     *         var elapsed = DateTime.Now - downloadStartTime;
+     *         double speed = downloaded / elapsed.TotalSeconds;
+     *         
+     *         // 남은 시간 계산
+     *         long remaining = total - downloaded;
+     *         double remainingSeconds = remaining / speed;
+     *         
+     *         statusItem.Content = $"다운로드 중... {percentage:F1}%";
+     *         speedItem.Content = $"속도: {FormatSpeed(speed)}";
+     *         timeItem.Content = $"남은 시간: {FormatTime(remainingSeconds)}";
+     *     }
+     *     
+     *     private string FormatSpeed(double bytesPerSecond)
+     *     {
+     *         if (bytesPerSecond < 1024)
+     *             return $"{bytesPerSecond:F1} B/s";
+     *         else if (bytesPerSecond < 1024 * 1024)
+     *             return $"{bytesPerSecond / 1024:F1} KB/s";
+     *         else
+     *             return $"{bytesPerSecond / (1024 * 1024):F1} MB/s";
+     *     }
+     *     
+     *     private string FormatTime(double seconds)
+     *     {
+     *         if (seconds < 60)
+     *             return $"{seconds:F0}초";
+     *         else if (seconds < 3600)
+     *             return $"{seconds / 60:F0}분 {seconds % 60:F0}초";
+     *         else
+     *             return $"{seconds / 3600:F0}시간 {(seconds % 3600) / 60:F0}분";
+     *     }
+     * 
+     * StatusBar 코드 조작 관련 중요 사항:
+     * 
+     * 1. Content 설정:
+     *    - statusBarItem.Content = "텍스트";
+     *    - statusBarItem.Content = new TextBlock { Text = "텍스트" };
+     *    - statusBarItem.Content = stackPanel; // 복합 콘텐츠
+     * 
+     * 2. UI 스레드:
+     *    - StatusBar는 UI 컨트롤
+     *    - 백그라운드 스레드에서 업데이트 시 Dispatcher 사용
+     *    - Dispatcher.Invoke(() => sb.Content = "메시지");
+     * 
+     * 3. 빈번한 업데이트:
+     *    - 너무 빈번한 업데이트 피하기
+     *    - 최소 100-200ms 간격 권장
+     *    - DispatcherTimer로 주기적 업데이트
+     * 
+     * 4. 다중 항목 관리:
+     *    - 각 StatusBarItem에 Name 지정
+     *    - Dictionary로 관리 가능
+     *    
+     *    Dictionary<string, StatusBarItem> statusItems;
+     *    statusItems["status"].Content = "준비";
+     * 
+     * 5. 동적 StatusBarItem 추가:
+     *    var newItem = new StatusBarItem { Content = "새 항목" };
+     *    statusBar.Items.Add(newItem);
+     *    statusBar.Items.Add(new Separator());
+     * 
+     * 6. 임시 메시지 표시:
+     *    private async void ShowTemporaryMessage(string message, int milliseconds)
+     *    {
+     *        string original = sb.Content.ToString();
+     *        sb.Content = message;
+     *        await Task.Delay(milliseconds);
+     *        sb.Content = original;
+     *    }
+     * 
+     * 7. 진행률과 취소:
+     *    private CancellationTokenSource? cts;
+     *    
+     *    private async void StartTask_Click(object sender, RoutedEventArgs e)
+     *    {
+     *        cts = new CancellationTokenSource();
+     *        
+     *        try
+     *        {
+     *            await ProcessWithProgress(cts.Token);
+     *        }
+     *        catch (OperationCanceledException)
+     *        {
+     *            sb.Content = "작업이 취소되었습니다.";
+     *        }
+     *    }
+     *    
+     *    private async Task ProcessWithProgress(CancellationToken token)
+     *    {
+     *        for (int i = 0; i <= 100; i++)
+     *        {
+     *            token.ThrowIfCancellationRequested();
+     *            
+     *            sb.Content = $"처리 중... {i}%";
+     *            pb.Value = i;
+     *            
+     *            await Task.Delay(50, token);
+     *        }
+     *    }
+     * 
+     * 8. MVVM 패턴:
+     *    - ViewModel에 상태 속성 정의
+     *    - 데이터 바인딩으로 StatusBarItem 업데이트
+     *    
+     *    <StatusBarItem Content="{Binding StatusMessage}"/>
+     *    <StatusBarItem Content="{Binding ProgressValue}"/>
+     * 
+     * 9. 로깅과 연동:
+     *    private void LogMessage(string message)
+     *    {
+     *        // 로그 파일에 기록
+     *        File.AppendAllText("log.txt", $"{DateTime.Now}: {message}\n");
+     *        
+     *        // StatusBar에도 표시
+     *        sb.Content = message;
+     *    }
+     * 
+     * 10. 성능 모니터링:
+     *     private System.Windows.Threading.DispatcherTimer perfTimer;
+     *     
+     *     private void StartPerformanceMonitoring()
+     *     {
+     *         perfTimer = new System.Windows.Threading.DispatcherTimer();
+     *         perfTimer.Interval = TimeSpan.FromSeconds(1);
+     *         perfTimer.Tick += (s, e) =>
+     *         {
+     *             var process = System.Diagnostics.Process.GetCurrentProcess();
+     *             memoryItem.Content = $"메모리: {process.WorkingSet64 / (1024 * 1024)} MB";
+     *         };
+     *         perfTimer.Start();
+     *     }
+     */
+}

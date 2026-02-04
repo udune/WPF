@@ -1,0 +1,20 @@
+C:\Users\udune\Desktop\WPF\HelloWPF2\ch02 Label\bin\Debug\net10.0-windows\ch02 Label.exe
+C:\Users\udune\Desktop\WPF\HelloWPF2\ch02 Label\bin\Debug\net10.0-windows\ch02 Label.deps.json
+C:\Users\udune\Desktop\WPF\HelloWPF2\ch02 Label\bin\Debug\net10.0-windows\ch02 Label.runtimeconfig.json
+C:\Users\udune\Desktop\WPF\HelloWPF2\ch02 Label\bin\Debug\net10.0-windows\ch02 Label.dll
+C:\Users\udune\Desktop\WPF\HelloWPF2\ch02 Label\bin\Debug\net10.0-windows\ch02 Label.pdb
+C:\Users\udune\Desktop\WPF\HelloWPF2\ch02 Label\obj\Debug\net10.0-windows\MainWindow.g.cs
+C:\Users\udune\Desktop\WPF\HelloWPF2\ch02 Label\obj\Debug\net10.0-windows\App.g.cs
+C:\Users\udune\Desktop\WPF\HelloWPF2\ch02 Label\obj\Debug\net10.0-windows\ch02 Label_MarkupCompile.cache
+C:\Users\udune\Desktop\WPF\HelloWPF2\ch02 Label\obj\Debug\net10.0-windows\ch02 Label_MarkupCompile.lref
+C:\Users\udune\Desktop\WPF\HelloWPF2\ch02 Label\obj\Debug\net10.0-windows\MainWindow.baml
+C:\Users\udune\Desktop\WPF\HelloWPF2\ch02 Label\obj\Debug\net10.0-windows\ch02 Label.g.resources
+C:\Users\udune\Desktop\WPF\HelloWPF2\ch02 Label\obj\Debug\net10.0-windows\ch02 Label.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\udune\Desktop\WPF\HelloWPF2\ch02 Label\obj\Debug\net10.0-windows\ch02 Label.AssemblyInfoInputs.cache
+C:\Users\udune\Desktop\WPF\HelloWPF2\ch02 Label\obj\Debug\net10.0-windows\ch02 Label.AssemblyInfo.cs
+C:\Users\udune\Desktop\WPF\HelloWPF2\ch02 Label\obj\Debug\net10.0-windows\ch02 Label.csproj.CoreCompileInputs.cache
+C:\Users\udune\Desktop\WPF\HelloWPF2\ch02 Label\obj\Debug\net10.0-windows\ch02 Label.dll
+C:\Users\udune\Desktop\WPF\HelloWPF2\ch02 Label\obj\Debug\net10.0-windows\refint\ch02 Label.dll
+C:\Users\udune\Desktop\WPF\HelloWPF2\ch02 Label\obj\Debug\net10.0-windows\ch02 Label.pdb
+C:\Users\udune\Desktop\WPF\HelloWPF2\ch02 Label\obj\Debug\net10.0-windows\ch02 Label.genruntimeconfig.cache
+C:\Users\udune\Desktop\WPF\HelloWPF2\ch02 Label\obj\Debug\net10.0-windows\ref\ch02 Label.dll

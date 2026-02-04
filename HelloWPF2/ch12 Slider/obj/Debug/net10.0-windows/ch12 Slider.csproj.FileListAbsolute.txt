@@ -1,0 +1,20 @@
+C:\Users\udune\Desktop\WPF\HelloWPF2\ch12 Slider\bin\Debug\net10.0-windows\ch12 Slider.exe
+C:\Users\udune\Desktop\WPF\HelloWPF2\ch12 Slider\bin\Debug\net10.0-windows\ch12 Slider.deps.json
+C:\Users\udune\Desktop\WPF\HelloWPF2\ch12 Slider\bin\Debug\net10.0-windows\ch12 Slider.runtimeconfig.json
+C:\Users\udune\Desktop\WPF\HelloWPF2\ch12 Slider\bin\Debug\net10.0-windows\ch12 Slider.dll
+C:\Users\udune\Desktop\WPF\HelloWPF2\ch12 Slider\bin\Debug\net10.0-windows\ch12 Slider.pdb
+C:\Users\udune\Desktop\WPF\HelloWPF2\ch12 Slider\obj\Debug\net10.0-windows\MainWindow.g.cs
+C:\Users\udune\Desktop\WPF\HelloWPF2\ch12 Slider\obj\Debug\net10.0-windows\App.g.cs
+C:\Users\udune\Desktop\WPF\HelloWPF2\ch12 Slider\obj\Debug\net10.0-windows\ch12 Slider_MarkupCompile.cache
+C:\Users\udune\Desktop\WPF\HelloWPF2\ch12 Slider\obj\Debug\net10.0-windows\ch12 Slider_MarkupCompile.lref
+C:\Users\udune\Desktop\WPF\HelloWPF2\ch12 Slider\obj\Debug\net10.0-windows\MainWindow.baml
+C:\Users\udune\Desktop\WPF\HelloWPF2\ch12 Slider\obj\Debug\net10.0-windows\ch12 Slider.g.resources
+C:\Users\udune\Desktop\WPF\HelloWPF2\ch12 Slider\obj\Debug\net10.0-windows\ch12 Slider.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\udune\Desktop\WPF\HelloWPF2\ch12 Slider\obj\Debug\net10.0-windows\ch12 Slider.AssemblyInfoInputs.cache
+C:\Users\udune\Desktop\WPF\HelloWPF2\ch12 Slider\obj\Debug\net10.0-windows\ch12 Slider.AssemblyInfo.cs
+C:\Users\udune\Desktop\WPF\HelloWPF2\ch12 Slider\obj\Debug\net10.0-windows\ch12 Slider.csproj.CoreCompileInputs.cache
+C:\Users\udune\Desktop\WPF\HelloWPF2\ch12 Slider\obj\Debug\net10.0-windows\ch12 Slider.dll
+C:\Users\udune\Desktop\WPF\HelloWPF2\ch12 Slider\obj\Debug\net10.0-windows\refint\ch12 Slider.dll
+C:\Users\udune\Desktop\WPF\HelloWPF2\ch12 Slider\obj\Debug\net10.0-windows\ch12 Slider.pdb
+C:\Users\udune\Desktop\WPF\HelloWPF2\ch12 Slider\obj\Debug\net10.0-windows\ch12 Slider.genruntimeconfig.cache
+C:\Users\udune\Desktop\WPF\HelloWPF2\ch12 Slider\obj\Debug\net10.0-windows\ref\ch12 Slider.dll

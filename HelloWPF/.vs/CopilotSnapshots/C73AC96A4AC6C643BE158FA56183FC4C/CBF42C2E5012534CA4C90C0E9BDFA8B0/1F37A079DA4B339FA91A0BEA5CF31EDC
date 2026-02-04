@@ -1,0 +1,485 @@
+﻿<!-- 
+    ch19 캔버스 - WPF Canvas 레이아웃 컨트롤의 기능을 보여주는 예제 파일
+    Canvas는 절대 좌표를 사용하여 요소를 정확한 위치에 배치하는 레이아웃 컨트롤입니다.
+    다른 패널과 달리 자동 레이아웃이 없으며, 각 요소의 X, Y 좌표를 명시적으로 지정합니다.
+    그래픽 애플리케이션, 게임, 다이어그램, 드로잉 등에 적합합니다.
+-->
+<Window x:Class="ch19_캔버스.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ch19_캔버스"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    
+    <!-- 
+        Canvas: 절대 위치 기반 레이아웃 컨트롤
+        그래픽 및 커스텀 레이아웃에 최적
+    -->
+    <Canvas>
+        <!-- 
+            Canvas 기본 개념:
+            - 절대 좌표(픽셀 단위)를 사용하여 요소 배치
+            - 자동 레이아웃 없음 (반응형 아님)
+            - 각 요소는 독립적인 위치를 가짐
+            - 겹침이 자유로움
+            - Z-Index로 겹침 순서 제어
+            
+            Canvas의 특징:
+            1. 정확한 위치 제어
+            2. 고정된 좌표 시스템
+            3. 자동 크기 조정 없음
+            4. 창 크기 변경에 영향받지 않음
+            5. 성능이 매우 우수함 (레이아웃 계산 없음)
+            
+            Canvas vs 다른 패널:
+            
+            Canvas:
+            - 절대 좌표
+            - 반응형 아님
+            - 수동 배치
+            - 그래픽, 게임에 적합
+            
+            Grid/StackPanel/DockPanel:
+            - 상대 좌표
+            - 반응형
+            - 자동 배치
+            - 일반 UI에 적합
+            
+            좌표 시스템:
+            Canvas의 좌표는 왼쪽 위 모서리가 (0, 0)입니다.
+            
+            (0,0)
+              ┌────────────────► X (오른쪽)
+              │
+              │
+              │
+              ▼
+              Y (아래)
+        -->
+        
+        <!-- 
+            Canvas 첨부 속성:
+            - Canvas.Left: 왼쪽 가장자리로부터의 거리 (X 좌표)
+            - Canvas.Top: 위쪽 가장자리로부터의 거리 (Y 좌표)
+            - Canvas.Right: 오른쪽 가장자리로부터의 거리
+            - Canvas.Bottom: 아래쪽 가장자리로부터의 거리
+            
+            주의: Left와 Right는 동시 사용 불가 (Left 우선)
+                 Top과 Bottom은 동시 사용 불가 (Top 우선)
+        -->
+        
+        <!-- 첫 번째 버튼: 왼쪽에서 50픽셀 -->
+        <Button Canvas.Left="50">버튼</Button>
+        <!-- 
+            Canvas.Left="50":
+            - Canvas의 왼쪽 가장자리로부터 50픽셀 떨어진 위치
+            - X 좌표 = 50
+            - Top이 지정되지 않았으므로 Y 좌표 = 0 (기본값)
+            - 위치: (50, 0)
+            
+            결과:
+            ┌──────────────────────┐
+            │     [버튼]           │ ← Y=0
+            │  X=50                │
+            └──────────────────────┘
+            
+            Canvas.Left 동작:
+            - 요소의 왼쪽 가장자리 위치 지정
+            - 양수 값: 왼쪽으로부터 멀어짐
+            - 음수 값: Canvas 밖으로 나감 (잘림)
+        -->
+        
+        <!-- 두 번째 버튼: 오른쪽에서 50픽셀 -->
+        <Button Canvas.Right="50">버튼</Button>
+        <!-- 
+            Canvas.Right="50":
+            - Canvas의 오른쪽 가장자리로부터 50픽셀 떨어진 위치
+            - 오른쪽 정렬 + 50픽셀 여백
+            - Top이 지정되지 않았으므로 Y 좌표 = 0
+            
+            결과:
+            ┌──────────────────────┐
+            │           [버튼]     │ ← Y=0
+            │              X=오른쪽-50
+            └──────────────────────┘
+            
+            Canvas.Right 계산:
+            - 실제 X 좌표 = Canvas.ActualWidth - Button.Width - 50
+            - 예: Canvas 800px, Button 60px이면
+            - X = 800 - 60 - 50 = 690
+            
+            Canvas.Left vs Canvas.Right:
+            - Left: 왼쪽 기준 절대 좌표
+            - Right: 오른쪽 기준 상대 좌표
+            - Left가 Right보다 우선함
+        -->
+        
+        <!-- 세 번째 버튼: 위에서 50픽셀 -->
+        <Button Canvas.Top="50">버튼</Button>
+        <!-- 
+            Canvas.Top="50":
+            - Canvas의 위쪽 가장자리로부터 50픽셀 떨어진 위치
+            - Y 좌표 = 50
+            - Left가 지정되지 않았으므로 X 좌표 = 0 (기본값)
+            - 위치: (0, 50)
+            
+            결과:
+            ┌──────────────────────┐
+            │                      │
+            │ [버튼]               │ ← Y=50
+            │ X=0                  │
+            └──────────────────────┘
+            
+            Canvas.Top 동작:
+            - 요소의 위쪽 가장자리 위치 지정
+            - 양수 값: 위에서 아래로 멀어짐
+            - 음수 값: Canvas 밖으로 나감 (잘림)
+        -->
+        
+        <!-- 네 번째 버튼: 아래에서 50픽셀 -->
+        <Button Canvas.Bottom="50">버튼</Button>
+        <!-- 
+            Canvas.Bottom="50":
+            - Canvas의 아래쪽 가장자리로부터 50픽셀 떨어진 위치
+            - 아래쪽 정렬 + 50픽셀 여백
+            - Left가 지정되지 않았으므로 X 좌표 = 0
+            
+            결과:
+            ┌──────────────────────┐
+            │                      │
+            │                      │
+            │ [버튼]               │ ← Y=아래-50
+            │ X=0                  │
+            └──────────────────────┘
+            
+            Canvas.Bottom 계산:
+            - 실제 Y 좌표 = Canvas.ActualHeight - Button.Height - 50
+            - 예: Canvas 450px, Button 30px이면
+            - Y = 450 - 30 - 50 = 370
+            
+            Canvas.Top vs Canvas.Bottom:
+            - Top: 위쪽 기준 절대 좌표
+            - Bottom: 아래쪽 기준 상대 좌표
+            - Top이 Bottom보다 우선함
+        -->
+
+        <!-- 타원 도형: Panel.ZIndex를 사용한 겹침 제어 -->
+        <Ellipse Panel.ZIndex="4" Fill="Salmon" Width="200" Height="200"
+                 Canvas.Left="150" Canvas.Top="150"></Ellipse>
+        <!-- 
+            Ellipse (타원):
+            - WPF Shape 클래스의 하나
+            - Width, Height로 크기 지정
+            - Fill로 내부 색상 지정
+            
+            속성 설명:
+            
+            Panel.ZIndex="4":
+            - Z-Order(겹침 순서) 제어
+            - 높은 값일수록 위에 표시됨
+            - 기본값은 0
+            - 음수 값도 가능
+            
+            Fill="Salmon":
+            - 타원의 내부 색상
+            - 색상 이름 또는 #RRGGBB 형식
+            
+            Width="200" Height="200":
+            - 타원의 크기
+            - Width = Height이면 원(Circle)
+            
+            Canvas.Left="150" Canvas.Top="150":
+            - 위치: (150, 150)
+            - Canvas의 왼쪽 위 모서리로부터 150픽셀
+            
+            Z-Index 개념:
+            Z-Index는 2D 화면에서 3차원 깊이(Z축)를 나타냅니다.
+            
+            화면 (XY 평면)
+            ┌─────────────┐
+            │             │
+            │   요소들    │
+            │             │
+            └─────────────┘
+                 ↕
+              Z축 (깊이)
+            
+            ZIndex=4 (타원, 가장 위)
+            ZIndex=3 (사각형, 중간)
+            ZIndex=0 (버튼들, 기본)
+        -->
+        
+        <!-- 사각형 도형: Panel.ZIndex로 타원 아래 배치 -->
+        <Rectangle Panel.ZIndex="3" Canvas.Left="150" Canvas.Top="150" Fill="Blue"
+                   Width="200" Height="200"></Rectangle>
+        <!-- 
+            Rectangle (사각형):
+            - WPF Shape 클래스의 하나
+            - Width, Height로 크기 지정
+            - Fill로 내부 색상 지정
+            
+            속성 설명:
+            
+            Panel.ZIndex="3":
+            - 타원(ZIndex=4)보다 낮음
+            - 타원 아래에 표시됨
+            - 버튼들(ZIndex=0, 기본값)보다 위에 표시됨
+            
+            Canvas.Left="150" Canvas.Top="150":
+            - 타원과 같은 위치: (150, 150)
+            - 두 도형이 겹침
+            
+            Fill="Blue":
+            - 사각형의 내부 색상 (파란색)
+            
+            Width="200" Height="200":
+            - 타원과 같은 크기
+            - 정사각형
+            
+            겹침 결과:
+            두 도형이 같은 위치(150, 150)에 있지만,
+            ZIndex가 다르므로 타원이 사각형 위에 표시됩니다.
+            
+            시각적 표현:
+            ┌──────────────────────┐
+            │                      │
+            │    ┌─────────┐       │
+            │    │ 타원    │       │ ← ZIndex=4 (위)
+            │    │(Salmon) │       │
+            │    │ ▼       │       │
+            │    │사각형   │       │ ← ZIndex=3 (아래)
+            │    │(Blue)   │       │
+            │    └─────────┘       │
+            │                      │
+            └──────────────────────┘
+            
+            실제 겹침:
+            타원과 사각형이 정확히 같은 위치와 크기이므로,
+            타원이 사각형을 완전히 가립니다.
+            사각형의 파란색은 보이지 않습니다.
+        -->
+    </Canvas>
+    
+    <!--
+        Canvas 추가 기능 및 활용:
+        
+        1. 정확한 좌표 배치:
+           <Canvas>
+               <Button Canvas.Left="100" Canvas.Top="50">버튼1</Button>
+               <Button Canvas.Left="200" Canvas.Top="50">버튼2</Button>
+               <Button Canvas.Left="300" Canvas.Top="50">버튼3</Button>
+           </Canvas>
+        
+        2. 좌표 조합:
+           <Canvas>
+               <!-- 왼쪽 위 -->
+               <Button Canvas.Left="10" Canvas.Top="10">왼쪽 위</Button>
+               
+               <!-- 오른쪽 위 -->
+               <Button Canvas.Right="10" Canvas.Top="10">오른쪽 위</Button>
+               
+               <!-- 왼쪽 아래 -->
+               <Button Canvas.Left="10" Canvas.Bottom="10">왼쪽 아래</Button>
+               
+               <!-- 오른쪽 아래 -->
+               <Button Canvas.Right="10" Canvas.Bottom="10">오른쪽 아래</Button>
+               
+               <!-- 중앙 (수동 계산 필요) -->
+               <Button Canvas.Left="400" Canvas.Top="225">중앙</Button>
+           </Canvas>
+        
+        3. Z-Index를 사용한 레이어링:
+           <Canvas>
+               <!-- 배경 레이어 -->
+               <Rectangle Panel.ZIndex="0" Fill="LightGray" 
+                         Width="800" Height="450"/>
+               
+               <!-- 중간 레이어 -->
+               <Ellipse Panel.ZIndex="1" Fill="Blue" 
+                       Width="200" Height="200"
+                       Canvas.Left="100" Canvas.Top="100"/>
+               
+               <!-- 전경 레이어 -->
+               <TextBlock Panel.ZIndex="2" Text="최상단" 
+                         FontSize="24"
+                         Canvas.Left="150" Canvas.Top="150"/>
+           </Canvas>
+        
+        4. 도형 그리기:
+           <Canvas Background="White">
+               <!-- 선 -->
+               <Line X1="50" Y1="50" X2="200" Y2="200" 
+                     Stroke="Black" StrokeThickness="2"/>
+               
+               <!-- 원 -->
+               <Ellipse Canvas.Left="250" Canvas.Top="50"
+                       Width="100" Height="100"
+                       Fill="Red"/>
+               
+               <!-- 사각형 -->
+               <Rectangle Canvas.Left="400" Canvas.Top="50"
+                         Width="100" Height="100"
+                         Fill="Green"/>
+               
+               <!-- 다각형 -->
+               <Polygon Points="550,50 600,150 500,150"
+                       Fill="Blue"/>
+           </Canvas>
+        
+        5. 드래그 앤 드롭 (코드 비하인드 필요):
+           <Canvas>
+               <Rectangle Name="draggableRect" 
+                         Width="100" Height="100"
+                         Fill="Orange"
+                         Canvas.Left="100" Canvas.Top="100"
+                         MouseLeftButtonDown="Rect_MouseDown"
+                         MouseMove="Rect_MouseMove"
+                         MouseLeftButtonUp="Rect_MouseUp"/>
+           </Canvas>
+        
+        6. 애니메이션과 함께:
+           <Canvas>
+               <Ellipse Width="50" Height="50" Fill="Red">
+                   <Ellipse.RenderTransform>
+                       <TranslateTransform x:Name="movement"/>
+                   </Ellipse.RenderTransform>
+                   <Ellipse.Triggers>
+                       <EventTrigger RoutedEvent="Loaded">
+                           <BeginStoryboard>
+                               <Storyboard RepeatBehavior="Forever">
+                                   <DoubleAnimation 
+                                       Storyboard.TargetProperty="(RenderTransform).(TranslateTransform.X)"
+                                       From="0" To="750" Duration="0:0:3"/>
+                               </Storyboard>
+                           </BeginStoryboard>
+                       </EventTrigger>
+                   </Ellipse.Triggers>
+               </Ellipse>
+           </Canvas>
+        
+        실전 활용 예제:
+        
+        1. 다이어그램/순서도:
+           <Canvas>
+               <!-- 노드 -->
+               <Border Canvas.Left="100" Canvas.Top="50" 
+                       BorderBrush="Black" BorderThickness="2">
+                   <TextBlock Text="시작"/>
+               </Border>
+               
+               <!-- 연결선 -->
+               <Line X1="150" Y1="80" X2="150" Y2="150"
+                     Stroke="Black" StrokeThickness="2"/>
+               
+               <!-- 다음 노드 -->
+               <Border Canvas.Left="100" Canvas.Top="150">
+                   <TextBlock Text="처리"/>
+               </Border>
+           </Canvas>
+        
+        2. 게임 화면:
+           <Canvas Background="Black">
+               <!-- 플레이어 -->
+               <Rectangle Panel.ZIndex="2" 
+                         Width="30" Height="30" Fill="Green"
+                         Canvas.Left="400" Canvas.Top="400"/>
+               
+               <!-- 적 -->
+               <Ellipse Panel.ZIndex="1"
+                       Width="40" Height="40" Fill="Red"
+                       Canvas.Left="200" Canvas.Top="100"/>
+               
+               <!-- 배경 별 -->
+               <Ellipse Width="5" Height="5" Fill="White"
+                       Canvas.Left="100" Canvas.Top="50"/>
+           </Canvas>
+        
+        3. 사용자 정의 컨트롤:
+           <Canvas>
+               <Border BorderBrush="Gray" BorderThickness="1"
+                       Canvas.Left="100" Canvas.Top="100">
+                   <Grid Width="200" Height="150">
+                       <!-- 복잡한 컨트롤 내용 -->
+                   </Grid>
+               </Border>
+           </Canvas>
+        
+        4. 그래프/차트:
+           <Canvas>
+               <!-- X축 -->
+               <Line X1="50" Y1="400" X2="750" Y2="400"
+                     Stroke="Black" StrokeThickness="2"/>
+               
+               <!-- Y축 -->
+               <Line X1="50" Y1="50" X2="50" Y2="400"
+                     Stroke="Black" StrokeThickness="2"/>
+               
+               <!-- 데이터 포인트 -->
+               <Ellipse Canvas.Left="100" Canvas.Top="300"
+                       Width="10" Height="10" Fill="Blue"/>
+               <Ellipse Canvas.Left="200" Canvas.Top="250"
+                       Width="10" Height="10" Fill="Blue"/>
+           </Canvas>
+        
+        Canvas의 장단점:
+        
+        장점:
+        - 정확한 픽셀 단위 배치
+        - 성능이 매우 우수 (레이아웃 계산 없음)
+        - 겹침 제어가 쉬움 (Z-Index)
+        - 그래픽, 게임, 다이어그램에 최적
+        - 애니메이션과 잘 어울림
+        
+        단점:
+        - 반응형 아님 (창 크기 변경 시 자동 조정 없음)
+        - 수동으로 모든 위치 지정해야 함
+        - 다양한 화면 크기 지원 어려움
+        - 유지보수가 어려울 수 있음
+        - 일반 UI에는 부적합
+        
+        다른 레이아웃 패널과의 비교:
+        
+        Canvas vs Grid:
+        - Canvas: 절대 좌표, 고정 레이아웃
+        - Grid: 행/열 기반, 반응형 레이아웃
+        
+        Canvas vs StackPanel:
+        - Canvas: 자유로운 배치
+        - StackPanel: 순차적 배치
+        
+        Canvas vs WrapPanel:
+        - Canvas: 고정 위치
+        - WrapPanel: 자동 줄바꿈
+        
+        성능:
+        - Canvas는 모든 패널 중 가장 빠름
+        - 레이아웃 계산이 거의 없음
+        - 많은 요소를 배치해도 성능 우수
+        
+        주의사항:
+        - 반응형 디자인이 필요하면 사용하지 말 것
+        - 다양한 해상도 지원이 어려움
+        - 음수 좌표는 Canvas 밖으로 나감
+        - ClipToBounds="True"로 잘림 제어 가능
+        
+        ClipToBounds 예제:
+        <Canvas ClipToBounds="True">
+            <!-- Canvas 밖으로 나간 요소는 잘림 -->
+            <Button Canvas.Left="-50">부분 잘림</Button>
+        </Canvas>
+        
+        Background 설정:
+        <Canvas Background="LightGray">
+            <!-- 배경색으로 Canvas 영역 명확히 함 -->
+        </Canvas>
+        
+        ScrollViewer와 함께:
+        <ScrollViewer>
+            <Canvas Width="2000" Height="2000">
+                <!-- 큰 Canvas를 스크롤 가능하게 -->
+            </Canvas>
+        </ScrollViewer>
+    -->
+</Window>

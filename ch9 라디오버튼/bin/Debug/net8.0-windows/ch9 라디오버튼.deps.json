@@ -1,0 +1,23 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v8.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v8.0": {
+      "ch9 라디오버튼/1.0.0": {
+        "runtime": {
+          "ch9 라디오버튼.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "ch9 라디오버튼/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

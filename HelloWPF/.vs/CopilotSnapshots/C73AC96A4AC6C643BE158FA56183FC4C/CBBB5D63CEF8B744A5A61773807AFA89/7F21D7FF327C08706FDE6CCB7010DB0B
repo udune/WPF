@@ -1,0 +1,444 @@
+﻿using System.Text;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Data;
+using System.Windows.Documents;
+using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
+using System.Windows.Shapes;
+
+namespace ch22_툴바
+{
+    /// <summary>
+    /// MainWindow.xaml에 대한 상호작용 논리
+    /// ToolBar와 ToolBarTray 컨트롤의 사용법을 시연하는 메인 윈도우
+    /// </summary>
+    public partial class MainWindow : Window
+    {
+        /// <summary>
+        /// MainWindow 생성자
+        /// 윈도우가 생성될 때 호출되어 초기화 작업을 수행합니다.
+        /// </summary>
+        public MainWindow()
+        {
+            // XAML에 정의된 UI 요소들을 초기화합니다.
+            InitializeComponent();
+            
+            /*
+             * 이 예제는 기본적인 ToolBar 사용법을 보여줍니다.
+             * - ToolBarTray에 ToolBar 포함
+             * - 아이콘 버튼
+             * - ComboBox로 폰트 크기 선택
+             * - 데이터 바인딩으로 TextBox에 적용
+             * 
+             * 실제 프로젝트에서는:
+             * - Command 패턴으로 명령 구현
+             * - 버튼 클릭 이벤트 처리
+             * - 동적 ToolBar 항목 추가/제거
+             * - 사용자 설정 저장 (ToolBar 위치 등)
+             */
+        }
+        
+        /*
+         * ToolBar 코드 비하인드 활용 예제:
+         * 
+         * 1. ToolBar 버튼 클릭 이벤트:
+         * 
+         *    XAML:
+         *    <Button Click="NewFile_Click" ToolTip="새 문서">
+         *        <Image Source="Images/New.png" Width="16"/>
+         *    </Button>
+         *    
+         *    코드:
+         *    private void NewFile_Click(object sender, RoutedEventArgs e)
+         *    {
+         *        // 새 문서 생성 로직
+         *        textBox.Clear();
+         *        MessageBox.Show("새 문서가 생성되었습니다.");
+         *    }
+         *    
+         *    private void OpenFile_Click(object sender, RoutedEventArgs e)
+         *    {
+         *        var dialog = new Microsoft.Win32.OpenFileDialog();
+         *        if (dialog.ShowDialog() == true)
+         *        {
+         *            textBox.Text = System.IO.File.ReadAllText(dialog.FileName);
+         *        }
+         *    }
+         *    
+         *    private void SaveFile_Click(object sender, RoutedEventArgs e)
+         *    {
+         *        var dialog = new Microsoft.Win32.SaveFileDialog();
+         *        if (dialog.ShowDialog() == true)
+         *        {
+         *            System.IO.File.WriteAllText(dialog.FileName, textBox.Text);
+         *            MessageBox.Show("파일이 저장되었습니다.");
+         *        }
+         *    }
+         * 
+         * 2. Command 패턴 사용:
+         * 
+         *    public static RoutedCommand NewCommand = new RoutedCommand();
+         *    public static RoutedCommand OpenCommand = new RoutedCommand();
+         *    public static RoutedCommand SaveCommand = new RoutedCommand();
+         *    
+         *    public MainWindow()
+         *    {
+         *        InitializeComponent();
+         *        
+         *        // Command 바인딩
+         *        CommandBindings.Add(new CommandBinding(NewCommand, NewCommand_Executed));
+         *        CommandBindings.Add(new CommandBinding(OpenCommand, OpenCommand_Executed));
+         *        CommandBindings.Add(new CommandBinding(SaveCommand, SaveCommand_Executed, SaveCommand_CanExecute));
+         *        
+         *        // 키보드 단축키
+         *        InputBindings.Add(new KeyBinding(NewCommand, Key.N, ModifierKeys.Control));
+         *        InputBindings.Add(new KeyBinding(OpenCommand, Key.O, ModifierKeys.Control));
+         *        InputBindings.Add(new KeyBinding(SaveCommand, Key.S, ModifierKeys.Control));
+         *    }
+         *    
+         *    private void NewCommand_Executed(object sender, ExecutedRoutedEventArgs e)
+         *    {
+         *        textBox.Clear();
+         *    }
+         *    
+         *    private void OpenCommand_Executed(object sender, ExecutedRoutedEventArgs e)
+         *    {
+         *        var dialog = new Microsoft.Win32.OpenFileDialog();
+         *        if (dialog.ShowDialog() == true)
+         *        {
+         *            textBox.Text = System.IO.File.ReadAllText(dialog.FileName);
+         *        }
+         *    }
+         *    
+         *    private void SaveCommand_Executed(object sender, ExecutedRoutedEventArgs e)
+         *    {
+         *        var dialog = new Microsoft.Win32.SaveFileDialog();
+         *        if (dialog.ShowDialog() == true)
+         *        {
+         *            System.IO.File.WriteAllText(dialog.FileName, textBox.Text);
+         *        }
+         *    }
+         *    
+         *    private void SaveCommand_CanExecute(object sender, CanExecuteRoutedEventArgs e)
+         *    {
+         *        // TextBox에 내용이 있을 때만 저장 가능
+         *        e.CanExecute = !string.IsNullOrEmpty(textBox?.Text);
+         *    }
+         *    
+         *    XAML:
+         *    <Button Command="{x:Static local:MainWindow.NewCommand}" ToolTip="새 문서 (Ctrl+N)">
+         *        <Image Source="Images/New.png" Width="16"/>
+         *    </Button>
+         * 
+         * 3. 동적으로 ToolBar 항목 추가:
+         * 
+         *    private void AddToolBarItem_Click(object sender, RoutedEventArgs e)
+         *    {
+         *        var button = new Button
+         *        {
+         *            Content = new Image
+         *            {
+         *                Source = new BitmapImage(new Uri("Images/Custom.png", UriKind.Relative)),
+         *                Width = 16
+         *            },
+         *            ToolTip = "커스텀 버튼"
+         *        };
+         *        
+         *        button.Click += CustomButton_Click;
+         *        
+         *        myToolBar.Items.Add(button);
+         *    }
+         *    
+         *    private void CustomButton_Click(object sender, RoutedEventArgs e)
+         *    {
+         *        MessageBox.Show("커스텀 버튼 클릭!");
+         *    }
+         * 
+         * 4. ToggleButton으로 서식 적용:
+         * 
+         *    XAML:
+         *    <ToggleButton Name="boldButton" Click="BoldButton_Click" ToolTip="굵게">
+         *        <TextBlock FontWeight="Bold">B</TextBlock>
+         *    </ToggleButton>
+         *    <ToggleButton Name="italicButton" Click="ItalicButton_Click" ToolTip="기울임꼴">
+         *        <TextBlock FontStyle="Italic">I</TextBlock>
+         *    </ToggleButton>
+         *    
+         *    코드:
+         *    private void BoldButton_Click(object sender, RoutedEventArgs e)
+         *    {
+         *        if (boldButton.IsChecked == true)
+         *        {
+         *            textBox.FontWeight = FontWeights.Bold;
+         *        }
+         *        else
+         *        {
+         *            textBox.FontWeight = FontWeights.Normal;
+         *        }
+         *    }
+         *    
+         *    private void ItalicButton_Click(object sender, RoutedEventArgs e)
+         *    {
+         *        if (italicButton.IsChecked == true)
+         *        {
+         *            textBox.FontStyle = FontStyles.Italic;
+         *        }
+         *        else
+         *        {
+         *            textBox.FontStyle = FontStyles.Normal;
+         *        }
+         *    }
+         * 
+         * 5. ComboBox SelectionChanged 이벤트:
+         * 
+         *    XAML:
+         *    <ComboBox Name="fontComboBox" SelectionChanged="FontComboBox_SelectionChanged">
+         *        <ComboBoxItem>Arial</ComboBoxItem>
+         *        <ComboBoxItem>Times New Roman</ComboBoxItem>
+         *        <ComboBoxItem>Courier New</ComboBoxItem>
+         *    </ComboBox>
+         *    
+         *    코드:
+         *    private void FontComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+         *    {
+         *        if (fontComboBox.SelectedItem is ComboBoxItem selected)
+         *        {
+         *            string fontName = selected.Content.ToString();
+         *            textBox.FontFamily = new FontFamily(fontName);
+         *        }
+         *    }
+         * 
+         * 6. Slider로 줌 레벨 조절:
+         * 
+         *    XAML:
+         *    <TextBlock VerticalAlignment="Center">줌:</TextBlock>
+         *    <Slider Name="zoomSlider" 
+         *            Width="100" 
+         *            Minimum="50" 
+         *            Maximum="200" 
+         *            Value="100"
+         *            ValueChanged="ZoomSlider_ValueChanged"/>
+         *    <TextBlock VerticalAlignment="Center" 
+         *              Text="{Binding ElementName=zoomSlider, Path=Value, StringFormat={}{0:0}%}"/>
+         *    
+         *    코드:
+         *    private void ZoomSlider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+         *    {
+         *        if (textBox != null)
+         *        {
+         *            double zoomFactor = zoomSlider.Value / 100.0;
+         *            textBox.LayoutTransform = new ScaleTransform(zoomFactor, zoomFactor);
+         *        }
+         *    }
+         * 
+         * 7. 여러 ToolBar 동적 생성:
+         * 
+         *    private void CreateToolBars()
+         *    {
+         *        // 파일 ToolBar
+         *        var fileToolBar = new ToolBar { Band = 0 };
+         *        fileToolBar.Items.Add(CreateButton("Images/New.png", "새 문서", NewFile_Click));
+         *        fileToolBar.Items.Add(CreateButton("Images/Open.png", "열기", OpenFile_Click));
+         *        fileToolBar.Items.Add(CreateButton("Images/Save.png", "저장", SaveFile_Click));
+         *        toolBarTray.ToolBars.Add(fileToolBar);
+         *        
+         *        // 편집 ToolBar
+         *        var editToolBar = new ToolBar { Band = 0 };
+         *        editToolBar.Items.Add(CreateButton("Images/Cut.png", "잘라내기", Cut_Click));
+         *        editToolBar.Items.Add(CreateButton("Images/Copy.png", "복사", Copy_Click));
+         *        editToolBar.Items.Add(CreateButton("Images/Paste.png", "붙여넣기", Paste_Click));
+         *        toolBarTray.ToolBars.Add(editToolBar);
+         *    }
+         *    
+         *    private Button CreateButton(string imagePath, string tooltip, RoutedEventHandler clickHandler)
+         *    {
+         *        var button = new Button
+         *        {
+         *            Content = new Image
+         *            {
+         *                Source = new BitmapImage(new Uri(imagePath, UriKind.Relative)),
+         *                Width = 16
+         *            },
+         *            ToolTip = tooltip
+         *        };
+         *        button.Click += clickHandler;
+         *        return button;
+         *    }
+         * 
+         * 8. ToolBar 상태 저장 및 복원:
+         * 
+         *    private void SaveToolBarLayout()
+         *    {
+         *        var settings = Properties.Settings.Default;
+         *        
+         *        foreach (var toolbar in toolBarTray.ToolBars)
+         *        {
+         *            // ToolBar의 Band와 Position 저장
+         *            int band = ToolBarTray.GetBand(toolbar);
+         *            int bandIndex = ToolBarTray.GetBandIndex(toolbar);
+         *            
+         *            // 설정에 저장 (실제로는 Dictionary나 컬렉션 사용)
+         *            // settings.ToolBarBand = band;
+         *            // settings.ToolBarBandIndex = bandIndex;
+         *        }
+         *        
+         *        settings.Save();
+         *    }
+         *    
+         *    private void LoadToolBarLayout()
+         *    {
+         *        var settings = Properties.Settings.Default;
+         *        
+         *        // 저장된 설정 복원
+         *        // ToolBarTray.SetBand(toolbar, settings.ToolBarBand);
+         *        // ToolBarTray.SetBandIndex(toolbar, settings.ToolBarBandIndex);
+         *    }
+         * 
+         * 9. 최근 파일 메뉴 추가:
+         * 
+         *    private List<string> recentFiles = new List<string>();
+         *    
+         *    private void AddRecentFile(string filePath)
+         *    {
+         *        if (recentFiles.Contains(filePath))
+         *        {
+         *            recentFiles.Remove(filePath);
+         *        }
+         *        
+         *        recentFiles.Insert(0, filePath);
+         *        
+         *        if (recentFiles.Count > 5)
+         *        {
+         *            recentFiles.RemoveAt(5);
+         *        }
+         *        
+         *        UpdateRecentFilesMenu();
+         *    }
+         *    
+         *    private void UpdateRecentFilesMenu()
+         *    {
+         *        // 메뉴 또는 ComboBox에 최근 파일 표시
+         *        recentFilesComboBox.Items.Clear();
+         *        
+         *        foreach (var file in recentFiles)
+         *        {
+         *            var item = new ComboBoxItem { Content = System.IO.Path.GetFileName(file), Tag = file };
+         *            recentFilesComboBox.Items.Add(item);
+         *        }
+         *    }
+         * 
+         * 10. ToolBar 항목 활성화/비활성화:
+         * 
+         *     private void UpdateToolBarState()
+         *     {
+         *         bool hasText = !string.IsNullOrEmpty(textBox.Text);
+         *         bool hasSelection = textBox.SelectionLength > 0;
+         *         
+         *         // 저장 버튼
+         *         saveButton.IsEnabled = hasText;
+         *         
+         *         // 잘라내기/복사 버튼
+         *         cutButton.IsEnabled = hasSelection;
+         *         copyButton.IsEnabled = hasSelection;
+         *         
+         *         // 붙여넣기 버튼
+         *         pasteButton.IsEnabled = Clipboard.ContainsText();
+         *         
+         *         // 실행 취소/다시 실행
+         *         undoButton.IsEnabled = textBox.CanUndo;
+         *         // redoButton.IsEnabled = textBox.CanRedo; // TextBox는 Redo 없음
+         *     }
+         *     
+         *     private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
+         *     {
+         *         UpdateToolBarState();
+         *     }
+         *     
+         *     private void TextBox_SelectionChanged(object sender, RoutedEventArgs e)
+         *     {
+         *         UpdateToolBarState();
+         *     }
+         * 
+         * ToolBar 코드 조작 관련 중요 사항:
+         * 
+         * 1. ToolBar 접근:
+         *    - XAML에서 Name 지정
+         *    - Items 컬렉션으로 항목 관리
+         *    
+         *    foreach (var item in myToolBar.Items)
+         *    {
+         *        if (item is Button button)
+         *        {
+         *            // 버튼 처리
+         *        }
+         *    }
+         * 
+         * 2. Command 패턴:
+         *    - RoutedCommand 사용
+         *    - CommandBinding으로 연결
+         *    - CanExecute로 활성화 제어
+         * 
+         * 3. ToolBarTray 속성:
+         *    - Band: 행 번호 (0부터 시작)
+         *    - BandIndex: 같은 행 내 순서
+         *    - IsLocked: 재배치 방지
+         * 
+         * 4. 동적 항목 관리:
+         *    - Items.Add(button)
+         *    - Items.Remove(button)
+         *    - Items.Clear()
+         *    - Items.Insert(index, button)
+         * 
+         * 5. Separator 추가:
+         *    myToolBar.Items.Add(new Separator());
+         * 
+         * 6. ToolTip 설정:
+         *    button.ToolTip = "버튼 설명";
+         *    
+         *    또는 복잡한 ToolTip:
+         *    button.ToolTip = new ToolTip
+         *    {
+         *        Content = new StackPanel
+         *        {
+         *            Children =
+         *            {
+         *                new TextBlock { Text = "새 문서", FontWeight = FontWeights.Bold },
+         *                new TextBlock { Text = "Ctrl+N" }
+         *            }
+         *        }
+         *    };
+         * 
+         * 7. 아이콘 리소스:
+         *    - 프로젝트에 Images 폴더 추가
+         *    - 빌드 작업: Resource
+         *    - Source="Images/New.png" 또는 "pack://application:,,,/Images/New.png"
+         * 
+         * 8. 이벤트 처리:
+         *    - Click 이벤트
+         *    - Command
+         *    - SelectionChanged (ComboBox)
+         *    - Checked/Unchecked (ToggleButton)
+         * 
+         * 9. 스타일 적용:
+         *    myToolBar.Style = (Style)FindResource("CustomToolBarStyle");
+         * 
+         * 10. MVVM 패턴:
+         *     - Command 바인딩
+         *     - IsEnabled 바인딩
+         *     - ItemsSource로 동적 항목
+         *     
+         *     <ToolBar ItemsSource="{Binding ToolBarItems}">
+         *         <ToolBar.ItemTemplate>
+         *             <DataTemplate>
+         *                 <Button Command="{Binding Command}" ToolTip="{Binding Tooltip}">
+         *                     <Image Source="{Binding Icon}"/>
+         *                 </Button>
+         *             </DataTemplate>
+         *         </ToolBar.ItemTemplate>
+         *     </ToolBar>
+         */
+    }
+}

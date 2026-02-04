@@ -1,0 +1,101 @@
+﻿using System.Text;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Data;
+using System.Windows.Documents;
+using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
+using System.Windows.Shapes;
+
+namespace ch4_버튼
+{
+    /// <summary>
+    /// MainWindow.xaml에 대한 상호작용 논리
+    /// Button 컨트롤의 다양한 이벤트를 처리하는 메인 윈도우
+    /// </summary>
+    public partial class MainWindow : Window
+    {
+        /// <summary>
+        /// MainWindow 생성자
+        /// 윈도우가 생성될 때 호출되어 초기화 작업을 수행합니다.
+        /// </summary>
+        public MainWindow()
+        {
+            // XAML에 정의된 UI 요소들을 초기화합니다.
+            InitializeComponent();
+        }
+
+        /// <summary>
+        /// 버튼 클릭 이벤트 핸들러
+        /// 사용자가 버튼을 클릭했을 때 실행됩니다.
+        /// </summary>
+        /// <param name="sender">이벤트를 발생시킨 객체 (여기서는 btn 버튼)</param>
+        /// <param name="e">라우팅 이벤트 정보를 담고 있는 인자</param>
+        private void btn_Click(object sender, RoutedEventArgs e)
+        {
+            // TextBlock(txtb)의 Text 속성을 변경하여 버튼 클릭 메시지를 표시합니다.
+            // 이벤트가 발생했음을 사용자에게 시각적으로 피드백합니다.
+            txtb.Text = "버튼을 클릭했습니다.";
+        }
+
+        /// <summary>
+        /// 버튼 더블 클릭 이벤트 핸들러
+        /// 사용자가 버튼을 더블 클릭했을 때 실행됩니다.
+        /// </summary>
+        /// <param name="sender">이벤트를 발생시킨 객체 (여기서는 btn 버튼)</param>
+        /// <param name="e">마우스 버튼 이벤트 정보 (클릭된 버튼, 좌표 등)</param>
+        private void btn_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            // TextBlock의 배경색을 연어색(Salmon)으로 변경합니다.
+            // Brushes: 미리 정의된 색상 브러시를 제공하는 정적 클래스
+            txtb.Background = Brushes.Salmon;
+            
+            // TextBlock의 전경색(텍스트 색상)을 흰색으로 변경합니다.
+            // 배경색이 어두워지면서 텍스트 가독성을 위해 흰색으로 변경
+            txtb.Foreground = Brushes.White;
+        }
+
+        /// <summary>
+        /// 마우스가 버튼 영역에 진입했을 때의 이벤트 핸들러
+        /// 마우스 커서가 버튼 위로 올라왔을 때 실행됩니다.
+        /// </summary>
+        /// <param name="sender">이벤트를 발생시킨 객체 (여기서는 btn 버튼)</param>
+        /// <param name="e">마우스 이벤트 정보 (마우스 위치, 버튼 상태 등)</param>
+        private void btn_MouseEnter(object sender, MouseEventArgs e)
+        {
+            // 버튼의 텍스트 색상을 빨간색으로 변경합니다.
+            // 마우스 오버 효과를 주어 사용자에게 상호작용 가능함을 시각적으로 표시
+            btn.Foreground = Brushes.Red;
+        }
+
+        /// <summary>
+        /// 마우스가 버튼 영역에서 벗어났을 때의 이벤트 핸들러
+        /// 마우스 커서가 버튼에서 떠났을 때 실행됩니다.
+        /// </summary>
+        /// <param name="sender">이벤트를 발생시킨 객체 (여기서는 btn 버튼)</param>
+        /// <param name="e">마우스 이벤트 정보 (마우스 위치, 버튼 상태 등)</param>
+        private void btn_MouseLeave(object sender, MouseEventArgs e)
+        {
+            // 버튼의 텍스트 색상을 검은색으로 되돌립니다.
+            // 마우스가 떠나면 원래 상태로 복원하여 정상 상태를 표시
+            btn.Foreground = Brushes.Black;
+        }
+        
+        /*
+         * 이벤트 흐름 정리:
+         * 
+         * 1. MouseEnter → 마우스가 버튼에 진입 → 버튼 텍스트가 빨간색으로 변경
+         * 2. Click → 버튼 클릭 → TextBlock에 "버튼을 클릭했습니다." 표시
+         * 3. MouseDoubleClick → 버튼 더블 클릭 → TextBlock 배경 연어색, 텍스트 흰색
+         * 4. MouseLeave → 마우스가 버튼에서 떠남 → 버튼 텍스트가 검은색으로 복원
+         * 
+         * 참고:
+         * - RoutedEventArgs: WPF의 라우팅 이벤트 시스템에서 사용되는 기본 이벤트 인자
+         * - MouseButtonEventArgs: 마우스 버튼 관련 상세 정보 포함 (어떤 버튼, 몇 번 클릭 등)
+         * - MouseEventArgs: 마우스 위치, 이동 등의 일반적인 마우스 정보 포함
+         * - Brushes: System.Windows.Media 네임스페이스의 정적 클래스로 140개 이상의 색상 제공
+         */
+    }
+}

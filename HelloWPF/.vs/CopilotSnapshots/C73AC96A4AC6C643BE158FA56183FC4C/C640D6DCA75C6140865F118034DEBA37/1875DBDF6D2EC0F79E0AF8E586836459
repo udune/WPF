@@ -1,0 +1,91 @@
+﻿using System.Text;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Data;
+using System.Windows.Documents;
+using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
+using System.Windows.Shapes;
+
+namespace ch5_텍스트박스
+{
+    /// <summary>
+    /// MainWindow.xaml에 대한 상호작용 논리
+    /// TextBox 컨트롤의 SelectionChanged 이벤트를 처리하는 메인 윈도우
+    /// </summary>
+    public partial class MainWindow : Window
+    {
+        /// <summary>
+        /// MainWindow 생성자
+        /// 윈도우가 생성될 때 호출되어 초기화 작업을 수행합니다.
+        /// </summary>
+        public MainWindow()
+        {
+            // XAML에 정의된 UI 요소들을 초기화합니다.
+            InitializeComponent();
+        }
+
+        /// <summary>
+        /// TextBox의 SelectionChanged 이벤트 핸들러
+        /// 사용자가 TextBox 내에서 텍스트를 선택하거나, 커서 위치를 변경할 때 실행됩니다.
+        /// 
+        /// 이벤트 발생 시점:
+        /// - 마우스로 텍스트를 드래그하여 선택할 때
+        /// - 키보드로 텍스트를 선택할 때 (Shift + 화살표 키)
+        /// - 커서 위치를 이동할 때 (화살표 키, 마우스 클릭)
+        /// - 텍스트를 입력하거나 삭제할 때
+        /// </summary>
+        /// <param name="sender">이벤트를 발생시킨 객체 (여기서는 TextBox)</param>
+        /// <param name="e">라우팅 이벤트 정보를 담고 있는 인자</param>
+        private void TextBox_SelectionChanged(object sender, RoutedEventArgs e)
+        {
+            // sender를 TextBox 타입으로 캐스팅합니다.
+            // 'as' 연산자는 캐스팅이 실패하면 예외를 발생시키지 않고 null을 반환합니다.
+            // C# 12.0의 nullable 참조 형식(?) 사용: textBox는 null일 수 있음을 명시
+            TextBox? textBox = sender as TextBox;
+            
+            // textBox가 null이 아닌지 확인합니다. (null 체크)
+            // 캐스팅이 성공했는지, 즉 sender가 실제로 TextBox인지 확인
+            if (textBox != null)
+            {
+                // 읽기 전용 TextBox(txt)의 Text를 
+                // 이벤트를 발생시킨 TextBox의 Text로 업데이트합니다.
+                // 
+                // 동작:
+                // 1. 사용자가 두 번째 TextBox(스타일이 적용된 것)에 텍스트를 입력
+                // 2. SelectionChanged 이벤트 발생
+                // 3. 입력된 텍스트가 첫 번째 TextBox(읽기 전용 txt)에 실시간으로 복사됨
+                // 
+                // 결과: 실시간 텍스트 동기화 효과
+                txt.Text = textBox.Text;
+            }
+            
+            /*
+             * 추가 정보:
+             * 
+             * TextBox의 유용한 속성들:
+             * - textBox.SelectedText: 현재 선택된 텍스트 문자열
+             * - textBox.SelectionStart: 선택 시작 위치 (인덱스)
+             * - textBox.SelectionLength: 선택된 텍스트의 길이
+             * - textBox.CaretIndex: 현재 커서(캐럿) 위치
+             * 
+             * 예제 - 선택된 텍스트 정보 표시:
+             * if (textBox.SelectionLength > 0)
+             * {
+             *     txt.Text = $"선택된 텍스트: {textBox.SelectedText}";
+             * }
+             * 
+             * as 연산자 vs 직접 캐스팅:
+             * - as 연산자: (TextBox)sender → 실패 시 null 반환 (안전)
+             * - 직접 캐스팅: (TextBox)sender → 실패 시 InvalidCastException 발생
+             * 
+             * null 체크 패턴 (C# 12.0):
+             * - if (textBox != null) - 전통적 방식
+             * - if (textBox is not null) - 최신 패턴 매칭
+             * - textBox?.Text - null 조건 연산자
+             */
+        }
+    }
+}

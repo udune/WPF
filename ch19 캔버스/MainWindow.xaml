@@ -1,0 +1,20 @@
+﻿<Window x:Class="ch19_캔버스.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ch19_캔버스"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+
+    <Canvas>
+        <Button Canvas.Left="50">버튼</Button>
+        <Button Canvas.Right="50">버튼</Button>
+        <Button Canvas.Top="50">버튼</Button>
+        <Button Canvas.Bottom="50">버튼</Button>
+        <Ellipse Panel.ZIndex="4" Fill="Salmon" Width="200" Height="200"
+                 Canvas.Left="150" Canvas.Top="150"></Ellipse>
+        <Rectangle Panel.ZIndex="3" Canvas.Left="150" Canvas.Top="150" Fill="Blue"
+                   Width="200" Height="200"></Rectangle>
+    </Canvas>
+</Window>

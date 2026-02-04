@@ -1,0 +1,428 @@
+﻿<!-- 
+    ch29 화면이동 프레임 - Frame과 NavigationService를 사용한 페이지 네비게이션 예제
+    Frame 컨트롤을 사용하여 여러 Page를 전환하고 탐색 기록을 관리합니다.
+    웹 브라우저처럼 뒤로/앞으로 버튼으로 페이지 간 이동이 가능합니다.
+    
+    핵심 개념:
+    - Frame: Page를 호스팅하는 컨테이너 컨트롤
+    - Page: 재사용 가능한 콘텐츠 단위
+    - NavigationService: 페이지 탐색 서비스
+    - 탐색 기록: 방문한 페이지 기록 관리 (Back/Forward)
+-->
+<Window x:Class="ch29_화면이동_프레임.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ch29_화면이동_프레임"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    
+    <Grid>
+        <!-- 
+            Grid: 화면을 두 개의 행으로 분할
+            - 1행: 네비게이션 버튼 영역 (뒤로/앞으로)
+            - 2행: Frame 영역 (페이지 표시)
+        -->
+        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"/>
+            <!-- 
+                1행: 네비게이션 버튼 영역
+                Height="1*": 전체 높이의 1/6 (1:5 비율)
+                상단에 작은 영역으로 버튼 배치
+            -->
+            <RowDefinition Height="5*"/>
+            <!-- 
+                2행: Frame 영역
+                Height="5*": 전체 높이의 5/6 (1:5 비율)
+                대부분의 공간을 페이지 표시에 할당
+            -->
+        </Grid.RowDefinitions>
+        
+        <!-- ========== 네비게이션 버튼 영역 ========== -->
+        
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+            <!-- 
+                StackPanel:
+                - 뒤로/앞으로 버튼을 가로로 배치
+                
+                Orientation="Horizontal":
+                - 버튼을 가로 방향으로 나열
+                
+                HorizontalAlignment="Center":
+                - 버튼을 화면 중앙에 배치
+                
+                배치:
+                [     <  >     ]
+                  (화면 중앙)
+            -->
+            
+            <Button FontSize="20" Name="뒤로" Click="Back_Click">&lt;</Button>
+            <!-- 
+                뒤로 버튼:
+                
+                FontSize="20":
+                - 버튼 텍스트 크기 20포인트
+                
+                Name="뒤로":
+                - 코드 비하인드에서 접근 가능한 이름
+                - 하지만 이 예제에서는 직접 사용 안 함
+                
+                Click="Back_Click":
+                - 클릭 이벤트 핸들러
+                - MainWindow.xaml.cs의 Back_Click 메서드
+                
+                &lt;:
+                - XML 엔티티 (< 기호)
+                - < 를 텍스트로 표시하기 위해 사용
+                - &lt; = Less Than (<)
+                
+                동작:
+                1. 버튼 클릭
+                2. Back_Click 이벤트 발생
+                3. frm.NavigationService.GoBack() 호출
+                4. 이전 페이지로 이동
+                
+                웹 브라우저 비유:
+                - 뒤로 가기 버튼 (←)
+                - 이전에 방문한 페이지로 이동
+                - 탐색 기록에서 이전 항목
+            -->
+            
+            <Button FontSize="20" Name="앞으로" Click="Front_Click">&gt;</Button>
+            <!-- 
+                앞으로 버튼:
+                
+                FontSize="20":
+                - 버튼 텍스트 크기 20포인트
+                
+                Name="앞으로":
+                - 코드 비하인드에서 접근 가능한 이름
+                
+                Click="Front_Click":
+                - 클릭 이벤트 핸들러
+                - MainWindow.xaml.cs의 Front_Click 메서드
+                
+                &gt;:
+                - XML 엔티티 (> 기호)
+                - > 를 텍스트로 표시하기 위해 사용
+                - &gt; = Greater Than (>)
+                
+                동작:
+                1. 버튼 클릭
+                2. Front_Click 이벤트 발생
+                3. frm.NavigationService.GoForward() 호출
+                4. 다음 페이지로 이동
+                
+                웹 브라우저 비유:
+                - 앞으로 가기 버튼 (→)
+                - 뒤로 간 후 다시 앞으로 이동
+                - 탐색 기록에서 다음 항목
+                
+                활성화 조건:
+                - GoBack() 호출 후에만 활성화 가능
+                - 앞으로 갈 페이지가 있어야 함
+            -->
+        </StackPanel>
+        
+        <!-- ========== Frame 영역 (페이지 표시) ========== -->
+        
+        <Frame Name="frm" Grid.Row="1" Source="/Views/Page1.xaml" NavigationUIVisibility="Hidden"></Frame>
+        <!-- 
+            Frame:
+            - Page를 호스팅하는 컨테이너 컨트롤
+            - 웹 브라우저의 iframe과 유사
+            - 여러 Page 간 전환 가능
+            - 탐색 기록 자동 관리
+            
+            Name="frm":
+            - 코드 비하인드에서 접근할 이름
+            - Back_Click, Front_Click에서 사용
+            - frm.NavigationService로 탐색 제어
+            
+            Grid.Row="1":
+            - 2번째 행에 배치
+            - 화면의 대부분을 차지
+            
+            Source="/Views/Page1.xaml":
+            - 초기에 표시할 페이지
+            - 절대 경로 형식 (루트부터 시작)
+            - /Views/Page1.xaml 경로
+            - 애플리케이션 시작 시 Page1이 표시됨
+            
+            NavigationUIVisibility="Hidden":
+            - Frame의 기본 네비게이션 UI 숨김
+            - 기본 UI: 뒤로/앞으로 버튼, 주소 표시줄
+            - Hidden: 네비게이션 UI 완전히 숨김
+            - 사용자 정의 버튼 사용
+            
+            Frame의 기본 네비게이션 UI:
+            - Visible: 모두 표시 (기본값 아님)
+            - Hidden: 모두 숨김 (이 예제)
+            - Automatic: 필요 시 표시
+            
+            Frame vs ContentControl:
+            - Frame: 탐색 기록 관리, NavigationService
+            - ContentControl: 단순 콘텐츠 표시
+            
+            동작 흐름:
+            1. MainWindow 로드
+            2. Frame에 Page1.xaml 로드
+            3. Page1의 "이동" 버튼 클릭
+            4. NavigationService.Navigate(Page2) 호출
+            5. Frame에 Page2 표시
+            6. 탐색 기록에 Page1 → Page2 저장
+            7. "뒤로" 버튼 클릭 가능
+            
+            탐색 기록:
+            [Page1] → [Page2] → [Page3]
+               ↑ 현재      ↑ 뒤로   ↑ 앞으로
+            
+            NavigationService:
+            - frm.NavigationService: Frame의 탐색 서비스
+            - Navigate(page): 페이지 이동
+            - GoBack(): 이전 페이지
+            - GoForward(): 다음 페이지
+            - CanGoBack: 뒤로 갈 수 있는지
+            - CanGoForward: 앞으로 갈 수 있는지
+            
+            Page 생명주기:
+            1. Page 인스턴스 생성 (new Page2())
+            2. InitializeComponent() 호출
+            3. Frame에 로드 (Loaded 이벤트)
+            4. 화면에 표시
+            5. 다른 페이지로 이동 (Unloaded 이벤트)
+            
+            데이터 전달:
+            NavigationService.Navigate(page, data);
+            
+            Page에서 수신:
+            protected override void OnNavigatedTo(NavigationEventArgs e)
+            {
+                var data = e.ExtraData;
+            }
+        -->
+    </Grid>
+    
+    <!--
+        Frame과 NavigationService 전체 요약:
+        
+        ========== Frame의 주요 기능 ==========
+        
+        1. 페이지 호스팅:
+           - Page 객체를 표시
+           - 한 번에 하나의 Page만
+        
+        2. 탐색 관리:
+           - NavigationService 제공
+           - 탐색 기록 자동 관리
+           - Back/Forward 스택
+        
+        3. 네비게이션 UI:
+           - 기본 UI 제공 (선택적)
+           - NavigationUIVisibility로 제어
+        
+        ========== NavigationService 메서드 ==========
+        
+        1. Navigate(Uri):
+           NavigationService.Navigate(new Uri("/Views/Page2.xaml", UriKind.Relative));
+        
+        2. Navigate(Page):
+           NavigationService.Navigate(new Page2());
+        
+        3. Navigate(Page, object):
+           NavigationService.Navigate(new Page2(), userData);
+        
+        4. GoBack():
+           if (NavigationService.CanGoBack)
+               NavigationService.GoBack();
+        
+        5. GoForward():
+           if (NavigationService.CanGoForward)
+               NavigationService.GoForward();
+        
+        6. RemoveBackEntry():
+           NavigationService.RemoveBackEntry(); // 이전 항목 제거
+        
+        ========== 탐색 이벤트 ==========
+        
+        Page에서 재정의:
+        
+        1. OnNavigatedTo (페이지 로드):
+           protected override void OnNavigatedTo(NavigationEventArgs e)
+           {
+               base.OnNavigatedTo(e);
+               var data = e.ExtraData; // 전달된 데이터
+           }
+        
+        2. OnNavigatedFrom (페이지 떠남):
+           protected override void OnNavigatedFrom(NavigationEventArgs e)
+           {
+               base.OnNavigatedFrom(e);
+               // 정리 작업
+           }
+        
+        3. OnNavigating (탐색 중):
+           protected override void OnNavigating(NavigatingCancelEventArgs e)
+           {
+               base.OnNavigating(e);
+               e.Cancel = true; // 탐색 취소 가능
+           }
+        
+        ========== 실전 활용 예제 ==========
+        
+        1. 데이터 전달:
+           Page1:
+           var data = new UserData { Name = "홍길동", Age = 30 };
+           NavigationService.Navigate(new Page2(), data);
+           
+           Page2:
+           protected override void OnNavigatedTo(NavigationEventArgs e)
+           {
+               if (e.ExtraData is UserData data)
+               {
+                   nameLabel.Content = data.Name;
+               }
+           }
+        
+        2. 조건부 탐색:
+           private void Navigate_Click(object sender, RoutedEventArgs e)
+           {
+               if (ValidateInput())
+               {
+                   NavigationService.Navigate(new Page2());
+               }
+               else
+               {
+                   MessageBox.Show("입력을 확인하세요.");
+               }
+           }
+        
+        3. 탐색 확인:
+           protected override void OnNavigating(NavigatingCancelEventArgs e)
+           {
+               if (hasUnsavedChanges)
+               {
+                   var result = MessageBox.Show("저장하지 않은 변경사항이 있습니다. 계속하시겠습니까?", 
+                                                "확인", MessageBoxButton.YesNo);
+                   if (result == MessageBoxResult.No)
+                   {
+                       e.Cancel = true; // 탐색 취소
+                   }
+               }
+           }
+        
+        4. 기록 제거:
+           NavigationService.Navigate(new LoginPage());
+           NavigationService.RemoveBackEntry(); // 로그인 페이지로 돌아갈 수 없게
+        
+        5. URI 기반 탐색:
+           NavigationService.Navigate(new Uri("/Views/Page2.xaml", UriKind.Relative));
+        
+        6. 매개변수 포함 URI:
+           NavigationService.Navigate(new Uri($"/Views/DetailPage.xaml?id={itemId}", UriKind.Relative));
+           
+           DetailPage:
+           protected override void OnNavigatedTo(NavigationEventArgs e)
+           {
+               var uri = e.Uri;
+               var query = uri.Query; // ?id=123
+               // 파싱하여 사용
+           }
+        
+        7. Journal 관리:
+           Frame.JournalOwnership = JournalOwnership.OwnsJournal; // 독립적인 저널
+           Frame.JournalOwnership = JournalOwnership.UsesParentJournal; // 부모 저널 공유
+        
+        8. 중첩 Frame:
+           <Frame Name="mainFrame">
+               <Page>
+                   <Frame Name="subFrame"/>
+               </Page>
+           </Frame>
+        
+        ========== Window vs Frame ==========
+        
+        Window (모달/모달리스):
+        - 독립적인 창
+        - ShowDialog() / Show()
+        - 창 관리 오버헤드
+        
+        Frame + Page:
+        - 동일한 창 내에서 전환
+        - 빠른 전환
+        - 탐색 기록 관리
+        
+        사용 시나리오:
+        - Window: 설정, 다이얼로그, 별도 창
+        - Frame: 마법사, 다단계 폼, 앱 네비게이션
+        
+        ========== MVVM 패턴과 Frame ==========
+        
+        ViewModel에서 탐색:
+        
+        1. INavigationService 인터페이스:
+           public interface INavigationService
+           {
+               void Navigate<T>() where T : Page;
+               void Navigate<T>(object parameter) where T : Page;
+               void GoBack();
+           }
+        
+        2. 구현:
+           public class NavigationService : INavigationService
+           {
+               private Frame _frame;
+               
+               public NavigationService(Frame frame)
+               {
+                   _frame = frame;
+               }
+               
+               public void Navigate<T>() where T : Page
+               {
+                   var page = Activator.CreateInstance<T>();
+                   _frame.Navigate(page);
+               }
+               
+               public void GoBack()
+               {
+                   if (_frame.CanGoBack)
+                       _frame.GoBack();
+               }
+           }
+        
+        3. ViewModel 사용:
+           public class MainViewModel
+           {
+               private INavigationService _navigationService;
+               
+               public ICommand NavigateCommand { get; }
+               
+               public MainViewModel(INavigationService navigationService)
+               {
+                   _navigationService = navigationService;
+                   NavigateCommand = new RelayCommand(() => _navigationService.Navigate<Page2>());
+               }
+           }
+        
+        ========== 주의사항 ==========
+        
+        1. Page 수명:
+           - Navigate()마다 새 인스턴스 생성
+           - 상태 유지 필요 시 ViewModel 사용
+        
+        2. 메모리 관리:
+           - 탐색 기록이 계속 쌓임
+           - 필요 시 RemoveBackEntry() 호출
+        
+        3. 순환 참조:
+           - Page가 Frame 참조 시 주의
+           - NavigationService 사용 권장
+        
+        4. XAML vs 코드:
+           - Source 속성: XAML에서 초기 페이지
+           - Navigate(): 코드에서 동적 이동
+    -->
+</Window>

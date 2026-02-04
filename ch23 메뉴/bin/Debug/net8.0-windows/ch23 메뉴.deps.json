@@ -1,0 +1,23 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v8.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v8.0": {
+      "ch23 메뉴/1.0.0": {
+        "runtime": {
+          "ch23 메뉴.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "ch23 메뉴/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

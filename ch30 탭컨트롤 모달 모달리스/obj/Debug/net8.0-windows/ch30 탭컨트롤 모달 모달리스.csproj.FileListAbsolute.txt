@@ -1,0 +1,22 @@
+C:\Users\udune\Desktop\WPF\ch30 탭컨트롤 모달 모달리스\bin\Debug\net8.0-windows\ch30 탭컨트롤 모달 모달리스.exe
+C:\Users\udune\Desktop\WPF\ch30 탭컨트롤 모달 모달리스\bin\Debug\net8.0-windows\ch30 탭컨트롤 모달 모달리스.deps.json
+C:\Users\udune\Desktop\WPF\ch30 탭컨트롤 모달 모달리스\bin\Debug\net8.0-windows\ch30 탭컨트롤 모달 모달리스.runtimeconfig.json
+C:\Users\udune\Desktop\WPF\ch30 탭컨트롤 모달 모달리스\bin\Debug\net8.0-windows\ch30 탭컨트롤 모달 모달리스.dll
+C:\Users\udune\Desktop\WPF\ch30 탭컨트롤 모달 모달리스\bin\Debug\net8.0-windows\ch30 탭컨트롤 모달 모달리스.pdb
+C:\Users\udune\Desktop\WPF\ch30 탭컨트롤 모달 모달리스\obj\Debug\net8.0-windows\MainWindow.g.cs
+C:\Users\udune\Desktop\WPF\ch30 탭컨트롤 모달 모달리스\obj\Debug\net8.0-windows\Window1.g.cs
+C:\Users\udune\Desktop\WPF\ch30 탭컨트롤 모달 모달리스\obj\Debug\net8.0-windows\App.g.cs
+C:\Users\udune\Desktop\WPF\ch30 탭컨트롤 모달 모달리스\obj\Debug\net8.0-windows\ch30 탭컨트롤 모달 모달리스_MarkupCompile.cache
+C:\Users\udune\Desktop\WPF\ch30 탭컨트롤 모달 모달리스\obj\Debug\net8.0-windows\ch30 탭컨트롤 모달 모달리스_MarkupCompile.lref
+C:\Users\udune\Desktop\WPF\ch30 탭컨트롤 모달 모달리스\obj\Debug\net8.0-windows\MainWindow.baml
+C:\Users\udune\Desktop\WPF\ch30 탭컨트롤 모달 모달리스\obj\Debug\net8.0-windows\Window1.baml
+C:\Users\udune\Desktop\WPF\ch30 탭컨트롤 모달 모달리스\obj\Debug\net8.0-windows\ch30 탭컨트롤 모달 모달리스.g.resources
+C:\Users\udune\Desktop\WPF\ch30 탭컨트롤 모달 모달리스\obj\Debug\net8.0-windows\ch30 탭컨트롤 모달 모달리스.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\udune\Desktop\WPF\ch30 탭컨트롤 모달 모달리스\obj\Debug\net8.0-windows\ch30 탭컨트롤 모달 모달리스.AssemblyInfoInputs.cache
+C:\Users\udune\Desktop\WPF\ch30 탭컨트롤 모달 모달리스\obj\Debug\net8.0-windows\ch30 탭컨트롤 모달 모달리스.AssemblyInfo.cs
+C:\Users\udune\Desktop\WPF\ch30 탭컨트롤 모달 모달리스\obj\Debug\net8.0-windows\ch30 탭컨트롤 모달 모달리스.csproj.CoreCompileInputs.cache
+C:\Users\udune\Desktop\WPF\ch30 탭컨트롤 모달 모달리스\obj\Debug\net8.0-windows\ch30 탭컨트롤 모달 모달리스.dll
+C:\Users\udune\Desktop\WPF\ch30 탭컨트롤 모달 모달리스\obj\Debug\net8.0-windows\refint\ch30 탭컨트롤 모달 모달리스.dll
+C:\Users\udune\Desktop\WPF\ch30 탭컨트롤 모달 모달리스\obj\Debug\net8.0-windows\ch30 탭컨트롤 모달 모달리스.pdb
+C:\Users\udune\Desktop\WPF\ch30 탭컨트롤 모달 모달리스\obj\Debug\net8.0-windows\ch30 탭컨트롤 모달 모달리스.genruntimeconfig.cache
+C:\Users\udune\Desktop\WPF\ch30 탭컨트롤 모달 모달리스\obj\Debug\net8.0-windows\ref\ch30 탭컨트롤 모달 모달리스.dll

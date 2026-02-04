@@ -1,0 +1,23 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v10.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v10.0": {
+      "ch07 Image/1.0.0": {
+        "runtime": {
+          "ch07 Image.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "ch07 Image/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

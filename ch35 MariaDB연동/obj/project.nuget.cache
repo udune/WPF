@@ -1,0 +1,12 @@
+{
+  "version": 2,
+  "dgSpecHash": "J1TROqkHC7A=",
+  "success": true,
+  "projectFilePath": "C:\\Users\\udune\\Desktop\\WPF\\ch35 MariaDB연동\\ch35 MariaDB연동.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\udune\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\8.0.2\\microsoft.extensions.dependencyinjection.abstractions.8.0.2.nupkg.sha512",
+    "C:\\Users\\udune\\.nuget\\packages\\microsoft.extensions.logging.abstractions\\8.0.2\\microsoft.extensions.logging.abstractions.8.0.2.nupkg.sha512",
+    "C:\\Users\\udune\\.nuget\\packages\\mysqlconnector\\2.4.0\\mysqlconnector.2.4.0.nupkg.sha512"
+  ],
+  "logs": []
+}

@@ -1,0 +1,24 @@
+﻿<Window x:Class="ch23_Menu.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ch23_Menu"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <DockPanel>
+        <Menu DockPanel.Dock="Top">
+            <MenuItem Header="파일">
+                <MenuItem Header="새로운 문서" >
+                    <MenuItem.Icon>
+                        <Image Source="https://cdn0.iconfinder.com/data/icons/business-startup-10/50/61-512.png"></Image>
+                    </MenuItem.Icon>
+                </MenuItem>
+                <MenuItem Header="열기"></MenuItem>
+                <MenuItem Header="닫기"></MenuItem>
+            </MenuItem>
+            <MenuItem Header="_Move" Click="MenuItem_Click"></MenuItem>
+        </Menu>
+        <ContentControl x:Name="ContentArea"></ContentControl>
+    </DockPanel>
+</Window>

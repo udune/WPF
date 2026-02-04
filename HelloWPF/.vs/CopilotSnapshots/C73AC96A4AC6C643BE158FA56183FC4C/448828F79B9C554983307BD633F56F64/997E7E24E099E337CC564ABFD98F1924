@@ -1,0 +1,404 @@
+﻿using System.Text;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Data;
+using System.Windows.Documents;
+using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
+using System.Windows.Shapes;
+
+namespace ch25_데이터바인딩1
+{
+    /// <summary>
+    /// MainWindow.xaml에 대한 상호작용 논리
+    /// WPF 데이터 바인딩의 기초를 시연하는 메인 윈도우
+    /// Binding Mode(방향)와 UpdateSourceTrigger(업데이트 시점)의 차이를 보여줍니다.
+    /// </summary>
+    public partial class MainWindow : Window
+    {
+        /// <summary>
+        /// MainWindow 생성자
+        /// 윈도우가 생성될 때 호출되어 초기화 작업을 수행합니다.
+        /// </summary>
+        public MainWindow()
+        {
+            // XAML에 정의된 UI 요소들을 초기화합니다.
+            InitializeComponent();
+            
+            /*
+             * 이 예제는 순수 XAML 데이터 바인딩입니다.
+             * - 코드 비하인드 없이 XAML만으로 동작
+             * - Binding Mode: OneWay, TwoWay, OneWayToSource
+             * - UpdateSourceTrigger: Default, PropertyChanged, LostFocus, Explicit
+             * 
+             * 데이터 바인딩 기본 개념:
+             * - 소스(Source): 데이터를 제공하는 요소
+             * - 타겟(Target): 데이터를 표시하는 요소
+             * - 바인딩(Binding): 소스와 타겟을 연결
+             * - 자동 동기화: 소스나 타겟 변경 시 자동 업데이트
+             * 
+             * 실제 프로젝트에서는:
+             * - MVVM 패턴 (ViewModel에 바인딩)
+             * - INotifyPropertyChanged 인터페이스
+             * - ObservableCollection (컬렉션 바인딩)
+             * - Converter (값 변환)
+             * - ValidationRule (유효성 검사)
+             */
+        }
+        
+        /*
+         * 데이터 바인딩 코드 비하인드 활용 예제:
+         * 
+         * ========== 1. 코드에서 바인딩 생성 ==========
+         * 
+         * private void CreateBinding()
+         * {
+         *     // 바인딩 객체 생성
+         *     Binding binding = new Binding
+         *     {
+         *         ElementName = "tbox1",        // 소스 요소
+         *         Path = new PropertyPath("Text"), // 소스 속성
+         *         Mode = BindingMode.TwoWay,       // 바인딩 방향
+         *         UpdateSourceTrigger = UpdateSourceTrigger.PropertyChanged // 업데이트 시점
+         *     };
+         *     
+         *     // 타겟에 바인딩 설정
+         *     targetTextBox.SetBinding(TextBox.TextProperty, binding);
+         * }
+         * 
+         * ========== 2. 바인딩 해제 ==========
+         * 
+         * private void RemoveBinding()
+         * {
+         *     // 바인딩 제거
+         *     BindingOperations.ClearBinding(targetTextBox, TextBox.TextProperty);
+         *     
+         *     // 또는 모든 바인딩 제거
+         *     BindingOperations.ClearAllBindings(targetTextBox);
+         * }
+         * 
+         * ========== 3. Explicit UpdateSourceTrigger 사용 ==========
+         * 
+         * XAML:
+         * <TextBox x:Name="explicitTextBox" 
+         *          Text="{Binding Path=UserName, 
+         *                        Mode=TwoWay, 
+         *                        UpdateSourceTrigger=Explicit}"/>
+         * <Button Content="저장" Click="SaveButton_Click"/>
+         * 
+         * 코드:
+         * private void SaveButton_Click(object sender, RoutedEventArgs e)
+         * {
+         *     // Explicit 바인딩 수동 업데이트
+         *     BindingExpression binding = explicitTextBox.GetBindingExpression(TextBox.TextProperty);
+         *     binding.UpdateSource(); // 소스 업데이트 실행
+         *     
+         *     MessageBox.Show("저장되었습니다.");
+         * }
+         * 
+         * ========== 4. 바인딩 오류 처리 ==========
+         * 
+         * XAML:
+         * <TextBox Text="{Binding Path=Age, ValidatesOnExceptions=True}"/>
+         * 
+         * 코드:
+         * private void CheckBindingErrors()
+         * {
+         *     BindingExpression binding = textBox.GetBindingExpression(TextBox.TextProperty);
+         *     
+         *     if (binding.HasError)
+         *     {
+         *         // 바인딩 오류 확인
+         *         ValidationError error = Validation.GetErrors(textBox).FirstOrDefault();
+         *         MessageBox.Show($"오류: {error.ErrorContent}");
+         *     }
+         * }
+         * 
+         * ========== 5. INotifyPropertyChanged 구현 ==========
+         * 
+         * MVVM 패턴에서 필수적인 인터페이스:
+         * 
+         * public class Person : INotifyPropertyChanged
+         * {
+         *     private string _name;
+         *     
+         *     public string Name
+         *     {
+         *         get => _name;
+         *         set
+         *         {
+         *             if (_name != value)
+         *             {
+         *                 _name = value;
+         *                 OnPropertyChanged(nameof(Name)); // 속성 변경 알림
+         *             }
+         *         }
+         *     }
+         *     
+         *     public event PropertyChangedEventHandler PropertyChanged;
+         *     
+         *     protected virtual void OnPropertyChanged(string propertyName)
+         *     {
+         *         PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+         *     }
+         * }
+         * 
+         * 사용:
+         * public MainWindow()
+         * {
+         *     InitializeComponent();
+         *     
+         *     Person person = new Person { Name = "홍길동" };
+         *     DataContext = person; // DataContext 설정
+         * }
+         * 
+         * XAML:
+         * <TextBox Text="{Binding Path=Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+         * 
+         * ========== 6. Converter (값 변환기) 사용 ==========
+         * 
+         * Converter 클래스:
+         * public class BoolToVisibilityConverter : IValueConverter
+         * {
+         *     public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+         *     {
+         *         // bool → Visibility 변환
+         *         return (bool)value ? Visibility.Visible : Visibility.Collapsed;
+         *     }
+         *     
+         *     public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+         *     {
+         *         // Visibility → bool 변환
+         *         return (Visibility)value == Visibility.Visible;
+         *     }
+         * }
+         * 
+         * XAML:
+         * <Window.Resources>
+         *     <local:BoolToVisibilityConverter x:Key="BoolToVisConverter"/>
+         * </Window.Resources>
+         * 
+         * <CheckBox x:Name="checkbox" Content="표시"/>
+         * <TextBlock Text="Hello" 
+         *           Visibility="{Binding ElementName=checkbox, 
+         *                               Path=IsChecked, 
+         *                               Converter={StaticResource BoolToVisConverter}}"/>
+         * 
+         * ========== 7. MultiBinding (다중 바인딩) ==========
+         * 
+         * MultiConverter:
+         * public class FullNameConverter : IMultiValueConverter
+         * {
+         *     public object Convert(object[] values, Type targetType, object parameter, CultureInfo culture)
+         *     {
+         *         // 여러 값을 하나로 결합
+         *         string firstName = values[0] as string;
+         *         string lastName = values[1] as string;
+         *         return $"{lastName} {firstName}";
+         *     }
+         *     
+         *     public object[] ConvertBack(object value, Type[] targetTypes, object parameter, CultureInfo culture)
+         *     {
+         *         throw new NotImplementedException();
+         *     }
+         * }
+         * 
+         * XAML:
+         * <TextBlock>
+         *     <TextBlock.Text>
+         *         <MultiBinding Converter="{StaticResource FullNameConverter}">
+         *             <Binding Path="FirstName"/>
+         *             <Binding Path="LastName"/>
+         *         </MultiBinding>
+         *     </TextBlock.Text>
+         * </TextBlock>
+         * 
+         * ========== 8. RelativeSource 바인딩 ==========
+         * 
+         * Self (자기 자신):
+         * <Button Content="{Binding RelativeSource={RelativeSource Self}, Path=Width}"/>
+         * 
+         * FindAncestor (부모 요소):
+         * <ListBox x:Name="listBox">
+         *     <ListBox.ItemTemplate>
+         *         <DataTemplate>
+         *             <Button Content="삭제" 
+         *                    Command="{Binding DataContext.DeleteCommand, 
+         *                             RelativeSource={RelativeSource AncestorType=ListBox}}"/>
+         *         </DataTemplate>
+         *     </ListBox.ItemTemplate>
+         * </ListBox>
+         * 
+         * TemplatedParent (템플릿 부모):
+         * <ControlTemplate TargetType="Button">
+         *     <Border Background="{TemplateBinding Background}">
+         *         <ContentPresenter/>
+         *     </Border>
+         * </ControlTemplate>
+         * 
+         * ========== 9. ObservableCollection (컬렉션 바인딩) ==========
+         * 
+         * public class MainViewModel
+         * {
+         *     public ObservableCollection<Person> People { get; set; }
+         *     
+         *     public MainViewModel()
+         *     {
+         *         People = new ObservableCollection<Person>
+         *         {
+         *             new Person { Name = "홍길동", Age = 30 },
+         *             new Person { Name = "김철수", Age = 25 }
+         *         };
+         *     }
+         *     
+         *     public void AddPerson()
+         *     {
+         *         // 자동으로 UI 업데이트
+         *         People.Add(new Person { Name = "이영희", Age = 28 });
+         *     }
+         * }
+         * 
+         * XAML:
+         * <ListBox ItemsSource="{Binding People}">
+         *     <ListBox.ItemTemplate>
+         *         <DataTemplate>
+         *             <StackPanel>
+         *                 <TextBlock Text="{Binding Name}"/>
+         *                 <TextBlock Text="{Binding Age}"/>
+         *             </StackPanel>
+         *         </DataTemplate>
+         *     </ListBox.ItemTemplate>
+         * </ListBox>
+         * 
+         * ========== 10. ValidationRule (유효성 검사) ==========
+         * 
+         * ValidationRule 클래스:
+         * public class AgeValidationRule : ValidationRule
+         * {
+         *     public int Min { get; set; } = 0;
+         *     public int Max { get; set; } = 120;
+         *     
+         *     public override ValidationResult Validate(object value, CultureInfo cultureInfo)
+         *     {
+         *         int age;
+         *         
+         *         if (!int.TryParse(value as string, out age))
+         *         {
+         *             return new ValidationResult(false, "숫자를 입력하세요.");
+         *         }
+         *         
+         *         if (age < Min || age > Max)
+         *         {
+         *             return new ValidationResult(false, $"나이는 {Min}~{Max} 사이여야 합니다.");
+         *         }
+         *         
+         *         return ValidationResult.ValidResult;
+         *     }
+         * }
+         * 
+         * XAML:
+         * <TextBox>
+         *     <TextBox.Text>
+         *         <Binding Path="Age" UpdateSourceTrigger="PropertyChanged">
+         *             <Binding.ValidationRules>
+         *                 <local:AgeValidationRule Min="0" Max="120"/>
+         *             </Binding.ValidationRules>
+         *         </Binding>
+         *     </TextBox.Text>
+         * </TextBox>
+         * 
+         * 스타일로 오류 표시:
+         * <Style TargetType="TextBox">
+         *     <Style.Triggers>
+         *         <Trigger Property="Validation.HasError" Value="True">
+         *             <Setter Property="BorderBrush" Value="Red"/>
+         *             <Setter Property="BorderThickness" Value="2"/>
+         *             <Setter Property="ToolTip" 
+         *                    Value="{Binding RelativeSource={RelativeSource Self}, 
+         *                                   Path=(Validation.Errors)[0].ErrorContent}"/>
+         *         </Trigger>
+         *     </Style.Triggers>
+         * </Style>
+         * 
+         * ========== 바인딩 디버깅 ==========
+         * 
+         * 1. Output 창에서 바인딩 오류 확인:
+         *    System.Windows.Data Error: ...
+         * 
+         * 2. PresentationTraceSources 사용:
+         *    <TextBox Text="{Binding Path=Name, 
+         *                           PresentationTraceSources.TraceLevel=High}"/>
+         * 
+         * 3. 코드에서 바인딩 확인:
+         *    BindingExpression binding = textBox.GetBindingExpression(TextBox.TextProperty);
+         *    if (binding != null)
+         *    {
+         *        Debug.WriteLine($"Source: {binding.ResolvedSource}");
+         *        Debug.WriteLine($"Path: {binding.ParentBinding.Path.Path}");
+         *    }
+         * 
+         * ========== 성능 최적화 ==========
+         * 
+         * 1. OneTime 모드:
+         *    - 초기화만 필요한 경우
+         *    <TextBlock Text="{Binding Path=Label, Mode=OneTime}"/>
+         * 
+         * 2. UpdateSourceTrigger 선택:
+         *    - LostFocus: 일반적인 경우 (성능 좋음)
+         *    - PropertyChanged: 실시간 필요한 경우만
+         * 
+         * 3. 가상화:
+         *    - ListBox, ListView에서 VirtualizingStackPanel 사용
+         *    <ListBox VirtualizingPanel.IsVirtualizing="True"/>
+         * 
+         * 4. 데이터 템플릿 재사용:
+         *    - Resources에 DataTemplate 정의
+         * 
+         * ========== MVVM 패턴 예제 ==========
+         * 
+         * ViewModel:
+         * public class MainViewModel : INotifyPropertyChanged
+         * {
+         *     private string _searchText;
+         *     
+         *     public string SearchText
+         *     {
+         *         get => _searchText;
+         *         set
+         *         {
+         *             _searchText = value;
+         *             OnPropertyChanged(nameof(SearchText));
+         *             FilterResults(); // 검색 실행
+         *         }
+         *     }
+         *     
+         *     public ObservableCollection<Item> Results { get; set; }
+         *     
+         *     private void FilterResults()
+         *     {
+         *         // 검색 로직
+         *     }
+         *     
+         *     public event PropertyChangedEventHandler PropertyChanged;
+         *     
+         *     protected void OnPropertyChanged(string name)
+         *     {
+         *         PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
+         *     }
+         * }
+         * 
+         * 코드 비하인드:
+         * public MainWindow()
+         * {
+         *     InitializeComponent();
+         *     DataContext = new MainViewModel();
+         * }
+         * 
+         * XAML:
+         * <TextBox Text="{Binding SearchText, UpdateSourceTrigger=PropertyChanged}"/>
+         * <ListBox ItemsSource="{Binding Results}"/>
+         */
+    }
+}

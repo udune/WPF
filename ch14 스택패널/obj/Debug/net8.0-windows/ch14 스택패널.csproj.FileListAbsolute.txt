@@ -1,0 +1,20 @@
+C:\Users\udune\Desktop\WPF\ch14 스택패널\bin\Debug\net8.0-windows\ch14 스택패널.exe
+C:\Users\udune\Desktop\WPF\ch14 스택패널\bin\Debug\net8.0-windows\ch14 스택패널.deps.json
+C:\Users\udune\Desktop\WPF\ch14 스택패널\bin\Debug\net8.0-windows\ch14 스택패널.runtimeconfig.json
+C:\Users\udune\Desktop\WPF\ch14 스택패널\bin\Debug\net8.0-windows\ch14 스택패널.dll
+C:\Users\udune\Desktop\WPF\ch14 스택패널\bin\Debug\net8.0-windows\ch14 스택패널.pdb
+C:\Users\udune\Desktop\WPF\ch14 스택패널\obj\Debug\net8.0-windows\MainWindow.g.cs
+C:\Users\udune\Desktop\WPF\ch14 스택패널\obj\Debug\net8.0-windows\App.g.cs
+C:\Users\udune\Desktop\WPF\ch14 스택패널\obj\Debug\net8.0-windows\ch14 스택패널_MarkupCompile.cache
+C:\Users\udune\Desktop\WPF\ch14 스택패널\obj\Debug\net8.0-windows\ch14 스택패널_MarkupCompile.lref
+C:\Users\udune\Desktop\WPF\ch14 스택패널\obj\Debug\net8.0-windows\MainWindow.baml
+C:\Users\udune\Desktop\WPF\ch14 스택패널\obj\Debug\net8.0-windows\ch14 스택패널.g.resources
+C:\Users\udune\Desktop\WPF\ch14 스택패널\obj\Debug\net8.0-windows\ch14 스택패널.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\udune\Desktop\WPF\ch14 스택패널\obj\Debug\net8.0-windows\ch14 스택패널.AssemblyInfoInputs.cache
+C:\Users\udune\Desktop\WPF\ch14 스택패널\obj\Debug\net8.0-windows\ch14 스택패널.AssemblyInfo.cs
+C:\Users\udune\Desktop\WPF\ch14 스택패널\obj\Debug\net8.0-windows\ch14 스택패널.csproj.CoreCompileInputs.cache
+C:\Users\udune\Desktop\WPF\ch14 스택패널\obj\Debug\net8.0-windows\ch14 스택패널.dll
+C:\Users\udune\Desktop\WPF\ch14 스택패널\obj\Debug\net8.0-windows\refint\ch14 스택패널.dll
+C:\Users\udune\Desktop\WPF\ch14 스택패널\obj\Debug\net8.0-windows\ch14 스택패널.pdb
+C:\Users\udune\Desktop\WPF\ch14 스택패널\obj\Debug\net8.0-windows\ch14 스택패널.genruntimeconfig.cache
+C:\Users\udune\Desktop\WPF\ch14 스택패널\obj\Debug\net8.0-windows\ref\ch14 스택패널.dll

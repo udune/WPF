@@ -1,0 +1,14 @@
+C:\Users\udune\Desktop\WPF\Thread\bin\Debug\net9.0\Thread.exe
+C:\Users\udune\Desktop\WPF\Thread\bin\Debug\net9.0\Thread.deps.json
+C:\Users\udune\Desktop\WPF\Thread\bin\Debug\net9.0\Thread.runtimeconfig.json
+C:\Users\udune\Desktop\WPF\Thread\bin\Debug\net9.0\Thread.dll
+C:\Users\udune\Desktop\WPF\Thread\bin\Debug\net9.0\Thread.pdb
+C:\Users\udune\Desktop\WPF\Thread\obj\Debug\net9.0\Thread.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\udune\Desktop\WPF\Thread\obj\Debug\net9.0\Thread.AssemblyInfoInputs.cache
+C:\Users\udune\Desktop\WPF\Thread\obj\Debug\net9.0\Thread.AssemblyInfo.cs
+C:\Users\udune\Desktop\WPF\Thread\obj\Debug\net9.0\Thread.csproj.CoreCompileInputs.cache
+C:\Users\udune\Desktop\WPF\Thread\obj\Debug\net9.0\Thread.dll
+C:\Users\udune\Desktop\WPF\Thread\obj\Debug\net9.0\refint\Thread.dll
+C:\Users\udune\Desktop\WPF\Thread\obj\Debug\net9.0\Thread.pdb
+C:\Users\udune\Desktop\WPF\Thread\obj\Debug\net9.0\Thread.genruntimeconfig.cache
+C:\Users\udune\Desktop\WPF\Thread\obj\Debug\net9.0\ref\Thread.dll

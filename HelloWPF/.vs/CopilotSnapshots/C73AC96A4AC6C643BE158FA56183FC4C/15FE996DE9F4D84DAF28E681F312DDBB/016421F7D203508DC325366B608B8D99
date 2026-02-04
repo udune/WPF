@@ -1,0 +1,454 @@
+﻿using System.Text;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Data;
+using System.Windows.Documents;
+using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
+using System.Windows.Shapes;
+
+namespace ch24_컨텍스트메뉴
+{
+    /// <summary>
+    /// MainWindow.xaml에 대한 상호작용 논리
+    /// ContextMenu의 사용법과 IsCheckable MenuItem을 시연하는 메인 윈도우
+    /// </summary>
+    public partial class MainWindow : Window
+    {
+        /// <summary>
+        /// MainWindow 생성자
+        /// 윈도우가 생성될 때 호출되어 초기화 작업을 수행합니다.
+        /// </summary>
+        public MainWindow()
+        {
+            // XAML에 정의된 UI 요소들을 초기화합니다.
+            InitializeComponent();
+            
+            /*
+             * 이 예제는 기본적인 ContextMenu 사용법을 보여줍니다.
+             * - TextBlock과 Button에 ContextMenu 연결
+             * - 일반 MenuItem (진하게)
+             * - IsCheckable MenuItem (기울기)
+             * - Click, Checked, Unchecked 이벤트
+             * 
+             * 실제 프로젝트에서는:
+             * - Command 패턴으로 메뉴 명령 구현
+             * - IsEnabled로 메뉴 항목 활성화/비활성화
+             * - 동적으로 ContextMenu 항목 추가/제거
+             * - 컨텍스트에 따라 다른 메뉴 표시
+             */
+        }
+
+        /// <summary>
+        /// "진하게" MenuItem의 Click 이벤트 핸들러
+        /// TextBlock의 글꼴을 굵게(Bold) 만듭니다.
+        /// </summary>
+        /// <param name="sender">이벤트를 발생시킨 객체 (MenuItem)</param>
+        /// <param name="e">이벤트 데이터</param>
+        private void MenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            tb.FontWeight = FontWeights.Bold;
+            // TextBlock "tb"의 글꼴 두께를 Bold로 설정
+            // FontWeights.Bold: 굵은 글꼴
+            
+            /*
+             * 동작 설명:
+             * 
+             * 1. TextBlock 또는 Button에서 우클릭
+             * 2. ContextMenu 표시
+             * 3. "진하게" 항목 클릭
+             * 4. MenuItem_Click 이벤트 발생
+             * 5. tb.FontWeight = FontWeights.Bold
+             * 6. TextBlock 텍스트가 굵게 표시됨
+             * 
+             * FontWeight 값:
+             * - FontWeights.Thin: 100
+             * - FontWeights.ExtraLight: 200
+             * - FontWeights.Light: 300
+             * - FontWeights.Normal: 400 (기본값)
+             * - FontWeights.Medium: 500
+             * - FontWeights.SemiBold: 600
+             * - FontWeights.Bold: 700
+             * - FontWeights.ExtraBold: 800
+             * - FontWeights.Black: 900
+             * 
+             * 개선 사항:
+             * - 토글 기능 (Bold ↔ Normal)
+             * - IsCheckable로 체크 상태 표시
+             * - 현재 상태 확인 후 전환
+             * 
+             * 토글 예제:
+             * if (tb.FontWeight == FontWeights.Bold)
+             *     tb.FontWeight = FontWeights.Normal;
+             * else
+             *     tb.FontWeight = FontWeights.Bold;
+             */
+        }
+
+        /// <summary>
+        /// "기울기" MenuItem의 Checked 이벤트 핸들러
+        /// IsCheckable MenuItem이 체크되었을 때 호출됩니다.
+        /// TextBlock의 글꼴을 기울임꼴(Italic)로 만듭니다.
+        /// </summary>
+        /// <param name="sender">이벤트를 발생시킨 객체 (MenuItem)</param>
+        /// <param name="e">이벤트 데이터</param>
+        private void MenuItem_Checked(object sender, RoutedEventArgs e)
+        {
+            tb.FontStyle = FontStyles.Italic;
+            // TextBlock "tb"의 글꼴 스타일을 Italic(기울임꼴)로 설정
+            // FontStyles.Italic: 기울임꼴
+            
+            /*
+             * 동작 설명:
+             * 
+             * 1. TextBlock 또는 Button에서 우클릭
+             * 2. ContextMenu 표시
+             * 3. "기울기" 항목 클릭 (체크 상태로 변경)
+             * 4. MenuItem_Checked 이벤트 발생
+             * 5. tb.FontStyle = FontStyles.Italic
+             * 6. TextBlock 텍스트가 기울임꼴로 표시됨
+             * 7. 메뉴 항목에 체크 표시(✓)가 나타남
+             * 
+             * FontStyle 값:
+             * - FontStyles.Normal: 일반 (기본값)
+             * - FontStyles.Italic: 기울임꼴
+             * - FontStyles.Oblique: 비스듬히 (Italic과 유사)
+             * 
+             * Checked 이벤트:
+             * - IsCheckable="True"인 MenuItem에서 발생
+             * - 체크되지 않은 상태 → 체크된 상태로 변경될 때
+             * - IsChecked 속성이 true가 됨
+             * 
+             * IsCheckable MenuItem의 장점:
+             * - 현재 상태를 시각적으로 표시
+             * - 토글 기능 (On/Off)
+             * - 사용자에게 명확한 피드백
+             */
+        }
+
+        /// <summary>
+        /// "기울기" MenuItem의 Unchecked 이벤트 핸들러
+        /// IsCheckable MenuItem이 체크 해제되었을 때 호출됩니다.
+        /// TextBlock의 글꼴을 일반 스타일로 복원합니다.
+        /// </summary>
+        /// <param name="sender">이벤트를 발생시킨 객체 (MenuItem)</param>
+        /// <param name="e">이벤트 데이터</param>
+        private void MenuItem_Unchecked(object sender, RoutedEventArgs e)
+        {
+            tb.FontStyle = FontStyles.Normal;
+            // TextBlock "tb"의 글꼴 스타일을 Normal(일반)로 설정
+            // FontStyles.Normal: 기본 글꼴 스타일
+            
+            /*
+             * 동작 설명:
+             * 
+             * 1. TextBlock 또는 Button에서 우클릭
+             * 2. ContextMenu 표시
+             * 3. "기울기" 항목 다시 클릭 (체크 해제)
+             * 4. MenuItem_Unchecked 이벤트 발생
+             * 5. tb.FontStyle = FontStyles.Normal
+             * 6. TextBlock 텍스트가 일반 스타일로 복원됨
+             * 7. 메뉴 항목의 체크 표시가 사라짐
+             * 
+             * Unchecked 이벤트:
+             * - IsCheckable="True"인 MenuItem에서 발생
+             * - 체크된 상태 → 체크되지 않은 상태로 변경될 때
+             * - IsChecked 속성이 false가 됨
+             * 
+             * 상태 흐름:
+             * 체크 안 됨 (IsChecked=false, FontStyles.Normal)
+             *    ↓ 클릭
+             * 체크 됨 (IsChecked=true, FontStyles.Italic) ← Checked 이벤트
+             *    ↓ 다시 클릭
+             * 체크 안 됨 (IsChecked=false, FontStyles.Normal) ← Unchecked 이벤트
+             */
+        }
+        
+        /*
+         * ContextMenu 코드 비하인드 활용 예제:
+         * 
+         * 1. 동적으로 ContextMenu 생성:
+         * 
+         *    private void CreateContextMenu()
+         *    {
+         *        var contextMenu = new ContextMenu();
+         *        
+         *        var boldItem = new MenuItem { Header = "굵게" };
+         *        boldItem.Click += (s, e) => tb.FontWeight = FontWeights.Bold;
+         *        contextMenu.Items.Add(boldItem);
+         *        
+         *        var italicItem = new MenuItem { Header = "기울임꼴", IsCheckable = true };
+         *        italicItem.Checked += (s, e) => tb.FontStyle = FontStyles.Italic;
+         *        italicItem.Unchecked += (s, e) => tb.FontStyle = FontStyles.Normal;
+         *        contextMenu.Items.Add(italicItem);
+         *        
+         *        tb.ContextMenu = contextMenu;
+         *    }
+         * 
+         * 2. 컨텍스트에 따라 다른 메뉴 표시:
+         * 
+         *    private void TextBox_ContextMenuOpening(object sender, ContextMenuEventArgs e)
+         *    {
+         *        var textBox = (TextBox)sender;
+         *        var contextMenu = textBox.ContextMenu;
+         *        
+         *        // 선택된 텍스트가 있는지 확인
+         *        bool hasSelection = textBox.SelectionLength > 0;
+         *        
+         *        // 잘라내기/복사 메뉴 항목 활성화/비활성화
+         *        foreach (var item in contextMenu.Items)
+         *        {
+         *            if (item is MenuItem menuItem)
+         *            {
+         *                if (menuItem.Header.ToString() == "잘라내기" || 
+         *                    menuItem.Header.ToString() == "복사")
+         *                {
+         *                    menuItem.IsEnabled = hasSelection;
+         *                }
+         *            }
+         *        }
+         *    }
+         * 
+         * 3. Command 패턴 사용:
+         * 
+         *    public static RoutedCommand BoldCommand = new RoutedCommand();
+         *    public static RoutedCommand ItalicCommand = new RoutedCommand();
+         *    
+         *    public MainWindow()
+         *    {
+         *        InitializeComponent();
+         *        
+         *        // Command 바인딩
+         *        CommandBindings.Add(new CommandBinding(BoldCommand, BoldCommand_Executed));
+         *        CommandBindings.Add(new CommandBinding(ItalicCommand, ItalicCommand_Executed));
+         *    }
+         *    
+         *    private void BoldCommand_Executed(object sender, ExecutedRoutedEventArgs e)
+         *    {
+         *        if (tb.FontWeight == FontWeights.Bold)
+         *            tb.FontWeight = FontWeights.Normal;
+         *        else
+         *            tb.FontWeight = FontWeights.Bold;
+         *    }
+         *    
+         *    private void ItalicCommand_Executed(object sender, ExecutedRoutedEventArgs e)
+         *    {
+         *        if (tb.FontStyle == FontStyles.Italic)
+         *            tb.FontStyle = FontStyles.Normal;
+         *        else
+         *            tb.FontStyle = FontStyles.Italic;
+         *    }
+         *    
+         *    XAML:
+         *    <MenuItem Header="굵게" Command="{x:Static local:MainWindow.BoldCommand}"/>
+         *    <MenuItem Header="기울임꼴" Command="{x:Static local:MainWindow.ItalicCommand}"/>
+         * 
+         * 4. 동적으로 메뉴 항목 추가:
+         * 
+         *    private void AddRecentFiles(ContextMenu contextMenu)
+         *    {
+         *        // 최근 파일 구분자 추가
+         *        contextMenu.Items.Add(new Separator());
+         *        
+         *        // 최근 파일 추가
+         *        var recentFiles = GetRecentFiles();
+         *        foreach (var file in recentFiles)
+         *        {
+         *            var menuItem = new MenuItem
+         *            {
+         *                Header = System.IO.Path.GetFileName(file),
+         *                Tag = file
+         *            };
+         *            menuItem.Click += RecentFile_Click;
+         *            contextMenu.Items.Add(menuItem);
+         *        }
+         *    }
+         *    
+         *    private void RecentFile_Click(object sender, RoutedEventArgs e)
+         *    {
+         *        var menuItem = (MenuItem)sender;
+         *        string filePath = menuItem.Tag.ToString();
+         *        OpenFile(filePath);
+         *    }
+         * 
+         * 5. 서브메뉴 동적 생성:
+         * 
+         *    private void CreateFontMenu()
+         *    {
+         *        var fontMenuItem = new MenuItem { Header = "폰트" };
+         *        
+         *        var fonts = new[] { "Arial", "Times New Roman", "Courier New", "맑은 고딕" };
+         *        foreach (var fontName in fonts)
+         *        {
+         *            var item = new MenuItem { Header = fontName };
+         *            item.Click += (s, e) =>
+         *            {
+         *                tb.FontFamily = new FontFamily(fontName);
+         *            };
+         *            fontMenuItem.Items.Add(item);
+         *        }
+         *        
+         *        contextMenu.Items.Add(fontMenuItem);
+         *    }
+         * 
+         * 6. ContextMenu Opening 이벤트:
+         * 
+         *    XAML:
+         *    <ContextMenu Opening="ContextMenu_Opening">
+         *        ...
+         *    </ContextMenu>
+         *    
+         *    코드:
+         *    private void ContextMenu_Opening(object sender, ContextMenuEventArgs e)
+         *    {
+         *        var contextMenu = (ContextMenu)sender;
+         *        
+         *        // 메뉴가 열리기 전에 항목 업데이트
+         *        UpdateContextMenu(contextMenu);
+         *    }
+         * 
+         * 7. 코드에서 ContextMenu 표시:
+         * 
+         *    private void ShowContextMenu()
+         *    {
+         *        tb.ContextMenu.IsOpen = true;
+         *    }
+         *    
+         *    또는:
+         *    
+         *    private void ShowContextMenuAtPoint(Point position)
+         *    {
+         *        var contextMenu = new ContextMenu();
+         *        // 메뉴 항목 추가
+         *        contextMenu.PlacementTarget = tb;
+         *        contextMenu.Placement = PlacementMode.MousePoint;
+         *        contextMenu.IsOpen = true;
+         *    }
+         * 
+         * 8. 라디오 버튼 스타일 메뉴 (상호 배타적):
+         * 
+         *    private MenuItem leftAlignItem, centerAlignItem, rightAlignItem;
+         *    
+         *    private void CreateAlignmentMenu()
+         *    {
+         *        leftAlignItem = new MenuItem { Header = "왼쪽", IsCheckable = true, IsChecked = true };
+         *        centerAlignItem = new MenuItem { Header = "가운데", IsCheckable = true };
+         *        rightAlignItem = new MenuItem { Header = "오른쪽", IsCheckable = true };
+         *        
+         *        leftAlignItem.Click += (s, e) => SetAlignment(TextAlignment.Left);
+         *        centerAlignItem.Click += (s, e) => SetAlignment(TextAlignment.Center);
+         *        rightAlignItem.Click += (s, e) => SetAlignment(TextAlignment.Right);
+         *    }
+         *    
+         *    private void SetAlignment(TextAlignment alignment)
+         *    {
+         *        tb.TextAlignment = alignment;
+         *        
+         *        leftAlignItem.IsChecked = (alignment == TextAlignment.Left);
+         *        centerAlignItem.IsChecked = (alignment == TextAlignment.Center);
+         *        rightAlignItem.IsChecked = (alignment == TextAlignment.Right);
+         *    }
+         * 
+         * 9. ContextMenu 상태 저장:
+         * 
+         *    private void SaveContextMenuState()
+         *    {
+         *        var settings = Properties.Settings.Default;
+         *        settings.IsBold = (tb.FontWeight == FontWeights.Bold);
+         *        settings.IsItalic = (tb.FontStyle == FontStyles.Italic);
+         *        settings.Save();
+         *    }
+         *    
+         *    private void LoadContextMenuState()
+         *    {
+         *        var settings = Properties.Settings.Default;
+         *        
+         *        if (settings.IsBold)
+         *            tb.FontWeight = FontWeights.Bold;
+         *        
+         *        if (settings.IsItalic)
+         *            tb.FontStyle = FontStyles.Italic;
+         *    }
+         * 
+         * 10. ContextMenu 완전히 커스터마이징:
+         * 
+         *     private void CustomContextMenu()
+         *     {
+         *         var contextMenu = new ContextMenu();
+         *         
+         *         // 복사
+         *         var copyItem = new MenuItem
+         *         {
+         *             Header = "복사",
+         *             InputGestureText = "Ctrl+C"
+         *         };
+         *         copyItem.Icon = new Image
+         *         {
+         *             Source = new BitmapImage(new Uri("Images/Copy.png", UriKind.Relative)),
+         *             Width = 16
+         *         };
+         *         copyItem.Click += (s, e) => Clipboard.SetText(tb.Text);
+         *         contextMenu.Items.Add(copyItem);
+         *         
+         *         // 구분자
+         *         contextMenu.Items.Add(new Separator());
+         *         
+         *         // 서식 서브메뉴
+         *         var formatItem = new MenuItem { Header = "서식" };
+         *         formatItem.Items.Add(new MenuItem { Header = "굵게" });
+         *         formatItem.Items.Add(new MenuItem { Header = "기울임꼴" });
+         *         formatItem.Items.Add(new MenuItem { Header = "밑줄" });
+         *         contextMenu.Items.Add(formatItem);
+         *         
+         *         tb.ContextMenu = contextMenu;
+         *     }
+         * 
+         * ContextMenu 코드 조작 관련 중요 사항:
+         * 
+         * 1. ContextMenu 접근:
+         *    - control.ContextMenu
+         *    - Items 컬렉션으로 항목 관리
+         * 
+         * 2. IsCheckable:
+         *    - 체크 가능한 MenuItem
+         *    - IsChecked 속성으로 상태 확인
+         *    - Checked/Unchecked 이벤트
+         * 
+         * 3. IsEnabled:
+         *    - 메뉴 항목 활성화/비활성화
+         *    - 컨텍스트에 따라 동적 변경
+         * 
+         * 4. Opening 이벤트:
+         *    - 메뉴가 열리기 전에 발생
+         *    - 항목 업데이트에 사용
+         * 
+         * 5. PlacementTarget:
+         *    - ContextMenu의 대상 컨트롤
+         * 
+         * 6. Placement:
+         *    - MousePoint: 마우스 위치
+         *    - Bottom, Top, Left, Right 등
+         * 
+         * 7. StaysOpen:
+         *    - false: 클릭 시 자동 닫힘 (기본값)
+         *    - true: 수동으로 닫아야 함
+         * 
+         * 8. 동적 항목 관리:
+         *    - Items.Add(menuItem)
+         *    - Items.Remove(menuItem)
+         *    - Items.Clear()
+         *    - Items.Insert(index, menuItem)
+         * 
+         * 9. MVVM 패턴:
+         *    - Command 바인딩
+         *    - IsEnabled 바인딩
+         *    - IsChecked 바인딩
+         * 
+         * 10. 재사용:
+         *     - Resources에 ContextMenu 정의
+         *     - StaticResource로 여러 컨트롤에 적용
+         */
+    }
+}

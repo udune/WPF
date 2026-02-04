@@ -1,0 +1,427 @@
+﻿<!-- 
+    ch14 스택패널 - WPF StackPanel 레이아웃 컨트롤의 다양한 기능을 보여주는 예제 파일
+    StackPanel은 자식 요소들을 한 방향(세로 또는 가로)으로 순차적으로 배치하는 레이아웃 컨트롤입니다.
+    간단하고 직관적인 레이아웃 구성에 유용하며, 자식 요소의 정렬 방식을 제어할 수 있습니다.
+-->
+<Window x:Class="ch14_스택패널.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ch14_스택패널"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <!-- 
+            예제 1: 세로 방향 StackPanel (Vertical)
+            자식 요소들을 위에서 아래로 순차적으로 배치하며,
+            HorizontalAlignment로 가로 정렬을 제어합니다.
+        -->
+        <StackPanel Orientation="Vertical">
+            <!-- 
+                StackPanel 기본 개념:
+                - Panel의 한 종류로 자식 요소들을 배치하는 레이아웃 컨트롤
+                - Orientation 속성으로 배치 방향 결정
+                  · Vertical: 세로 방향 (위→아래, 기본값)
+                  · Horizontal: 가로 방향 (왼쪽→오른쪽)
+                - 각 자식 요소는 추가된 순서대로 배치됨
+                - 자식 요소의 크기를 자동으로 결정
+                
+                Orientation="Vertical" 특징:
+                - 자식 요소들이 위에서 아래로 쌓임
+                - 각 자식의 높이는 콘텐츠에 맞춰 자동 결정
+                - 각 자식의 너비는 StackPanel의 너비를 따름 (기본값)
+                - HorizontalAlignment로 가로 정렬 조정 가능
+                
+                시각적 표현 (Vertical):
+                ┌─────────────┐
+                │   요소 1    │
+                ├─────────────┤
+                │   요소 2    │
+                ├─────────────┤
+                │   요소 3    │
+                └─────────────┘
+            -->
+            
+            <!-- 
+                HorizontalAlignment 속성 테스트
+                세로 StackPanel 내에서 자식 요소들의 가로 정렬 방식을 보여줍니다.
+            -->
+            
+            <!-- 왼쪽 정렬 버튼 -->
+            <Button HorizontalAlignment="Left">버튼</Button>
+            <!-- 
+                HorizontalAlignment="Left":
+                - 버튼을 StackPanel의 왼쪽에 배치
+                - 버튼의 너비는 콘텐츠 크기에 맞춤
+                - 오른쪽에 빈 공간이 생김
+                
+                결과:
+                ┌─────────────────┐
+                │[버튼]           │
+                └─────────────────┘
+            -->
+            
+            <!-- 오른쪽 정렬 버튼 -->
+            <Button HorizontalAlignment="Right">버튼</Button>
+            <!-- 
+                HorizontalAlignment="Right":
+                - 버튼을 StackPanel의 오른쪽에 배치
+                - 버튼의 너비는 콘텐츠 크기에 맞춤
+                - 왼쪽에 빈 공간이 생김
+                
+                결과:
+                ┌─────────────────┐
+                │           [버튼]│
+                └─────────────────┘
+            -->
+            
+            <!-- 중앙 정렬 버튼 -->
+            <Button HorizontalAlignment="Center">버튼</Button>
+            <!-- 
+                HorizontalAlignment="Center":
+                - 버튼을 StackPanel의 중앙에 배치
+                - 버튼의 너비는 콘텐츠 크기에 맞춤
+                - 양쪽에 균등한 빈 공간이 생김
+                
+                결과:
+                ┌─────────────────┐
+                │     [버튼]      │
+                └─────────────────┘
+            -->
+            
+            <!-- 늘어나는 버튼 -->
+            <Button HorizontalAlignment="Stretch">버튼</Button>
+            <!-- 
+                HorizontalAlignment="Stretch":
+                - 버튼이 StackPanel의 전체 너비로 늘어남 (기본값)
+                - 버튼의 너비가 부모의 너비와 같아짐
+                - 빈 공간 없이 전체를 차지
+                
+                결과:
+                ┌─────────────────┐
+                │[     버튼     ] │
+                └─────────────────┘
+                
+                HorizontalAlignment 정리:
+                - Left: 왼쪽 정렬
+                - Right: 오른쪽 정렬
+                - Center: 중앙 정렬
+                - Stretch: 전체 너비로 늘어남 (기본값)
+            -->
+            
+            <!-- 
+                예제 2: 중첩된 StackPanel - 가로 방향 (Horizontal)
+                세로 StackPanel 안에 가로 StackPanel을 배치하여
+                VerticalAlignment 속성을 보여줍니다.
+            -->
+            <StackPanel 
+                HorizontalAlignment="Center"
+                Orientation="Horizontal" 
+                Height="200">
+                <!-- 
+                    내부 StackPanel 속성:
+                    
+                    HorizontalAlignment="Center":
+                    - 이 StackPanel 자체를 부모(외부 StackPanel)의 중앙에 배치
+                    
+                    Orientation="Horizontal":
+                    - 자식 요소들을 가로 방향(왼쪽→오른쪽)으로 배치
+                    - 각 자식의 너비는 콘텐츠에 맞춰 자동 결정
+                    - 각 자식의 높이는 StackPanel의 높이를 따름 (기본값)
+                    - VerticalAlignment로 세로 정렬 조정 가능
+                    
+                    Height="200":
+                    - StackPanel의 높이를 200픽셀로 고정
+                    - 자식 요소들의 VerticalAlignment 효과를 보기 위해 설정
+                    
+                    시각적 표현 (Horizontal):
+                    ┌───┬───┬───┬───┐
+                    │요소│요소│요소│요소│
+                    │ 1 │ 2 │ 3 │ 4 │
+                    └───┴───┴───┴───┘
+                -->
+                
+                <!-- 
+                    VerticalAlignment 속성 테스트
+                    가로 StackPanel 내에서 자식 요소들의 세로 정렬 방식을 보여줍니다.
+                -->
+                
+                <!-- 위쪽 정렬 버튼 -->
+                <Button VerticalAlignment="Top">버튼</Button>
+                <!-- 
+                    VerticalAlignment="Top":
+                    - 버튼을 StackPanel의 위쪽에 배치
+                    - 버튼의 높이는 콘텐츠 크기에 맞춤
+                    - 아래쪽에 빈 공간이 생김
+                    
+                    결과:
+                    ┌───┐
+                    │버튼│
+                    │   │
+                    │   │
+                    └───┘
+                -->
+                
+                <!-- 아래쪽 정렬 버튼 -->
+                <Button VerticalAlignment="Bottom">버튼</Button>
+                <!-- 
+                    VerticalAlignment="Bottom":
+                    - 버튼을 StackPanel의 아래쪽에 배치
+                    - 버튼의 높이는 콘텐츠 크기에 맞춤
+                    - 위쪽에 빈 공간이 생김
+                    
+                    결과:
+                    ┌───┐
+                    │   │
+                    │   │
+                    │버튼│
+                    └───┘
+                -->
+                
+                <!-- 중앙 정렬 버튼 -->
+                <Button VerticalAlignment="Center">버튼</Button>
+                <!-- 
+                    VerticalAlignment="Center":
+                    - 버튼을 StackPanel의 중앙에 배치
+                    - 버튼의 높이는 콘텐츠 크기에 맞춤
+                    - 위아래에 균등한 빈 공간이 생김
+                    
+                    결과:
+                    ┌───┐
+                    │   │
+                    │버튼│
+                    │   │
+                    └───┘
+                -->
+                
+                <!-- 늘어나는 버튼 -->
+                <Button VerticalAlignment="Stretch">버튼</Button>
+                <!-- 
+                    VerticalAlignment="Stretch":
+                    - 버튼이 StackPanel의 전체 높이로 늘어남 (기본값)
+                    - 버튼의 높이가 부모의 높이와 같아짐
+                    - 빈 공간 없이 전체를 차지
+                    
+                    결과:
+                    ┌───┐
+                    │   │
+                    │버튼│
+                    │   │
+                    └───┘
+                    
+                    VerticalAlignment 정리:
+                    - Top: 위쪽 정렬
+                    - Bottom: 아래쪽 정렬
+                    - Center: 중앙 정렬
+                    - Stretch: 전체 높이로 늘어남 (기본값)
+                -->
+            </StackPanel>
+        </StackPanel>
+        
+        <!-- 
+            예제 3: 독립적인 가로 StackPanel
+            Grid에 직접 배치된 가로 StackPanel로 VerticalAlignment를 다시 보여줍니다.
+            (위의 중첩 예제와 동일하지만 독립적으로 배치됨)
+        -->
+        <StackPanel
+            HorizontalAlignment="Center"
+            Orientation="Horizontal"
+            Height="200">
+            <!-- 
+                이 StackPanel은 Grid의 자식으로 직접 배치되어 있습니다.
+                Grid는 기본적으로 요소들을 겹쳐서 배치하므로,
+                이 StackPanel은 위의 Vertical StackPanel과 겹쳐 표시됩니다.
+                
+                실제 프로젝트에서는 이런 방식보다는:
+                - Grid의 Row/Column으로 분리하거나
+                - Margin으로 위치를 조정하거나
+                - Visibility로 선택적으로 표시하는 것이 일반적입니다.
+            -->
+            <Button VerticalAlignment="Top">버튼</Button>
+            <Button VerticalAlignment="Bottom">버튼</Button>
+            <Button VerticalAlignment="Center">버튼</Button>
+            <Button VerticalAlignment="Stretch">버튼</Button>
+        </StackPanel>
+    </Grid>
+    
+    <!--
+        StackPanel 추가 유용한 속성:
+        
+        1. Orientation (방향):
+           - Vertical: 세로 방향 (기본값)
+           - Horizontal: 가로 방향
+           
+           예제:
+           <StackPanel Orientation="Horizontal">
+               <!-- 자식 요소들이 가로로 배치됨 -->
+           </StackPanel>
+        
+        2. Background (배경색):
+           - StackPanel의 배경색 지정
+           
+           예제:
+           <StackPanel Background="LightBlue">
+               <!-- 파란색 배경의 StackPanel -->
+           </StackPanel>
+        
+        3. Margin (외부 여백):
+           - StackPanel 자체의 외부 여백
+           
+           예제:
+           <StackPanel Margin="10">
+               <!-- 사방 10픽셀 여백 -->
+           </StackPanel>
+           
+           <StackPanel Margin="10,5,10,5">
+               <!-- 좌우 10, 상하 5픽셀 여백 -->
+           </StackPanel>
+        
+        자식 요소의 정렬 속성:
+        
+        1. Vertical StackPanel에서:
+           - HorizontalAlignment: Left, Right, Center, Stretch
+           - Width: 명시적 너비 지정 가능
+           - Margin: 개별 여백 설정
+        
+        2. Horizontal StackPanel에서:
+           - VerticalAlignment: Top, Bottom, Center, Stretch
+           - Height: 명시적 높이 지정 가능
+           - Margin: 개별 여백 설정
+        
+        실전 활용 예제:
+        
+        1. 간단한 폼 레이아웃:
+           <StackPanel Margin="10">
+               <Label>이름:</Label>
+               <TextBox/>
+               <Label>이메일:</Label>
+               <TextBox/>
+               <Button>제출</Button>
+           </StackPanel>
+        
+        2. 버튼 그룹:
+           <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+               <Button Margin="5">확인</Button>
+               <Button Margin="5">취소</Button>
+           </StackPanel>
+        
+        3. 메뉴 항목:
+           <StackPanel Orientation="Horizontal">
+               <Button>홈</Button>
+               <Button>제품</Button>
+               <Button>회사소개</Button>
+               <Button>연락처</Button>
+           </StackPanel>
+        
+        4. 카드 레이아웃:
+           <StackPanel>
+               <Image Source="image.jpg"/>
+               <TextBlock Text="제목" FontWeight="Bold"/>
+               <TextBlock Text="설명" TextWrapping="Wrap"/>
+               <Button>자세히 보기</Button>
+           </StackPanel>
+        
+        5. 대화상자 버튼:
+           <StackPanel Orientation="Horizontal" 
+                       HorizontalAlignment="Right"
+                       Margin="0,10,0,0">
+               <Button Margin="5,0">확인</Button>
+               <Button Margin="5,0">적용</Button>
+               <Button Margin="5,0">취소</Button>
+           </StackPanel>
+        
+        StackPanel의 장단점:
+        
+        장점:
+        - 간단하고 직관적인 사용법
+        - 빠른 프로토타이핑에 유용
+        - 동적으로 자식 요소 추가/제거 용이
+        - 자동 크기 조정
+        
+        단점:
+        - 복잡한 레이아웃에는 부적합
+        - 가상화(Virtualization) 지원 안 함
+        - 많은 요소가 있을 때 스크롤 성능 저하 가능
+        - 유연한 크기 조정 제한적
+        
+        다른 레이아웃 패널과의 비교:
+        
+        StackPanel vs Grid:
+        - StackPanel: 단순한 순차 배치
+        - Grid: 복잡한 행/열 레이아웃
+        
+        StackPanel vs WrapPanel:
+        - StackPanel: 한 방향으로만 배치, 넘치면 잘림
+        - WrapPanel: 공간이 부족하면 자동 줄바꿈
+        
+        StackPanel vs DockPanel:
+        - StackPanel: 순차적 배치
+        - DockPanel: 특정 위치(상하좌우)에 고정 배치
+        
+        StackPanel vs UniformGrid:
+        - StackPanel: 자식마다 다른 크기 가동
+        - UniformGrid: 모든 자식이 동일한 크기
+        
+        성능 팁:
+        - 많은 항목을 표시할 때는 VirtualizingStackPanel 사용 고려
+        - ScrollViewer와 함께 사용 시 성능 주의
+        - 불필요한 중첩 피하기
+        
+        VirtualizingStackPanel:
+        - ListBox, ListView의 기본 패널
+        - 화면에 보이는 항목만 렌더링
+        - 수천 개의 항목도 효율적으로 처리
+        
+        예제:
+        <ListBox>
+            <ListBox.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <VirtualizingStackPanel/>
+                </ItemsPanelTemplate>
+            </ListBox.ItemsPanel>
+        </ListBox>
+        
+        ScrollViewer와 함께 사용:
+        <ScrollViewer>
+            <StackPanel>
+                <!-- 많은 자식 요소들 -->
+            </StackPanel>
+        </ScrollViewer>
+        
+        주의: StackPanel은 모든 자식의 크기를 측정하므로
+        많은 요소가 있으면 스크롤 성능이 저하될 수 있습니다.
+        
+        동적으로 요소 추가/제거:
+        코드에서 StackPanel의 자식을 동적으로 관리할 수 있습니다.
+        
+        C#:
+        // 요소 추가
+        myStackPanel.Children.Add(new Button { Content = "새 버튼" });
+        
+        // 요소 삽입
+        myStackPanel.Children.Insert(0, new Label { Content = "첫 번째" });
+        
+        // 요소 제거
+        myStackPanel.Children.RemoveAt(0);
+        myStackPanel.Children.Remove(myButton);
+        
+        // 모든 요소 제거
+        myStackPanel.Children.Clear();
+        
+        // 요소 개수
+        int count = myStackPanel.Children.Count;
+        
+        스타일링:
+        <StackPanel Background="LightGray"
+                    Padding="10"
+                    BorderBrush="Black"
+                    BorderThickness="1">
+            <!-- 자식 요소들 -->
+        </StackPanel>
+        
+        반응형 레이아웃:
+        StackPanel은 창 크기 변경에 따라 자동으로 조정되지 않으므로,
+        반응형 디자인이 필요한 경우 Grid나 WrapPanel 사용을 고려하세요.
+    -->
+</Window>

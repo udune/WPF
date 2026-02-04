@@ -1,0 +1,347 @@
+﻿using System.Text;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Data;
+using System.Windows.Documents;
+using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
+using System.Windows.Shapes;
+
+namespace ch10_캘린더
+{
+    /// <summary>
+    /// MainWindow.xaml에 대한 상호작용 논리
+    /// Calendar 컨트롤의 SelectedDatesChanged 이벤트를 처리하는 메인 윈도우
+    /// </summary>
+    public partial class MainWindow : Window
+    {
+        /// <summary>
+        /// MainWindow 생성자
+        /// 윈도우가 생성될 때 호출되어 초기화 작업을 수행합니다.
+        /// </summary>
+        public MainWindow()
+        {
+            // XAML에 정의된 UI 요소들을 초기화합니다.
+            InitializeComponent();
+        }
+
+        /// <summary>
+        /// Calendar의 SelectedDatesChanged 이벤트 핸들러
+        /// 사용자가 Calendar에서 날짜를 선택하거나 선택을 변경할 때 실행됩니다.
+        /// </summary>
+        /// <param name="sender">이벤트를 발생시킨 객체 (여기서는 cal Calendar)</param>
+        /// <param name="e">선택 변경 이벤트 정보 (추가/제거된 날짜 정보 포함)</param>
+        private void cal_SelectedDatesChanged(object sender, SelectionChangedEventArgs e)
+        {
+            // Calendar의 SelectedDate를 문자열로 변환하여 TextBlock(tb)에 표시합니다.
+            // cal.SelectedDate는 DateTime? (nullable DateTime) 타입입니다.
+            tb.Text = cal.SelectedDate.ToString();
+            
+            /*
+             * 동작 설명:
+             * 
+             * 1. 사용자가 Calendar에서 날짜를 클릭
+             * 2. SelectedDatesChanged 이벤트가 발생
+             * 3. 선택된 날짜를 SelectedDate 속성에서 가져옴
+             * 4. ToString()으로 문자열로 변환
+             * 5. TextBlock(tb)의 Text 속성에 할당하여 화면에 표시
+             * 
+             * SelectedDate vs SelectedDates:
+             * - SelectedDate: 현재 선택된 단일 날짜 (DateTime? 타입)
+             * - SelectedDates: 선택된 모든 날짜의 컬렉션 (Range 모드에서 유용)
+             * 
+             * ToString() 결과:
+             * - 기본 형식: "2025-02-10 오전 12:00:00" (시스템 문화권에 따라 다름)
+             * - 날짜만 표시되지만 시간은 00:00:00으로 표시됨
+             * - Calendar는 날짜만 다루지만 DateTime 타입은 시간 정보도 포함
+             * 
+             * 주의사항:
+             * - SelectedDate는 null일 수 있음 (선택된 날짜가 없을 때)
+             * - null일 때 ToString()을 호출하면 빈 문자열 반환
+             * - 안전한 코드를 위해서는 null 체크 필요
+             */
+        }
+        
+        /*
+         * Calendar 이벤트 처리 추가 예제:
+         * 
+         * 1. 안전한 날짜 표시 (null 체크):
+         * 
+         *    private void cal_SelectedDatesChanged(object sender, SelectionChangedEventArgs e)
+         *    {
+         *        if (cal.SelectedDate.HasValue)
+         *        {
+         *            DateTime selectedDate = cal.SelectedDate.Value;
+         *            tb.Text = selectedDate.ToString("yyyy년 MM월 dd일");
+         *        }
+         *        else
+         *        {
+         *            tb.Text = "날짜를 선택해주세요.";
+         *        }
+         *    }
+         * 
+         * 2. 다양한 형식으로 날짜 표시:
+         * 
+         *    private void cal_SelectedDatesChanged(object sender, SelectionChangedEventArgs e)
+         *    {
+         *        if (cal.SelectedDate.HasValue)
+         *        {
+         *            DateTime date = cal.SelectedDate.Value;
+         *            
+         *            // 여러 형식으로 표시
+         *            string format1 = date.ToString("yyyy-MM-dd");              // 2025-02-10
+         *            string format2 = date.ToString("yyyy년 MM월 dd일");         // 2025년 02월 10일
+         *            string format3 = date.ToString("D");                       // 2025년 2월 10일 월요일
+         *            string format4 = date.ToString("dddd, MMMM dd, yyyy");     // Monday, February 10, 2025
+         *            
+         *            tb.Text = $"선택된 날짜:\n{format1}\n{format2}\n{format3}";
+         *        }
+         *    }
+         * 
+         * 3. SelectionChangedEventArgs 활용:
+         * 
+         *    private void cal_SelectedDatesChanged(object sender, SelectionChangedEventArgs e)
+         *    {
+         *        // 추가된 날짜 확인
+         *        foreach (DateTime date in e.AddedItems)
+         *        {
+         *            MessageBox.Show($"추가된 날짜: {date:yyyy-MM-dd}");
+         *        }
+         *        
+         *        // 제거된 날짜 확인
+         *        foreach (DateTime date in e.RemovedItems)
+         *        {
+         *            MessageBox.Show($"제거된 날짜: {date:yyyy-MM-dd}");
+         *        }
+         *    }
+         * 
+         * 4. 날짜 범위 선택 처리 (SingleRange 모드):
+         * 
+         *    private void cal_SelectedDatesChanged(object sender, SelectionChangedEventArgs e)
+         *    {
+         *        if (cal.SelectedDates.Count > 0)
+         *        {
+         *            DateTime startDate = cal.SelectedDates[0];
+         *            DateTime endDate = cal.SelectedDates[cal.SelectedDates.Count - 1];
+         *            
+         *            int days = (endDate - startDate).Days + 1;
+         *            
+         *            tb.Text = $"선택 범위: {startDate:yyyy-MM-dd} ~ {endDate:yyyy-MM-dd}\n" +
+         *                      $"총 {days}일";
+         *        }
+         *        else
+         *        {
+         *            tb.Text = "날짜를 선택해주세요.";
+         *        }
+         *    }
+         * 
+         * 5. 날짜 유효성 검증:
+         * 
+         *    private void cal_SelectedDatesChanged(object sender, SelectionChangedEventArgs e)
+         *    {
+         *        if (cal.SelectedDate.HasValue)
+         *        {
+         *            DateTime selected = cal.SelectedDate.Value;
+         *            
+         *            // 오늘보다 이전 날짜 선택 불가
+         *            if (selected < DateTime.Today)
+         *            {
+         *                MessageBox.Show("과거 날짜는 선택할 수 없습니다.", "경고",
+         *                    MessageBoxButton.OK, MessageBoxImage.Warning);
+         *                cal.SelectedDate = DateTime.Today;
+         *                return;
+         *            }
+         *            
+         *            // 주말 선택 불가
+         *            if (selected.DayOfWeek == DayOfWeek.Saturday || 
+         *                selected.DayOfWeek == DayOfWeek.Sunday)
+         *            {
+         *                MessageBox.Show("주말은 선택할 수 없습니다.", "경고");
+         *                cal.SelectedDate = null;
+         *                return;
+         *            }
+         *            
+         *            tb.Text = $"선택된 날짜: {selected:yyyy-MM-dd}";
+         *        }
+         *    }
+         * 
+         * 6. 다른 Calendar와 연동:
+         * 
+         *    private void calStart_SelectedDatesChanged(object sender, SelectionChangedEventArgs e)
+         *    {
+         *        if (calStart.SelectedDate.HasValue)
+         *        {
+         *            // 종료일 Calendar의 최소 날짜를 시작일로 설정
+         *            calEnd.DisplayDateStart = calStart.SelectedDate.Value;
+         *            
+         *            // 종료일이 시작일보다 이전이면 초기화
+         *            if (calEnd.SelectedDate.HasValue && 
+         *                calEnd.SelectedDate.Value < calStart.SelectedDate.Value)
+         *            {
+         *                calEnd.SelectedDate = null;
+         *            }
+         *        }
+         *    }
+         * 
+         * 7. 비즈니스 로직 적용:
+         * 
+         *    private void cal_SelectedDatesChanged(object sender, SelectionChangedEventArgs e)
+         *    {
+         *        if (cal.SelectedDate.HasValue)
+         *        {
+         *            DateTime date = cal.SelectedDate.Value;
+         *            
+         *            // 예약 가능 여부 확인
+         *            bool isAvailable = CheckAvailability(date);
+         *            
+         *            if (isAvailable)
+         *            {
+         *                // 가격 계산
+         *                decimal price = CalculatePrice(date);
+         *                tb.Text = $"예약 가능\n날짜: {date:yyyy-MM-dd}\n가격: {price:N0}원";
+         *            }
+         *            else
+         *            {
+         *                tb.Text = "선택하신 날짜는 예약이 불가능합니다.";
+         *                cal.SelectedDate = null;
+         *            }
+         *        }
+         *    }
+         *    
+         *    private bool CheckAvailability(DateTime date)
+         *    {
+         *        // 데이터베이스 확인 또는 비즈니스 로직
+         *        return true;
+         *    }
+         *    
+         *    private decimal CalculatePrice(DateTime date)
+         *    {
+         *        // 성수기/비수기 가격 차등 적용
+         *        return date.Month >= 7 && date.Month <= 8 ? 150000 : 100000;
+         *    }
+         * 
+         * 8. 선택된 날짜 저장/복원:
+         * 
+         *    private void SaveSelectedDate()
+         *    {
+         *        if (cal.SelectedDate.HasValue)
+         *        {
+         *            Properties.Settings.Default.LastSelectedDate = cal.SelectedDate.Value;
+         *            Properties.Settings.Default.Save();
+         *        }
+         *    }
+         *    
+         *    private void LoadSelectedDate()
+         *    {
+         *        DateTime savedDate = Properties.Settings.Default.LastSelectedDate;
+         *        if (savedDate != DateTime.MinValue)
+         *        {
+         *            cal.SelectedDate = savedDate;
+         *        }
+         *    }
+         * 
+         * 9. 여러 날짜 처리 (MultipleRange 모드):
+         * 
+         *    private void cal_SelectedDatesChanged(object sender, SelectionChangedEventArgs e)
+         *    {
+         *        if (cal.SelectedDates.Count > 0)
+         *        {
+         *            List<string> dateStrings = new List<string>();
+         *            
+         *            foreach (DateTime date in cal.SelectedDates)
+         *            {
+         *                dateStrings.Add(date.ToString("yyyy-MM-dd"));
+         *            }
+         *            
+         *            tb.Text = $"선택된 날짜 ({cal.SelectedDates.Count}개):\n" +
+         *                      string.Join("\n", dateStrings);
+         *        }
+         *        else
+         *        {
+         *            tb.Text = "선택된 날짜가 없습니다.";
+         *        }
+         *    }
+         * 
+         * 10. D-Day 계산:
+         * 
+         *     private void cal_SelectedDatesChanged(object sender, SelectionChangedEventArgs e)
+         *     {
+         *         if (cal.SelectedDate.HasValue)
+         *         {
+         *             DateTime selected = cal.SelectedDate.Value;
+         *             TimeSpan difference = selected - DateTime.Today;
+         *             int days = difference.Days;
+         *             
+         *             if (days > 0)
+         *             {
+         *                 tb.Text = $"선택된 날짜: {selected:yyyy-MM-dd}\nD-{days}";
+         *             }
+         *             else if (days == 0)
+         *             {
+         *                 tb.Text = $"선택된 날짜: {selected:yyyy-MM-dd}\nD-Day!";
+         *             }
+         *             else
+         *             {
+         *                 tb.Text = $"선택된 날짜: {selected:yyyy-MM-dd}\nD+{Math.Abs(days)} (지난 날짜)";
+         *             }
+         *         }
+         *     }
+         * 
+         * Calendar 이벤트 관련 중요 사항:
+         * 
+         * 1. SelectedDatesChanged 이벤트 발생 시점:
+         *    - 사용자가 날짜를 클릭할 때
+         *    - 코드에서 SelectedDate를 변경할 때
+         *    - 코드에서 SelectedDates 컬렉션을 수정할 때
+         * 
+         * 2. SelectionChangedEventArgs:
+         *    - AddedItems: 새로 선택된 날짜들 (IList)
+         *    - RemovedItems: 선택 해제된 날짜들 (IList)
+         *    - 날짜 변경의 세부 정보 제공
+         * 
+         * 3. SelectedDate vs SelectedDates:
+         *    - SelectedDate: 단일 날짜 (DateTime?)
+         *      · SelectionMode가 SingleDate일 때 주로 사용
+         *      · null 가능
+         *    - SelectedDates: 날짜 컬렉션 (SelectedDatesCollection)
+         *      · SelectionMode가 Range일 때 유용
+         *      · 여러 날짜 접근 가능
+         * 
+         * 4. 성능 고려사항:
+         *    - 이벤트 핸들러 내에서 무거운 작업 피하기
+         *    - 데이터베이스 조회는 비동기로 처리
+         *    - 많은 날짜를 처리할 때는 성능 최적화 필요
+         * 
+         * 5. 순환 참조 방지:
+         *    - 이벤트 핸들러 내에서 SelectedDate를 변경하면 다시 이벤트 발생
+         *    - 무한 루프에 빠지지 않도록 주의
+         *    - 플래그 변수나 이벤트 핸들러 등록 해제 사용
+         * 
+         * 예제 - 순환 참조 방지:
+         * 
+         * private bool isUpdating = false;
+         * 
+         * private void cal_SelectedDatesChanged(object sender, SelectionChangedEventArgs e)
+         * {
+         *     if (isUpdating) return;
+         *     
+         *     isUpdating = true;
+         *     
+         *     try
+         *     {
+         *         // SelectedDate 변경 로직
+         *         if (cal.SelectedDate.HasValue && IsInvalidDate(cal.SelectedDate.Value))
+         *         {
+         *             cal.SelectedDate = null; // 이벤트가 다시 발생하지만 isUpdating이 true이므로 무시됨
+         *         }
+         *     }
+         *     finally
+         *     {
+         *         isUpdating = false;
+         *     }
+         * }
+         */
+    }
+}

@@ -1,0 +1,46 @@
+﻿using System.Windows;
+
+namespace HelloWPF
+{
+    /// <summary>
+    /// Interaction logic for MainWindow.xaml
+    /// </summary>
+    /* 
+     * 코드 리뷰:
+     * 
+     * 장점:
+     * 1. 간단하고 명확한 초기화 로직
+     * 2. 생성자에서 UI 요소의 Content를 설정하는 기본적인 패턴 사용
+     * 
+     * 개선 사항:
+     * 1. 코드 비하인드에서 직접 UI 요소를 조작하는 것은 MVVM 패턴에 적합하지 않습니다.
+     *    데이터 바인딩을 사용하는 것이 더 나은 설계입니다.
+     * 
+     * 2. 사용하지 않는 using 문이 많습니다:
+     *    - System.Text, System.Windows.Data, System.Windows.Documents, 
+     *    - System.Windows.Input, System.Windows.Media, System.Windows.Media.Imaging,
+     *    - System.Windows.Navigation, System.Windows.Shapes
+     *    IDE의 "Remove Unnecessary Usings" 기능을 활용하면 코드가 더 깔끔해집니다.
+     * 
+     * 3. 버튼에 이벤트 핸들러가 없어 클릭 시 아무 동작도 하지 않습니다.
+     *    Click 이벤트 핸들러를 추가하여 기능을 구현하는 것을 권장합니다.
+     * 
+     * 4. 하드코딩된 문자열("버튼입니다", "레이블입니다")은 다국어 지원이나 유지보수를 
+     *    고려할 때 리소스 파일로 분리하는 것이 좋습니다.
+     */
+    public partial class MainWindow : Window
+    {
+        public MainWindow()
+        {
+            InitializeComponent();
+
+            // UI 요소의 Content를 코드에서 설정
+            // 주의: MVVM 패턴에서는 데이터 바인딩을 사용하는 것이 권장됨
+            btn.Content = "버튼입니다";
+            lbl.Content = "레이블입니다";
+            
+            // TODO: 버튼 클릭 이벤트 핸들러 추가 예정
+            // 예: btn.Click += Btn_Click;
+        }
+    }
+}

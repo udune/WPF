@@ -1,0 +1,213 @@
+﻿<!-- 
+    UserControl1.xaml - Menu에서 표시할 커스텀 화면
+    UserControl은 재사용 가능한 UI 구성 요소입니다.
+    이 예제에서는 "Move" 메뉴를 클릭했을 때 표시되는 화면입니다.
+-->
+<UserControl x:Class="ch23_메뉴.UserControl1"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:ch23_메뉴"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800" Background="Salmon">
+    <!-- 
+        UserControl 기본 개념:
+        - 재사용 가능한 UI 구성 요소
+        - Window처럼 사용하지만 독립적인 윈도우가 아님
+        - 다른 컨트롤에 호스팅됨 (ContentControl, Frame 등)
+        
+        x:Class="ch23_메뉴.UserControl1":
+        - 코드 비하인드 파일과 연결
+        
+        d:DesignHeight="450" d:DesignWidth="800":
+        - 디자인 타임에만 사용되는 크기
+        - 실제 실행 시에는 부모 컨테이너 크기에 맞춤
+        
+        Background="Salmon":
+        - 배경색을 연어색(Salmon)으로 설정
+        - 화면 전환이 시각적으로 명확히 보임
+        - Color 이름: Red, Blue, Green, Yellow, Salmon, LightBlue 등
+        
+        UserControl의 용도:
+        1. 화면 분리:
+           - 각 화면을 별도의 UserControl로 구현
+           - MainWindow는 UserControl들을 전환
+        
+        2. 재사용 가능한 컴포넌트:
+           - 여러 화면에서 공통으로 사용되는 UI
+           - 예: 로그인 폼, 검색 바, 설정 패널
+        
+        3. 복잡한 UI 모듈화:
+           - 큰 화면을 작은 UserControl로 나눔
+           - 각 부분을 독립적으로 개발
+        
+        4. MVVM 패턴:
+           - View로 사용
+           - ViewModel을 DataContext로 설정
+    -->
+    
+    <Grid>
+        <!-- 
+            Grid: UserControl의 루트 레이아웃 패널
+            단순한 화면이므로 하나의 Label만 포함
+        -->
+        
+        <Label>또 다른 화면입니다.</Label>
+        <!-- 
+            Label:
+            - 텍스트 표시 컨트롤
+            - "또 다른 화면입니다." 메시지 표시
+            
+            동작:
+            - MainWindow의 "Move" 메뉴 클릭
+            - MenuItem_Click 이벤트 발생
+            - ContentArea.Content = new UserControl1()
+            - 이 UserControl이 표시됨
+            - Salmon 배경에 "또 다른 화면입니다." 텍스트
+            
+            화면 전환 패턴:
+            메뉴 클릭 → ContentControl.Content 변경 → 
+            새 UserControl 표시 → 이전 화면 대체
+            
+            실제 사용 예:
+            - HomeView.xaml: 홈 화면
+            - SettingsView.xaml: 설정 화면
+            - AboutView.xaml: 정보 화면
+            - HelpView.xaml: 도움말 화면
+            
+            각 UserControl은 독립적인 기능을 가진 화면
+        -->
+    </Grid>
+    
+    <!--
+        UserControl 실전 활용 예제:
+        
+        1. 설정 화면 UserControl:
+           <UserControl ...>
+               <Grid>
+                   <Grid.RowDefinitions>
+                       <RowDefinition Height="Auto"/>
+                       <RowDefinition Height="*"/>
+                   </Grid.RowDefinitions>
+                   
+                   <TextBlock Text="설정" 
+                             FontSize="24" 
+                             FontWeight="Bold" 
+                             Margin="10"/>
+                   
+                   <StackPanel Grid.Row="1" Margin="10">
+                       <CheckBox Content="자동 저장" IsChecked="True"/>
+                       <CheckBox Content="알림 표시" IsChecked="True"/>
+                       <TextBlock Text="언어:" Margin="0,10,0,5"/>
+                       <ComboBox>
+                           <ComboBoxItem>한국어</ComboBoxItem>
+                           <ComboBoxItem>English</ComboBoxItem>
+                       </ComboBox>
+                   </StackPanel>
+               </Grid>
+           </UserControl>
+        
+        2. 홈 화면 UserControl:
+           <UserControl ...>
+               <Grid>
+                   <Grid.RowDefinitions>
+                       <RowDefinition Height="Auto"/>
+                       <RowDefinition Height="*"/>
+                   </Grid.RowDefinitions>
+                   
+                   <TextBlock Text="환영합니다!" 
+                             FontSize="36" 
+                             HorizontalAlignment="Center" 
+                             Margin="20"/>
+                   
+                   <StackPanel Grid.Row="1" 
+                              HorizontalAlignment="Center" 
+                              VerticalAlignment="Center">
+                       <Button Content="새 프로젝트 시작" 
+                              Width="200" 
+                              Height="50" 
+                              Margin="10"/>
+                       <Button Content="기존 프로젝트 열기" 
+                              Width="200" 
+                              Height="50" 
+                              Margin="10"/>
+                   </StackPanel>
+               </Grid>
+           </UserControl>
+        
+        3. 데이터 표시 UserControl:
+           <UserControl ...>
+               <DockPanel>
+                   <ToolBar DockPanel.Dock="Top">
+                       <Button Content="새로 고침"/>
+                       <Button Content="필터"/>
+                   </ToolBar>
+                   
+                   <DataGrid ItemsSource="{Binding Items}" 
+                            AutoGenerateColumns="False">
+                       <DataGrid.Columns>
+                           <DataGridTextColumn Header="이름" Binding="{Binding Name}"/>
+                           <DataGridTextColumn Header="날짜" Binding="{Binding Date}"/>
+                       </DataGrid.Columns>
+                   </DataGrid>
+               </DockPanel>
+           </UserControl>
+        
+        UserControl과 화면 전환:
+        
+        1. ContentControl 사용:
+           <ContentControl Name="contentArea"/>
+           
+           코드:
+           contentArea.Content = new SettingsView();
+        
+        2. Frame 사용 (네비게이션):
+           <Frame Name="mainFrame" NavigationUIVisibility="Hidden"/>
+           
+           코드:
+           mainFrame.Navigate(new SettingsView());
+        
+        3. TabControl 사용:
+           <TabControl>
+               <TabItem Header="홈">
+                   <local:HomeView/>
+               </TabItem>
+               <TabItem Header="설정">
+                   <local:SettingsView/>
+               </TabItem>
+           </TabControl>
+        
+        UserControl의 장점:
+        - 모듈화: 각 화면을 독립적으로 개발
+        - 재사용: 여러 곳에서 같은 UserControl 사용
+        - 유지보수: 화면별로 파일 분리, 관리 용이
+        - 테스트: 각 UserControl을 독립적으로 테스트
+        
+        MVVM 패턴과 함께:
+        
+        코드:
+        var settingsView = new SettingsView();
+        settingsView.DataContext = new SettingsViewModel();
+        contentArea.Content = settingsView;
+        
+        또는 XAML에서:
+        <ContentControl Content="{Binding CurrentView}"/>
+        
+        ViewModel에서:
+        public UserControl CurrentView
+        {
+            get => _currentView;
+            set
+            {
+                _currentView = value;
+                OnPropertyChanged();
+            }
+        }
+        
+        public void ShowSettings()
+        {
+            CurrentView = new SettingsView { DataContext = new SettingsViewModel() };
+        }
+    -->
+</UserControl>

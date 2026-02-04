@@ -1,0 +1,232 @@
+﻿using System.Text;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Data;
+using System.Windows.Documents;
+using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
+using System.Windows.Shapes;
+
+namespace ch8_체크박스
+{
+    /// <summary>
+    /// MainWindow.xaml에 대한 상호작용 논리
+    /// CheckBox 컨트롤의 Checked/Unchecked 이벤트를 처리하는 메인 윈도우
+    /// </summary>
+    public partial class MainWindow : Window
+    {
+        /// <summary>
+        /// MainWindow 생성자
+        /// 윈도우가 생성될 때 호출되어 초기화 작업을 수행합니다.
+        /// </summary>
+        public MainWindow()
+        {
+            // XAML에 정의된 UI 요소들을 초기화합니다.
+            InitializeComponent();
+        }
+
+        /// <summary>
+        /// CheckBox의 Checked 이벤트 핸들러
+        /// 체크박스가 선택될 때(체크 표시가 될 때) 실행됩니다.
+        /// </summary>
+        /// <param name="sender">이벤트를 발생시킨 객체 (여기서는 chkApple CheckBox)</param>
+        /// <param name="e">라우팅 이벤트 정보를 담고 있는 인자</param>
+        private void chkApple_Checked(object sender, RoutedEventArgs e)
+        {
+            // TextBlock(tb)의 Text를 변경하여 체크박스가 선택되었음을 표시합니다.
+            // "청사과" → "청사과 선택"으로 텍스트 변경
+            tb.Text = "청사과 선택";
+            
+            /*
+             * 동작 흐름:
+             * 1. 사용자가 "청사과" 체크박스를 클릭하여 체크 표시를 만듦
+             * 2. Checked 이벤트가 발생
+             * 3. 이 메서드가 실행되어 텍스트를 "청사과 선택"으로 변경
+             * 4. 사용자에게 선택 상태를 시각적으로 피드백
+             * 
+             * 추가로 할 수 있는 작업:
+             * - 다른 UI 요소 활성화/비활성화
+             * - 데이터 저장 또는 설정 변경
+             * - 다른 체크박스와의 상호작용
+             * - 로깅 또는 분석 이벤트 전송
+             */
+        }
+
+        /// <summary>
+        /// CheckBox의 Unchecked 이벤트 핸들러
+        /// 체크박스의 선택이 해제될 때(체크 표시가 사라질 때) 실행됩니다.
+        /// </summary>
+        /// <param name="sender">이벤트를 발생시킨 객체 (여기서는 chkApple CheckBox)</param>
+        /// <param name="e">라우팅 이벤트 정보를 담고 있는 인자</param>
+        private void chkApple_Unchecked(object sender, RoutedEventArgs e)
+        {
+            // TextBlock(tb)의 Text를 원래 상태로 복원합니다.
+            // "청사과 선택" → "청사과"로 텍스트 변경
+            tb.Text = "청사과";
+            
+            /*
+             * 동작 흐름:
+             * 1. 사용자가 체크된 "청사과" 체크박스를 다시 클릭하여 체크를 해제
+             * 2. Unchecked 이벤트가 발생
+             * 3. 이 메서드가 실행되어 텍스트를 원래 상태인 "청사과"로 복원
+             * 4. 사용자에게 선택 해제 상태를 시각적으로 피드백
+             */
+        }
+        
+        /*
+         * CheckBox 이벤트 처리 추가 예제:
+         * 
+         * 1. IsChecked 속성으로 현재 상태 확인:
+         *    
+         *    private void chkApple_Checked(object sender, RoutedEventArgs e)
+         *    {
+         *        CheckBox? checkbox = sender as CheckBox;
+         *        if (checkbox != null && checkbox.IsChecked == true)
+         *        {
+         *            tb.Text = "청사과 선택됨";
+         *        }
+         *    }
+         * 
+         * 2. 3-상태 체크박스 처리:
+         *    
+         *    private void chkParent_Click(object sender, RoutedEventArgs e)
+         *    {
+         *        CheckBox? checkbox = sender as CheckBox;
+         *        if (checkbox == null) return;
+         *        
+         *        if (checkbox.IsChecked == true)
+         *        {
+         *            // 전체 선택
+         *            MessageBox.Show("모든 항목 선택됨");
+         *        }
+         *        else if (checkbox.IsChecked == false)
+         *        {
+         *            // 전체 해제
+         *            MessageBox.Show("모든 항목 선택 해제됨");
+         *        }
+         *        else // null (Indeterminate)
+         *        {
+         *            // 일부 선택
+         *            MessageBox.Show("일부 항목만 선택됨");
+         *        }
+         *    }
+         * 
+         * 3. 여러 체크박스 제어:
+         *    
+         *    private void chkAll_Checked(object sender, RoutedEventArgs e)
+         *    {
+         *        // StackPanel 내의 모든 CheckBox 선택
+         *        foreach (var child in myStackPanel.Children)
+         *        {
+         *            if (child is CheckBox checkbox && checkbox != chkAll)
+         *            {
+         *                checkbox.IsChecked = true;
+         *            }
+         *        }
+         *    }
+         *    
+         *    private void chkAll_Unchecked(object sender, RoutedEventArgs e)
+         *    {
+         *        // StackPanel 내의 모든 CheckBox 선택 해제
+         *        foreach (var child in myStackPanel.Children)
+         *        {
+         *            if (child is CheckBox checkbox && checkbox != chkAll)
+         *            {
+         *                checkbox.IsChecked = false;
+         *            }
+         *        }
+         *    }
+         * 
+         * 4. 조건부 UI 업데이트:
+         *    
+         *    private void chkAdvanced_Checked(object sender, RoutedEventArgs e)
+         *    {
+         *        // 고급 옵션 패널 표시
+         *        pnlAdvanced.Visibility = Visibility.Visible;
+         *    }
+         *    
+         *    private void chkAdvanced_Unchecked(object sender, RoutedEventArgs e)
+         *    {
+         *        // 고급 옵션 패널 숨김
+         *        pnlAdvanced.Visibility = Visibility.Collapsed;
+         *    }
+         * 
+         * 5. 선택된 항목 수집:
+         *    
+         *    private void btnSubmit_Click(object sender, RoutedEventArgs e)
+         *    {
+         *        List<string> selectedFruits = new List<string>();
+         *        
+         *        foreach (var child in myStackPanel.Children)
+         *        {
+         *            if (child is CheckBox checkbox && checkbox.IsChecked == true)
+         *            {
+         *                selectedFruits.Add(checkbox.Content?.ToString() ?? "");
+         *            }
+         *        }
+         *        
+         *        if (selectedFruits.Count > 0)
+         *        {
+         *            MessageBox.Show($"선택된 과일: {string.Join(", ", selectedFruits)}");
+         *        }
+         *        else
+         *        {
+         *            MessageBox.Show("선택된 과일이 없습니다.");
+         *        }
+         *    }
+         * 
+         * 6. 설정 저장:
+         *    
+         *    private void chkNotification_Checked(object sender, RoutedEventArgs e)
+         *    {
+         *        // 설정을 Properties.Settings에 저장
+         *        Properties.Settings.Default.NotificationEnabled = true;
+         *        Properties.Settings.Default.Save();
+         *    }
+         *    
+         *    private void chkNotification_Unchecked(object sender, RoutedEventArgs e)
+         *    {
+         *        Properties.Settings.Default.NotificationEnabled = false;
+         *        Properties.Settings.Default.Save();
+         *    }
+         * 
+         * CheckBox 이벤트 관련 참고사항:
+         * 
+         * - Checked/Unchecked 이벤트는 IsChecked 속성이 변경될 때 발생
+         * - 코드에서 IsChecked를 직접 변경해도 이벤트가 발생함
+         * - Click 이벤트는 사용자가 클릭할 때만 발생 (프로그래밍 방식 변경 시 미발생)
+         * - Indeterminate 이벤트는 IsThreeState="True"일 때 null 상태가 될 때 발생
+         * - RoutedEvent이므로 이벤트 버블링/터널링이 가능
+         * 
+         * 성능 최적화:
+         * 
+         * - 많은 체크박스를 동적으로 생성할 경우 이벤트 핸들러를 공유
+         * - sender와 e.OriginalSource를 활용하여 어떤 체크박스인지 식별
+         * - 불필요한 UI 업데이트 최소화 (BeginInit/EndInit 사용)
+         * 
+         * 예제 - 공유 이벤트 핸들러:
+         * 
+         * private void CommonCheckBox_Checked(object sender, RoutedEventArgs e)
+         * {
+         *     if (sender is CheckBox checkbox)
+         *     {
+         *         string name = checkbox.Name;
+         *         string content = checkbox.Content?.ToString() ?? "";
+         *         
+         *         // 이름이나 콘텐츠에 따라 다른 처리
+         *         switch (name)
+         *         {
+         *             case "chkApple":
+         *                 HandleAppleSelection(true);
+         *                 break;
+         *             case "chkBanana":
+         *                 HandleBananaSelection(true);
+         *                 break;
+         *         }
+         *     }
+         * }
+         */
+    }
+}

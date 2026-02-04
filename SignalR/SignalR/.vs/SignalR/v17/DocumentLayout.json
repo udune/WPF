@@ -1,0 +1,70 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\udune\\Desktop\\WPF\\SignalR\\SignalR\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{C5AD6627-8370-4E03-B37F-B7729F709CDA}|SignalR.csproj|c:\\users\\udune\\desktop\\wpf\\signalr\\signalr\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C5AD6627-8370-4E03-B37F-B7729F709CDA}|SignalR.csproj|solutionrelative:mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C5AD6627-8370-4E03-B37F-B7729F709CDA}|SignalR.csproj|c:\\users\\udune\\desktop\\wpf\\signalr\\signalr\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{C5AD6627-8370-4E03-B37F-B7729F709CDA}|SignalR.csproj|solutionrelative:mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C5AD6627-8370-4E03-B37F-B7729F709CDA}|SignalR.csproj|c:\\users\\udune\\desktop\\wpf\\signalr\\signalr\\signalr.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{C5AD6627-8370-4E03-B37F-B7729F709CDA}|SignalR.csproj|solutionrelative:signalr.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 1,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedHeight": 200,
+          "SelectedChildIndex": 1,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "SignalR",
+              "DocumentMoniker": "C:\\Users\\udune\\Desktop\\WPF\\SignalR\\SignalR\\SignalR.csproj",
+              "RelativeDocumentMoniker": "SignalR.csproj",
+              "ToolTip": "C:\\Users\\udune\\Desktop\\WPF\\SignalR\\SignalR\\SignalR.csproj",
+              "RelativeToolTip": "SignalR.csproj",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2025-02-20T08:51:42.149Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "MainWindow.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\udune\\Desktop\\WPF\\SignalR\\SignalR\\MainWindow.xaml.cs",
+              "RelativeDocumentMoniker": "MainWindow.xaml.cs",
+              "ToolTip": "C:\\Users\\udune\\Desktop\\WPF\\SignalR\\SignalR\\MainWindow.xaml.cs",
+              "RelativeToolTip": "MainWindow.xaml.cs",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAUwBMAAAAkAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-20T08:43:47Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "MainWindow.xaml",
+              "DocumentMoniker": "C:\\Users\\udune\\Desktop\\WPF\\SignalR\\SignalR\\MainWindow.xaml",
+              "RelativeDocumentMoniker": "MainWindow.xaml",
+              "ToolTip": "C:\\Users\\udune\\Desktop\\WPF\\SignalR\\SignalR\\MainWindow.xaml",
+              "RelativeToolTip": "MainWindow.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-02-20T08:43:49.876Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

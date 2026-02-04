@@ -1,0 +1,538 @@
+﻿using System.Text;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Data;
+using System.Windows.Documents;
+using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
+using System.Windows.Shapes;
+using System.Windows.Media.Animation;
+
+namespace ch33_애니메이션
+{
+    /// <summary>
+    /// MainWindow.xaml에 대한 상호작용 논리
+    /// WPF 애니메이션의 기본 개념을 보여주는 메인 윈도우입니다.
+    /// XAML에서 EventTrigger와 Storyboard를 사용한 선언적 애니메이션을 제공합니다.
+    /// </summary>
+    public partial class MainWindow : Window
+    {
+        /// <summary>
+        /// MainWindow 생성자
+        /// 윈도우가 생성될 때 호출되어 초기화 작업을 수행합니다.
+        /// </summary>
+        public MainWindow()
+        {
+            InitializeComponent();
+            /*
+             * InitializeComponent() 호출 후:
+             * 1. XAML 로드 및 파싱
+             * 2. StackPanel, Grid, Label, Button 생성
+             * 3. EventTrigger 등록
+             *    - Grid.Loaded → Opacity 애니메이션
+             *    - Grid.MouseEnter → Width 애니메이션
+             *    - Label.MouseEnter → Width 애니메이션
+             * 4. Storyboard 준비 (실행 대기)
+             * 5. Grid.Loaded 이벤트 자동 발생
+             *    - Opacity 0 → 1 (5초)
+             *    - 페이드 인 효과 시작
+             * 6. UI 렌더링
+             * 
+             * XAML 애니메이션 vs 코드 애니메이션:
+             * 
+             * XAML (선언적):
+             * - EventTrigger, Storyboard 사용
+             * - 디자인 타임에 정의
+             * - 간단하고 직관적
+             * - 이 예제가 XAML 방식
+             * 
+             * 코드 (명령형):
+             * - C#에서 Animation 객체 생성
+             * - 런타임에 동적 생성
+             * - 복잡한 로직 가능
+             * - 아래 예제 참조
+             */
+        }
+        
+        /*
+         * 코드에서 애니메이션 사용 예제:
+         * 
+         * ========== 1. 기본 애니메이션 ==========
+         * 
+         * private void AnimateOpacity_Click(object sender, RoutedEventArgs e)
+         * {
+         *     // DoubleAnimation 생성
+         *     var animation = new DoubleAnimation
+         *     {
+         *         From = 0,              // 시작 값
+         *         To = 1,                // 종료 값
+         *         Duration = TimeSpan.FromSeconds(2)  // 지속 시간
+         *     };
+         *     
+         *     // 버튼의 Opacity 속성에 애니메이션 적용
+         *     var button = sender as Button;
+         *     button.BeginAnimation(Button.OpacityProperty, animation);
+         * }
+         * 
+         * XAML:
+         * <Button Click="AnimateOpacity_Click">페이드 인</Button>
+         * 
+         * BeginAnimation:
+         * - 직접 속성에 애니메이션 적용
+         * - 간단하지만 제한적
+         * - 의존성 속성만 가능
+         * 
+         * ========== 2. Storyboard 사용 ==========
+         * 
+         * private void AnimateWithStoryboard_Click(object sender, RoutedEventArgs e)
+         * {
+         *     var button = sender as Button;
+         *     
+         *     // Storyboard 생성
+         *     var storyboard = new Storyboard();
+         *     
+         *     // Width 애니메이션
+         *     var widthAnimation = new DoubleAnimation
+         *     {
+         *         To = 300,
+         *         Duration = TimeSpan.FromSeconds(2)
+         *     };
+         *     Storyboard.SetTarget(widthAnimation, button);
+         *     Storyboard.SetTargetProperty(widthAnimation, new PropertyPath(Button.WidthProperty));
+         *     storyboard.Children.Add(widthAnimation);
+         *     
+         *     // Height 애니메이션
+         *     var heightAnimation = new DoubleAnimation
+         *     {
+         *         To = 100,
+         *         Duration = TimeSpan.FromSeconds(2)
+         *     };
+         *     Storyboard.SetTarget(heightAnimation, button);
+         *     Storyboard.SetTargetProperty(heightAnimation, new PropertyPath(Button.HeightProperty));
+         *     storyboard.Children.Add(heightAnimation);
+         *     
+         *     // Storyboard 시작
+         *     storyboard.Begin();
+         * }
+         * 
+         * Storyboard 장점:
+         * - 여러 애니메이션 조정
+         * - 순차 실행 가능
+         * - 이벤트 핸들러 (Completed 등)
+         * - 일시정지, 재개, 중지 가능
+         * 
+         * ========== 3. EasingFunction 적용 ==========
+         * 
+         * private void AnimateWithEasing_Click(object sender, RoutedEventArgs e)
+         * {
+         *     var button = sender as Button;
+         *     
+         *     var animation = new DoubleAnimation
+         *     {
+         *         To = 400,
+         *         Duration = TimeSpan.FromSeconds(1),
+         *         EasingFunction = new BounceEase
+         *         {
+         *             EasingMode = EasingMode.EaseOut,
+         *             Bounces = 3,
+         *             Bounciness = 2
+         *         }
+         *     };
+         *     
+         *     button.BeginAnimation(Button.WidthProperty, animation);
+         * }
+         * 
+         * EasingFunction 종류:
+         * - BounceEase: 바운스 효과
+         * - ElasticEase: 탄성 효과
+         * - BackEase: 뒤로 당겼다 앞으로
+         * - CircleEase: 원형 곡선
+         * - QuadraticEase: 2차 곡선
+         * - CubicEase: 3차 곡선
+         * - SineEase: 사인 곡선
+         * - ExponentialEase: 지수 곡선
+         * 
+         * ========== 4. 회전 애니메이션 ==========
+         * 
+         * XAML (Button에 RenderTransform 추가):
+         * <Button x:Name="rotateButton">
+         *     <Button.RenderTransform>
+         *         <RotateTransform x:Name="rotateTransform" Angle="0"/>
+         *     </Button.RenderTransform>
+         *     회전
+         * </Button>
+         * 
+         * 코드:
+         * private void RotateButton_Click(object sender, RoutedEventArgs e)
+         * {
+         *     var animation = new DoubleAnimation
+         *     {
+         *         From = 0,
+         *         To = 360,
+         *         Duration = TimeSpan.FromSeconds(1)
+         *     };
+         *     
+         *     rotateTransform.BeginAnimation(RotateTransform.AngleProperty, animation);
+         * }
+         * 
+         * ========== 5. 크기 조정 애니메이션 ==========
+         * 
+         * XAML:
+         * <Button x:Name="scaleButton">
+         *     <Button.RenderTransform>
+         *         <ScaleTransform x:Name="scaleTransform" ScaleX="1" ScaleY="1"/>
+         *     </Button.RenderTransform>
+         *     확대/축소
+         * </Button>
+         * 
+         * 코드:
+         * private void ScaleButton_Click(object sender, RoutedEventArgs e)
+         * {
+         *     var storyboard = new Storyboard();
+         *     
+         *     var scaleXAnimation = new DoubleAnimation
+         *     {
+         *         To = 1.5,
+         *         Duration = TimeSpan.FromSeconds(0.5),
+         *         AutoReverse = true
+         *     };
+         *     Storyboard.SetTarget(scaleXAnimation, scaleTransform);
+         *     Storyboard.SetTargetProperty(scaleXAnimation, new PropertyPath(ScaleTransform.ScaleXProperty));
+         *     
+         *     var scaleYAnimation = new DoubleAnimation
+         *     {
+         *         To = 1.5,
+         *         Duration = TimeSpan.FromSeconds(0.5),
+         *         AutoReverse = true
+         *     };
+         *     Storyboard.SetTarget(scaleYAnimation, scaleTransform);
+         *     Storyboard.SetTargetProperty(scaleYAnimation, new PropertyPath(ScaleTransform.ScaleYProperty));
+         *     
+         *     storyboard.Children.Add(scaleXAnimation);
+         *     storyboard.Children.Add(scaleYAnimation);
+         *     storyboard.Begin();
+         * }
+         * 
+         * ========== 6. 이동 애니메이션 ==========
+         * 
+         * XAML:
+         * <Button x:Name="moveButton">
+         *     <Button.RenderTransform>
+         *         <TranslateTransform x:Name="translateTransform" X="0" Y="0"/>
+         *     </Button.RenderTransform>
+         *     이동
+         * </Button>
+         * 
+         * 코드:
+         * private void MoveButton_Click(object sender, RoutedEventArgs e)
+         * {
+         *     var animation = new DoubleAnimation
+         *     {
+         *         To = 200,
+         *         Duration = TimeSpan.FromSeconds(1),
+         *         EasingFunction = new QuadraticEase { EasingMode = EasingMode.EaseInOut }
+         *     };
+         *     
+         *     translateTransform.BeginAnimation(TranslateTransform.XProperty, animation);
+         * }
+         * 
+         * ========== 7. 색상 애니메이션 ==========
+         * 
+         * XAML:
+         * <Button x:Name="colorButton">
+         *     <Button.Background>
+         *         <SolidColorBrush x:Name="buttonBrush" Color="Red"/>
+         *     </Button.Background>
+         *     색상 변경
+         * </Button>
+         * 
+         * 코드:
+         * private void ColorButton_Click(object sender, RoutedEventArgs e)
+         * {
+         *     var animation = new ColorAnimation
+         *     {
+         *         From = Colors.Red,
+         *         To = Colors.Blue,
+         *         Duration = TimeSpan.FromSeconds(2),
+         *         AutoReverse = true,
+         *         RepeatBehavior = RepeatBehavior.Forever
+         *     };
+         *     
+         *     buttonBrush.BeginAnimation(SolidColorBrush.ColorProperty, animation);
+         * }
+         * 
+         * ========== 8. KeyFrame 애니메이션 ==========
+         * 
+         * private void KeyFrameAnimation_Click(object sender, RoutedEventArgs e)
+         * {
+         *     var button = sender as Button;
+         *     
+         *     var animation = new DoubleAnimationUsingKeyFrames();
+         *     animation.KeyFrames.Add(new LinearDoubleKeyFrame(100, KeyTime.FromTimeSpan(TimeSpan.FromSeconds(1))));
+         *     animation.KeyFrames.Add(new LinearDoubleKeyFrame(200, KeyTime.FromTimeSpan(TimeSpan.FromSeconds(2))));
+         *     animation.KeyFrames.Add(new LinearDoubleKeyFrame(150, KeyTime.FromTimeSpan(TimeSpan.FromSeconds(3))));
+         *     
+         *     button.BeginAnimation(Button.WidthProperty, animation);
+         * }
+         * 
+         * KeyFrame 타입:
+         * - LinearDoubleKeyFrame: 선형 보간
+         * - DiscreteDoubleKeyFrame: 즉시 변경
+         * - SplineDoubleKeyFrame: 베지어 곡선
+         * - EasingDoubleKeyFrame: 이징 함수
+         * 
+         * ========== 9. 반복 애니메이션 ==========
+         * 
+         * private void LoopAnimation_Click(object sender, RoutedEventArgs e)
+         * {
+         *     var button = sender as Button;
+         *     
+         *     var animation = new DoubleAnimation
+         *     {
+         *         From = 1,
+         *         To = 0,
+         *         Duration = TimeSpan.FromSeconds(1),
+         *         AutoReverse = true,
+         *         RepeatBehavior = RepeatBehavior.Forever
+         *     };
+         *     
+         *     button.BeginAnimation(Button.OpacityProperty, animation);
+         * }
+         * 
+         * RepeatBehavior:
+         * - RepeatBehavior.Forever: 무한 반복
+         * - new RepeatBehavior(3): 3번 반복
+         * - new RepeatBehavior(TimeSpan.FromSeconds(10)): 10초 동안 반복
+         * 
+         * ========== 10. Storyboard 제어 ==========
+         * 
+         * private Storyboard currentStoryboard;
+         * 
+         * private void StartStoryboard_Click(object sender, RoutedEventArgs e)
+         * {
+         *     currentStoryboard = new Storyboard();
+         *     
+         *     var animation = new DoubleAnimation
+         *     {
+         *         To = 400,
+         *         Duration = TimeSpan.FromSeconds(5)
+         *     };
+         *     Storyboard.SetTarget(animation, myButton);
+         *     Storyboard.SetTargetProperty(animation, new PropertyPath(Button.WidthProperty));
+         *     currentStoryboard.Children.Add(animation);
+         *     
+         *     // 완료 이벤트
+         *     currentStoryboard.Completed += (s, args) =>
+         *     {
+         *         MessageBox.Show("애니메이션 완료!");
+         *     };
+         *     
+         *     currentStoryboard.Begin();
+         * }
+         * 
+         * private void PauseStoryboard_Click(object sender, RoutedEventArgs e)
+         * {
+         *     currentStoryboard?.Pause();
+         * }
+         * 
+         * private void ResumeStoryboard_Click(object sender, RoutedEventArgs e)
+         * {
+         *     currentStoryboard?.Resume();
+         * }
+         * 
+         * private void StopStoryboard_Click(object sender, RoutedEventArgs e)
+         * {
+         *     currentStoryboard?.Stop();
+         * }
+         * 
+         * ========== 11. 복잡한 애니메이션 시퀀스 ==========
+         * 
+         * private async void ComplexAnimation_Click(object sender, RoutedEventArgs e)
+         * {
+         *     var button = sender as Button;
+         *     
+         *     // 1단계: 페이드 아웃
+         *     await AnimateAsync(button, Button.OpacityProperty, 0, TimeSpan.FromSeconds(0.5));
+         *     
+         *     // 2단계: 위치 변경 (보이지 않는 동안)
+         *     var translateTransform = new TranslateTransform();
+         *     button.RenderTransform = translateTransform;
+         *     translateTransform.X = 200;
+         *     
+         *     // 3단계: 페이드 인
+         *     await AnimateAsync(button, Button.OpacityProperty, 1, TimeSpan.FromSeconds(0.5));
+         * }
+         * 
+         * private Task AnimateAsync(DependencyObject target, DependencyProperty property, double to, TimeSpan duration)
+         * {
+         *     var tcs = new TaskCompletionSource<bool>();
+         *     
+         *     var animation = new DoubleAnimation
+         *     {
+         *         To = to,
+         *         Duration = duration
+         *     };
+         *     
+         *     animation.Completed += (s, e) => tcs.SetResult(true);
+         *     
+         *     target.BeginAnimation(property, animation);
+         *     
+         *     return tcs.Task;
+         * }
+         * 
+         * ========== 12. 조건부 애니메이션 ==========
+         * 
+         * private void ConditionalAnimation_Click(object sender, RoutedEventArgs e)
+         * {
+         *     var button = sender as Button;
+         *     
+         *     if (button.Width < 200)
+         *     {
+         *         // 확장
+         *         var animation = new DoubleAnimation
+         *         {
+         *             To = 300,
+         *             Duration = TimeSpan.FromSeconds(0.5)
+         *         };
+         *         button.BeginAnimation(Button.WidthProperty, animation);
+         *     }
+         *     else
+         *     {
+         *         // 축소
+         *         var animation = new DoubleAnimation
+         *         {
+         *             To = 100,
+         *             Duration = TimeSpan.FromSeconds(0.5)
+         *         };
+         *         button.BeginAnimation(Button.WidthProperty, animation);
+         *     }
+         * }
+         * 
+         * ========== 실전 활용 시나리오 ==========
+         * 
+         * 1. 로딩 인디케이터:
+         * private void StartLoading()
+         * {
+         *     var rotateTransform = new RotateTransform();
+         *     loadingIcon.RenderTransform = rotateTransform;
+         *     
+         *     var animation = new DoubleAnimation
+         *     {
+         *         From = 0,
+         *         To = 360,
+         *         Duration = TimeSpan.FromSeconds(1),
+         *         RepeatBehavior = RepeatBehavior.Forever
+         *     };
+         *     
+         *     rotateTransform.BeginAnimation(RotateTransform.AngleProperty, animation);
+         * }
+         * 
+         * 2. 알림 토스트:
+         * private async void ShowToast(string message)
+         * {
+         *     toastMessage.Text = message;
+         *     toastPanel.Visibility = Visibility.Visible;
+         *     
+         *     // 슬라이드 업
+         *     var slideAnimation = new DoubleAnimation
+         *     {
+         *         From = 100,
+         *         To = 0,
+         *         Duration = TimeSpan.FromSeconds(0.3),
+         *         EasingFunction = new QuadraticEase { EasingMode = EasingMode.EaseOut }
+         *     };
+         *     
+         *     var translateTransform = new TranslateTransform();
+         *     toastPanel.RenderTransform = translateTransform;
+         *     translateTransform.BeginAnimation(TranslateTransform.YProperty, slideAnimation);
+         *     
+         *     // 3초 대기
+         *     await Task.Delay(3000);
+         *     
+         *     // 페이드 아웃
+         *     var fadeAnimation = new DoubleAnimation
+         *     {
+         *         To = 0,
+         *         Duration = TimeSpan.FromSeconds(0.3)
+         *     };
+         *     
+         *     fadeAnimation.Completed += (s, e) =>
+         *     {
+         *         toastPanel.Visibility = Visibility.Collapsed;
+         *         toastPanel.Opacity = 1;
+         *     };
+         *     
+         *     toastPanel.BeginAnimation(OpacityProperty, fadeAnimation);
+         * }
+         * 
+         * 3. 버튼 클릭 효과:
+         * private void ButtonClickEffect(Button button)
+         * {
+         *     var scaleTransform = new ScaleTransform(1, 1);
+         *     button.RenderTransform = scaleTransform;
+         *     button.RenderTransformOrigin = new Point(0.5, 0.5);
+         *     
+         *     var storyboard = new Storyboard();
+         *     
+         *     var scaleXAnimation = new DoubleAnimation
+         *     {
+         *         To = 0.95,
+         *         Duration = TimeSpan.FromMilliseconds(100),
+         *         AutoReverse = true
+         *     };
+         *     Storyboard.SetTarget(scaleXAnimation, scaleTransform);
+         *     Storyboard.SetTargetProperty(scaleXAnimation, new PropertyPath(ScaleTransform.ScaleXProperty));
+         *     
+         *     var scaleYAnimation = new DoubleAnimation
+         *     {
+         *         To = 0.95,
+         *         Duration = TimeSpan.FromMilliseconds(100),
+         *         AutoReverse = true
+         *     };
+         *     Storyboard.SetTarget(scaleYAnimation, scaleTransform);
+         *     Storyboard.SetTargetProperty(scaleYAnimation, new PropertyPath(ScaleTransform.ScaleYProperty));
+         *     
+         *     storyboard.Children.Add(scaleXAnimation);
+         *     storyboard.Children.Add(scaleYAnimation);
+         *     storyboard.Begin();
+         * }
+         * 
+         * 4. 진행률 바 애니메이션:
+         * private void AnimateProgressBar(double targetValue)
+         * {
+         *     var animation = new DoubleAnimation
+         *     {
+         *         To = targetValue,
+         *         Duration = TimeSpan.FromSeconds(1),
+         *         EasingFunction = new CubicEase { EasingMode = EasingMode.EaseInOut }
+         *     };
+         *     
+         *     progressBar.BeginAnimation(ProgressBar.ValueProperty, animation);
+         * }
+         * 
+         * ========== 주의사항 ==========
+         * 
+         * 1. 성능:
+         *    - 많은 애니메이션은 성능 저하
+         *    - 하드웨어 가속 활용 (RenderTransform 권장)
+         * 
+         * 2. 메모리:
+         *    - 완료된 애니메이션 정리
+         *    - 이벤트 핸들러 해제
+         * 
+         * 3. 의존성 속성:
+         *    - 애니메이션은 의존성 속성에만 적용
+         *    - 일반 속성은 불가
+         * 
+         * 4. Thread Safety:
+         *    - UI 스레드에서만 애니메이션 시작
+         *    - Dispatcher 사용
+         * 
+         * 5. FillBehavior:
+         *    - HoldEnd: 애니메이션 끝 값 유지 (기본)
+         *    - Stop: 원래 값으로 복원
+         */
+    }
+}

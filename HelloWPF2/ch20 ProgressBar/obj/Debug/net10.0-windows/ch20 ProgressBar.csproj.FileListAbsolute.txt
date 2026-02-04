@@ -1,0 +1,20 @@
+C:\Users\udune\Desktop\WPF\HelloWPF2\ch20 ProgressBar\bin\Debug\net10.0-windows\ch20 ProgressBar.exe
+C:\Users\udune\Desktop\WPF\HelloWPF2\ch20 ProgressBar\bin\Debug\net10.0-windows\ch20 ProgressBar.deps.json
+C:\Users\udune\Desktop\WPF\HelloWPF2\ch20 ProgressBar\bin\Debug\net10.0-windows\ch20 ProgressBar.runtimeconfig.json
+C:\Users\udune\Desktop\WPF\HelloWPF2\ch20 ProgressBar\bin\Debug\net10.0-windows\ch20 ProgressBar.dll
+C:\Users\udune\Desktop\WPF\HelloWPF2\ch20 ProgressBar\bin\Debug\net10.0-windows\ch20 ProgressBar.pdb
+C:\Users\udune\Desktop\WPF\HelloWPF2\ch20 ProgressBar\obj\Debug\net10.0-windows\MainWindow.g.cs
+C:\Users\udune\Desktop\WPF\HelloWPF2\ch20 ProgressBar\obj\Debug\net10.0-windows\App.g.cs
+C:\Users\udune\Desktop\WPF\HelloWPF2\ch20 ProgressBar\obj\Debug\net10.0-windows\ch20 ProgressBar_MarkupCompile.cache
+C:\Users\udune\Desktop\WPF\HelloWPF2\ch20 ProgressBar\obj\Debug\net10.0-windows\ch20 ProgressBar_MarkupCompile.lref
+C:\Users\udune\Desktop\WPF\HelloWPF2\ch20 ProgressBar\obj\Debug\net10.0-windows\MainWindow.baml
+C:\Users\udune\Desktop\WPF\HelloWPF2\ch20 ProgressBar\obj\Debug\net10.0-windows\ch20 ProgressBar.g.resources
+C:\Users\udune\Desktop\WPF\HelloWPF2\ch20 ProgressBar\obj\Debug\net10.0-windows\ch20 ProgressBar.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\udune\Desktop\WPF\HelloWPF2\ch20 ProgressBar\obj\Debug\net10.0-windows\ch20 ProgressBar.AssemblyInfoInputs.cache
+C:\Users\udune\Desktop\WPF\HelloWPF2\ch20 ProgressBar\obj\Debug\net10.0-windows\ch20 ProgressBar.AssemblyInfo.cs
+C:\Users\udune\Desktop\WPF\HelloWPF2\ch20 ProgressBar\obj\Debug\net10.0-windows\ch20 ProgressBar.csproj.CoreCompileInputs.cache
+C:\Users\udune\Desktop\WPF\HelloWPF2\ch20 ProgressBar\obj\Debug\net10.0-windows\ch20 ProgressBar.dll
+C:\Users\udune\Desktop\WPF\HelloWPF2\ch20 ProgressBar\obj\Debug\net10.0-windows\refint\ch20 ProgressBar.dll
+C:\Users\udune\Desktop\WPF\HelloWPF2\ch20 ProgressBar\obj\Debug\net10.0-windows\ch20 ProgressBar.pdb
+C:\Users\udune\Desktop\WPF\HelloWPF2\ch20 ProgressBar\obj\Debug\net10.0-windows\ch20 ProgressBar.genruntimeconfig.cache
+C:\Users\udune\Desktop\WPF\HelloWPF2\ch20 ProgressBar\obj\Debug\net10.0-windows\ref\ch20 ProgressBar.dll

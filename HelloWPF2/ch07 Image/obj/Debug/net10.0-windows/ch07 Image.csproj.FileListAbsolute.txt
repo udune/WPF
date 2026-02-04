@@ -1,0 +1,20 @@
+C:\Users\udune\Desktop\WPF\HelloWPF2\ch07 Image\bin\Debug\net10.0-windows\ch07 Image.exe
+C:\Users\udune\Desktop\WPF\HelloWPF2\ch07 Image\bin\Debug\net10.0-windows\ch07 Image.deps.json
+C:\Users\udune\Desktop\WPF\HelloWPF2\ch07 Image\bin\Debug\net10.0-windows\ch07 Image.runtimeconfig.json
+C:\Users\udune\Desktop\WPF\HelloWPF2\ch07 Image\bin\Debug\net10.0-windows\ch07 Image.dll
+C:\Users\udune\Desktop\WPF\HelloWPF2\ch07 Image\bin\Debug\net10.0-windows\ch07 Image.pdb
+C:\Users\udune\Desktop\WPF\HelloWPF2\ch07 Image\obj\Debug\net10.0-windows\MainWindow.g.cs
+C:\Users\udune\Desktop\WPF\HelloWPF2\ch07 Image\obj\Debug\net10.0-windows\App.g.cs
+C:\Users\udune\Desktop\WPF\HelloWPF2\ch07 Image\obj\Debug\net10.0-windows\ch07 Image_MarkupCompile.cache
+C:\Users\udune\Desktop\WPF\HelloWPF2\ch07 Image\obj\Debug\net10.0-windows\ch07 Image_MarkupCompile.lref
+C:\Users\udune\Desktop\WPF\HelloWPF2\ch07 Image\obj\Debug\net10.0-windows\MainWindow.baml
+C:\Users\udune\Desktop\WPF\HelloWPF2\ch07 Image\obj\Debug\net10.0-windows\ch07 Image.g.resources
+C:\Users\udune\Desktop\WPF\HelloWPF2\ch07 Image\obj\Debug\net10.0-windows\ch07 Image.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\udune\Desktop\WPF\HelloWPF2\ch07 Image\obj\Debug\net10.0-windows\ch07 Image.AssemblyInfoInputs.cache
+C:\Users\udune\Desktop\WPF\HelloWPF2\ch07 Image\obj\Debug\net10.0-windows\ch07 Image.AssemblyInfo.cs
+C:\Users\udune\Desktop\WPF\HelloWPF2\ch07 Image\obj\Debug\net10.0-windows\ch07 Image.csproj.CoreCompileInputs.cache
+C:\Users\udune\Desktop\WPF\HelloWPF2\ch07 Image\obj\Debug\net10.0-windows\ch07 Image.dll
+C:\Users\udune\Desktop\WPF\HelloWPF2\ch07 Image\obj\Debug\net10.0-windows\refint\ch07 Image.dll
+C:\Users\udune\Desktop\WPF\HelloWPF2\ch07 Image\obj\Debug\net10.0-windows\ch07 Image.pdb
+C:\Users\udune\Desktop\WPF\HelloWPF2\ch07 Image\obj\Debug\net10.0-windows\ch07 Image.genruntimeconfig.cache
+C:\Users\udune\Desktop\WPF\HelloWPF2\ch07 Image\obj\Debug\net10.0-windows\ref\ch07 Image.dll

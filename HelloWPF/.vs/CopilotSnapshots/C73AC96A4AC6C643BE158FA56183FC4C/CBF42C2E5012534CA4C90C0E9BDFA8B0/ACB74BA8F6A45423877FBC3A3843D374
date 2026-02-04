@@ -1,0 +1,491 @@
+﻿using System.Text;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Data;
+using System.Windows.Documents;
+using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
+using System.Windows.Shapes;
+
+namespace ch19_캔버스
+{
+    /// <summary>
+    /// Interaction logic for MainWindow.xaml
+    /// Canvas 레이아웃 컨트롤의 절대 좌표 배치를 시연하는 메인 윈도우
+    /// </summary>
+    public partial class MainWindow : Window
+    {
+        /// <summary>
+        /// MainWindow 생성자
+        /// 윈도우가 생성될 때 호출되어 초기화 작업을 수행합니다.
+        /// </summary>
+        public MainWindow()
+        {
+            // XAML에 정의된 UI 요소들을 초기화합니다.
+            InitializeComponent();
+            
+            /*
+             * 이 예제는 순수하게 XAML로 구현되어 있어
+             * 코드 비하인드에 특별한 로직이 없습니다.
+             * 
+             * 하지만 실제 프로젝트에서는 Canvas를 
+             * 코드에서 동적으로 조작하는 경우가 매우 많습니다.
+             * 특히 드래그 앤 드롭, 애니메이션, 게임, 그래픽 등에서
+             * Canvas의 좌표를 동적으로 변경하는 것이 일반적입니다.
+             */
+        }
+        
+        /*
+         * Canvas 코드 비하인드 활용 예제:
+         * 
+         * 1. 동적으로 Canvas에 요소 추가 및 위치 지정:
+         * 
+         *    private void AddElement_Click(object sender, RoutedEventArgs e)
+         *    {
+         *        // 새 버튼 생성
+         *        Button newButton = new Button
+         *        {
+         *            Content = "새 버튼",
+         *            Width = 80,
+         *            Height = 30
+         *        };
+         *        
+         *        // Canvas 좌표 설정
+         *        Canvas.SetLeft(newButton, 100);
+         *        Canvas.SetTop(newButton, 100);
+         *        
+         *        // 또는 Right, Bottom 사용
+         *        // Canvas.SetRight(newButton, 100);
+         *        // Canvas.SetBottom(newButton, 100);
+         *        
+         *        // Canvas에 추가
+         *        myCanvas.Children.Add(newButton);
+         *    }
+         *    
+         *    Canvas 좌표 설정 메서드:
+         *    - Canvas.SetLeft(element, x)
+         *    - Canvas.SetTop(element, y)
+         *    - Canvas.SetRight(element, x)
+         *    - Canvas.SetBottom(element, y)
+         *    
+         *    Canvas 좌표 가져오기:
+         *    - double x = Canvas.GetLeft(element)
+         *    - double y = Canvas.GetTop(element)
+         *    - double x = Canvas.GetRight(element)
+         *    - double y = Canvas.GetBottom(element)
+         * 
+         * 2. 드래그 앤 드롭 구현:
+         * 
+         *    private Point dragStartPoint;
+         *    private UIElement? draggedElement;
+         *    private bool isDragging = false;
+         *    
+         *    private void Element_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+         *    {
+         *        if (sender is UIElement element)
+         *        {
+         *            isDragging = true;
+         *            draggedElement = element;
+         *            
+         *            // 마우스 위치 저장
+         *            dragStartPoint = e.GetPosition(myCanvas);
+         *            
+         *            // 요소의 현재 위치 저장
+         *            double left = Canvas.GetLeft(element);
+         *            double top = Canvas.GetTop(element);
+         *            
+         *            // NaN 처리 (위치가 설정되지 않은 경우)
+         *            if (double.IsNaN(left)) left = 0;
+         *            if (double.IsNaN(top)) top = 0;
+         *            
+         *            // 마우스 캡처
+         *            element.CaptureMouse();
+         *        }
+         *    }
+         *    
+         *    private void Element_MouseMove(object sender, MouseEventArgs e)
+         *    {
+         *        if (isDragging && draggedElement != null)
+         *        {
+         *            // 현재 마우스 위치
+         *            Point currentPoint = e.GetPosition(myCanvas);
+         *            
+         *            // 이동 거리 계산
+         *            double offsetX = currentPoint.X - dragStartPoint.X;
+         *            double offsetY = currentPoint.Y - dragStartPoint.Y;
+         *            
+         *            // 요소의 현재 위치
+         *            double currentLeft = Canvas.GetLeft(draggedElement);
+         *            double currentTop = Canvas.GetTop(draggedElement);
+         *            
+         *            if (double.IsNaN(currentLeft)) currentLeft = 0;
+         *            if (double.IsNaN(currentTop)) currentTop = 0;
+         *            
+         *            // 새 위치 계산
+         *            double newLeft = currentLeft + offsetX;
+         *            double newTop = currentTop + offsetY;
+         *            
+         *            // 경계 체크 (Canvas 밖으로 나가지 않도록)
+         *            if (newLeft >= 0 && newLeft + draggedElement.RenderSize.Width <= myCanvas.ActualWidth)
+         *            {
+         *                Canvas.SetLeft(draggedElement, newLeft);
+         *            }
+         *            if (newTop >= 0 && newTop + draggedElement.RenderSize.Height <= myCanvas.ActualHeight)
+         *            {
+         *                Canvas.SetTop(draggedElement, newTop);
+         *            }
+         *            
+         *            // 시작점 업데이트
+         *            dragStartPoint = currentPoint;
+         *        }
+         *    }
+         *    
+         *    private void Element_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+         *    {
+         *        if (isDragging && draggedElement != null)
+         *        {
+         *            isDragging = false;
+         *            draggedElement.ReleaseMouseCapture();
+         *            draggedElement = null;
+         *        }
+         *    }
+         * 
+         * 3. 동적 도형 그리기:
+         * 
+         *    private void DrawShapes()
+         *    {
+         *        // 원 그리기
+         *        Ellipse circle = new Ellipse
+         *        {
+         *            Width = 100,
+         *            Height = 100,
+         *            Fill = new SolidColorBrush(Colors.Red),
+         *            Stroke = new SolidColorBrush(Colors.Black),
+         *            StrokeThickness = 2
+         *        };
+         *        Canvas.SetLeft(circle, 50);
+         *        Canvas.SetTop(circle, 50);
+         *        Panel.SetZIndex(circle, 1);
+         *        myCanvas.Children.Add(circle);
+         *        
+         *        // 사각형 그리기
+         *        Rectangle rect = new Rectangle
+         *        {
+         *            Width = 120,
+         *            Height = 80,
+         *            Fill = new SolidColorBrush(Colors.Blue),
+         *            Stroke = new SolidColorBrush(Colors.Black),
+         *            StrokeThickness = 2
+         *        };
+         *        Canvas.SetLeft(rect, 200);
+         *        Canvas.SetTop(rect, 50);
+         *        Panel.SetZIndex(rect, 2);
+         *        myCanvas.Children.Add(rect);
+         *        
+         *        // 선 그리기
+         *        Line line = new Line
+         *        {
+         *            X1 = 50,
+         *            Y1 = 200,
+         *            X2 = 300,
+         *            Y2 = 300,
+         *            Stroke = new SolidColorBrush(Colors.Green),
+         *            StrokeThickness = 3
+         *        };
+         *        myCanvas.Children.Add(line);
+         *        
+         *        // 다각형 그리기 (삼각형)
+         *        Polygon triangle = new Polygon
+         *        {
+         *            Fill = new SolidColorBrush(Colors.Yellow),
+         *            Stroke = new SolidColorBrush(Colors.Black),
+         *            StrokeThickness = 2,
+         *            Points = new PointCollection
+         *            {
+         *                new Point(400, 50),
+         *                new Point(450, 150),
+         *                new Point(350, 150)
+         *            }
+         *        };
+         *        myCanvas.Children.Add(triangle);
+         *    }
+         * 
+         * 4. 애니메이션으로 요소 이동:
+         * 
+         *    private void AnimateElement()
+         *    {
+         *        // 이동할 요소
+         *        Button animButton = new Button { Content = "움직이는 버튼" };
+         *        Canvas.SetLeft(animButton, 0);
+         *        Canvas.SetTop(animButton, 100);
+         *        myCanvas.Children.Add(animButton);
+         *        
+         *        // 애니메이션 생성
+         *        DoubleAnimation animX = new DoubleAnimation
+         *        {
+         *            From = 0,
+         *            To = 700,
+         *            Duration = TimeSpan.FromSeconds(3),
+         *            AutoReverse = true,
+         *            RepeatBehavior = RepeatBehavior.Forever
+         *        };
+         *        
+         *        // 애니메이션 적용
+         *        animButton.BeginAnimation(Canvas.LeftProperty, animX);
+         *    }
+         * 
+         * 5. Z-Index 동적 변경:
+         * 
+         *    private void BringToFront_Click(object sender, RoutedEventArgs e)
+         *    {
+         *        if (sender is UIElement element)
+         *        {
+         *            // 최대 ZIndex 찾기
+         *            int maxZIndex = 0;
+         *            foreach (UIElement child in myCanvas.Children)
+         *            {
+         *                int zIndex = Panel.GetZIndex(child);
+         *                if (zIndex > maxZIndex)
+         *                    maxZIndex = zIndex;
+         *            }
+         *            
+         *            // 클릭된 요소를 최상단으로
+         *            Panel.SetZIndex(element, maxZIndex + 1);
+         *        }
+         *    }
+         *    
+         *    private void SendToBack_Click(object sender, RoutedEventArgs e)
+         *    {
+         *        if (sender is UIElement element)
+         *        {
+         *            // 최소 ZIndex 찾기
+         *            int minZIndex = int.MaxValue;
+         *            foreach (UIElement child in myCanvas.Children)
+         *            {
+         *                int zIndex = Panel.GetZIndex(child);
+         *                if (zIndex < minZIndex)
+         *                    minZIndex = zIndex;
+         *            }
+         *            
+         *            // 클릭된 요소를 최하단으로
+         *            Panel.SetZIndex(element, minZIndex - 1);
+         *        }
+         *    }
+         * 
+         * 6. 마우스 위치에 요소 생성:
+         * 
+         *    private void Canvas_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+         *    {
+         *        Point clickPosition = e.GetPosition(myCanvas);
+         *        
+         *        Ellipse dot = new Ellipse
+         *        {
+         *            Width = 10,
+         *            Height = 10,
+         *            Fill = new SolidColorBrush(Colors.Red)
+         *        };
+         *        
+         *        // 클릭 위치에 배치 (중앙 정렬)
+         *        Canvas.SetLeft(dot, clickPosition.X - 5);
+         *        Canvas.SetTop(dot, clickPosition.Y - 5);
+         *        
+         *        myCanvas.Children.Add(dot);
+         *    }
+         * 
+         * 7. 간단한 게임 (공 튕기기):
+         * 
+         *    private Ellipse ball;
+         *    private double ballX = 100;
+         *    private double ballY = 100;
+         *    private double velocityX = 3;
+         *    private double velocityY = 3;
+         *    private System.Windows.Threading.DispatcherTimer gameTimer;
+         *    
+         *    private void StartGame()
+         *    {
+         *        // 공 생성
+         *        ball = new Ellipse
+         *        {
+         *            Width = 30,
+         *            Height = 30,
+         *            Fill = new SolidColorBrush(Colors.Red)
+         *        };
+         *        Canvas.SetLeft(ball, ballX);
+         *        Canvas.SetTop(ball, ballY);
+         *        myCanvas.Children.Add(ball);
+         *        
+         *        // 게임 타이머
+         *        gameTimer = new System.Windows.Threading.DispatcherTimer();
+         *        gameTimer.Interval = TimeSpan.FromMilliseconds(16); // ~60 FPS
+         *        gameTimer.Tick += GameTimer_Tick;
+         *        gameTimer.Start();
+         *    }
+         *    
+         *    private void GameTimer_Tick(object? sender, EventArgs e)
+         *    {
+         *        // 위치 업데이트
+         *        ballX += velocityX;
+         *        ballY += velocityY;
+         *        
+         *        // 경계 체크 및 튕김
+         *        if (ballX <= 0 || ballX + ball.Width >= myCanvas.ActualWidth)
+         *        {
+         *            velocityX = -velocityX;
+         *        }
+         *        if (ballY <= 0 || ballY + ball.Height >= myCanvas.ActualHeight)
+         *        {
+         *            velocityY = -velocityY;
+         *        }
+         *        
+         *        // 위치 적용
+         *        Canvas.SetLeft(ball, ballX);
+         *        Canvas.SetTop(ball, ballY);
+         *    }
+         * 
+         * 8. 다이어그램/플로차트 그리기:
+         * 
+         *    private void CreateFlowchart()
+         *    {
+         *        // 노드 1
+         *        Border node1 = CreateNode("시작", 100, 50);
+         *        myCanvas.Children.Add(node1);
+         *        
+         *        // 화살표
+         *        Line arrow1 = CreateArrow(150, 100, 150, 150);
+         *        myCanvas.Children.Add(arrow1);
+         *        
+         *        // 노드 2
+         *        Border node2 = CreateNode("처리", 100, 150);
+         *        myCanvas.Children.Add(node2);
+         *    }
+         *    
+         *    private Border CreateNode(string text, double left, double top)
+         *    {
+         *        Border node = new Border
+         *        {
+         *            Width = 100,
+         *            Height = 50,
+         *            BorderBrush = new SolidColorBrush(Colors.Black),
+         *            BorderThickness = new Thickness(2),
+         *            Background = new SolidColorBrush(Colors.LightBlue),
+         *            Child = new TextBlock
+         *            {
+         *                Text = text,
+         *                HorizontalAlignment = HorizontalAlignment.Center,
+         *                VerticalAlignment = VerticalAlignment.Center
+         *            }
+         *        };
+         *        Canvas.SetLeft(node, left);
+         *        Canvas.SetTop(node, top);
+         *        return node;
+         *    }
+         *    
+         *    private Line CreateArrow(double x1, double y1, double x2, double y2)
+         *    {
+         *        return new Line
+         *        {
+         *            X1 = x1,
+         *            Y1 = y1,
+         *            X2 = x2,
+         *            Y2 = y2,
+         *            Stroke = new SolidColorBrush(Colors.Black),
+         *            StrokeThickness = 2
+         *        };
+         *    }
+         * 
+         * 9. 충돌 감지:
+         * 
+         *    private bool CheckCollision(UIElement element1, UIElement element2)
+         *    {
+         *        double left1 = Canvas.GetLeft(element1);
+         *        double top1 = Canvas.GetTop(element1);
+         *        double right1 = left1 + element1.RenderSize.Width;
+         *        double bottom1 = top1 + element1.RenderSize.Height;
+         *        
+         *        double left2 = Canvas.GetLeft(element2);
+         *        double top2 = Canvas.GetTop(element2);
+         *        double right2 = left2 + element2.RenderSize.Width;
+         *        double bottom2 = top2 + element2.RenderSize.Height;
+         *        
+         *        // AABB 충돌 감지 (Axis-Aligned Bounding Box)
+         *        return !(right1 < left2 || left1 > right2 || bottom1 < top2 || top1 > bottom2);
+         *    }
+         * 
+         * 10. Canvas 내용 이미지로 저장:
+         * 
+         *     private void SaveCanvasAsImage()
+         *     {
+         *         // Canvas를 RenderTargetBitmap으로 렌더링
+         *         RenderTargetBitmap rtb = new RenderTargetBitmap(
+         *             (int)myCanvas.ActualWidth,
+         *             (int)myCanvas.ActualHeight,
+         *             96, 96, PixelFormats.Pbgra32);
+         *         
+         *         rtb.Render(myCanvas);
+         *         
+         *         // PNG로 저장
+         *         PngBitmapEncoder encoder = new PngBitmapEncoder();
+         *         encoder.Frames.Add(BitmapFrame.Create(rtb));
+         *         
+         *         using (FileStream fs = new FileStream("canvas.png", FileMode.Create))
+         *         {
+         *             encoder.Save(fs);
+         *         }
+         *         
+         *         MessageBox.Show("Canvas가 이미지로 저장되었습니다.");
+         *     }
+         * 
+         * Canvas 코드 조작 관련 중요 사항:
+         * 
+         * 1. 좌표 설정/가져오기:
+         *    - Canvas.SetLeft(element, x)
+         *    - Canvas.SetTop(element, y)
+         *    - double x = Canvas.GetLeft(element)
+         *    - double y = Canvas.GetTop(element)
+         * 
+         * 2. NaN 처리:
+         *    - 위치가 설정되지 않으면 NaN 반환
+         *    - double.IsNaN(value) 체크 필요
+         *    - 기본값 0으로 처리
+         * 
+         * 3. Z-Index 제어:
+         *    - Panel.SetZIndex(element, z)
+         *    - int z = Panel.GetZIndex(element)
+         * 
+         * 4. 자식 요소 관리:
+         *    - canvas.Children.Add(element)
+         *    - canvas.Children.Remove(element)
+         *    - canvas.Children.Clear()
+         *    - canvas.Children.Count
+         * 
+         * 5. 경계 체크:
+         *    - Canvas.ActualWidth, Canvas.ActualHeight
+         *    - element.RenderSize.Width, Height
+         * 
+         * 6. 마우스 이벤트:
+         *    - MouseLeftButtonDown
+         *    - MouseMove
+         *    - MouseLeftButtonUp
+         *    - e.GetPosition(canvas)
+         * 
+         * 7. 애니메이션:
+         *    - BeginAnimation(Canvas.LeftProperty, anim)
+         *    - DispatcherTimer로 수동 애니메이션
+         * 
+         * 8. 성능 최적화:
+         *    - Canvas는 기본적으로 빠름
+         *    - 많은 요소 시 가상화 고려
+         *    - 불필요한 재렌더링 방지
+         * 
+         * 9. Hit Testing:
+         *    - VisualTreeHelper.HitTest()
+         *    - 특정 위치의 요소 찾기
+         * 
+         * 10. Transform:
+         *     - RenderTransform으로 회전, 크기 조정
+         *     - TranslateTransform, RotateTransform 등
+         */
+    }
+}

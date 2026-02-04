@@ -1,0 +1,370 @@
+﻿<!-- 
+    ch12 슬라이더 - WPF Slider 컨트롤의 다양한 기능을 보여주는 예제 파일
+    Slider는 사용자가 슬라이더 바를 드래그하여 범위 내의 숫자 값을 선택할 수 있는 컨트롤입니다.
+    볼륨 조절, 밝기 조절, 폰트 크기 조절 등 연속적인 값 선택에 유용합니다.
+-->
+<Window x:Class="ch12_슬라이더.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ch12_슬라이더"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <!-- 
+            StackPanel: 자식 요소들을 세로 방향으로 순차적으로 배치
+            VerticalAlignment="Center": StackPanel을 Grid의 수직 중앙에 배치
+            Background="Salmon": 배경색을 연어색으로 설정
+        -->
+        <StackPanel VerticalAlignment="Center" Background="Salmon">
+            <!-- 
+                TextBlock: 텍스트를 표시하는 컨트롤
+                Slider의 값에 따라 폰트 크기가 동적으로 변경되는 예제입니다.
+            -->
+            <TextBlock x:Name="tb" 
+                       Text="텍스트 블럭"
+                       FontSize="{Binding ElementName=sld, Path=Value}"/>
+            <!-- 
+                TextBlock 속성 상세 설명:
+                
+                x:Name="tb": 
+                - 코드 비하인드에서 접근할 수 있는 고유 식별자
+                - 이벤트 핸들러에서 이 TextBlock을 참조 가능
+                
+                Text="텍스트 블럭": 
+                - 표시할 텍스트 내용
+                - 폰트 크기가 변경되면서 이 텍스트의 크기가 달라짐
+                
+                FontSize="{Binding ElementName=sld, Path=Value}": 
+                - 데이터 바인딩을 통해 Slider의 값을 FontSize에 연결
+                - ElementName=sld: "sld"라는 이름의 Slider 컨트롤을 참조
+                - Path=Value: Slider의 Value 속성 (현재 슬라이더 위치의 숫자 값)
+                
+                동작 원리:
+                - 사용자가 Slider를 움직이면 Value 속성이 변경됨
+                - 데이터 바인딩으로 인해 FontSize도 자동으로 변경됨
+                - Slider가 10이면 FontSize는 10, 100이면 FontSize는 100
+                - 실시간으로 텍스트 크기가 변함
+                
+                결과:
+                - Slider를 오른쪽으로 움직이면 텍스트가 커짐
+                - Slider를 왼쪽으로 움직이면 텍스트가 작아짐
+                - 10 ~ 100 사이의 폰트 크기로 변경됨
+            -->
+            
+            <!-- 
+                Slider: 슬라이더 바 컨트롤
+                사용자가 드래그하여 범위 내의 값을 선택할 수 있습니다.
+            -->
+            <Slider x:Name="sld" 
+                    ValueChanged="sld_ValueChanged"
+                    TickPlacement="TopLeft"
+                    IsSnapToTickEnabled="True"
+                    Minimum="10"
+                    Maximum="100"
+                    TickFrequency="10">
+            </Slider>
+            <!-- 
+                Slider 속성 상세 설명:
+                
+                x:Name="sld": 
+                - 코드 비하인드와 데이터 바인딩에서 참조할 수 있는 고유 식별자
+                - TextBlock의 FontSize 바인딩에서 ElementName으로 참조됨
+                
+                ValueChanged="sld_ValueChanged": 
+                - Slider의 값이 변경될 때 발생하는 이벤트
+                - 사용자가 슬라이더를 드래그하거나 클릭할 때 실행됨
+                - 코드에서 Value를 변경해도 이벤트 발생
+                
+                TickPlacement="TopLeft": 
+                - 눈금 표시(Tick) 위치 지정
+                - TopLeft: 슬라이더의 위쪽(가로 슬라이더) 또는 왼쪽(세로 슬라이더)에 눈금 표시
+                - None: 눈금 표시 안 함 (기본값)
+                - BottomRight: 아래쪽 또는 오른쪽에 눈금 표시
+                - Both: 양쪽에 눈금 표시
+                
+                TickPlacement 옵션:
+                ┌─────────────────────────┐
+                │ None: 눈금 없음          │
+                │ ━━━━━━━━━━━━━●━━━━━     │
+                └─────────────────────────┘
+                
+                ┌─────────────────────────┐
+                │ TopLeft: 위/왼쪽 눈금    │
+                │ │ │ │ │ │ │ │ │ │ │ │  │
+                │ ━━━━━━━━━━━━━●━━━━━     │
+                └─────────────────────────┘
+                
+                ┌─────────────────────────┐
+                │ BottomRight: 아래/오른쪽 │
+                │ ━━━━━━━━━━━━━●━━━━━     │
+                │ │ │ │ │ │ │ │ │ │ │ │  │
+                └─────────────────────────┘
+                
+                ┌─────────────────────────┐
+                │ Both: 양쪽 눈금          │
+                │ │ │ │ │ │ │ │ │ │ │ │  │
+                │ ━━━━━━━━━━━━━●━━━━━     │
+                │ │ │ │ │ │ │ │ │ │ │ │  │
+                └─────────────────────────┘
+                
+                IsSnapToTickEnabled="True": 
+                - 슬라이더가 눈금에 자동으로 맞춰지도록 함
+                - True: 슬라이더를 놓으면 가장 가까운 눈금으로 이동
+                - False: 슬라이더가 모든 위치에 자유롭게 위치 가능 (기본값)
+                
+                동작 차이:
+                - True: 10, 20, 30, ... 100 (TickFrequency 단위로만 값이 설정됨)
+                - False: 10.5, 23.7, 87.3 등 모든 실수 값 가능
+                
+                사용 사례:
+                - True: 볼륨 조절 (10%, 20%, 30% 단위), 등급 선택
+                - False: 정밀한 밝기 조절, 연속적인 값 조정
+                
+                Minimum="10": 
+                - 슬라이더의 최소값 (왼쪽 끝 값)
+                - 슬라이더를 가장 왼쪽으로 움직이면 Value는 10
+                - 기본값은 0
+                
+                Maximum="100": 
+                - 슬라이더의 최대값 (오른쪽 끝 값)
+                - 슬라이더를 가장 오른쪽으로 움직이면 Value는 100
+                - 기본값은 10
+                
+                TickFrequency="10": 
+                - 눈금 간격 설정
+                - 10: 10, 20, 30, 40, ... 100에 눈금 표시
+                - IsSnapToTickEnabled="True"일 때 이 간격으로만 값이 설정됨
+                - 기본값은 1
+                
+                전체 동작:
+                1. 슬라이더는 10부터 100까지의 값을 가짐
+                2. 눈금은 10 단위로 표시 (10, 20, 30, ...)
+                3. 슬라이더를 놓으면 가장 가까운 눈금(10의 배수)으로 스냅
+                4. 값이 변경되면 TextBlock의 폰트 크기가 즉시 업데이트됨
+                5. ValueChanged 이벤트가 발생하여 추가 처리 가능
+                
+                예시:
+                - 사용자가 슬라이더를 37 위치로 드래그
+                - IsSnapToTickEnabled="True"이므로 40으로 스냅
+                - Value = 40으로 설정됨
+                - TextBlock의 FontSize가 40으로 변경됨 (데이터 바인딩)
+                - sld_ValueChanged 이벤트 핸들러가 실행됨
+            -->
+        </StackPanel>
+    </Grid>
+    
+    <!--
+        Slider 컨트롤의 추가 유용한 속성:
+        
+        1. Value (현재 값):
+           - 슬라이더의 현재 위치에 해당하는 숫자 값
+           - double 타입
+           - Minimum과 Maximum 사이의 값
+           
+           예제:
+           <Slider Value="50" Minimum="0" Maximum="100"/>
+           <!-- 초기값을 50으로 설정 -->
+        
+        2. Orientation (방향):
+           - Horizontal: 가로 방향 슬라이더 (기본값)
+           - Vertical: 세로 방향 슬라이더
+           
+           예제:
+           <Slider Orientation="Vertical" Height="200"/>
+           <!-- 세로로 긴 슬라이더 -->
+        
+        3. SmallChange (작은 변경 단위):
+           - 화살표 키를 눌렀을 때 변경되는 값
+           - 기본값은 0.1
+           
+           예제:
+           <Slider SmallChange="1"/>
+           <!-- 화살표 키로 1씩 증가/감소 -->
+        
+        4. LargeChange (큰 변경 단위):
+           - 슬라이더 트랙을 클릭했을 때 변경되는 값
+           - PageUp/PageDown 키를 눌렀을 때도 적용
+           - 기본값은 1
+           
+           예제:
+           <Slider LargeChange="10"/>
+           <!-- 트랙 클릭 시 10씩 증가/감소 -->
+        
+        5. IsDirectionReversed (방향 반전):
+           - true: 오른쪽/위쪽이 최소값, 왼쪽/아래쪽이 최대값
+           - false: 일반적인 방향 (기본값)
+           
+           예제:
+           <Slider IsDirectionReversed="True"/>
+           <!-- 오른쪽이 0, 왼쪽이 100 -->
+        
+        6. AutoToolTipPlacement (툴팁 위치):
+           - None: 툴팁 표시 안 함 (기본값)
+           - TopLeft: 위쪽/왼쪽에 현재 값 툴팁 표시
+           - BottomRight: 아래쪽/오른쪽에 현재 값 툴팁 표시
+           
+           예제:
+           <Slider AutoToolTipPlacement="TopLeft"/>
+           <!-- 드래그 중 현재 값이 툴팁으로 표시됨 -->
+        
+        7. AutoToolTipPrecision (툴팁 소수점 자릿수):
+           - 툴팁에 표시되는 값의 소수점 자릿수
+           - 기본값은 0
+           
+           예제:
+           <Slider AutoToolTipPlacement="TopLeft" 
+                   AutoToolTipPrecision="2"/>
+           <!-- 툴팁에 "50.25" 같은 형식으로 표시 -->
+        
+        8. IsSelectionRangeEnabled (선택 범위 표시):
+           - true: SelectionStart와 SelectionEnd 사이를 강조 표시
+           - false: 범위 표시 안 함 (기본값)
+           
+           예제:
+           <Slider IsSelectionRangeEnabled="True"
+                   SelectionStart="30"
+                   SelectionEnd="70"/>
+           <!-- 30~70 구간을 다른 색으로 표시 -->
+        
+        주요 이벤트:
+        
+        1. ValueChanged:
+           - Value 속성이 변경될 때마다 발생
+           - 드래그, 클릭, 키보드 입력, 코드 변경 모두 포함
+        
+        2. Thumb.DragStarted:
+           - 슬라이더 드래그 시작 시
+        
+        3. Thumb.DragDelta:
+           - 드래그 중 값이 변경될 때마다
+        
+        4. Thumb.DragCompleted:
+           - 드래그 완료 시
+        
+        코드에서 사용 예제:
+        
+        // 값 설정
+        sld.Value = 50;
+        
+        // 값 가져오기
+        double currentValue = sld.Value;
+        
+        // 범위 설정
+        sld.Minimum = 0;
+        sld.Maximum = 200;
+        
+        // 눈금 간격 변경
+        sld.TickFrequency = 5;
+        
+        // 프로그래밍 방식으로 증가
+        sld.Value += sld.SmallChange;
+        
+        실전 활용 예제:
+        
+        1. 볼륨 조절:
+           <StackPanel>
+               <Label>볼륨</Label>
+               <Slider Minimum="0" Maximum="100" Value="50"
+                       TickFrequency="10" TickPlacement="BottomRight"
+                       AutoToolTipPlacement="TopLeft"/>
+           </StackPanel>
+        
+        2. RGB 색상 선택:
+           <StackPanel>
+               <Label>Red</Label>
+               <Slider x:Name="sldRed" Minimum="0" Maximum="255"/>
+               <Label>Green</Label>
+               <Slider x:Name="sldGreen" Minimum="0" Maximum="255"/>
+               <Label>Blue</Label>
+               <Slider x:Name="sldBlue" Minimum="0" Maximum="255"/>
+               <Rectangle Width="100" Height="100">
+                   <Rectangle.Fill>
+                       <SolidColorBrush>
+                           <SolidColorBrush.Color>
+                               <Color R="{Binding ElementName=sldRed, Path=Value}"
+                                      G="{Binding ElementName=sldGreen, Path=Value}"
+                                      B="{Binding ElementName=sldBlue, Path=Value}"/>
+                           </SolidColorBrush.Color>
+                       </SolidColorBrush>
+                   </Rectangle.Fill>
+               </Rectangle>
+           </StackPanel>
+        
+        3. 투명도 조절:
+           <StackPanel>
+               <TextBlock x:Name="txtSample" Text="샘플 텍스트"/>
+               <Slider Minimum="0" Maximum="1" Value="1"
+                       TickFrequency="0.1"
+                       AutoToolTipPlacement="TopLeft"
+                       AutoToolTipPrecision="2"
+                       ValueChanged="OpacitySlider_ValueChanged"/>
+           </StackPanel>
+           
+           C#:
+           private void OpacitySlider_ValueChanged(object sender, ...)
+           {
+               txtSample.Opacity = ((Slider)sender).Value;
+           }
+        
+        4. 확대/축소:
+           <Grid>
+               <Grid.LayoutTransform>
+                   <ScaleTransform ScaleX="{Binding ElementName=zoomSlider, Path=Value}"
+                                   ScaleY="{Binding ElementName=zoomSlider, Path=Value}"/>
+               </Grid.LayoutTransform>
+               <!-- 콘텐츠 -->
+           </Grid>
+           <Slider x:Name="zoomSlider" Minimum="0.5" Maximum="2" Value="1"/>
+        
+        5. 속도 조절:
+           <StackPanel>
+               <Label Content="{Binding ElementName=speedSlider, Path=Value, 
+                                       StringFormat='속도: {0}x'}"/>
+               <Slider x:Name="speedSlider" 
+                       Minimum="0.5" Maximum="2" Value="1"
+                       TickFrequency="0.25" TickPlacement="BottomRight"
+                       IsSnapToTickEnabled="True"/>
+           </StackPanel>
+        
+        6. 범위 선택 (이중 슬라이더):
+           <StackPanel>
+               <Label Content="{Binding ElementName=minSlider, Path=Value, 
+                                       StringFormat='최소: {0:F0}'}"/>
+               <Slider x:Name="minSlider" Minimum="0" Maximum="100"/>
+               
+               <Label Content="{Binding ElementName=maxSlider, Path=Value, 
+                                       StringFormat='최대: {0:F0}'}"/>
+               <Slider x:Name="maxSlider" Minimum="0" Maximum="100" Value="100"/>
+           </StackPanel>
+        
+        스타일링:
+        
+        예제:
+        <Slider Background="LightGray"
+                Foreground="Blue"
+                BorderBrush="DarkBlue"
+                BorderThickness="1"
+                Height="30"/>
+        
+        Slider vs NumericUpDown:
+        
+        Slider 사용 시:
+        - 연속적인 값 조절 (볼륨, 밝기)
+        - 시각적인 비율 표현이 중요할 때
+        - 빠른 값 변경이 필요할 때
+        - 대략적인 값 선택
+        
+        NumericUpDown 사용 시:
+        - 정확한 숫자 입력
+        - 키보드로 직접 입력해야 할 때
+        - 작은 증가/감소 단위
+        
+        접근성 고려사항:
+        - 키보드로 조작 가능 (화살표 키, PageUp/Down)
+        - AutoToolTip으로 현재 값 표시
+        - TickPlacement로 시각적 가이드 제공
+        - IsSnapToTickEnabled로 정확한 값 선택 지원
+    -->
+</Window>

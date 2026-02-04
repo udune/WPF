@@ -1,0 +1,55 @@
+﻿using System.Diagnostics;
+using System.Text;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Data;
+using System.Windows.Documents;
+using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
+using System.Windows.Shapes;
+
+namespace ch3_텍스트블럭
+{
+    /// <summary>
+    /// MainWindow.xaml에 대한 상호작용 논리
+    /// TextBlock 컨트롤의 다양한 기능을 데모하는 메인 윈도우
+    /// </summary>
+    public partial class MainWindow : Window
+    {
+        /// <summary>
+        /// MainWindow 생성자
+        /// 윈도우가 생성될 때 호출되어 초기화 작업을 수행합니다.
+        /// </summary>
+        public MainWindow()
+        {
+            // XAML에 정의된 UI 요소들을 초기화합니다.
+            InitializeComponent();
+        }
+
+        /// <summary>
+        /// Hyperlink의 RequestNavigate 이벤트 핸들러
+        /// TextBlock 내의 하이퍼링크를 클릭했을 때 실행됩니다.
+        /// </summary>
+        /// <param name="sender">이벤트를 발생시킨 Hyperlink 객체</param>
+        /// <param name="e">네비게이션 이벤트 정보 (URI 등)</param>
+        private void Hyperlink_RequestNavigate(object sender, RequestNavigateEventArgs e)
+        {
+            // Process.Start를 사용하여 기본 웹 브라우저에서 URL을 엽니다.
+            // 
+            // e.Uri.AbsoluteUri: 하이퍼링크의 전체 URL 주소 (예: "https://google.co.kr")
+            // UseShellExecute = true: 운영체제의 기본 프로그램(웹 브라우저)을 사용하여 URL 실행
+            //
+            // 참고: .NET Core/.NET 5+ 에서는 UseShellExecute = true가 필수입니다.
+            // 이전 .NET Framework에서는 Process.Start(e.Uri.AbsoluteUri)만으로 작동했지만,
+            // 최신 버전에서는 보안상의 이유로 명시적 설정이 필요합니다.
+            Process.Start(new ProcessStartInfo(e.Uri.AbsoluteUri) { UseShellExecute = true });
+            
+            // 추가 정보:
+            // - System.Diagnostics 네임스페이스의 Process 클래스 사용
+            // - 사용자가 XAML의 <Hyperlink NavigateUri="https://google.co.kr">를 클릭하면
+            //   이 메서드가 호출되어 해당 URL을 브라우저에서 엽니다.
+        }
+    }
+}

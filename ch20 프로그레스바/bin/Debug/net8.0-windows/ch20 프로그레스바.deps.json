@@ -1,0 +1,23 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v8.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v8.0": {
+      "ch20 프로그레스바/1.0.0": {
+        "runtime": {
+          "ch20 프로그레스바.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "ch20 프로그레스바/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

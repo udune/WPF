@@ -1,0 +1,630 @@
+﻿<Window x:Class="ch30_탭컨트롤_모달_모달리스.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ch30_탭컨트롤_모달_모달리스"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    
+    <!-- 
+        ch30 탭컨트롤 모달 모달리스 - TabControl과 모달/모달리스 윈도우 예제
+        TabControl로 탭 인터페이스를 구성하고,
+        Show()와 ShowDialog()의 차이를 보여주는 메인 윈도우입니다.
+        
+        핵심 개념:
+        - TabControl: 탭 기반 인터페이스
+        - 모달리스 (Modalless): Show() - 부모 윈도우 조작 가능
+        - 모달 (Modal): ShowDialog() - 부모 윈도우 조작 불가능
+    -->
+    
+    <Grid>
+        <!-- 
+            Grid: 화면을 두 개의 행으로 분할
+            - 1행: TabControl (탭 인터페이스)
+            - 2행: 버튼들 (모달/모달리스 테스트)
+        -->
+        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"/>
+            <!-- 
+                1행: TabControl 영역
+                Height="1*": 전체 높이의 50% (1:1 비율)
+            -->
+            <RowDefinition Height="1*"/>
+            <!-- 
+                2행: 버튼 영역
+                Height="1*": 전체 높이의 50% (1:1 비율)
+            -->
+        </Grid.RowDefinitions>
+        
+        <!-- ========== TabControl (탭 인터페이스) ========== -->
+        
+        <TabControl Grid.Row="0">
+            <!-- 
+                TabControl:
+                - 탭 기반 인터페이스를 제공하는 컨트롤
+                - 여러 TabItem을 포함
+                - 한 번에 하나의 TabItem 내용만 표시
+                - 탭 헤더를 클릭하여 전환
+                
+                Grid.Row="0":
+                - 첫 번째 행에 배치
+                
+                구조:
+                ┌─────────────────────────┐
+                │ [탭1] [탭2] [탭3]       │ ← 탭 헤더
+                ├─────────────────────────┤
+                │                         │
+                │   탭 내용 영역          │ ← 선택된 TabItem의 Content
+                │                         │
+                └─────────────────────────┘
+                
+                특징:
+                - SelectionChanged 이벤트로 탭 전환 감지
+                - SelectedIndex 속성으로 현재 탭 확인
+                - Items 컬렉션으로 동적 탭 추가/제거
+                
+                사용 시나리오:
+                - 설정 대화상자 (일반, 고급, 정보)
+                - 브라우저 탭
+                - 문서 편집기 (여러 파일)
+                - 대시보드 (여러 뷰)
+            -->
+            
+            <!-- ========== 탭 1: 기본 탭 (간단한 Header) ========== -->
+            <TabItem Header="탭1">
+                <!-- 
+                    TabItem:
+                    - TabControl의 개별 탭
+                    - Header: 탭 헤더에 표시될 내용
+                    - Content: 탭 선택 시 표시될 내용
+                    
+                    Header="탭1":
+                    - 문자열을 헤더로 사용
+                    - 가장 간단한 방법
+                    - 텍스트만 표시
+                    
+                    구조:
+                    [탭1] ← Header
+                    ┌─────────────────┐
+                    │ 탭컨트롤1       │ ← Content
+                    └─────────────────┘
+                -->
+                
+                <TextBlock>탭컨트롤1</TextBlock>
+                <!-- 
+                    TextBlock:
+                    - TabItem의 Content
+                    - 탭 선택 시 표시
+                    - "탭컨트롤1" 텍스트 표시
+                    
+                    Content 영역:
+                    - 모든 WPF 컨트롤 배치 가능
+                    - Grid, StackPanel 등 레이아웃 컨트롤
+                    - 복잡한 UI 구성 가능
+                -->
+            </TabItem>
+            
+            <!-- ========== 탭 2: 기본 탭 (간단한 Header) ========== -->
+            <TabItem Header="탭2">
+                <!-- 
+                    두 번째 탭:
+                    - Header="탭2"
+                    - 첫 번째 탭과 동일한 구조
+                    - 간단한 텍스트 헤더
+                -->
+                
+                <TextBlock>탭컨트롤2</TextBlock>
+                <!-- 
+                    TextBlock:
+                    - "탭컨트롤2" 텍스트 표시
+                    - 탭 2 선택 시 표시
+                -->
+            </TabItem>
+            
+            <!-- ========== 탭 3: 사용자 정의 Header (아이콘 + 텍스트) ========== -->
+            <TabItem>
+                <!-- 
+                    세 번째 탭:
+                    - Header 속성을 직접 설정하지 않음
+                    - TabItem.Header 요소로 복잡한 Header 구성
+                    - 아이콘과 텍스트를 조합
+                -->
+                
+                <TabItem.Header>
+                    <!-- 
+                        TabItem.Header:
+                        - Property Element Syntax
+                        - Header 속성의 복잡한 내용 정의
+                        - 여러 컨트롤 조합 가능
+                        
+                        사용자 정의 Header:
+                        - 아이콘 + 텍스트
+                        - 버튼 (닫기 버튼)
+                        - 배지 (알림 숫자)
+                        - 애니메이션
+                        
+                        예:
+                        [🔧 설정] ← 아이콘 + 텍스트
+                        [📄 문서 ✕] ← 파일명 + 닫기 버튼
+                        [📬 메일 (5)] ← 아이콘 + 텍스트 + 배지
+                    -->
+                    
+                    <StackPanel Orientation="Horizontal">
+                        <!-- 
+                            StackPanel:
+                            - 아이콘과 텍스트를 가로로 배치
+                            
+                            Orientation="Horizontal":
+                            - 가로 방향 정렬
+                            
+                            레이아웃:
+                            [🔧] [탭3]
+                             ↑    ↑
+                           Image TextBlock
+                        -->
+                        
+                        <Image Width="20" Source="https://cdn0.iconfinder.com/data/icons/business-startup-10/50/65-512.png"/>
+                        <!-- 
+                            Image:
+                            - 탭 헤더의 아이콘
+                            
+                            Width="20":
+                            - 아이콘 너비 20픽셀
+                            - 작은 아이콘 크기
+                            
+                            Source:
+                            - 온라인 이미지 URL
+                            - https://cdn0.iconfinder.com/...
+                            - 비즈니스 아이콘
+                            
+                            주의:
+                            - 온라인 이미지는 네트워크 필요
+                            - 로컬 리소스 사용 권장
+                            - Source="Images/icon.png"
+                            
+                            로컬 이미지 사용:
+                            1. 프로젝트에 Images 폴더 생성
+                            2. 이미지 파일 추가
+                            3. Build Action: Resource 설정
+                            4. Source="/Images/icon.png"
+                        -->
+                        
+                        <TextBlock>탭3</TextBlock>
+                        <!-- 
+                            TextBlock:
+                            - 탭 헤더의 텍스트 "탭3"
+                            - Image 옆에 표시
+                            
+                            최종 Header:
+                            [🔧 탭3]
+                            
+                            스타일링:
+                            <TextBlock Text="탭3" Margin="5,0,0,0" FontWeight="Bold"/>
+                        -->
+                    </StackPanel>
+                </TabItem.Header>
+                
+                <!-- 
+                    TabItem Content:
+                    - 이 탭에는 Content가 없음
+                    - 탭 선택 시 빈 화면
+                    - 필요 시 Content 추가:
+                    
+                    <Grid>
+                        <TextBlock Text="탭3 내용"/>
+                    </Grid>
+                -->
+            </TabItem>
+        </TabControl>
+        
+        <!--
+            TabControl 전체 요약:
+            
+            ========== 탭 구조 ==========
+            
+            [탭1] [탭2] [🔧 탭3]
+            ┌─────────────────────┐
+            │ 선택된 탭의 내용    │
+            │ (탭1: 탭컨트롤1)    │
+            │ (탭2: 탭컨트롤2)    │
+            │ (탭3: 빈 화면)      │
+            └─────────────────────┘
+            
+            ========== TabControl 주요 속성 ==========
+            
+            - SelectedIndex: 선택된 탭 인덱스 (0, 1, 2)
+            - SelectedItem: 선택된 TabItem 객체
+            - TabStripPlacement: 탭 헤더 위치 (Top, Bottom, Left, Right)
+            - Items: TabItem 컬렉션
+            
+            ========== TabItem 주요 속성 ==========
+            
+            - Header: 탭 헤더 내용 (문자열 또는 객체)
+            - Content: 탭 내용
+            - IsSelected: 선택 여부
+            - IsEnabled: 활성화 여부
+            
+            ========== 실전 활용 예제 ==========
+            
+            1. 설정 대화상자:
+               <TabControl>
+                   <TabItem Header="일반">
+                       <StackPanel>
+                           <CheckBox Content="자동 저장"/>
+                           <CheckBox Content="알림 표시"/>
+                       </StackPanel>
+                   </TabItem>
+                   <TabItem Header="고급">
+                       <StackPanel>
+                           <TextBox Text="{Binding Port}"/>
+                           <ComboBox ItemsSource="{Binding Themes}"/>
+                       </StackPanel>
+                   </TabItem>
+               </TabControl>
+            
+            2. 닫기 버튼이 있는 탭:
+               <TabItem>
+                   <TabItem.Header>
+                       <StackPanel Orientation="Horizontal">
+                           <TextBlock Text="문서1.txt" Margin="0,0,5,0"/>
+                           <Button Content="✕" Click="CloseTab_Click" 
+                                   Width="16" Height="16"/>
+                       </StackPanel>
+                   </TabItem.Header>
+               </TabItem>
+            
+            3. 동적 탭 추가:
+               private void AddTab_Click(object sender, RoutedEventArgs e)
+               {
+                   var newTab = new TabItem
+                   {
+                       Header = $"탭 {tabControl.Items.Count + 1}",
+                       Content = new TextBlock { Text = "새 탭 내용" }
+                   };
+                   tabControl.Items.Add(newTab);
+                   tabControl.SelectedItem = newTab;
+               }
+            
+            4. 탭 전환 이벤트:
+               <TabControl SelectionChanged="TabControl_SelectionChanged">
+               
+               private void TabControl_SelectionChanged(object sender, SelectionChangedEventArgs e)
+               {
+                   if (e.AddedItems.Count > 0)
+                   {
+                       var selectedTab = e.AddedItems[0] as TabItem;
+                       Debug.WriteLine($"선택된 탭: {selectedTab?.Header}");
+                   }
+               }
+        -->
+        
+        <!-- ========== 모달/모달리스 버튼 영역 ========== -->
+        
+        <StackPanel Grid.Row="1" Orientation="Vertical">
+            <!-- 
+                StackPanel:
+                - 버튼을 세로로 배치
+                
+                Grid.Row="1":
+                - 두 번째 행에 배치
+                
+                Orientation="Vertical":
+                - 세로 방향 정렬
+                - 버튼을 위아래로 나열
+                
+                레이아웃:
+                ┌──────────────┐
+                │ [모달리스]   │
+                │ [모달]       │
+                └──────────────┘
+            -->
+            
+            <Button Height="20" Content="모달리스" Name="모달리스" Click="Modalless_Click"></Button>
+            <!-- 
+                모달리스 버튼:
+                
+                Height="20":
+                - 버튼 높이 20픽셀
+                
+                Content="모달리스":
+                - 버튼 텍스트
+                
+                Name="모달리스":
+                - 코드 비하인드에서 접근 가능
+                
+                Click="Modalless_Click":
+                - 클릭 이벤트 핸들러
+                - MainWindow.xaml.cs의 Modalless_Click 메서드
+                
+                동작:
+                1. 버튼 클릭
+                2. Modalless_Click 이벤트 발생
+                3. new Window1() 생성
+                4. window1.Show() 호출 (모달리스)
+                5. Window1 표시
+                6. MainWindow 계속 조작 가능 ✓
+                
+                모달리스 (Modalless):
+                - Show() 메서드 사용
+                - 부모 윈도우 조작 가능
+                - 여러 창 동시 열기 가능
+                - 창 간 자유로운 전환
+                
+                사용 시나리오:
+                - 도구 창 (Toolbox, Properties)
+                - 찾기/바꾸기 대화상자
+                - 출력 창
+                - 팔레트 창
+            -->
+            
+            <Button Height="20" Content="모달" Name="모달" Click="Modal_Click"></Button>
+            <!-- 
+                모달 버튼:
+                
+                Height="20":
+                - 버튼 높이 20픽셀
+                
+                Content="모달":
+                - 버튼 텍스트
+                
+                Name="모달":
+                - 코드 비하인드에서 접근 가능
+                
+                Click="Modal_Click":
+                - 클릭 이벤트 핸들러
+                - MainWindow.xaml.cs의 Modal_Click 메서드
+                
+                동작:
+                1. 버튼 클릭
+                2. Modal_Click 이벤트 발생
+                3. new Window1() 생성
+                4. window1.ShowDialog() 호출 (모달)
+                5. Window1 표시
+                6. MainWindow 조작 불가능 ✗
+                7. Window1 닫을 때까지 대기
+                8. ShowDialog() 반환 (DialogResult)
+                
+                모달 (Modal):
+                - ShowDialog() 메서드 사용
+                - 부모 윈도우 조작 불가능
+                - 창 닫을 때까지 차단
+                - 결과 반환 (DialogResult)
+                
+                사용 시나리오:
+                - 확인 대화상자 (경고, 오류)
+                - 설정 대화상자
+                - 로그인 창
+                - 파일 선택 대화상자
+                
+                차단 동작:
+                - MainWindow 클릭 → 무시
+                - MainWindow 버튼 → 작동 안 함
+                - Window1만 조작 가능
+                - Window1 닫으면 MainWindow 활성화
+            -->
+        </StackPanel>
+    </Grid>
+    
+    <!--
+        모달 vs 모달리스 비교:
+        
+        ========== 모달리스 (Modalless) - Show() ==========
+        
+        코드:
+        Window1 window1 = new Window1();
+        window1.Show();
+        
+        특징:
+        - 부모 윈도우 조작 가능 ✓
+        - 여러 창 동시 열기 가능
+        - 창 간 자유로운 전환
+        - 반환값 없음 (void)
+        
+        동작:
+        MainWindow (활성)
+        ↓ Show() 호출
+        Window1 열림
+        ↓
+        MainWindow (활성 가능) ✓
+        Window1 (활성 가능) ✓
+        
+        사용 예:
+        - 도구 창 (Toolbox, Properties)
+        - 찾기/바꾸기
+        - 출력 창
+        - 계산기 (항상 위)
+        
+        장점:
+        - 동시 작업 가능
+        - 자유로운 창 전환
+        - 멀티태스킹
+        
+        단점:
+        - 창 관리 복잡
+        - 결과 반환 어려움
+        - 순서 보장 안 됨
+        
+        ========== 모달 (Modal) - ShowDialog() ==========
+        
+        코드:
+        Window1 window1 = new Window1();
+        bool? result = window1.ShowDialog();
+        if (result == true)
+        {
+            // 확인 버튼 클릭
+        }
+        
+        특징:
+        - 부모 윈도우 조작 불가능 ✗
+        - 창 닫을 때까지 차단
+        - 결과 반환 (DialogResult)
+        - 순차적 흐름 보장
+        
+        동작:
+        MainWindow (활성)
+        ↓ ShowDialog() 호출
+        Window1 열림
+        ↓
+        MainWindow (비활성) ✗
+        Window1 (활성) ✓
+        ↓ Window1 닫기
+        MainWindow (활성) ✓
+        result = DialogResult
+        
+        사용 예:
+        - 확인 대화상자 (OK/Cancel)
+        - 설정 대화상자
+        - 로그인 창
+        - 파일 열기/저장
+        
+        장점:
+        - 사용자 응답 강제
+        - 순차적 흐름
+        - 결과 반환 명확
+        - 간단한 창 관리
+        
+        단점:
+        - 동시 작업 불가능
+        - 다른 창 접근 불가
+        - 차단 동작
+        
+        ========== DialogResult 사용 ==========
+        
+        Window1에서 DialogResult 설정:
+        
+        확인 버튼:
+        private void OK_Click(object sender, RoutedEventArgs e)
+        {
+            this.DialogResult = true;
+            this.Close();
+        }
+        
+        취소 버튼:
+        private void Cancel_Click(object sender, RoutedEventArgs e)
+        {
+            this.DialogResult = false;
+            this.Close();
+        }
+        
+        MainWindow에서 결과 처리:
+        private void Modal_Click(object sender, RoutedEventArgs e)
+        {
+            Window1 window1 = new Window1();
+            bool? result = window1.ShowDialog();
+            
+            if (result == true)
+            {
+                MessageBox.Show("확인 버튼 클릭");
+            }
+            else if (result == false)
+            {
+                MessageBox.Show("취소 버튼 클릭");
+            }
+            else
+            {
+                MessageBox.Show("X 버튼으로 닫음");
+            }
+        }
+        
+        DialogResult 값:
+        - true: 확인, OK
+        - false: 취소, Cancel
+        - null: X 버튼, ESC 키
+        
+        ========== Owner 속성 (부모-자식 관계) ==========
+        
+        모달리스:
+        Window1 window1 = new Window1();
+        window1.Owner = this; // MainWindow를 Owner로 설정
+        window1.Show();
+        
+        모달:
+        Window1 window1 = new Window1();
+        window1.Owner = this;
+        window1.ShowDialog();
+        
+        Owner 설정 효과:
+        - 부모 창 최소화 시 자식 창도 최소화
+        - 부모 창 닫을 때 자식 창도 닫힘
+        - 자식 창이 부모 창 앞에 표시
+        
+        ========== WindowStartupLocation ==========
+        
+        중앙 배치:
+        window1.WindowStartupLocation = WindowStartupLocation.CenterOwner;
+        
+        또는 XAML:
+        <Window WindowStartupLocation="CenterOwner">
+        
+        옵션:
+        - CenterScreen: 화면 중앙
+        - CenterOwner: 부모 창 중앙
+        - Manual: 수동 위치 (Left, Top 속성)
+        
+        ========== 실전 활용 패턴 ==========
+        
+        1. 로그인 창 (모달):
+           var loginWindow = new LoginWindow();
+           loginWindow.Owner = this;
+           if (loginWindow.ShowDialog() == true)
+           {
+               var user = loginWindow.LoggedInUser;
+               LoadUserData(user);
+           }
+           else
+           {
+               Application.Current.Shutdown();
+           }
+        
+        2. 설정 창 (모달):
+           var settingsWindow = new SettingsWindow();
+           settingsWindow.Owner = this;
+           if (settingsWindow.ShowDialog() == true)
+           {
+               ApplySettings(settingsWindow.Settings);
+           }
+        
+        3. 도구 창 (모달리스):
+           var toolWindow = new ToolWindow();
+           toolWindow.Owner = this;
+           toolWindow.Topmost = true; // 항상 위
+           toolWindow.Show();
+        
+        4. 진행률 창 (모달):
+           var progressWindow = new ProgressWindow();
+           progressWindow.Owner = this;
+           progressWindow.ShowDialog();
+        
+        5. 찾기 창 (모달리스):
+           if (_findWindow == null || !_findWindow.IsVisible)
+           {
+               _findWindow = new FindWindow();
+               _findWindow.Owner = this;
+               _findWindow.Show();
+           }
+           else
+           {
+               _findWindow.Activate(); // 기존 창 활성화
+           }
+        
+        ========== 주의사항 ==========
+        
+        1. 모달 남용:
+           - 너무 많은 모달 창은 사용자 경험 저해
+           - 필요한 경우에만 사용
+        
+        2. 창 생명주기:
+           - Show(): 창이 계속 열려 있을 수 있음
+           - ShowDialog(): 닫힐 때까지 대기
+        
+        3. 메모리 관리:
+           - 창 닫을 때 리소스 해제
+           - 이벤트 핸들러 정리
+        
+        4. Owner 설정:
+           - Owner 설정 권장
+           - 부모-자식 관계 명확히
+    -->
+</Window>

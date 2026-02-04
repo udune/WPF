@@ -1,0 +1,22 @@
+C:\Users\udune\Desktop\WPF\ch23 메뉴\bin\Debug\net8.0-windows\ch23 메뉴.exe
+C:\Users\udune\Desktop\WPF\ch23 메뉴\bin\Debug\net8.0-windows\ch23 메뉴.deps.json
+C:\Users\udune\Desktop\WPF\ch23 메뉴\bin\Debug\net8.0-windows\ch23 메뉴.runtimeconfig.json
+C:\Users\udune\Desktop\WPF\ch23 메뉴\bin\Debug\net8.0-windows\ch23 메뉴.dll
+C:\Users\udune\Desktop\WPF\ch23 메뉴\bin\Debug\net8.0-windows\ch23 메뉴.pdb
+C:\Users\udune\Desktop\WPF\ch23 메뉴\obj\Debug\net8.0-windows\MainWindow.g.cs
+C:\Users\udune\Desktop\WPF\ch23 메뉴\obj\Debug\net8.0-windows\UserControl1.g.cs
+C:\Users\udune\Desktop\WPF\ch23 메뉴\obj\Debug\net8.0-windows\App.g.cs
+C:\Users\udune\Desktop\WPF\ch23 메뉴\obj\Debug\net8.0-windows\ch23 메뉴_MarkupCompile.cache
+C:\Users\udune\Desktop\WPF\ch23 메뉴\obj\Debug\net8.0-windows\ch23 메뉴_MarkupCompile.lref
+C:\Users\udune\Desktop\WPF\ch23 메뉴\obj\Debug\net8.0-windows\MainWindow.baml
+C:\Users\udune\Desktop\WPF\ch23 메뉴\obj\Debug\net8.0-windows\UserControl1.baml
+C:\Users\udune\Desktop\WPF\ch23 메뉴\obj\Debug\net8.0-windows\ch23 메뉴.g.resources
+C:\Users\udune\Desktop\WPF\ch23 메뉴\obj\Debug\net8.0-windows\ch23 메뉴.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\udune\Desktop\WPF\ch23 메뉴\obj\Debug\net8.0-windows\ch23 메뉴.AssemblyInfoInputs.cache
+C:\Users\udune\Desktop\WPF\ch23 메뉴\obj\Debug\net8.0-windows\ch23 메뉴.AssemblyInfo.cs
+C:\Users\udune\Desktop\WPF\ch23 메뉴\obj\Debug\net8.0-windows\ch23 메뉴.csproj.CoreCompileInputs.cache
+C:\Users\udune\Desktop\WPF\ch23 메뉴\obj\Debug\net8.0-windows\ch23 메뉴.dll
+C:\Users\udune\Desktop\WPF\ch23 메뉴\obj\Debug\net8.0-windows\refint\ch23 메뉴.dll
+C:\Users\udune\Desktop\WPF\ch23 메뉴\obj\Debug\net8.0-windows\ch23 메뉴.pdb
+C:\Users\udune\Desktop\WPF\ch23 메뉴\obj\Debug\net8.0-windows\ch23 메뉴.genruntimeconfig.cache
+C:\Users\udune\Desktop\WPF\ch23 메뉴\obj\Debug\net8.0-windows\ref\ch23 메뉴.dll

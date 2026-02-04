@@ -1,0 +1,36 @@
+﻿<Window x:Class="ch30_탭컨트롤_모달_모달리스.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ch30_탭컨트롤_모달_모달리스"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+        </Grid.RowDefinitions>
+        <TabControl Grid.Row="0">
+            <TabItem Header="탭1">
+                <TextBlock>탭컨트롤1</TextBlock>
+            </TabItem>
+            <TabItem Header="탭2">
+                <TextBlock>탭컨트롤2</TextBlock>
+            </TabItem>
+            <TabItem>
+                <TabItem.Header>
+                    <StackPanel Orientation="Horizontal">
+                        <Image Width="20" Source="https://cdn0.iconfinder.com/data/icons/business-startup-10/50/65-512.png"/>
+                        <TextBlock>탭3</TextBlock>
+                    </StackPanel>
+                </TabItem.Header>
+            </TabItem>
+        </TabControl>
+
+        <StackPanel Grid.Row="1" Orientation="Vertical">
+            <Button Height="20" Content="모달리스" Name="모달리스" Click="Modalless_Click"></Button>
+            <Button Height="20" Content="모달" Name="모달" Click="Modal_Click"></Button>
+        </StackPanel>
+    </Grid>
+</Window>

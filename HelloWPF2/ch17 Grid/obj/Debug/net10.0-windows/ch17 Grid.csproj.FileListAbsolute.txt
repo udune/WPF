@@ -1,0 +1,20 @@
+C:\Users\udune\Desktop\WPF\HelloWPF2\ch17 Grid\bin\Debug\net10.0-windows\ch17 Grid.exe
+C:\Users\udune\Desktop\WPF\HelloWPF2\ch17 Grid\bin\Debug\net10.0-windows\ch17 Grid.deps.json
+C:\Users\udune\Desktop\WPF\HelloWPF2\ch17 Grid\bin\Debug\net10.0-windows\ch17 Grid.runtimeconfig.json
+C:\Users\udune\Desktop\WPF\HelloWPF2\ch17 Grid\bin\Debug\net10.0-windows\ch17 Grid.dll
+C:\Users\udune\Desktop\WPF\HelloWPF2\ch17 Grid\bin\Debug\net10.0-windows\ch17 Grid.pdb
+C:\Users\udune\Desktop\WPF\HelloWPF2\ch17 Grid\obj\Debug\net10.0-windows\MainWindow.g.cs
+C:\Users\udune\Desktop\WPF\HelloWPF2\ch17 Grid\obj\Debug\net10.0-windows\App.g.cs
+C:\Users\udune\Desktop\WPF\HelloWPF2\ch17 Grid\obj\Debug\net10.0-windows\ch17 Grid_MarkupCompile.cache
+C:\Users\udune\Desktop\WPF\HelloWPF2\ch17 Grid\obj\Debug\net10.0-windows\ch17 Grid_MarkupCompile.lref
+C:\Users\udune\Desktop\WPF\HelloWPF2\ch17 Grid\obj\Debug\net10.0-windows\MainWindow.baml
+C:\Users\udune\Desktop\WPF\HelloWPF2\ch17 Grid\obj\Debug\net10.0-windows\ch17 Grid.g.resources
+C:\Users\udune\Desktop\WPF\HelloWPF2\ch17 Grid\obj\Debug\net10.0-windows\ch17 Grid.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\udune\Desktop\WPF\HelloWPF2\ch17 Grid\obj\Debug\net10.0-windows\ch17 Grid.AssemblyInfoInputs.cache
+C:\Users\udune\Desktop\WPF\HelloWPF2\ch17 Grid\obj\Debug\net10.0-windows\ch17 Grid.AssemblyInfo.cs
+C:\Users\udune\Desktop\WPF\HelloWPF2\ch17 Grid\obj\Debug\net10.0-windows\ch17 Grid.csproj.CoreCompileInputs.cache
+C:\Users\udune\Desktop\WPF\HelloWPF2\ch17 Grid\obj\Debug\net10.0-windows\ch17 Grid.dll
+C:\Users\udune\Desktop\WPF\HelloWPF2\ch17 Grid\obj\Debug\net10.0-windows\refint\ch17 Grid.dll
+C:\Users\udune\Desktop\WPF\HelloWPF2\ch17 Grid\obj\Debug\net10.0-windows\ch17 Grid.pdb
+C:\Users\udune\Desktop\WPF\HelloWPF2\ch17 Grid\obj\Debug\net10.0-windows\ch17 Grid.genruntimeconfig.cache
+C:\Users\udune\Desktop\WPF\HelloWPF2\ch17 Grid\obj\Debug\net10.0-windows\ref\ch17 Grid.dll

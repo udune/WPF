@@ -1,0 +1,23 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v9.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v9.0": {
+      "ch21 스테이터스바/1.0.0": {
+        "runtime": {
+          "ch21 스테이터스바.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "ch21 스테이터스바/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

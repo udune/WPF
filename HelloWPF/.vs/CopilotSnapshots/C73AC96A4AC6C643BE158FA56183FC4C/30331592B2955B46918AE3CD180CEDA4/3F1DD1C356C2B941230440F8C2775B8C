@@ -1,0 +1,403 @@
+﻿using System.Text;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Data;
+using System.Windows.Documents;
+using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
+using System.Windows.Shapes;
+
+namespace ch12_슬라이더
+{
+    /// <summary>
+    /// MainWindow.xaml에 대한 상호작용 논리
+    /// Slider 컨트롤의 ValueChanged 이벤트를 처리하는 메인 윈도우
+    /// </summary>
+    public partial class MainWindow : Window
+    {
+        /// <summary>
+        /// MainWindow 생성자
+        /// 윈도우가 생성될 때 호출되어 초기화 작업을 수행합니다.
+        /// </summary>
+        public MainWindow()
+        {
+            // XAML에 정의된 UI 요소들을 초기화합니다.
+            InitializeComponent();
+        }
+
+        /// <summary>
+        /// Slider의 ValueChanged 이벤트 핸들러
+        /// 사용자가 Slider를 드래그하거나 값이 변경될 때 실행됩니다.
+        /// </summary>
+        /// <param name="sender">이벤트를 발생시킨 객체 (여기서는 sld Slider)</param>
+        /// <param name="e">값 변경 이벤트 정보 (이전 값과 새 값 포함)</param>
+        private void sld_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+        {
+            // Slider의 현재 값을 문자열로 변환하여 TextBlock(tb)에 표시합니다.
+            // sld.Value는 double 타입의 현재 슬라이더 위치 값입니다.
+            tb.Text = sld.Value.ToString();
+            
+            /*
+             * 동작 설명:
+             * 
+             * 1. 사용자가 Slider를 드래그하거나 트랙을 클릭
+             * 2. Slider의 Value 속성이 변경됨
+             * 3. ValueChanged 이벤트가 발생하여 이 메서드 실행
+             * 4. 현재 값을 ToString()으로 문자열로 변환
+             * 5. TextBlock(tb)의 Text 속성에 할당하여 화면에 표시
+             * 
+             * sld.Value:
+             * - double 타입의 숫자 값
+             * - Minimum(10)과 Maximum(100) 사이의 값
+             * - IsSnapToTickEnabled="True"이므로 10의 배수 (10, 20, 30, ...)
+             * - 예: 10, 20, 30, 40, 50, 60, 70, 80, 90, 100
+             * 
+             * 데이터 바인딩과의 관계:
+             * - XAML에서 FontSize는 데이터 바인딩으로 자동 업데이트됨
+             * - 이 이벤트 핸들러는 추가적으로 Text를 변경함
+             * - 결과: 폰트 크기와 표시되는 숫자가 동시에 변경됨
+             * 
+             * 예시:
+             * - 사용자가 슬라이더를 50 위치로 이동
+             * - Value = 50
+             * - TextBlock의 FontSize = 50 (데이터 바인딩)
+             * - TextBlock의 Text = "50" (이 이벤트 핸들러)
+             * - 결과: "50"이라는 텍스트가 크기 50으로 표시됨
+             * 
+             * ToString() 결과:
+             * - 기본 형식: "50" 또는 "50.0"
+             * - 정수처럼 보이는 double 값은 소수점 없이 표시될 수 있음
+             */
+        }
+        
+        /*
+         * Slider 이벤트 처리 추가 예제:
+         * 
+         * 1. RoutedPropertyChangedEventArgs 활용:
+         * 
+         *    private void sld_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+         *    {
+         *        // 이전 값
+         *        double oldValue = e.OldValue;
+         *        
+         *        // 새 값
+         *        double newValue = e.NewValue;
+         *        
+         *        // 변화량
+         *        double change = newValue - oldValue;
+         *        
+         *        tb.Text = $"현재: {newValue:F0}\n이전: {oldValue:F0}\n변화: {change:+0;-0;0}";
+         *    }
+         * 
+         * 2. 형식화된 값 표시:
+         * 
+         *    private void sld_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+         *    {
+         *        if (tb != null) // null 체크
+         *        {
+         *            // 소수점 없이 정수로 표시
+         *            tb.Text = $"폰트 크기: {sld.Value:F0}";
+         *            
+         *            // 또는 더 자세한 정보
+         *            tb.Text = $"크기: {sld.Value:F0}pt\n({sld.Minimum} ~ {sld.Maximum})";
+         *        }
+         *    }
+         * 
+         * 3. 범위별 다른 처리:
+         * 
+         *    private void sld_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+         *    {
+         *        if (tb != null)
+         *        {
+         *            double value = sld.Value;
+         *            string sizeCategory;
+         *            
+         *            if (value < 30)
+         *                sizeCategory = "작음";
+         *            else if (value < 70)
+         *                sizeCategory = "보통";
+         *            else
+         *                sizeCategory = "큼";
+         *            
+         *            tb.Text = $"폰트 크기: {value:F0} ({sizeCategory})";
+         *        }
+         *    }
+         * 
+         * 4. 볼륨 조절 예제:
+         * 
+         *    private MediaPlayer mediaPlayer = new MediaPlayer();
+         *    
+         *    private void volumeSlider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+         *    {
+         *        if (mediaPlayer != null)
+         *        {
+         *            // 0~100을 0.0~1.0으로 변환
+         *            mediaPlayer.Volume = e.NewValue / 100.0;
+         *            
+         *            // 볼륨 표시
+         *            volumeLabel.Text = $"볼륨: {e.NewValue:F0}%";
+         *        }
+         *    }
+         * 
+         * 5. RGB 색상 조절:
+         * 
+         *    private void ColorSlider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+         *    {
+         *        if (colorPreview != null && sldRed != null && sldGreen != null && sldBlue != null)
+         *        {
+         *            byte r = (byte)sldRed.Value;
+         *            byte g = (byte)sldGreen.Value;
+         *            byte b = (byte)sldBlue.Value;
+         *            
+         *            Color color = Color.FromRgb(r, g, b);
+         *            colorPreview.Fill = new SolidColorBrush(color);
+         *            
+         *            colorInfo.Text = $"RGB({r}, {g}, {b})\n#{r:X2}{g:X2}{b:X2}";
+         *        }
+         *    }
+         * 
+         * 6. 진행 상황 추적:
+         * 
+         *    private void progressSlider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+         *    {
+         *        double percentage = (e.NewValue / sld.Maximum) * 100;
+         *        
+         *        progressBar.Value = percentage;
+         *        progressLabel.Text = $"{percentage:F1}% 완료";
+         *        
+         *        // 특정 지점에서 작업 실행
+         *        if (percentage >= 100)
+         *        {
+         *            MessageBox.Show("완료되었습니다!");
+         *        }
+         *    }
+         * 
+         * 7. 실시간 계산:
+         * 
+         *    private void quantitySlider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+         *    {
+         *        int quantity = (int)e.NewValue;
+         *        decimal unitPrice = 1500;
+         *        decimal totalPrice = quantity * unitPrice;
+         *        
+         *        quantityLabel.Text = $"수량: {quantity}개";
+         *        priceLabel.Text = $"총 금액: {totalPrice:N0}원";
+         *    }
+         * 
+         * 8. 드래그 시작/완료 이벤트:
+         * 
+         *    public MainWindow()
+         *    {
+         *        InitializeComponent();
+         *        
+         *        // Thumb 이벤트 등록
+         *        sld.AddHandler(Thumb.DragStartedEvent, new DragStartedEventHandler(Slider_DragStarted));
+         *        sld.AddHandler(Thumb.DragCompletedEvent, new DragCompletedEventHandler(Slider_DragCompleted));
+         *    }
+         *    
+         *    private void Slider_DragStarted(object sender, DragStartedEventArgs e)
+         *    {
+         *        statusLabel.Text = "드래그 중...";
+         *    }
+         *    
+         *    private void Slider_DragCompleted(object sender, DragCompletedEventArgs e)
+         *    {
+         *        statusLabel.Text = $"최종 값: {sld.Value:F0}";
+         *    }
+         * 
+         * 9. 값 검증 및 제한:
+         * 
+         *    private void sld_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+         *    {
+         *        if (tb != null)
+         *        {
+         *            double value = e.NewValue;
+         *            
+         *            // 특정 값 제외
+         *            if (value == 50)
+         *            {
+         *                MessageBox.Show("50은 사용할 수 없습니다.");
+         *                sld.Value = e.OldValue; // 이전 값으로 되돌림
+         *                return;
+         *            }
+         *            
+         *            tb.Text = value.ToString("F0");
+         *        }
+         *    }
+         * 
+         * 10. 다른 Slider와 연동:
+         * 
+         *     private void minSlider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+         *     {
+         *         if (maxSlider != null)
+         *         {
+         *             // 최소값이 최대값보다 크면 조정
+         *             if (minSlider.Value > maxSlider.Value)
+         *             {
+         *                 maxSlider.Value = minSlider.Value;
+         *             }
+         *             
+         *             UpdateRange();
+         *         }
+         *     }
+         *     
+         *     private void maxSlider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+         *     {
+         *         if (minSlider != null)
+         *         {
+         *             // 최대값이 최소값보다 작으면 조정
+         *             if (maxSlider.Value < minSlider.Value)
+         *             {
+         *                 minSlider.Value = maxSlider.Value;
+         *             }
+         *             
+         *             UpdateRange();
+         *         }
+         *     }
+         *     
+         *     private void UpdateRange()
+         *     {
+         *         if (rangeLabel != null && minSlider != null && maxSlider != null)
+         *         {
+         *             rangeLabel.Text = $"범위: {minSlider.Value:F0} ~ {maxSlider.Value:F0}";
+         *         }
+         *     }
+         * 
+         * 11. 애니메이션 속도 조절:
+         * 
+         *     private void speedSlider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+         *     {
+         *         if (myAnimation != null)
+         *         {
+         *             double speed = e.NewValue;
+         *             
+         *             // 애니메이션 속도 조정
+         *             myAnimation.SpeedRatio = speed;
+         *             
+         *             speedLabel.Text = $"재생 속도: {speed:F2}x";
+         *         }
+         *     }
+         * 
+         * 12. 설정 저장:
+         * 
+         *     private void sld_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+         *     {
+         *         if (tb != null)
+         *         {
+         *             tb.Text = e.NewValue.ToString("F0");
+         *             
+         *             // 설정 자동 저장
+         *             Properties.Settings.Default.FontSize = e.NewValue;
+         *             Properties.Settings.Default.Save();
+         *         }
+         *     }
+         *     
+         *     private void LoadSettings()
+         *     {
+         *         double savedSize = Properties.Settings.Default.FontSize;
+         *         if (savedSize >= sld.Minimum && savedSize <= sld.Maximum)
+         *         {
+         *             sld.Value = savedSize;
+         *         }
+         *     }
+         * 
+         * Slider 이벤트 관련 중요 사항:
+         * 
+         * 1. ValueChanged 이벤트 발생 시점:
+         *    - 사용자가 슬라이더를 드래그할 때
+         *    - 트랙을 클릭할 때
+         *    - 화살표 키를 누를 때
+         *    - 코드에서 Value를 변경할 때
+         *    - 매우 자주 발생할 수 있음 (드래그 중 연속 발생)
+         * 
+         * 2. RoutedPropertyChangedEventArgs<double>:
+         *    - OldValue: 이전 값
+         *    - NewValue: 새 값
+         *    - 변화량 계산 가능: NewValue - OldValue
+         *    - 제네릭 타입: double
+         * 
+         * 3. null 체크의 중요성:
+         *    - 초기화 과정에서 이벤트가 발생할 수 있음
+         *    - XAML의 Value 속성이나 Minimum/Maximum 설정 시
+         *    - 모든 컨트롤이 준비되지 않은 상태일 수 있음
+         *    - tb != null 체크는 필수
+         * 
+         * 4. 성능 고려사항:
+         *    - 드래그 중 이벤트가 매우 자주 발생함
+         *    - 무거운 작업은 피하기 (데이터베이스 조회, 복잡한 계산 등)
+         *    - DragCompleted 이벤트 사용 고려 (드래그 완료 시 한 번만)
+         *    - Throttling이나 Debouncing 패턴 사용 고려
+         * 
+         * 5. 데이터 바인딩과의 조합:
+         *    - XAML 바인딩: 자동 UI 업데이트 (선언적)
+         *    - 이벤트 핸들러: 추가 비즈니스 로직 (명령적)
+         *    - 둘을 함께 사용하면 강력한 기능 구현 가능
+         * 
+         * 6. 순환 참조 방지:
+         *    - 이벤트 핸들러 내에서 Value를 변경하면 다시 이벤트 발생
+         *    - 무한 루프 주의
+         *    - 플래그 변수 사용 또는 조건 체크
+         * 
+         * 예제 - 순환 참조 방지:
+         * 
+         * private bool isUpdating = false;
+         * 
+         * private void sld_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+         * {
+         *     if (isUpdating) return;
+         *     
+         *     try
+         *     {
+         *         isUpdating = true;
+         *         
+         *         // Value 수정이 필요한 로직
+         *         if (e.NewValue % 5 != 0)
+         *         {
+         *             sld.Value = Math.Round(e.NewValue / 5) * 5;
+         *         }
+         *     }
+         *     finally
+         *     {
+         *         isUpdating = false;
+         *     }
+         * }
+         * 
+         * 7. 형식 지정:
+         *    - ToString(): 기본 형식
+         *    - ToString("F0"): 소수점 없음
+         *    - ToString("F2"): 소수점 2자리
+         *    - ToString("N0"): 천단위 구분자, 소수점 없음
+         *    - String.Format, Interpolation 사용 가능
+         * 
+         * 8. Slider vs Sender:
+         *    - sender 매개변수를 Slider로 캐스팅하여 사용 가능
+         *    - 여러 Slider가 같은 핸들러를 공유할 때 유용
+         * 
+         * 예제 - 공유 핸들러:
+         * 
+         * private void CommonSlider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+         * {
+         *     if (sender is Slider slider)
+         *     {
+         *         string name = slider.Name;
+         *         double value = slider.Value;
+         *         
+         *         switch (name)
+         *         {
+         *             case "sldRed":
+         *                 UpdateRedChannel(value);
+         *                 break;
+         *             case "sldGreen":
+         *                 UpdateGreenChannel(value);
+         *                 break;
+         *             case "sldBlue":
+         *                 UpdateBlueChannel(value);
+         *                 break;
+         *         }
+         *     }
+         * }
+         */
+    }
+}

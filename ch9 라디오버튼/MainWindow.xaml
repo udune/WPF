@@ -1,0 +1,496 @@
+﻿<Window x:Class="ch9_라디오버튼.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ch9_라디오버튼"
+        mc:Ignorable="d"
+        Title="ch9 RadioButton 튜토리얼" Height="600" Width="850">
+
+    <Window.Resources>
+        <Style x:Key="CodeExpanderStyle" TargetType="Expander">
+            <Setter Property="Header" Value="📝 XAML 코드 보기"/>
+            <Setter Property="Margin" Value="0,5,0,0"/>
+            <Setter Property="FontSize" Value="12"/>
+        </Style>
+        <Style x:Key="CodeTextBoxStyle" TargetType="TextBox">
+            <Setter Property="FontFamily" Value="Consolas"/>
+            <Setter Property="FontSize" Value="12"/>
+            <Setter Property="Background" Value="#1E1E1E"/>
+            <Setter Property="Foreground" Value="#DCDCDC"/>
+            <Setter Property="Padding" Value="10"/>
+            <Setter Property="IsReadOnly" Value="True"/>
+            <Setter Property="TextWrapping" Value="Wrap"/>
+            <Setter Property="AcceptsReturn" Value="True"/>
+            <Setter Property="VerticalScrollBarVisibility" Value="Auto"/>
+            <Setter Property="MaxHeight" Value="200"/>
+        </Style>
+    </Window.Resources>
+
+    <TabControl>
+
+        <!-- ==================== 탭 1: 기본 사용법 ==================== -->
+        <TabItem Header="1. 기본 사용법">
+            <ScrollViewer VerticalScrollBarVisibility="Auto">
+                <StackPanel Margin="15">
+                    <TextBlock Text="RadioButton 기본 사용법" FontSize="20" FontWeight="Bold" Margin="0,0,0,10"/>
+
+                    <!-- 기본 RadioButton -->
+                    <GroupBox Header="기본 RadioButton" Margin="0,0,0,10" Padding="10">
+                        <StackPanel>
+                            <RadioButton Content="옵션 A" Margin="0,2"/>
+                            <RadioButton Content="옵션 B" IsChecked="True" Margin="0,2"/>
+                            <RadioButton Content="옵션 C" Margin="0,2"/>
+                            <TextBlock Text="→ 같은 부모 안의 RadioButton은 자동으로 하나만 선택됩니다." Margin="0,5,0,0" Foreground="Gray" FontSize="11"/>
+                        </StackPanel>
+                        <GroupBox.Tag>
+                            <Expander Style="{StaticResource CodeExpanderStyle}">
+                                <TextBox Style="{StaticResource CodeTextBoxStyle}" Text="&lt;RadioButton Content=&quot;옵션 A&quot; /&gt;&#10;&lt;RadioButton Content=&quot;옵션 B&quot; IsChecked=&quot;True&quot; /&gt;&#10;&lt;RadioButton Content=&quot;옵션 C&quot; /&gt;"/>
+                            </Expander>
+                        </GroupBox.Tag>
+                    </GroupBox>
+
+                    <!-- GroupName -->
+                    <GroupBox Header="GroupName (그룹 분리)" Margin="0,0,0,10" Padding="10">
+                        <StackPanel>
+                            <TextBlock Text="좋아하는 색상:" FontWeight="Bold" Margin="0,0,0,3"/>
+                            <RadioButton GroupName="Color" Content="빨강" Margin="0,2"/>
+                            <RadioButton GroupName="Color" Content="파랑" IsChecked="True" Margin="0,2"/>
+                            <RadioButton GroupName="Color" Content="초록" Margin="0,2"/>
+
+                            <TextBlock Text="좋아하는 계절:" FontWeight="Bold" Margin="0,10,0,3"/>
+                            <RadioButton GroupName="Season" Content="봄" Margin="0,2"/>
+                            <RadioButton GroupName="Season" Content="여름" Margin="0,2"/>
+                            <RadioButton GroupName="Season" Content="가을" IsChecked="True" Margin="0,2"/>
+                            <RadioButton GroupName="Season" Content="겨울" Margin="0,2"/>
+
+                            <TextBlock Text="→ GroupName이 다르면 독립적으로 선택할 수 있습니다." Margin="0,5,0,0" Foreground="Gray" FontSize="11"/>
+                        </StackPanel>
+                        <GroupBox.Tag>
+                            <Expander Style="{StaticResource CodeExpanderStyle}">
+                                <TextBox Style="{StaticResource CodeTextBoxStyle}" Text="&lt;RadioButton GroupName=&quot;Color&quot; Content=&quot;빨강&quot; /&gt;&#10;&lt;RadioButton GroupName=&quot;Color&quot; Content=&quot;파랑&quot; IsChecked=&quot;True&quot; /&gt;&#10;&lt;RadioButton GroupName=&quot;Color&quot; Content=&quot;초록&quot; /&gt;&#10;&#10;&lt;RadioButton GroupName=&quot;Season&quot; Content=&quot;봄&quot; /&gt;&#10;&lt;RadioButton GroupName=&quot;Season&quot; Content=&quot;여름&quot; /&gt;&#10;&lt;RadioButton GroupName=&quot;Season&quot; Content=&quot;가을&quot; IsChecked=&quot;True&quot; /&gt;"/>
+                            </Expander>
+                        </GroupBox.Tag>
+                    </GroupBox>
+
+                    <!-- GroupBox로 그룹 분리 -->
+                    <GroupBox Header="GroupBox로 자동 그룹 분리" Margin="0,0,0,10" Padding="10">
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                            <GroupBox Header="음료" Padding="10" Margin="0,0,15,0">
+                                <StackPanel>
+                                    <RadioButton Content="커피" IsChecked="True" Margin="0,2"/>
+                                    <RadioButton Content="녹차" Margin="0,2"/>
+                                    <RadioButton Content="주스" Margin="0,2"/>
+                                </StackPanel>
+                            </GroupBox>
+                            <GroupBox Header="디저트" Padding="10">
+                                <StackPanel>
+                                    <RadioButton Content="케이크" Margin="0,2"/>
+                                    <RadioButton Content="마카롱" IsChecked="True" Margin="0,2"/>
+                                    <RadioButton Content="쿠키" Margin="0,2"/>
+                                </StackPanel>
+                            </GroupBox>
+                        </StackPanel>
+                        <GroupBox.Tag>
+                            <Expander Style="{StaticResource CodeExpanderStyle}">
+                                <TextBox Style="{StaticResource CodeTextBoxStyle}" Text="&lt;GroupBox Header=&quot;음료&quot;&gt;&#10;    &lt;StackPanel&gt;&#10;        &lt;RadioButton Content=&quot;커피&quot; IsChecked=&quot;True&quot; /&gt;&#10;        &lt;RadioButton Content=&quot;녹차&quot; /&gt;&#10;    &lt;/StackPanel&gt;&#10;&lt;/GroupBox&gt;&#10;→ 서로 다른 GroupBox 안의 RadioButton은 독립 그룹"/>
+                            </Expander>
+                        </GroupBox.Tag>
+                    </GroupBox>
+
+                    <!-- IsEnabled -->
+                    <GroupBox Header="IsEnabled (비활성화)" Margin="0,0,0,10" Padding="10">
+                        <StackPanel>
+                            <RadioButton Content="선택 가능" IsChecked="True" Margin="0,2"/>
+                            <RadioButton Content="비활성화됨" IsEnabled="False" Margin="0,2"/>
+                            <RadioButton Content="비활성 + 체크" IsEnabled="False" IsChecked="True" Margin="0,2"/>
+                        </StackPanel>
+                        <GroupBox.Tag>
+                            <Expander Style="{StaticResource CodeExpanderStyle}">
+                                <TextBox Style="{StaticResource CodeTextBoxStyle}" Text="&lt;RadioButton Content=&quot;비활성화됨&quot; IsEnabled=&quot;False&quot; /&gt;&#10;&lt;RadioButton Content=&quot;비활성 + 체크&quot; IsEnabled=&quot;False&quot; IsChecked=&quot;True&quot; /&gt;"/>
+                            </Expander>
+                        </GroupBox.Tag>
+                    </GroupBox>
+
+                    <!-- 리치 Content -->
+                    <GroupBox Header="리치 Content (이미지 + 텍스트)" Margin="0,0,0,10" Padding="10">
+                        <StackPanel>
+                            <RadioButton Margin="0,3" VerticalContentAlignment="Center">
+                                <StackPanel Orientation="Horizontal">
+                                    <Image Width="24" Source="https://cdn0.iconfinder.com/data/icons/fruity-3/512/Orange-512.png"/>
+                                    <TextBlock Text="  오렌지" VerticalAlignment="Center"/>
+                                </StackPanel>
+                            </RadioButton>
+                            <RadioButton Margin="0,3" VerticalContentAlignment="Center" IsChecked="True">
+                                <StackPanel Orientation="Horizontal">
+                                    <Ellipse Width="16" Height="16" Fill="Red"/>
+                                    <TextBlock Text="  빨간색" VerticalAlignment="Center"/>
+                                </StackPanel>
+                            </RadioButton>
+                            <RadioButton Margin="0,3" VerticalContentAlignment="Center">
+                                <TextBlock>
+                                    <Bold>굵은</Bold> 텍스트와 <Italic>기울임</Italic>
+                                </TextBlock>
+                            </RadioButton>
+                        </StackPanel>
+                        <GroupBox.Tag>
+                            <Expander Style="{StaticResource CodeExpanderStyle}">
+                                <TextBox Style="{StaticResource CodeTextBoxStyle}" Text="&lt;RadioButton VerticalContentAlignment=&quot;Center&quot;&gt;&#10;    &lt;StackPanel Orientation=&quot;Horizontal&quot;&gt;&#10;        &lt;Image Width=&quot;24&quot; Source=&quot;...&quot;/&gt;&#10;        &lt;TextBlock Text=&quot;  오렌지&quot; /&gt;&#10;    &lt;/StackPanel&gt;&#10;&lt;/RadioButton&gt;"/>
+                            </Expander>
+                        </GroupBox.Tag>
+                    </GroupBox>
+
+                </StackPanel>
+            </ScrollViewer>
+        </TabItem>
+
+        <!-- ==================== 탭 2: 정렬 ==================== -->
+        <TabItem Header="2. 정렬">
+            <ScrollViewer VerticalScrollBarVisibility="Auto">
+                <StackPanel Margin="15">
+                    <TextBlock Text="RadioButton 정렬" FontSize="20" FontWeight="Bold" Margin="0,0,0,10"/>
+
+                    <!-- HorizontalAlignment -->
+                    <GroupBox Header="HorizontalAlignment" Margin="0,0,0,10" Padding="10">
+                        <StackPanel>
+                            <RadioButton Content="Left" HorizontalAlignment="Left" Margin="0,2"/>
+                            <RadioButton Content="Center" HorizontalAlignment="Center" Margin="0,2"/>
+                            <RadioButton Content="Right" HorizontalAlignment="Right" Margin="0,2"/>
+                            <RadioButton Content="Stretch (기본값)" HorizontalAlignment="Stretch" Margin="0,2"/>
+                        </StackPanel>
+                        <GroupBox.Tag>
+                            <Expander Style="{StaticResource CodeExpanderStyle}">
+                                <TextBox Style="{StaticResource CodeTextBoxStyle}" Text="&lt;RadioButton Content=&quot;Left&quot; HorizontalAlignment=&quot;Left&quot; /&gt;&#10;&lt;RadioButton Content=&quot;Center&quot; HorizontalAlignment=&quot;Center&quot; /&gt;&#10;&lt;RadioButton Content=&quot;Right&quot; HorizontalAlignment=&quot;Right&quot; /&gt;"/>
+                            </Expander>
+                        </GroupBox.Tag>
+                    </GroupBox>
+
+                    <!-- HorizontalContentAlignment -->
+                    <GroupBox Header="HorizontalContentAlignment" Margin="0,0,0,10" Padding="10">
+                        <StackPanel>
+                            <RadioButton Content="Left" HorizontalContentAlignment="Left" HorizontalAlignment="Stretch" Margin="0,2" Background="#F0F0F0" Padding="5"/>
+                            <RadioButton Content="Center" HorizontalContentAlignment="Center" HorizontalAlignment="Stretch" Margin="0,2" Background="#F0F0F0" Padding="5"/>
+                            <RadioButton Content="Right" HorizontalContentAlignment="Right" HorizontalAlignment="Stretch" Margin="0,2" Background="#F0F0F0" Padding="5"/>
+                        </StackPanel>
+                        <GroupBox.Tag>
+                            <Expander Style="{StaticResource CodeExpanderStyle}">
+                                <TextBox Style="{StaticResource CodeTextBoxStyle}" Text="&lt;RadioButton Content=&quot;Center&quot;&#10;             HorizontalContentAlignment=&quot;Center&quot;&#10;             HorizontalAlignment=&quot;Stretch&quot; /&gt;"/>
+                            </Expander>
+                        </GroupBox.Tag>
+                    </GroupBox>
+
+                    <!-- 가로 배치 -->
+                    <GroupBox Header="가로 배치 (StackPanel Orientation)" Margin="0,0,0,10" Padding="10">
+                        <StackPanel>
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                                <RadioButton Content="옵션 1" Margin="10,0"/>
+                                <RadioButton Content="옵션 2" Margin="10,0" IsChecked="True"/>
+                                <RadioButton Content="옵션 3" Margin="10,0"/>
+                                <RadioButton Content="옵션 4" Margin="10,0"/>
+                            </StackPanel>
+                            <TextBlock Text="→ StackPanel Orientation=&quot;Horizontal&quot;로 가로 배치" Margin="0,5,0,0" Foreground="Gray" FontSize="11" HorizontalAlignment="Center"/>
+                        </StackPanel>
+                        <GroupBox.Tag>
+                            <Expander Style="{StaticResource CodeExpanderStyle}">
+                                <TextBox Style="{StaticResource CodeTextBoxStyle}" Text="&lt;StackPanel Orientation=&quot;Horizontal&quot;&gt;&#10;    &lt;RadioButton Content=&quot;옵션 1&quot; Margin=&quot;10,0&quot; /&gt;&#10;    &lt;RadioButton Content=&quot;옵션 2&quot; Margin=&quot;10,0&quot; /&gt;&#10;    &lt;RadioButton Content=&quot;옵션 3&quot; Margin=&quot;10,0&quot; /&gt;&#10;&lt;/StackPanel&gt;"/>
+                            </Expander>
+                        </GroupBox.Tag>
+                    </GroupBox>
+
+                    <!-- WrapPanel 배치 -->
+                    <GroupBox Header="WrapPanel 배치 (자동 줄바꿈)" Margin="0,0,0,10" Padding="10">
+                        <WrapPanel>
+                            <RadioButton Content="항목 A" GroupName="Wrap" Margin="5,3" Padding="5,2"/>
+                            <RadioButton Content="항목 B" GroupName="Wrap" Margin="5,3" Padding="5,2"/>
+                            <RadioButton Content="항목 C" GroupName="Wrap" Margin="5,3" Padding="5,2"/>
+                            <RadioButton Content="항목 D" GroupName="Wrap" Margin="5,3" Padding="5,2"/>
+                            <RadioButton Content="항목 E" GroupName="Wrap" Margin="5,3" Padding="5,2"/>
+                            <RadioButton Content="항목 F" GroupName="Wrap" Margin="5,3" Padding="5,2"/>
+                            <RadioButton Content="항목 G" GroupName="Wrap" Margin="5,3" Padding="5,2"/>
+                            <RadioButton Content="항목 H" GroupName="Wrap" Margin="5,3" Padding="5,2"/>
+                        </WrapPanel>
+                        <GroupBox.Tag>
+                            <Expander Style="{StaticResource CodeExpanderStyle}">
+                                <TextBox Style="{StaticResource CodeTextBoxStyle}" Text="&lt;WrapPanel&gt;&#10;    &lt;RadioButton Content=&quot;항목 A&quot; GroupName=&quot;Wrap&quot; Margin=&quot;5,3&quot; /&gt;&#10;    &lt;RadioButton Content=&quot;항목 B&quot; GroupName=&quot;Wrap&quot; Margin=&quot;5,3&quot; /&gt;&#10;    ...&#10;&lt;/WrapPanel&gt;&#10;→ WrapPanel 안에서는 GroupName 필요 (같은 부모)"/>
+                            </Expander>
+                        </GroupBox.Tag>
+                    </GroupBox>
+
+                    <!-- FlowDirection -->
+                    <GroupBox Header="FlowDirection (텍스트 방향)" Margin="0,0,0,10" Padding="10">
+                        <StackPanel>
+                            <RadioButton Content="LeftToRight (기본)" FlowDirection="LeftToRight" Margin="0,2"/>
+                            <RadioButton Content="RightToLeft (오른쪽→왼쪽)" FlowDirection="RightToLeft" Margin="0,2"/>
+                        </StackPanel>
+                        <GroupBox.Tag>
+                            <Expander Style="{StaticResource CodeExpanderStyle}">
+                                <TextBox Style="{StaticResource CodeTextBoxStyle}" Text="&lt;RadioButton Content=&quot;RightToLeft&quot; FlowDirection=&quot;RightToLeft&quot; /&gt;"/>
+                            </Expander>
+                        </GroupBox.Tag>
+                    </GroupBox>
+
+                </StackPanel>
+            </ScrollViewer>
+        </TabItem>
+
+        <!-- ==================== 탭 3: 폰트와 스타일 ==================== -->
+        <TabItem Header="3. 폰트와 스타일">
+            <ScrollViewer VerticalScrollBarVisibility="Auto">
+                <StackPanel Margin="15">
+                    <TextBlock Text="RadioButton 폰트와 스타일" FontSize="20" FontWeight="Bold" Margin="0,0,0,10"/>
+
+                    <!-- FontSize -->
+                    <GroupBox Header="FontSize" Margin="0,0,0,10" Padding="10">
+                        <StackPanel>
+                            <RadioButton Content="FontSize=&quot;10&quot;" FontSize="10" Margin="0,3"/>
+                            <RadioButton Content="FontSize=&quot;14&quot; (기본)" FontSize="14" Margin="0,3"/>
+                            <RadioButton Content="FontSize=&quot;18&quot;" FontSize="18" Margin="0,3"/>
+                            <RadioButton Content="FontSize=&quot;24&quot;" FontSize="24" Margin="0,3"/>
+                        </StackPanel>
+                        <GroupBox.Tag>
+                            <Expander Style="{StaticResource CodeExpanderStyle}">
+                                <TextBox Style="{StaticResource CodeTextBoxStyle}" Text="&lt;RadioButton Content=&quot;크게&quot; FontSize=&quot;24&quot; /&gt;"/>
+                            </Expander>
+                        </GroupBox.Tag>
+                    </GroupBox>
+
+                    <!-- FontWeight -->
+                    <GroupBox Header="FontWeight" Margin="0,0,0,10" Padding="10">
+                        <StackPanel>
+                            <RadioButton Content="Thin" FontWeight="Thin" Margin="0,2"/>
+                            <RadioButton Content="Light" FontWeight="Light" Margin="0,2"/>
+                            <RadioButton Content="Normal (기본)" FontWeight="Normal" Margin="0,2"/>
+                            <RadioButton Content="Bold" FontWeight="Bold" Margin="0,2"/>
+                            <RadioButton Content="ExtraBold" FontWeight="ExtraBold" Margin="0,2"/>
+                        </StackPanel>
+                        <GroupBox.Tag>
+                            <Expander Style="{StaticResource CodeExpanderStyle}">
+                                <TextBox Style="{StaticResource CodeTextBoxStyle}" Text="&lt;RadioButton Content=&quot;Bold&quot; FontWeight=&quot;Bold&quot; /&gt;"/>
+                            </Expander>
+                        </GroupBox.Tag>
+                    </GroupBox>
+
+                    <!-- FontStyle -->
+                    <GroupBox Header="FontStyle" Margin="0,0,0,10" Padding="10">
+                        <StackPanel>
+                            <RadioButton Content="Normal (기본)" FontStyle="Normal" Margin="0,2"/>
+                            <RadioButton Content="Italic (기울임)" FontStyle="Italic" Margin="0,2"/>
+                            <RadioButton Content="Oblique (비스듬히)" FontStyle="Oblique" Margin="0,2"/>
+                        </StackPanel>
+                        <GroupBox.Tag>
+                            <Expander Style="{StaticResource CodeExpanderStyle}">
+                                <TextBox Style="{StaticResource CodeTextBoxStyle}" Text="&lt;RadioButton Content=&quot;Italic&quot; FontStyle=&quot;Italic&quot; /&gt;"/>
+                            </Expander>
+                        </GroupBox.Tag>
+                    </GroupBox>
+
+                    <!-- FontFamily -->
+                    <GroupBox Header="FontFamily" Margin="0,0,0,10" Padding="10">
+                        <StackPanel>
+                            <RadioButton Content="기본 폰트" Margin="0,2"/>
+                            <RadioButton Content="맑은 고딕" FontFamily="Malgun Gothic" Margin="0,2"/>
+                            <RadioButton Content="Consolas (코드 폰트)" FontFamily="Consolas" Margin="0,2"/>
+                            <RadioButton Content="Georgia (세리프)" FontFamily="Georgia" Margin="0,2"/>
+                            <RadioButton Content="Comic Sans MS" FontFamily="Comic Sans MS" Margin="0,2"/>
+                        </StackPanel>
+                        <GroupBox.Tag>
+                            <Expander Style="{StaticResource CodeExpanderStyle}">
+                                <TextBox Style="{StaticResource CodeTextBoxStyle}" Text="&lt;RadioButton Content=&quot;맑은 고딕&quot; FontFamily=&quot;Malgun Gothic&quot; /&gt;&#10;&lt;RadioButton Content=&quot;Consolas&quot; FontFamily=&quot;Consolas&quot; /&gt;"/>
+                            </Expander>
+                        </GroupBox.Tag>
+                    </GroupBox>
+
+                </StackPanel>
+            </ScrollViewer>
+        </TabItem>
+
+        <!-- ==================== 탭 4: 색상과 외관 ==================== -->
+        <TabItem Header="4. 색상과 외관">
+            <ScrollViewer VerticalScrollBarVisibility="Auto">
+                <StackPanel Margin="15">
+                    <TextBlock Text="RadioButton 색상과 외관" FontSize="20" FontWeight="Bold" Margin="0,0,0,10"/>
+
+                    <!-- Foreground -->
+                    <GroupBox Header="Foreground (글자색)" Margin="0,0,0,10" Padding="10">
+                        <StackPanel>
+                            <RadioButton Content="Red" Foreground="Red" Margin="0,2"/>
+                            <RadioButton Content="Blue" Foreground="Blue" Margin="0,2"/>
+                            <RadioButton Content="Green" Foreground="Green" Margin="0,2"/>
+                            <RadioButton Content="#FF6600 (Hex)" Foreground="#FF6600" Margin="0,2"/>
+                        </StackPanel>
+                        <GroupBox.Tag>
+                            <Expander Style="{StaticResource CodeExpanderStyle}">
+                                <TextBox Style="{StaticResource CodeTextBoxStyle}" Text="&lt;RadioButton Content=&quot;Red&quot; Foreground=&quot;Red&quot; /&gt;&#10;&lt;RadioButton Content=&quot;Hex&quot; Foreground=&quot;#FF6600&quot; /&gt;"/>
+                            </Expander>
+                        </GroupBox.Tag>
+                    </GroupBox>
+
+                    <!-- Background -->
+                    <GroupBox Header="Background (배경색)" Margin="0,0,0,10" Padding="10">
+                        <StackPanel>
+                            <RadioButton Content="LightYellow" Background="LightYellow" Padding="5" Margin="0,2"/>
+                            <RadioButton Content="LightCyan" Background="LightCyan" Padding="5" Margin="0,2"/>
+                            <RadioButton Content="LightPink" Background="LightPink" Padding="5" Margin="0,2"/>
+                            <RadioButton Content="LightGreen" Background="LightGreen" Padding="5" Margin="0,2"/>
+                        </StackPanel>
+                        <GroupBox.Tag>
+                            <Expander Style="{StaticResource CodeExpanderStyle}">
+                                <TextBox Style="{StaticResource CodeTextBoxStyle}" Text="&lt;RadioButton Content=&quot;LightYellow&quot; Background=&quot;LightYellow&quot; Padding=&quot;5&quot; /&gt;"/>
+                            </Expander>
+                        </GroupBox.Tag>
+                    </GroupBox>
+
+                    <!-- BorderBrush / BorderThickness -->
+                    <GroupBox Header="BorderBrush / BorderThickness" Margin="0,0,0,10" Padding="10">
+                        <StackPanel>
+                            <RadioButton Content="기본 테두리" Margin="0,3"/>
+                            <RadioButton Content="빨간 테두리" BorderBrush="Red" BorderThickness="2" Padding="5" Margin="0,3"/>
+                            <RadioButton Content="파란 두꺼운 테두리" BorderBrush="Blue" BorderThickness="3" Padding="5" Margin="0,3"/>
+                            <RadioButton Content="초록 점선 느낌" BorderBrush="Green" BorderThickness="1" Padding="5" Margin="0,3"/>
+                        </StackPanel>
+                        <GroupBox.Tag>
+                            <Expander Style="{StaticResource CodeExpanderStyle}">
+                                <TextBox Style="{StaticResource CodeTextBoxStyle}" Text="&lt;RadioButton Content=&quot;빨간 테두리&quot;&#10;             BorderBrush=&quot;Red&quot;&#10;             BorderThickness=&quot;2&quot;&#10;             Padding=&quot;5&quot; /&gt;"/>
+                            </Expander>
+                        </GroupBox.Tag>
+                    </GroupBox>
+
+                    <!-- Opacity -->
+                    <GroupBox Header="Opacity (투명도)" Margin="0,0,0,10" Padding="10">
+                        <StackPanel>
+                            <RadioButton Content="Opacity 1.0 (불투명)" Opacity="1.0" Margin="0,2"/>
+                            <RadioButton Content="Opacity 0.7" Opacity="0.7" Margin="0,2"/>
+                            <RadioButton Content="Opacity 0.4" Opacity="0.4" Margin="0,2"/>
+                            <RadioButton Content="Opacity 0.2" Opacity="0.2" Margin="0,2"/>
+                        </StackPanel>
+                        <GroupBox.Tag>
+                            <Expander Style="{StaticResource CodeExpanderStyle}">
+                                <TextBox Style="{StaticResource CodeTextBoxStyle}" Text="&lt;RadioButton Content=&quot;반투명&quot; Opacity=&quot;0.4&quot; /&gt;"/>
+                            </Expander>
+                        </GroupBox.Tag>
+                    </GroupBox>
+
+                    <!-- Padding -->
+                    <GroupBox Header="Padding (내부 여백)" Margin="0,0,0,10" Padding="10">
+                        <StackPanel>
+                            <RadioButton Content="Padding 없음" Background="LightGray" Margin="0,2"/>
+                            <RadioButton Content="Padding=&quot;5&quot;" Padding="5" Background="LightGray" Margin="0,2"/>
+                            <RadioButton Content="Padding=&quot;15&quot;" Padding="15" Background="LightGray" Margin="0,2"/>
+                            <RadioButton Content="Padding=&quot;20,5&quot;" Padding="20,5" Background="LightGray" Margin="0,2"/>
+                        </StackPanel>
+                        <GroupBox.Tag>
+                            <Expander Style="{StaticResource CodeExpanderStyle}">
+                                <TextBox Style="{StaticResource CodeTextBoxStyle}" Text="&lt;RadioButton Content=&quot;여백&quot; Padding=&quot;15&quot; Background=&quot;LightGray&quot; /&gt;"/>
+                            </Expander>
+                        </GroupBox.Tag>
+                    </GroupBox>
+
+                </StackPanel>
+            </ScrollViewer>
+        </TabItem>
+
+        <!-- ==================== 탭 5: 이벤트와 상호작용 ==================== -->
+        <TabItem Header="5. 이벤트와 상호작용">
+            <ScrollViewer VerticalScrollBarVisibility="Auto">
+                <StackPanel Margin="15">
+                    <TextBlock Text="RadioButton 이벤트와 상호작용" FontSize="20" FontWeight="Bold" Margin="0,0,0,10"/>
+
+                    <!-- Checked / Unchecked 이벤트 -->
+                    <GroupBox Header="Checked / Unchecked 이벤트" Margin="0,0,0,10" Padding="10">
+                        <StackPanel>
+                            <RadioButton x:Name="rbEvent1" Content="선택지 1" GroupName="Event"
+                                         Checked="RbEvent_Checked" Margin="0,2"/>
+                            <RadioButton x:Name="rbEvent2" Content="선택지 2" GroupName="Event"
+                                         Checked="RbEvent_Checked" Margin="0,2"/>
+                            <RadioButton x:Name="rbEvent3" Content="선택지 3" GroupName="Event"
+                                         Checked="RbEvent_Checked" Margin="0,2"/>
+                            <TextBlock x:Name="txtEventStatus" Text="선택 상태: (없음)" Margin="0,5,0,0" Foreground="DarkBlue" FontWeight="Bold"/>
+                        </StackPanel>
+                        <GroupBox.Tag>
+                            <Expander Style="{StaticResource CodeExpanderStyle}">
+                                <TextBox Style="{StaticResource CodeTextBoxStyle}" Text="&lt;RadioButton x:Name=&quot;rbEvent1&quot; Content=&quot;선택지 1&quot;&#10;             GroupName=&quot;Event&quot;&#10;             Checked=&quot;RbEvent_Checked&quot; /&gt;&#10;&#10;// C# 코드-비하인드&#10;private void RbEvent_Checked(object sender, RoutedEventArgs e)&#10;{&#10;    var rb = sender as RadioButton;&#10;    txtEventStatus.Text = $&quot;선택됨: {rb.Content}&quot;;&#10;}"/>
+                            </Expander>
+                        </GroupBox.Tag>
+                    </GroupBox>
+
+                    <!-- 그룹 선택 결과 -->
+                    <GroupBox Header="여러 그룹 선택 결과 확인" Margin="0,0,0,10" Padding="10">
+                        <StackPanel>
+                            <TextBlock Text="크기 선택:" FontWeight="Bold" Margin="0,0,0,3"/>
+                            <StackPanel Orientation="Horizontal">
+                                <RadioButton x:Name="rbSmall" Content="Small" GroupName="Size"
+                                             Checked="RbSize_Checked" Margin="0,0,15,0"/>
+                                <RadioButton x:Name="rbMedium" Content="Medium" GroupName="Size"
+                                             Checked="RbSize_Checked" IsChecked="True" Margin="0,0,15,0"/>
+                                <RadioButton x:Name="rbLarge" Content="Large" GroupName="Size"
+                                             Checked="RbSize_Checked"/>
+                            </StackPanel>
+
+                            <TextBlock Text="색상 선택:" FontWeight="Bold" Margin="0,10,0,3"/>
+                            <StackPanel Orientation="Horizontal">
+                                <RadioButton x:Name="rbRed" Content="빨강" GroupName="Clr"
+                                             Checked="RbColor_Checked" IsChecked="True" Margin="0,0,15,0"/>
+                                <RadioButton x:Name="rbGreen" Content="초록" GroupName="Clr"
+                                             Checked="RbColor_Checked" Margin="0,0,15,0"/>
+                                <RadioButton x:Name="rbBlue" Content="파랑" GroupName="Clr"
+                                             Checked="RbColor_Checked"/>
+                            </StackPanel>
+
+                            <TextBlock x:Name="txtOrderResult" Text="주문: Medium / 빨강" Margin="0,8,0,0"
+                                       FontWeight="Bold" Foreground="DarkGreen" FontSize="14"/>
+                        </StackPanel>
+                        <GroupBox.Tag>
+                            <Expander Style="{StaticResource CodeExpanderStyle}">
+                                <TextBox Style="{StaticResource CodeTextBoxStyle}" Text="// 크기 / 색상 각각의 Checked 핸들러에서&#10;// 현재 선택된 항목을 조합하여 결과를 표시합니다.&#10;private void UpdateOrder()&#10;{&#10;    string size = rbSmall.IsChecked==true ? &quot;Small&quot;&#10;                 : rbMedium.IsChecked==true ? &quot;Medium&quot; : &quot;Large&quot;;&#10;    ...&#10;    txtOrderResult.Text = $&quot;주문: {size} / {color}&quot;;&#10;}"/>
+                            </Expander>
+                        </GroupBox.Tag>
+                    </GroupBox>
+
+                    <!-- 동적 선택 변경 -->
+                    <GroupBox Header="코드로 선택 변경" Margin="0,0,0,10" Padding="10">
+                        <StackPanel>
+                            <RadioButton x:Name="rbDyn1" Content="항목 A" GroupName="Dynamic" IsChecked="True" Margin="0,2"/>
+                            <RadioButton x:Name="rbDyn2" Content="항목 B" GroupName="Dynamic" Margin="0,2"/>
+                            <RadioButton x:Name="rbDyn3" Content="항목 C" GroupName="Dynamic" Margin="0,2"/>
+                            <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
+                                <Button Content="A 선택" Click="BtnSelectA_Click" Padding="10,3" Margin="0,0,5,0"/>
+                                <Button Content="B 선택" Click="BtnSelectB_Click" Padding="10,3" Margin="0,0,5,0"/>
+                                <Button Content="C 선택" Click="BtnSelectC_Click" Padding="10,3"/>
+                            </StackPanel>
+                        </StackPanel>
+                        <GroupBox.Tag>
+                            <Expander Style="{StaticResource CodeExpanderStyle}">
+                                <TextBox Style="{StaticResource CodeTextBoxStyle}" Text="private void BtnSelectA_Click(object sender, RoutedEventArgs e)&#10;{&#10;    rbDyn1.IsChecked = true;&#10;}"/>
+                            </Expander>
+                        </GroupBox.Tag>
+                    </GroupBox>
+
+                    <!-- Checked 연동: 미리보기 -->
+                    <GroupBox Header="선택에 따른 미리보기" Margin="0,0,0,10" Padding="10">
+                        <StackPanel>
+                            <StackPanel Orientation="Horizontal">
+                                <RadioButton x:Name="rbPreviewRed" Content="빨강 배경" GroupName="Preview"
+                                             Checked="RbPreview_Checked" IsChecked="True" Margin="0,0,15,0"/>
+                                <RadioButton x:Name="rbPreviewGreen" Content="초록 배경" GroupName="Preview"
+                                             Checked="RbPreview_Checked" Margin="0,0,15,0"/>
+                                <RadioButton x:Name="rbPreviewBlue" Content="파랑 배경" GroupName="Preview"
+                                             Checked="RbPreview_Checked"/>
+                            </StackPanel>
+                            <Border x:Name="brdPreview" Background="Salmon" Height="60" CornerRadius="5" Margin="0,8,0,0">
+                                <TextBlock x:Name="txtPreview" Text="빨강 배경" VerticalAlignment="Center"
+                                           HorizontalAlignment="Center" FontSize="16" FontWeight="Bold" Foreground="White"/>
+                            </Border>
+                        </StackPanel>
+                        <GroupBox.Tag>
+                            <Expander Style="{StaticResource CodeExpanderStyle}">
+                                <TextBox Style="{StaticResource CodeTextBoxStyle}" Text="private void RbPreview_Checked(...)&#10;{&#10;    if (rbPreviewRed.IsChecked == true)&#10;        brdPreview.Background = Brushes.Salmon;&#10;    else if (rbPreviewGreen.IsChecked == true)&#10;        brdPreview.Background = Brushes.SeaGreen;&#10;    else&#10;        brdPreview.Background = Brushes.SteelBlue;&#10;}"/>
+                            </Expander>
+                        </GroupBox.Tag>
+                    </GroupBox>
+
+                </StackPanel>
+            </ScrollViewer>
+        </TabItem>
+
+    </TabControl>
+</Window>
