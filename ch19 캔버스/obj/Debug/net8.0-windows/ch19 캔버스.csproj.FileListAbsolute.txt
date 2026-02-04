@@ -18,3 +18,4 @@ C:\Users\udune\Desktop\WPF\ch19 캔버스\obj\Debug\net8.0-windows\refint\ch19 �
 C:\Users\udune\Desktop\WPF\ch19 캔버스\obj\Debug\net8.0-windows\ch19 캔버스.pdb
 C:\Users\udune\Desktop\WPF\ch19 캔버스\obj\Debug\net8.0-windows\ch19 캔버스.genruntimeconfig.cache
 C:\Users\udune\Desktop\WPF\ch19 캔버스\obj\Debug\net8.0-windows\ref\ch19 캔버스.dll
+C:\Users\udune\Desktop\WPF\ch19 캔버스\obj\Debug\net8.0-windows\ch19 캔버스.sourcelink.json
