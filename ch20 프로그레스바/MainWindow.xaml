@@ -1,8 +1,3 @@
-﻿<!-- 
-    ch20 프로그레스바 - WPF ProgressBar 컨트롤의 다양한 기능을 보여주는 예제 파일
-    ProgressBar는 작업의 진행 상태를 시각적으로 표시하는 컨트롤입니다.
-    파일 다운로드, 설치, 데이터 처리 등 시간이 걸리는 작업의 진행률을 사용자에게 알려줍니다.
--->
 <Window x:Class="ch20_프로그레스바.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
@@ -10,374 +5,438 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ch20_프로그레스바"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <StackPanel>
-        <!-- 
-            ProgressBar: 작업 진행 상태를 표시하는 컨트롤
-            진행률을 시각적으로 표현
-        -->
-        <ProgressBar Height="20" Value="50"
-                     Minimum="0" Maximum="100"
-                     IsIndeterminate="True"></ProgressBar>
-        <!-- 
-            ProgressBar 기본 개념:
-            - 작업의 진행 상태를 시각적으로 표시
-            - 두 가지 모드: Determinate(확정적), Indeterminate(불확정적)
-            - 수평(기본) 또는 수직 방향 지원
-            - Minimum ~ Maximum 범위에서 Value로 진행률 표시
-            
-            ProgressBar의 주요 속성:
-            
-            Height="20":
-            - ProgressBar의 높이
-            - 일반적으로 20~30픽셀 사용
-            
-            Value="50":
-            - 현재 진행 값
-            - Minimum과 Maximum 사이의 값
-            - 50 = 50% 진행 (Minimum=0, Maximum=100일 때)
-            
-            Minimum="0":
-            - 최소값 (진행 시작 지점)
-            - 기본값: 0
-            - 음수 값도 가능
-            
-            Maximum="100":
-            - 최대값 (진행 완료 지점)
-            - 기본값: 100
-            - Value가 Maximum에 도달하면 100% 완료
-            
-            IsIndeterminate="True":
-            - 불확정적 모드 (진행률을 알 수 없을 때)
-            - True: 애니메이션 표시 (계속 움직임)
-            - False: 정확한 진행률 표시 (기본값)
-            
-            진행률 계산:
-            진행률(%) = (Value - Minimum) / (Maximum - Minimum) × 100
-            
-            예: Value=50, Minimum=0, Maximum=100
-            진행률 = (50 - 0) / (100 - 0) × 100 = 50%
-            
-            Determinate vs Indeterminate 모드:
-            
-            Determinate (확정적):
-            - IsIndeterminate="False" (기본값)
-            - 정확한 진행률을 알 때 사용
-            - Value로 진행 상태 표시
-            - 예: 파일 다운로드 (50MB 중 25MB 완료)
-            
-            시각적 표현:
-            ┌──────────────────────┐
-            │████████░░░░░░░░░░░░░░│ 50%
-            └──────────────────────┘
-            
-            Indeterminate (불확정적):
-            - IsIndeterminate="True"
-            - 진행률을 알 수 없을 때 사용
-            - 계속 움직이는 애니메이션
-            - Value 값 무시됨
-            - 예: 서버 연결 대기, 검색 중
-            
-            시각적 표현:
-            ┌──────────────────────┐
-            │░░░░████████░░░░░░░░░░│ ← 애니메이션
-            └──────────────────────┘
-            
-            주의: IsIndeterminate="True"이면 Value="50"은 무시됩니다.
-            위 예제에서는 불확정 애니메이션이 표시됩니다.
-        -->
+        Title="ch20 ProgressBar 튜토리얼" Height="600" Width="850">
 
-        <Separator></Separator>
-        <!-- 
-            Separator: 구분선
-            UI 요소들을 시각적으로 구분
-        -->
-        
-        <!-- 버튼 클릭으로 ProgressBar 값 증가 -->
-        <Button Click="Button_Click">버튼</Button>
-        <!-- 
-            Button:
-            - 클릭 이벤트로 ProgressBar의 Value 증가
-            - Button_Click 이벤트 핸들러 (코드 비하인드)
-            - 클릭할 때마다 pb.Value += 10
-        -->
-        
-        <!-- ProgressBar와 퍼센트 표시가 겹쳐진 구조 -->
-        <Grid>
-            <!-- 
-                Grid:
-                - ProgressBar와 TextBlock을 겹쳐서 배치
-                - TextBlock이 ProgressBar 위에 표시됨
-            -->
-            
-            <!-- 실제 ProgressBar -->
-            <ProgressBar Name="pb" Height="20" Maximum="100"></ProgressBar>
-            <!-- 
-                ProgressBar 속성:
-                
-                Name="pb":
-                - 코드 비하인드에서 접근하기 위한 이름
-                - Button_Click에서 pb.Value += 10 사용
-                
-                Height="20":
-                - ProgressBar 높이
-                
-                Maximum="100":
-                - 최대값 100
-                - Minimum은 기본값 0
-                - 0~100 범위 (퍼센트 표시에 적합)
-                
-                IsIndeterminate 생략:
-                - 기본값 False
-                - Determinate 모드 (정확한 진행률 표시)
-                
-                Value 생략:
-                - 초기값 0 (0%)
-                - 버튼 클릭으로 10씩 증가
-            -->
-            
-            <!-- 진행률을 텍스트로 표시 -->
-            <TextBlock HorizontalAlignment="Center" Text="{Binding ElementName=pb, Path=Value, StringFormat= {}{0:0}%}"></TextBlock>
-            <!-- 
-                TextBlock:
-                - ProgressBar 위에 퍼센트 텍스트 표시
-                - 중앙 정렬로 ProgressBar 중간에 위치
-                
-                HorizontalAlignment="Center":
-                - 수평 중앙 정렬
-                - ProgressBar의 중앙에 텍스트 배치
-                
-                Text 데이터 바인딩:
-                {Binding ElementName=pb, Path=Value, StringFormat= {}{0:0}%}
-                
-                데이터 바인딩 구성요소:
-                
-                1. ElementName="pb":
-                   - 바인딩 소스 지정
-                   - "pb"라는 이름의 ProgressBar에 바인딩
-                
-                2. Path=Value:
-                   - ProgressBar의 Value 속성에 바인딩
-                   - pb.Value가 변경되면 자동으로 텍스트 업데이트
-                
-                3. StringFormat= {}{0:0}%:
-                   - 값을 문자열로 포맷팅
-                   - {}는 XAML 이스케이프 (중괄호 사용을 위해)
-                   - {0:0}: 소수점 없이 정수로 표시
-                   - %: 퍼센트 기호 추가
-                
-                예시:
-                - pb.Value = 0  → "0%"
-                - pb.Value = 25 → "25%"
-                - pb.Value = 50 → "50%"
-                - pb.Value = 75 → "75%"
-                - pb.Value = 100 → "100%"
-                
-                StringFormat 포맷 옵션:
-                - {0:0}: 정수 (50.5 → 50)
-                - {0:0.0}: 소수점 1자리 (50.5 → 50.5)
-                - {0:0.00}: 소수점 2자리 (50.5 → 50.50)
-                - {0:P}: 퍼센트 (0.5 → 50%)
-                - {0:N0}: 천단위 구분 (1234 → 1,234)
-                
-                자동 업데이트:
-                버튼 클릭 → pb.Value 증가 → 바인딩으로 TextBlock 자동 업데이트
-                
-                시각적 결과:
-                ┌──────────────────────┐
-                │████████░░░░░░  50%  │ ← TextBlock이 위에 표시
-                └──────────────────────┘
-            -->
-        </Grid>
-    </StackPanel>
-    
-    <!--
-        ProgressBar 추가 기능 및 활용:
-        
-        1. 기본 Determinate ProgressBar:
-           <ProgressBar Height="20" 
-                        Minimum="0" 
-                        Maximum="100" 
-                        Value="50"/>
-           
-           결과: 50% 진행 상태
-        
-        2. Indeterminate ProgressBar (로딩 중):
-           <ProgressBar Height="20" 
-                        IsIndeterminate="True"/>
-           
-           결과: 계속 움직이는 애니메이션
-        
-        3. 수직 ProgressBar:
-           <ProgressBar Width="20" 
-                        Height="200" 
-                        Orientation="Vertical"
-                        Value="50" 
-                        Maximum="100"/>
-           
-           주의: Orientation 속성은 직접 지원하지 않음
-           LayoutTransform 사용 필요
-        
-        4. 색상 변경:
-           <ProgressBar Height="20" 
-                        Value="50" 
-                        Maximum="100"
-                        Foreground="Green"
-                        Background="LightGray"/>
-           
-           - Foreground: 진행 바 색상
-           - Background: 배경 색상
-        
-        5. 애니메이션이 있는 진행:
-           코드 비하인드에서 DispatcherTimer 사용
-        
-        6. 부드러운 전환:
-           <ProgressBar Height="20" 
-                        IsIndeterminate="False">
-               <ProgressBar.Triggers>
-                   <EventTrigger RoutedEvent="Loaded">
-                       <BeginStoryboard>
-                           <Storyboard>
-                               <DoubleAnimation 
-                                   Storyboard.TargetProperty="Value"
-                                   From="0" To="100" 
-                                   Duration="0:0:5"/>
-                           </Storyboard>
-                       </BeginStoryboard>
-                   </EventTrigger>
-               </ProgressBar.Triggers>
-           </ProgressBar>
-        
-        실전 활용 예제:
-        
-        1. 파일 다운로드:
-           <ProgressBar Name="downloadProgress" 
-                        Height="20" 
-                        Maximum="100"/>
-           <TextBlock Text="{Binding ElementName=downloadProgress, 
-                                     Path=Value, 
-                                     StringFormat=다운로드 중... {0:0}%}"/>
-        
-        2. 설치 진행:
-           <StackPanel>
-               <TextBlock Text="프로그램 설치 중..."/>
-               <ProgressBar Name="installProgress" 
-                           Height="20" 
-                           Maximum="100"/>
-               <TextBlock Text="{Binding ElementName=installProgress, 
-                                        Path=Value, 
-                                        StringFormat={}{0:0}% 완료}"/>
-           </StackPanel>
-        
-        3. 로딩 화면:
-           <StackPanel HorizontalAlignment="Center" 
-                      VerticalAlignment="Center">
-               <TextBlock Text="로딩 중..." 
-                         HorizontalAlignment="Center" 
-                         Margin="0,0,0,10"/>
-               <ProgressBar Width="200" 
-                           Height="20" 
-                           IsIndeterminate="True"/>
-           </StackPanel>
-        
-        4. 다중 단계 진행:
-           <StackPanel>
-               <TextBlock Text="전체 진행률"/>
-               <ProgressBar Name="overallProgress" Height="20" Maximum="100"/>
-               
-               <TextBlock Text="현재 단계" Margin="0,10,0,0"/>
-               <ProgressBar Name="currentStepProgress" Height="20" Maximum="100"/>
-           </StackPanel>
-        
-        5. 색상 단계별 변경:
-           <ProgressBar Name="coloredProgress" 
-                        Height="20" 
-                        Maximum="100">
-               <ProgressBar.Style>
-                   <Style TargetType="ProgressBar">
-                       <Style.Triggers>
-                           <Trigger Property="Value" Value="100">
-                               <Setter Property="Foreground" Value="Green"/>
-                           </Trigger>
-                           <DataTrigger Binding="{Binding RelativeSource={RelativeSource Self}, Path=Value}" Value="0">
-                               <Setter Property="Foreground" Value="Red"/>
-                           </DataTrigger>
-                       </Style.Triggers>
-                   </Style>
-               </ProgressBar.Style>
-           </ProgressBar>
-        
-        6. 원형 진행바 (커스텀):
-           <Grid Width="100" Height="100">
-               <Ellipse Stroke="LightGray" StrokeThickness="10"/>
-               <Path Stroke="Blue" StrokeThickness="10">
-               </Path>
-               <TextBlock Text="50%" 
-                         HorizontalAlignment="Center" 
-                         VerticalAlignment="Center"/>
-           </Grid>
-        
-        ProgressBar 이벤트:
-        
-        1. ValueChanged:
-           <ProgressBar ValueChanged="ProgressBar_ValueChanged"/>
-           
-           코드:
-           private void ProgressBar_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
-           {
-               // Value가 변경될 때 호출
-           }
-        
-        ProgressBar의 장단점:
-        
-        장점:
-        - 진행 상태를 직관적으로 표시
-        - 사용자에게 작업 진행 중임을 알림
-        - 대기 시간에 대한 불안감 감소
-        - Indeterminate 모드로 불확정적 작업 표시
-        
-        단점:
-        - 정확한 진행률 계산 필요
-        - 부정확한 진행률은 사용자 경험 저하
-        - UI 스레드에서 업데이트 필요
-        
-        모범 사례:
-        
-        1. 정확한 진행률:
-           - 실제 작업 진행과 일치하도록
-           - 예측 가능한 경우에만 Determinate 사용
-        
-        2. 적절한 모드 선택:
-           - 진행률을 알 수 없으면 Indeterminate
-           - 정확한 진행률을 알면 Determinate
-        
-        3. 진행 정보 제공:
-           - 퍼센트와 함께 텍스트 설명
-           - 예: "파일 다운로드 중... 50%"
-        
-        4. 취소 옵션:
-           <StackPanel>
-               <ProgressBar Name="cancelableProgress" Height="20"/>
-               <Button Content="취소" Click="Cancel_Click"/>
-           </StackPanel>
-        
-        5. 예상 시간 표시:
-           <StackPanel>
-               <ProgressBar Name="timeProgress" Height="20"/>
-               <TextBlock Text="예상 남은 시간: 2분 30초"/>
-           </StackPanel>
-        
-        성능 고려사항:
-        - UI 스레드에서 Value 업데이트
-        - 너무 빈번한 업데이트 피하기
-        - 백그라운드 작업은 Task 사용
-        - IProgress<T>로 진행 보고
-        
-        접근성:
-        - AutomationProperties로 스크린 리더 지원
-        - 텍스트 진행률 함께 제공
-        
-        예:
-        <ProgressBar AutomationProperties.Name="다운로드 진행률"/>
-    -->
+    <Window.Resources>
+        <Style x:Key="CodeExpanderStyle" TargetType="Expander">
+            <Setter Property="Header" Value="코드 보기"/>
+            <Setter Property="Margin" Value="0,0,0,12"/>
+            <Setter Property="IsExpanded" Value="False"/>
+        </Style>
+        <Style x:Key="CodeTextBoxStyle" TargetType="TextBox">
+            <Setter Property="IsReadOnly" Value="True"/>
+            <Setter Property="FontFamily" Value="Consolas"/>
+            <Setter Property="FontSize" Value="12"/>
+            <Setter Property="Background" Value="#1E1E1E"/>
+            <Setter Property="Foreground" Value="#DCDCDC"/>
+            <Setter Property="Padding" Value="10"/>
+            <Setter Property="TextWrapping" Value="Wrap"/>
+            <Setter Property="AcceptsReturn" Value="True"/>
+            <Setter Property="VerticalScrollBarVisibility" Value="Auto"/>
+            <Setter Property="MaxHeight" Value="300"/>
+            <Setter Property="BorderBrush" Value="#333333"/>
+            <Setter Property="BorderThickness" Value="1"/>
+        </Style>
+    </Window.Resources>
+
+    <TabControl>
+        <!-- 탭 1: 기본 사용법 -->
+        <TabItem Header="기본 사용법">
+            <ScrollViewer VerticalScrollBarVisibility="Auto" Padding="20">
+                <StackPanel>
+                    <TextBlock Text="ProgressBar 기본 사용법" FontSize="18" FontWeight="Bold" Margin="0,0,0,15"/>
+
+                    <TextBlock Text="ProgressBar는 작업의 진행 상태를 시각적으로 표시하는 컨트롤입니다. Value, Minimum, Maximum 속성으로 진행률을 설정합니다."
+                               TextWrapping="Wrap" Margin="0,0,0,15"/>
+
+                    <!-- 예제 1: 기본 ProgressBar -->
+                    <GroupBox Header="기본 ProgressBar" Margin="0,0,0,15">
+                        <StackPanel>
+                            <TextBlock Text="Value=30 (기본 범위 0~100)" Margin="0,0,0,5"/>
+                            <ProgressBar Height="25" Value="30" Margin="0,0,0,10"/>
+
+                            <TextBlock Text="Value=75" Margin="0,0,0,5"/>
+                            <ProgressBar Height="25" Value="75" Margin="0,0,0,10"/>
+
+                            <TextBlock Text="Value=100 (완료)" Margin="0,0,0,5"/>
+                            <ProgressBar Height="25" Value="100"/>
+                            <Expander Style="{StaticResource CodeExpanderStyle}">
+                                <TextBox Style="{StaticResource CodeTextBoxStyle}"
+                                         Text="&lt;ProgressBar Height=&quot;25&quot; Value=&quot;30&quot;/&gt;&#10;&lt;ProgressBar Height=&quot;25&quot; Value=&quot;75&quot;/&gt;&#10;&lt;ProgressBar Height=&quot;25&quot; Value=&quot;100&quot;/&gt;"/>
+                            </Expander>
+                        </StackPanel>
+                    </GroupBox>
+
+                    <!-- 예제 2: Minimum과 Maximum -->
+                    <GroupBox Header="Minimum과 Maximum 설정" Margin="0,0,0,15">
+                        <StackPanel>
+                            <TextBlock Text="Minimum=0, Maximum=200, Value=150" Margin="0,0,0,5"/>
+                            <ProgressBar Height="25" Minimum="0" Maximum="200" Value="150" Margin="0,0,0,10"/>
+
+                            <TextBlock Text="Minimum=50, Maximum=150, Value=100 (50%)" Margin="0,0,0,5"/>
+                            <ProgressBar Height="25" Minimum="50" Maximum="150" Value="100"/>
+                            <Expander Style="{StaticResource CodeExpanderStyle}">
+                                <TextBox Style="{StaticResource CodeTextBoxStyle}"
+                                         Text="&lt;!-- 0~200 범위에서 150 (75%) --&gt;&#10;&lt;ProgressBar Height=&quot;25&quot; Minimum=&quot;0&quot; Maximum=&quot;200&quot; Value=&quot;150&quot;/&gt;&#10;&#10;&lt;!-- 50~150 범위에서 100 (50%) --&gt;&#10;&lt;ProgressBar Height=&quot;25&quot; Minimum=&quot;50&quot; Maximum=&quot;150&quot; Value=&quot;100&quot;/&gt;"/>
+                            </Expander>
+                        </StackPanel>
+                    </GroupBox>
+
+                    <!-- 예제 3: 코드로 값 변경 -->
+                    <GroupBox Header="코드로 값 변경" Margin="0,0,0,15">
+                        <StackPanel>
+                            <ProgressBar x:Name="basicProgressBar" Height="25" Value="0" Maximum="100" Margin="0,0,0,10"/>
+                            <StackPanel Orientation="Horizontal">
+                                <Button Content="+10" Click="IncreaseValue_Click" Padding="15,5" Margin="0,0,10,0"/>
+                                <Button Content="-10" Click="DecreaseValue_Click" Padding="15,5" Margin="0,0,10,0"/>
+                                <Button Content="초기화" Click="ResetValue_Click" Padding="15,5"/>
+                            </StackPanel>
+                            <Expander Style="{StaticResource CodeExpanderStyle}">
+                                <TextBox Style="{StaticResource CodeTextBoxStyle}"
+                                         Text="&lt;!-- XAML --&gt;&#10;&lt;ProgressBar x:Name=&quot;basicProgressBar&quot; Height=&quot;25&quot;&#10;             Value=&quot;0&quot; Maximum=&quot;100&quot;/&gt;&#10;&lt;Button Content=&quot;+10&quot; Click=&quot;IncreaseValue_Click&quot;/&gt;&#10;&#10;// C# 코드비하인드&#10;private void IncreaseValue_Click(object sender, RoutedEventArgs e)&#10;{&#10;    if (basicProgressBar.Value &lt; basicProgressBar.Maximum)&#10;        basicProgressBar.Value += 10;&#10;}&#10;private void DecreaseValue_Click(object sender, RoutedEventArgs e)&#10;{&#10;    if (basicProgressBar.Value &gt; basicProgressBar.Minimum)&#10;        basicProgressBar.Value -= 10;&#10;}"/>
+                            </Expander>
+                        </StackPanel>
+                    </GroupBox>
+                </StackPanel>
+            </ScrollViewer>
+        </TabItem>
+
+        <!-- 탭 2: 진행 모드 -->
+        <TabItem Header="진행 모드">
+            <ScrollViewer VerticalScrollBarVisibility="Auto" Padding="20">
+                <StackPanel>
+                    <TextBlock Text="ProgressBar 진행 모드" FontSize="18" FontWeight="Bold" Margin="0,0,0,15"/>
+
+                    <TextBlock Text="ProgressBar는 두 가지 모드로 동작합니다: 확정적(Determinate) 모드와 불확정(Indeterminate) 모드입니다."
+                               TextWrapping="Wrap" Margin="0,0,0,15"/>
+
+                    <!-- 예제 1: 확정적 모드 -->
+                    <GroupBox Header="확정적 모드 (Determinate)" Margin="0,0,0,15">
+                        <StackPanel>
+                            <TextBlock Text="진행률을 정확히 알 수 있을 때 사용합니다. IsIndeterminate=False (기본값)"
+                                       TextWrapping="Wrap" Margin="0,0,0,10"/>
+                            <ProgressBar Height="25" Value="65" IsIndeterminate="False"/>
+                            <Expander Style="{StaticResource CodeExpanderStyle}">
+                                <TextBox Style="{StaticResource CodeTextBoxStyle}"
+                                         Text="&lt;!-- 확정적 모드 (기본값) --&gt;&#10;&lt;ProgressBar Height=&quot;25&quot; Value=&quot;65&quot; IsIndeterminate=&quot;False&quot;/&gt;"/>
+                            </Expander>
+                        </StackPanel>
+                    </GroupBox>
+
+                    <!-- 예제 2: 불확정 모드 -->
+                    <GroupBox Header="불확정 모드 (Indeterminate)" Margin="0,0,0,15">
+                        <StackPanel>
+                            <TextBlock Text="진행률을 알 수 없을 때 사용합니다. 애니메이션이 계속 반복됩니다."
+                                       TextWrapping="Wrap" Margin="0,0,0,10"/>
+                            <ProgressBar Height="25" IsIndeterminate="True"/>
+                            <Expander Style="{StaticResource CodeExpanderStyle}">
+                                <TextBox Style="{StaticResource CodeTextBoxStyle}"
+                                         Text="&lt;!-- 불확정 모드 - 진행률을 알 수 없을 때 --&gt;&#10;&lt;ProgressBar Height=&quot;25&quot; IsIndeterminate=&quot;True&quot;/&gt;"/>
+                            </Expander>
+                        </StackPanel>
+                    </GroupBox>
+
+                    <!-- 예제 3: 모드 전환 -->
+                    <GroupBox Header="모드 전환" Margin="0,0,0,15">
+                        <StackPanel>
+                            <ProgressBar x:Name="modeProgressBar" Height="25" Value="50" Margin="0,0,0,10"/>
+                            <StackPanel Orientation="Horizontal">
+                                <Button Content="확정 모드" Click="SetDeterminate_Click" Padding="15,5" Margin="0,0,10,0"/>
+                                <Button Content="불확정 모드" Click="SetIndeterminate_Click" Padding="15,5"/>
+                            </StackPanel>
+                            <Expander Style="{StaticResource CodeExpanderStyle}">
+                                <TextBox Style="{StaticResource CodeTextBoxStyle}"
+                                         Text="&lt;!-- XAML --&gt;&#10;&lt;ProgressBar x:Name=&quot;modeProgressBar&quot; Height=&quot;25&quot; Value=&quot;50&quot;/&gt;&#10;&#10;// C# 코드비하인드&#10;private void SetDeterminate_Click(object sender, RoutedEventArgs e)&#10;{&#10;    modeProgressBar.IsIndeterminate = false;&#10;}&#10;private void SetIndeterminate_Click(object sender, RoutedEventArgs e)&#10;{&#10;    modeProgressBar.IsIndeterminate = true;&#10;}"/>
+                            </Expander>
+                        </StackPanel>
+                    </GroupBox>
+
+                    <!-- 예제 4: 사용 시나리오 -->
+                    <GroupBox Header="사용 시나리오" Margin="0,0,0,15">
+                        <StackPanel>
+                            <TextBlock TextWrapping="Wrap" Margin="0,0,0,10">
+                                <Run FontWeight="Bold">확정적 모드 사용:</Run>
+                                <LineBreak/>• 파일 다운로드 (전체 크기를 알 때)
+                                <LineBreak/>• 파일 복사/이동
+                                <LineBreak/>• 설치 진행률
+                                <LineBreak/>
+                                <LineBreak/><Run FontWeight="Bold">불확정 모드 사용:</Run>
+                                <LineBreak/>• 서버 연결 대기
+                                <LineBreak/>• 검색 중
+                                <LineBreak/>• 로딩 중 (완료 시점을 모를 때)
+                            </TextBlock>
+                        </StackPanel>
+                    </GroupBox>
+                </StackPanel>
+            </ScrollViewer>
+        </TabItem>
+
+        <!-- 탭 3: 스타일과 색상 -->
+        <TabItem Header="스타일과 색상">
+            <ScrollViewer VerticalScrollBarVisibility="Auto" Padding="20">
+                <StackPanel>
+                    <TextBlock Text="스타일과 색상" FontSize="18" FontWeight="Bold" Margin="0,0,0,15"/>
+
+                    <!-- 예제 1: Foreground 색상 -->
+                    <GroupBox Header="Foreground (진행 막대 색상)" Margin="0,0,0,15">
+                        <StackPanel>
+                            <TextBlock Text="Green" Margin="0,0,0,3"/>
+                            <ProgressBar Height="25" Value="70" Foreground="Green" Margin="0,0,0,10"/>
+
+                            <TextBlock Text="Orange" Margin="0,0,0,3"/>
+                            <ProgressBar Height="25" Value="70" Foreground="Orange" Margin="0,0,0,10"/>
+
+                            <TextBlock Text="Red" Margin="0,0,0,3"/>
+                            <ProgressBar Height="25" Value="70" Foreground="Red" Margin="0,0,0,10"/>
+
+                            <TextBlock Text="LinearGradientBrush" Margin="0,0,0,3"/>
+                            <ProgressBar Height="25" Value="70">
+                                <ProgressBar.Foreground>
+                                    <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+                                        <GradientStop Color="Yellow" Offset="0"/>
+                                        <GradientStop Color="Orange" Offset="0.5"/>
+                                        <GradientStop Color="Red" Offset="1"/>
+                                    </LinearGradientBrush>
+                                </ProgressBar.Foreground>
+                            </ProgressBar>
+                            <Expander Style="{StaticResource CodeExpanderStyle}">
+                                <TextBox Style="{StaticResource CodeTextBoxStyle}"
+                                         Text="&lt;ProgressBar Height=&quot;25&quot; Value=&quot;70&quot; Foreground=&quot;Green&quot;/&gt;&#10;&lt;ProgressBar Height=&quot;25&quot; Value=&quot;70&quot; Foreground=&quot;Orange&quot;/&gt;&#10;&lt;ProgressBar Height=&quot;25&quot; Value=&quot;70&quot; Foreground=&quot;Red&quot;/&gt;&#10;&#10;&lt;!-- 그라데이션 --&gt;&#10;&lt;ProgressBar Height=&quot;25&quot; Value=&quot;70&quot;&gt;&#10;    &lt;ProgressBar.Foreground&gt;&#10;        &lt;LinearGradientBrush StartPoint=&quot;0,0&quot; EndPoint=&quot;1,0&quot;&gt;&#10;            &lt;GradientStop Color=&quot;Yellow&quot; Offset=&quot;0&quot;/&gt;&#10;            &lt;GradientStop Color=&quot;Orange&quot; Offset=&quot;0.5&quot;/&gt;&#10;            &lt;GradientStop Color=&quot;Red&quot; Offset=&quot;1&quot;/&gt;&#10;        &lt;/LinearGradientBrush&gt;&#10;    &lt;/ProgressBar.Foreground&gt;&#10;&lt;/ProgressBar&gt;"/>
+                            </Expander>
+                        </StackPanel>
+                    </GroupBox>
+
+                    <!-- 예제 2: Background 색상 -->
+                    <GroupBox Header="Background (배경 색상)" Margin="0,0,0,15">
+                        <StackPanel>
+                            <ProgressBar Height="25" Value="60" Background="LightGray" Foreground="DodgerBlue" Margin="0,0,0,10"/>
+                            <ProgressBar Height="25" Value="60" Background="#333333" Foreground="LimeGreen" Margin="0,0,0,10"/>
+                            <ProgressBar Height="25" Value="60" Background="LightPink" Foreground="DeepPink"/>
+                            <Expander Style="{StaticResource CodeExpanderStyle}">
+                                <TextBox Style="{StaticResource CodeTextBoxStyle}"
+                                         Text="&lt;ProgressBar Height=&quot;25&quot; Value=&quot;60&quot;&#10;             Background=&quot;LightGray&quot; Foreground=&quot;DodgerBlue&quot;/&gt;&#10;&lt;ProgressBar Height=&quot;25&quot; Value=&quot;60&quot;&#10;             Background=&quot;#333333&quot; Foreground=&quot;LimeGreen&quot;/&gt;&#10;&lt;ProgressBar Height=&quot;25&quot; Value=&quot;60&quot;&#10;             Background=&quot;LightPink&quot; Foreground=&quot;DeepPink&quot;/&gt;"/>
+                            </Expander>
+                        </StackPanel>
+                    </GroupBox>
+
+                    <!-- 예제 3: 높이와 테두리 -->
+                    <GroupBox Header="높이와 테두리" Margin="0,0,0,15">
+                        <StackPanel>
+                            <TextBlock Text="Height=10 (얇은)" Margin="0,0,0,3"/>
+                            <ProgressBar Height="10" Value="50" Margin="0,0,0,10"/>
+
+                            <TextBlock Text="Height=30 (기본)" Margin="0,0,0,3"/>
+                            <ProgressBar Height="30" Value="50" Margin="0,0,0,10"/>
+
+                            <TextBlock Text="Height=40, BorderBrush, BorderThickness" Margin="0,0,0,3"/>
+                            <ProgressBar Height="40" Value="50" BorderBrush="Navy" BorderThickness="2"/>
+                            <Expander Style="{StaticResource CodeExpanderStyle}">
+                                <TextBox Style="{StaticResource CodeTextBoxStyle}"
+                                         Text="&lt;ProgressBar Height=&quot;10&quot; Value=&quot;50&quot;/&gt;&#10;&lt;ProgressBar Height=&quot;30&quot; Value=&quot;50&quot;/&gt;&#10;&lt;ProgressBar Height=&quot;40&quot; Value=&quot;50&quot;&#10;             BorderBrush=&quot;Navy&quot; BorderThickness=&quot;2&quot;/&gt;"/>
+                            </Expander>
+                        </StackPanel>
+                    </GroupBox>
+
+                    <!-- 예제 4: 상태별 색상 -->
+                    <GroupBox Header="상태별 색상 변경" Margin="0,0,0,15">
+                        <StackPanel>
+                            <ProgressBar x:Name="statusProgressBar" Height="30" Value="50" Margin="0,0,0,10"/>
+                            <Slider x:Name="statusSlider" Minimum="0" Maximum="100" Value="50"
+                                    ValueChanged="StatusSlider_ValueChanged"/>
+                            <TextBlock x:Name="statusText" Text="50% - 진행 중" Margin="0,5,0,0"/>
+                            <Expander Style="{StaticResource CodeExpanderStyle}">
+                                <TextBox Style="{StaticResource CodeTextBoxStyle}"
+                                         Text="// C# 코드비하인드 - 값에 따라 색상 변경&#10;private void StatusSlider_ValueChanged(object sender, RoutedEventArgs e)&#10;{&#10;    double value = statusSlider.Value;&#10;    statusProgressBar.Value = value;&#10;&#10;    if (value &lt; 30)&#10;    {&#10;        statusProgressBar.Foreground = Brushes.Red;&#10;        statusText.Text = $&quot;{value:0}% - 위험&quot;;&#10;    }&#10;    else if (value &lt; 70)&#10;    {&#10;        statusProgressBar.Foreground = Brushes.Orange;&#10;        statusText.Text = $&quot;{value:0}% - 진행 중&quot;;&#10;    }&#10;    else&#10;    {&#10;        statusProgressBar.Foreground = Brushes.Green;&#10;        statusText.Text = $&quot;{value:0}% - 양호&quot;;&#10;    }&#10;}"/>
+                            </Expander>
+                        </StackPanel>
+                    </GroupBox>
+                </StackPanel>
+            </ScrollViewer>
+        </TabItem>
+
+        <!-- 탭 4: 값 표시 -->
+        <TabItem Header="값 표시">
+            <ScrollViewer VerticalScrollBarVisibility="Auto" Padding="20">
+                <StackPanel>
+                    <TextBlock Text="ProgressBar와 값 표시" FontSize="18" FontWeight="Bold" Margin="0,0,0,15"/>
+
+                    <TextBlock Text="ProgressBar 자체는 텍스트를 표시하지 않습니다. Grid를 사용하여 TextBlock을 겹쳐 값을 표시할 수 있습니다."
+                               TextWrapping="Wrap" Margin="0,0,0,15"/>
+
+                    <!-- 예제 1: 기본 값 표시 -->
+                    <GroupBox Header="퍼센트 표시" Margin="0,0,0,15">
+                        <StackPanel>
+                            <Grid Margin="0,0,0,10">
+                                <ProgressBar x:Name="percentBar1" Height="30" Value="75"/>
+                                <TextBlock Text="{Binding ElementName=percentBar1, Path=Value, StringFormat={}{0:0}%}"
+                                           HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            </Grid>
+                            <Expander Style="{StaticResource CodeExpanderStyle}">
+                                <TextBox Style="{StaticResource CodeTextBoxStyle}"
+                                         Text="&lt;Grid&gt;&#10;    &lt;ProgressBar x:Name=&quot;percentBar1&quot; Height=&quot;30&quot; Value=&quot;75&quot;/&gt;&#10;    &lt;TextBlock Text=&quot;{Binding ElementName=percentBar1,&#10;               Path=Value, StringFormat={}{0:0}%}&quot;&#10;               HorizontalAlignment=&quot;Center&quot;&#10;               VerticalAlignment=&quot;Center&quot;/&gt;&#10;&lt;/Grid&gt;"/>
+                            </Expander>
+                        </StackPanel>
+                    </GroupBox>
+
+                    <!-- 예제 2: 다양한 형식 -->
+                    <GroupBox Header="다양한 표시 형식" Margin="0,0,0,15">
+                        <StackPanel>
+                            <TextBlock Text="정수 퍼센트" Margin="0,0,0,3"/>
+                            <Grid Margin="0,0,0,10">
+                                <ProgressBar Height="25" Value="66.7"/>
+                                <TextBlock Text="67%" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            </Grid>
+
+                            <TextBlock Text="소수점 포함" Margin="0,0,0,3"/>
+                            <Grid Margin="0,0,0,10">
+                                <ProgressBar Height="25" Value="66.7"/>
+                                <TextBlock Text="66.7%" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            </Grid>
+
+                            <TextBlock Text="분수 형식" Margin="0,0,0,3"/>
+                            <Grid Margin="0,0,0,10">
+                                <ProgressBar Height="25" Value="7" Maximum="10"/>
+                                <TextBlock Text="7 / 10" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            </Grid>
+                            <Expander Style="{StaticResource CodeExpanderStyle}">
+                                <TextBox Style="{StaticResource CodeTextBoxStyle}"
+                                         Text="&lt;!-- 정수 퍼센트: StringFormat={}{0:0}% --&gt;&#10;&lt;!-- 소수점 1자리: StringFormat={}{0:0.0}% --&gt;&#10;&lt;!-- 분수 형식: 별도 텍스트 구성 --&gt;&#10;&#10;&lt;Grid&gt;&#10;    &lt;ProgressBar Height=&quot;25&quot; Value=&quot;7&quot; Maximum=&quot;10&quot;/&gt;&#10;    &lt;TextBlock Text=&quot;7 / 10&quot;&#10;               HorizontalAlignment=&quot;Center&quot;/&gt;&#10;&lt;/Grid&gt;"/>
+                            </Expander>
+                        </StackPanel>
+                    </GroupBox>
+
+                    <!-- 예제 3: 스타일링된 값 표시 -->
+                    <GroupBox Header="스타일링된 값 표시" Margin="0,0,0,15">
+                        <StackPanel>
+                            <Grid Margin="0,0,0,10">
+                                <ProgressBar Height="35" Value="85" Foreground="#4CAF50" Background="#E0E0E0"/>
+                                <TextBlock Text="85%" HorizontalAlignment="Center" VerticalAlignment="Center"
+                                           FontSize="14" FontWeight="Bold" Foreground="White">
+                                    <TextBlock.Effect>
+                                        <DropShadowEffect ShadowDepth="1" Color="Black" Opacity="0.5"/>
+                                    </TextBlock.Effect>
+                                </TextBlock>
+                            </Grid>
+
+                            <Grid>
+                                <ProgressBar Height="40" Value="60" Foreground="#2196F3"/>
+                                <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Horizontal">
+                                    <TextBlock Text="다운로드 중... " Foreground="#333"/>
+                                    <TextBlock Text="60%" FontWeight="Bold" Foreground="#333"/>
+                                </StackPanel>
+                            </Grid>
+                            <Expander Style="{StaticResource CodeExpanderStyle}">
+                                <TextBox Style="{StaticResource CodeTextBoxStyle}"
+                                         Text="&lt;Grid&gt;&#10;    &lt;ProgressBar Height=&quot;35&quot; Value=&quot;85&quot;&#10;                 Foreground=&quot;#4CAF50&quot; Background=&quot;#E0E0E0&quot;/&gt;&#10;    &lt;TextBlock Text=&quot;85%&quot; FontSize=&quot;14&quot; FontWeight=&quot;Bold&quot;&#10;               Foreground=&quot;White&quot;&gt;&#10;        &lt;TextBlock.Effect&gt;&#10;            &lt;DropShadowEffect ShadowDepth=&quot;1&quot;&#10;                Color=&quot;Black&quot; Opacity=&quot;0.5&quot;/&gt;&#10;        &lt;/TextBlock.Effect&gt;&#10;    &lt;/TextBlock&gt;&#10;&lt;/Grid&gt;"/>
+                            </Expander>
+                        </StackPanel>
+                    </GroupBox>
+
+                    <!-- 예제 4: 동적 값 표시 -->
+                    <GroupBox Header="동적 값 표시" Margin="0,0,0,15">
+                        <StackPanel>
+                            <Grid Margin="0,0,0,10">
+                                <ProgressBar x:Name="dynamicValueBar" Height="30" Value="0" Maximum="100"/>
+                                <TextBlock x:Name="dynamicValueText" Text="0%"
+                                           HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold"/>
+                            </Grid>
+                            <Slider x:Name="valueSlider" Minimum="0" Maximum="100" Value="0"
+                                    ValueChanged="ValueSlider_ValueChanged"/>
+                            <Expander Style="{StaticResource CodeExpanderStyle}">
+                                <TextBox Style="{StaticResource CodeTextBoxStyle}"
+                                         Text="&lt;!-- XAML --&gt;&#10;&lt;Grid&gt;&#10;    &lt;ProgressBar x:Name=&quot;dynamicValueBar&quot; Height=&quot;30&quot;/&gt;&#10;    &lt;TextBlock x:Name=&quot;dynamicValueText&quot; Text=&quot;0%&quot;/&gt;&#10;&lt;/Grid&gt;&#10;&lt;Slider x:Name=&quot;valueSlider&quot;&#10;        ValueChanged=&quot;ValueSlider_ValueChanged&quot;/&gt;&#10;&#10;// C# 코드비하인드&#10;private void ValueSlider_ValueChanged(object sender, RoutedEventArgs e)&#10;{&#10;    dynamicValueBar.Value = valueSlider.Value;&#10;    dynamicValueText.Text = $&quot;{valueSlider.Value:0}%&quot;;&#10;}"/>
+                            </Expander>
+                        </StackPanel>
+                    </GroupBox>
+                </StackPanel>
+            </ScrollViewer>
+        </TabItem>
+
+        <!-- 탭 5: 실용 예제 -->
+        <TabItem Header="실용 예제">
+            <ScrollViewer VerticalScrollBarVisibility="Auto" Padding="20">
+                <StackPanel>
+                    <TextBlock Text="ProgressBar 실용 예제" FontSize="18" FontWeight="Bold" Margin="0,0,0,15"/>
+
+                    <!-- 예제 1: 타이머 기반 진행 -->
+                    <GroupBox Header="타이머 기반 진행" Margin="0,0,0,15">
+                        <StackPanel>
+                            <Grid Margin="0,0,0,10">
+                                <ProgressBar x:Name="timerProgressBar" Height="30" Value="0" Maximum="100"/>
+                                <TextBlock x:Name="timerProgressText" Text="0%"
+                                           HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            </Grid>
+                            <StackPanel Orientation="Horizontal">
+                                <Button Content="시작" Click="StartTimer_Click" Padding="15,5" Margin="0,0,10,0"/>
+                                <Button Content="일시정지" Click="PauseTimer_Click" Padding="15,5" Margin="0,0,10,0"/>
+                                <Button Content="초기화" Click="ResetTimer_Click" Padding="15,5"/>
+                            </StackPanel>
+                            <Expander Style="{StaticResource CodeExpanderStyle}">
+                                <TextBox Style="{StaticResource CodeTextBoxStyle}"
+                                         Text="// C# 코드비하인드&#10;private DispatcherTimer timer;&#10;&#10;private void StartTimer_Click(object sender, RoutedEventArgs e)&#10;{&#10;    if (timer == null)&#10;    {&#10;        timer = new DispatcherTimer();&#10;        timer.Interval = TimeSpan.FromMilliseconds(100);&#10;        timer.Tick += (s, args) =&gt;&#10;        {&#10;            if (timerProgressBar.Value &lt; 100)&#10;            {&#10;                timerProgressBar.Value += 1;&#10;                timerProgressText.Text = $&quot;{timerProgressBar.Value}%&quot;;&#10;            }&#10;            else&#10;                timer.Stop();&#10;        };&#10;    }&#10;    timer.Start();&#10;}"/>
+                            </Expander>
+                        </StackPanel>
+                    </GroupBox>
+
+                    <!-- 예제 2: 파일 다운로드 시뮬레이션 -->
+                    <GroupBox Header="다운로드 시뮬레이션" Margin="0,0,0,15">
+                        <StackPanel>
+                            <TextBlock x:Name="downloadStatusText" Text="대기 중..." Margin="0,0,0,5"/>
+                            <Grid Margin="0,0,0,10">
+                                <ProgressBar x:Name="downloadProgressBar" Height="25" Value="0"/>
+                                <TextBlock x:Name="downloadPercentText" Text=""
+                                           HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            </Grid>
+                            <Button Content="다운로드 시작" Click="StartDownload_Click"
+                                    HorizontalAlignment="Left" Padding="15,5"/>
+                            <Expander Style="{StaticResource CodeExpanderStyle}">
+                                <TextBox Style="{StaticResource CodeTextBoxStyle}"
+                                         Text="// async/await를 사용한 비동기 시뮬레이션&#10;private async void StartDownload_Click(object sender, RoutedEventArgs e)&#10;{&#10;    downloadProgressBar.Value = 0;&#10;    downloadProgressBar.IsIndeterminate = true;&#10;    downloadStatusText.Text = &quot;연결 중...&quot;;&#10;&#10;    await Task.Delay(1000);  // 연결 시뮬레이션&#10;&#10;    downloadProgressBar.IsIndeterminate = false;&#10;    downloadStatusText.Text = &quot;다운로드 중...&quot;;&#10;&#10;    for (int i = 0; i &lt;= 100; i += 5)&#10;    {&#10;        downloadProgressBar.Value = i;&#10;        downloadPercentText.Text = $&quot;{i}%&quot;;&#10;        await Task.Delay(100);&#10;    }&#10;&#10;    downloadStatusText.Text = &quot;완료!&quot;;&#10;}"/>
+                            </Expander>
+                        </StackPanel>
+                    </GroupBox>
+
+                    <!-- 예제 3: 다중 진행률 표시 -->
+                    <GroupBox Header="다중 진행률 표시" Margin="0,0,0,15">
+                        <StackPanel>
+                            <TextBlock Text="파일 1: document.pdf" Margin="0,0,0,3"/>
+                            <Grid Margin="0,0,0,10">
+                                <ProgressBar Height="20" Value="100" Foreground="Green"/>
+                                <TextBlock Text="완료" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="11"/>
+                            </Grid>
+
+                            <TextBlock Text="파일 2: image.png" Margin="0,0,0,3"/>
+                            <Grid Margin="0,0,0,10">
+                                <ProgressBar Height="20" Value="65" Foreground="DodgerBlue"/>
+                                <TextBlock Text="65%" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="11"/>
+                            </Grid>
+
+                            <TextBlock Text="파일 3: video.mp4" Margin="0,0,0,3"/>
+                            <Grid Margin="0,0,0,10">
+                                <ProgressBar Height="20" Value="30" Foreground="Orange"/>
+                                <TextBlock Text="30%" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="11"/>
+                            </Grid>
+
+                            <TextBlock Text="파일 4: data.zip" Margin="0,0,0,3"/>
+                            <Grid>
+                                <ProgressBar Height="20" IsIndeterminate="True"/>
+                                <TextBlock Text="대기 중..." HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="11"/>
+                            </Grid>
+                            <Expander Style="{StaticResource CodeExpanderStyle}">
+                                <TextBox Style="{StaticResource CodeTextBoxStyle}"
+                                         Text="&lt;!-- 완료된 파일 --&gt;&#10;&lt;Grid&gt;&#10;    &lt;ProgressBar Height=&quot;20&quot; Value=&quot;100&quot; Foreground=&quot;Green&quot;/&gt;&#10;    &lt;TextBlock Text=&quot;완료&quot; .../&gt;&#10;&lt;/Grid&gt;&#10;&#10;&lt;!-- 진행 중인 파일 --&gt;&#10;&lt;Grid&gt;&#10;    &lt;ProgressBar Height=&quot;20&quot; Value=&quot;65&quot; Foreground=&quot;DodgerBlue&quot;/&gt;&#10;    &lt;TextBlock Text=&quot;65%&quot; .../&gt;&#10;&lt;/Grid&gt;&#10;&#10;&lt;!-- 대기 중인 파일 --&gt;&#10;&lt;Grid&gt;&#10;    &lt;ProgressBar Height=&quot;20&quot; IsIndeterminate=&quot;True&quot;/&gt;&#10;    &lt;TextBlock Text=&quot;대기 중...&quot; .../&gt;&#10;&lt;/Grid&gt;"/>
+                            </Expander>
+                        </StackPanel>
+                    </GroupBox>
+
+                    <!-- 예제 4: 전체 진행률 -->
+                    <GroupBox Header="전체 진행률 표시" Margin="0,0,0,15">
+                        <StackPanel>
+                            <TextBlock Text="전체 진행률" FontWeight="Bold" Margin="0,0,0,5"/>
+                            <Grid Margin="0,0,0,15">
+                                <ProgressBar Height="35" Value="48" Foreground="#673AB7" Background="#E0E0E0"/>
+                                <TextBlock Text="3 / 6 파일 완료 (48%)"
+                                           HorizontalAlignment="Center" VerticalAlignment="Center"
+                                           FontWeight="Bold"/>
+                            </Grid>
+                            <Expander Style="{StaticResource CodeExpanderStyle}">
+                                <TextBox Style="{StaticResource CodeTextBoxStyle}"
+                                         Text="&lt;!-- 전체 진행률은 개별 파일들의 합산 --&gt;&#10;&lt;Grid&gt;&#10;    &lt;ProgressBar Height=&quot;35&quot; Value=&quot;48&quot;&#10;                 Foreground=&quot;#673AB7&quot; Background=&quot;#E0E0E0&quot;/&gt;&#10;    &lt;TextBlock Text=&quot;3 / 6 파일 완료 (48%)&quot;&#10;               HorizontalAlignment=&quot;Center&quot;&#10;               FontWeight=&quot;Bold&quot;/&gt;&#10;&lt;/Grid&gt;"/>
+                            </Expander>
+                        </StackPanel>
+                    </GroupBox>
+                </StackPanel>
+            </ScrollViewer>
+        </TabItem>
+    </TabControl>
 </Window>
