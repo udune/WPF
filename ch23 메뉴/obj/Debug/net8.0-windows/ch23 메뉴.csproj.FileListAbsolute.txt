@@ -20,3 +20,4 @@ C:\Users\udune\Desktop\WPF\ch23 메뉴\obj\Debug\net8.0-windows\refint\ch23 메�
 C:\Users\udune\Desktop\WPF\ch23 메뉴\obj\Debug\net8.0-windows\ch23 메뉴.pdb
 C:\Users\udune\Desktop\WPF\ch23 메뉴\obj\Debug\net8.0-windows\ch23 메뉴.genruntimeconfig.cache
 C:\Users\udune\Desktop\WPF\ch23 메뉴\obj\Debug\net8.0-windows\ref\ch23 메뉴.dll
+C:\Users\udune\Desktop\WPF\ch23 메뉴\obj\Debug\net8.0-windows\ch23 메뉴.sourcelink.json
