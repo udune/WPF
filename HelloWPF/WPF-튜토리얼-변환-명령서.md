@@ -96,3 +96,4 @@
 | ch16 독패널 | DockPanel | 5 | 완료 |
 | ch17 그리드 | Grid | 5 | 완료 |
 | ch18 유니폼그리드 | UniformGrid | 5 | 완료 |
+| ch19 캔버스 | Canvas | 5 | 완료 |
