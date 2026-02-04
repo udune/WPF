@@ -1,0 +1,20 @@
+C:\Users\udune\Desktop\WPF\ch2 Label\bin\Debug\net8.0-windows\ch2 Label.exe
+C:\Users\udune\Desktop\WPF\ch2 Label\bin\Debug\net8.0-windows\ch2 Label.deps.json
+C:\Users\udune\Desktop\WPF\ch2 Label\bin\Debug\net8.0-windows\ch2 Label.runtimeconfig.json
+C:\Users\udune\Desktop\WPF\ch2 Label\bin\Debug\net8.0-windows\ch2 Label.dll
+C:\Users\udune\Desktop\WPF\ch2 Label\bin\Debug\net8.0-windows\ch2 Label.pdb
+C:\Users\udune\Desktop\WPF\ch2 Label\obj\Debug\net8.0-windows\MainWindow.g.cs
+C:\Users\udune\Desktop\WPF\ch2 Label\obj\Debug\net8.0-windows\App.g.cs
+C:\Users\udune\Desktop\WPF\ch2 Label\obj\Debug\net8.0-windows\ch2 Label_MarkupCompile.cache
+C:\Users\udune\Desktop\WPF\ch2 Label\obj\Debug\net8.0-windows\ch2 Label_MarkupCompile.lref
+C:\Users\udune\Desktop\WPF\ch2 Label\obj\Debug\net8.0-windows\MainWindow.baml
+C:\Users\udune\Desktop\WPF\ch2 Label\obj\Debug\net8.0-windows\ch2 Label.g.resources
+C:\Users\udune\Desktop\WPF\ch2 Label\obj\Debug\net8.0-windows\ch2 Label.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\udune\Desktop\WPF\ch2 Label\obj\Debug\net8.0-windows\ch2 Label.AssemblyInfoInputs.cache
+C:\Users\udune\Desktop\WPF\ch2 Label\obj\Debug\net8.0-windows\ch2 Label.AssemblyInfo.cs
+C:\Users\udune\Desktop\WPF\ch2 Label\obj\Debug\net8.0-windows\ch2 Label.csproj.CoreCompileInputs.cache
+C:\Users\udune\Desktop\WPF\ch2 Label\obj\Debug\net8.0-windows\ch2 Label.dll
+C:\Users\udune\Desktop\WPF\ch2 Label\obj\Debug\net8.0-windows\refint\ch2 Label.dll
+C:\Users\udune\Desktop\WPF\ch2 Label\obj\Debug\net8.0-windows\ch2 Label.pdb
+C:\Users\udune\Desktop\WPF\ch2 Label\obj\Debug\net8.0-windows\ch2 Label.genruntimeconfig.cache
+C:\Users\udune\Desktop\WPF\ch2 Label\obj\Debug\net8.0-windows\ref\ch2 Label.dll

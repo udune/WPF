@@ -1,0 +1,20 @@
+C:\Users\udune\Desktop\WPF\ch21 스테이터스바\bin\Debug\net9.0-windows\ch21 스테이터스바.exe
+C:\Users\udune\Desktop\WPF\ch21 스테이터스바\bin\Debug\net9.0-windows\ch21 스테이터스바.deps.json
+C:\Users\udune\Desktop\WPF\ch21 스테이터스바\bin\Debug\net9.0-windows\ch21 스테이터스바.runtimeconfig.json
+C:\Users\udune\Desktop\WPF\ch21 스테이터스바\bin\Debug\net9.0-windows\ch21 스테이터스바.dll
+C:\Users\udune\Desktop\WPF\ch21 스테이터스바\bin\Debug\net9.0-windows\ch21 스테이터스바.pdb
+C:\Users\udune\Desktop\WPF\ch21 스테이터스바\obj\Debug\net9.0-windows\MainWindow.g.cs
+C:\Users\udune\Desktop\WPF\ch21 스테이터스바\obj\Debug\net9.0-windows\App.g.cs
+C:\Users\udune\Desktop\WPF\ch21 스테이터스바\obj\Debug\net9.0-windows\ch21 스테이터스바_MarkupCompile.cache
+C:\Users\udune\Desktop\WPF\ch21 스테이터스바\obj\Debug\net9.0-windows\ch21 스테이터스바_MarkupCompile.lref
+C:\Users\udune\Desktop\WPF\ch21 스테이터스바\obj\Debug\net9.0-windows\MainWindow.baml
+C:\Users\udune\Desktop\WPF\ch21 스테이터스바\obj\Debug\net9.0-windows\ch21 스테이터스바.g.resources
+C:\Users\udune\Desktop\WPF\ch21 스테이터스바\obj\Debug\net9.0-windows\ch21 스테이터스바.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\udune\Desktop\WPF\ch21 스테이터스바\obj\Debug\net9.0-windows\ch21 스테이터스바.AssemblyInfoInputs.cache
+C:\Users\udune\Desktop\WPF\ch21 스테이터스바\obj\Debug\net9.0-windows\ch21 스테이터스바.AssemblyInfo.cs
+C:\Users\udune\Desktop\WPF\ch21 스테이터스바\obj\Debug\net9.0-windows\ch21 스테이터스바.csproj.CoreCompileInputs.cache
+C:\Users\udune\Desktop\WPF\ch21 스테이터스바\obj\Debug\net9.0-windows\ch21 스테이터스바.dll
+C:\Users\udune\Desktop\WPF\ch21 스테이터스바\obj\Debug\net9.0-windows\refint\ch21 스테이터스바.dll
+C:\Users\udune\Desktop\WPF\ch21 스테이터스바\obj\Debug\net9.0-windows\ch21 스테이터스바.pdb
+C:\Users\udune\Desktop\WPF\ch21 스테이터스바\obj\Debug\net9.0-windows\ch21 스테이터스바.genruntimeconfig.cache
+C:\Users\udune\Desktop\WPF\ch21 스테이터스바\obj\Debug\net9.0-windows\ref\ch21 스테이터스바.dll

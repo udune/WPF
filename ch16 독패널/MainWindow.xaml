@@ -1,0 +1,395 @@
+<Window x:Class="ch16_독패널.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="ch16 DockPanel 튜토리얼" Height="600" Width="850">
+
+    <Window.Resources>
+        <Style x:Key="CodeExpanderStyle" TargetType="Expander">
+            <Setter Property="Header" Value="코드 보기"/>
+            <Setter Property="Margin" Value="0,0,0,12"/>
+            <Setter Property="IsExpanded" Value="False"/>
+        </Style>
+        <Style x:Key="CodeTextBoxStyle" TargetType="TextBox">
+            <Setter Property="IsReadOnly" Value="True"/>
+            <Setter Property="FontFamily" Value="Consolas"/>
+            <Setter Property="FontSize" Value="12"/>
+            <Setter Property="Background" Value="#1E1E1E"/>
+            <Setter Property="Foreground" Value="#DCDCDC"/>
+            <Setter Property="Padding" Value="10"/>
+            <Setter Property="TextWrapping" Value="Wrap"/>
+            <Setter Property="AcceptsReturn" Value="True"/>
+            <Setter Property="VerticalScrollBarVisibility" Value="Auto"/>
+            <Setter Property="MaxHeight" Value="300"/>
+            <Setter Property="BorderBrush" Value="#333333"/>
+            <Setter Property="BorderThickness" Value="1"/>
+        </Style>
+        <Style x:Key="DemoButtonStyle" TargetType="Button">
+            <Setter Property="Padding" Value="12,6"/>
+            <Setter Property="Margin" Value="4"/>
+        </Style>
+    </Window.Resources>
+
+    <TabControl>
+
+        <!-- 탭1: 기본 사용법 -->
+        <TabItem Header="기본 사용법">
+            <ScrollViewer VerticalScrollBarVisibility="Auto" Padding="16">
+                <StackPanel>
+
+                    <TextBlock Text="DockPanel 기본 사용법" FontSize="18" FontWeight="Bold" Margin="0,0,0,12"/>
+                    <TextBlock Text="DockPanel은 자식 요소를 부모의 가장자리(Top, Bottom, Left, Right)에 도킹시키는 레이아웃 패널입니다." TextWrapping="Wrap" Margin="0,0,0,12"/>
+
+                    <!-- 기본 도킹 -->
+                    <GroupBox Header="기본 Dock 방향" Margin="0,0,0,8">
+                        <DockPanel Height="180" Background="#F5F5F5">
+                            <Button DockPanel.Dock="Top" Background="#BBDEFB" Padding="8,6">Top (상단)</Button>
+                            <Button DockPanel.Dock="Bottom" Background="#C8E6C9" Padding="8,6">Bottom (하단)</Button>
+                            <Button DockPanel.Dock="Left" Background="#FFE0B2" Padding="8,6">Left&#10;(좌)</Button>
+                            <Button DockPanel.Dock="Right" Background="#E1BEE7" Padding="8,6">Right&#10;(우)</Button>
+                            <Border Background="#FFFDE7">
+                                <TextBlock Text="Center (마지막 자식)" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            </Border>
+                        </DockPanel>
+                    </GroupBox>
+                    <Expander Style="{StaticResource CodeExpanderStyle}">
+                        <TextBox Style="{StaticResource CodeTextBoxStyle}" Text="&lt;DockPanel Height=&quot;180&quot;&gt;&#10;    &lt;Button DockPanel.Dock=&quot;Top&quot;&gt;Top (상단)&lt;/Button&gt;&#10;    &lt;Button DockPanel.Dock=&quot;Bottom&quot;&gt;Bottom (하단)&lt;/Button&gt;&#10;    &lt;Button DockPanel.Dock=&quot;Left&quot;&gt;Left (좌)&lt;/Button&gt;&#10;    &lt;Button DockPanel.Dock=&quot;Right&quot;&gt;Right (우)&lt;/Button&gt;&#10;    &lt;Border&gt;&#10;        &lt;TextBlock Text=&quot;Center (마지막 자식)&quot;/&gt;&#10;    &lt;/Border&gt;&#10;&lt;/DockPanel&gt;"/>
+                    </Expander>
+
+                    <!-- 같은 방향 여러 개 도킹 -->
+                    <GroupBox Header="같은 방향에 여러 요소 도킹" Margin="0,0,0,8">
+                        <DockPanel Height="160" Background="#F5F5F5">
+                            <Button DockPanel.Dock="Left" Background="#BBDEFB" Padding="8,6">Left 1</Button>
+                            <Button DockPanel.Dock="Left" Background="#90CAF9" Padding="8,6">Left 2</Button>
+                            <Button DockPanel.Dock="Left" Background="#64B5F6" Padding="8,6">Left 3</Button>
+                            <Border Background="#FFFDE7">
+                                <TextBlock Text="남은 공간" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            </Border>
+                        </DockPanel>
+                    </GroupBox>
+                    <Expander Style="{StaticResource CodeExpanderStyle}">
+                        <TextBox Style="{StaticResource CodeTextBoxStyle}" Text="&lt;DockPanel Height=&quot;160&quot;&gt;&#10;    &lt;Button DockPanel.Dock=&quot;Left&quot;&gt;Left 1&lt;/Button&gt;&#10;    &lt;Button DockPanel.Dock=&quot;Left&quot;&gt;Left 2&lt;/Button&gt;&#10;    &lt;Button DockPanel.Dock=&quot;Left&quot;&gt;Left 3&lt;/Button&gt;&#10;    &lt;Border&gt;&#10;        &lt;TextBlock Text=&quot;남은 공간&quot;/&gt;&#10;    &lt;/Border&gt;&#10;&lt;/DockPanel&gt;&#10;&#10;&lt;!-- 같은 방향에 여러 요소를 도킹하면 순서대로 안쪽으로 배치됩니다 --&gt;"/>
+                    </Expander>
+
+                    <!-- Dock 미지정 시 기본값 -->
+                    <GroupBox Header="Dock 미지정 시 기본 동작" Margin="0,0,0,8">
+                        <StackPanel>
+                            <TextBlock Text="DockPanel.Dock을 지정하지 않으면 Left로 기본 배치됩니다." Margin="8" TextWrapping="Wrap"/>
+                            <DockPanel Height="100" Background="#F5F5F5" Margin="8">
+                                <Button Background="#BBDEFB" Padding="8,6">Dock 미지정 (Left)</Button>
+                                <Button Background="#C8E6C9" Padding="8,6">Dock 미지정 (Left)</Button>
+                                <Border Background="#FFFDE7">
+                                    <TextBlock Text="마지막 자식 (Fill)" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                </Border>
+                            </DockPanel>
+                        </StackPanel>
+                    </GroupBox>
+                    <Expander Style="{StaticResource CodeExpanderStyle}">
+                        <TextBox Style="{StaticResource CodeTextBoxStyle}" Text="&lt;DockPanel Height=&quot;100&quot;&gt;&#10;    &lt;!-- DockPanel.Dock 미지정 → 기본값 Left --&gt;&#10;    &lt;Button&gt;Dock 미지정 (Left)&lt;/Button&gt;&#10;    &lt;Button&gt;Dock 미지정 (Left)&lt;/Button&gt;&#10;    &lt;Border&gt;&#10;        &lt;TextBlock Text=&quot;마지막 자식 (Fill)&quot;/&gt;&#10;    &lt;/Border&gt;&#10;&lt;/DockPanel&gt;"/>
+                    </Expander>
+
+                </StackPanel>
+            </ScrollViewer>
+        </TabItem>
+
+        <!-- 탭2: 배치 순서와 LastChildFill -->
+        <TabItem Header="배치 순서 / LastChildFill">
+            <ScrollViewer VerticalScrollBarVisibility="Auto" Padding="16">
+                <StackPanel>
+
+                    <TextBlock Text="배치 순서와 LastChildFill" FontSize="18" FontWeight="Bold" Margin="0,0,0,12"/>
+                    <TextBlock Text="DockPanel에서 자식 요소의 선언 순서는 레이아웃 결과에 큰 영향을 미칩니다." TextWrapping="Wrap" Margin="0,0,0,12"/>
+
+                    <!-- 배치 순서 비교: Top 먼저 -->
+                    <GroupBox Header="Top을 먼저 배치" Margin="0,0,0,8">
+                        <DockPanel Height="150" Background="#F5F5F5">
+                            <Button DockPanel.Dock="Top" Background="#BBDEFB" Padding="6">Top (전체 너비 차지)</Button>
+                            <Button DockPanel.Dock="Left" Background="#FFE0B2" Padding="6" Width="100">Left</Button>
+                            <Border Background="#FFFDE7">
+                                <TextBlock Text="Center" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            </Border>
+                        </DockPanel>
+                    </GroupBox>
+
+                    <!-- 배치 순서 비교: Left 먼저 -->
+                    <GroupBox Header="Left를 먼저 배치" Margin="0,0,0,8">
+                        <DockPanel Height="150" Background="#F5F5F5">
+                            <Button DockPanel.Dock="Left" Background="#FFE0B2" Padding="6" Width="100">Left&#10;(전체 높이)</Button>
+                            <Button DockPanel.Dock="Top" Background="#BBDEFB" Padding="6">Top</Button>
+                            <Border Background="#FFFDE7">
+                                <TextBlock Text="Center" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            </Border>
+                        </DockPanel>
+                    </GroupBox>
+                    <Expander Style="{StaticResource CodeExpanderStyle}">
+                        <TextBox Style="{StaticResource CodeTextBoxStyle}" Text="&lt;!-- Top을 먼저 배치 → Top이 전체 너비 차지 --&gt;&#10;&lt;DockPanel&gt;&#10;    &lt;Button DockPanel.Dock=&quot;Top&quot;&gt;Top&lt;/Button&gt;&#10;    &lt;Button DockPanel.Dock=&quot;Left&quot; Width=&quot;100&quot;&gt;Left&lt;/Button&gt;&#10;    &lt;Border&gt;&lt;TextBlock Text=&quot;Center&quot;/&gt;&lt;/Border&gt;&#10;&lt;/DockPanel&gt;&#10;&#10;&lt;!-- Left를 먼저 배치 → Left가 전체 높이 차지 --&gt;&#10;&lt;DockPanel&gt;&#10;    &lt;Button DockPanel.Dock=&quot;Left&quot; Width=&quot;100&quot;&gt;Left&lt;/Button&gt;&#10;    &lt;Button DockPanel.Dock=&quot;Top&quot;&gt;Top&lt;/Button&gt;&#10;    &lt;Border&gt;&lt;TextBlock Text=&quot;Center&quot;/&gt;&lt;/Border&gt;&#10;&lt;/DockPanel&gt;"/>
+                    </Expander>
+
+                    <!-- LastChildFill=True -->
+                    <GroupBox Header="LastChildFill=True (기본값)" Margin="0,0,0,8">
+                        <DockPanel LastChildFill="True" Height="120" Background="#F5F5F5">
+                            <Button DockPanel.Dock="Left" Background="#FFE0B2" Padding="8,6">Left</Button>
+                            <Button DockPanel.Dock="Right" Background="#E1BEE7" Padding="8,6">Right</Button>
+                            <Border Background="#C8E6C9">
+                                <TextBlock Text="마지막 자식이 남은 공간 전부 채움" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            </Border>
+                        </DockPanel>
+                    </GroupBox>
+
+                    <!-- LastChildFill=False -->
+                    <GroupBox Header="LastChildFill=False" Margin="0,0,0,8">
+                        <DockPanel LastChildFill="False" Height="120" Background="#F5F5F5">
+                            <Button DockPanel.Dock="Left" Background="#FFE0B2" Padding="8,6">Left</Button>
+                            <Button DockPanel.Dock="Right" Background="#E1BEE7" Padding="8,6">Right</Button>
+                            <Button DockPanel.Dock="Left" Background="#BBDEFB" Padding="8,6">마지막도 Left에 도킹</Button>
+                        </DockPanel>
+                    </GroupBox>
+                    <Expander Style="{StaticResource CodeExpanderStyle}">
+                        <TextBox Style="{StaticResource CodeTextBoxStyle}" Text="&lt;!-- LastChildFill=True (기본값) --&gt;&#10;&lt;DockPanel LastChildFill=&quot;True&quot;&gt;&#10;    &lt;Button DockPanel.Dock=&quot;Left&quot;&gt;Left&lt;/Button&gt;&#10;    &lt;Button DockPanel.Dock=&quot;Right&quot;&gt;Right&lt;/Button&gt;&#10;    &lt;Border&gt;&#10;        &lt;TextBlock Text=&quot;남은 공간 전부 채움&quot;/&gt;&#10;    &lt;/Border&gt;&#10;&lt;/DockPanel&gt;&#10;&#10;&lt;!-- LastChildFill=False --&gt;&#10;&lt;DockPanel LastChildFill=&quot;False&quot;&gt;&#10;    &lt;Button DockPanel.Dock=&quot;Left&quot;&gt;Left&lt;/Button&gt;&#10;    &lt;Button DockPanel.Dock=&quot;Right&quot;&gt;Right&lt;/Button&gt;&#10;    &lt;Button DockPanel.Dock=&quot;Left&quot;&gt;마지막도 Left에 도킹&lt;/Button&gt;&#10;&lt;/DockPanel&gt;"/>
+                    </Expander>
+
+                </StackPanel>
+            </ScrollViewer>
+        </TabItem>
+
+        <!-- 탭3: 실용 레이아웃 패턴 -->
+        <TabItem Header="실용 레이아웃 패턴">
+            <ScrollViewer VerticalScrollBarVisibility="Auto" Padding="16">
+                <StackPanel>
+
+                    <TextBlock Text="실용 레이아웃 패턴" FontSize="18" FontWeight="Bold" Margin="0,0,0,12"/>
+                    <TextBlock Text="DockPanel은 전형적인 애플리케이션 레이아웃을 쉽게 구현할 수 있습니다." TextWrapping="Wrap" Margin="0,0,0,12"/>
+
+                    <!-- 앱 레이아웃 -->
+                    <GroupBox Header="전형적인 앱 레이아웃 (메뉴 + 사이드바 + 상태바)" Margin="0,0,0,8">
+                        <DockPanel Height="250" Background="#FAFAFA">
+                            <Border DockPanel.Dock="Top" Background="#1976D2" Padding="8,4">
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="파일" Foreground="White" Margin="0,0,12,0"/>
+                                    <TextBlock Text="편집" Foreground="White" Margin="0,0,12,0"/>
+                                    <TextBlock Text="보기" Foreground="White" Margin="0,0,12,0"/>
+                                    <TextBlock Text="도움말" Foreground="White"/>
+                                </StackPanel>
+                            </Border>
+                            <Border DockPanel.Dock="Top" Background="#42A5F5" Padding="4">
+                                <StackPanel Orientation="Horizontal">
+                                    <Button Content="새로 만들기" Margin="2" Padding="4,2"/>
+                                    <Button Content="열기" Margin="2" Padding="4,2"/>
+                                    <Button Content="저장" Margin="2" Padding="4,2"/>
+                                </StackPanel>
+                            </Border>
+                            <Border DockPanel.Dock="Bottom" Background="#E0E0E0" Padding="6,2">
+                                <TextBlock Text="준비 완료 | 줄 1, 열 1"/>
+                            </Border>
+                            <Border DockPanel.Dock="Left" Background="#E3F2FD" Width="140" Padding="4">
+                                <StackPanel>
+                                    <TextBlock Text="탐색기" FontWeight="Bold" Margin="4"/>
+                                    <TextBlock Text="  프로젝트" Margin="4,2"/>
+                                    <TextBlock Text="    파일1.txt" Margin="4,2"/>
+                                    <TextBlock Text="    파일2.txt" Margin="4,2"/>
+                                    <TextBlock Text="  리소스" Margin="4,2"/>
+                                </StackPanel>
+                            </Border>
+                            <Border Background="White" Padding="12">
+                                <TextBlock Text="메인 콘텐츠 영역&#10;(LastChildFill로 남은 공간 채움)" VerticalAlignment="Center" HorizontalAlignment="Center" TextAlignment="Center"/>
+                            </Border>
+                        </DockPanel>
+                    </GroupBox>
+                    <Expander Style="{StaticResource CodeExpanderStyle}">
+                        <TextBox Style="{StaticResource CodeTextBoxStyle}" Text="&lt;DockPanel&gt;&#10;    &lt;!-- 메뉴바 --&gt;&#10;    &lt;Menu DockPanel.Dock=&quot;Top&quot;&gt;&#10;        &lt;MenuItem Header=&quot;파일&quot;/&gt;&#10;        &lt;MenuItem Header=&quot;편집&quot;/&gt;&#10;    &lt;/Menu&gt;&#10;    &lt;!-- 툴바 --&gt;&#10;    &lt;ToolBar DockPanel.Dock=&quot;Top&quot;&gt;&#10;        &lt;Button Content=&quot;새로 만들기&quot;/&gt;&#10;        &lt;Button Content=&quot;열기&quot;/&gt;&#10;    &lt;/ToolBar&gt;&#10;    &lt;!-- 상태바 --&gt;&#10;    &lt;StatusBar DockPanel.Dock=&quot;Bottom&quot;&gt;&#10;        &lt;TextBlock Text=&quot;준비 완료&quot;/&gt;&#10;    &lt;/StatusBar&gt;&#10;    &lt;!-- 사이드바 --&gt;&#10;    &lt;TreeView DockPanel.Dock=&quot;Left&quot; Width=&quot;140&quot;/&gt;&#10;    &lt;!-- 메인 콘텐츠 (LastChildFill) --&gt;&#10;    &lt;TextBox AcceptsReturn=&quot;True&quot;/&gt;&#10;&lt;/DockPanel&gt;"/>
+                    </Expander>
+
+                    <!-- 대화상자 레이아웃 -->
+                    <GroupBox Header="대화상자 레이아웃 (하단 버튼)" Margin="0,0,0,8">
+                        <DockPanel Height="180" Background="#FAFAFA">
+                            <Border DockPanel.Dock="Bottom" Background="#F0F0F0" Padding="8" BorderBrush="#CCCCCC" BorderThickness="0,1,0,0">
+                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                                    <Button Content="확인" Width="80" Margin="4" Padding="4"/>
+                                    <Button Content="취소" Width="80" Margin="4" Padding="4"/>
+                                </StackPanel>
+                            </Border>
+                            <StackPanel Margin="16">
+                                <TextBlock Text="설정" FontSize="16" FontWeight="Bold" Margin="0,0,0,8"/>
+                                <CheckBox Content="옵션 1: 시작 시 자동 업데이트" Margin="0,4"/>
+                                <CheckBox Content="옵션 2: 알림 표시" Margin="0,4" IsChecked="True"/>
+                                <CheckBox Content="옵션 3: 다크 모드" Margin="0,4"/>
+                            </StackPanel>
+                        </DockPanel>
+                    </GroupBox>
+                    <Expander Style="{StaticResource CodeExpanderStyle}">
+                        <TextBox Style="{StaticResource CodeTextBoxStyle}" Text="&lt;DockPanel&gt;&#10;    &lt;!-- 하단 버튼 영역 --&gt;&#10;    &lt;StackPanel DockPanel.Dock=&quot;Bottom&quot;&#10;               Orientation=&quot;Horizontal&quot;&#10;               HorizontalAlignment=&quot;Right&quot;&#10;               Margin=&quot;10&quot;&gt;&#10;        &lt;Button Content=&quot;확인&quot; Width=&quot;80&quot; Margin=&quot;5&quot;/&gt;&#10;        &lt;Button Content=&quot;취소&quot; Width=&quot;80&quot; Margin=&quot;5&quot;/&gt;&#10;    &lt;/StackPanel&gt;&#10;    &lt;!-- 콘텐츠 영역 --&gt;&#10;    &lt;StackPanel Margin=&quot;16&quot;&gt;&#10;        &lt;TextBlock Text=&quot;설정&quot; FontWeight=&quot;Bold&quot;/&gt;&#10;        &lt;CheckBox Content=&quot;옵션 1&quot;/&gt;&#10;    &lt;/StackPanel&gt;&#10;&lt;/DockPanel&gt;"/>
+                    </Expander>
+
+                    <!-- 양쪽 사이드바 -->
+                    <GroupBox Header="양쪽 사이드바 레이아웃" Margin="0,0,0,8">
+                        <DockPanel Height="160" Background="#FAFAFA">
+                            <Border DockPanel.Dock="Left" Background="#E8EAF6" Width="100" Padding="8">
+                                <StackPanel>
+                                    <TextBlock Text="왼쪽 패널" FontWeight="Bold" Margin="0,0,0,4"/>
+                                    <TextBlock Text="메뉴 1"/>
+                                    <TextBlock Text="메뉴 2"/>
+                                    <TextBlock Text="메뉴 3"/>
+                                </StackPanel>
+                            </Border>
+                            <Border DockPanel.Dock="Right" Background="#FBE9E7" Width="100" Padding="8">
+                                <StackPanel>
+                                    <TextBlock Text="오른쪽 패널" FontWeight="Bold" Margin="0,0,0,4"/>
+                                    <TextBlock Text="속성 1"/>
+                                    <TextBlock Text="속성 2"/>
+                                </StackPanel>
+                            </Border>
+                            <Border Background="White" Padding="12">
+                                <TextBlock Text="중앙 콘텐츠" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            </Border>
+                        </DockPanel>
+                    </GroupBox>
+                    <Expander Style="{StaticResource CodeExpanderStyle}">
+                        <TextBox Style="{StaticResource CodeTextBoxStyle}" Text="&lt;DockPanel&gt;&#10;    &lt;Border DockPanel.Dock=&quot;Left&quot; Width=&quot;100&quot;&gt;&#10;        &lt;StackPanel&gt;&#10;            &lt;TextBlock Text=&quot;왼쪽 패널&quot;/&gt;&#10;        &lt;/StackPanel&gt;&#10;    &lt;/Border&gt;&#10;    &lt;Border DockPanel.Dock=&quot;Right&quot; Width=&quot;100&quot;&gt;&#10;        &lt;StackPanel&gt;&#10;            &lt;TextBlock Text=&quot;오른쪽 패널&quot;/&gt;&#10;        &lt;/StackPanel&gt;&#10;    &lt;/Border&gt;&#10;    &lt;Border&gt;&#10;        &lt;TextBlock Text=&quot;중앙 콘텐츠&quot;/&gt;&#10;    &lt;/Border&gt;&#10;&lt;/DockPanel&gt;"/>
+                    </Expander>
+
+                </StackPanel>
+            </ScrollViewer>
+        </TabItem>
+
+        <!-- 탭4: 스타일과 외관 -->
+        <TabItem Header="스타일과 외관">
+            <ScrollViewer VerticalScrollBarVisibility="Auto" Padding="16">
+                <StackPanel>
+
+                    <TextBlock Text="스타일과 외관" FontSize="18" FontWeight="Bold" Margin="0,0,0,12"/>
+
+                    <!-- Background -->
+                    <GroupBox Header="Background 설정" Margin="0,0,0,8">
+                        <DockPanel Height="120" Background="#E8F5E9">
+                            <Button DockPanel.Dock="Top" Background="#A5D6A7" Padding="6">Top 영역</Button>
+                            <Button DockPanel.Dock="Left" Background="#81C784" Padding="6" Width="80">Left</Button>
+                            <Border Background="#C8E6C9">
+                                <TextBlock Text="DockPanel Background=#E8F5E9" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            </Border>
+                        </DockPanel>
+                    </GroupBox>
+                    <Expander Style="{StaticResource CodeExpanderStyle}">
+                        <TextBox Style="{StaticResource CodeTextBoxStyle}" Text="&lt;DockPanel Background=&quot;#E8F5E9&quot;&gt;&#10;    &lt;Button DockPanel.Dock=&quot;Top&quot;&gt;Top 영역&lt;/Button&gt;&#10;    &lt;Button DockPanel.Dock=&quot;Left&quot; Width=&quot;80&quot;&gt;Left&lt;/Button&gt;&#10;    &lt;Border Background=&quot;#C8E6C9&quot;&gt;&#10;        &lt;TextBlock Text=&quot;중앙&quot;/&gt;&#10;    &lt;/Border&gt;&#10;&lt;/DockPanel&gt;"/>
+                    </Expander>
+
+                    <!-- Margin과 자식 간격 -->
+                    <GroupBox Header="Margin으로 자식 요소 간격 조절" Margin="0,0,0,8">
+                        <DockPanel Height="150" Background="#F5F5F5">
+                            <Border DockPanel.Dock="Top" Background="#BBDEFB" Margin="4" Padding="8">
+                                <TextBlock Text="Top (Margin=4)"/>
+                            </Border>
+                            <Border DockPanel.Dock="Bottom" Background="#C8E6C9" Margin="4" Padding="8">
+                                <TextBlock Text="Bottom (Margin=4)"/>
+                            </Border>
+                            <Border DockPanel.Dock="Left" Background="#FFE0B2" Margin="4" Padding="8">
+                                <TextBlock Text="Left"/>
+                            </Border>
+                            <Border Background="#FFFDE7" Margin="4" Padding="8">
+                                <TextBlock Text="Center" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            </Border>
+                        </DockPanel>
+                    </GroupBox>
+                    <Expander Style="{StaticResource CodeExpanderStyle}">
+                        <TextBox Style="{StaticResource CodeTextBoxStyle}" Text="&lt;!-- DockPanel 자체에는 자식 간격 속성이 없으므로&#10;     각 자식의 Margin으로 간격을 조절합니다 --&gt;&#10;&lt;DockPanel&gt;&#10;    &lt;Border DockPanel.Dock=&quot;Top&quot; Margin=&quot;4&quot;&gt;&#10;        &lt;TextBlock Text=&quot;Top&quot;/&gt;&#10;    &lt;/Border&gt;&#10;    &lt;Border DockPanel.Dock=&quot;Left&quot; Margin=&quot;4&quot;&gt;&#10;        &lt;TextBlock Text=&quot;Left&quot;/&gt;&#10;    &lt;/Border&gt;&#10;    &lt;Border Margin=&quot;4&quot;&gt;&#10;        &lt;TextBlock Text=&quot;Center&quot;/&gt;&#10;    &lt;/Border&gt;&#10;&lt;/DockPanel&gt;"/>
+                    </Expander>
+
+                    <!-- Width/Height 고정 -->
+                    <GroupBox Header="도킹 요소에 Width/Height 지정" Margin="0,0,0,8">
+                        <DockPanel Height="160" Background="#F5F5F5">
+                            <Border DockPanel.Dock="Top" Background="#BBDEFB" Height="40" Padding="8">
+                                <TextBlock Text="Top (Height=40)" VerticalAlignment="Center"/>
+                            </Border>
+                            <Border DockPanel.Dock="Left" Background="#FFE0B2" Width="120" Padding="8">
+                                <TextBlock Text="Left&#10;(Width=120)" VerticalAlignment="Center"/>
+                            </Border>
+                            <Border DockPanel.Dock="Right" Background="#E1BEE7" Width="80" Padding="8">
+                                <TextBlock Text="Right&#10;(W=80)" VerticalAlignment="Center"/>
+                            </Border>
+                            <Border Background="#FFFDE7" Padding="8">
+                                <TextBlock Text="Center (자동 크기)" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            </Border>
+                        </DockPanel>
+                    </GroupBox>
+                    <Expander Style="{StaticResource CodeExpanderStyle}">
+                        <TextBox Style="{StaticResource CodeTextBoxStyle}" Text="&lt;DockPanel&gt;&#10;    &lt;Border DockPanel.Dock=&quot;Top&quot; Height=&quot;40&quot;&gt;&#10;        &lt;TextBlock Text=&quot;Top (Height=40)&quot;/&gt;&#10;    &lt;/Border&gt;&#10;    &lt;Border DockPanel.Dock=&quot;Left&quot; Width=&quot;120&quot;&gt;&#10;        &lt;TextBlock Text=&quot;Left (Width=120)&quot;/&gt;&#10;    &lt;/Border&gt;&#10;    &lt;Border DockPanel.Dock=&quot;Right&quot; Width=&quot;80&quot;&gt;&#10;        &lt;TextBlock Text=&quot;Right (Width=80)&quot;/&gt;&#10;    &lt;/Border&gt;&#10;    &lt;Border&gt;&#10;        &lt;TextBlock Text=&quot;Center (자동 크기)&quot;/&gt;&#10;    &lt;/Border&gt;&#10;&lt;/DockPanel&gt;&#10;&#10;&lt;!-- Top/Bottom은 Height, Left/Right는 Width를 지정하면&#10;     해당 방향의 크기가 고정됩니다. --&gt;"/>
+                    </Expander>
+
+                </StackPanel>
+            </ScrollViewer>
+        </TabItem>
+
+        <!-- 탭5: 코드비하인드 -->
+        <TabItem Header="코드비하인드">
+            <ScrollViewer VerticalScrollBarVisibility="Auto" Padding="16">
+                <StackPanel>
+
+                    <TextBlock Text="코드비하인드로 DockPanel 제어" FontSize="18" FontWeight="Bold" Margin="0,0,0,12"/>
+
+                    <!-- 동적 Dock 위치 변경 -->
+                    <GroupBox Header="동적 Dock 위치 변경" Margin="0,0,0,8">
+                        <StackPanel>
+                            <DockPanel x:Name="dpDockChange" Height="150" Background="#F5F5F5" Margin="0,0,0,8">
+                                <Border x:Name="bdMovable" DockPanel.Dock="Top" Background="#BBDEFB" Padding="8">
+                                    <TextBlock x:Name="tbDockPos" Text="현재: Top" HorizontalAlignment="Center"/>
+                                </Border>
+                                <Border Background="#FFFDE7">
+                                    <TextBlock Text="남은 공간" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                </Border>
+                            </DockPanel>
+                            <StackPanel Orientation="Horizontal" Margin="0,0,0,4">
+                                <Button Content="Top" Click="DockTop_Click" Style="{StaticResource DemoButtonStyle}"/>
+                                <Button Content="Bottom" Click="DockBottom_Click" Style="{StaticResource DemoButtonStyle}"/>
+                                <Button Content="Left" Click="DockLeft_Click" Style="{StaticResource DemoButtonStyle}"/>
+                                <Button Content="Right" Click="DockRight_Click" Style="{StaticResource DemoButtonStyle}"/>
+                            </StackPanel>
+                        </StackPanel>
+                    </GroupBox>
+                    <Expander Style="{StaticResource CodeExpanderStyle}">
+                        <TextBox Style="{StaticResource CodeTextBoxStyle}" Text="// DockPanel.SetDock으로 도킹 위치를 동적으로 변경&#10;DockPanel.SetDock(bdMovable, Dock.Top);&#10;DockPanel.SetDock(bdMovable, Dock.Bottom);&#10;DockPanel.SetDock(bdMovable, Dock.Left);&#10;DockPanel.SetDock(bdMovable, Dock.Right);&#10;&#10;// 현재 Dock 값 가져오기&#10;Dock currentDock = DockPanel.GetDock(bdMovable);"/>
+                    </Expander>
+
+                    <!-- 동적으로 자식 추가/삭제 -->
+                    <GroupBox Header="동적으로 자식 추가/삭제" Margin="0,0,0,8">
+                        <StackPanel>
+                            <DockPanel x:Name="dpDynamic" Height="150" Background="#F5F5F5" Margin="0,0,0,8">
+                                <Border Background="#FFFDE7">
+                                    <TextBlock x:Name="tbDynamicInfo" Text="자식 요소: 0개 (Center 제외)" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                </Border>
+                            </DockPanel>
+                            <StackPanel Orientation="Horizontal" Margin="0,0,0,4">
+                                <Button Content="Left 추가" Click="AddLeft_Click" Style="{StaticResource DemoButtonStyle}"/>
+                                <Button Content="Top 추가" Click="AddTop_Click" Style="{StaticResource DemoButtonStyle}"/>
+                                <Button Content="Right 추가" Click="AddRight_Click" Style="{StaticResource DemoButtonStyle}"/>
+                                <Button Content="전체 삭제" Click="ClearDock_Click" Style="{StaticResource DemoButtonStyle}"/>
+                            </StackPanel>
+                        </StackPanel>
+                    </GroupBox>
+                    <Expander Style="{StaticResource CodeExpanderStyle}">
+                        <TextBox Style="{StaticResource CodeTextBoxStyle}" Text="// DockPanel에 동적으로 자식 추가&#10;var btn = new Button { Content = &quot;Left&quot;, Padding = new Thickness(8, 4, 8, 4) };&#10;DockPanel.SetDock(btn, Dock.Left);&#10;dpDynamic.Children.Insert(0, btn);  // 맨 앞에 삽입&#10;&#10;// 주의: LastChildFill=True일 때&#10;// 마지막 자식이 Center 역할을 하므로&#10;// 새 자식은 Insert(0, ...)로 앞에 추가해야 합니다&#10;&#10;// 전체 삭제 후 Center 복원&#10;dpDynamic.Children.Clear();"/>
+                    </Expander>
+
+                    <!-- LastChildFill 토글 -->
+                    <GroupBox Header="LastChildFill 동적 변경" Margin="0,0,0,8">
+                        <StackPanel>
+                            <DockPanel x:Name="dpLastChild" LastChildFill="True" Height="120" Background="#F5F5F5" Margin="0,0,0,8">
+                                <Button DockPanel.Dock="Left" Background="#FFE0B2" Padding="8,4">Left</Button>
+                                <Button DockPanel.Dock="Right" Background="#E1BEE7" Padding="8,4">Right</Button>
+                                <Border x:Name="bdCenter" Background="#C8E6C9" Padding="8">
+                                    <TextBlock x:Name="tbLastChild" Text="LastChildFill = True" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                </Border>
+                            </DockPanel>
+                            <StackPanel Orientation="Horizontal">
+                                <Button Content="True로 설정" Click="SetLastChildTrue_Click" Style="{StaticResource DemoButtonStyle}"/>
+                                <Button Content="False로 설정" Click="SetLastChildFalse_Click" Style="{StaticResource DemoButtonStyle}"/>
+                            </StackPanel>
+                        </StackPanel>
+                    </GroupBox>
+                    <Expander Style="{StaticResource CodeExpanderStyle}">
+                        <TextBox Style="{StaticResource CodeTextBoxStyle}" Text="// LastChildFill 속성 동적 변경&#10;dpLastChild.LastChildFill = true;&#10;dpLastChild.LastChildFill = false;&#10;&#10;// 변경 후 레이아웃이 즉시 업데이트됩니다"/>
+                    </Expander>
+
+                </StackPanel>
+            </ScrollViewer>
+        </TabItem>
+
+    </TabControl>
+</Window>

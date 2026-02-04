@@ -1,0 +1,146 @@
+﻿using System.Text;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Data;
+using System.Windows.Documents;
+using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
+using System.Windows.Shapes;
+
+namespace ch7_이미지
+{
+    /// <summary>
+    /// MainWindow.xaml에 대한 상호작용 논리
+    /// Image 컨트롤의 동적 이미지 변경 기능을 보여주는 메인 윈도우
+    /// </summary>
+    public partial class MainWindow : Window
+    {
+        /// <summary>
+        /// MainWindow 생성자
+        /// 윈도우가 생성될 때 호출되어 초기화 작업을 수행합니다.
+        /// </summary>
+        public MainWindow()
+        {
+            // XAML에 정의된 UI 요소들을 초기화합니다.
+            InitializeComponent();
+        }
+
+        /// <summary>
+        /// Image의 MouseEnter 이벤트 핸들러
+        /// 마우스 커서가 이미지 위로 올라왔을 때 실행되어 이미지를 변경합니다.
+        /// </summary>
+        /// <param name="sender">이벤트를 발생시킨 객체 (여기서는 Image 컨트롤)</param>
+        /// <param name="e">마우스 이벤트 정보 (마우스 위치, 버튼 상태 등)</param>
+        private void img_MouseEnter(object sender, MouseEventArgs e)
+        {
+            // Image 컨트롤의 Source 속성을 새로운 이미지로 변경합니다.
+            // 
+            // BitmapImage: 비트맵 이미지를 로드하고 표시하기 위한 클래스
+            // - System.Windows.Media.Imaging 네임스페이스에 포함
+            // - JPEG, PNG, GIF, BMP, TIFF 등 다양한 이미지 형식 지원
+            // 
+            // Uri: 이미지의 위치를 나타내는 주소
+            // - 외부 URL (http://, https://)
+            // - 로컬 파일 경로 (file:///)
+            // - 리소스 경로 (pack://application:,,,/)
+            img.Source = new BitmapImage(new Uri("https://cdn2.iconfinder.com/data/icons/free-1/128/Android__logo__robot-512.png"));
+            
+            /*
+             * 동작 흐름:
+             * 1. 사용자가 마우스를 이미지(디셉티콘 로봇) 위로 이동
+             * 2. MouseEnter 이벤트가 발생하여 이 메서드 실행
+             * 3. 이미지가 디셉티콘에서 안드로이드 로봇으로 변경됨
+             * 4. 마우스를 떼어도 이미지는 변경된 상태로 유지됨 (MouseLeave 이벤트 없음)
+             * 
+             * BitmapImage 생성 방법:
+             * 
+             * 1. 기본 방법 (현재 코드):
+             *    img.Source = new BitmapImage(new Uri("https://example.com/image.png"));
+             * 
+             * 2. 상세 설정 방법 (성능 최적화):
+             *    var bitmap = new BitmapImage();
+             *    bitmap.BeginInit();
+             *    bitmap.UriSource = new Uri("https://example.com/image.png");
+             *    bitmap.DecodePixelWidth = 100; // 메모리 절약을 위해 크기 제한
+             *    bitmap.CacheOption = BitmapCacheOption.OnLoad; // 즉시 로드 및 캐싱
+             *    bitmap.EndInit();
+             *    img.Source = bitmap;
+             * 
+             * Uri 생성자의 오버로드:
+             * - new Uri(string): 절대 URI 또는 상대 URI
+             * - new Uri(string, UriKind): URI 종류 명시
+             *   예: new Uri("image.png", UriKind.Relative)
+             * 
+             * 로컬 파일 사용 예제:
+             *    // 프로젝트 리소스
+             *    img.Source = new BitmapImage(new Uri("/img/1.png", UriKind.Relative));
+             *    
+             *    // 파일 시스템
+             *    img.Source = new BitmapImage(new Uri(@"C:\Images\photo.jpg", UriKind.Absolute));
+             *    
+             *    // Pack URI (임베디드 리소스)
+             *    img.Source = new BitmapImage(new Uri("pack://application:,,,/Images/logo.png"));
+             * 
+             * 이미지 교체 효과 개선:
+             * 
+             * 1. 마우스를 떼면 원래 이미지로 복원:
+             *    private void img_MouseLeave(object sender, MouseEventArgs e)
+             *    {
+             *        img.Source = new BitmapImage(new Uri(
+             *            "https://cdn3.iconfinder.com/.../Decepticon_transformers_movie_robot-512.png"));
+             *    }
+             * 
+             * 2. 이미지 토글 (클릭 시 전환):
+             *    private bool isOriginal = true;
+             *    private void img_MouseDown(object sender, MouseButtonEventArgs e)
+             *    {
+             *        if (isOriginal)
+             *            img.Source = new BitmapImage(new Uri("android.png", UriKind.Relative));
+             *        else
+             *            img.Source = new BitmapImage(new Uri("decepticon.png", UriKind.Relative));
+             *        isOriginal = !isOriginal;
+             *    }
+             * 
+             * 3. 이미지 페이드 효과 (애니메이션):
+             *    var fadeOut = new DoubleAnimation(1, 0, TimeSpan.FromMilliseconds(300));
+             *    var fadeIn = new DoubleAnimation(0, 1, TimeSpan.FromMilliseconds(300));
+             *    fadeOut.Completed += (s, e) =>
+             *    {
+             *        img.Source = new BitmapImage(new Uri("newimage.png", UriKind.Relative));
+             *        img.BeginAnimation(Image.OpacityProperty, fadeIn);
+             *    };
+             *    img.BeginAnimation(Image.OpacityProperty, fadeOut);
+             * 
+             * 오류 처리:
+             * 
+             * 이미지 로드 실패 시 예외 처리:
+             *    try
+             *    {
+             *        img.Source = new BitmapImage(new Uri("https://example.com/image.png"));
+             *    }
+             *    catch (Exception ex)
+             *    {
+             *        MessageBox.Show($"이미지 로드 실패: {ex.Message}", "오류");
+             *        // 기본 이미지로 대체
+             *        img.Source = new BitmapImage(new Uri("/img/default.png", UriKind.Relative));
+             *    }
+             * 
+             * 또는 ImageFailed 이벤트 사용:
+             *    XAML: <Image ImageFailed="img_ImageFailed" .../>
+             *    
+             *    private void img_ImageFailed(object sender, ExceptionRoutedEventArgs e)
+             *    {
+             *        MessageBox.Show("이미지를 로드할 수 없습니다.");
+             *    }
+             * 
+             * 성능 고려사항:
+             * - 외부 URL의 이미지는 네트워크 속도에 따라 로딩 시간이 걸릴 수 있음
+             * - 대용량 이미지는 DecodePixelWidth/Height로 크기를 제한하여 메모리 절약
+             * - 자주 사용하는 이미지는 미리 로드하여 캐싱
+             * - 비동기 로딩을 고려하여 UI 응답성 유지
+             */
+        }
+    }
+}

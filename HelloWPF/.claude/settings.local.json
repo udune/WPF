@@ -1,0 +1,9 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(Get-ChildItem -Path \"C:\\\\Users\\\\udune\\\\Desktop\\\\WPF\" -Recurse -Include *.cs,*.xaml)",
+      "Bash(Where-Object { $_FullName -notlike '*\\\\obj\\\\*' -and $_FullName -notlike '*\\\\bin\\\\*' -and $_FullName -notlike '*\\\\.vs\\\\*' -and $_FullName -notlike '*\\\\.idea\\\\*' })",
+      "Bash(ForEach-Object { $_FullName })"
+    ]
+  }
+}

@@ -1,0 +1,137 @@
+﻿using System.Data;
+using System.Text;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Data;
+using System.Windows.Documents;
+using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
+using System.Windows.Shapes;
+using MySqlConnector;
+
+namespace ch35_MariaDB연동;
+
+/// <summary>
+/// Interaction logic for MainWindow.xaml
+/// </summary>
+public partial class MainWindow : Window
+{
+    MySqlConnection connection = new MySqlConnection("Server=localhost;Uid=root;Database=study;port=3307;pwd=1234");
+    public MainWindow()
+    {
+        InitializeComponent();
+        LoadData();
+    }
+
+    private void LoadData()
+    {
+        DataTable dataTable = new DataTable();
+        MySqlCommand command = new MySqlCommand("SELECT * FROM person", connection);
+        connection.Open();
+        MySqlDataReader dataReader = command.ExecuteReader();
+        dataTable.Load(dataReader);
+        connection.Close();
+        Grid.ItemsSource = dataTable.DefaultView;
+    }
+
+    private void BtnClear_OnClick(object sender, RoutedEventArgs e)
+    {
+        TxtId.Clear();
+        TxtName.Clear();
+        TxtAge.Clear();
+        TxtAddress.Clear();
+    }
+
+    private void BtnInsert_OnClick(object sender, RoutedEventArgs e)
+    {
+        if (TxtName.Text.Length == 0)
+        {
+            MessageBox.Show("이름을 입력하여 주세요.");
+            return;
+        }
+
+        if (TxtAge.Text.Length == 0)
+        {
+            MessageBox.Show("나이를 입력하여 주세요.");
+            return;
+        }
+
+        if (TxtAddress.Text.Length == 0)
+        {
+            MessageBox.Show("주소를 입력하여 주세요.");
+            return;
+        }
+
+        try
+        {
+            MySqlCommand command =
+                new MySqlCommand("INSERT INTO person(Name, Age, Address) VALUES (@name, @age, @address)", connection);
+            command.CommandType = CommandType.Text;
+            command.Parameters.AddWithValue("@name", TxtName.Text);
+            command.Parameters.AddWithValue("@age", TxtAge.Text);
+            command.Parameters.AddWithValue("@address", TxtAddress.Text);
+            connection.Open();
+            command.ExecuteNonQuery();
+
+            MessageBox.Show("입력되었습니다.");
+        }
+        catch (Exception exception)
+        {
+            MessageBox.Show(exception.Message);
+        }
+        finally
+        {
+            connection.Close();
+            LoadData();
+        }
+        
+    }
+
+    private void BtnUpdate_OnClick(object sender, RoutedEventArgs e)
+    {
+        try
+        {
+            MySqlCommand command =
+                new MySqlCommand(
+                    $"UPDATE person SET Name='{TxtName.Text}', Age='{TxtAge.Text}', Address='{TxtAddress.Text}' WHERE ID = '{TxtId.Text}'",
+                    connection);
+            connection.Open();
+            command.ExecuteNonQuery();
+            MessageBox.Show("수정하였습니다.");
+        }
+        catch (Exception exception)
+        {
+            MessageBox.Show(exception.Message);
+        }
+        finally
+        {
+            connection.Close();
+            LoadData();
+        }
+    }
+
+    private void BtnDelete_OnClick(object sender, RoutedEventArgs e)
+    {
+        try
+        {
+            MySqlCommand command =
+                new MySqlCommand(
+                    $"DELETE FROM person WHERE ID = '{TxtId.Text}'",
+                    connection);
+            connection.Open();
+            command.ExecuteNonQuery();
+            MessageBox.Show("삭제하였습니다.");
+        }
+        catch (Exception exception)
+        {
+            MessageBox.Show(exception.Message);
+        }
+        finally
+        {
+            connection.Close();
+            LoadData();
+        }
+    }
+}

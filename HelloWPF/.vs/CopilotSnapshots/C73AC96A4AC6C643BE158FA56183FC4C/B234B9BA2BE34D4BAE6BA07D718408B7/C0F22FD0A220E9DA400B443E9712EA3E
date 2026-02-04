@@ -1,0 +1,43 @@
+﻿<Window x:Class="ch2_Label.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ch2_Label"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <Label>안녕하세요</Label>
+        <Label Content="안녕하세요"></Label>
+        <StackPanel Orientation="Vertical">
+            <Label HorizontalContentAlignment="Center">HorizontalContentAlignment</Label>
+            <Label HorizontalContentAlignment="Left">HorizontalContentAlignment</Label>
+            <Label HorizontalContentAlignment="Right">HorizontalContentAlignment</Label>
+            <Label HorizontalContentAlignment="Stretch">HorizontalContentAlignment</Label>
+            
+            <Label HorizontalAlignment="Center">HorizontalAlignment</Label>
+            <Label HorizontalAlignment="Left">HorizontalAlignment</Label>
+            <Label HorizontalAlignment="Right">HorizontalAlignment</Label>
+            <Label HorizontalAlignment="Stretch">HorizontalAlignment</Label>
+            
+            <Label>
+                <StackPanel Orientation="Vertical">
+                    <Image Width="30" Source="https://cdn0.iconfinder.com/data/icons/business-startup-10/50/65-512.png"/>
+                    <AccessText Text="원하는 문자열"/>
+                </StackPanel>
+            </Label>
+            
+            <Label Content="Hello"
+                   FontSize="30"
+                   FontWeight="Bold"
+                   Background="Salmon"
+                   Foreground="White">
+            </Label>
+            
+            <Label Content="label"
+                   Target="{Binding ElementName=textBox}">
+            </Label>
+            <TextBox x:Name="textBox"/>
+        </StackPanel>
+    </Grid>
+</Window>

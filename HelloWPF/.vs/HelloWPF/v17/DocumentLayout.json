@@ -1,0 +1,628 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\udune\\Desktop\\WPF\\HelloWPF\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{4FC66C13-B86D-47B4-B1A7-9ABDBAD04892}|..\\ch34 MVVM\\ch34 MVVM.csproj|c:\\users\\udune\\desktop\\wpf\\ch34 mvvm\\commands\\personcommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4FC66C13-B86D-47B4-B1A7-9ABDBAD04892}|..\\ch34 MVVM\\ch34 MVVM.csproj|c:\\users\\udune\\desktop\\wpf\\ch34 mvvm\\models\\personmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4FC66C13-B86D-47B4-B1A7-9ABDBAD04892}|..\\ch34 MVVM\\ch34 MVVM.csproj|c:\\users\\udune\\desktop\\wpf\\ch34 mvvm\\views\\personview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4FC66C13-B86D-47B4-B1A7-9ABDBAD04892}|..\\ch34 MVVM\\ch34 MVVM.csproj|c:\\users\\udune\\desktop\\wpf\\ch34 mvvm\\viewmodels\\personviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4FC66C13-B86D-47B4-B1A7-9ABDBAD04892}|..\\ch34 MVVM\\ch34 MVVM.csproj|c:\\users\\udune\\desktop\\wpf\\ch34 mvvm\\views\\personview.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4FC66C13-B86D-47B4-B1A7-9ABDBAD04892}|..\\ch34 MVVM\\ch34 MVVM.csproj|c:\\users\\udune\\desktop\\wpf\\ch34 mvvm\\app.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4FC66C13-B86D-47B4-B1A7-9ABDBAD04892}|..\\ch34 MVVM\\ch34 MVVM.csproj|c:\\users\\udune\\desktop\\wpf\\ch34 mvvm\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4FC66C13-B86D-47B4-B1A7-9ABDBAD04892}|..\\ch34 MVVM\\ch34 MVVM.csproj|c:\\users\\udune\\desktop\\wpf\\ch34 mvvm\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4FC66C13-B86D-47B4-B1A7-9ABDBAD04892}|..\\ch34 MVVM\\ch34 MVVM.csproj|c:\\users\\udune\\desktop\\wpf\\ch34 mvvm\\assemblyinfo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4FC66C13-B86D-47B4-B1A7-9ABDBAD04892}|..\\ch34 MVVM\\ch34 MVVM.csproj|c:\\users\\udune\\desktop\\wpf\\ch34 mvvm\\ch34 mvvm.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B9612C23-1E7F-463C-89CE-EB21071F6F37}|..\\ch33 \uC560\uB2C8\uBA54\uC774\uC158\\ch33 \uC560\uB2C8\uBA54\uC774\uC158.csproj|c:\\users\\udune\\desktop\\wpf\\ch33 \uC560\uB2C8\uBA54\uC774\uC158\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EAD8C9AD-6173-440C-978D-6D3E3CE319FB}|..\\ch32 \uC2A4\uD0C0\uC77C\\ch32 \uC2A4\uD0C0\uC77C.csproj|c:\\users\\udune\\desktop\\wpf\\ch32 \uC2A4\uD0C0\uC77C\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EAD8C9AD-6173-440C-978D-6D3E3CE319FB}|..\\ch32 \uC2A4\uD0C0\uC77C\\ch32 \uC2A4\uD0C0\uC77C.csproj|c:\\users\\udune\\desktop\\wpf\\ch32 \uC2A4\uD0C0\uC77C\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EAD8C9AD-6173-440C-978D-6D3E3CE319FB}|..\\ch32 \uC2A4\uD0C0\uC77C\\ch32 \uC2A4\uD0C0\uC77C.csproj|c:\\users\\udune\\desktop\\wpf\\ch32 \uC2A4\uD0C0\uC77C\\usercontrol1.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EAD8C9AD-6173-440C-978D-6D3E3CE319FB}|..\\ch32 \uC2A4\uD0C0\uC77C\\ch32 \uC2A4\uD0C0\uC77C.csproj|c:\\users\\udune\\desktop\\wpf\\ch32 \uC2A4\uD0C0\uC77C\\app.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EAD8C9AD-6173-440C-978D-6D3E3CE319FB}|..\\ch32 \uC2A4\uD0C0\uC77C\\ch32 \uC2A4\uD0C0\uC77C.csproj|c:\\users\\udune\\desktop\\wpf\\ch32 \uC2A4\uD0C0\uC77C\\page1.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EAD8C9AD-6173-440C-978D-6D3E3CE319FB}|..\\ch32 \uC2A4\uD0C0\uC77C\\ch32 \uC2A4\uD0C0\uC77C.csproj|c:\\users\\udune\\desktop\\wpf\\ch32 \uC2A4\uD0C0\uC77C\\dictionary1.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B9612C23-1E7F-463C-89CE-EB21071F6F37}|..\\ch33 \uC560\uB2C8\uBA54\uC774\uC158\\ch33 \uC560\uB2C8\uBA54\uC774\uC158.csproj|c:\\users\\udune\\desktop\\wpf\\ch33 \uC560\uB2C8\uBA54\uC774\uC158\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{852DABB7-6359-4725-90DB-A5C6CFA7FA23}|..\\ch31 \uC720\uC800\uCEE8\uD2B8\uB864\\ch31 \uC720\uC800\uCEE8\uD2B8\uB864.csproj|c:\\users\\udune\\desktop\\wpf\\ch31 \uC720\uC800\uCEE8\uD2B8\uB864\\ch31 \uC720\uC800\uCEE8\uD2B8\uB864.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{852DABB7-6359-4725-90DB-A5C6CFA7FA23}|..\\ch31 \uC720\uC800\uCEE8\uD2B8\uB864\\ch31 \uC720\uC800\uCEE8\uD2B8\uB864.csproj|c:\\users\\udune\\desktop\\wpf\\ch31 \uC720\uC800\uCEE8\uD2B8\uB864\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{852DABB7-6359-4725-90DB-A5C6CFA7FA23}|..\\ch31 \uC720\uC800\uCEE8\uD2B8\uB864\\ch31 \uC720\uC800\uCEE8\uD2B8\uB864.csproj|c:\\users\\udune\\desktop\\wpf\\ch31 \uC720\uC800\uCEE8\uD2B8\uB864\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{852DABB7-6359-4725-90DB-A5C6CFA7FA23}|..\\ch31 \uC720\uC800\uCEE8\uD2B8\uB864\\ch31 \uC720\uC800\uCEE8\uD2B8\uB864.csproj|c:\\users\\udune\\desktop\\wpf\\ch31 \uC720\uC800\uCEE8\uD2B8\uB864\\uc\\usercontrol1.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{852DABB7-6359-4725-90DB-A5C6CFA7FA23}|..\\ch31 \uC720\uC800\uCEE8\uD2B8\uB864\\ch31 \uC720\uC800\uCEE8\uD2B8\uB864.csproj|c:\\users\\udune\\desktop\\wpf\\ch31 \uC720\uC800\uCEE8\uD2B8\uB864\\uc\\usercontrol1.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E12E91E0-B179-418B-81E7-0AAE75C4D389}|..\\ch30 \uD0ED\uCEE8\uD2B8\uB864 \uBAA8\uB2EC \uBAA8\uB2EC\uB9AC\uC2A4\\ch30 \uD0ED\uCEE8\uD2B8\uB864 \uBAA8\uB2EC \uBAA8\uB2EC\uB9AC\uC2A4.csproj|c:\\users\\udune\\desktop\\wpf\\ch30 \uD0ED\uCEE8\uD2B8\uB864 \uBAA8\uB2EC \uBAA8\uB2EC\uB9AC\uC2A4\\window1.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E12E91E0-B179-418B-81E7-0AAE75C4D389}|..\\ch30 \uD0ED\uCEE8\uD2B8\uB864 \uBAA8\uB2EC \uBAA8\uB2EC\uB9AC\uC2A4\\ch30 \uD0ED\uCEE8\uD2B8\uB864 \uBAA8\uB2EC \uBAA8\uB2EC\uB9AC\uC2A4.csproj|c:\\users\\udune\\desktop\\wpf\\ch30 \uD0ED\uCEE8\uD2B8\uB864 \uBAA8\uB2EC \uBAA8\uB2EC\uB9AC\uC2A4\\window1.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E12E91E0-B179-418B-81E7-0AAE75C4D389}|..\\ch30 \uD0ED\uCEE8\uD2B8\uB864 \uBAA8\uB2EC \uBAA8\uB2EC\uB9AC\uC2A4\\ch30 \uD0ED\uCEE8\uD2B8\uB864 \uBAA8\uB2EC \uBAA8\uB2EC\uB9AC\uC2A4.csproj|c:\\users\\udune\\desktop\\wpf\\ch30 \uD0ED\uCEE8\uD2B8\uB864 \uBAA8\uB2EC \uBAA8\uB2EC\uB9AC\uC2A4\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E12E91E0-B179-418B-81E7-0AAE75C4D389}|..\\ch30 \uD0ED\uCEE8\uD2B8\uB864 \uBAA8\uB2EC \uBAA8\uB2EC\uB9AC\uC2A4\\ch30 \uD0ED\uCEE8\uD2B8\uB864 \uBAA8\uB2EC \uBAA8\uB2EC\uB9AC\uC2A4.csproj|c:\\users\\udune\\desktop\\wpf\\ch30 \uD0ED\uCEE8\uD2B8\uB864 \uBAA8\uB2EC \uBAA8\uB2EC\uB9AC\uC2A4\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{27971C71-3400-4B01-9F71-AA3F23BD43F4}|..\\ch29 \uD654\uBA74\uC774\uB3D9 \uD504\uB808\uC784\\ch29 \uD654\uBA74\uC774\uB3D9 \uD504\uB808\uC784.csproj|c:\\users\\udune\\desktop\\wpf\\ch29 \uD654\uBA74\uC774\uB3D9 \uD504\uB808\uC784\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{27971C71-3400-4B01-9F71-AA3F23BD43F4}|..\\ch29 \uD654\uBA74\uC774\uB3D9 \uD504\uB808\uC784\\ch29 \uD654\uBA74\uC774\uB3D9 \uD504\uB808\uC784.csproj|c:\\users\\udune\\desktop\\wpf\\ch29 \uD654\uBA74\uC774\uB3D9 \uD504\uB808\uC784\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{27971C71-3400-4B01-9F71-AA3F23BD43F4}|..\\ch29 \uD654\uBA74\uC774\uB3D9 \uD504\uB808\uC784\\ch29 \uD654\uBA74\uC774\uB3D9 \uD504\uB808\uC784.csproj|c:\\users\\udune\\desktop\\wpf\\ch29 \uD654\uBA74\uC774\uB3D9 \uD504\uB808\uC784\\views\\page1.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{27971C71-3400-4B01-9F71-AA3F23BD43F4}|..\\ch29 \uD654\uBA74\uC774\uB3D9 \uD504\uB808\uC784\\ch29 \uD654\uBA74\uC774\uB3D9 \uD504\uB808\uC784.csproj|c:\\users\\udune\\desktop\\wpf\\ch29 \uD654\uBA74\uC774\uB3D9 \uD504\uB808\uC784\\views\\page1.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{27971C71-3400-4B01-9F71-AA3F23BD43F4}|..\\ch29 \uD654\uBA74\uC774\uB3D9 \uD504\uB808\uC784\\ch29 \uD654\uBA74\uC774\uB3D9 \uD504\uB808\uC784.csproj|c:\\users\\udune\\desktop\\wpf\\ch29 \uD654\uBA74\uC774\uB3D9 \uD504\uB808\uC784\\views\\page2.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{27971C71-3400-4B01-9F71-AA3F23BD43F4}|..\\ch29 \uD654\uBA74\uC774\uB3D9 \uD504\uB808\uC784\\ch29 \uD654\uBA74\uC774\uB3D9 \uD504\uB808\uC784.csproj|c:\\users\\udune\\desktop\\wpf\\ch29 \uD654\uBA74\uC774\uB3D9 \uD504\uB808\uC784\\views\\page3.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{27971C71-3400-4B01-9F71-AA3F23BD43F4}|..\\ch29 \uD654\uBA74\uC774\uB3D9 \uD504\uB808\uC784\\ch29 \uD654\uBA74\uC774\uB3D9 \uD504\uB808\uC784.csproj|c:\\users\\udune\\desktop\\wpf\\ch29 \uD654\uBA74\uC774\uB3D9 \uD504\uB808\uC784\\views\\page3.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{27971C71-3400-4B01-9F71-AA3F23BD43F4}|..\\ch29 \uD654\uBA74\uC774\uB3D9 \uD504\uB808\uC784\\ch29 \uD654\uBA74\uC774\uB3D9 \uD504\uB808\uC784.csproj|c:\\users\\udune\\desktop\\wpf\\ch29 \uD654\uBA74\uC774\uB3D9 \uD504\uB808\uC784\\views\\page2.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{61664173-FC44-4867-B023-EC19BEF735A2}|..\\ch28 \uC601\uC5B4\uB2E8\uC5B4\uB9DE\uCD94\uAE30\\ch28 \uC601\uC5B4\uB2E8\uC5B4\uB9DE\uCD94\uAE30.csproj|c:\\users\\udune\\desktop\\wpf\\ch28 \uC601\uC5B4\uB2E8\uC5B4\uB9DE\uCD94\uAE30\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{61664173-FC44-4867-B023-EC19BEF735A2}|..\\ch28 \uC601\uC5B4\uB2E8\uC5B4\uB9DE\uCD94\uAE30\\ch28 \uC601\uC5B4\uB2E8\uC5B4\uB9DE\uCD94\uAE30.csproj|c:\\users\\udune\\desktop\\wpf\\ch28 \uC601\uC5B4\uB2E8\uC5B4\uB9DE\uCD94\uAE30\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{06E793AA-4B4C-4C96-A643-2649B8F61BD4}|..\\ch27 \uB370\uC774\uD130\uBC14\uC778\uB5293\\ch27 \uB370\uC774\uD130\uBC14\uC778\uB5293.csproj|c:\\users\\udune\\desktop\\wpf\\ch27 \uB370\uC774\uD130\uBC14\uC778\uB5293\\mainwindow.xaml.cs||{8B382828-6202-11D1-8870-0000F87579D2}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{06E793AA-4B4C-4C96-A643-2649B8F61BD4}|..\\ch27 \uB370\uC774\uD130\uBC14\uC778\uB5293\\ch27 \uB370\uC774\uD130\uBC14\uC778\uB5293.csproj|c:\\users\\udune\\desktop\\wpf\\ch27 \uB370\uC774\uD130\uBC14\uC778\uB5293\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{06E793AA-4B4C-4C96-A643-2649B8F61BD4}|..\\ch27 \uB370\uC774\uD130\uBC14\uC778\uB5293\\ch27 \uB370\uC774\uD130\uBC14\uC778\uB5293.csproj|c:\\users\\udune\\desktop\\wpf\\ch27 \uB370\uC774\uD130\uBC14\uC778\uB5293\\ch27 \uB370\uC774\uD130\uBC14\uC778\uB5293.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\udune\\Desktop\\WPF\\ch29 \uD654\uBA74\uC774\uB3D9 \uD504\uB808\uC784\\obj\\Debug\\net8.0-windows\\MainWindow.g.i.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 2,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "PersonCommand.cs",
+              "DocumentMoniker": "C:\\Users\\udune\\Desktop\\WPF\\ch34 MVVM\\Commands\\PersonCommand.cs",
+              "RelativeDocumentMoniker": "..\\ch34 MVVM\\Commands\\PersonCommand.cs",
+              "ToolTip": "C:\\Users\\udune\\Desktop\\WPF\\ch34 MVVM\\Commands\\PersonCommand.cs",
+              "RelativeToolTip": "..\\ch34 MVVM\\Commands\\PersonCommand.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAAB4AAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-16T02:40:33.488Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "AssemblyInfo.cs",
+              "DocumentMoniker": "C:\\Users\\udune\\Desktop\\WPF\\ch34 MVVM\\AssemblyInfo.cs",
+              "RelativeDocumentMoniker": "..\\ch34 MVVM\\AssemblyInfo.cs",
+              "ToolTip": "C:\\Users\\udune\\Desktop\\WPF\\ch34 MVVM\\AssemblyInfo.cs",
+              "RelativeToolTip": "..\\ch34 MVVM\\AssemblyInfo.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-16T02:21:41.657Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "PersonView.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\udune\\Desktop\\WPF\\ch34 MVVM\\Views\\PersonView.xaml.cs",
+              "RelativeDocumentMoniker": "..\\ch34 MVVM\\Views\\PersonView.xaml.cs",
+              "ToolTip": "C:\\Users\\udune\\Desktop\\WPF\\ch34 MVVM\\Views\\PersonView.xaml.cs",
+              "RelativeToolTip": "..\\ch34 MVVM\\Views\\PersonView.xaml.cs",
+              "ViewState": "AgIAAAwAAAAAAAAAAAAhwBkAAAAiAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-16T01:53:12.757Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "PersonView.xaml",
+              "DocumentMoniker": "C:\\Users\\udune\\Desktop\\WPF\\ch34 MVVM\\Views\\PersonView.xaml",
+              "RelativeDocumentMoniker": "..\\ch34 MVVM\\Views\\PersonView.xaml",
+              "ToolTip": "C:\\Users\\udune\\Desktop\\WPF\\ch34 MVVM\\Views\\PersonView.xaml",
+              "RelativeToolTip": "..\\ch34 MVVM\\Views\\PersonView.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-03-16T01:52:49.372Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "PersonViewModel.cs",
+              "DocumentMoniker": "C:\\Users\\udune\\Desktop\\WPF\\ch34 MVVM\\ViewModels\\PersonViewModel.cs",
+              "RelativeDocumentMoniker": "..\\ch34 MVVM\\ViewModels\\PersonViewModel.cs",
+              "ToolTip": "C:\\Users\\udune\\Desktop\\WPF\\ch34 MVVM\\ViewModels\\PersonViewModel.cs",
+              "RelativeToolTip": "..\\ch34 MVVM\\ViewModels\\PersonViewModel.cs",
+              "ViewState": "AgIAAAQAAAAAAAAAAADgvxYAAAAmAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-16T01:38:47.127Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "PersonModel.cs",
+              "DocumentMoniker": "C:\\Users\\udune\\Desktop\\WPF\\ch34 MVVM\\Models\\PersonModel.cs",
+              "RelativeDocumentMoniker": "..\\ch34 MVVM\\Models\\PersonModel.cs",
+              "ToolTip": "C:\\Users\\udune\\Desktop\\WPF\\ch34 MVVM\\Models\\PersonModel.cs",
+              "RelativeToolTip": "..\\ch34 MVVM\\Models\\PersonModel.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAYAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-16T00:29:29.244Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "App.xaml",
+              "DocumentMoniker": "C:\\Users\\udune\\Desktop\\WPF\\ch34 MVVM\\App.xaml",
+              "RelativeDocumentMoniker": "..\\ch34 MVVM\\App.xaml",
+              "ToolTip": "C:\\Users\\udune\\Desktop\\WPF\\ch34 MVVM\\App.xaml",
+              "RelativeToolTip": "..\\ch34 MVVM\\App.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-03-16T00:28:01.33Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "MainWindow.xaml",
+              "DocumentMoniker": "C:\\Users\\udune\\Desktop\\WPF\\ch34 MVVM\\MainWindow.xaml",
+              "RelativeDocumentMoniker": "..\\ch34 MVVM\\MainWindow.xaml",
+              "ToolTip": "C:\\Users\\udune\\Desktop\\WPF\\ch34 MVVM\\MainWindow.xaml",
+              "RelativeToolTip": "..\\ch34 MVVM\\MainWindow.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-03-16T00:27:54.882Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "MainWindow.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\udune\\Desktop\\WPF\\ch34 MVVM\\MainWindow.xaml.cs",
+              "RelativeDocumentMoniker": "..\\ch34 MVVM\\MainWindow.xaml.cs",
+              "ToolTip": "C:\\Users\\udune\\Desktop\\WPF\\ch34 MVVM\\MainWindow.xaml.cs",
+              "RelativeToolTip": "..\\ch34 MVVM\\MainWindow.xaml.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-16T00:27:54.757Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "ch34 MVVM.csproj",
+              "DocumentMoniker": "C:\\Users\\udune\\Desktop\\WPF\\ch34 MVVM\\ch34 MVVM.csproj",
+              "RelativeDocumentMoniker": "..\\ch34 MVVM\\ch34 MVVM.csproj",
+              "ToolTip": "C:\\Users\\udune\\Desktop\\WPF\\ch34 MVVM\\ch34 MVVM.csproj",
+              "RelativeToolTip": "..\\ch34 MVVM\\ch34 MVVM.csproj",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2025-03-16T00:27:58.046Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "MainWindow.xaml",
+              "DocumentMoniker": "C:\\Users\\udune\\Desktop\\WPF\\ch33 \uC560\uB2C8\uBA54\uC774\uC158\\MainWindow.xaml",
+              "RelativeDocumentMoniker": "..\\ch33 \uC560\uB2C8\uBA54\uC774\uC158\\MainWindow.xaml",
+              "ToolTip": "C:\\Users\\udune\\Desktop\\WPF\\ch33 \uC560\uB2C8\uBA54\uC774\uC158\\MainWindow.xaml",
+              "RelativeToolTip": "..\\ch33 \uC560\uB2C8\uBA54\uC774\uC158\\MainWindow.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-03-15T23:59:26.256Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "MainWindow.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\udune\\Desktop\\WPF\\ch33 \uC560\uB2C8\uBA54\uC774\uC158\\MainWindow.xaml.cs",
+              "RelativeDocumentMoniker": "..\\ch33 \uC560\uB2C8\uBA54\uC774\uC158\\MainWindow.xaml.cs",
+              "ToolTip": "C:\\Users\\udune\\Desktop\\WPF\\ch33 \uC560\uB2C8\uBA54\uC774\uC158\\MainWindow.xaml.cs",
+              "RelativeToolTip": "..\\ch33 \uC560\uB2C8\uBA54\uC774\uC158\\MainWindow.xaml.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-15T23:59:26.053Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "Page1.xaml",
+              "DocumentMoniker": "C:\\Users\\udune\\Desktop\\WPF\\ch32 \uC2A4\uD0C0\uC77C\\Page1.xaml",
+              "RelativeDocumentMoniker": "..\\ch32 \uC2A4\uD0C0\uC77C\\Page1.xaml",
+              "ToolTip": "C:\\Users\\udune\\Desktop\\WPF\\ch32 \uC2A4\uD0C0\uC77C\\Page1.xaml",
+              "RelativeToolTip": "..\\ch32 \uC2A4\uD0C0\uC77C\\Page1.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-03-15T23:55:48.835Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "Dictionary1.xaml",
+              "DocumentMoniker": "C:\\Users\\udune\\Desktop\\WPF\\ch32 \uC2A4\uD0C0\uC77C\\Dictionary1.xaml",
+              "RelativeDocumentMoniker": "..\\ch32 \uC2A4\uD0C0\uC77C\\Dictionary1.xaml",
+              "ToolTip": "C:\\Users\\udune\\Desktop\\WPF\\ch32 \uC2A4\uD0C0\uC77C\\Dictionary1.xaml",
+              "RelativeToolTip": "..\\ch32 \uC2A4\uD0C0\uC77C\\Dictionary1.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-03-15T23:53:08.666Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "App.xaml",
+              "DocumentMoniker": "C:\\Users\\udune\\Desktop\\WPF\\ch32 \uC2A4\uD0C0\uC77C\\App.xaml",
+              "RelativeDocumentMoniker": "..\\ch32 \uC2A4\uD0C0\uC77C\\App.xaml",
+              "ToolTip": "C:\\Users\\udune\\Desktop\\WPF\\ch32 \uC2A4\uD0C0\uC77C\\App.xaml",
+              "RelativeToolTip": "..\\ch32 \uC2A4\uD0C0\uC77C\\App.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-03-15T23:46:24.564Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "UserControl1.xaml",
+              "DocumentMoniker": "C:\\Users\\udune\\Desktop\\WPF\\ch32 \uC2A4\uD0C0\uC77C\\UserControl1.xaml",
+              "RelativeDocumentMoniker": "..\\ch32 \uC2A4\uD0C0\uC77C\\UserControl1.xaml",
+              "ToolTip": "C:\\Users\\udune\\Desktop\\WPF\\ch32 \uC2A4\uD0C0\uC77C\\UserControl1.xaml",
+              "RelativeToolTip": "..\\ch32 \uC2A4\uD0C0\uC77C\\UserControl1.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-03-15T23:45:21.743Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "MainWindow.xaml",
+              "DocumentMoniker": "C:\\Users\\udune\\Desktop\\WPF\\ch32 \uC2A4\uD0C0\uC77C\\MainWindow.xaml",
+              "RelativeDocumentMoniker": "..\\ch32 \uC2A4\uD0C0\uC77C\\MainWindow.xaml",
+              "ToolTip": "C:\\Users\\udune\\Desktop\\WPF\\ch32 \uC2A4\uD0C0\uC77C\\MainWindow.xaml",
+              "RelativeToolTip": "..\\ch32 \uC2A4\uD0C0\uC77C\\MainWindow.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-03-15T23:37:36.735Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "MainWindow.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\udune\\Desktop\\WPF\\ch32 \uC2A4\uD0C0\uC77C\\MainWindow.xaml.cs",
+              "RelativeDocumentMoniker": "..\\ch32 \uC2A4\uD0C0\uC77C\\MainWindow.xaml.cs",
+              "ToolTip": "C:\\Users\\udune\\Desktop\\WPF\\ch32 \uC2A4\uD0C0\uC77C\\MainWindow.xaml.cs",
+              "RelativeToolTip": "..\\ch32 \uC2A4\uD0C0\uC77C\\MainWindow.xaml.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-15T23:37:36.535Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 22,
+              "Title": "UserControl1.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\udune\\Desktop\\WPF\\ch31 \uC720\uC800\uCEE8\uD2B8\uB864\\uc\\UserControl1.xaml.cs",
+              "RelativeDocumentMoniker": "..\\ch31 \uC720\uC800\uCEE8\uD2B8\uB864\\uc\\UserControl1.xaml.cs",
+              "ToolTip": "C:\\Users\\udune\\Desktop\\WPF\\ch31 \uC720\uC800\uCEE8\uD2B8\uB864\\uc\\UserControl1.xaml.cs",
+              "RelativeToolTip": "..\\ch31 \uC720\uC800\uCEE8\uD2B8\uB864\\uc\\UserControl1.xaml.cs",
+              "ViewState": "AgIAAAwAAAAAAAAAAAAAABkAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-08T14:14:14.301Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 21,
+              "Title": "UserControl1.xaml",
+              "DocumentMoniker": "C:\\Users\\udune\\Desktop\\WPF\\ch31 \uC720\uC800\uCEE8\uD2B8\uB864\\uc\\UserControl1.xaml",
+              "RelativeDocumentMoniker": "..\\ch31 \uC720\uC800\uCEE8\uD2B8\uB864\\uc\\UserControl1.xaml",
+              "ToolTip": "C:\\Users\\udune\\Desktop\\WPF\\ch31 \uC720\uC800\uCEE8\uD2B8\uB864\\uc\\UserControl1.xaml",
+              "RelativeToolTip": "..\\ch31 \uC720\uC800\uCEE8\uD2B8\uB864\\uc\\UserControl1.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-03-08T14:14:05.211Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "ch31 \uC720\uC800\uCEE8\uD2B8\uB864.csproj",
+              "DocumentMoniker": "C:\\Users\\udune\\Desktop\\WPF\\ch31 \uC720\uC800\uCEE8\uD2B8\uB864\\ch31 \uC720\uC800\uCEE8\uD2B8\uB864.csproj",
+              "RelativeDocumentMoniker": "..\\ch31 \uC720\uC800\uCEE8\uD2B8\uB864\\ch31 \uC720\uC800\uCEE8\uD2B8\uB864.csproj",
+              "ToolTip": "C:\\Users\\udune\\Desktop\\WPF\\ch31 \uC720\uC800\uCEE8\uD2B8\uB864\\ch31 \uC720\uC800\uCEE8\uD2B8\uB864.csproj",
+              "RelativeToolTip": "..\\ch31 \uC720\uC800\uCEE8\uD2B8\uB864\\ch31 \uC720\uC800\uCEE8\uD2B8\uB864.csproj",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2025-03-08T14:13:35.398Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 20,
+              "Title": "MainWindow.xaml",
+              "DocumentMoniker": "C:\\Users\\udune\\Desktop\\WPF\\ch31 \uC720\uC800\uCEE8\uD2B8\uB864\\MainWindow.xaml",
+              "RelativeDocumentMoniker": "..\\ch31 \uC720\uC800\uCEE8\uD2B8\uB864\\MainWindow.xaml",
+              "ToolTip": "C:\\Users\\udune\\Desktop\\WPF\\ch31 \uC720\uC800\uCEE8\uD2B8\uB864\\MainWindow.xaml",
+              "RelativeToolTip": "..\\ch31 \uC720\uC800\uCEE8\uD2B8\uB864\\MainWindow.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-03-08T14:08:58.343Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 19,
+              "Title": "MainWindow.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\udune\\Desktop\\WPF\\ch31 \uC720\uC800\uCEE8\uD2B8\uB864\\MainWindow.xaml.cs",
+              "RelativeDocumentMoniker": "..\\ch31 \uC720\uC800\uCEE8\uD2B8\uB864\\MainWindow.xaml.cs",
+              "ToolTip": "C:\\Users\\udune\\Desktop\\WPF\\ch31 \uC720\uC800\uCEE8\uD2B8\uB864\\MainWindow.xaml.cs",
+              "RelativeToolTip": "..\\ch31 \uC720\uC800\uCEE8\uD2B8\uB864\\MainWindow.xaml.cs",
+              "ViewState": "AgIAAAwAAAAAAAAAAAAAABkAAAAqAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-08T14:08:58.036Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 24,
+              "Title": "Window1.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\udune\\Desktop\\WPF\\ch30 \uD0ED\uCEE8\uD2B8\uB864 \uBAA8\uB2EC \uBAA8\uB2EC\uB9AC\uC2A4\\Window1.xaml.cs",
+              "RelativeDocumentMoniker": "..\\ch30 \uD0ED\uCEE8\uD2B8\uB864 \uBAA8\uB2EC \uBAA8\uB2EC\uB9AC\uC2A4\\Window1.xaml.cs",
+              "ToolTip": "C:\\Users\\udune\\Desktop\\WPF\\ch30 \uD0ED\uCEE8\uD2B8\uB864 \uBAA8\uB2EC \uBAA8\uB2EC\uB9AC\uC2A4\\Window1.xaml.cs",
+              "RelativeToolTip": "..\\ch30 \uD0ED\uCEE8\uD2B8\uB864 \uBAA8\uB2EC \uBAA8\uB2EC\uB9AC\uC2A4\\Window1.xaml.cs",
+              "ViewState": "AgIAAA8AAAAAAAAAAAAAAB0AAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-08T13:52:43.657Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 23,
+              "Title": "Window1.xaml",
+              "DocumentMoniker": "C:\\Users\\udune\\Desktop\\WPF\\ch30 \uD0ED\uCEE8\uD2B8\uB864 \uBAA8\uB2EC \uBAA8\uB2EC\uB9AC\uC2A4\\Window1.xaml",
+              "RelativeDocumentMoniker": "..\\ch30 \uD0ED\uCEE8\uD2B8\uB864 \uBAA8\uB2EC \uBAA8\uB2EC\uB9AC\uC2A4\\Window1.xaml",
+              "ToolTip": "C:\\Users\\udune\\Desktop\\WPF\\ch30 \uD0ED\uCEE8\uD2B8\uB864 \uBAA8\uB2EC \uBAA8\uB2EC\uB9AC\uC2A4\\Window1.xaml",
+              "RelativeToolTip": "..\\ch30 \uD0ED\uCEE8\uD2B8\uB864 \uBAA8\uB2EC \uBAA8\uB2EC\uB9AC\uC2A4\\Window1.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-03-08T13:52:32.306Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 26,
+              "Title": "MainWindow.xaml",
+              "DocumentMoniker": "C:\\Users\\udune\\Desktop\\WPF\\ch30 \uD0ED\uCEE8\uD2B8\uB864 \uBAA8\uB2EC \uBAA8\uB2EC\uB9AC\uC2A4\\MainWindow.xaml",
+              "RelativeDocumentMoniker": "..\\ch30 \uD0ED\uCEE8\uD2B8\uB864 \uBAA8\uB2EC \uBAA8\uB2EC\uB9AC\uC2A4\\MainWindow.xaml",
+              "ToolTip": "C:\\Users\\udune\\Desktop\\WPF\\ch30 \uD0ED\uCEE8\uD2B8\uB864 \uBAA8\uB2EC \uBAA8\uB2EC\uB9AC\uC2A4\\MainWindow.xaml",
+              "RelativeToolTip": "..\\ch30 \uD0ED\uCEE8\uD2B8\uB864 \uBAA8\uB2EC \uBAA8\uB2EC\uB9AC\uC2A4\\MainWindow.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-03-08T13:39:16.613Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 25,
+              "Title": "MainWindow.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\udune\\Desktop\\WPF\\ch30 \uD0ED\uCEE8\uD2B8\uB864 \uBAA8\uB2EC \uBAA8\uB2EC\uB9AC\uC2A4\\MainWindow.xaml.cs",
+              "RelativeDocumentMoniker": "..\\ch30 \uD0ED\uCEE8\uD2B8\uB864 \uBAA8\uB2EC \uBAA8\uB2EC\uB9AC\uC2A4\\MainWindow.xaml.cs",
+              "ToolTip": "C:\\Users\\udune\\Desktop\\WPF\\ch30 \uD0ED\uCEE8\uD2B8\uB864 \uBAA8\uB2EC \uBAA8\uB2EC\uB9AC\uC2A4\\MainWindow.xaml.cs",
+              "RelativeToolTip": "..\\ch30 \uD0ED\uCEE8\uD2B8\uB864 \uBAA8\uB2EC \uBAA8\uB2EC\uB9AC\uC2A4\\MainWindow.xaml.cs",
+              "ViewState": "AgIAAA8AAAAAAAAAAAAxwBwAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-08T13:39:16.295Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 31,
+              "Title": "Page2.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\udune\\Desktop\\WPF\\ch29 \uD654\uBA74\uC774\uB3D9 \uD504\uB808\uC784\\Views\\Page2.xaml.cs",
+              "RelativeDocumentMoniker": "..\\ch29 \uD654\uBA74\uC774\uB3D9 \uD504\uB808\uC784\\Views\\Page2.xaml.cs",
+              "ToolTip": "C:\\Users\\udune\\Desktop\\WPF\\ch29 \uD654\uBA74\uC774\uB3D9 \uD504\uB808\uC784\\Views\\Page2.xaml.cs",
+              "RelativeToolTip": "..\\ch29 \uD654\uBA74\uC774\uB3D9 \uD504\uB808\uC784\\Views\\Page2.xaml.cs",
+              "ViewState": "AgIAAAwAAAAAAAAAAAAAAB4AAAAuAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-08T13:05:29.81Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 29,
+              "Title": "Page1.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\udune\\Desktop\\WPF\\ch29 \uD654\uBA74\uC774\uB3D9 \uD504\uB808\uC784\\Views\\Page1.xaml.cs",
+              "RelativeDocumentMoniker": "..\\ch29 \uD654\uBA74\uC774\uB3D9 \uD504\uB808\uC784\\Views\\Page1.xaml.cs",
+              "ToolTip": "C:\\Users\\udune\\Desktop\\WPF\\ch29 \uD654\uBA74\uC774\uB3D9 \uD504\uB808\uC784\\Views\\Page1.xaml.cs",
+              "RelativeToolTip": "..\\ch29 \uD654\uBA74\uC774\uB3D9 \uD504\uB808\uC784\\Views\\Page1.xaml.cs",
+              "ViewState": "AgIAAAwAAAAAAAAAAAAAACAAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-08T13:02:56.091Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 33,
+              "Title": "Page3.xaml",
+              "DocumentMoniker": "C:\\Users\\udune\\Desktop\\WPF\\ch29 \uD654\uBA74\uC774\uB3D9 \uD504\uB808\uC784\\Views\\Page3.xaml",
+              "RelativeDocumentMoniker": "..\\ch29 \uD654\uBA74\uC774\uB3D9 \uD504\uB808\uC784\\Views\\Page3.xaml",
+              "ToolTip": "C:\\Users\\udune\\Desktop\\WPF\\ch29 \uD654\uBA74\uC774\uB3D9 \uD504\uB808\uC784\\Views\\Page3.xaml",
+              "RelativeToolTip": "..\\ch29 \uD654\uBA74\uC774\uB3D9 \uD504\uB808\uC784\\Views\\Page3.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-03-08T13:01:16.332Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 34,
+              "Title": "Page2.xaml",
+              "DocumentMoniker": "C:\\Users\\udune\\Desktop\\WPF\\ch29 \uD654\uBA74\uC774\uB3D9 \uD504\uB808\uC784\\Views\\Page2.xaml",
+              "RelativeDocumentMoniker": "..\\ch29 \uD654\uBA74\uC774\uB3D9 \uD504\uB808\uC784\\Views\\Page2.xaml",
+              "ToolTip": "C:\\Users\\udune\\Desktop\\WPF\\ch29 \uD654\uBA74\uC774\uB3D9 \uD504\uB808\uC784\\Views\\Page2.xaml",
+              "RelativeToolTip": "..\\ch29 \uD654\uBA74\uC774\uB3D9 \uD504\uB808\uC784\\Views\\Page2.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-03-08T13:01:04.652Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 30,
+              "Title": "Page1.xaml",
+              "DocumentMoniker": "C:\\Users\\udune\\Desktop\\WPF\\ch29 \uD654\uBA74\uC774\uB3D9 \uD504\uB808\uC784\\Views\\Page1.xaml",
+              "RelativeDocumentMoniker": "..\\ch29 \uD654\uBA74\uC774\uB3D9 \uD504\uB808\uC784\\Views\\Page1.xaml",
+              "ToolTip": "C:\\Users\\udune\\Desktop\\WPF\\ch29 \uD654\uBA74\uC774\uB3D9 \uD504\uB808\uC784\\Views\\Page1.xaml",
+              "RelativeToolTip": "..\\ch29 \uD654\uBA74\uC774\uB3D9 \uD504\uB808\uC784\\Views\\Page1.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-03-08T13:00:54.985Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 27,
+              "Title": "MainWindow.xaml",
+              "DocumentMoniker": "C:\\Users\\udune\\Desktop\\WPF\\ch29 \uD654\uBA74\uC774\uB3D9 \uD504\uB808\uC784\\MainWindow.xaml",
+              "RelativeDocumentMoniker": "..\\ch29 \uD654\uBA74\uC774\uB3D9 \uD504\uB808\uC784\\MainWindow.xaml",
+              "ToolTip": "C:\\Users\\udune\\Desktop\\WPF\\ch29 \uD654\uBA74\uC774\uB3D9 \uD504\uB808\uC784\\MainWindow.xaml",
+              "RelativeToolTip": "..\\ch29 \uD654\uBA74\uC774\uB3D9 \uD504\uB808\uC784\\MainWindow.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-03-08T12:54:26.878Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 28,
+              "Title": "MainWindow.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\udune\\Desktop\\WPF\\ch29 \uD654\uBA74\uC774\uB3D9 \uD504\uB808\uC784\\MainWindow.xaml.cs",
+              "RelativeDocumentMoniker": "..\\ch29 \uD654\uBA74\uC774\uB3D9 \uD504\uB808\uC784\\MainWindow.xaml.cs",
+              "ToolTip": "C:\\Users\\udune\\Desktop\\WPF\\ch29 \uD654\uBA74\uC774\uB3D9 \uD504\uB808\uC784\\MainWindow.xaml.cs",
+              "RelativeToolTip": "..\\ch29 \uD654\uBA74\uC774\uB3D9 \uD504\uB808\uC784\\MainWindow.xaml.cs",
+              "ViewState": "AgIAABAAAAAAAAAAAAA2wBsAAAAvAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-08T12:54:26.711Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 32,
+              "Title": "Page3.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\udune\\Desktop\\WPF\\ch29 \uD654\uBA74\uC774\uB3D9 \uD504\uB808\uC784\\Views\\Page3.xaml.cs",
+              "RelativeDocumentMoniker": "..\\ch29 \uD654\uBA74\uC774\uB3D9 \uD504\uB808\uC784\\Views\\Page3.xaml.cs",
+              "ToolTip": "C:\\Users\\udune\\Desktop\\WPF\\ch29 \uD654\uBA74\uC774\uB3D9 \uD504\uB808\uC784\\Views\\Page3.xaml.cs",
+              "RelativeToolTip": "..\\ch29 \uD654\uBA74\uC774\uB3D9 \uD504\uB808\uC784\\Views\\Page3.xaml.cs",
+              "ViewState": "AgIAAAwAAAAAAAAAAAAAABwAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-08T13:06:44.733Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 40,
+              "Title": "MainWindow.g.i.cs",
+              "DocumentMoniker": "C:\\Users\\udune\\Desktop\\WPF\\ch29 \uD654\uBA74\uC774\uB3D9 \uD504\uB808\uC784\\obj\\Debug\\net8.0-windows\\MainWindow.g.i.cs",
+              "RelativeDocumentMoniker": "..\\ch29 \uD654\uBA74\uC774\uB3D9 \uD504\uB808\uC784\\obj\\Debug\\net8.0-windows\\MainWindow.g.i.cs",
+              "ToolTip": "C:\\Users\\udune\\Desktop\\WPF\\ch29 \uD654\uBA74\uC774\uB3D9 \uD504\uB808\uC784\\obj\\Debug\\net8.0-windows\\MainWindow.g.i.cs",
+              "RelativeToolTip": "..\\ch29 \uD654\uBA74\uC774\uB3D9 \uD504\uB808\uC784\\obj\\Debug\\net8.0-windows\\MainWindow.g.i.cs",
+              "ViewState": "AgIAABsAAAAAAAAAAAAIwCgAAAASAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-08T13:21:31.826Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 35,
+              "Title": "MainWindow.xaml",
+              "DocumentMoniker": "C:\\Users\\udune\\Desktop\\WPF\\ch28 \uC601\uC5B4\uB2E8\uC5B4\uB9DE\uCD94\uAE30\\MainWindow.xaml",
+              "RelativeDocumentMoniker": "..\\ch28 \uC601\uC5B4\uB2E8\uC5B4\uB9DE\uCD94\uAE30\\MainWindow.xaml",
+              "ToolTip": "C:\\Users\\udune\\Desktop\\WPF\\ch28 \uC601\uC5B4\uB2E8\uC5B4\uB9DE\uCD94\uAE30\\MainWindow.xaml",
+              "RelativeToolTip": "..\\ch28 \uC601\uC5B4\uB2E8\uC5B4\uB9DE\uCD94\uAE30\\MainWindow.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-03-01T00:25:55.771Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 36,
+              "Title": "MainWindow.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\udune\\Desktop\\WPF\\ch28 \uC601\uC5B4\uB2E8\uC5B4\uB9DE\uCD94\uAE30\\MainWindow.xaml.cs",
+              "RelativeDocumentMoniker": "..\\ch28 \uC601\uC5B4\uB2E8\uC5B4\uB9DE\uCD94\uAE30\\MainWindow.xaml.cs",
+              "ToolTip": "C:\\Users\\udune\\Desktop\\WPF\\ch28 \uC601\uC5B4\uB2E8\uC5B4\uB9DE\uCD94\uAE30\\MainWindow.xaml.cs",
+              "RelativeToolTip": "..\\ch28 \uC601\uC5B4\uB2E8\uC5B4\uB9DE\uCD94\uAE30\\MainWindow.xaml.cs",
+              "ViewState": "AgIAAKMAAAAAAAAAAAAcwMMAAAAVAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-01T00:25:55.565Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 37,
+              "Title": "MainWindow.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\udune\\Desktop\\WPF\\ch27 \uB370\uC774\uD130\uBC14\uC778\uB5293\\MainWindow.xaml.cs",
+              "RelativeDocumentMoniker": "..\\ch27 \uB370\uC774\uD130\uBC14\uC778\uB5293\\MainWindow.xaml.cs",
+              "ToolTip": "C:\\Users\\udune\\Desktop\\WPF\\ch27 \uB370\uC774\uD130\uBC14\uC778\uB5293\\MainWindow.xaml.cs",
+              "RelativeToolTip": "..\\ch27 \uB370\uC774\uD130\uBC14\uC778\uB5293\\MainWindow.xaml.cs",
+              "ViewState": "AgIAAA8AAAAAAAAAAAAuwCMAAAAkAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-27T07:51:12.603Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 39,
+              "Title": "ch27 \uB370\uC774\uD130\uBC14\uC778\uB5293.csproj",
+              "DocumentMoniker": "C:\\Users\\udune\\Desktop\\WPF\\ch27 \uB370\uC774\uD130\uBC14\uC778\uB5293\\ch27 \uB370\uC774\uD130\uBC14\uC778\uB5293.csproj",
+              "RelativeDocumentMoniker": "..\\ch27 \uB370\uC774\uD130\uBC14\uC778\uB5293\\ch27 \uB370\uC774\uD130\uBC14\uC778\uB5293.csproj",
+              "ToolTip": "C:\\Users\\udune\\Desktop\\WPF\\ch27 \uB370\uC774\uD130\uBC14\uC778\uB5293\\ch27 \uB370\uC774\uD130\uBC14\uC778\uB5293.csproj",
+              "RelativeToolTip": "..\\ch27 \uB370\uC774\uD130\uBC14\uC778\uB5293\\ch27 \uB370\uC774\uD130\uBC14\uC778\uB5293.csproj",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2025-02-27T07:48:01.742Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 38,
+              "Title": "MainWindow.xaml",
+              "DocumentMoniker": "C:\\Users\\udune\\Desktop\\WPF\\ch27 \uB370\uC774\uD130\uBC14\uC778\uB5293\\MainWindow.xaml",
+              "RelativeDocumentMoniker": "..\\ch27 \uB370\uC774\uD130\uBC14\uC778\uB5293\\MainWindow.xaml",
+              "ToolTip": "C:\\Users\\udune\\Desktop\\WPF\\ch27 \uB370\uC774\uD130\uBC14\uC778\uB5293\\MainWindow.xaml",
+              "RelativeToolTip": "..\\ch27 \uB370\uC774\uD130\uBC14\uC778\uB5293\\MainWindow.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-02-27T07:47:49.837Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

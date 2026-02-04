@@ -1,0 +1,23 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v10.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v10.0": {
+      "ch05 Text Box/1.0.0": {
+        "runtime": {
+          "ch05 Text Box.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "ch05 Text Box/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v8.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v8.0": {
+      "ch27 데이터바인딩3/1.0.0": {
+        "runtime": {
+          "ch27 데이터바인딩3.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "ch27 데이터바인딩3/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

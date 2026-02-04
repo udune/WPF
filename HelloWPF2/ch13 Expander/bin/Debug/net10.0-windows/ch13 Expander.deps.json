@@ -1,0 +1,23 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v10.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v10.0": {
+      "ch13 Expander/1.0.0": {
+        "runtime": {
+          "ch13 Expander.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "ch13 Expander/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

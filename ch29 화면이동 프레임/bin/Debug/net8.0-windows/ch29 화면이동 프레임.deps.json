@@ -1,0 +1,23 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v8.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v8.0": {
+      "ch29 화면이동 프레임/1.0.0": {
+        "runtime": {
+          "ch29 화면이동 프레임.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "ch29 화면이동 프레임/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

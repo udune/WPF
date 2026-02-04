@@ -1,0 +1,555 @@
+﻿<!-- 
+    Dictionary1.xaml - 재사용 가능한 스타일 리소스 딕셔너리
+    버튼 스타일을 정의하여 애플리케이션 전체에서 사용할 수 있습니다.
+    App.xaml에서 MergedDictionaries로 병합되어 전역 리소스가 됩니다.
+    
+    핵심 개념:
+    - ResourceDictionary: 리소스를 담는 컨테이너
+    - Style: 컨트롤의 외관 정의
+    - Setter: 속성 값 설정
+    - ControlTemplate: 컨트롤의 시각적 구조 재정의
+-->
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <!-- 
+        ResourceDictionary:
+        - 리소스를 담는 컨테이너
+        - 키-값 쌍으로 관리
+        - 스타일, 브러시, 템플릿 등 포함
+        
+        루트 요소:
+        - Window, Page와 달리 독립적인 리소스 파일
+        - App.xaml에서 MergedDictionaries로 병합
+        
+        네임스페이스:
+        - xmlns: 기본 WPF 네임스페이스
+        - xmlns:x: XAML 확장 기능
+    -->
+    
+    <!-- ========== 버튼스타일 (Salmon 배경) ========== -->
+    <Style TargetType="Button" x:Key="버튼스타일">
+        <!-- 
+            Style:
+            - 컨트롤의 외관을 정의하는 리소스
+            - 여러 속성을 그룹화하여 재사용
+            - 일관된 UI 유지
+            
+            TargetType="Button":
+            - 이 스타일이 적용될 컨트롤 타입
+            - Button 컨트롤에만 적용 가능
+            - 타입 안전성 제공
+            
+            x:Key="버튼스타일":
+            - 리소스의 고유 키
+            - StaticResource로 참조
+            - {StaticResource 버튼스타일}
+            
+            Key가 없는 스타일:
+            <Style TargetType="Button">
+            - 암시적 스타일 (Implicit Style)
+            - 모든 Button에 자동 적용
+            - Key가 있으면 명시적으로 지정해야 함
+            
+            스타일 구성:
+            - Setter: 속성 값 설정
+            - Trigger: 조건부 변경
+            - Template: 시각적 구조 재정의
+        -->
+        
+        <Setter Property="Cursor" Value="Hand"></Setter>
+        <!-- 
+            Cursor Setter:
+            
+            Property="Cursor":
+            - 설정할 속성 이름
+            - Button.Cursor 속성
+            
+            Value="Hand":
+            - 손 모양 커서
+            - 마우스를 버튼 위에 올리면 손 모양
+            
+            다른 커서 옵션:
+            - Arrow: 화살표 (기본)
+            - Hand: 손 모양
+            - Wait: 대기 (모래시계)
+            - Cross: 십자가
+            - IBeam: I자 (텍스트 입력)
+            - SizeAll: 이동 (십자 화살표)
+            - No: 금지 표시
+            
+            사용자 경험:
+            - 클릭 가능한 요소임을 시각적으로 표시
+            - 웹 링크와 유사한 느낌
+        -->
+        
+        <Setter Property="Background" Value="Salmon"></Setter>
+        <!-- 
+            Background Setter:
+            
+            Property="Background":
+            - 배경색 속성
+            
+            Value="Salmon":
+            - 연어색 (RGB: #FA8072)
+            - 밝은 주황빛 분홍색
+            
+            색상 지정 방법:
+            1. 이름: "Salmon", "Red", "Blue"
+            2. 16진수: "#FA8072", "#FF0000"
+            3. RGB: "rgb(250, 128, 114)"
+            4. ARGB: "#80FA8072" (투명도 포함)
+            
+            브러시 사용:
+            <Setter Property="Background">
+                <Setter.Value>
+                    <LinearGradientBrush>
+                        <GradientStop Color="Salmon" Offset="0"/>
+                        <GradientStop Color="Orange" Offset="1"/>
+                    </LinearGradientBrush>
+                </Setter.Value>
+            </Setter>
+        -->
+        
+        <Setter Property="Foreground" Value="White"></Setter>
+        <!-- 
+            Foreground Setter:
+            
+            Property="Foreground":
+            - 전경색 (텍스트 색상)
+            
+            Value="White":
+            - 흰색 텍스트
+            - Salmon 배경과 대비
+            
+            대비율:
+            - 배경과 전경의 명도 차이
+            - 가독성 향상
+            - WCAG 접근성 가이드라인 준수
+        -->
+        
+        <Setter Property="Width" Value="150"></Setter>
+        <!-- 
+            Width Setter:
+            
+            Property="Width":
+            - 버튼 너비
+            
+            Value="150":
+            - 150픽셀
+            
+            크기 지정 방법:
+            - 고정값: 150
+            - Auto: 내용에 맞춤
+            - *: 비례 크기 (Grid에서)
+            
+            반응형 디자인:
+            - MinWidth, MaxWidth 사용
+            - <Setter Property="MinWidth" Value="100"/>
+            - <Setter Property="MaxWidth" Value="200"/>
+        -->
+        
+        <Setter Property="Height" Value="50"></Setter>
+        <!-- 
+            Height Setter:
+            
+            Property="Height":
+            - 버튼 높이
+            
+            Value="50":
+            - 50픽셀
+            
+            크기 일관성:
+            - 모든 버튼이 동일한 크기
+            - 정렬 및 레이아웃 용이
+        -->
+        
+        <Setter Property="FontSize" Value="20"></Setter>
+        <!-- 
+            FontSize Setter:
+            
+            Property="FontSize":
+            - 글꼴 크기
+            
+            Value="20":
+            - 20픽셀
+            
+            글꼴 크기 단위:
+            - 픽셀 (Pixel): 절대 단위
+            - 포인트 (Point): 1pt = 1/72인치
+            - Em: 상대 단위
+            
+            가독성:
+            - 버튼 텍스트는 16-24px 권장
+            - 20px는 적절한 크기
+        -->
+        
+        <Setter Property="FontWeight" Value="Bold"></Setter>
+        <!-- 
+            FontWeight Setter:
+            
+            Property="FontWeight":
+            - 글꼴 두께
+            
+            Value="Bold":
+            - 굵은 글꼴
+            
+            FontWeight 옵션:
+            - Thin: 100
+            - ExtraLight: 200
+            - Light: 300
+            - Normal: 400 (기본)
+            - Medium: 500
+            - SemiBold: 600
+            - Bold: 700
+            - ExtraBold: 800
+            - Black: 900
+            
+            가독성:
+            - Bold는 버튼 텍스트에 적합
+            - 강조 효과
+        -->
+        
+        <Setter Property="Margin" Value="10"></Setter>
+        <!-- 
+            Margin Setter:
+            
+            Property="Margin":
+            - 외부 여백
+            
+            Value="10":
+            - 모든 방향 10픽셀
+            - 동일한 값: 10
+            - 가로/세로: 10,5
+            - 좌/상/우/하: 10,5,10,5
+            
+            Margin vs Padding:
+            - Margin: 외부 여백 (컨트롤 밖)
+            - Padding: 내부 여백 (컨트롤 안)
+            
+            레이아웃:
+            [Margin]
+            ┌─────────────────┐
+            │ [Padding]       │
+            │ ┌─────────────┐ │
+            │ │   Content   │ │
+            │ └─────────────┘ │
+            └─────────────────┘
+        -->
+        
+        <Setter Property="Template">
+            <!-- 
+                Template Setter:
+                - ControlTemplate을 설정
+                - 컨트롤의 시각적 구조 재정의
+                
+                왜 필요한가?
+                - 기본 버튼은 사각형
+                - 둥근 모서리를 원함
+                - Border로 CornerRadius 설정
+                
+                ControlTemplate:
+                - 컨트롤의 시각적 트리 정의
+                - XAML로 구조 작성
+                - 완전한 커스터마이징
+            -->
+            <Setter.Value>
+                <!-- 
+                    Setter.Value:
+                    - Property Element Syntax
+                    - 복잡한 값을 정의할 때 사용
+                    
+                    간단한 값:
+                    <Setter Property="Width" Value="150"/>
+                    
+                    복잡한 값:
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            ...
+                        </Setter.Value>
+                    </Setter>
+                -->
+                
+                <ControlTemplate TargetType="Button">
+                    <!-- 
+                        ControlTemplate:
+                        - 버튼의 시각적 구조 정의
+                        
+                        TargetType="Button":
+                        - 이 템플릿이 적용될 타입
+                        - Button 컨트롤용
+                        - TemplateBinding 사용 가능
+                        
+                        기본 버튼 구조:
+                        - Border (외곽선)
+                        - ContentPresenter (내용)
+                        
+                        커스텀 버튼 구조:
+                        - Border (둥근 모서리)
+                        - ContentPresenter (텍스트)
+                    -->
+                    
+                    <Border CornerRadius="20" Background="{TemplateBinding Background}">
+                        <!-- 
+                            Border:
+                            - 테두리와 배경을 제공하는 컨트롤
+                            
+                            CornerRadius="20":
+                            - 모서리를 둥글게
+                            - 20픽셀 반지름
+                            - 모든 모서리 동일
+                            
+                            다양한 CornerRadius:
+                            - 균일: "20"
+                            - 좌상/우상/우하/좌하: "20,10,20,10"
+                            - 타원형: "50" (Width/Height의 절반)
+                            
+                            Background="{TemplateBinding Background}":
+                            - TemplateBinding
+                            - 버튼의 Background 속성을 참조
+                            
+                            TemplateBinding:
+                            - 템플릿 내에서 부모 컨트롤 속성 참조
+                            - {TemplateBinding PropertyName}
+                            - 단방향 바인딩 (OneWay)
+                            
+                            바인딩 흐름:
+                            Button.Background (Salmon)
+                              ↓ TemplateBinding
+                            Border.Background (Salmon)
+                            
+                            왜 필요한가?
+                            - Style에서 Background="Salmon" 설정
+                            - Template의 Border도 Salmon 배경
+                            - 일관성 유지
+                            
+                            다른 방법:
+                            Background="Salmon" (하드코딩)
+                            - 유연성 없음
+                            - 스타일 변경 시 템플릿도 수정
+                        -->
+                        
+                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center">
+                        </ContentPresenter>
+                        <!-- 
+                            ContentPresenter:
+                            - 컨트롤의 Content를 표시
+                            - 버튼의 텍스트 또는 내용
+                            
+                            HorizontalAlignment="Center":
+                            - 가로 중앙 정렬
+                            
+                            VerticalAlignment="Center":
+                            - 세로 중앙 정렬
+                            
+                            Content 표시:
+                            <Button Content="버튼">
+                              ↓
+                            ContentPresenter가 "버튼" 텍스트 표시
+                            
+                            복잡한 Content:
+                            <Button>
+                                <StackPanel>
+                                    <Image Source="icon.png"/>
+                                    <TextBlock Text="버튼"/>
+                                </StackPanel>
+                            </Button>
+                              ↓
+                            ContentPresenter가 StackPanel 전체 표시
+                            
+                            왜 필요한가?
+                            - 템플릿은 시각적 구조만 정의
+                            - 실제 내용은 ContentPresenter가 표시
+                            - 유연한 컨텐츠 지원
+                        -->
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    
+    <!-- ========== 버튼스타일2 (LightGreen 배경) ========== -->
+    <Style TargetType="Button" x:Key="버튼스타일2">
+        <!-- 
+            버튼스타일2:
+            - 버튼스타일과 거의 동일
+            - 배경색만 LightGreen으로 변경
+            
+            중복 코드:
+            - 대부분의 Setter가 동일
+            - 코드 중복 (DRY 원칙 위반)
+            
+            개선 방안:
+            - BasedOn 사용
+            - 스타일 상속
+        -->
+        
+        <Setter Property="Cursor" Value="Hand"></Setter>
+        <Setter Property="Background" Value="LightGreen"></Setter>
+        <!-- 
+            Background="LightGreen":
+            - 연한 녹색 (#90EE90)
+            - 버튼스타일과의 차이점
+        -->
+        <Setter Property="Foreground" Value="White"></Setter>
+        <Setter Property="Width" Value="150"></Setter>
+        <Setter Property="Height" Value="50"></Setter>
+        <Setter Property="FontSize" Value="20"></Setter>
+        <Setter Property="FontWeight" Value="Bold"></Setter>
+        <Setter Property="Margin" Value="10"></Setter>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Border CornerRadius="20" Background="{TemplateBinding Background}">
+                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center">
+                        </ContentPresenter>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    
+    <!--
+        스타일 활용 및 개선:
+        
+        ========== 1. BasedOn (스타일 상속) ==========
+        
+        베이스 스타일:
+        <Style TargetType="Button" x:Key="BaseButtonStyle">
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="Width" Value="150"/>
+            <Setter Property="Height" Value="50"/>
+            <Setter Property="FontSize" Value="20"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="Margin" Value="10"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border CornerRadius="20" Background="{TemplateBinding Background}">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        
+        파생 스타일:
+        <Style TargetType="Button" x:Key="버튼스타일" BasedOn="{StaticResource BaseButtonStyle}">
+            <Setter Property="Background" Value="Salmon"/>
+            <Setter Property="Foreground" Value="White"/>
+        </Style>
+        
+        <Style TargetType="Button" x:Key="버튼스타일2" BasedOn="{StaticResource BaseButtonStyle}">
+            <Setter Property="Background" Value="LightGreen"/>
+            <Setter Property="Foreground" Value="White"/>
+        </Style>
+        
+        장점:
+        - 코드 중복 제거
+        - 유지보수 용이
+        - 일관성 유지
+        
+        ========== 2. Trigger 추가 ==========
+        
+        마우스 오버 효과:
+        <Style TargetType="Button" x:Key="버튼스타일">
+            <!-- ...기존 Setter... -->
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="DarkSalmon"/>
+                    <Setter Property="Cursor" Value="Hand"/>
+                </Trigger>
+                <Trigger Property="IsPressed" Value="True">
+                    <Setter Property="Background" Value="Red"/>
+                </Trigger>
+                <Trigger Property="IsEnabled" Value="False">
+                    <Setter Property="Opacity" Value="0.5"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+        
+        ========== 3. EventSetter 추가 ==========
+        
+        이벤트 핸들러:
+        <Style TargetType="Button" x:Key="버튼스타일">
+            <!-- ...기존 Setter... -->
+            <EventSetter Event="Click" Handler="Button_Click"/>
+            <EventSetter Event="MouseEnter" Handler="Button_MouseEnter"/>
+        </Style>
+        
+        코드:
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("클릭!");
+        }
+        
+        ========== 4. 애니메이션 추가 ==========
+        
+        <ControlTemplate TargetType="Button">
+            <Border x:Name="border" CornerRadius="20" Background="{TemplateBinding Background}">
+                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            </Border>
+            <ControlTemplate.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Trigger.EnterActions>
+                        <BeginStoryboard>
+                            <Storyboard>
+                                <DoubleAnimation Storyboard.TargetName="border"
+                                               Storyboard.TargetProperty="(Border.RenderTransform).(ScaleTransform.ScaleX)"
+                                               To="1.1" Duration="0:0:0.2"/>
+                                <DoubleAnimation Storyboard.TargetName="border"
+                                               Storyboard.TargetProperty="(Border.RenderTransform).(ScaleTransform.ScaleY)"
+                                               To="1.1" Duration="0:0:0.2"/>
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </Trigger.EnterActions>
+                </Trigger>
+            </ControlTemplate.Triggers>
+        </ControlTemplate>
+        
+        ========== 5. 다국어 지원 ==========
+        
+        리소스 파일 사용:
+        Resources.resx:
+        ButtonText = "버튼"
+        
+        스타일:
+        <Button Style="{StaticResource 버튼스타일}" 
+                Content="{x:Static properties:Resources.ButtonText}"/>
+        
+        ========== 6. 테마별 스타일 ==========
+        
+        LightTheme.xaml:
+        <Style TargetType="Button" x:Key="버튼스타일">
+            <Setter Property="Background" Value="White"/>
+            <Setter Property="Foreground" Value="Black"/>
+        </Style>
+        
+        DarkTheme.xaml:
+        <Style TargetType="Button" x:Key="버튼스타일">
+            <Setter Property="Background" Value="Black"/>
+            <Setter Property="Foreground" Value="White"/>
+        </Style>
+        
+        ========== 주의사항 ==========
+        
+        1. x:Key 필수:
+           - Key 없으면 암시적 스타일
+           - 모든 Button에 자동 적용
+        
+        2. TargetType:
+           - 반드시 지정
+           - 타입 안전성
+        
+        3. TemplateBinding:
+           - Template 내에서만 사용
+           - 단방향 바인딩
+        
+        4. ContentPresenter:
+           - 템플릿에 필수
+           - Content 표시
+        
+        5. 성능:
+           - 복잡한 템플릿은 성능 저하
+           - 필요한 기능만 추가
+    -->
+</ResourceDictionary>

@@ -1,0 +1,296 @@
+﻿using System.Text;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Data;
+using System.Windows.Documents;
+using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
+using System.Windows.Shapes;
+
+namespace ch9_라디오버튼
+{
+    /// <summary>
+    /// MainWindow.xaml에 대한 상호작용 논리
+    /// RadioButton 컨트롤의 Checked/Unchecked 이벤트를 처리하는 메인 윈도우
+    /// </summary>
+    public partial class MainWindow : Window
+    {
+        /// <summary>
+        /// MainWindow 생성자
+        /// 윈도우가 생성될 때 호출되어 초기화 작업을 수행합니다.
+        /// </summary>
+        public MainWindow()
+        {
+            // XAML에 정의된 UI 요소들을 초기화합니다.
+            InitializeComponent();
+        }
+
+        /// <summary>
+        /// "청사과" RadioButton의 Checked 이벤트 핸들러
+        /// "청사과" RadioButton이 선택될 때 실행됩니다.
+        /// </summary>
+        /// <param name="sender">이벤트를 발생시킨 객체 (여기서는 "청사과" RadioButton)</param>
+        /// <param name="e">라우팅 이벤트 정보를 담고 있는 인자</param>
+        private void RadioButton_Checked(object sender, RoutedEventArgs e)
+        {
+            // "홍길동" RadioButton(rb)을 선택 상태로 만듭니다.
+            rb.IsChecked = true;
+            
+            /*
+             * 동작 설명:
+             * 
+             * 이 코드는 흥미로운 동작을 보여줍니다:
+             * 1. 사용자가 "Fruit" 그룹의 "청사과" RadioButton을 선택
+             * 2. 이 이벤트 핸들러가 실행됨
+             * 3. "좋아하는 사람" 그룹의 "홍길동" RadioButton이 자동으로 선택됨
+             * 
+             * 결과:
+             * - "청사과"를 선택하면 "홍길동"도 자동으로 선택됨
+             * - 두 RadioButton은 서로 다른 그룹이므로 동시에 선택 가능
+             * - "청사과"는 "Fruit" 그룹, "홍길동"은 기본 그룹(부모 컨테이너 기반)
+             * 
+             * 실용적인 활용 예:
+             * - 특정 옵션을 선택하면 다른 관련 옵션도 자동으로 선택
+             * - 예: "프리미엄 배송"을 선택하면 "보험 가입"도 자동 선택
+             * - 예: "고급 설정"을 선택하면 기본 설정 그룹의 "전문가 모드"도 자동 선택
+             */
+        }
+
+        /// <summary>
+        /// "청사과" RadioButton의 Unchecked 이벤트 핸들러
+        /// "청사과" RadioButton의 선택이 해제될 때 실행됩니다.
+        /// </summary>
+        /// <param name="sender">이벤트를 발생시킨 객체 (여기서는 "청사과" RadioButton)</param>
+        /// <param name="e">라우팅 이벤트 정보를 담고 있는 인자</param>
+        private void RadioButton_Unchecked(object sender, RoutedEventArgs e)
+        {
+            // "홍길동" RadioButton(rb)을 선택 해제 상태로 만듭니다.
+            rb.IsChecked = false;
+            
+            /*
+             * 동작 설명:
+             * 
+             * 1. 사용자가 "Fruit" 그룹의 다른 RadioButton("딸기", "사과", "수박")을 선택
+             * 2. "청사과"의 선택이 자동으로 해제됨 (같은 그룹 내 상호 배타적)
+             * 3. 이 Unchecked 이벤트 핸들러가 실행됨
+             * 4. "홍길동" RadioButton도 선택 해제됨
+             * 
+             * 결과:
+             * - "청사과"의 선택이 해제되면 "홍길동"도 자동으로 해제됨
+             * - 두 RadioButton이 연동되어 동작함
+             * 
+             * 주의사항:
+             * RadioButton의 특성상 한 번 선택하면 같은 그룹의 다른 것을 선택하지 않는 한
+             * 사용자가 직접 선택을 해제할 수 없습니다. 따라서 이 Unchecked 이벤트는
+             * 같은 그룹의 다른 RadioButton을 선택할 때만 발생합니다.
+             */
+        }
+        
+        /*
+         * RadioButton 이벤트 처리 추가 예제:
+         * 
+         * 1. 선택된 RadioButton의 내용 확인:
+         * 
+         *    private void RadioButton_Checked(object sender, RoutedEventArgs e)
+         *    {
+         *        if (sender is RadioButton radioButton)
+         *        {
+         *            string content = radioButton.Content?.ToString() ?? "";
+         *            MessageBox.Show($"선택됨: {content}");
+         *        }
+         *    }
+         * 
+         * 2. 선택된 RadioButton에 따라 다른 UI 업데이트:
+         * 
+         *    private void ShippingMethod_Checked(object sender, RoutedEventArgs e)
+         *    {
+         *        if (sender is RadioButton rb)
+         *        {
+         *            switch (rb.Name)
+         *            {
+         *                case "rbNormal":
+         *                    txtShippingCost.Text = "무료";
+         *                    break;
+         *                case "rbFast":
+         *                    txtShippingCost.Text = "3,000원";
+         *                    break;
+         *                case "rbSameDay":
+         *                    txtShippingCost.Text = "5,000원";
+         *                    break;
+         *            }
+         *        }
+         *    }
+         * 
+         * 3. 그룹 내의 선택된 RadioButton 찾기:
+         * 
+         *    private void btnSubmit_Click(object sender, RoutedEventArgs e)
+         *    {
+         *        // StackPanel 내의 선택된 RadioButton 찾기
+         *        string? selectedOption = null;
+         *        
+         *        foreach (var child in myStackPanel.Children)
+         *        {
+         *            if (child is RadioButton rb && rb.IsChecked == true)
+         *            {
+         *                selectedOption = rb.Content?.ToString();
+         *                break;
+         *            }
+         *        }
+         *        
+         *        if (selectedOption != null)
+         *        {
+         *            MessageBox.Show($"선택된 옵션: {selectedOption}");
+         *        }
+         *        else
+         *        {
+         *            MessageBox.Show("옵션을 선택해주세요.", "알림", 
+         *                MessageBoxButton.OK, MessageBoxImage.Warning);
+         *        }
+         *    }
+         * 
+         * 4. GroupName으로 그룹의 선택된 RadioButton 찾기:
+         * 
+         *    private string? GetSelectedRadioButton(string groupName)
+         *    {
+         *        // Window 내의 모든 RadioButton 검색
+         *        return FindVisualChildren<RadioButton>(this)
+         *            .FirstOrDefault(rb => rb.GroupName == groupName && rb.IsChecked == true)
+         *            ?.Content?.ToString();
+         *    }
+         *    
+         *    // Visual Tree를 순회하는 헬퍼 메서드
+         *    private static IEnumerable<T> FindVisualChildren<T>(DependencyObject depObj) where T : DependencyObject
+         *    {
+         *        if (depObj != null)
+         *        {
+         *            for (int i = 0; i < VisualTreeHelper.GetChildrenCount(depObj); i++)
+         *            {
+         *                DependencyObject child = VisualTreeHelper.GetChild(depObj, i);
+         *                if (child != null && child is T)
+         *                {
+         *                    yield return (T)child;
+         *                }
+         *                
+         *                foreach (T childOfChild in FindVisualChildren<T>(child))
+         *                {
+         *                    yield return childOfChild;
+         *                }
+         *            }
+         *        }
+         *    }
+         * 
+         * 5. RadioButton 선택 시 다른 컨트롤 활성화/비활성화:
+         * 
+         *    private void rbAdvanced_Checked(object sender, RoutedEventArgs e)
+         *    {
+         *        // 고급 옵션 패널 표시 및 활성화
+         *        pnlAdvancedOptions.Visibility = Visibility.Visible;
+         *        pnlAdvancedOptions.IsEnabled = true;
+         *    }
+         *    
+         *    private void rbBasic_Checked(object sender, RoutedEventArgs e)
+         *    {
+         *        // 고급 옵션 패널 숨김
+         *        pnlAdvancedOptions.Visibility = Visibility.Collapsed;
+         *    }
+         * 
+         * 6. 조건부 데이터 바인딩:
+         * 
+         *    private void PaymentMethod_Checked(object sender, RoutedEventArgs e)
+         *    {
+         *        if (sender is RadioButton rb)
+         *        {
+         *            switch (rb.Content?.ToString())
+         *            {
+         *                case "신용카드":
+         *                    // 신용카드 입력 필드 표시
+         *                    pnlCreditCard.Visibility = Visibility.Visible;
+         *                    pnlBankTransfer.Visibility = Visibility.Collapsed;
+         *                    break;
+         *                    
+         *                case "계좌이체":
+         *                    // 계좌이체 정보 필드 표시
+         *                    pnlCreditCard.Visibility = Visibility.Collapsed;
+         *                    pnlBankTransfer.Visibility = Visibility.Visible;
+         *                    break;
+         *            }
+         *        }
+         *    }
+         * 
+         * 7. 설정 저장 및 복원:
+         * 
+         *    private void SaveSettings()
+         *    {
+         *        // Properties.Settings에 선택 상태 저장
+         *        Properties.Settings.Default.SelectedLanguage = 
+         *            rbKorean.IsChecked == true ? "Korean" :
+         *            rbEnglish.IsChecked == true ? "English" : "Korean";
+         *        Properties.Settings.Default.Save();
+         *    }
+         *    
+         *    private void LoadSettings()
+         *    {
+         *        // 저장된 설정 복원
+         *        string language = Properties.Settings.Default.SelectedLanguage;
+         *        switch (language)
+         *        {
+         *            case "Korean":
+         *                rbKorean.IsChecked = true;
+         *                break;
+         *            case "English":
+         *                rbEnglish.IsChecked = true;
+         *                break;
+         *        }
+         *    }
+         * 
+         * RadioButton 이벤트 관련 중요 사항:
+         * 
+         * 1. Checked 이벤트 발생 시점:
+         *    - 사용자가 RadioButton을 클릭하여 선택할 때
+         *    - 코드에서 IsChecked = true로 설정할 때
+         *    - 프로그래밍 방식으로 상태를 변경해도 이벤트 발생
+         * 
+         * 2. Unchecked 이벤트 발생 시점:
+         *    - 같은 그룹의 다른 RadioButton이 선택될 때
+         *    - 코드에서 IsChecked = false로 설정할 때
+         *    - 사용자가 직접 선택을 해제할 수 없음 (CheckBox와의 차이점)
+         * 
+         * 3. Click 이벤트:
+         *    - 이미 선택된 RadioButton을 다시 클릭해도 Click 이벤트는 발생
+         *    - 하지만 Checked 이벤트는 발생하지 않음 (이미 선택되어 있으므로)
+         * 
+         * 4. 이벤트 순서:
+         *    RadioButton A가 선택된 상태에서 RadioButton B를 선택할 때:
+         *    1) RadioButton B의 Checked 이벤트 발생
+         *    2) RadioButton A의 Unchecked 이벤트 발생
+         * 
+         * 5. 순환 참조 주의:
+         *    - 이벤트 핸들러 내에서 다른 RadioButton을 변경하면 연쇄 이벤트 발생
+         *    - 무한 루프에 빠지지 않도록 주의 필요
+         *    - 필요시 이벤트 핸들러 등록 해제 후 변경, 다시 등록
+         * 
+         * 6. 성능 최적화:
+         *    - 많은 RadioButton이 있을 경우 공통 이벤트 핸들러 사용
+         *    - sender 매개변수로 어떤 RadioButton인지 식별
+         *    - Tag 속성에 추가 정보 저장하여 활용
+         * 
+         * 예제 - Tag 속성 활용:
+         * 
+         * XAML:
+         * <RadioButton Tag="Option1" Checked="CommonHandler">옵션 1</RadioButton>
+         * <RadioButton Tag="Option2" Checked="CommonHandler">옵션 2</RadioButton>
+         * 
+         * C#:
+         * private void CommonHandler(object sender, RoutedEventArgs e)
+         * {
+         *     if (sender is RadioButton rb)
+         *     {
+         *         string option = rb.Tag?.ToString() ?? "";
+         *         // option 값에 따라 처리
+         *     }
+         * }
+         */
+    }
+}

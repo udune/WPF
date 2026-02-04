@@ -1,0 +1,23 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v9.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v9.0": {
+      "HelloWPF_Rider/1.0.0": {
+        "runtime": {
+          "HelloWPF_Rider.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "HelloWPF_Rider/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

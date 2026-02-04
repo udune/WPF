@@ -1,0 +1,302 @@
+﻿<!-- 
+    App.xaml - 데이터바인딩2 학습 애플리케이션의 진입점
+    WPF 애플리케이션의 전역 설정 및 리소스를 정의합니다.
+-->
+<Application x:Class="ch26_데이터바인딩2.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:ch26_데이터바인딩2"
+             StartupUri="MainWindow.xaml">
+    <!-- 
+        Application 속성 설명:
+        
+        x:Class: 코드 비하인드 파일(App.xaml.cs)과 연결
+        StartupUri: 애플리케이션 시작 시 표시될 윈도우 지정
+        xmlns:local: 현재 프로젝트의 네임스페이스 참조
+    -->
+    
+    <!-- 
+        Application.Resources: 애플리케이션 전역 리소스 정의 영역
+        
+        DataContext 관련 전역 리소스 예제:
+        <Application.Resources>
+            ========== 전역 ViewModel 인스턴스 ==========
+            
+            전역 ViewModel (싱글톤 패턴):
+            <local:MainViewModel x:Key="MainViewModel"/>
+            
+            사용:
+            <Window DataContext="{StaticResource MainViewModel}">
+                <StackPanel>
+                    <TextBlock Text="{Binding Name}"/>
+                    <TextBlock Text="{Binding Age}"/>
+                </StackPanel>
+            </Window>
+            
+            여러 ViewModel:
+            <local:PersonViewModel x:Key="PersonVM"/>
+            <local:SettingsViewModel x:Key="SettingsVM"/>
+            <local:DataViewModel x:Key="DataVM"/>
+            
+            사용 (각 영역마다 다른 ViewModel):
+            <TabControl>
+                <TabItem Header="Person" DataContext="{StaticResource PersonVM}">
+                    <local:PersonView/>
+                </TabItem>
+                <TabItem Header="Settings" DataContext="{StaticResource SettingsVM}">
+                    <local:SettingsView/>
+                </TabItem>
+            </TabControl>
+            
+            ========== DataTemplate (모델별 UI 정의) ==========
+            
+            Person DataTemplate:
+            <DataTemplate DataType="{x:Type local:Person}">
+                <Border BorderBrush="Gray" BorderThickness="1" Padding="5">
+                    <StackPanel>
+                        <TextBlock Text="{Binding 이름}" FontSize="16" FontWeight="Bold"/>
+                        <TextBlock Text="{Binding 나이}" Foreground="Gray"/>
+                    </StackPanel>
+                </Border>
+            </DataTemplate>
+            
+            사용 (ContentControl이 자동으로 DataTemplate 적용):
+            <ContentControl Content="{Binding SelectedPerson}"/>
+            
+            Employee DataTemplate:
+            <DataTemplate DataType="{x:Type local:Employee}">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Image Source="{Binding Photo}" Width="50" Height="50"/>
+                    <StackPanel Grid.Column="1" Margin="10,0,0,0">
+                        <TextBlock Text="{Binding Name}" FontSize="14"/>
+                        <TextBlock Text="{Binding Department}" Foreground="Blue"/>
+                        <TextBlock Text="{Binding Salary, StringFormat=C}" Foreground="Green"/>
+                    </StackPanel>
+                </Grid>
+            </DataTemplate>
+            
+            ========== Style with DataContext ==========
+            
+            Label Style (Person 정보 표시):
+            <Style x:Key="PersonLabelStyle" TargetType="Label">
+                <Setter Property="FontSize" Value="14"/>
+                <Setter Property="Padding" Value="5"/>
+                <Setter Property="Margin" Value="2"/>
+            </Style>
+            
+            사용:
+            <StackPanel DataContext="{Binding Person}">
+                <Label Content="{Binding 이름}" Style="{StaticResource PersonLabelStyle}"/>
+                <Label Content="{Binding 나이}" Style="{StaticResource PersonLabelStyle}"/>
+            </StackPanel>
+            
+            GroupBox Style (섹션별 DataContext):
+            <Style x:Key="SectionGroupBoxStyle" TargetType="GroupBox">
+                <Setter Property="Margin" Value="10"/>
+                <Setter Property="Padding" Value="10"/>
+                <Setter Property="BorderBrush" Value="Gray"/>
+                <Setter Property="BorderThickness" Value="1"/>
+            </Style>
+            
+            사용:
+            <GroupBox Header="개인 정보" 
+                     Style="{StaticResource SectionGroupBoxStyle}"
+                     DataContext="{Binding PersonalInfo}">
+                <StackPanel>
+                    <TextBox Text="{Binding Name}"/>
+                    <TextBox Text="{Binding Age}"/>
+                </StackPanel>
+            </GroupBox>
+            
+            ========== Converter (DataContext 변환) ==========
+            
+            Person to String Converter:
+            <local:PersonToStringConverter x:Key="PersonToStringConverter"/>
+            
+            구현:
+            public class PersonToStringConverter : IValueConverter
+            {
+                public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+                {
+                    if (value is Person person)
+                    {
+                        return $"{person.이름} ({person.나이}세)";
+                    }
+                    return string.Empty;
+                }
+                
+                public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+                {
+                    throw new NotImplementedException();
+                }
+            }
+            
+            사용:
+            <TextBlock Text="{Binding SelectedPerson, 
+                                    Converter={StaticResource PersonToStringConverter}}"/>
+            
+            ========== 실전 활용 예제 ==========
+            
+            1. MVVM 패턴 전역 ViewModel:
+            <Application.Resources>
+                <local:AppViewModel x:Key="AppVM">
+                    <local:AppViewModel.People>
+                        <local:Person 이름="홍길동" 나이="100"/>
+                        <local:Person 이름="임꺽정" 나이="90"/>
+                    </local:AppViewModel.People>
+                </local:AppViewModel>
+            </Application.Resources>
+            
+            Window에서 사용:
+            <Window DataContext="{StaticResource AppVM}">
+                <ListBox ItemsSource="{Binding People}"/>
+            </Window>
+            
+            2. 다국어 지원 (Localization):
+            <Application.Resources>
+                <local:LocalizationViewModel x:Key="Localization"/>
+                
+                <Style TargetType="TextBlock">
+                    <Setter Property="DataContext" Value="{StaticResource Localization}"/>
+                </Style>
+            </Application.Resources>
+            
+            사용:
+            <TextBlock Text="{Binding WelcomeMessage}"/>
+            <TextBlock Text="{Binding LoginButtonText}"/>
+            
+            3. 테마별 DataContext:
+            <Application.Resources>
+                <ResourceDictionary>
+                    <ResourceDictionary.MergedDictionaries>
+                        <ResourceDictionary Source="Themes/LightTheme.xaml"/>
+                    </ResourceDictionary.MergedDictionaries>
+                    
+                    <local:ThemeViewModel x:Key="ThemeVM"/>
+                </ResourceDictionary>
+            </Application.Resources>
+            
+            4. 공유 데이터 모델:
+            <Application.Resources>
+                <!-- 전역으로 공유되는 데이터 -->
+                <local:Person x:Key="CurrentUser" 이름="홍길동" 나이="30"/>
+                <local:AppSettings x:Key="Settings"/>
+                <local:DataService x:Key="DataService"/>
+            </Application.Resources>
+            
+            여러 창에서 공유:
+            <Window DataContext="{StaticResource CurrentUser}">
+                <TextBlock Text="{Binding 이름}"/>
+            </Window>
+            
+            <Window>
+                <TextBlock Text="{Binding Source={StaticResource CurrentUser}, Path=이름}"/>
+            </Window>
+            
+            5. 계층적 ViewModel 구조:
+            <Application.Resources>
+                <local:MainViewModel x:Key="MainVM">
+                    <local:MainViewModel.PersonSection>
+                        <local:PersonViewModel/>
+                    </local:MainViewModel.PersonSection>
+                    <local:MainViewModel.SettingsSection>
+                        <local:SettingsViewModel/>
+                    </local:MainViewModel.SettingsSection>
+                </local:MainViewModel>
+            </Application.Resources>
+            
+            Window:
+            <Window DataContext="{StaticResource MainVM}">
+                <TabControl>
+                    <TabItem Header="Person" DataContext="{Binding PersonSection}">
+                        <!-- PersonViewModel 사용 -->
+                    </TabItem>
+                    <TabItem Header="Settings" DataContext="{Binding SettingsSection}">
+                        <!-- SettingsViewModel 사용 -->
+                    </TabItem>
+                </TabControl>
+            </Window>
+            
+            ========== DataContext 디자인 타임 지원 ==========
+            
+            디자인 타임 DataContext:
+            xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+            xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+            mc:Ignorable="d"
+            d:DataContext="{d:DesignInstance Type=local:PersonViewModel, IsDesignTimeCreatable=True}"
+            
+            장점:
+            - 디자이너에서 바인딩 미리보기
+            - IntelliSense 지원
+            - 런타임에는 실제 DataContext 사용
+            
+            ========== ViewModelLocator 패턴 ==========
+            
+            <Application.Resources>
+                <local:ViewModelLocator x:Key="Locator"/>
+            </Application.Resources>
+            
+            ViewModelLocator:
+            public class ViewModelLocator
+            {
+                public MainViewModel Main => new MainViewModel();
+                public PersonViewModel Person => new PersonViewModel();
+                public SettingsViewModel Settings => new SettingsViewModel();
+            }
+            
+            사용:
+            <Window DataContext="{Binding Main, Source={StaticResource Locator}}">
+                ...
+            </Window>
+            
+            ========== Dependency Injection (DI) ==========
+            
+            App.xaml.cs:
+            public partial class App : Application
+            {
+                private IServiceProvider _serviceProvider;
+                
+                protected override void OnStartup(StartupEventArgs e)
+                {
+                    base.OnStartup(e);
+                    
+                    var services = new ServiceCollection();
+                    services.AddSingleton<MainViewModel>();
+                    services.AddTransient<PersonViewModel>();
+                    _serviceProvider = services.BuildServiceProvider();
+                    
+                    var mainWindow = new MainWindow
+                    {
+                        DataContext = _serviceProvider.GetService<MainViewModel>()
+                    };
+                    mainWindow.Show();
+                }
+            }
+            
+            ========== 주의사항 ==========
+            
+            1. 전역 리소스 수명:
+               - 애플리케이션이 종료될 때까지 유지
+               - 메모리 관리 주의
+            
+            2. StaticResource vs DynamicResource:
+               - StaticResource: 한 번만 로드 (성능 좋음)
+               - DynamicResource: 런타임 변경 가능
+            
+            3. x:Key 필수:
+               - 리소스 딕셔너리에서 키 필요
+               - 중복 키 불가
+            
+            4. 순환 참조 주의:
+               - ViewModel이 View 참조 금지
+               - MVVM 패턴 준수
+        </Application.Resources>
+    -->
+    <Application.Resources>
+         <!-- 현재 비어 있음 - 필요시 전역 ViewModel, DataTemplate, Converter 추가 -->
+    </Application.Resources>
+</Application>

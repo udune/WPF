@@ -1,0 +1,23 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v10.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v10.0": {
+      "ch16 DockPanel/1.0.0": {
+        "runtime": {
+          "ch16 DockPanel.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "ch16 DockPanel/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

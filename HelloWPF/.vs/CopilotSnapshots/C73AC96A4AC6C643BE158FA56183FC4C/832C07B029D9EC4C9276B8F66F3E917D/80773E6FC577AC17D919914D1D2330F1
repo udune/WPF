@@ -1,0 +1,51 @@
+﻿<Window x:Class="ch9_라디오버튼.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ch9_라디오버튼"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <StackPanel HorizontalAlignment="Center">
+            <Label>좋아하는 사람은?</Label>
+            <RadioButton x:Name="rb">홍길동</RadioButton>
+            <RadioButton IsChecked="True">타요</RadioButton>
+            <RadioButton>뽀로로</RadioButton>
+            <RadioButton>임꺽정</RadioButton>
+            <Label>좋아하는 과일은?</Label>
+            <RadioButton GroupName="Fruit">딸기</RadioButton>
+            <RadioButton GroupName="Fruit">사과</RadioButton>
+            <RadioButton GroupName="Fruit">수박</RadioButton>
+            <RadioButton GroupName="Fruit"
+                         Checked="RadioButton_Checked"
+                         Unchecked="RadioButton_Unchecked"
+                         VerticalContentAlignment="Center">
+                <WrapPanel>
+                    <Image Width="30" Source="https://cdn0.iconfinder.com/data/icons/fruity-3/512/Orange-512.png"/>
+                    <Label>청사과</Label>
+                </WrapPanel>
+            </RadioButton>
+            <GroupBox BorderThickness="3" Header="그룹박스예제">
+                <StackPanel>
+                    <RadioButton>1</RadioButton>
+                    <RadioButton>2</RadioButton>
+                    <RadioButton>3</RadioButton>
+                </StackPanel>
+            </GroupBox>
+            <GroupBox BorderThickness="3">
+                <GroupBox.Header>
+                    <WrapPanel>
+                        <Image Width="30" Source="https://cdn0.iconfinder.com/data/icons/fruity-3/512/Orange-512.png"/>
+                        <Label>그룹박스예제</Label>
+                    </WrapPanel>
+                </GroupBox.Header>
+                <StackPanel>
+                    <RadioButton>1</RadioButton>
+                    <RadioButton>2</RadioButton>
+                    <RadioButton>3</RadioButton>
+                </StackPanel>
+            </GroupBox>
+        </StackPanel>
+    </Grid>
+</Window>

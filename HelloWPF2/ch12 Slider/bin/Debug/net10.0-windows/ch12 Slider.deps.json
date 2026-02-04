@@ -1,0 +1,23 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v10.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v10.0": {
+      "ch12 Slider/1.0.0": {
+        "runtime": {
+          "ch12 Slider.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "ch12 Slider/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

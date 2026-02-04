@@ -1,0 +1,352 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Data;
+using System.Windows.Documents;
+using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
+using System.Windows.Shapes;
+
+namespace ch23_메뉴
+{
+    /// <summary>
+    /// UserControl1.xaml에 대한 상호 작용 논리
+    /// Menu에서 표시할 커스텀 화면의 코드 비하인드
+    /// </summary>
+    public partial class UserControl1 : UserControl
+    {
+        /// <summary>
+        /// UserControl1 생성자
+        /// UserControl이 생성될 때 호출되어 초기화 작업을 수행합니다.
+        /// </summary>
+        public UserControl1()
+        {
+            // XAML에 정의된 UI 요소들을 초기화합니다.
+            InitializeComponent();
+            
+            /*
+             * 이 UserControl은 간단한 예제입니다.
+             * - Salmon 배경색
+             * - "또 다른 화면입니다." 레이블
+             * 
+             * 실제 프로젝트에서는:
+             * - 복잡한 UI 구성
+             * - 데이터 로딩
+             * - 이벤트 핸들러
+             * - ViewModel 연결 (MVVM 패턴)
+             * - 초기화 로직
+             * - 리소스 정리
+             */
+        }
+        
+        /*
+         * UserControl 코드 비하인드 활용 예제:
+         * 
+         * 1. 초기화 로직:
+         * 
+         *    public UserControl1()
+         *    {
+         *        InitializeComponent();
+         *        
+         *        // 데이터 로딩
+         *        LoadData();
+         *        
+         *        // 초기 상태 설정
+         *        SetupInitialState();
+         *    }
+         *    
+         *    private void LoadData()
+         *    {
+         *        // 데이터베이스나 파일에서 데이터 로드
+         *        var items = GetItemsFromDatabase();
+         *        listBox.ItemsSource = items;
+         *    }
+         *    
+         *    private void SetupInitialState()
+         *    {
+         *        // 초기 UI 상태 설정
+         *        dateTextBlock.Text = DateTime.Now.ToString("yyyy-MM-dd");
+         *    }
+         * 
+         * 2. 이벤트 핸들러:
+         * 
+         *    XAML:
+         *    <Button Content="저장" Click="Save_Click"/>
+         *    <Button Content="취소" Click="Cancel_Click"/>
+         *    
+         *    코드:
+         *    private void Save_Click(object sender, RoutedEventArgs e)
+         *    {
+         *        // 데이터 저장 로직
+         *        if (ValidateInput())
+         *        {
+         *            SaveData();
+         *            MessageBox.Show("저장되었습니다.");
+         *        }
+         *    }
+         *    
+         *    private void Cancel_Click(object sender, RoutedEventArgs e)
+         *    {
+         *        // 변경 사항 취소
+         *        ResetForm();
+         *    }
+         * 
+         * 3. MVVM 패턴:
+         * 
+         *    public UserControl1(SettingsViewModel viewModel)
+         *    {
+         *        InitializeComponent();
+         *        DataContext = viewModel;
+         *    }
+         *    
+         *    또는:
+         *    
+         *    public UserControl1()
+         *    {
+         *        InitializeComponent();
+         *        
+         *        // ViewModel 생성 및 연결
+         *        if (!DesignerProperties.GetIsInDesignMode(this))
+         *        {
+         *            DataContext = new SettingsViewModel();
+         *        }
+         *    }
+         * 
+         * 4. 데이터 전달:
+         * 
+         *    public class UserDetailView : UserControl
+         *    {
+         *        public UserDetailView(User user)
+         *        {
+         *            InitializeComponent();
+         *            LoadUserData(user);
+         *        }
+         *        
+         *        private void LoadUserData(User user)
+         *        {
+         *            nameTextBlock.Text = user.Name;
+         *            emailTextBlock.Text = user.Email;
+         *            phoneTextBlock.Text = user.Phone;
+         *        }
+         *    }
+         *    
+         *    사용:
+         *    contentArea.Content = new UserDetailView(selectedUser);
+         * 
+         * 5. 의존성 속성 (Dependency Property):
+         * 
+         *    public static readonly DependencyProperty TitleProperty =
+         *        DependencyProperty.Register(
+         *            "Title",
+         *            typeof(string),
+         *            typeof(UserControl1),
+         *            new PropertyMetadata(string.Empty, OnTitleChanged));
+         *    
+         *    public string Title
+         *    {
+         *        get => (string)GetValue(TitleProperty);
+         *        set => SetValue(TitleProperty, value);
+         *    }
+         *    
+         *    private static void OnTitleChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+         *    {
+         *        var control = (UserControl1)d;
+         *        control.titleTextBlock.Text = e.NewValue.ToString();
+         *    }
+         *    
+         *    사용:
+         *    <local:UserControl1 Title="설정 화면"/>
+         * 
+         * 6. 이벤트 노출:
+         * 
+         *    // 이벤트 정의
+         *    public event EventHandler<DataSavedEventArgs> DataSaved;
+         *    
+         *    protected virtual void OnDataSaved(DataSavedEventArgs e)
+         *    {
+         *        DataSaved?.Invoke(this, e);
+         *    }
+         *    
+         *    private void Save_Click(object sender, RoutedEventArgs e)
+         *    {
+         *        // 데이터 저장
+         *        SaveData();
+         *        
+         *        // 이벤트 발생
+         *        OnDataSaved(new DataSavedEventArgs { Success = true });
+         *    }
+         *    
+         *    사용 (부모 코드):
+         *    var userControl = new UserControl1();
+         *    userControl.DataSaved += (s, e) =>
+         *    {
+         *        if (e.Success)
+         *        {
+         *            MessageBox.Show("데이터가 저장되었습니다.");
+         *        }
+         *    };
+         * 
+         * 7. 리소스 정리:
+         * 
+         *    private Timer? timer;
+         *    
+         *    public UserControl1()
+         *    {
+         *        InitializeComponent();
+         *        
+         *        // 타이머 시작
+         *        timer = new Timer(1000);
+         *        timer.Elapsed += Timer_Elapsed;
+         *        timer.Start();
+         *        
+         *        // Unloaded 이벤트로 정리
+         *        Unloaded += UserControl1_Unloaded;
+         *    }
+         *    
+         *    private void UserControl1_Unloaded(object sender, RoutedEventArgs e)
+         *    {
+         *        // 리소스 정리
+         *        timer?.Stop();
+         *        timer?.Dispose();
+         *        timer = null;
+         *    }
+         * 
+         * 8. 비동기 데이터 로딩:
+         * 
+         *    public UserControl1()
+         *    {
+         *        InitializeComponent();
+         *        Loaded += UserControl1_Loaded;
+         *    }
+         *    
+         *    private async void UserControl1_Loaded(object sender, RoutedEventArgs e)
+         *    {
+         *        // 로딩 표시
+         *        progressBar.Visibility = Visibility.Visible;
+         *        
+         *        try
+         *        {
+         *            // 비동기 데이터 로드
+         *            var data = await LoadDataAsync();
+         *            dataGrid.ItemsSource = data;
+         *        }
+         *        catch (Exception ex)
+         *        {
+         *            MessageBox.Show($"데이터 로딩 오류: {ex.Message}");
+         *        }
+         *        finally
+         *        {
+         *            progressBar.Visibility = Visibility.Collapsed;
+         *        }
+         *    }
+         *    
+         *    private async Task<List<Item>> LoadDataAsync()
+         *    {
+         *        await Task.Delay(1000); // 시뮬레이션
+         *        return new List<Item> { /* ... */ };
+         *    }
+         * 
+         * 9. 상태 관리:
+         * 
+         *    private bool _isDirty = false;
+         *    
+         *    public bool IsDirty
+         *    {
+         *        get => _isDirty;
+         *        set
+         *        {
+         *            _isDirty = value;
+         *            saveButton.IsEnabled = value;
+         *        }
+         *    }
+         *    
+         *    private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
+         *    {
+         *        IsDirty = true;
+         *    }
+         *    
+         *    private void Save_Click(object sender, RoutedEventArgs e)
+         *    {
+         *        SaveData();
+         *        IsDirty = false;
+         *    }
+         * 
+         * 10. 유효성 검사:
+         * 
+         *     private bool ValidateInput()
+         *     {
+         *         var errors = new List<string>();
+         *         
+         *         if (string.IsNullOrWhiteSpace(nameTextBox.Text))
+         *         {
+         *             errors.Add("이름을 입력하세요.");
+         *         }
+         *         
+         *         if (string.IsNullOrWhiteSpace(emailTextBox.Text))
+         *         {
+         *             errors.Add("이메일을 입력하세요.");
+         *         }
+         *         else if (!IsValidEmail(emailTextBox.Text))
+         *         {
+         *             errors.Add("올바른 이메일 형식이 아닙니다.");
+         *         }
+         *         
+         *         if (errors.Any())
+         *         {
+         *             MessageBox.Show(string.Join("\n", errors), "유효성 검사 오류");
+         *             return false;
+         *         }
+         *         
+         *         return true;
+         *     }
+         *     
+         *     private bool IsValidEmail(string email)
+         *     {
+         *         try
+         *         {
+         *             var addr = new System.Net.Mail.MailAddress(email);
+         *             return addr.Address == email;
+         *         }
+         *         catch
+         *         {
+         *             return false;
+         *         }
+         *     }
+         * 
+         * UserControl 생명주기:
+         * 
+         * 1. 생성자 호출
+         * 2. InitializeComponent()
+         * 3. Loaded 이벤트 (UI가 렌더링됨)
+         * 4. 사용자 상호작용
+         * 5. Unloaded 이벤트 (UI에서 제거됨)
+         * 
+         * 주의사항:
+         * 
+         * 1. 메모리 누수:
+         *    - 이벤트 핸들러 등록 해제
+         *    - IDisposable 리소스 정리
+         *    - Unloaded 이벤트에서 정리
+         * 
+         * 2. 디자인 타임:
+         *    - DesignerProperties.GetIsInDesignMode() 체크
+         *    - 디자이너에서 오류 방지
+         * 
+         * 3. DataContext:
+         *    - 생성자에서 설정
+         *    - 부모에서 전달
+         *    - 상속받기
+         * 
+         * 4. 성능:
+         *    - 무거운 작업은 비동기로
+         *    - Loaded 이벤트에서 초기화
+         *    - 가상화 사용 (큰 데이터)
+         */
+    }
+}

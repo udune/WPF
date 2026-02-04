@@ -1,0 +1,55 @@
+﻿<!-- 
+    ch24 컨텍스트메뉴 - WPF ContextMenu의 기능을 보여주는 예제 파일
+    ContextMenu는 마우스 우클릭(또는 키보드)으로 표시되는 팝업 메뉴입니다.
+    특정 컨트롤이나 영역에 대한 컨텍스트별 명령을 제공합니다.
+    Menu와 달리 화면에 고정되지 않고, 필요할 때만 표시됩니다.
+-->
+<Window x:Class="ch24_컨텍스트메뉴.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ch24_컨텍스트메뉴"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+
+    <StackPanel>
+        <TextBlock Text="마우스 우클릭" FontSize="20" x:Name="tb">
+            <TextBlock.ContextMenu>
+                <ContextMenu>
+                    <MenuItem Header="진하게" Click="MenuItem_Click">
+                        <MenuItem.Icon>
+                            <Image Source="https://cdn0.iconfinder.com/data/icons/business-startup-10/50/61-512.png"/>
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <MenuItem Header="기울기" IsCheckable="True" Checked="MenuItem_Checked" Unchecked="MenuItem_Unchecked">
+                        <MenuItem.Icon>
+                            <Image Source="https://cdn0.iconfinder.com/data/icons/business-startup-10/50/61-512.png"/>
+                        </MenuItem.Icon>
+                    </MenuItem>
+                </ContextMenu>
+            </TextBlock.ContextMenu>
+        </TextBlock>
+
+        <!-- Button with ContextMenu -->
+        <Button Content="버튼 우클릭">
+            <Button.ContextMenu>
+                <ContextMenu>
+                    <MenuItem Header="진하게" Click="MenuItem_Click">
+                        <!-- 동일한 이벤트 핸들러 사용 -->
+                        <MenuItem.Icon>
+                            <Image Source="https://cdn0.iconfinder.com/data/icons/business-startup-10/50/61-512.png"/>
+                        </MenuItem.Icon>
+                    </MenuItem>
+
+                    <MenuItem Header="기울기" IsCheckable="True" Checked="MenuItem_Checked" Unchecked="MenuItem_Unchecked">
+                        <!-- 동일한 이벤트 핸들러 사용 -->
+                        <MenuItem.Icon>
+                            <Image Source="https://cdn0.iconfinder.com/data/icons/business-startup-10/50/61-512.png"/>
+                        </MenuItem.Icon>
+                    </MenuItem>
+                </ContextMenu>
+            </Button.ContextMenu>
+        </Button>
+    </StackPanel>
+</Window>

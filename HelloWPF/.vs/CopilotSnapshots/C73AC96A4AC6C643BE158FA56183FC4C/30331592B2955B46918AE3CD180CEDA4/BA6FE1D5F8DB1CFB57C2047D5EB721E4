@@ -1,0 +1,48 @@
+﻿<!-- 
+    App.xaml - Slider 학습 애플리케이션의 진입점
+    WPF 애플리케이션의 전역 설정 및 리소스를 정의합니다.
+-->
+<Application x:Class="ch12_슬라이더.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:ch12_슬라이더"
+             StartupUri="MainWindow.xaml">
+    <!-- 
+        Application 속성 설명:
+        
+        x:Class: 코드 비하인드 파일(App.xaml.cs)과 연결
+        StartupUri: 애플리케이션 시작 시 표시될 윈도우 지정
+        xmlns:local: 현재 프로젝트의 네임스페이스 참조
+    -->
+    
+    <!-- 
+        Application.Resources: 애플리케이션 전역 리소스 정의 영역
+        
+        Slider 관련 전역 스타일 예제:
+        <Application.Resources>
+            <Style TargetType="Slider">
+                <Setter Property="Minimum" Value="0"/>
+                <Setter Property="Maximum" Value="100"/>
+                <Setter Property="TickPlacement" Value="BottomRight"/>
+                <Setter Property="TickFrequency" Value="10"/>
+                <Setter Property="IsSnapToTickEnabled" Value="True"/>
+                <Setter Property="AutoToolTipPlacement" Value="TopLeft"/>
+            </Style>
+            
+            <Style x:Key="VolumeSlider" TargetType="Slider">
+                <Setter Property="Minimum" Value="0"/>
+                <Setter Property="Maximum" Value="100"/>
+                <Setter Property="TickFrequency" Value="10"/>
+                <Setter Property="Width" Value="200"/>
+            </Style>
+            
+            <Style x:Key="VerticalSlider" TargetType="Slider">
+                <Setter Property="Orientation" Value="Vertical"/>
+                <Setter Property="Height" Value="200"/>
+            </Style>
+        </Application.Resources>
+    -->
+    <Application.Resources>
+         <!-- 현재 비어 있음 - 필요시 전역 Slider 스타일이나 리소스 추가 -->
+    </Application.Resources>
+</Application>

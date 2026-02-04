@@ -1,0 +1,298 @@
+﻿<!-- 
+    App.xaml - ContextMenu 학습 애플리케이션의 진입점
+    WPF 애플리케이션의 전역 설정 및 리소스를 정의합니다.
+-->
+<Application x:Class="ch24_컨텍스트메뉴.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:ch24_컨텍스트메뉴"
+             StartupUri="MainWindow.xaml">
+    <!-- 
+        Application 속성 설명:
+        
+        x:Class: 코드 비하인드 파일(App.xaml.cs)과 연결
+        StartupUri: 애플리케이션 시작 시 표시될 윈도우 지정
+        xmlns:local: 현재 프로젝트의 네임스페이스 참조
+    -->
+    
+    <!-- 
+        Application.Resources: 애플리케이션 전역 리소스 정의 영역
+        
+        ContextMenu 관련 전역 스타일 예제:
+        <Application.Resources>
+            <ContextMenu x:Key="TextEditContextMenu">
+                <MenuItem Header="잘라내기" InputGestureText="Ctrl+X">
+                    <MenuItem.Icon>
+                        <Image Source="Images/Cut.png" Width="16"/>
+                    </MenuItem.Icon>
+                </MenuItem>
+                <MenuItem Header="복사" InputGestureText="Ctrl+C">
+                    <MenuItem.Icon>
+                        <Image Source="Images/Copy.png" Width="16"/>
+                    </MenuItem.Icon>
+                </MenuItem>
+                <MenuItem Header="붙여넣기" InputGestureText="Ctrl+V">
+                    <MenuItem.Icon>
+                        <Image Source="Images/Paste.png" Width="16"/>
+                    </MenuItem.Icon>
+                </MenuItem>
+                <Separator/>
+                <MenuItem Header="모두 선택" InputGestureText="Ctrl+A"/>
+            </ContextMenu>
+            
+            사용:
+            <TextBox ContextMenu="{StaticResource TextEditContextMenu}"/>
+            <TextBlock ContextMenu="{StaticResource TextEditContextMenu}"/>
+            
+            서식 ContextMenu:
+            <ContextMenu x:Key="FormatContextMenu">
+                <MenuItem Header="굵게" InputGestureText="Ctrl+B">
+                    <MenuItem.Icon>
+                        <Image Source="Images/Bold.png" Width="16"/>
+                    </MenuItem.Icon>
+                </MenuItem>
+                <MenuItem Header="기울임꼴" InputGestureText="Ctrl+I" IsCheckable="True">
+                    <MenuItem.Icon>
+                        <Image Source="Images/Italic.png" Width="16"/>
+                    </MenuItem.Icon>
+                </MenuItem>
+                <MenuItem Header="밑줄" InputGestureText="Ctrl+U">
+                    <MenuItem.Icon>
+                        <Image Source="Images/Underline.png" Width="16"/>
+                    </MenuItem.Icon>
+                </MenuItem>
+                <Separator/>
+                <MenuItem Header="폰트">
+                    <MenuItem Header="Arial"/>
+                    <MenuItem Header="Times New Roman"/>
+                    <MenuItem Header="Courier New"/>
+                    <MenuItem Header="맑은 고딕"/>
+                </MenuItem>
+                <MenuItem Header="폰트 크기">
+                    <MenuItem Header="8"/>
+                    <MenuItem Header="10"/>
+                    <MenuItem Header="12"/>
+                    <MenuItem Header="14"/>
+                    <MenuItem Header="16"/>
+                </MenuItem>
+            </ContextMenu>
+            
+            ListBox ContextMenu:
+            <ContextMenu x:Key="ListContextMenu">
+                <MenuItem Header="추가">
+                    <MenuItem.Icon>
+                        <Image Source="Images/Add.png" Width="16"/>
+                    </MenuItem.Icon>
+                </MenuItem>
+                <MenuItem Header="편집">
+                    <MenuItem.Icon>
+                        <Image Source="Images/Edit.png" Width="16"/>
+                    </MenuItem.Icon>
+                </MenuItem>
+                <MenuItem Header="삭제">
+                    <MenuItem.Icon>
+                        <Image Source="Images/Delete.png" Width="16"/>
+                    </MenuItem.Icon>
+                </MenuItem>
+                <Separator/>
+                <MenuItem Header="정렬">
+                    <MenuItem Header="이름"/>
+                    <MenuItem Header="날짜"/>
+                    <MenuItem Header="크기"/>
+                </MenuItem>
+                <MenuItem Header="필터">
+                    <MenuItem Header="모두" IsCheckable="True" IsChecked="True"/>
+                    <MenuItem Header="활성" IsCheckable="True"/>
+                    <MenuItem Header="비활성" IsCheckable="True"/>
+                </MenuItem>
+            </ContextMenu>
+            
+            사용:
+            <ListBox ContextMenu="{StaticResource ListContextMenu}"/>
+            
+            TreeView ContextMenu:
+            <ContextMenu x:Key="TreeContextMenu">
+                <MenuItem Header="확장"/>
+                <MenuItem Header="모두 확장"/>
+                <MenuItem Header="축소"/>
+                <Separator/>
+                <MenuItem Header="새 폴더">
+                    <MenuItem.Icon>
+                        <Image Source="Images/NewFolder.png" Width="16"/>
+                    </MenuItem.Icon>
+                </MenuItem>
+                <MenuItem Header="새 파일">
+                    <MenuItem.Icon>
+                        <Image Source="Images/NewFile.png" Width="16"/>
+                    </MenuItem.Icon>
+                </MenuItem>
+                <Separator/>
+                <MenuItem Header="이름 바꾸기"/>
+                <MenuItem Header="삭제">
+                    <MenuItem.Icon>
+                        <Image Source="Images/Delete.png" Width="16"/>
+                    </MenuItem.Icon>
+                </MenuItem>
+                <Separator/>
+                <MenuItem Header="속성"/>
+            </ContextMenu>
+            
+            사용:
+            <TreeView ContextMenu="{StaticResource TreeContextMenu}"/>
+            
+            Image ContextMenu:
+            <ContextMenu x:Key="ImageContextMenu">
+                <MenuItem Header="복사">
+                    <MenuItem.Icon>
+                        <Image Source="Images/Copy.png" Width="16"/>
+                    </MenuItem.Icon>
+                </MenuItem>
+                <MenuItem Header="다른 이름으로 저장">
+                    <MenuItem.Icon>
+                        <Image Source="Images/Save.png" Width="16"/>
+                    </MenuItem.Icon>
+                </MenuItem>
+                <Separator/>
+                <MenuItem Header="회전">
+                    <MenuItem Header="시계 방향 90도"/>
+                    <MenuItem Header="반시계 방향 90도"/>
+                    <MenuItem Header="180도"/>
+                </MenuItem>
+                <MenuItem Header="뒤집기">
+                    <MenuItem Header="가로"/>
+                    <MenuItem Header="세로"/>
+                </MenuItem>
+                <Separator/>
+                <MenuItem Header="크기 조정"/>
+                <MenuItem Header="자르기"/>
+                <Separator/>
+                <MenuItem Header="속성"/>
+            </ContextMenu>
+            
+            사용:
+            <Image ContextMenu="{StaticResource ImageContextMenu}"/>
+            
+            ContextMenu 스타일:
+            <Style TargetType="ContextMenu">
+                <Setter Property="Background" Value="WhiteSmoke"/>
+                <Setter Property="BorderBrush" Value="Gray"/>
+                <Setter Property="BorderThickness" Value="1"/>
+            </Style>
+            
+            MenuItem 스타일 (ContextMenu 내):
+            <Style TargetType="MenuItem">
+                <Setter Property="Padding" Value="5,3"/>
+            </Style>
+            
+            체크 가능한 MenuItem 스타일:
+            <Style x:Key="CheckableMenuItemStyle" TargetType="MenuItem">
+                <Setter Property="IsCheckable" Value="True"/>
+                <Style.Triggers>
+                    <Trigger Property="IsChecked" Value="True">
+                        <Setter Property="FontWeight" Value="Bold"/>
+                    </Trigger>
+                </Style.Triggers>
+            </Style>
+            
+            사용:
+            <MenuItem Header="기울임꼴" Style="{StaticResource CheckableMenuItemStyle}"/>
+            
+            아이콘 있는 MenuItem 템플릿:
+            <ControlTemplate x:Key="IconMenuItemTemplate" TargetType="MenuItem">
+                <MenuItem Header="{TemplateBinding Header}">
+                    <MenuItem.Icon>
+                        <Image Source="{TemplateBinding Tag}" Width="16" Height="16"/>
+                    </MenuItem.Icon>
+                </MenuItem>
+            </ControlTemplate>
+            
+            사용:
+            <MenuItem Template="{StaticResource IconMenuItemTemplate}" 
+                     Header="복사" 
+                     Tag="Images/Copy.png"/>
+            
+            다중 ContextMenu (컨텍스트별):
+            <ContextMenu x:Key="ReadOnlyContextMenu">
+                <MenuItem Header="복사" InputGestureText="Ctrl+C"/>
+                <MenuItem Header="모두 선택" InputGestureText="Ctrl+A"/>
+            </ContextMenu>
+            
+            <ContextMenu x:Key="EditableContextMenu">
+                <MenuItem Header="잘라내기" InputGestureText="Ctrl+X"/>
+                <MenuItem Header="복사" InputGestureText="Ctrl+C"/>
+                <MenuItem Header="붙여넣기" InputGestureText="Ctrl+V"/>
+                <Separator/>
+                <MenuItem Header="모두 선택" InputGestureText="Ctrl+A"/>
+            </ContextMenu>
+            
+            사용:
+            <TextBox ContextMenu="{StaticResource EditableContextMenu}"/>
+            <TextBlock ContextMenu="{StaticResource ReadOnlyContextMenu}"/>
+            
+            정렬 ContextMenu (라디오 버튼 스타일):
+            <ContextMenu x:Key="AlignmentContextMenu">
+                <MenuItem Header="왼쪽 정렬" IsCheckable="True" IsChecked="True" GroupName="Align"/>
+                <MenuItem Header="가운데 정렬" IsCheckable="True" GroupName="Align"/>
+                <MenuItem Header="오른쪽 정렬" IsCheckable="True" GroupName="Align"/>
+            </ContextMenu>
+            
+            Command와 함께:
+            <RoutedUICommand x:Key="CutCommand" Text="잘라내기"/>
+            <RoutedUICommand x:Key="CopyCommand" Text="복사"/>
+            <RoutedUICommand x:Key="PasteCommand" Text="붙여넣기"/>
+            
+            <ContextMenu x:Key="CommandContextMenu">
+                <MenuItem Header="잘라내기" 
+                         Command="{StaticResource CutCommand}"
+                         InputGestureText="Ctrl+X">
+                    <MenuItem.Icon>
+                        <Image Source="Images/Cut.png"/>
+                    </MenuItem.Icon>
+                </MenuItem>
+                <MenuItem Header="복사" 
+                         Command="{StaticResource CopyCommand}"
+                         InputGestureText="Ctrl+C">
+                    <MenuItem.Icon>
+                        <Image Source="Images/Copy.png"/>
+                    </MenuItem.Icon>
+                </MenuItem>
+                <MenuItem Header="붙여넣기" 
+                         Command="{StaticResource PasteCommand}"
+                         InputGestureText="Ctrl+V">
+                    <MenuItem.Icon>
+                        <Image Source="Images/Paste.png"/>
+                    </MenuItem.Icon>
+                </MenuItem>
+            </ContextMenu>
+            
+            데이터 템플릿으로 동적 ContextMenu:
+            <DataTemplate x:Key="ItemContextMenuTemplate">
+                <ContextMenu>
+                    <MenuItem Header="{Binding EditText}" Command="{Binding EditCommand}"/>
+                    <MenuItem Header="{Binding DeleteText}" Command="{Binding DeleteCommand}"/>
+                </ContextMenu>
+            </DataTemplate>
+            
+            전역 스타일 예제:
+            <Application.Resources>
+                <Style TargetType="ContextMenu">
+                    <Setter Property="Background" Value="WhiteSmoke"/>
+                    <Setter Property="Foreground" Value="Black"/>
+                    <Setter Property="FontSize" Value="12"/>
+                </Style>
+                
+                <Style TargetType="MenuItem">
+                    <Setter Property="Padding" Value="5,3"/>
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background" Value="LightBlue"/>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </Application.Resources>
+        </Application.Resources>
+    -->
+    <Application.Resources>
+         <!-- 현재 비어 있음 - 필요시 전역 ContextMenu 스타일이나 리소스 추가 -->
+    </Application.Resources>
+</Application>

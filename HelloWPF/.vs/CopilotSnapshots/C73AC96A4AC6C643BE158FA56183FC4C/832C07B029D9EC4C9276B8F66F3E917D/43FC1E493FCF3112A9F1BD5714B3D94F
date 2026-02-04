@@ -1,0 +1,109 @@
+﻿<!-- 
+    ch5 텍스트박스 - WPF TextBox 컨트롤의 다양한 기능을 보여주는 예제 파일
+    TextBox는 사용자로부터 텍스트 입력을 받을 수 있는 편집 가능한 컨트롤입니다.
+-->
+<Window x:Class="ch5_텍스트박스.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ch5_텍스트박스"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <!-- StackPanel: 자식 요소들을 세로 방향으로 순차적으로 배치 -->
+        <StackPanel>
+            <!-- 
+                예제 1: 읽기 전용 TextBox
+                사용자가 텍스트를 편집할 수 없는 TextBox
+            -->
+            <TextBox
+                x:Name="txt"
+                IsReadOnly="True">텍스트박스</TextBox>
+            <!-- 
+                x:Name="txt": 코드 비하인드에서 접근할 수 있는 고유 식별자
+                IsReadOnly="True": 읽기 전용 모드로 설정
+                                   사용자가 텍스트를 선택하고 복사할 수는 있지만 편집은 불가능
+                "텍스트박스": 초기 텍스트 값
+            -->
+            
+            <!-- 
+                예제 2: 스타일이 적용된 다기능 TextBox
+                다양한 속성을 통해 외관과 동작을 커스터마이징한 TextBox
+            -->
+            <TextBox
+                FontSize="20"
+                Background="Salmon"
+                Foreground="White"
+                Margin="10"
+                TextWrapping="Wrap"
+                AcceptsReturn="True"
+                SelectionChanged="TextBox_SelectionChanged"
+                Text="텍스트박스"/>
+            <!-- 
+                TextBox 속성 상세 설명:
+                
+                FontSize="20": 텍스트 크기를 20으로 설정
+                
+                Background="Salmon": 배경색을 연어색으로 설정
+                
+                Foreground="White": 텍스트 색상을 흰색으로 설정
+                
+                Margin="10": TextBox 주위에 10픽셀의 여백 추가
+                             (형식: 단일 값 = 모든 방향에 동일한 여백)
+                
+                TextWrapping="Wrap": 텍스트 줄바꿈 설정
+                                     - Wrap: 텍스트가 TextBox 너비를 초과하면 자동으로 다음 줄로 줄바꿈
+                                     - NoWrap: 줄바꿈 없이 한 줄로 표시 (기본값)
+                                     - WrapWithOverflow: 단어 단위로 줄바꿈하되, 
+                                                         단어가 너무 길면 넘치도록 허용
+                
+                AcceptsReturn="True": Enter 키를 눌렀을 때 동작 설정
+                                      - True: Enter 키로 줄바꿈 가능 (여러 줄 입력 가능)
+                                      - False: Enter 키가 기본 동작 수행 (기본값)
+                                      다중 행 텍스트 입력 시 필수 속성
+                
+                SelectionChanged="TextBox_SelectionChanged": 텍스트 선택이 변경될 때 실행되는 이벤트 핸들러
+                                                              사용자가 마우스나 키보드로 텍스트를 선택하면 발생
+                
+                Text="텍스트박스": TextBox의 초기 텍스트 값
+            -->
+            
+            <!-- 
+                TextBlock: 이벤트 결과나 추가 정보를 표시하기 위한 읽기 전용 텍스트
+                TextBox의 SelectionChanged 이벤트 발생 시 이곳에 정보를 표시할 수 있습니다.
+            -->
+            <TextBlock Text="텍스트블록"/>
+        </StackPanel>
+    </Grid>
+    
+    <!--
+        TextBox vs TextBlock 비교:
+        
+        TextBox:
+        - 사용자 입력을 받을 수 있는 편집 가능한 컨트롤
+        - 키보드 입력, 복사/붙여넣기 등 지원
+        - 단일 행 또는 다중 행 입력 가능
+        - 더 많은 리소스 사용
+        
+        TextBlock:
+        - 읽기 전용 텍스트 표시용 경량 컨트롤
+        - 편집 불가능
+        - 복잡한 텍스트 서식 지원 (Bold, Italic, Hyperlink 등)
+        - 더 적은 리소스 사용, 성능 우수
+        
+        주요 TextBox 이벤트:
+        - TextChanged: 텍스트가 변경될 때마다 발생
+        - SelectionChanged: 선택된 텍스트가 변경될 때 발생
+        - GotFocus: TextBox가 포커스를 받을 때 발생
+        - LostFocus: TextBox가 포커스를 잃을 때 발생
+        - KeyDown/KeyUp: 키보드 입력 시 발생
+        
+        유용한 추가 속성:
+        - MaxLength: 입력 가능한 최대 문자 수 제한
+        - IsReadOnly: 읽기 전용 설정
+        - AcceptsTab: Tab 키 입력 허용 여부
+        - VerticalScrollBarVisibility: 세로 스크롤바 표시 설정
+        - SpellCheck.IsEnabled: 맞춤법 검사 활성화
+    -->
+</Window>

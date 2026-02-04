@@ -1,0 +1,612 @@
+﻿<!-- 
+    ch33 애니메이션 - WPF Animation (애니메이션) 예제
+    EventTrigger와 Storyboard를 사용하여 UI 요소를 애니메이션하는 방법을 보여줍니다.
+    Loaded, MouseEnter 이벤트에 반응하여 Opacity와 Width를 애니메이션합니다.
+    
+    핵심 개념:
+    - EventTrigger: 이벤트 발생 시 애니메이션 실행
+    - Storyboard: 애니메이션 시퀀스 관리
+    - DoubleAnimation: 숫자 값을 부드럽게 변경
+    - From/To/Duration: 시작값, 종료값, 지속시간
+-->
+<Window x:Class="ch33_애니메이션.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ch33_애니메이션"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <!-- 
+        Window:
+        - 애니메이션 예제를 담는 메인 윈도우
+        - 3가지 애니메이션 시나리오 포함
+    -->
+    
+    <StackPanel>
+        <!-- 
+            StackPanel:
+            - Grid와 Label을 세로로 배치
+            - 각각 다른 애니메이션 적용
+        -->
+        
+        <StackPanel.Triggers></StackPanel.Triggers>
+        <!-- 
+            StackPanel.Triggers:
+            - 현재 비어 있음
+            - EventTrigger 추가 가능
+            
+            예:
+            <StackPanel.Triggers>
+                <EventTrigger RoutedEvent="Loaded">
+                    <BeginStoryboard>
+                        ...
+                    </BeginStoryboard>
+                </EventTrigger>
+            </StackPanel.Triggers>
+        -->
+        
+        <!-- ========== 예제 1: Grid 애니메이션 (Loaded, MouseEnter) ========== -->
+        <Grid>
+            <!-- 
+                Grid:
+                - 2개의 열로 구성
+                - Label과 Button 배치
+                - 2가지 애니메이션:
+                  1. Loaded: 페이드 인 (Opacity 0→1)
+                  2. MouseEnter: 너비 증가 (Width 0→350)
+            -->
+            
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <!-- 
+                ColumnDefinitions:
+                - 2개의 열, 각각 동일한 너비 (*)
+                - Label: 1열 (Grid.Column="0", 기본값)
+                - Button: 2열 (Grid.Column="1")
+            -->
+            
+            <Grid.Triggers>
+                <!-- 
+                    Grid.Triggers:
+                    - Grid에 애니메이션 트리거 정의
+                    - EventTrigger 사용
+                    
+                    Trigger 종류:
+                    1. EventTrigger: 이벤트 발생 시
+                       - Loaded, MouseEnter, Click 등
+                    
+                    2. Trigger (Style 내): 속성 변경 시
+                       - IsMouseOver, IsPressed 등
+                    
+                    3. DataTrigger: 데이터 값에 따라
+                       - Binding 값 조건
+                    
+                    4. MultiTrigger: 여러 조건
+                       - 복합 조건
+                -->
+                
+                <EventTrigger RoutedEvent="Loaded">
+                    <!-- 
+                        EventTrigger:
+                        - 특정 이벤트 발생 시 애니메이션 실행
+                        
+                        RoutedEvent="Loaded":
+                        - Grid가 로드될 때 (화면에 나타날 때)
+                        - 윈도우 시작 시 자동 실행
+                        
+                        RoutedEvent (라우티드 이벤트):
+                        - WPF 이벤트 시스템
+                        - 이벤트가 요소 트리를 따라 전파
+                        - 버블링 (Bubbling): 자식 → 부모
+                        - 터널링 (Tunneling): 부모 → 자식
+                        
+                        주요 RoutedEvent:
+                        - Loaded: 요소 로드 시
+                        - MouseEnter: 마우스 진입 시
+                        - MouseLeave: 마우스 이탈 시
+                        - MouseLeftButtonDown: 왼쪽 버튼 클릭
+                        - GotFocus: 포커스 획득
+                        - LostFocus: 포커스 상실
+                    -->
+                    
+                    <BeginStoryboard>
+                        <!-- 
+                            BeginStoryboard:
+                            - Storyboard 시작
+                            - 애니메이션 재생
+                            
+                            TriggerAction:
+                            - EventTrigger의 액션
+                            - BeginStoryboard: 시작
+                            - PauseStoryboard: 일시정지
+                            - ResumeStoryboard: 재개
+                            - StopStoryboard: 중지
+                            - RemoveStoryboard: 제거
+                        -->
+                        
+                        <Storyboard>
+                            <!-- 
+                                Storyboard:
+                                - 애니메이션 시퀀스 관리 컨테이너
+                                - 여러 애니메이션을 조정
+                                - 타임라인 제어
+                                
+                                Storyboard 기능:
+                                - 여러 애니메이션 동시 실행
+                                - 순차 실행 (BeginTime 사용)
+                                - 반복 (RepeatBehavior)
+                                - 자동 반전 (AutoReverse)
+                                
+                                Storyboard 속성:
+                                - Duration: 전체 지속시간
+                                - RepeatBehavior: 반복
+                                  - "3x": 3번 반복
+                                  - "Forever": 무한 반복
+                                  - "0:0:10": 10초 동안 반복
+                                - AutoReverse: 역방향 재생
+                                - FillBehavior: 완료 후 동작
+                                  - HoldEnd: 마지막 값 유지 (기본)
+                                  - Stop: 원래 값으로 복원
+                            -->
+                            
+                            <DoubleAnimation Storyboard.TargetProperty="Opacity" From="0" To="1" Duration="0:0:5"/>
+                            <!-- 
+                                DoubleAnimation:
+                                - double 타입 속성을 애니메이션
+                                - 부드러운 값 전환
+                                
+                                Storyboard.TargetProperty="Opacity":
+                                - 애니메이션할 속성 지정
+                                - Grid의 Opacity 속성
+                                - 불투명도 (0: 투명, 1: 불투명)
+                                
+                                From="0":
+                                - 시작 값
+                                - Opacity 0 (완전 투명)
+                                
+                                To="1":
+                                - 종료 값
+                                - Opacity 1 (완전 불투명)
+                                
+                                Duration="0:0:5":
+                                - 지속 시간
+                                - 형식: 시:분:초
+                                - 0:0:5 = 5초
+                                
+                                애니메이션 동작:
+                                1. 윈도우 로드 시 Grid 생성
+                                2. Loaded 이벤트 발생
+                                3. Opacity 0에서 시작 (투명)
+                                4. 5초 동안 1로 증가 (불투명)
+                                5. 페이드 인 효과
+                                
+                                결과:
+                                - Grid가 서서히 나타남
+                                - 부드러운 시작 효과
+                                
+                                DoubleAnimation 추가 속성:
+                                - By: 상대 값 증가
+                                  - From="10" By="5" → 10에서 15로
+                                - BeginTime: 시작 지연
+                                  - BeginTime="0:0:2" → 2초 후 시작
+                                - AccelerationRatio: 가속 비율
+                                  - AccelerationRatio="0.3" → 처음 30% 가속
+                                - DecelerationRatio: 감속 비율
+                                  - DecelerationRatio="0.3" → 마지막 30% 감속
+                                - EasingFunction: 이징 함수
+                                  - 비선형 애니메이션
+                                
+                                From 생략:
+                                <DoubleAnimation To="1" Duration="0:0:5"/>
+                                - 현재 값에서 To로
+                                
+                                To 생략:
+                                <DoubleAnimation From="0" Duration="0:0:5"/>
+                                - From에서 원래 값으로
+                                
+                                From, To 모두 생략:
+                                <DoubleAnimation By="100" Duration="0:0:5"/>
+                                - 현재 값에서 +100
+                            -->
+                        </Storyboard>
+                    </BeginStoryboard>
+                </EventTrigger>
+                
+                <EventTrigger RoutedEvent="MouseEnter">
+                    <!-- 
+                        EventTrigger:
+                        - MouseEnter 이벤트 감지
+                        
+                        RoutedEvent="MouseEnter":
+                        - 마우스가 Grid 영역에 진입할 때
+                        - 마우스 커서가 Grid 위로 올라가면 발생
+                        
+                        MouseEnter vs MouseMove:
+                        - MouseEnter: 한 번만 발생 (진입 시)
+                        - MouseMove: 계속 발생 (움직일 때마다)
+                    -->
+                    
+                    <BeginStoryboard>
+                        <Storyboard>
+                            <DoubleAnimation Storyboard.TargetProperty="Width" From="0" To="350" Duration="0:0:5"/>
+                            <!-- 
+                                DoubleAnimation:
+                                - Width 속성 애니메이션
+                                
+                                Storyboard.TargetProperty="Width":
+                                - Grid의 Width 속성
+                                - 너비를 0에서 350으로
+                                
+                                From="0":
+                                - 시작 너비 0픽셀
+                                
+                                To="350":
+                                - 종료 너비 350픽셀
+                                
+                                Duration="0:0:5":
+                                - 5초 동안 애니메이션
+                                
+                                애니메이션 동작:
+                                1. 마우스를 Grid 위로 올림
+                                2. MouseEnter 이벤트 발생
+                                3. Width가 0에서 시작
+                                4. 5초 동안 350으로 증가
+                                5. Grid가 옆으로 확장
+                                
+                                결과:
+                                - Grid가 좌우로 늘어남
+                                - Label과 Button이 함께 확장
+                                
+                                주의사항:
+                                - Grid의 원래 Width가 무시됨
+                                - From="0"으로 시작하면 일시적으로 사라짐
+                                - From 생략 시 현재 너비에서 시작
+                                
+                                개선 버전:
+                                <DoubleAnimation Storyboard.TargetProperty="Width" 
+                                                To="350" Duration="0:0:5"/>
+                                - From 생략: 현재 너비 → 350
+                                - 더 자연스러운 효과
+                            -->
+                        </Storyboard>
+                    </BeginStoryboard>
+                </EventTrigger>
+            </Grid.Triggers>
+            
+            <Label FontSize="30">안녕하세요</Label>
+            <!-- 
+                Label:
+                - 1열에 배치 (Grid.Column="0", 기본값)
+                - FontSize="30": 큰 글씨
+                - Grid 애니메이션에 영향 받음:
+                  - Loaded: 페이드 인 (Label도 함께)
+                  - MouseEnter: 너비 증가 (Label도 함께)
+            -->
+            
+            <Button Grid.Column="1">
+                <!-- 
+                    Button:
+                    - 2열에 배치 (Grid.Column="1")
+                    - Grid 애니메이션에 영향 받음
+                -->
+                
+                <Button.Triggers>
+                    
+                </Button.Triggers>
+                <!-- 
+                    Button.Triggers:
+                    - 현재 비어 있음
+                    - Button 전용 트리거 정의 가능
+                    
+                    예:
+                    <Button.Triggers>
+                        <EventTrigger RoutedEvent="Click">
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <DoubleAnimation Storyboard.TargetProperty="(Button.RenderTransform).(ScaleTransform.ScaleX)"
+                                                    To="1.2" Duration="0:0:0.2" AutoReverse="True"/>
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+                    </Button.Triggers>
+                -->
+                
+                버튼
+            </Button>
+        </Grid>
+        
+        <!-- ========== 예제 2: Label 애니메이션 (MouseEnter) ========== -->
+        <Label FontSize="30">안녕하세요2
+            <!-- 
+                Label:
+                - 두 번째 Label
+                - 독립적인 애니메이션
+                - Grid와 별개로 동작
+            -->
+            
+            <Label.Triggers>
+                <!-- 
+                    Label.Triggers:
+                    - Label 전용 트리거
+                    - Grid와 독립적
+                -->
+                
+                <EventTrigger RoutedEvent="MouseEnter">
+                    <!-- 
+                        EventTrigger:
+                        - Label의 MouseEnter 이벤트
+                        - 이 Label에만 영향
+                        
+                        Grid의 MouseEnter vs Label의 MouseEnter:
+                        - 각각 독립적으로 동작
+                        - 다른 영역, 다른 타이밍
+                    -->
+                    
+                    <BeginStoryboard>
+                        <Storyboard>
+                            <DoubleAnimation Storyboard.TargetProperty="Width" From="0" To="350" Duration="0:0:5"/>
+                            <!-- 
+                                DoubleAnimation:
+                                - Label의 Width 애니메이션
+                                - Grid의 애니메이션과 동일한 설정
+                                
+                                동작:
+                                1. 마우스를 "안녕하세요2" Label 위로 올림
+                                2. Width 0 → 350 (5초)
+                                3. Label이 옆으로 확장
+                                
+                                Grid 애니메이션과의 차이:
+                                - Grid: Label과 Button 함께 확장
+                                - Label: Label만 확장
+                                
+                                결과:
+                                - "안녕하세요2" 텍스트가 확장되는 Label 내에서 표시
+                            -->
+                        </Storyboard>
+                    </BeginStoryboard>
+                </EventTrigger>
+            </Label.Triggers>
+        </Label>
+    </StackPanel>
+    
+    <!--
+        WPF 애니메이션 전체 요약:
+        
+        ========== 애니메이션 타입 ==========
+        
+        1. DoubleAnimation:
+           - double 타입 (Width, Height, Opacity 등)
+           - 가장 많이 사용
+        
+        2. ColorAnimation:
+           - Color 타입 (Background, Foreground 색상)
+           - 색상 전환
+        
+        3. PointAnimation:
+           - Point 타입 (위치)
+           - 이동 애니메이션
+        
+        4. ThicknessAnimation:
+           - Thickness 타입 (Margin, Padding)
+           - 여백 애니메이션
+        
+        5. ObjectAnimationUsingKeyFrames:
+           - 이산적 값 변경
+           - bool, string 등
+        
+        ========== Duration 형식 ==========
+        
+        형식: [일.]시:분:초[.밀리초]
+        
+        예:
+        - "0:0:1" = 1초
+        - "0:0:0.5" = 0.5초
+        - "0:1:30" = 1분 30초
+        - "1.12:30:00" = 1일 12시간 30분
+        
+        TimeSpan:
+        Duration="{x:Static TimeSpan.FromSeconds(5)}"
+        
+        ========== Storyboard 고급 기능 ==========
+        
+        1. 여러 애니메이션 동시 실행:
+        <Storyboard>
+            <DoubleAnimation Storyboard.TargetProperty="Width" To="300" Duration="0:0:2"/>
+            <DoubleAnimation Storyboard.TargetProperty="Height" To="200" Duration="0:0:2"/>
+            <DoubleAnimation Storyboard.TargetProperty="Opacity" To="0.5" Duration="0:0:2"/>
+        </Storyboard>
+        
+        2. 순차 실행 (BeginTime):
+        <Storyboard>
+            <DoubleAnimation Storyboard.TargetProperty="Width" To="300" Duration="0:0:1"/>
+            <DoubleAnimation Storyboard.TargetProperty="Height" To="200" Duration="0:0:1" BeginTime="0:0:1"/>
+        </Storyboard>
+        
+        3. 반복:
+        <Storyboard RepeatBehavior="Forever">
+            <DoubleAnimation Storyboard.TargetProperty="Opacity" From="1" To="0" Duration="0:0:1" AutoReverse="True"/>
+        </Storyboard>
+        
+        4. 대상 지정:
+        <Storyboard>
+            <DoubleAnimation Storyboard.TargetName="myButton" 
+                            Storyboard.TargetProperty="Width" 
+                            To="200" Duration="0:0:2"/>
+        </Storyboard>
+        
+        ========== EasingFunction (이징 함수) ==========
+        
+        비선형 애니메이션:
+        <DoubleAnimation To="300" Duration="0:0:1">
+            <DoubleAnimation.EasingFunction>
+                <QuadraticEase EasingMode="EaseInOut"/>
+            </DoubleAnimation.EasingFunction>
+        </DoubleAnimation>
+        
+        EasingFunction 종류:
+        - QuadraticEase: 2차 곡선
+        - CubicEase: 3차 곡선
+        - QuarticEase: 4차 곡선
+        - QuinticEase: 5차 곡선
+        - SineEase: 사인 곡선
+        - ExponentialEase: 지수 곡선
+        - CircleEase: 원형 곡선
+        - BackEase: 뒤로 당겼다 앞으로
+        - ElasticEase: 탄성 효과
+        - BounceEase: 바운스 효과
+        
+        EasingMode:
+        - EaseIn: 시작 시 느림
+        - EaseOut: 끝날 때 느림
+        - EaseInOut: 시작/끝 느림
+        
+        ========== KeyFrame 애니메이션 ==========
+        
+        특정 시점의 값 지정:
+        <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="Width">
+            <LinearDoubleKeyFrame Value="100" KeyTime="0:0:1"/>
+            <LinearDoubleKeyFrame Value="200" KeyTime="0:0:2"/>
+            <LinearDoubleKeyFrame Value="150" KeyTime="0:0:3"/>
+        </DoubleAnimationUsingKeyFrames>
+        
+        KeyFrame 타입:
+        - LinearDoubleKeyFrame: 선형 보간
+        - DiscreteDoubleKeyFrame: 즉시 변경
+        - SplineDoubleKeyFrame: 베지어 곡선
+        - EasingDoubleKeyFrame: 이징 함수
+        
+        ========== Transform 애니메이션 ==========
+        
+        1. 회전 (RotateTransform):
+        <Button>
+            <Button.RenderTransform>
+                <RotateTransform x:Name="rotateTransform" Angle="0"/>
+            </Button.RenderTransform>
+            <Button.Triggers>
+                <EventTrigger RoutedEvent="Click">
+                    <BeginStoryboard>
+                        <Storyboard>
+                            <DoubleAnimation Storyboard.TargetName="rotateTransform"
+                                           Storyboard.TargetProperty="Angle"
+                                           To="360" Duration="0:0:1"/>
+                        </Storyboard>
+                    </BeginStoryboard>
+                </EventTrigger>
+            </Button.Triggers>
+        </Button>
+        
+        2. 크기 조정 (ScaleTransform):
+        <DoubleAnimation Storyboard.TargetProperty="(UIElement.RenderTransform).(ScaleTransform.ScaleX)"
+                        To="1.5" Duration="0:0:1"/>
+        
+        3. 이동 (TranslateTransform):
+        <DoubleAnimation Storyboard.TargetProperty="(UIElement.RenderTransform).(TranslateTransform.X)"
+                        To="100" Duration="0:0:1"/>
+        
+        4. 기울이기 (SkewTransform):
+        <DoubleAnimation Storyboard.TargetProperty="(UIElement.RenderTransform).(SkewTransform.AngleX)"
+                        To="30" Duration="0:0:1"/>
+        
+        ========== Color 애니메이션 ==========
+        
+        <ColorAnimation Storyboard.TargetProperty="(Button.Background).(SolidColorBrush.Color)"
+                       From="Red" To="Blue" Duration="0:0:2"/>
+        
+        ========== 코드에서 애니메이션 ==========
+        
+        MainWindow.xaml.cs:
+        private void AnimateButton()
+        {
+            var animation = new DoubleAnimation
+            {
+                From = 0,
+                To = 300,
+                Duration = TimeSpan.FromSeconds(2)
+            };
+            
+            myButton.BeginAnimation(Button.WidthProperty, animation);
+        }
+        
+        Storyboard 사용:
+        private void AnimateWithStoryboard()
+        {
+            var storyboard = new Storyboard();
+            
+            var widthAnimation = new DoubleAnimation(0, 300, TimeSpan.FromSeconds(2));
+            Storyboard.SetTarget(widthAnimation, myButton);
+            Storyboard.SetTargetProperty(widthAnimation, new PropertyPath(Button.WidthProperty));
+            storyboard.Children.Add(widthAnimation);
+            
+            storyboard.Begin();
+        }
+        
+        ========== 실전 활용 시나리오 ==========
+        
+        1. 페이드 인/아웃:
+        <EventTrigger RoutedEvent="Loaded">
+            <BeginStoryboard>
+                <Storyboard>
+                    <DoubleAnimation Storyboard.TargetProperty="Opacity" 
+                                    From="0" To="1" Duration="0:0:1"/>
+                </Storyboard>
+            </BeginStoryboard>
+        </EventTrigger>
+        
+        2. 버튼 클릭 효과:
+        <EventTrigger RoutedEvent="MouseDown">
+            <BeginStoryboard>
+                <Storyboard>
+                    <DoubleAnimation Storyboard.TargetProperty="(UIElement.RenderTransform).(ScaleTransform.ScaleX)"
+                                    To="0.95" Duration="0:0:0.1" AutoReverse="True"/>
+                    <DoubleAnimation Storyboard.TargetProperty="(UIElement.RenderTransform).(ScaleTransform.ScaleY)"
+                                    To="0.95" Duration="0:0:0.1" AutoReverse="True"/>
+                </Storyboard>
+            </BeginStoryboard>
+        </EventTrigger>
+        
+        3. 로딩 스피너:
+        <Storyboard RepeatBehavior="Forever">
+            <DoubleAnimation Storyboard.TargetProperty="(UIElement.RenderTransform).(RotateTransform.Angle)"
+                            From="0" To="360" Duration="0:0:1"/>
+        </Storyboard>
+        
+        4. 알림 팝업:
+        <Storyboard>
+            <DoubleAnimation Storyboard.TargetProperty="(UIElement.RenderTransform).(TranslateTransform.Y)"
+                            From="100" To="0" Duration="0:0:0.5">
+                <DoubleAnimation.EasingFunction>
+                    <BounceEase EasingMode="EaseOut"/>
+                </DoubleAnimation.EasingFunction>
+            </DoubleAnimation>
+        </Storyboard>
+        
+        5. 진행률 바:
+        <DoubleAnimation Storyboard.TargetProperty="Value"
+                        From="0" To="100" Duration="0:0:5"/>
+        
+        ========== 주의사항 ==========
+        
+        1. From 생략:
+           - 현재 값에서 시작
+           - 더 자연스러운 효과
+        
+        2. FillBehavior:
+           - HoldEnd: 애니메이션 끝 값 유지 (기본)
+           - Stop: 원래 값으로 복원
+        
+        3. 성능:
+           - 많은 애니메이션은 성능 저하
+           - 하드웨어 가속 활용
+        
+        4. TargetProperty:
+           - 의존성 속성만 애니메이션 가능
+           - 일반 속성은 불가
+        
+        5. Storyboard 중복:
+           - 같은 속성에 여러 애니메이션
+           - 마지막 애니메이션이 우선
+    -->
+</Window>

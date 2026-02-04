@@ -1,0 +1,23 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v10.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v10.0": {
+      "ch10 Calander/1.0.0": {
+        "runtime": {
+          "ch10 Calander.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "ch10 Calander/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

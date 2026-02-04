@@ -1,0 +1,193 @@
+﻿<!-- 
+    App.xaml - ProgressBar 학습 애플리케이션의 진입점
+    WPF 애플리케이션의 전역 설정 및 리소스를 정의합니다.
+-->
+<Application x:Class="ch20_프로그레스바.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:ch20_프로그레스바"
+             StartupUri="MainWindow.xaml">
+    <!-- 
+        Application 속성 설명:
+        
+        x:Class: 코드 비하인드 파일(App.xaml.cs)과 연결
+        StartupUri: 애플리케이션 시작 시 표시될 윈도우 지정
+        xmlns:local: 현재 프로젝트의 네임스페이스 참조
+    -->
+    
+    <!-- 
+        Application.Resources: 애플리케이션 전역 리소스 정의 영역
+        
+        ProgressBar 관련 전역 스타일 예제:
+        <Application.Resources>
+            <Style TargetType="ProgressBar">
+                <Setter Property="Height" Value="20"/>
+                <Setter Property="Minimum" Value="0"/>
+                <Setter Property="Maximum" Value="100"/>
+            </Style>
+            
+            다운로드용 ProgressBar 스타일:
+            <Style x:Key="DownloadProgressStyle" TargetType="ProgressBar">
+                <Setter Property="Height" Value="20"/>
+                <Setter Property="Foreground" Value="Blue"/>
+                <Setter Property="Background" Value="LightGray"/>
+            </Style>
+            
+            성공 상태 ProgressBar (녹색):
+            <Style x:Key="SuccessProgressStyle" TargetType="ProgressBar">
+                <Setter Property="Height" Value="20"/>
+                <Setter Property="Foreground" Value="Green"/>
+            </Style>
+            
+            경고 상태 ProgressBar (주황색):
+            <Style x:Key="WarningProgressStyle" TargetType="ProgressBar">
+                <Setter Property="Height" Value="20"/>
+                <Setter Property="Foreground" Value="Orange"/>
+            </Style>
+            
+            위험 상태 ProgressBar (빨간색):
+            <Style x:Key="DangerProgressStyle" TargetType="ProgressBar">
+                <Setter Property="Height" Value="20"/>
+                <Setter Property="Foreground" Value="Red"/>
+            </Style>
+            
+            진행률에 따라 색상 변경하는 스타일:
+            <Style x:Key="ColorChangingProgressStyle" TargetType="ProgressBar">
+                <Setter Property="Height" Value="20"/>
+                <Style.Triggers>
+                    <DataTrigger Binding="{Binding RelativeSource={RelativeSource Self}, Path=Value}" Value="100">
+                        <Setter Property="Foreground" Value="Green"/>
+                    </DataTrigger>
+                    <Trigger Property="Value" Value="0">
+                        <Setter Property="Foreground" Value="Red"/>
+                    </Trigger>
+                </Style.Triggers>
+            </Style>
+            
+            애니메이션이 있는 ProgressBar 스타일:
+            <Style x:Key="AnimatedProgressStyle" TargetType="ProgressBar">
+                <Setter Property="Height" Value="20"/>
+                <Style.Triggers>
+                    <Trigger Property="IsIndeterminate" Value="True">
+                        <Trigger.EnterActions>
+                            <BeginStoryboard>
+                                <Storyboard RepeatBehavior="Forever">
+                                    <ColorAnimation 
+                                        Storyboard.TargetProperty="(ProgressBar.Foreground).(SolidColorBrush.Color)"
+                                        From="Blue" To="Cyan" Duration="0:0:1"
+                                        AutoReverse="True"/>
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </Trigger.EnterActions>
+                    </Trigger>
+                </Style.Triggers>
+            </Style>
+            
+            수직 ProgressBar 스타일:
+            <Style x:Key="VerticalProgressStyle" TargetType="ProgressBar">
+                <Setter Property="Width" Value="20"/>
+                <Setter Property="Height" Value="200"/>
+                <Setter Property="LayoutTransform">
+                    <Setter.Value>
+                        <RotateTransform Angle="90"/>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+            
+            진행률과 함께 표시되는 컨테이너 스타일:
+            <Style x:Key="ProgressContainerStyle" TargetType="Grid">
+                <Setter Property="Margin" Value="10"/>
+            </Style>
+            
+            진행률 텍스트 스타일:
+            <Style x:Key="ProgressTextStyle" TargetType="TextBlock">
+                <Setter Property="HorizontalAlignment" Value="Center"/>
+                <Setter Property="VerticalAlignment" Value="Center"/>
+                <Setter Property="FontWeight" Value="Bold"/>
+                <Setter Property="Foreground" Value="White"/>
+            </Style>
+            
+            로딩 표시 템플릿:
+            <ControlTemplate x:Key="LoadingTemplate">
+                <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+                    <TextBlock Text="로딩 중..." 
+                              FontSize="16" 
+                              HorizontalAlignment="Center"
+                              Margin="0,0,0,10"/>
+                    <ProgressBar Width="200" 
+                                Height="20" 
+                                IsIndeterminate="True"/>
+                </StackPanel>
+            </ControlTemplate>
+            
+            다운로드 UI 템플릿:
+            <ControlTemplate x:Key="DownloadTemplate">
+                <Border BorderBrush="Gray" 
+                       BorderThickness="1" 
+                       Padding="10">
+                    <StackPanel>
+                        <TextBlock Text="파일 다운로드 중..." 
+                                  FontWeight="Bold"/>
+                        <Grid Margin="0,10,0,0">
+                            <ProgressBar Name="downloadProgress" 
+                                        Height="20"/>
+                            <TextBlock HorizontalAlignment="Center"
+                                      VerticalAlignment="Center"
+                                      Text="{Binding ElementName=downloadProgress, 
+                                                    Path=Value, 
+                                                    StringFormat={}{0:0}%}"/>
+                        </Grid>
+                        <TextBlock Text="예상 남은 시간: 2분 30초" 
+                                  Margin="0,5,0,0"
+                                  FontSize="12"/>
+                    </StackPanel>
+                </Border>
+            </ControlTemplate>
+            
+            설치 진행 템플릿:
+            <ControlTemplate x:Key="InstallTemplate">
+                <StackPanel>
+                    <TextBlock Text="설치 진행 중..." 
+                              FontSize="18" 
+                              FontWeight="Bold"
+                              Margin="0,0,0,10"/>
+                    
+                    <TextBlock Text="전체 진행률" 
+                              FontWeight="Bold" 
+                              Margin="0,0,0,5"/>
+                    <Grid Margin="0,0,0,10">
+                        <ProgressBar Name="overallProgress" Height="20"/>
+                        <TextBlock Style="{StaticResource ProgressTextStyle}"
+                                  Text="{Binding ElementName=overallProgress, 
+                                                Path=Value, 
+                                                StringFormat={}{0:0}%}"/>
+                    </Grid>
+                    
+                    <TextBlock Text="현재 단계" 
+                              FontWeight="Bold" 
+                              Margin="0,0,0,5"/>
+                    <TextBlock Text="파일 복사 중..." 
+                              FontSize="12" 
+                              Margin="0,0,0,5"/>
+                    <ProgressBar Height="20" 
+                                Value="45" 
+                                Maximum="100"/>
+                </StackPanel>
+            </ControlTemplate>
+            
+            사용 예제:
+            <ProgressBar Style="{StaticResource DownloadProgressStyle}" 
+                        Value="50"/>
+            
+            <Grid Style="{StaticResource ProgressContainerStyle}">
+                <ProgressBar Style="{StaticResource ColorChangingProgressStyle}" 
+                            Value="75"/>
+                <TextBlock Style="{StaticResource ProgressTextStyle}"
+                          Text="75%"/>
+            </Grid>
+        </Application.Resources>
+    -->
+    <Application.Resources>
+         <!-- 현재 비어 있음 - 필요시 전역 ProgressBar 스타일이나 리소스 추가 -->
+    </Application.Resources>
+</Application>

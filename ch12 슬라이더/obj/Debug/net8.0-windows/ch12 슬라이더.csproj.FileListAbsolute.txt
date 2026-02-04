@@ -1,0 +1,27 @@
+C:\Users\udune\Desktop\WPF\ch12 슬라이더\bin\Debug\net8.0-windows\ch10 캘린더.deps.json
+C:\Users\udune\Desktop\WPF\ch12 슬라이더\bin\Debug\net8.0-windows\ch10 캘린더.runtimeconfig.json
+C:\Users\udune\Desktop\WPF\ch12 슬라이더\bin\Debug\net8.0-windows\ch10 캘린더.exe
+C:\Users\udune\Desktop\WPF\ch12 슬라이더\bin\Debug\net8.0-windows\ch12 슬라이더.exe
+C:\Users\udune\Desktop\WPF\ch12 슬라이더\bin\Debug\net8.0-windows\ch12 슬라이더.deps.json
+C:\Users\udune\Desktop\WPF\ch12 슬라이더\bin\Debug\net8.0-windows\ch12 슬라이더.runtimeconfig.json
+C:\Users\udune\Desktop\WPF\ch12 슬라이더\bin\Debug\net8.0-windows\ch12 슬라이더.dll
+C:\Users\udune\Desktop\WPF\ch12 슬라이더\bin\Debug\net8.0-windows\ch12 슬라이더.pdb
+C:\Users\udune\Desktop\WPF\ch12 슬라이더\bin\Debug\net8.0-windows\ch10 캘린더.dll
+C:\Users\udune\Desktop\WPF\ch12 슬라이더\bin\Debug\net8.0-windows\ch10 캘린더.pdb
+C:\Users\udune\Desktop\WPF\ch12 슬라이더\obj\Debug\net8.0-windows\ch12 슬라이더.csproj.AssemblyReference.cache
+C:\Users\udune\Desktop\WPF\ch12 슬라이더\obj\Debug\net8.0-windows\MainWindow.g.cs
+C:\Users\udune\Desktop\WPF\ch12 슬라이더\obj\Debug\net8.0-windows\App.g.cs
+C:\Users\udune\Desktop\WPF\ch12 슬라이더\obj\Debug\net8.0-windows\ch12 슬라이더_MarkupCompile.cache
+C:\Users\udune\Desktop\WPF\ch12 슬라이더\obj\Debug\net8.0-windows\ch12 슬라이더_MarkupCompile.lref
+C:\Users\udune\Desktop\WPF\ch12 슬라이더\obj\Debug\net8.0-windows\MainWindow.baml
+C:\Users\udune\Desktop\WPF\ch12 슬라이더\obj\Debug\net8.0-windows\ch12 슬라이더.g.resources
+C:\Users\udune\Desktop\WPF\ch12 슬라이더\obj\Debug\net8.0-windows\ch12 슬라이더.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\udune\Desktop\WPF\ch12 슬라이더\obj\Debug\net8.0-windows\ch12 슬라이더.AssemblyInfoInputs.cache
+C:\Users\udune\Desktop\WPF\ch12 슬라이더\obj\Debug\net8.0-windows\ch12 슬라이더.AssemblyInfo.cs
+C:\Users\udune\Desktop\WPF\ch12 슬라이더\obj\Debug\net8.0-windows\ch12 슬라이더.csproj.CoreCompileInputs.cache
+C:\Users\udune\Desktop\WPF\ch12 슬라이더\obj\Debug\net8.0-windows\ch12 슬라이더.csproj.Up2Date
+C:\Users\udune\Desktop\WPF\ch12 슬라이더\obj\Debug\net8.0-windows\ch12 슬라이더.dll
+C:\Users\udune\Desktop\WPF\ch12 슬라이더\obj\Debug\net8.0-windows\refint\ch12 슬라이더.dll
+C:\Users\udune\Desktop\WPF\ch12 슬라이더\obj\Debug\net8.0-windows\ch12 슬라이더.pdb
+C:\Users\udune\Desktop\WPF\ch12 슬라이더\obj\Debug\net8.0-windows\ch12 슬라이더.genruntimeconfig.cache
+C:\Users\udune\Desktop\WPF\ch12 슬라이더\obj\Debug\net8.0-windows\ref\ch12 슬라이더.dll

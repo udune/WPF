@@ -1,0 +1,23 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v8.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v8.0": {
+      "ch2 Label/1.0.0": {
+        "runtime": {
+          "ch2 Label.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "ch2 Label/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

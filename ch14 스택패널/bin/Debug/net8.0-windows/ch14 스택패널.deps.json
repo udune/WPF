@@ -1,0 +1,23 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v8.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v8.0": {
+      "ch14 스택패널/1.0.0": {
+        "runtime": {
+          "ch14 스택패널.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "ch14 스택패널/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

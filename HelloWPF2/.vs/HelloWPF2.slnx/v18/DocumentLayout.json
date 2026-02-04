@@ -1,0 +1,212 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\udune\\Desktop\\WPF\\HelloWPF2\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{9CC5FF39-C6E0-438B-B75F-450B7573CEF5}|ch25 DataBinding1\\ch25 DataBinding1.csproj|c:\\users\\udune\\desktop\\wpf\\hellowpf2\\ch25 databinding1\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{9CC5FF39-C6E0-438B-B75F-450B7573CEF5}|ch25 DataBinding1\\ch25 DataBinding1.csproj|solutionrelative:ch25 databinding1\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9CC5FF39-C6E0-438B-B75F-450B7573CEF5}|ch25 DataBinding1\\ch25 DataBinding1.csproj|c:\\users\\udune\\desktop\\wpf\\hellowpf2\\ch25 databinding1\\ch25 databinding1.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{9CC5FF39-C6E0-438B-B75F-450B7573CEF5}|ch25 DataBinding1\\ch25 DataBinding1.csproj|solutionrelative:ch25 databinding1\\ch25 databinding1.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9CC5FF39-C6E0-438B-B75F-450B7573CEF5}|ch25 DataBinding1\\ch25 DataBinding1.csproj|c:\\users\\udune\\desktop\\wpf\\hellowpf2\\ch25 databinding1\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9CC5FF39-C6E0-438B-B75F-450B7573CEF5}|ch25 DataBinding1\\ch25 DataBinding1.csproj|solutionrelative:ch25 databinding1\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D93C58CC-1386-4B5A-9B8C-3A02944EF039}|ch24 ContextMenu\\ch24 ContextMenu.csproj|c:\\users\\udune\\desktop\\wpf\\hellowpf2\\ch24 contextmenu\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{D93C58CC-1386-4B5A-9B8C-3A02944EF039}|ch24 ContextMenu\\ch24 ContextMenu.csproj|solutionrelative:ch24 contextmenu\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D93C58CC-1386-4B5A-9B8C-3A02944EF039}|ch24 ContextMenu\\ch24 ContextMenu.csproj|c:\\users\\udune\\desktop\\wpf\\hellowpf2\\ch24 contextmenu\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D93C58CC-1386-4B5A-9B8C-3A02944EF039}|ch24 ContextMenu\\ch24 ContextMenu.csproj|solutionrelative:ch24 contextmenu\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D93C58CC-1386-4B5A-9B8C-3A02944EF039}|ch24 ContextMenu\\ch24 ContextMenu.csproj|c:\\users\\udune\\desktop\\wpf\\hellowpf2\\ch24 contextmenu\\ch24 contextmenu.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{D93C58CC-1386-4B5A-9B8C-3A02944EF039}|ch24 ContextMenu\\ch24 ContextMenu.csproj|solutionrelative:ch24 contextmenu\\ch24 contextmenu.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0CF3ADAF-214E-4AE9-BAE5-F165932FE928}|ch23 Menu\\ch23 Menu.csproj|c:\\users\\udune\\desktop\\wpf\\hellowpf2\\ch23 menu\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{0CF3ADAF-214E-4AE9-BAE5-F165932FE928}|ch23 Menu\\ch23 Menu.csproj|solutionrelative:ch23 menu\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0CF3ADAF-214E-4AE9-BAE5-F165932FE928}|ch23 Menu\\ch23 Menu.csproj|c:\\users\\udune\\desktop\\wpf\\hellowpf2\\ch23 menu\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0CF3ADAF-214E-4AE9-BAE5-F165932FE928}|ch23 Menu\\ch23 Menu.csproj|solutionrelative:ch23 menu\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0CF3ADAF-214E-4AE9-BAE5-F165932FE928}|ch23 Menu\\ch23 Menu.csproj|c:\\users\\udune\\desktop\\wpf\\hellowpf2\\ch23 menu\\usercontrol.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{0CF3ADAF-214E-4AE9-BAE5-F165932FE928}|ch23 Menu\\ch23 Menu.csproj|solutionrelative:ch23 menu\\usercontrol.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0CF3ADAF-214E-4AE9-BAE5-F165932FE928}|ch23 Menu\\ch23 Menu.csproj|c:\\users\\udune\\desktop\\wpf\\hellowpf2\\ch23 menu\\usercontrol.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0CF3ADAF-214E-4AE9-BAE5-F165932FE928}|ch23 Menu\\ch23 Menu.csproj|solutionrelative:ch23 menu\\usercontrol.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 4,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:2:0:{d212f56b-c48a-434c-a121-1c5d80b59b9f}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "ch25 DataBinding1",
+              "DocumentMoniker": "C:\\Users\\udune\\Desktop\\WPF\\HelloWPF2\\ch25 DataBinding1\\ch25 DataBinding1.csproj",
+              "RelativeDocumentMoniker": "ch25 DataBinding1\\ch25 DataBinding1.csproj",
+              "ToolTip": "C:\\Users\\udune\\Desktop\\WPF\\HelloWPF2\\ch25 DataBinding1\\ch25 DataBinding1.csproj",
+              "RelativeToolTip": "ch25 DataBinding1\\ch25 DataBinding1.csproj",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2026-01-29T08:05:24.073Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "MainWindow.xaml",
+              "DocumentMoniker": "C:\\Users\\udune\\Desktop\\WPF\\HelloWPF2\\ch25 DataBinding1\\MainWindow.xaml",
+              "RelativeDocumentMoniker": "ch25 DataBinding1\\MainWindow.xaml",
+              "ToolTip": "C:\\Users\\udune\\Desktop\\WPF\\HelloWPF2\\ch25 DataBinding1\\MainWindow.xaml",
+              "RelativeToolTip": "ch25 DataBinding1\\MainWindow.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2026-01-29T08:05:13.947Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "MainWindow.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\udune\\Desktop\\WPF\\HelloWPF2\\ch25 DataBinding1\\MainWindow.xaml.cs",
+              "RelativeDocumentMoniker": "ch25 DataBinding1\\MainWindow.xaml.cs",
+              "ToolTip": "C:\\Users\\udune\\Desktop\\WPF\\HelloWPF2\\ch25 DataBinding1\\MainWindow.xaml.cs",
+              "RelativeToolTip": "ch25 DataBinding1\\MainWindow.xaml.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-29T08:05:13.761Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "MainWindow.xaml",
+              "DocumentMoniker": "C:\\Users\\udune\\Desktop\\WPF\\HelloWPF2\\ch24 ContextMenu\\MainWindow.xaml",
+              "RelativeDocumentMoniker": "ch24 ContextMenu\\MainWindow.xaml",
+              "ToolTip": "C:\\Users\\udune\\Desktop\\WPF\\HelloWPF2\\ch24 ContextMenu\\MainWindow.xaml",
+              "RelativeToolTip": "ch24 ContextMenu\\MainWindow.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2026-01-29T05:01:51.388Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "ch24 ContextMenu",
+              "DocumentMoniker": "C:\\Users\\udune\\Desktop\\WPF\\HelloWPF2\\ch24 ContextMenu\\ch24 ContextMenu.csproj",
+              "RelativeDocumentMoniker": "ch24 ContextMenu\\ch24 ContextMenu.csproj",
+              "ToolTip": "C:\\Users\\udune\\Desktop\\WPF\\HelloWPF2\\ch24 ContextMenu\\ch24 ContextMenu.csproj",
+              "RelativeToolTip": "ch24 ContextMenu\\ch24 ContextMenu.csproj",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2026-01-29T05:01:54.34Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "MainWindow.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\udune\\Desktop\\WPF\\HelloWPF2\\ch24 ContextMenu\\MainWindow.xaml.cs",
+              "RelativeDocumentMoniker": "ch24 ContextMenu\\MainWindow.xaml.cs",
+              "ToolTip": "C:\\Users\\udune\\Desktop\\WPF\\HelloWPF2\\ch24 ContextMenu\\MainWindow.xaml.cs",
+              "RelativeToolTip": "ch24 ContextMenu\\MainWindow.xaml.cs",
+              "ViewState": "AgIAABMAAAAAAAAAAAAgwCMAAAAWAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-29T05:01:51.182Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "UserControl.xaml",
+              "DocumentMoniker": "C:\\Users\\udune\\Desktop\\WPF\\HelloWPF2\\ch23 Menu\\UserControl.xaml",
+              "RelativeDocumentMoniker": "ch23 Menu\\UserControl.xaml",
+              "ToolTip": "C:\\Users\\udune\\Desktop\\WPF\\HelloWPF2\\ch23 Menu\\UserControl.xaml",
+              "RelativeToolTip": "ch23 Menu\\UserControl.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2026-01-29T04:27:42.671Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "UserControl.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\udune\\Desktop\\WPF\\HelloWPF2\\ch23 Menu\\UserControl.xaml.cs",
+              "RelativeDocumentMoniker": "ch23 Menu\\UserControl.xaml.cs",
+              "ToolTip": "C:\\Users\\udune\\Desktop\\WPF\\HelloWPF2\\ch23 Menu\\UserControl.xaml.cs",
+              "RelativeToolTip": "ch23 Menu\\UserControl.xaml.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAABMAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-29T04:27:40.913Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "MainWindow.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\udune\\Desktop\\WPF\\HelloWPF2\\ch23 Menu\\MainWindow.xaml.cs",
+              "RelativeDocumentMoniker": "ch23 Menu\\MainWindow.xaml.cs",
+              "ToolTip": "C:\\Users\\udune\\Desktop\\WPF\\HelloWPF2\\ch23 Menu\\MainWindow.xaml.cs",
+              "RelativeToolTip": "ch23 Menu\\MainWindow.xaml.cs",
+              "ViewState": "AgIAAAwAAAAAAAAAAAAAABcAAABFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-29T04:27:33.352Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "MainWindow.xaml",
+              "DocumentMoniker": "C:\\Users\\udune\\Desktop\\WPF\\HelloWPF2\\ch23 Menu\\MainWindow.xaml",
+              "RelativeDocumentMoniker": "ch23 Menu\\MainWindow.xaml",
+              "ToolTip": "C:\\Users\\udune\\Desktop\\WPF\\HelloWPF2\\ch23 Menu\\MainWindow.xaml",
+              "RelativeToolTip": "ch23 Menu\\MainWindow.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2026-01-29T01:45:22.646Z",
+              "EditorCaption": ""
+            }
+          ]
+        },
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": -1,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{d78612c7-9962-4b83-95d9-268046dad23a}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

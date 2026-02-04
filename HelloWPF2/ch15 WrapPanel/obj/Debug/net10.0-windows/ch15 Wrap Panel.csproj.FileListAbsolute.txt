@@ -1,0 +1,20 @@
+C:\Users\udune\Desktop\WPF\HelloWPF2\ch15 Wrap Panel\bin\Debug\net10.0-windows\ch15 Wrap Panel.exe
+C:\Users\udune\Desktop\WPF\HelloWPF2\ch15 Wrap Panel\bin\Debug\net10.0-windows\ch15 Wrap Panel.deps.json
+C:\Users\udune\Desktop\WPF\HelloWPF2\ch15 Wrap Panel\bin\Debug\net10.0-windows\ch15 Wrap Panel.runtimeconfig.json
+C:\Users\udune\Desktop\WPF\HelloWPF2\ch15 Wrap Panel\bin\Debug\net10.0-windows\ch15 Wrap Panel.dll
+C:\Users\udune\Desktop\WPF\HelloWPF2\ch15 Wrap Panel\bin\Debug\net10.0-windows\ch15 Wrap Panel.pdb
+C:\Users\udune\Desktop\WPF\HelloWPF2\ch15 Wrap Panel\obj\Debug\net10.0-windows\MainWindow.g.cs
+C:\Users\udune\Desktop\WPF\HelloWPF2\ch15 Wrap Panel\obj\Debug\net10.0-windows\App.g.cs
+C:\Users\udune\Desktop\WPF\HelloWPF2\ch15 Wrap Panel\obj\Debug\net10.0-windows\ch15 Wrap Panel_MarkupCompile.cache
+C:\Users\udune\Desktop\WPF\HelloWPF2\ch15 Wrap Panel\obj\Debug\net10.0-windows\ch15 Wrap Panel_MarkupCompile.lref
+C:\Users\udune\Desktop\WPF\HelloWPF2\ch15 Wrap Panel\obj\Debug\net10.0-windows\MainWindow.baml
+C:\Users\udune\Desktop\WPF\HelloWPF2\ch15 Wrap Panel\obj\Debug\net10.0-windows\ch15 Wrap Panel.g.resources
+C:\Users\udune\Desktop\WPF\HelloWPF2\ch15 Wrap Panel\obj\Debug\net10.0-windows\ch15 Wrap Panel.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\udune\Desktop\WPF\HelloWPF2\ch15 Wrap Panel\obj\Debug\net10.0-windows\ch15 Wrap Panel.AssemblyInfoInputs.cache
+C:\Users\udune\Desktop\WPF\HelloWPF2\ch15 Wrap Panel\obj\Debug\net10.0-windows\ch15 Wrap Panel.AssemblyInfo.cs
+C:\Users\udune\Desktop\WPF\HelloWPF2\ch15 Wrap Panel\obj\Debug\net10.0-windows\ch15 Wrap Panel.csproj.CoreCompileInputs.cache
+C:\Users\udune\Desktop\WPF\HelloWPF2\ch15 Wrap Panel\obj\Debug\net10.0-windows\ch15 Wrap Panel.dll
+C:\Users\udune\Desktop\WPF\HelloWPF2\ch15 Wrap Panel\obj\Debug\net10.0-windows\refint\ch15 Wrap Panel.dll
+C:\Users\udune\Desktop\WPF\HelloWPF2\ch15 Wrap Panel\obj\Debug\net10.0-windows\ch15 Wrap Panel.pdb
+C:\Users\udune\Desktop\WPF\HelloWPF2\ch15 Wrap Panel\obj\Debug\net10.0-windows\ch15 Wrap Panel.genruntimeconfig.cache
+C:\Users\udune\Desktop\WPF\HelloWPF2\ch15 Wrap Panel\obj\Debug\net10.0-windows\ref\ch15 Wrap Panel.dll

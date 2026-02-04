@@ -1,0 +1,414 @@
+﻿using System.Text;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Data;
+using System.Windows.Documents;
+using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
+using System.Windows.Shapes;
+
+namespace ch26_데이터바인딩2
+{
+    /// <summary>
+    /// MainWindow.xaml에 대한 상호작용 논리
+    /// DataContext를 사용한 계층적 데이터 바인딩을 시연하는 메인 윈도우
+    /// Window, WrapPanel, StackPanel에 각각 다른 DataContext를 설정하여
+    /// 동일한 바인딩 경로({Binding 이름}, {Binding 나이})로 다른 데이터를 표시합니다.
+    /// </summary>
+    public partial class MainWindow : Window
+    {
+        // ========== MainWindow의 속성 (Window DataContext로 사용) ==========
+        
+        public string 이름 { get; set; }
+        // MainWindow의 이름 속성 (자동 속성)
+        // 초기값: "타요" (생성자에서 설정)
+        // Window의 DataContext로 설정되어 최상위 Label들에 바인딩됨
+        
+        public int 나이 { get; set; }
+        // MainWindow의 나이 속성 (자동 속성)
+        // 초기값: 10 (생성자에서 설정)
+        // Window의 DataContext로 설정되어 최상위 Label들에 바인딩됨
+        
+        /*
+         * 주의: 이 예제는 단순한 데모입니다.
+         * 실제 프로젝트에서는:
+         * - INotifyPropertyChanged 구현 (속성 변경 알림)
+         * - 별도의 ViewModel 클래스 사용 (MVVM 패턴)
+         * - 초기화 로직 분리
+         */
+
+        /// <summary>
+        /// MainWindow 생성자
+        /// 윈도우가 생성될 때 호출되어 초기화 작업을 수행합니다.
+        /// DataContext를 설정하여 데이터 바인딩을 활성화합니다.
+        /// </summary>
+        public MainWindow()
+        {
+            // XAML에 정의된 UI 요소들을 초기화합니다.
+            InitializeComponent();
+            // 이 시점에 wp, stp 등의 Name이 지정된 요소들이 생성됨
+            
+            // ========== MainWindow 속성 초기화 ==========
+            이름 = "타요";
+            나이 = 10;
+            // MainWindow 인스턴스의 속성 설정
+            // 이 값들은 Window DataContext로 바인딩됨
+            
+            // ========== Window의 DataContext 설정 ==========
+            DataContext = this;
+            /*
+             * DataContext = this:
+             * - Window의 DataContext를 MainWindow 인스턴스로 설정
+             * - "this"는 현재 MainWindow 객체
+             * - Window의 모든 자식 요소가 이 DataContext를 상속
+             * 
+             * 영향 범위:
+             * - 최상위 StackPanel의 첫 두 Label
+             * - {Binding 이름} → MainWindow.이름 = "타요"
+             * - {Binding 나이} → MainWindow.나이 = 10
+             * 
+             * 바인딩 동작:
+             * 1. Label이 {Binding 이름} 발견
+             * 2. 자신의 DataContext 확인 → 없음
+             * 3. 부모(StackPanel) DataContext 확인 → 없음
+             * 4. 부모의 부모(Window) DataContext 확인 → MainWindow 인스턴스
+             * 5. MainWindow.이름 = "타요" 읽기
+             * 6. Label.Content = "타요" 설정
+             */
+            
+            // ========== Person 객체 생성 및 WrapPanel DataContext 설정 ==========
+            Person person = new Person() { 이름 = "홍길동", 나이 = 100 };
+            /*
+             * Person 인스턴스 생성:
+             * - 객체 초기화 구문 사용
+             * - 이름 = "홍길동", 나이 = 100
+             * 
+             * Person 클래스:
+             * - Person.cs에 정의됨
+             * - public string 이름 { get; set; }
+             * - public int 나이 { get; set; }
+             */
+            
+            wp.DataContext = person;
+            /*
+             * WrapPanel의 DataContext 설정:
+             * - wp: XAML에서 Name="wp"로 지정된 WrapPanel
+             * - DataContext = person: Person 인스턴스를 데이터 소스로 설정
+             * 
+             * 영향 범위:
+             * - wp와 wp의 모든 자식 요소 (Label 2개)
+             * - {Binding 이름} → person.이름 = "홍길동"
+             * - {Binding 나이} → person.나이 = 100
+             * 
+             * DataContext 재정의:
+             * - 부모(Window)의 DataContext를 무시
+             * - wp 영역만 person 데이터 사용
+             * - 형제 요소(stp)는 영향 받지 않음
+             * 
+             * 화면 표시:
+             * 홍길동 100 (WrapPanel은 가로 배치)
+             */
+            
+            // ========== Person2 객체 생성 및 StackPanel DataContext 설정 ==========
+            Person person2 = new Person() { 이름 = "임꺽정", 나이 = 90 };
+            /*
+             * Person2 인스턴스 생성:
+             * - 동일한 Person 클래스 사용
+             * - 다른 값: 이름 = "임꺽정", 나이 = 90
+             */
+            
+            stp.DataContext = person2;
+            /*
+             * StackPanel의 DataContext 설정:
+             * - stp: XAML에서 Name="stp"로 지정된 StackPanel
+             * - DataContext = person2: Person 인스턴스를 데이터 소스로 설정
+             * 
+             * 영향 범위:
+             * - stp와 stp의 모든 자식 요소 (Label 2개)
+             * - {Binding 이름} → person2.이름 = "임꺽정"
+             * - {Binding 나이} → person2.나이 = 90
+             * 
+             * DataContext 재정의:
+             * - 부모(최상위 StackPanel)의 DataContext를 무시
+             * - stp 영역만 person2 데이터 사용
+             * - 형제 요소(wp)와는 독립적
+             * 
+             * 화면 표시:
+             * 임꺽정
+             * 90            ← Window DataContext (MainWindow)
+             * 
+             * DataContext 계층:
+             * Window (this: 이름="타요", 나이=10)
+             * └── StackPanel (부모 상속)
+             *     ├── Label (이름) → "타요"
+             *     ├── Label (나이) → 10
+             *     ├── WrapPanel (person: 이름="홍길동", 나이=100)
+             *     │   ├── Label (이름) → "홍길동"
+             *     │   └── Label (나이) → 100
+             *     └── StackPanel (person2: 이름="임꺽정", 나이=90)
+             *         ├── Label (이름) → "임꺽정"
+             *         └── Label (나이) → 90
+             */
+        }
+        
+        /*
+         * DataContext 코드 비하인드 활용 예제:
+         * 
+         * ========== 1. ViewModel 패턴 (MVVM) ==========
+         * 
+         * ViewModel:
+         * public class PersonViewModel : INotifyPropertyChanged
+         * {
+         *     private string _name;
+         *     public string Name
+         *     {
+         *         get => _name;
+         *         set
+         *         {
+         *             _name = value;
+         *             OnPropertyChanged(nameof(Name));
+         *         }
+         *     }
+         *     
+         *     private int _age;
+         *     public int Age
+         *     {
+         *         get => _age;
+         *         set
+         *         {
+         *             _age = value;
+         *             OnPropertyChanged(nameof(Age));
+         *         }
+         *     }
+         *     
+         *     public event PropertyChangedEventHandler PropertyChanged;
+         *     
+         *     protected void OnPropertyChanged(string propertyName)
+         *     {
+         *         PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+         *     }
+         * }
+         * 
+         * 사용:
+         * public MainWindow()
+         * {
+         *     InitializeComponent();
+         *     DataContext = new PersonViewModel { Name = "타요", Age = 10 };
+         * }
+         * 
+         * XAML:
+         * <TextBox Text="{Binding Name, Mode=TwoWay}"/>
+         * <TextBox Text="{Binding Age, Mode=TwoWay}"/>
+         * 
+         * ========== 2. 동적 DataContext 변경 ==========
+         * 
+         * private void ChangePerson_Click(object sender, RoutedEventArgs e)
+         * {
+         *     // DataContext 변경 시 모든 바인딩 자동 업데이트
+         *     wp.DataContext = new Person { 이름 = "김유신", 나이 = 80 };
+         * }
+         * 
+         * ========== 3. 마스터-디테일 패턴 ==========
+         * 
+         * public ObservableCollection<Person> People { get; set; }
+         * public Person SelectedPerson { get; set; }
+         * 
+         * public MainWindow()
+         * {
+         *     InitializeComponent();
+         *     
+         *     People = new ObservableCollection<Person>
+         *     {
+         *         new Person { 이름 = "홍길동", 나이 = 100 },
+         *         new Person { 이름 = "임꺽정", 나이 = 90 }
+         *     };
+         *     
+         *     DataContext = this;
+         * }
+         * 
+         * XAML:
+         * <ListBox ItemsSource="{Binding People}" 
+         *          SelectedItem="{Binding SelectedPerson, Mode=TwoWay}"/>
+         * <StackPanel DataContext="{Binding SelectedPerson}">
+         *     <TextBlock Text="{Binding 이름}"/>
+         *     <TextBlock Text="{Binding 나이}"/>
+         * </StackPanel>
+         * 
+         * ========== 4. 여러 DataContext 동시 사용 ==========
+         * 
+         * public class MainViewModel
+         * {
+         *     public PersonalInfo Personal { get; set; }
+         *     public ContactInfo Contact { get; set; }
+         *     public AddressInfo Address { get; set; }
+         * }
+         * 
+         * public MainWindow()
+         * {
+         *     InitializeComponent();
+         *     DataContext = new MainViewModel
+         *     {
+         *         Personal = new PersonalInfo { Name = "홍길동", Age = 30 },
+         *         Contact = new ContactInfo { Phone = "010-1234-5678", Email = "hong@example.com" },
+         *         Address = new AddressInfo { City = "서울", Street = "강남대로" }
+         *     };
+         * }
+         * 
+         * XAML:
+         * <GroupBox Header="개인 정보" DataContext="{Binding Personal}">
+         *     <StackPanel>
+         *         <TextBox Text="{Binding Name}"/>
+         *         <TextBox Text="{Binding Age}"/>
+         *     </StackPanel>
+         * </GroupBox>
+         * <GroupBox Header="연락처" DataContext="{Binding Contact}">
+         *     <StackPanel>
+         *         <TextBox Text="{Binding Phone}"/>
+         *         <TextBox Text="{Binding Email}"/>
+         *     </StackPanel>
+         * </GroupBox>
+         * 
+         * ========== 5. DataContext 전환 ==========
+         * 
+         * private Person person1 = new Person { 이름 = "홍길동", 나이 = 100 };
+         * private Person person2 = new Person { 이름 = "임꺽정", 나이 = 90 };
+         * private bool currentPerson = true;
+         * 
+         * private void TogglePerson_Click(object sender, RoutedEventArgs e)
+         * {
+         *     currentPerson = !currentPerson;
+         *     wp.DataContext = currentPerson ? person1 : person2;
+         *     // 버튼 클릭 시 표시되는 사람 전환
+         * }
+         * 
+         * ========== 6. DataContext 상속 확인 ==========
+         * 
+         * private void CheckDataContext()
+         * {
+         *     // Window DataContext
+         *     Debug.WriteLine($"Window: {this.DataContext}");
+         *     
+         *     // WrapPanel DataContext
+         *     Debug.WriteLine($"WrapPanel: {wp.DataContext}");
+         *     
+         *     // Label DataContext (상속)
+         *     Label label = (Label)wp.Children[0];
+         *     Debug.WriteLine($"Label: {label.DataContext}");
+         *     
+         *     // DataContext 타입 확인
+         *     if (wp.DataContext is Person person)
+         *     {
+         *         Debug.WriteLine($"이름: {person.이름}, 나이: {person.나이}");
+         *     }
+         * }
+         * 
+         * ========== 7. 조건부 DataContext 설정 ==========
+         * 
+         * public MainWindow()
+         * {
+         *     InitializeComponent();
+         *     
+         *     bool isAdminMode = CheckAdminMode();
+         *     
+         *     if (isAdminMode)
+         *     {
+         *         DataContext = new AdminViewModel();
+         *     }
+         *     else
+         *     {
+         *         DataContext = new UserViewModel();
+         *     }
+         * }
+         * 
+         * ========== 8. DataContext 초기화 패턴 ==========
+         * 
+         * public MainWindow()
+         * {
+         *     InitializeComponent();
+         *     SetupDataContext();
+         * }
+         * 
+         * private void SetupDataContext()
+         * {
+         *     // Window DataContext
+         *     var mainViewModel = new MainViewModel();
+         *     DataContext = mainViewModel;
+         *     
+         *     // 특정 영역 DataContext
+         *     wp.DataContext = mainViewModel.Section1;
+         *     stp.DataContext = mainViewModel.Section2;
+         * }
+         * 
+         * ========== 9. DataContext와 Command ==========
+         * 
+         * public class PersonViewModel : INotifyPropertyChanged
+         * {
+         *     public string Name { get; set; }
+         *     public ICommand UpdateCommand { get; set; }
+         *     
+         *     public PersonViewModel()
+         *     {
+         *         UpdateCommand = new RelayCommand(Update);
+         *     }
+         *     
+         *     private void Update(object parameter)
+         *     {
+         *         Name = "Updated Name";
+         *         OnPropertyChanged(nameof(Name));
+         *     }
+         * }
+         * 
+         * XAML:
+         * <StackPanel DataContext="{Binding PersonViewModel}">
+         *     <TextBlock Text="{Binding Name}"/>
+         *     <Button Command="{Binding UpdateCommand}"/>
+         * </StackPanel>
+         * 
+         * ========== 10. DataContext 디버깅 ==========
+         * 
+         * XAML에 PresentationTraceSources 추가:
+         * <Label Content="{Binding 이름, 
+         *                        PresentationTraceSources.TraceLevel=High}"/>
+         * 
+         * 코드에서 바인딩 확인:
+         * BindingExpression binding = label.GetBindingExpression(Label.ContentProperty);
+         * if (binding != null)
+         * {
+         *     Debug.WriteLine($"Source: {binding.ResolvedSource}");
+         *     Debug.WriteLine($"Value: {binding.ResolvedSourcePropertyName}");
+         * }
+         * 
+         * ========== DataContext vs ElementName ==========
+         * 
+         * DataContext (데이터 객체):
+         * this.DataContext = new PersonViewModel();
+         * <TextBlock Text="{Binding Name}"/>
+         * 
+         * ElementName (UI 요소):
+         * <TextBox x:Name="inputBox"/>
+         * <TextBlock Text="{Binding ElementName=inputBox, Path=Text}"/>
+         * 
+         * ========== 주의사항 ==========
+         * 
+         * 1. 설정 순서:
+         *    - InitializeComponent() 이후에 DataContext 설정
+         *    - UI 요소가 생성된 후
+         * 
+         * 2. null 확인:
+         *    if (wp != null)
+         *    {
+         *        wp.DataContext = person;
+         *    }
+         * 
+         * 3. INotifyPropertyChanged:
+         *    - 동적 업데이트를 위해 필수
+         *    - 이 예제는 초기값만 표시
+         * 
+         * 4. 메모리 누수:
+         *    - DataContext 해제 고려
+         *    - 이벤트 핸들러 정리
+         */
+    }
+}

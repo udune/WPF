@@ -1,0 +1,556 @@
+﻿using System.Text;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Data;
+using System.Windows.Documents;
+using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
+using System.Windows.Shapes;
+
+namespace ch27_데이터바인딩3
+{
+    /// <summary>
+    /// Person 클래스 - 데이터 모델
+    /// 사람의 정보를 저장하는 간단한 데이터 객체입니다.
+    /// ListBox와 ListView에 바인딩되어 표시됩니다.
+    /// </summary>
+    public class Person
+    {
+        // ========== 속성 정의 ==========
+        
+        public string 이름 { get; set; }
+        /*
+         * 이름 속성:
+         * - 타입: string (문자열)
+         * - 사람의 이름 저장
+         * - ListBox와 ListView의 첫 번째 열/필드에 표시
+         * 
+         * 바인딩 예:
+         * <TextBlock Text="{Binding 이름}"/>
+         * <GridViewColumn DisplayMemberBinding="{Binding 이름}"/>
+         */
+        
+        public int 나이 { get; set; }
+        /*
+         * 나이 속성:
+         * - 타입: int (정수)
+         * - 사람의 나이 저장
+         * - ListBox와 ListView의 두 번째 열/필드에 표시
+         * 
+         * 자동 형변환:
+         * - int → string 자동 변환
+         * - WPF가 자동으로 "100", "90" 등으로 표시
+         */
+        
+        public int 별점 { get; set; }
+        /*
+         * 별점 속성:
+         * - 타입: int (정수, 0~100)
+         * - 평점 또는 점수 저장
+         * - ProgressBar.Value에 바인딩되어 시각적으로 표시
+         * 
+         * ProgressBar 바인딩:
+         * <ProgressBar Value="{Binding 별점}"/>
+         * - 0~100 사이의 값
+         * - 95 → 95% 채워진 진행 표시줄
+         * 
+         * 용도:
+         * - 별점, 평점, 진행률, 점수 등
+         * - 시각적 피드백
+         */
+        
+        /*
+         * ========== Person 클래스의 한계 ==========
+         * 
+         * 현재 구조:
+         * - 단순한 데이터 저장 객체 (DTO)
+         * - 속성 변경 알림 없음
+         * - 초기값 설정 후 변경 시 UI 업데이트 안 됨
+         * 
+         * 문제점:
+         * person[0].이름 = "김철수"; // UI에 반영 안 됨
+         * person[0].별점 = 100;      // ProgressBar 업데이트 안 됨
+         * 
+         * ========== INotifyPropertyChanged 구현 (권장) ==========
+         * 
+         * using System.ComponentModel;
+         * 
+         * public class Person : INotifyPropertyChanged
+         * {
+         *     private string _이름;
+         *     private int _나이;
+         *     private int _별점;
+         *     
+         *     public string 이름
+         *     {
+         *         get => _이름;
+         *         set
+         *         {
+         *             if (_이름 != value)
+         *             {
+         *                 _이름 = value;
+         *                 OnPropertyChanged(nameof(이름));
+         *             }
+         *         }
+         *     }
+         *     
+         *     public int 나이
+         *     {
+         *         get => _나이;
+         *         set
+         *         {
+         *             if (_나이 != value)
+         *             {
+         *                 _나이 = value;
+         *                 OnPropertyChanged(nameof(나이));
+         *             }
+         *         }
+         *     }
+         *     
+         *     public int 별점
+         *     {
+         *         get => _별점;
+         *         set
+         *         {
+         *             if (_별점 != value)
+         *             {
+         *                 _별점 = value;
+         *                 OnPropertyChanged(nameof(별점));
+         *             }
+         *         }
+         *     }
+         *     
+         *     public event PropertyChangedEventHandler PropertyChanged;
+         *     
+         *     protected void OnPropertyChanged(string propertyName)
+         *     {
+         *         PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+         *     }
+         * }
+         * 
+         * 장점:
+         * - 속성 변경 시 UI 자동 업데이트
+         * - 실시간 데이터 반영
+         * - MVVM 패턴 완벽 지원
+         */
+    }
+
+    /// <summary>
+    /// MainWindow.xaml에 대한 상호작용 논리
+    /// ListBox와 ListView에 컬렉션 데이터를 바인딩하는 메인 윈도우
+    /// ItemsSource를 사용하여 List<Person>을 UI에 표시합니다.
+    /// </summary>
+    public partial class MainWindow : Window
+    {
+        // ========== 데이터 컬렉션 ==========
+        
+        List<Person> person = new List<Person>();
+        /*
+         * person 필드:
+         * - 타입: List<Person>
+         * - Person 객체들을 저장하는 컬렉션
+         * - ListBox와 ListView의 ItemsSource로 사용
+         * 
+         * List<T>:
+         * - 동적 배열
+         * - Add, Remove, Insert 등의 메서드
+         * - 인덱스로 접근 가능 (person[0], person[1])
+         * 
+         * 주의:
+         * - List는 항목 추가/삭제 시 UI 자동 업데이트 안 됨
+         * - ObservableCollection 사용 권장
+         * 
+         * ObservableCollection 예:
+         * ObservableCollection<Person> person = new ObservableCollection<Person>();
+         * person.Add(new Person { ... }); // UI 자동 업데이트
+         * person.Remove(person[0]);       // UI 자동 업데이트
+         */
+
+        /// <summary>
+        /// MainWindow 생성자
+        /// 윈도우가 생성될 때 호출되어 초기화 작업을 수행합니다.
+        /// Person 데이터를 생성하고 ListBox와 ListView에 바인딩합니다.
+        /// </summary>
+        public MainWindow()
+        {
+            // XAML에 정의된 UI 요소들을 초기화합니다.
+            InitializeComponent();
+            // 이 시점에 lb(ListBox), lv(ListView) 등이 생성됨
+            
+            // ========== Person 데이터 추가 ==========
+            
+            person.Add(new Person() { 이름 = "홍길동", 나이 = 100, 별점 = 95 });
+            /*
+             * 첫 번째 Person 추가:
+             * - 객체 초기화 구문 사용
+             * - 이름: "홍길동"
+             * - 나이: 100
+             * - 별점: 95 (ProgressBar에 95% 표시)
+             * 
+             * new Person() { ... }:
+             * - Person 인스턴스 생성
+             * - 속성 초기화
+             * - List에 추가
+             */
+            
+            person.Add(new Person() { 이름 = "임꺽정", 나이 = 90, 별점 = 89 });
+            // 두 번째 Person: 임꺽정, 90세, 별점 89
+            
+            person.Add(new Person() { 이름 = "타요", 나이 = 10, 별점 = 85 });
+            // 세 번째 Person: 타요, 10세, 별점 85
+            
+            person.Add(new Person() { 이름 = "뽀로로", 나이 = 5, 별점 = 80 });
+            // 네 번째 Person: 뽀로로, 5세, 별점 80
+            
+            person.Add(new Person() { 이름 = "타요", 나이 = 7, 별점 = 90 });
+            // 다섯 번째 Person: 타요, 7세, 별점 90
+            // 동일한 이름(타요) 가능
+            
+            /*
+             * 최종 컬렉션:
+             * person[0]: { 이름="홍길동", 나이=100, 별점=95 }
+             * person[1]: { 이름="임꺽정", 나이=90, 별점=89 }
+             * person[2]: { 이름="타요", 나이=10, 별점=85 }
+             * person[3]: { 이름="뽀로로", 나이=5, 별점=80 }
+             * person[4]: { 이름="타요", 나이=7, 별점=90 }
+             * 
+             * 총 5개의 Person 객체
+             * ListBox와 ListView에 5개 항목 표시
+             */
+            
+            // ========== ItemsSource 바인딩 ==========
+            
+            lb.ItemsSource = person;
+            /*
+             * ListBox ItemsSource 설정:
+             * - lb: XAML에서 Name="lb"로 정의된 ListBox
+             * - ItemsSource: 항목 목록의 데이터 소스
+             * - person: List<Person> 컬렉션
+             * 
+             * 동작:
+             * 1. List<Person> 컬렉션을 ItemsSource에 설정
+             * 2. 각 Person 객체가 ListBoxItem으로 변환
+             * 3. ItemTemplate에 정의된 UI로 표시
+             * 4. 5개의 Person → 5개의 ListBoxItem
+             * 
+             * ItemTemplate:
+             * - Grid (3열)
+             *   - TextBlock (이름)
+             *   - Label (나이)
+             *   - ProgressBar (별점)
+             * 
+             * 자동 DataContext:
+             * - 각 ListBoxItem의 DataContext = Person 인스턴스
+             * - 첫 번째 항목: person[0]
+             * - 두 번째 항목: person[1]
+             * 
+             * 화면 표시:
+             * ┌──────────────────────────┐
+             * │ 홍길동  100  [■■■95%]  │
+             * │ 임꺽정   90  [■■■89%]  │
+             * │ 타요     10  [■■■85%]  │
+             * │ 뽀로로    5  [■■■80%]  │
+             * │ 타요      7  [■■■90%]  │
+             * └──────────────────────────┘
+             */
+            
+            lv.ItemsSource = person;
+            /*
+             * ListView ItemsSource 설정:
+             * - lv: XAML에서 Name="lv"로 정의된 ListView
+             * - ItemsSource: 항목 목록의 데이터 소스
+             * - person: 동일한 List<Person> 컬렉션
+             * 
+             * 동작:
+             * 1. List<Person> 컬렉션을 ItemsSource에 설정
+             * 2. 각 Person 객체가 ListViewItem으로 변환
+             * 3. GridView에 정의된 열로 표시
+             * 4. 5개의 Person → 5개의 ListViewItem
+             * 
+             * GridView:
+             * - GridViewColumn (이름) - DisplayMemberBinding
+             * - GridViewColumn (나이) - DisplayMemberBinding
+             * - GridViewColumn (별점) - CellTemplate (ProgressBar)
+             * 
+             * 화면 표시:
+             * ┌──────┬─────┬─────────────┐
+             * │ 이름 │ 나이│   별점      │
+             * ├──────┼─────┼─────────────┤
+             * │홍길동│ 100 │ [■■■95%] │
+             * │임꺽정│  90 │ [■■■89%] │
+             * │타요  │  10 │ [■■■85%] │
+             * │뽀로로│   5 │ [■■■80%] │
+             * │타요  │   7 │ [■■■90%] │
+             * └──────┴─────┴─────────────┘
+             * 
+             * 동일한 데이터:
+             * - ListBox와 ListView가 같은 person 공유
+             * - 데이터 변경 시 두 컨트롤 모두 영향
+             * - 하지만 List는 알림 기능 없음
+             */
+            
+            /*
+             * ItemsSource 설정 후:
+             * - ListBox에 5개 항목 표시 (사용자 정의 템플릿)
+             * - ListView에 5개 항목 표시 (표 형식)
+             * - 두 컨트롤 모두 동일한 데이터 표시
+             * - 선택, 스크롤 등은 독립적
+             */
+        }
+        
+        /*
+         * ItemsSource 바인딩 활용 예제:
+         * 
+         * ========== 1. ObservableCollection 사용 (권장) ==========
+         * 
+         * using System.Collections.ObjectModel;
+         * 
+         * ObservableCollection<Person> people = new ObservableCollection<Person>();
+         * 
+         * public MainWindow()
+         * {
+         *     InitializeComponent();
+         *     
+         *     people.Add(new Person { 이름 = "홍길동", 나이 = 100, 별점 = 95 });
+         *     people.Add(new Person { 이름 = "임꺽정", 나이 = 90, 별점 = 89 });
+         *     
+         *     lb.ItemsSource = people;
+         *     lv.ItemsSource = people;
+         * }
+         * 
+         * private void AddPerson_Click(object sender, RoutedEventArgs e)
+         * {
+         *     // 항목 추가 → UI 자동 업데이트
+         *     people.Add(new Person { 이름 = "김유신", 나이 = 80, 별점 = 88 });
+         * }
+         * 
+         * private void RemovePerson_Click(object sender, RoutedEventArgs e)
+         * {
+         *     // 항목 삭제 → UI 자동 업데이트
+         *     if (people.Count > 0)
+         *     {
+         *         people.RemoveAt(0);
+         *     }
+         * }
+         * 
+         * ========== 2. 선택된 항목 처리 ==========
+         * 
+         * XAML:
+         * <ListBox SelectionChanged="ListBox_SelectionChanged"/>
+         * 
+         * 코드:
+         * private void ListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+         * {
+         *     if (lb.SelectedItem is Person selectedPerson)
+         *     {
+         *         MessageBox.Show($"선택: {selectedPerson.이름} ({selectedPerson.나이}세)");
+         *     }
+         * }
+         * 
+         * ========== 3. 항목 추가/삭제 ==========
+         * 
+         * private void AddButton_Click(object sender, RoutedEventArgs e)
+         * {
+         *     person.Add(new Person 
+         *     { 
+         *         이름 = nameTextBox.Text, 
+         *         나이 = int.Parse(ageTextBox.Text),
+         *         별점 = int.Parse(scoreTextBox.Text)
+         *     });
+         *     
+         *     // List는 UI 자동 업데이트 안 됨
+         *     // ItemsSource 재설정 필요
+         *     lb.ItemsSource = null;
+         *     lb.ItemsSource = person;
+         * }
+         * 
+         * private void DeleteButton_Click(object sender, RoutedEventArgs e)
+         * {
+         *     if (lb.SelectedIndex >= 0)
+         *     {
+         *         person.RemoveAt(lb.SelectedIndex);
+         *         
+         *         // ItemsSource 재설정
+         *         lb.ItemsSource = null;
+         *         lb.ItemsSource = person;
+         *     }
+         * }
+         * 
+         * ========== 4. 정렬 (Sorting) ==========
+         * 
+         * using System.ComponentModel;
+         * 
+         * private void SortByName_Click(object sender, RoutedEventArgs e)
+         * {
+         *     var view = CollectionViewSource.GetDefaultView(lb.ItemsSource);
+         *     view.SortDescriptions.Clear();
+         *     view.SortDescriptions.Add(new SortDescription("이름", ListSortDirection.Ascending));
+         * }
+         * 
+         * private void SortByAge_Click(object sender, RoutedEventArgs e)
+         * {
+         *     var view = CollectionViewSource.GetDefaultView(lb.ItemsSource);
+         *     view.SortDescriptions.Clear();
+         *     view.SortDescriptions.Add(new SortDescription("나이", ListSortDirection.Descending));
+         * }
+         * 
+         * ========== 5. 필터링 (Filtering) ==========
+         * 
+         * private void SearchTextBox_TextChanged(object sender, TextChangedEventArgs e)
+         * {
+         *     var view = CollectionViewSource.GetDefaultView(lb.ItemsSource);
+         *     view.Filter = item =>
+         *     {
+         *         if (item is Person person)
+         *         {
+         *             return person.이름.Contains(searchTextBox.Text, StringComparison.OrdinalIgnoreCase);
+         *         }
+         *         return false;
+         *     };
+         * }
+         * 
+         * private void ShowHighScores_Click(object sender, RoutedEventArgs e)
+         * {
+         *     var view = CollectionViewSource.GetDefaultView(lb.ItemsSource);
+         *     view.Filter = item =>
+         *     {
+         *         if (item is Person person)
+         *         {
+         *             return person.별점 >= 90; // 90점 이상만 표시
+         *         }
+         *         return false;
+         *     };
+         * }
+         * 
+         * ========== 6. 그룹화 (Grouping) ==========
+         * 
+         * XAML:
+         * <ListBox>
+         *     <ListBox.GroupStyle>
+         *         <GroupStyle>
+         *             <GroupStyle.HeaderTemplate>
+         *                 <DataTemplate>
+         *                     <TextBlock Text="{Binding Name}" FontWeight="Bold"/>
+         *                 </DataTemplate>
+         *             </GroupStyle.HeaderTemplate>
+         *         </GroupStyle>
+         *     </ListBox.GroupStyle>
+         * </ListBox>
+         * 
+         * 코드:
+         * var view = CollectionViewSource.GetDefaultView(lb.ItemsSource);
+         * view.GroupDescriptions.Clear();
+         * view.GroupDescriptions.Add(new PropertyGroupDescription("나이범위"));
+         * 
+         * Person 클래스에 추가:
+         * public string 나이범위 => 나이 < 10 ? "어린이" : 나이 < 20 ? "청소년" : "성인";
+         * 
+         * ========== 7. 페이징 (Paging) ==========
+         * 
+         * private int currentPage = 0;
+         * private int pageSize = 2;
+         * 
+         * private void NextPage_Click(object sender, RoutedEventArgs e)
+         * {
+         *     currentPage++;
+         *     LoadPage();
+         * }
+         * 
+         * private void PrevPage_Click(object sender, RoutedEventArgs e)
+         * {
+         *     if (currentPage > 0)
+         *     {
+         *         currentPage--;
+         *         LoadPage();
+         *     }
+         * }
+         * 
+         * private void LoadPage()
+         * {
+         *     var pagedData = person.Skip(currentPage * pageSize).Take(pageSize).ToList();
+         *     lb.ItemsSource = pagedData;
+         *     pageInfo.Text = $"페이지 {currentPage + 1} / {Math.Ceiling((double)person.Count / pageSize)}";
+         * }
+         * 
+         * ========== 8. MVVM 패턴 ==========
+         * 
+         * ViewModel:
+         * public class MainViewModel : INotifyPropertyChanged
+         * {
+         *     private ObservableCollection<Person> _people;
+         *     public ObservableCollection<Person> People
+         *     {
+         *         get => _people;
+         *         set
+         *         {
+         *             _people = value;
+         *             OnPropertyChanged(nameof(People));
+         *         }
+         *     }
+         *     
+         *     public MainViewModel()
+         *     {
+         *         People = new ObservableCollection<Person>
+         *         {
+         *             new Person { 이름 = "홍길동", 나이 = 100, 별점 = 95 },
+         *             new Person { 이름 = "임꺽정", 나이 = 90, 별점 = 89 }
+         *         };
+         *     }
+         * }
+         * 
+         * Window:
+         * public MainWindow()
+         * {
+         *     InitializeComponent();
+         *     DataContext = new MainViewModel();
+         * }
+         * 
+         * XAML:
+         * <ListBox ItemsSource="{Binding People}"/>
+         * 
+         * ========== 9. 데이터베이스 연동 ==========
+         * 
+         * private async void LoadFromDatabase()
+         * {
+         *     var people = await database.GetPeopleAsync();
+         *     lb.ItemsSource = people;
+         * }
+         * 
+         * ========== 10. 항목 편집 ==========
+         * 
+         * private void EditButton_Click(object sender, RoutedEventArgs e)
+         * {
+         *     if (lb.SelectedItem is Person selectedPerson)
+         *     {
+         *         var editWindow = new EditPersonWindow(selectedPerson);
+         *         if (editWindow.ShowDialog() == true)
+         *         {
+         *             // INotifyPropertyChanged 구현 시 자동 업데이트
+         *             // 아니면 ItemsSource 재설정
+         *             lb.Items.Refresh();
+         *         }
+         *     }
+         * }
+         * 
+         * ========== 주의사항 ==========
+         * 
+         * 1. List vs ObservableCollection:
+         *    - List: 알림 없음, ItemsSource 재설정 필요
+         *    - ObservableCollection: 자동 알림, UI 자동 업데이트
+         * 
+         * 2. INotifyPropertyChanged:
+         *    - Person 속성 변경 시 UI 업데이트
+         *    - 실시간 데이터 반영
+         * 
+         * 3. 성능:
+         *    - 대량 데이터는 가상화(Virtualization) 활용
+         *    - VirtualizingStackPanel (기본값)
+         * 
+         * 4. 메모리:
+         *    - ItemsSource 해제 고려
+         *    - 이벤트 핸들러 정리
+         */
+    }
+}

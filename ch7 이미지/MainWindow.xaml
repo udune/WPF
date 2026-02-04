@@ -1,0 +1,399 @@
+﻿<Window x:Class="ch7_이미지.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ch7_이미지"
+        mc:Ignorable="d"
+        Title="ch7 Image 튜토리얼" Height="600" Width="850">
+
+    <Window.Resources>
+        <Style x:Key="CodeExpanderStyle" TargetType="Expander">
+            <Setter Property="Header" Value="코드 보기"/>
+            <Setter Property="Margin" Value="0,0,0,12"/>
+            <Setter Property="IsExpanded" Value="False"/>
+        </Style>
+        <Style x:Key="CodeTextBoxStyle" TargetType="TextBox">
+            <Setter Property="IsReadOnly" Value="True"/>
+            <Setter Property="FontFamily" Value="Consolas"/>
+            <Setter Property="FontSize" Value="12"/>
+            <Setter Property="Background" Value="#1E1E1E"/>
+            <Setter Property="Foreground" Value="#DCDCDC"/>
+            <Setter Property="Padding" Value="10"/>
+            <Setter Property="TextWrapping" Value="Wrap"/>
+            <Setter Property="AcceptsReturn" Value="True"/>
+            <Setter Property="VerticalScrollBarVisibility" Value="Auto"/>
+            <Setter Property="MaxHeight" Value="300"/>
+            <Setter Property="BorderBrush" Value="#333333"/>
+            <Setter Property="BorderThickness" Value="1"/>
+        </Style>
+    </Window.Resources>
+
+    <TabControl>
+
+        <!-- 탭 1: 기본 사용법 -->
+        <TabItem Header="기본 사용법">
+            <ScrollViewer VerticalScrollBarVisibility="Auto">
+                <StackPanel Margin="20">
+                    <TextBlock Text="1. Source 속성 (이미지 경로)" FontSize="18" FontWeight="Bold" Margin="0,0,0,10"/>
+
+                    <GroupBox Header="로컬 이미지 (프로젝트 내 상대 경로)" Margin="0,0,0,8">
+                        <Image Source="/img/1.png" Width="100" Height="100" HorizontalAlignment="Left"/>
+                    </GroupBox>
+                    <Expander Style="{StaticResource CodeExpanderStyle}">
+                        <TextBox Style="{StaticResource CodeTextBoxStyle}" Text="&lt;!-- 프로젝트 폴더 내 img/1.png --&gt;&#10;&lt;Image Source=&quot;/img/1.png&quot; Width=&quot;100&quot; Height=&quot;100&quot;/&gt;"/>
+                    </Expander>
+
+                    <GroupBox Header="웹 URL 이미지" Margin="0,0,0,8">
+                        <Image Source="https://cdn2.iconfinder.com/data/icons/free-1/128/Android__logo__robot-512.png" Width="100" Height="100" HorizontalAlignment="Left"/>
+                    </GroupBox>
+                    <Expander Style="{StaticResource CodeExpanderStyle}">
+                        <TextBox Style="{StaticResource CodeTextBoxStyle}" Text="&lt;Image Source=&quot;https://example.com/image.png&quot; Width=&quot;100&quot; Height=&quot;100&quot;/&gt;"/>
+                    </Expander>
+
+                    <GroupBox Header="pack URI (리소스로 포함된 이미지)" Margin="0,0,0,8">
+                        <TextBlock Text="pack://application:,,,/img/1.png 형식으로 지정 가능" FontSize="12" Foreground="Gray" Padding="4"/>
+                    </GroupBox>
+                    <Expander Style="{StaticResource CodeExpanderStyle}">
+                        <TextBox Style="{StaticResource CodeTextBoxStyle}" Text="&lt;!-- 절대 pack URI --&gt;&#10;&lt;Image Source=&quot;pack://application:,,,/img/1.png&quot;/&gt;&#10;&#10;&lt;!-- 다른 어셈블리의 리소스 --&gt;&#10;&lt;Image Source=&quot;pack://application:,,,/OtherAssembly;component/images/logo.png&quot;/&gt;"/>
+                    </Expander>
+
+                    <TextBlock Text="2. Width / Height" FontSize="18" FontWeight="Bold" Margin="0,10,0,10"/>
+
+                    <GroupBox Header="크기 지정" Margin="0,0,0,8">
+                        <StackPanel Orientation="Horizontal">
+                            <StackPanel Margin="0,0,16,0">
+                                <Image Source="/img/1.png" Width="50" Height="50"/>
+                                <TextBlock Text="50x50" HorizontalAlignment="Center" FontSize="11"/>
+                            </StackPanel>
+                            <StackPanel Margin="0,0,16,0">
+                                <Image Source="/img/1.png" Width="80" Height="80"/>
+                                <TextBlock Text="80x80" HorizontalAlignment="Center" FontSize="11"/>
+                            </StackPanel>
+                            <StackPanel Margin="0,0,16,0">
+                                <Image Source="/img/1.png" Width="120" Height="120"/>
+                                <TextBlock Text="120x120" HorizontalAlignment="Center" FontSize="11"/>
+                            </StackPanel>
+                        </StackPanel>
+                    </GroupBox>
+                    <Expander Style="{StaticResource CodeExpanderStyle}">
+                        <TextBox Style="{StaticResource CodeTextBoxStyle}" Text="&lt;Image Source=&quot;/img/1.png&quot; Width=&quot;50&quot; Height=&quot;50&quot;/&gt;&#10;&lt;Image Source=&quot;/img/1.png&quot; Width=&quot;80&quot; Height=&quot;80&quot;/&gt;&#10;&lt;Image Source=&quot;/img/1.png&quot; Width=&quot;120&quot; Height=&quot;120&quot;/&gt;"/>
+                    </Expander>
+
+                    <TextBlock Text="3. Image를 Button 안에 넣기" FontSize="18" FontWeight="Bold" Margin="0,10,0,10"/>
+
+                    <GroupBox Header="이미지 버튼 (아이콘 + 텍스트)" Margin="0,0,0,8">
+                        <StackPanel Orientation="Horizontal">
+                            <Button HorizontalAlignment="Left" Padding="8" Margin="0,0,8,0">
+                                <StackPanel Orientation="Horizontal">
+                                    <Image Source="/img/1.png" Width="24" Height="24" Margin="0,0,6,0"/>
+                                    <TextBlock Text="이미지 버튼" VerticalAlignment="Center"/>
+                                </StackPanel>
+                            </Button>
+                            <Button HorizontalAlignment="Left" Padding="8">
+                                <StackPanel>
+                                    <Image Source="/img/1.png" Width="40" Height="40"/>
+                                    <TextBlock Text="아이콘" HorizontalAlignment="Center" FontSize="11"/>
+                                </StackPanel>
+                            </Button>
+                        </StackPanel>
+                    </GroupBox>
+                    <Expander Style="{StaticResource CodeExpanderStyle}">
+                        <TextBox Style="{StaticResource CodeTextBoxStyle}" Text="&lt;!-- 가로 배치: 아이콘 + 텍스트 --&gt;&#10;&lt;Button Padding=&quot;8&quot;&gt;&#10;    &lt;StackPanel Orientation=&quot;Horizontal&quot;&gt;&#10;        &lt;Image Source=&quot;/img/1.png&quot; Width=&quot;24&quot; Height=&quot;24&quot; Margin=&quot;0,0,6,0&quot;/&gt;&#10;        &lt;TextBlock Text=&quot;이미지 버튼&quot; VerticalAlignment=&quot;Center&quot;/&gt;&#10;    &lt;/StackPanel&gt;&#10;&lt;/Button&gt;&#10;&#10;&lt;!-- 세로 배치: 아이콘 위 + 텍스트 아래 --&gt;&#10;&lt;Button Padding=&quot;8&quot;&gt;&#10;    &lt;StackPanel&gt;&#10;        &lt;Image Source=&quot;/img/1.png&quot; Width=&quot;40&quot; Height=&quot;40&quot;/&gt;&#10;        &lt;TextBlock Text=&quot;아이콘&quot; HorizontalAlignment=&quot;Center&quot;/&gt;&#10;    &lt;/StackPanel&gt;&#10;&lt;/Button&gt;"/>
+                    </Expander>
+                </StackPanel>
+            </ScrollViewer>
+        </TabItem>
+
+        <!-- 탭 2: 정렬 -->
+        <TabItem Header="정렬">
+            <ScrollViewer VerticalScrollBarVisibility="Auto">
+                <StackPanel Margin="20">
+                    <TextBlock Text="HorizontalAlignment (이미지 자체 위치)" FontSize="18" FontWeight="Bold" Margin="0,0,0,10"/>
+                    <Border BorderBrush="#CCCCCC" BorderThickness="1" Padding="4" Margin="0,0,0,4">
+                        <Image Source="/img/1.png" Width="60" Height="60" HorizontalAlignment="Left"/>
+                    </Border>
+                    <TextBlock Text="Left" FontSize="11" Foreground="Gray" Margin="0,0,0,4"/>
+                    <Border BorderBrush="#CCCCCC" BorderThickness="1" Padding="4" Margin="0,0,0,4">
+                        <Image Source="/img/1.png" Width="60" Height="60" HorizontalAlignment="Center"/>
+                    </Border>
+                    <TextBlock Text="Center" FontSize="11" Foreground="Gray" Margin="0,0,0,4"/>
+                    <Border BorderBrush="#CCCCCC" BorderThickness="1" Padding="4" Margin="0,0,0,4">
+                        <Image Source="/img/1.png" Width="60" Height="60" HorizontalAlignment="Right"/>
+                    </Border>
+                    <TextBlock Text="Right" FontSize="11" Foreground="Gray" Margin="0,0,0,4"/>
+                    <Expander Style="{StaticResource CodeExpanderStyle}">
+                        <TextBox Style="{StaticResource CodeTextBoxStyle}" Text="&lt;Image Source=&quot;/img/1.png&quot; Width=&quot;60&quot; Height=&quot;60&quot; HorizontalAlignment=&quot;Left&quot;/&gt;&#10;&lt;Image Source=&quot;/img/1.png&quot; Width=&quot;60&quot; Height=&quot;60&quot; HorizontalAlignment=&quot;Center&quot;/&gt;&#10;&lt;Image Source=&quot;/img/1.png&quot; Width=&quot;60&quot; Height=&quot;60&quot; HorizontalAlignment=&quot;Right&quot;/&gt;"/>
+                    </Expander>
+
+                    <TextBlock Text="VerticalAlignment (수직 위치)" FontSize="18" FontWeight="Bold" Margin="0,20,0,10"/>
+                    <Grid Height="150" Background="#F5F5F5" Margin="0,0,0,8">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <StackPanel Grid.Column="0" VerticalAlignment="Top" HorizontalAlignment="Center">
+                            <Image Source="/img/1.png" Width="50" Height="50" VerticalAlignment="Top"/>
+                            <TextBlock Text="Top" HorizontalAlignment="Center" FontSize="11"/>
+                        </StackPanel>
+                        <StackPanel Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center">
+                            <Image Source="/img/1.png" Width="50" Height="50" VerticalAlignment="Center"/>
+                            <TextBlock Text="Center" HorizontalAlignment="Center" FontSize="11"/>
+                        </StackPanel>
+                        <StackPanel Grid.Column="2" VerticalAlignment="Bottom" HorizontalAlignment="Center">
+                            <Image Source="/img/1.png" Width="50" Height="50" VerticalAlignment="Bottom"/>
+                            <TextBlock Text="Bottom" HorizontalAlignment="Center" FontSize="11"/>
+                        </StackPanel>
+                    </Grid>
+                    <Expander Style="{StaticResource CodeExpanderStyle}">
+                        <TextBox Style="{StaticResource CodeTextBoxStyle}" Text="&lt;Grid Height=&quot;150&quot; Background=&quot;#F5F5F5&quot;&gt;&#10;    &lt;Grid.ColumnDefinitions&gt;&#10;        &lt;ColumnDefinition/&gt;&#10;        &lt;ColumnDefinition/&gt;&#10;        &lt;ColumnDefinition/&gt;&#10;    &lt;/Grid.ColumnDefinitions&gt;&#10;    &lt;Image Source=&quot;/img/1.png&quot; Width=&quot;50&quot; VerticalAlignment=&quot;Top&quot; Grid.Column=&quot;0&quot;/&gt;&#10;    &lt;Image Source=&quot;/img/1.png&quot; Width=&quot;50&quot; VerticalAlignment=&quot;Center&quot; Grid.Column=&quot;1&quot;/&gt;&#10;    &lt;Image Source=&quot;/img/1.png&quot; Width=&quot;50&quot; VerticalAlignment=&quot;Bottom&quot; Grid.Column=&quot;2&quot;/&gt;&#10;&lt;/Grid&gt;"/>
+                    </Expander>
+
+                    <TextBlock Text="Margin (외부 여백)" FontSize="18" FontWeight="Bold" Margin="0,20,0,10"/>
+                    <StackPanel Orientation="Horizontal" Background="#F5F5F5">
+                        <Border BorderBrush="Salmon" BorderThickness="1">
+                            <Image Source="/img/1.png" Width="60" Height="60" Margin="0"/>
+                        </Border>
+                        <Border BorderBrush="Salmon" BorderThickness="1">
+                            <Image Source="/img/1.png" Width="60" Height="60" Margin="10"/>
+                        </Border>
+                        <Border BorderBrush="Salmon" BorderThickness="1">
+                            <Image Source="/img/1.png" Width="60" Height="60" Margin="20"/>
+                        </Border>
+                    </StackPanel>
+                    <TextBlock Text="Margin: 0 / 10 / 20 (빨간 테두리가 Border)" FontSize="11" Foreground="Gray" Margin="0,4,0,0"/>
+                    <Expander Style="{StaticResource CodeExpanderStyle}">
+                        <TextBox Style="{StaticResource CodeTextBoxStyle}" Text="&lt;Image Source=&quot;/img/1.png&quot; Width=&quot;60&quot; Height=&quot;60&quot; Margin=&quot;0&quot;/&gt;&#10;&lt;Image Source=&quot;/img/1.png&quot; Width=&quot;60&quot; Height=&quot;60&quot; Margin=&quot;10&quot;/&gt;&#10;&lt;Image Source=&quot;/img/1.png&quot; Width=&quot;60&quot; Height=&quot;60&quot; Margin=&quot;20&quot;/&gt;"/>
+                    </Expander>
+                </StackPanel>
+            </ScrollViewer>
+        </TabItem>
+
+        <!-- 탭 3: Stretch 모드 -->
+        <TabItem Header="Stretch 모드">
+            <ScrollViewer VerticalScrollBarVisibility="Auto">
+                <StackPanel Margin="20">
+                    <TextBlock Text="Stretch (이미지 채우기 방식)" FontSize="18" FontWeight="Bold" Margin="0,0,0,10"/>
+                    <TextBlock Text="고정된 200x120 영역에서 각 Stretch 모드 비교" FontSize="12" Foreground="Gray" Margin="0,0,0,10"/>
+
+                    <GroupBox Header="None - 원본 크기 그대로 (잘릴 수 있음)" Margin="0,0,0,8">
+                        <Border BorderBrush="Gray" BorderThickness="1" Width="200" Height="120" HorizontalAlignment="Left">
+                            <Image Source="/img/1.png" Stretch="None"/>
+                        </Border>
+                    </GroupBox>
+                    <Expander Style="{StaticResource CodeExpanderStyle}">
+                        <TextBox Style="{StaticResource CodeTextBoxStyle}" Text="&lt;Image Source=&quot;/img/1.png&quot; Stretch=&quot;None&quot;/&gt;&#10;&#10;&lt;!-- 원본 크기 그대로 표시.&#10;     영역보다 크면 잘리고, 작으면 여백 발생 --&gt;"/>
+                    </Expander>
+
+                    <GroupBox Header="Fill - 영역에 꽉 채움 (비율 무시, 찌그러질 수 있음)" Margin="0,0,0,8">
+                        <Border BorderBrush="Gray" BorderThickness="1" Width="200" Height="120" HorizontalAlignment="Left">
+                            <Image Source="/img/1.png" Stretch="Fill"/>
+                        </Border>
+                    </GroupBox>
+                    <Expander Style="{StaticResource CodeExpanderStyle}">
+                        <TextBox Style="{StaticResource CodeTextBoxStyle}" Text="&lt;Image Source=&quot;/img/1.png&quot; Stretch=&quot;Fill&quot;/&gt;&#10;&#10;&lt;!-- 가로/세로 비율 무시하고 영역에 꽉 채움.&#10;     이미지가 찌그러질 수 있음 --&gt;"/>
+                    </Expander>
+
+                    <GroupBox Header="Uniform (기본값) - 비율 유지하며 영역 안에 맞춤" Margin="0,0,0,8">
+                        <Border BorderBrush="Gray" BorderThickness="1" Width="200" Height="120" HorizontalAlignment="Left">
+                            <Image Source="/img/1.png" Stretch="Uniform"/>
+                        </Border>
+                    </GroupBox>
+                    <Expander Style="{StaticResource CodeExpanderStyle}">
+                        <TextBox Style="{StaticResource CodeTextBoxStyle}" Text="&lt;Image Source=&quot;/img/1.png&quot; Stretch=&quot;Uniform&quot;/&gt;&#10;&#10;&lt;!-- 가로/세로 비율 유지하며 영역 안에 맞춤.&#10;     여백이 생길 수 있음 (Letterbox) --&gt;"/>
+                    </Expander>
+
+                    <GroupBox Header="UniformToFill - 비율 유지하며 영역을 꽉 채움 (잘릴 수 있음)" Margin="0,0,0,8">
+                        <Border BorderBrush="Gray" BorderThickness="1" Width="200" Height="120" HorizontalAlignment="Left" ClipToBounds="True">
+                            <Image Source="/img/1.png" Stretch="UniformToFill"/>
+                        </Border>
+                    </GroupBox>
+                    <Expander Style="{StaticResource CodeExpanderStyle}">
+                        <TextBox Style="{StaticResource CodeTextBoxStyle}" Text="&lt;Image Source=&quot;/img/1.png&quot; Stretch=&quot;UniformToFill&quot;/&gt;&#10;&#10;&lt;!-- 가로/세로 비율 유지하며 영역을 꽉 채움.&#10;     넘치는 부분은 잘림 (Crop) --&gt;"/>
+                    </Expander>
+
+                    <TextBlock Text="StretchDirection" FontSize="18" FontWeight="Bold" Margin="0,20,0,10"/>
+
+                    <GroupBox Header="UpOnly - 원본보다 작을 때만 확대 (축소 안 함)" Margin="0,0,0,8">
+                        <Border BorderBrush="Gray" BorderThickness="1" Width="200" Height="120" HorizontalAlignment="Left">
+                            <Image Source="/img/1.png" Stretch="Uniform" StretchDirection="UpOnly"/>
+                        </Border>
+                    </GroupBox>
+                    <GroupBox Header="DownOnly - 원본보다 클 때만 축소 (확대 안 함)" Margin="0,0,0,8">
+                        <Border BorderBrush="Gray" BorderThickness="1" Width="200" Height="120" HorizontalAlignment="Left">
+                            <Image Source="/img/1.png" Stretch="Uniform" StretchDirection="DownOnly"/>
+                        </Border>
+                    </GroupBox>
+                    <GroupBox Header="Both (기본값) - 확대/축소 모두 허용" Margin="0,0,0,8">
+                        <Border BorderBrush="Gray" BorderThickness="1" Width="200" Height="120" HorizontalAlignment="Left">
+                            <Image Source="/img/1.png" Stretch="Uniform" StretchDirection="Both"/>
+                        </Border>
+                    </GroupBox>
+                    <Expander Style="{StaticResource CodeExpanderStyle}">
+                        <TextBox Style="{StaticResource CodeTextBoxStyle}" Text="&lt;Image Source=&quot;/img/1.png&quot; Stretch=&quot;Uniform&quot; StretchDirection=&quot;UpOnly&quot;/&gt;&#10;&lt;Image Source=&quot;/img/1.png&quot; Stretch=&quot;Uniform&quot; StretchDirection=&quot;DownOnly&quot;/&gt;&#10;&lt;Image Source=&quot;/img/1.png&quot; Stretch=&quot;Uniform&quot; StretchDirection=&quot;Both&quot;/&gt;"/>
+                    </Expander>
+                </StackPanel>
+            </ScrollViewer>
+        </TabItem>
+
+        <!-- 탭 4: 외관과 효과 -->
+        <TabItem Header="외관과 효과">
+            <ScrollViewer VerticalScrollBarVisibility="Auto">
+                <StackPanel Margin="20">
+                    <TextBlock Text="Opacity (투명도)" FontSize="18" FontWeight="Bold" Margin="0,0,0,10"/>
+                    <StackPanel Orientation="Horizontal">
+                        <StackPanel Margin="0,0,12,0">
+                            <Image Source="/img/1.png" Width="80" Height="80" Opacity="1.0"/>
+                            <TextBlock Text="100%" HorizontalAlignment="Center" FontSize="11"/>
+                        </StackPanel>
+                        <StackPanel Margin="0,0,12,0">
+                            <Image Source="/img/1.png" Width="80" Height="80" Opacity="0.75"/>
+                            <TextBlock Text="75%" HorizontalAlignment="Center" FontSize="11"/>
+                        </StackPanel>
+                        <StackPanel Margin="0,0,12,0">
+                            <Image Source="/img/1.png" Width="80" Height="80" Opacity="0.5"/>
+                            <TextBlock Text="50%" HorizontalAlignment="Center" FontSize="11"/>
+                        </StackPanel>
+                        <StackPanel Margin="0,0,12,0">
+                            <Image Source="/img/1.png" Width="80" Height="80" Opacity="0.25"/>
+                            <TextBlock Text="25%" HorizontalAlignment="Center" FontSize="11"/>
+                        </StackPanel>
+                    </StackPanel>
+                    <Expander Style="{StaticResource CodeExpanderStyle}">
+                        <TextBox Style="{StaticResource CodeTextBoxStyle}" Text="&lt;Image Source=&quot;/img/1.png&quot; Opacity=&quot;1.0&quot;/&gt;&#10;&lt;Image Source=&quot;/img/1.png&quot; Opacity=&quot;0.75&quot;/&gt;&#10;&lt;Image Source=&quot;/img/1.png&quot; Opacity=&quot;0.5&quot;/&gt;&#10;&lt;Image Source=&quot;/img/1.png&quot; Opacity=&quot;0.25&quot;/&gt;"/>
+                    </Expander>
+
+                    <TextBlock Text="Border로 이미지 테두리" FontSize="18" FontWeight="Bold" Margin="0,20,0,10"/>
+                    <StackPanel Orientation="Horizontal">
+                        <Border BorderBrush="Gray" BorderThickness="1" Margin="0,0,12,0">
+                            <Image Source="/img/1.png" Width="80" Height="80"/>
+                        </Border>
+                        <Border BorderBrush="CornflowerBlue" BorderThickness="3" Margin="0,0,12,0">
+                            <Image Source="/img/1.png" Width="80" Height="80"/>
+                        </Border>
+                        <Border BorderBrush="Tomato" BorderThickness="3" CornerRadius="10" Margin="0,0,12,0" ClipToBounds="True">
+                            <Image Source="/img/1.png" Width="80" Height="80" Stretch="UniformToFill"/>
+                        </Border>
+                        <Border BorderBrush="MediumPurple" BorderThickness="3" CornerRadius="50" Width="86" Height="86" ClipToBounds="True">
+                            <Image Source="/img/1.png" Stretch="UniformToFill"/>
+                        </Border>
+                    </StackPanel>
+                    <TextBlock Text="1px / 3px / 둥근모서리 / 원형" FontSize="11" Foreground="Gray" Margin="0,4,0,0"/>
+                    <Expander Style="{StaticResource CodeExpanderStyle}">
+                        <TextBox Style="{StaticResource CodeTextBoxStyle}" Text="&lt;!-- 기본 테두리 --&gt;&#10;&lt;Border BorderBrush=&quot;Gray&quot; BorderThickness=&quot;1&quot;&gt;&#10;    &lt;Image Source=&quot;/img/1.png&quot; Width=&quot;80&quot; Height=&quot;80&quot;/&gt;&#10;&lt;/Border&gt;&#10;&#10;&lt;!-- 둥근 모서리 --&gt;&#10;&lt;Border BorderBrush=&quot;Tomato&quot; BorderThickness=&quot;3&quot;&#10;        CornerRadius=&quot;10&quot; ClipToBounds=&quot;True&quot;&gt;&#10;    &lt;Image Source=&quot;/img/1.png&quot; Stretch=&quot;UniformToFill&quot;/&gt;&#10;&lt;/Border&gt;&#10;&#10;&lt;!-- 원형 이미지 --&gt;&#10;&lt;Border BorderBrush=&quot;MediumPurple&quot; BorderThickness=&quot;3&quot;&#10;        CornerRadius=&quot;50&quot; Width=&quot;86&quot; Height=&quot;86&quot;&#10;        ClipToBounds=&quot;True&quot;&gt;&#10;    &lt;Image Source=&quot;/img/1.png&quot; Stretch=&quot;UniformToFill&quot;/&gt;&#10;&lt;/Border&gt;"/>
+                    </Expander>
+
+                    <TextBlock Text="Clip (EllipseGeometry로 원형 자르기)" FontSize="18" FontWeight="Bold" Margin="0,20,0,10"/>
+                    <GroupBox Header="Clip 속성으로 이미지를 원형으로 자르기" Margin="0,0,0,8">
+                        <Image Source="/img/1.png" Width="100" Height="100" HorizontalAlignment="Left" Stretch="UniformToFill">
+                            <Image.Clip>
+                                <EllipseGeometry Center="50,50" RadiusX="50" RadiusY="50"/>
+                            </Image.Clip>
+                        </Image>
+                    </GroupBox>
+                    <Expander Style="{StaticResource CodeExpanderStyle}">
+                        <TextBox Style="{StaticResource CodeTextBoxStyle}" Text="&lt;Image Source=&quot;/img/1.png&quot; Width=&quot;100&quot; Height=&quot;100&quot;&#10;       Stretch=&quot;UniformToFill&quot;&gt;&#10;    &lt;Image.Clip&gt;&#10;        &lt;EllipseGeometry Center=&quot;50,50&quot;&#10;                        RadiusX=&quot;50&quot; RadiusY=&quot;50&quot;/&gt;&#10;    &lt;/Image.Clip&gt;&#10;&lt;/Image&gt;"/>
+                    </Expander>
+
+                    <TextBlock Text="Effect (DropShadow / Blur)" FontSize="18" FontWeight="Bold" Margin="0,20,0,10"/>
+                    <StackPanel Orientation="Horizontal">
+                        <StackPanel Margin="0,0,20,0">
+                            <Image Source="/img/1.png" Width="100" Height="100">
+                                <Image.Effect>
+                                    <DropShadowEffect Color="Black" Direction="315" ShadowDepth="5" Opacity="0.5" BlurRadius="10"/>
+                                </Image.Effect>
+                            </Image>
+                            <TextBlock Text="DropShadow" HorizontalAlignment="Center" FontSize="11" Margin="0,4,0,0"/>
+                        </StackPanel>
+                        <StackPanel Margin="0,0,20,0">
+                            <Image Source="/img/1.png" Width="100" Height="100">
+                                <Image.Effect>
+                                    <BlurEffect Radius="5"/>
+                                </Image.Effect>
+                            </Image>
+                            <TextBlock Text="Blur (5)" HorizontalAlignment="Center" FontSize="11" Margin="0,4,0,0"/>
+                        </StackPanel>
+                        <StackPanel>
+                            <Image Source="/img/1.png" Width="100" Height="100">
+                                <Image.Effect>
+                                    <BlurEffect Radius="15"/>
+                                </Image.Effect>
+                            </Image>
+                            <TextBlock Text="Blur (15)" HorizontalAlignment="Center" FontSize="11" Margin="0,4,0,0"/>
+                        </StackPanel>
+                    </StackPanel>
+                    <Expander Style="{StaticResource CodeExpanderStyle}">
+                        <TextBox Style="{StaticResource CodeTextBoxStyle}" Text="&lt;!-- 그림자 효과 --&gt;&#10;&lt;Image Source=&quot;/img/1.png&quot; Width=&quot;100&quot; Height=&quot;100&quot;&gt;&#10;    &lt;Image.Effect&gt;&#10;        &lt;DropShadowEffect Color=&quot;Black&quot; Direction=&quot;315&quot;&#10;                         ShadowDepth=&quot;5&quot; Opacity=&quot;0.5&quot;&#10;                         BlurRadius=&quot;10&quot;/&gt;&#10;    &lt;/Image.Effect&gt;&#10;&lt;/Image&gt;&#10;&#10;&lt;!-- 블러 효과 --&gt;&#10;&lt;Image Source=&quot;/img/1.png&quot; Width=&quot;100&quot; Height=&quot;100&quot;&gt;&#10;    &lt;Image.Effect&gt;&#10;        &lt;BlurEffect Radius=&quot;5&quot;/&gt;&#10;    &lt;/Image.Effect&gt;&#10;&lt;/Image&gt;"/>
+                    </Expander>
+                </StackPanel>
+            </ScrollViewer>
+        </TabItem>
+
+        <!-- 탭 5: 이벤트와 상호작용 -->
+        <TabItem Header="이벤트와 상호작용">
+            <ScrollViewer VerticalScrollBarVisibility="Auto">
+                <StackPanel Margin="20">
+                    <TextBlock Text="MouseEnter / MouseLeave 이벤트" FontSize="18" FontWeight="Bold" Margin="0,0,0,10"/>
+
+                    <GroupBox Header="마우스 올리면 크기 변경" Margin="0,0,0,8">
+                        <StackPanel>
+                            <Image x:Name="imgHover" Source="/img/1.png" Width="80" Height="80" HorizontalAlignment="Left"
+                                   MouseEnter="ImgHover_MouseEnter" MouseLeave="ImgHover_MouseLeave"/>
+                            <TextBlock x:Name="txtHoverStatus" Text="마우스를 이미지 위에 올려보세요" FontSize="14" Margin="0,4,0,0"/>
+                        </StackPanel>
+                    </GroupBox>
+                    <Expander Style="{StaticResource CodeExpanderStyle}">
+                        <TextBox Style="{StaticResource CodeTextBoxStyle}" Text="&lt;!-- XAML --&gt;&#10;&lt;Image x:Name=&quot;imgHover&quot; Source=&quot;/img/1.png&quot; Width=&quot;80&quot; Height=&quot;80&quot;&#10;       MouseEnter=&quot;ImgHover_MouseEnter&quot;&#10;       MouseLeave=&quot;ImgHover_MouseLeave&quot;/&gt;&#10;&lt;TextBlock x:Name=&quot;txtHoverStatus&quot;/&gt;&#10;&#10;// C# 코드 비하인드&#10;private void ImgHover_MouseEnter(object sender, MouseEventArgs e)&#10;{&#10;    imgHover.Width = 120;&#10;    imgHover.Height = 120;&#10;    txtHoverStatus.Text = &quot;마우스 진입 → 크기 확대&quot;;&#10;}&#10;&#10;private void ImgHover_MouseLeave(object sender, MouseEventArgs e)&#10;{&#10;    imgHover.Width = 80;&#10;    imgHover.Height = 80;&#10;    txtHoverStatus.Text = &quot;마우스 이탈 → 원래 크기&quot;;&#10;}"/>
+                    </Expander>
+
+                    <TextBlock Text="MouseDown 이벤트" FontSize="18" FontWeight="Bold" Margin="0,10,0,10"/>
+
+                    <GroupBox Header="이미지 클릭 시 투명도 변경" Margin="0,0,0,8">
+                        <StackPanel>
+                            <Image x:Name="imgClick" Source="/img/1.png" Width="100" Height="100" HorizontalAlignment="Left"
+                                   MouseDown="ImgClick_MouseDown" Cursor="Hand"/>
+                            <TextBlock x:Name="txtClickStatus" Text="이미지를 클릭하면 투명도가 변합니다" FontSize="14" Margin="0,4,0,0"/>
+                        </StackPanel>
+                    </GroupBox>
+                    <Expander Style="{StaticResource CodeExpanderStyle}">
+                        <TextBox Style="{StaticResource CodeTextBoxStyle}" Text="&lt;!-- XAML --&gt;&#10;&lt;Image x:Name=&quot;imgClick&quot; Source=&quot;/img/1.png&quot;&#10;       Width=&quot;100&quot; Height=&quot;100&quot; Cursor=&quot;Hand&quot;&#10;       MouseDown=&quot;ImgClick_MouseDown&quot;/&gt;&#10;&#10;// C# 코드 비하인드&#10;private void ImgClick_MouseDown(object sender, MouseButtonEventArgs e)&#10;{&#10;    imgClick.Opacity = imgClick.Opacity &gt; 0.3 ? imgClick.Opacity - 0.2 : 1.0;&#10;    txtClickStatus.Text = $&quot;현재 Opacity: {imgClick.Opacity:F1}&quot;;&#10;}"/>
+                    </Expander>
+
+                    <TextBlock Text="동적 이미지 변경 (코드 비하인드)" FontSize="18" FontWeight="Bold" Margin="0,10,0,10"/>
+
+                    <GroupBox Header="버튼으로 이미지 Source 변경" Margin="0,0,0,8">
+                        <StackPanel>
+                            <Image x:Name="imgDynamic" Source="/img/1.png" Width="100" Height="100" HorizontalAlignment="Left" Margin="0,0,0,8"/>
+                            <StackPanel Orientation="Horizontal">
+                                <Button Content="로컬 이미지" Click="BtnLocalImage_Click" Margin="4" Padding="8,4"/>
+                                <Button Content="웹 이미지" Click="BtnWebImage_Click" Margin="4" Padding="8,4"/>
+                                <Button Content="이미지 제거" Click="BtnClearImage_Click" Margin="4" Padding="8,4"/>
+                            </StackPanel>
+                        </StackPanel>
+                    </GroupBox>
+                    <Expander Style="{StaticResource CodeExpanderStyle}">
+                        <TextBox Style="{StaticResource CodeTextBoxStyle}" Text="&lt;!-- XAML --&gt;&#10;&lt;Image x:Name=&quot;imgDynamic&quot; Source=&quot;/img/1.png&quot; Width=&quot;100&quot; Height=&quot;100&quot;/&gt;&#10;&lt;Button Content=&quot;로컬 이미지&quot; Click=&quot;BtnLocalImage_Click&quot;/&gt;&#10;&lt;Button Content=&quot;웹 이미지&quot; Click=&quot;BtnWebImage_Click&quot;/&gt;&#10;&lt;Button Content=&quot;이미지 제거&quot; Click=&quot;BtnClearImage_Click&quot;/&gt;&#10;&#10;// C# 코드 비하인드&#10;using System.Windows.Media.Imaging;&#10;&#10;private void BtnLocalImage_Click(object sender, RoutedEventArgs e)&#10;{&#10;    imgDynamic.Source = new BitmapImage(&#10;        new Uri(&quot;/img/1.png&quot;, UriKind.Relative));&#10;}&#10;&#10;private void BtnWebImage_Click(object sender, RoutedEventArgs e)&#10;{&#10;    imgDynamic.Source = new BitmapImage(&#10;        new Uri(&quot;https://cdn2.iconfinder.com/data/icons/free-1/128/Android__logo__robot-512.png&quot;));&#10;}&#10;&#10;private void BtnClearImage_Click(object sender, RoutedEventArgs e)&#10;{&#10;    imgDynamic.Source = null;&#10;}"/>
+                    </Expander>
+
+                    <TextBlock Text="Visibility 제어" FontSize="18" FontWeight="Bold" Margin="0,10,0,10"/>
+
+                    <GroupBox Header="이미지 보이기/숨기기" Margin="0,0,0,8">
+                        <StackPanel>
+                            <Image x:Name="imgVisibility" Source="/img/1.png" Width="80" Height="80" HorizontalAlignment="Left" Margin="0,0,0,8"/>
+                            <StackPanel Orientation="Horizontal">
+                                <Button Content="Visible" Click="BtnImgVisible_Click" Margin="4" Padding="8,4"/>
+                                <Button Content="Hidden" Click="BtnImgHidden_Click" Margin="4" Padding="8,4"/>
+                                <Button Content="Collapsed" Click="BtnImgCollapsed_Click" Margin="4" Padding="8,4"/>
+                            </StackPanel>
+                        </StackPanel>
+                    </GroupBox>
+                    <Expander Style="{StaticResource CodeExpanderStyle}">
+                        <TextBox Style="{StaticResource CodeTextBoxStyle}" Text="&lt;!-- XAML --&gt;&#10;&lt;Image x:Name=&quot;imgVisibility&quot; Source=&quot;/img/1.png&quot;/&gt;&#10;&lt;Button Content=&quot;Visible&quot; Click=&quot;BtnImgVisible_Click&quot;/&gt;&#10;&lt;Button Content=&quot;Hidden&quot; Click=&quot;BtnImgHidden_Click&quot;/&gt;&#10;&lt;Button Content=&quot;Collapsed&quot; Click=&quot;BtnImgCollapsed_Click&quot;/&gt;&#10;&#10;// C# 코드 비하인드&#10;// Visible: 보임&#10;// Hidden: 숨김 (공간 유지)&#10;// Collapsed: 숨김 (공간도 제거)&#10;private void BtnImgVisible_Click(object sender, RoutedEventArgs e)&#10;    =&gt; imgVisibility.Visibility = Visibility.Visible;&#10;private void BtnImgHidden_Click(object sender, RoutedEventArgs e)&#10;    =&gt; imgVisibility.Visibility = Visibility.Hidden;&#10;private void BtnImgCollapsed_Click(object sender, RoutedEventArgs e)&#10;    =&gt; imgVisibility.Visibility = Visibility.Collapsed;"/>
+                    </Expander>
+                </StackPanel>
+            </ScrollViewer>
+        </TabItem>
+
+    </TabControl>
+</Window>

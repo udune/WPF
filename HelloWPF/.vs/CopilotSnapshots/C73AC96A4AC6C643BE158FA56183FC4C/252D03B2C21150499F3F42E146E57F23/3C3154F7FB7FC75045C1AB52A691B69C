@@ -1,0 +1,535 @@
+﻿using System.Text;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Data;
+using System.Windows.Documents;
+using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
+using System.Windows.Shapes;
+
+namespace ch17_그리드
+{
+    /// <summary>
+    /// MainWindow.xaml에 대한 상호작용 논리
+    /// Grid 레이아웃 컨트롤의 행과 열 기반 배치를 시연하는 메인 윈도우
+    /// </summary>
+    public partial class MainWindow : Window
+    {
+        /// <summary>
+        /// MainWindow 생성자
+        /// 윈도우가 생성될 때 호출되어 초기화 작업을 수행합니다.
+        /// </summary>
+        public MainWindow()
+        {
+            // XAML에 정의된 UI 요소들을 초기화합니다.
+            InitializeComponent();
+            
+            /*
+             * 이 예제는 순수하게 XAML로 구현되어 있어
+             * 코드 비하인드에 특별한 로직이 없습니다.
+             * 
+             * 하지만 실제 프로젝트에서는 Grid를 
+             * 코드에서 동적으로 생성하거나
+             * 행/열을 추가/제거하는 경우가 많습니다.
+             */
+        }
+        
+        /*
+         * Grid 코드 비하인드 활용 예제:
+         * 
+         * 1. 동적으로 Grid 생성 및 요소 배치:
+         * 
+         *    private void CreateDynamicGrid()
+         *    {
+         *        Grid dynamicGrid = new Grid
+         *        {
+         *            Margin = new Thickness(10)
+         *        };
+         *        
+         *        // 3개의 열 정의
+         *        dynamicGrid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(1, GridUnitType.Auto) });
+         *        dynamicGrid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(1, GridUnitType.Star) });
+         *        dynamicGrid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(2, GridUnitType.Star) });
+         *        
+         *        // 2개의 행 정의
+         *        dynamicGrid.RowDefinitions.Add(new RowDefinition { Height = new GridLength(1, GridUnitType.Auto) });
+         *        dynamicGrid.RowDefinitions.Add(new RowDefinition { Height = new GridLength(1, GridUnitType.Star) });
+         *        
+         *        // 버튼 추가
+         *        Button btn = new Button { Content = "동적 버튼" };
+         *        Grid.SetRow(btn, 0);
+         *        Grid.SetColumn(btn, 0);
+         *        Grid.SetColumnSpan(btn, 2);
+         *        dynamicGrid.Children.Add(btn);
+         *        
+         *        // 메인 윈도우에 적용
+         *        this.Content = dynamicGrid;
+         *    }
+         *    
+         *    GridLength 타입:
+         *    - GridUnitType.Auto: 콘텐츠에 맞춤
+         *    - GridUnitType.Star: 비례 크기 (*)
+         *    - GridUnitType.Pixel: 고정 픽셀 (기본값)
+         *    
+         *    예제:
+         *    new GridLength(100) // 100픽셀
+         *    new GridLength(1, GridUnitType.Star) // 1*
+         *    new GridLength(1, GridUnitType.Auto) // Auto
+         * 
+         * 2. 동적으로 행/열 추가:
+         * 
+         *    private void AddRow_Click(object sender, RoutedEventArgs e)
+         *    {
+         *        // 새 행 추가
+         *        RowDefinition newRow = new RowDefinition
+         *        {
+         *            Height = new GridLength(1, GridUnitType.Star)
+         *        };
+         *        mainGrid.RowDefinitions.Add(newRow);
+         *        
+         *        // 새 행에 콘텐츠 추가
+         *        int rowIndex = mainGrid.RowDefinitions.Count - 1;
+         *        Button newButton = new Button
+         *        {
+         *            Content = $"행 {rowIndex + 1}",
+         *            Margin = new Thickness(5)
+         *        };
+         *        Grid.SetRow(newButton, rowIndex);
+         *        Grid.SetColumn(newButton, 0);
+         *        mainGrid.Children.Add(newButton);
+         *    }
+         *    
+         *    private void AddColumn_Click(object sender, RoutedEventArgs e)
+         *    {
+         *        // 새 열 추가
+         *        ColumnDefinition newColumn = new ColumnDefinition
+         *        {
+         *            Width = new GridLength(1, GridUnitType.Star)
+         *        };
+         *        mainGrid.ColumnDefinitions.Add(newColumn);
+         *    }
+         * 
+         * 3. 동적 폼 생성:
+         * 
+         *    private void CreateForm(Dictionary<string, string> fields)
+         *    {
+         *        Grid formGrid = new Grid
+         *        {
+         *            Margin = new Thickness(10)
+         *        };
+         *        
+         *        // 2개의 열: 레이블과 입력 필드
+         *        formGrid.ColumnDefinitions.Add(new ColumnDefinition { Width = GridLength.Auto });
+         *        formGrid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(1, GridUnitType.Star) });
+         *        
+         *        int rowIndex = 0;
+         *        foreach (var field in fields)
+         *        {
+         *            // 행 추가
+         *            formGrid.RowDefinitions.Add(new RowDefinition { Height = GridLength.Auto });
+         *            
+         *            // 레이블 추가
+         *            Label label = new Label
+         *            {
+         *                Content = field.Key + ":",
+         *                Margin = new Thickness(5)
+         *            };
+         *            Grid.SetRow(label, rowIndex);
+         *            Grid.SetColumn(label, 0);
+         *            formGrid.Children.Add(label);
+         *            
+         *            // 텍스트박스 추가
+         *            TextBox textBox = new TextBox
+         *            {
+         *                Text = field.Value,
+         *                Margin = new Thickness(5),
+         *                Name = field.Key.Replace(" ", "")
+         *            };
+         *            Grid.SetRow(textBox, rowIndex);
+         *            Grid.SetColumn(textBox, 1);
+         *            formGrid.Children.Add(textBox);
+         *            
+         *            rowIndex++;
+         *        }
+         *        
+         *        // 버튼 행 추가
+         *        formGrid.RowDefinitions.Add(new RowDefinition { Height = GridLength.Auto });
+         *        
+         *        StackPanel buttonPanel = new StackPanel
+         *        {
+         *            Orientation = Orientation.Horizontal,
+         *            HorizontalAlignment = HorizontalAlignment.Right,
+         *            Margin = new Thickness(5)
+         *        };
+         *        
+         *        Button saveButton = new Button { Content = "저장", Margin = new Thickness(5), Padding = new Thickness(10, 5, 10, 5) };
+         *        Button cancelButton = new Button { Content = "취소", Margin = new Thickness(5), Padding = new Thickness(10, 5, 10, 5) };
+         *        
+         *        buttonPanel.Children.Add(saveButton);
+         *        buttonPanel.Children.Add(cancelButton);
+         *        
+         *        Grid.SetRow(buttonPanel, rowIndex);
+         *        Grid.SetColumn(buttonPanel, 0);
+         *        Grid.SetColumnSpan(buttonPanel, 2);
+         *        formGrid.Children.Add(buttonPanel);
+         *        
+         *        this.Content = formGrid;
+         *    }
+         *    
+         *    // 사용 예:
+         *    var formData = new Dictionary<string, string>
+         *    {
+         *        { "이름", "" },
+         *        { "이메일", "" },
+         *        { "전화번호", "" },
+         *        { "주소", "" }
+         *    };
+         *    CreateForm(formData);
+         * 
+         * 4. Grid 위치 가져오기/설정하기:
+         * 
+         *    private void MoveElement_Click(object sender, RoutedEventArgs e)
+         *    {
+         *        if (sender is Button button)
+         *        {
+         *            // 현재 위치 가져오기
+         *            int currentRow = Grid.GetRow(button);
+         *            int currentColumn = Grid.GetColumn(button);
+         *            
+         *            // 새 위치로 이동
+         *            int newRow = (currentRow + 1) % mainGrid.RowDefinitions.Count;
+         *            Grid.SetRow(button, newRow);
+         *            
+         *            // ColumnSpan 가져오기/설정하기
+         *            int columnSpan = Grid.GetColumnSpan(button);
+         *            Grid.SetColumnSpan(button, columnSpan + 1);
+         *            
+         *            MessageBox.Show($"이동: ({currentRow}, {currentColumn}) → ({newRow}, {currentColumn})");
+         *        }
+         *    }
+         * 
+         * 5. 계산기 동적 생성:
+         * 
+         *    private void CreateCalculator()
+         *    {
+         *        Grid calcGrid = new Grid();
+         *        
+         *        // 5행 × 4열
+         *        for (int i = 0; i < 5; i++)
+         *        {
+         *            calcGrid.RowDefinitions.Add(new RowDefinition { Height = new GridLength(1, GridUnitType.Star) });
+         *        }
+         *        for (int i = 0; i < 4; i++)
+         *        {
+         *            calcGrid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(1, GridUnitType.Star) });
+         *        }
+         *        
+         *        // 디스플레이 (첫 행, 모든 열 병합)
+         *        TextBox display = new TextBox
+         *        {
+         *            Text = "0",
+         *            FontSize = 24,
+         *            HorizontalContentAlignment = HorizontalAlignment.Right,
+         *            VerticalContentAlignment = VerticalAlignment.Center,
+         *            IsReadOnly = true,
+         *            Margin = new Thickness(5)
+         *        };
+         *        Grid.SetRow(display, 0);
+         *        Grid.SetColumn(display, 0);
+         *        Grid.SetColumnSpan(display, 4);
+         *        calcGrid.Children.Add(display);
+         *        
+         *        // 버튼 배열
+         *        string[,] buttons = new string[,]
+         *        {
+         *            { "7", "8", "9", "/" },
+         *            { "4", "5", "6", "*" },
+         *            { "1", "2", "3", "-" },
+         *            { "0", ".", "=", "+" }
+         *        };
+         *        
+         *        // 버튼 생성
+         *        for (int row = 0; row < 4; row++)
+         *        {
+         *            for (int col = 0; col < 4; col++)
+         *            {
+         *                Button btn = new Button
+         *                {
+         *                    Content = buttons[row, col],
+         *                    FontSize = 20,
+         *                    Margin = new Thickness(5)
+         *                };
+         *                btn.Click += CalcButton_Click;
+         *                
+         *                Grid.SetRow(btn, row + 1); // +1은 디스플레이 때문
+         *                Grid.SetColumn(btn, col);
+         *                calcGrid.Children.Add(btn);
+         *            }
+         *        }
+         *        
+         *        this.Content = calcGrid;
+         *    }
+         *    
+         *    private void CalcButton_Click(object sender, RoutedEventArgs e)
+         *    {
+         *        if (sender is Button button)
+         *        {
+         *            string buttonText = button.Content.ToString();
+         *            // 계산 로직 구현
+         *            MessageBox.Show($"{buttonText} 버튼 클릭");
+         *        }
+         *    }
+         * 
+         * 6. 테이블 형태로 데이터 표시:
+         * 
+         *    private void DisplayDataTable(List<Person> people)
+         *    {
+         *        Grid tableGrid = new Grid();
+         *        
+         *        // 열 정의: 이름, 나이, 이메일
+         *        tableGrid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(1, GridUnitType.Star) });
+         *        tableGrid.ColumnDefinitions.Add(new ColumnDefinition { Width = GridLength.Auto });
+         *        tableGrid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(2, GridUnitType.Star) });
+         *        
+         *        // 헤더 행
+         *        tableGrid.RowDefinitions.Add(new RowDefinition { Height = GridLength.Auto });
+         *        
+         *        AddTableHeader(tableGrid, 0, 0, "이름");
+         *        AddTableHeader(tableGrid, 0, 1, "나이");
+         *        AddTableHeader(tableGrid, 0, 2, "이메일");
+         *        
+         *        // 데이터 행
+         *        int rowIndex = 1;
+         *        foreach (var person in people)
+         *        {
+         *            tableGrid.RowDefinitions.Add(new RowDefinition { Height = GridLength.Auto });
+         *            
+         *            AddTableCell(tableGrid, rowIndex, 0, person.Name);
+         *            AddTableCell(tableGrid, rowIndex, 1, person.Age.ToString());
+         *            AddTableCell(tableGrid, rowIndex, 2, person.Email);
+         *            
+         *            rowIndex++;
+         *        }
+         *        
+         *        this.Content = new ScrollViewer { Content = tableGrid };
+         *    }
+         *    
+         *    private void AddTableHeader(Grid grid, int row, int col, string text)
+         *    {
+         *        Border border = new Border
+         *        {
+         *            BorderBrush = new SolidColorBrush(Colors.Black),
+         *            BorderThickness = new Thickness(1),
+         *            Background = new SolidColorBrush(Colors.LightGray)
+         *        };
+         *        
+         *        TextBlock textBlock = new TextBlock
+         *        {
+         *            Text = text,
+         *            FontWeight = FontWeights.Bold,
+         *            Padding = new Thickness(5)
+         *        };
+         *        
+         *        border.Child = textBlock;
+         *        Grid.SetRow(border, row);
+         *        Grid.SetColumn(border, col);
+         *        grid.Children.Add(border);
+         *    }
+         *    
+         *    private void AddTableCell(Grid grid, int row, int col, string text)
+         *    {
+         *        Border border = new Border
+         *        {
+         *            BorderBrush = new SolidColorBrush(Colors.Gray),
+         *            BorderThickness = new Thickness(1)
+         *        };
+         *        
+         *        TextBlock textBlock = new TextBlock
+         *        {
+         *            Text = text,
+         *            Padding = new Thickness(5)
+         *        };
+         *        
+         *        border.Child = textBlock;
+         *        Grid.SetRow(border, row);
+         *        Grid.SetColumn(border, col);
+         *        grid.Children.Add(border);
+         *    }
+         * 
+         * 7. 동적 대시보드:
+         * 
+         *    private void CreateDashboard(int rows, int columns)
+         *    {
+         *        Grid dashboardGrid = new Grid
+         *        {
+         *            Margin = new Thickness(10)
+         *        };
+         *        
+         *        // 행과 열 생성
+         *        for (int i = 0; i < rows; i++)
+         *        {
+         *            dashboardGrid.RowDefinitions.Add(new RowDefinition { Height = new GridLength(1, GridUnitType.Star) });
+         *        }
+         *        for (int i = 0; i < columns; i++)
+         *        {
+         *            dashboardGrid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(1, GridUnitType.Star) });
+         *        }
+         *        
+         *        // 위젯 추가
+         *        for (int row = 0; row < rows; row++)
+         *        {
+         *            for (int col = 0; col < columns; col++)
+         *            {
+         *                Border widget = new Border
+         *                {
+         *                    BorderBrush = new SolidColorBrush(Colors.Gray),
+         *                    BorderThickness = new Thickness(2),
+         *                    CornerRadius = new CornerRadius(5),
+         *                    Margin = new Thickness(5),
+         *                    Background = new SolidColorBrush(Colors.WhiteSmoke)
+         *                };
+         *                
+         *                TextBlock content = new TextBlock
+         *                {
+         *                    Text = $"위젯 ({row + 1}, {col + 1})",
+         *                    HorizontalAlignment = HorizontalAlignment.Center,
+         *                    VerticalAlignment = VerticalAlignment.Center,
+         *                    FontSize = 16
+         *                };
+         *                
+         *                widget.Child = content;
+         *                Grid.SetRow(widget, row);
+         *                Grid.SetColumn(widget, col);
+         *                dashboardGrid.Children.Add(widget);
+         *            }
+         *        }
+         *        
+         *        this.Content = dashboardGrid;
+         *    }
+         * 
+         * 8. ShowGridLines 토글 (디버깅):
+         * 
+         *    private void ToggleGridLines_Click(object sender, RoutedEventArgs e)
+         *    {
+         *        mainGrid.ShowGridLines = !mainGrid.ShowGridLines;
+         *    }
+         * 
+         * 9. 요소 찾기:
+         * 
+         *    private UIElement? FindElementAt(Grid grid, int row, int column)
+         *    {
+         *        foreach (UIElement child in grid.Children)
+         *        {
+         *            if (Grid.GetRow(child) == row && Grid.GetColumn(child) == column)
+         *            {
+         *                return child;
+         *            }
+         *        }
+         *        return null;
+         *    }
+         *    
+         *    private List<UIElement> FindElementsInRow(Grid grid, int row)
+         *    {
+         *        List<UIElement> elements = new List<UIElement>();
+         *        foreach (UIElement child in grid.Children)
+         *        {
+         *            if (Grid.GetRow(child) == row)
+         *            {
+         *                elements.Add(child);
+         *            }
+         *        }
+         *        return elements;
+         *    }
+         * 
+         * 10. 크기 조정 및 측정:
+         * 
+         *     private void GetGridInfo_Click(object sender, RoutedEventArgs e)
+         *     {
+         *         StringBuilder info = new StringBuilder();
+         *         
+         *         info.AppendLine($"행 개수: {mainGrid.RowDefinitions.Count}");
+         *         info.AppendLine($"열 개수: {mainGrid.ColumnDefinitions.Count}");
+         *         info.AppendLine($"자식 요소 수: {mainGrid.Children.Count}");
+         *         info.AppendLine();
+         *         
+         *         info.AppendLine("행 정보:");
+         *         for (int i = 0; i < mainGrid.RowDefinitions.Count; i++)
+         *         {
+         *             RowDefinition row = mainGrid.RowDefinitions[i];
+         *             info.AppendLine($"  행 {i}: Height={row.Height}, ActualHeight={row.ActualHeight:F2}");
+         *         }
+         *         
+         *         info.AppendLine();
+         *         info.AppendLine("열 정보:");
+         *         for (int i = 0; i < mainGrid.ColumnDefinitions.Count; i++)
+         *         {
+         *             ColumnDefinition col = mainGrid.ColumnDefinitions[i];
+         *             info.AppendLine($"  열 {i}: Width={col.Width}, ActualWidth={col.ActualWidth:F2}");
+         *         }
+         *         
+         *         MessageBox.Show(info.ToString(), "Grid 정보");
+         *     }
+         * 
+         * Grid 코드 조작 관련 중요 사항:
+         * 
+         * 1. 위치 설정/가져오기:
+         *    - Grid.SetRow(element, rowIndex)
+         *    - Grid.SetColumn(element, columnIndex)
+         *    - int row = Grid.GetRow(element)
+         *    - int col = Grid.GetColumn(element)
+         * 
+         * 2. 병합 설정/가져오기:
+         *    - Grid.SetRowSpan(element, span)
+         *    - Grid.SetColumnSpan(element, span)
+         *    - int rowSpan = Grid.GetRowSpan(element)
+         *    - int colSpan = Grid.GetColumnSpan(element)
+         * 
+         * 3. GridLength 생성:
+         *    - new GridLength(100) // 100픽셀
+         *    - new GridLength(1, GridUnitType.Star) // 1*
+         *    - new GridLength(1, GridUnitType.Auto) // Auto
+         *    - GridLength.Auto // Auto의 축약형
+         * 
+         * 4. 행/열 추가/제거:
+         *    - grid.RowDefinitions.Add(new RowDefinition())
+         *    - grid.ColumnDefinitions.Add(new ColumnDefinition())
+         *    - grid.RowDefinitions.RemoveAt(index)
+         *    - grid.ColumnDefinitions.Clear()
+         * 
+         * 5. 자식 요소 관리:
+         *    - grid.Children.Add(element)
+         *    - grid.Children.Remove(element)
+         *    - grid.Children.Clear()
+         *    - grid.Children.Count
+         * 
+         * 6. 성능 최적화:
+         *    - 불필요한 중첩 피하기
+         *    - Auto는 측정 비용이 높으므로 신중히 사용
+         *    - ShowGridLines는 디버깅 후 제거
+         * 
+         * 7. MVVM 패턴:
+         *    - ItemsControl.ItemsPanel로 Grid 사용
+         *    - 데이터 바인딩으로 동적 구성
+         * 
+         * 예제 - ItemsControl와 Grid:
+         * XAML:
+         * <ItemsControl ItemsSource="{Binding Items}">
+         *     <ItemsControl.ItemsPanel>
+         *         <ItemsPanelTemplate>
+         *             <Grid>
+         *                 <Grid.ColumnDefinitions>
+         *                     <ColumnDefinition Width="*"/>
+         *                     <ColumnDefinition Width="*"/>
+         *                 </Grid.ColumnDefinitions>
+         *             </Grid>
+         *         </ItemsPanelTemplate>
+         *     </ItemsControl.ItemsPanel>
+         * </ItemsControl>
+         * 
+         * 8. 디버깅 팁:
+         *    - ShowGridLines="True"로 레이아웃 확인
+         *    - Snoop이나 Live Visual Tree 사용
+         *    - ActualWidth/ActualHeight로 실제 크기 확인
+         */

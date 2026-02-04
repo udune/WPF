@@ -1,0 +1,289 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Data;
+using System.Windows.Documents;
+using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
+using System.Windows.Shapes;
+
+namespace ch32_스타일
+{
+    /// <summary>
+    /// Page1.xaml에 대한 상호 작용 논리
+    /// Dictionary1.xaml의 "버튼스타일2"를 사용하는 Page입니다.
+    /// </summary>
+    public partial class Page1 : Page
+    {
+        /// <summary>
+        /// Page1 생성자
+        /// 페이지가 생성될 때 호출되어 초기화 작업을 수행합니다.
+        /// </summary>
+        public Page1()
+        {
+            InitializeComponent();
+            /*
+             * InitializeComponent() 호출 후:
+             * 1. XAML 로드 및 파싱
+             * 2. Grid 생성
+             * 3. Button 생성
+             * 4. StaticResource "버튼스타일2" 조회
+             *    - Page.Resources 검색 (비어 있음)
+             *    - Application.Resources 검색
+             *    - MergedDictionaries 확인
+             *    - Dictionary1.xaml에서 "버튼스타일2" 발견
+             * 5. 스타일 적용
+             *    - Background: LightGreen (MainWindow의 Salmon과 다름)
+             *    - 나머지 속성은 동일
+             * 6. UI 렌더링
+             * 
+             * Page와 Window의 차이:
+             * - Page: Frame에서 호스팅, NavigationService 지원
+             * - Window: 독립적인 창
+             * 
+             * 전역 리소스 공유:
+             * - MainWindow: "버튼스타일" (Salmon)
+             * - Page1: "버튼스타일2" (LightGreen)
+             * - UserControl1: "버튼스타일" (Salmon)
+             * - 모두 App.xaml의 MergedDictionaries에서 로드
+             */
+        }
+        
+        /*
+         * Page에서 스타일 사용 예제:
+         * 
+         * ========== 1. NavigationService로 페이지 전환 ==========::
+         * 
+         * private void NavigateToNextPage_Click(object sender, RoutedEventArgs e)
+         * {
+         *     NavigationService?.Navigate(new Page2());
+         * }
+         * 
+         * private void GoBack_Click(object sender, RoutedEventArgs e)
+         * {
+         *     if (NavigationService?.CanGoBack == true)
+         *         NavigationService.GoBack();
+         * }
+         * 
+         * ========== 2. Page 생명주기와 스타일 ==========::
+         * 
+         * protected override void OnNavigatedTo(NavigationEventArgs e)
+         * {
+         *     base.OnNavigatedTo(e);
+         *     
+         *     // 페이지 진입 시 스타일 적용
+         *     ApplyPageStyle();
+         * }
+         * 
+         * protected override void OnNavigatedFrom(NavigationEventArgs e)
+         * {
+         *     base.OnNavigatedFrom(e);
+         *     
+         *     // 페이지 이탈 시 정리
+         * }
+         * 
+         * private void ApplyPageStyle()
+         * {
+         *     // 페이지별 스타일 설정
+         *     var button = FindName("myButton") as Button;
+         *     if (button != null)
+         *     {
+         *         button.Style = (Style)Application.Current.Resources["버튼스타일2"];
+         *     }
+         * }
+         * 
+         * ========== 3. Frame에서 Page 호스팅 ==========::
+         * 
+         * MainWindow.xaml:
+         * <Frame x:Name="mainFrame" NavigationUIVisibility="Hidden"/>
+         * 
+         * MainWindow.xaml.cs:
+         * private void ShowPage1_Click(object sender, RoutedEventArgs e)
+         * {
+         *     mainFrame.Navigate(new Page1());
+         * }
+         * 
+         * 스타일 유지:
+         * - Page1이 Frame에 로드되어도
+         * - 전역 리소스 접근 가능
+         * - "버튼스타일2" 정상 적용
+         * 
+         * ========== 4. 페이지 매개변수와 스타일 ==========::
+         * 
+         * Page1 생성 시 매개변수 전달:
+         * public Page1(string styleKey)
+         * {
+         *     InitializeComponent();
+         *     ApplyDynamicStyle(styleKey);
+         * }
+         * 
+         * private void ApplyDynamicStyle(string styleKey)
+         * {
+         *     if (Application.Current.Resources.Contains(styleKey))
+         *     {
+         *         myButton.Style = (Style)Application.Current.Resources[styleKey];
+         *     }
+         * }
+         * 
+         * 사용:
+         * mainFrame.Navigate(new Page1("버튼스타일"));
+         * mainFrame.Navigate(new Page1("버튼스타일2"));
+         * 
+         * ========== 5. 페이지별 리소스 오버라이드 ==========::
+         * 
+         * Page1.xaml:
+         * <Page.Resources>
+         *     <Style TargetType="Button" x:Key="버튼스타일2" 
+         *            BasedOn="{StaticResource 버튼스타일2}">
+         *         <Setter Property="Background" Value="DarkGreen"/>
+         *     </Style>
+         * </Page.Resources>
+         * 
+         * 결과:
+         * - Page1의 버튼만 DarkGreen
+         * - 다른 Page는 LightGreen
+         * 
+         * ========== 6. KeepAlive와 스타일 ==========::
+         * 
+         * Page1.xaml:
+         * <Page KeepAlive="True">
+         * 
+         * 효과:
+         * - 페이지가 캐시에 유지
+         * - 다시 방문 시 상태 유지
+         * - 스타일도 유지
+         * 
+         * 주의:
+         * - 메모리 사용 증가
+         * - 적절히 사용
+         * 
+         * ========== 7. 페이지 전환 애니메이션과 스타일 ==========::
+         * 
+         * private async void AnimatedNavigate_Click(object sender, RoutedEventArgs e)
+         * {
+         *     // 페이드 아웃
+         *     var fadeOut = new DoubleAnimation(1, 0, TimeSpan.FromMilliseconds(300));
+         *     this.BeginAnimation(OpacityProperty, fadeOut);
+         *     await Task.Delay(300);
+         *     
+         *     // 페이지 전환
+         *     NavigationService?.Navigate(new Page2());
+         * }
+         * 
+         * ========== 8. 조건부 스타일 적용 ==========::
+         * 
+         * public Page1()
+         * {
+         *     InitializeComponent();
+         *     
+         *     // 현재 시간에 따라 다른 스타일
+         *     var hour = DateTime.Now.Hour;
+         *     string styleKey = (hour >= 6 && hour < 18) 
+         *         ? "버튼스타일" 
+         *         : "버튼스타일2";
+         *     
+         *     myButton.Style = (Style)Application.Current.Resources[styleKey];
+         * }
+         * 
+         * ========== 9. 데이터 바인딩과 스타일 ==========::
+         * 
+         * ViewModel:
+         * public class Page1ViewModel : INotifyPropertyChanged
+         * {
+         *     private string _buttonStyleKey = "버튼스타일2";
+         *     public string ButtonStyleKey
+         *     {
+         *         get => _buttonStyleKey;
+         *         set
+         *         {
+         *             _buttonStyleKey = value;
+         *             OnPropertyChanged();
+         *         }
+         *     }
+         * }
+         * 
+         * Page1.xaml.cs:
+         * public Page1()
+         * {
+         *     InitializeComponent();
+         *     DataContext = new Page1ViewModel();
+         * }
+         * 
+         * Page1.xaml:
+         * <Button Style="{DynamicResource {Binding ButtonStyleKey}}">
+         * 
+         * ========== 10. 페이지 상태와 스타일 ==========::
+         * 
+         * private enum PageState
+         * {
+         *     Normal,
+         *     Loading,
+         *     Error
+         * }
+         * 
+         * private PageState _currentState = PageState.Normal;
+         * 
+         * private void UpdatePageStyle()
+         * {
+         *     string styleKey = _currentState switch
+         *     {
+         *         PageState.Normal => "버튼스타일",
+         *         PageState.Loading => "DisabledButtonStyle",
+         *         PageState.Error => "ErrorButtonStyle",
+         *         _ => "버튼스타일"
+         *     };
+         *     
+         *     myButton.Style = (Style)Application.Current.Resources[styleKey];
+         *     myButton.IsEnabled = _currentState == PageState.Normal;
+         * }
+         * 
+         * private async void LoadData_Click(object sender, RoutedEventArgs e)
+         * {
+         *     _currentState = PageState.Loading;
+         *     UpdatePageStyle();
+         *     
+         *     try
+         *     {
+         *         await LoadDataAsync();
+         *         _currentState = PageState.Normal;
+         *     }
+         *     catch
+         *     {
+         *         _currentState = PageState.Error;
+         *     }
+         *     finally
+         *     {
+         *         UpdatePageStyle();
+         *     }
+         * }
+         * 
+         * ========== 주의사항 ==========::
+         * 
+         * 1. NavigationService:
+         *    - Page에서만 사용 가능
+         *    - Window에서는 null
+         * 
+         * 2. 페이지 캐시:
+         *    - KeepAlive 사용 시 메모리 관리
+         *    - 불필요한 페이지는 캐시 해제
+         * 
+         * 3. 리소스 조회:
+         *    - Frame의 Resources는 조회 안 됨
+         *    - Page → Application 순서
+         * 
+         * 4. 생명주기:
+         *    - OnNavigatedTo/From 활용
+         *    - 리소스 정리
+         * 
+         * 5. 성능:
+         *    - 페이지 전환 시 스타일 재적용 최소화
+         *    - StaticResource 권장
+         */
+    }
+}

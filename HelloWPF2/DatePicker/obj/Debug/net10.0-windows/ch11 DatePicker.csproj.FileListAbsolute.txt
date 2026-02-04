@@ -1,0 +1,20 @@
+C:\Users\udune\Desktop\WPF\HelloWPF2\DatePicker\bin\Debug\net10.0-windows\ch11 DatePicker.exe
+C:\Users\udune\Desktop\WPF\HelloWPF2\DatePicker\bin\Debug\net10.0-windows\ch11 DatePicker.deps.json
+C:\Users\udune\Desktop\WPF\HelloWPF2\DatePicker\bin\Debug\net10.0-windows\ch11 DatePicker.runtimeconfig.json
+C:\Users\udune\Desktop\WPF\HelloWPF2\DatePicker\bin\Debug\net10.0-windows\ch11 DatePicker.dll
+C:\Users\udune\Desktop\WPF\HelloWPF2\DatePicker\bin\Debug\net10.0-windows\ch11 DatePicker.pdb
+C:\Users\udune\Desktop\WPF\HelloWPF2\DatePicker\obj\Debug\net10.0-windows\MainWindow.g.cs
+C:\Users\udune\Desktop\WPF\HelloWPF2\DatePicker\obj\Debug\net10.0-windows\App.g.cs
+C:\Users\udune\Desktop\WPF\HelloWPF2\DatePicker\obj\Debug\net10.0-windows\ch11 DatePicker_MarkupCompile.cache
+C:\Users\udune\Desktop\WPF\HelloWPF2\DatePicker\obj\Debug\net10.0-windows\ch11 DatePicker_MarkupCompile.lref
+C:\Users\udune\Desktop\WPF\HelloWPF2\DatePicker\obj\Debug\net10.0-windows\MainWindow.baml
+C:\Users\udune\Desktop\WPF\HelloWPF2\DatePicker\obj\Debug\net10.0-windows\ch11 DatePicker.g.resources
+C:\Users\udune\Desktop\WPF\HelloWPF2\DatePicker\obj\Debug\net10.0-windows\ch11 DatePicker.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\udune\Desktop\WPF\HelloWPF2\DatePicker\obj\Debug\net10.0-windows\ch11 DatePicker.AssemblyInfoInputs.cache
+C:\Users\udune\Desktop\WPF\HelloWPF2\DatePicker\obj\Debug\net10.0-windows\ch11 DatePicker.AssemblyInfo.cs
+C:\Users\udune\Desktop\WPF\HelloWPF2\DatePicker\obj\Debug\net10.0-windows\ch11 DatePicker.csproj.CoreCompileInputs.cache
+C:\Users\udune\Desktop\WPF\HelloWPF2\DatePicker\obj\Debug\net10.0-windows\ch11 DatePicker.dll
+C:\Users\udune\Desktop\WPF\HelloWPF2\DatePicker\obj\Debug\net10.0-windows\refint\ch11 DatePicker.dll
+C:\Users\udune\Desktop\WPF\HelloWPF2\DatePicker\obj\Debug\net10.0-windows\ch11 DatePicker.pdb
+C:\Users\udune\Desktop\WPF\HelloWPF2\DatePicker\obj\Debug\net10.0-windows\ch11 DatePicker.genruntimeconfig.cache
+C:\Users\udune\Desktop\WPF\HelloWPF2\DatePicker\obj\Debug\net10.0-windows\ref\ch11 DatePicker.dll

@@ -1,0 +1,19 @@
+C:\Users\udune\Desktop\WPF\ch17 그리드\obj\Debug\net8.0-windows\MainWindow.g.cs
+C:\Users\udune\Desktop\WPF\ch17 그리드\obj\Debug\net8.0-windows\App.g.cs
+C:\Users\udune\Desktop\WPF\ch17 그리드\obj\Debug\net8.0-windows\ch17 그리드_MarkupCompile.cache
+C:\Users\udune\Desktop\WPF\ch17 그리드\bin\Debug\net8.0-windows\ch17 그리드.exe
+C:\Users\udune\Desktop\WPF\ch17 그리드\bin\Debug\net8.0-windows\ch17 그리드.deps.json
+C:\Users\udune\Desktop\WPF\ch17 그리드\bin\Debug\net8.0-windows\ch17 그리드.runtimeconfig.json
+C:\Users\udune\Desktop\WPF\ch17 그리드\bin\Debug\net8.0-windows\ch17 그리드.dll
+C:\Users\udune\Desktop\WPF\ch17 그리드\bin\Debug\net8.0-windows\ch17 그리드.pdb
+C:\Users\udune\Desktop\WPF\ch17 그리드\obj\Debug\net8.0-windows\MainWindow.baml
+C:\Users\udune\Desktop\WPF\ch17 그리드\obj\Debug\net8.0-windows\ch17 그리드.g.resources
+C:\Users\udune\Desktop\WPF\ch17 그리드\obj\Debug\net8.0-windows\ch17 그리드.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\udune\Desktop\WPF\ch17 그리드\obj\Debug\net8.0-windows\ch17 그리드.AssemblyInfoInputs.cache
+C:\Users\udune\Desktop\WPF\ch17 그리드\obj\Debug\net8.0-windows\ch17 그리드.AssemblyInfo.cs
+C:\Users\udune\Desktop\WPF\ch17 그리드\obj\Debug\net8.0-windows\ch17 그리드.csproj.CoreCompileInputs.cache
+C:\Users\udune\Desktop\WPF\ch17 그리드\obj\Debug\net8.0-windows\ch17 그리드.dll
+C:\Users\udune\Desktop\WPF\ch17 그리드\obj\Debug\net8.0-windows\refint\ch17 그리드.dll
+C:\Users\udune\Desktop\WPF\ch17 그리드\obj\Debug\net8.0-windows\ch17 그리드.pdb
+C:\Users\udune\Desktop\WPF\ch17 그리드\obj\Debug\net8.0-windows\ch17 그리드.genruntimeconfig.cache
+C:\Users\udune\Desktop\WPF\ch17 그리드\obj\Debug\net8.0-windows\ref\ch17 그리드.dll

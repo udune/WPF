@@ -1,0 +1,20 @@
+C:\Users\udune\Desktop\WPF\HelloWPF2\ch05 Text Box\bin\Debug\net10.0-windows\ch05 Text Box.exe
+C:\Users\udune\Desktop\WPF\HelloWPF2\ch05 Text Box\bin\Debug\net10.0-windows\ch05 Text Box.deps.json
+C:\Users\udune\Desktop\WPF\HelloWPF2\ch05 Text Box\bin\Debug\net10.0-windows\ch05 Text Box.runtimeconfig.json
+C:\Users\udune\Desktop\WPF\HelloWPF2\ch05 Text Box\bin\Debug\net10.0-windows\ch05 Text Box.dll
+C:\Users\udune\Desktop\WPF\HelloWPF2\ch05 Text Box\bin\Debug\net10.0-windows\ch05 Text Box.pdb
+C:\Users\udune\Desktop\WPF\HelloWPF2\ch05 Text Box\obj\Debug\net10.0-windows\MainWindow.g.cs
+C:\Users\udune\Desktop\WPF\HelloWPF2\ch05 Text Box\obj\Debug\net10.0-windows\App.g.cs
+C:\Users\udune\Desktop\WPF\HelloWPF2\ch05 Text Box\obj\Debug\net10.0-windows\ch05 Text Box_MarkupCompile.cache
+C:\Users\udune\Desktop\WPF\HelloWPF2\ch05 Text Box\obj\Debug\net10.0-windows\ch05 Text Box_MarkupCompile.lref
+C:\Users\udune\Desktop\WPF\HelloWPF2\ch05 Text Box\obj\Debug\net10.0-windows\MainWindow.baml
+C:\Users\udune\Desktop\WPF\HelloWPF2\ch05 Text Box\obj\Debug\net10.0-windows\ch05 Text Box.g.resources
+C:\Users\udune\Desktop\WPF\HelloWPF2\ch05 Text Box\obj\Debug\net10.0-windows\ch05 Text Box.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\udune\Desktop\WPF\HelloWPF2\ch05 Text Box\obj\Debug\net10.0-windows\ch05 Text Box.AssemblyInfoInputs.cache
+C:\Users\udune\Desktop\WPF\HelloWPF2\ch05 Text Box\obj\Debug\net10.0-windows\ch05 Text Box.AssemblyInfo.cs
+C:\Users\udune\Desktop\WPF\HelloWPF2\ch05 Text Box\obj\Debug\net10.0-windows\ch05 Text Box.csproj.CoreCompileInputs.cache
+C:\Users\udune\Desktop\WPF\HelloWPF2\ch05 Text Box\obj\Debug\net10.0-windows\ch05 Text Box.dll
+C:\Users\udune\Desktop\WPF\HelloWPF2\ch05 Text Box\obj\Debug\net10.0-windows\refint\ch05 Text Box.dll
+C:\Users\udune\Desktop\WPF\HelloWPF2\ch05 Text Box\obj\Debug\net10.0-windows\ch05 Text Box.pdb
+C:\Users\udune\Desktop\WPF\HelloWPF2\ch05 Text Box\obj\Debug\net10.0-windows\ch05 Text Box.genruntimeconfig.cache
+C:\Users\udune\Desktop\WPF\HelloWPF2\ch05 Text Box\obj\Debug\net10.0-windows\ref\ch05 Text Box.dll

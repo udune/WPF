@@ -1,0 +1,54 @@
+﻿using System.Configuration;
+using System.Data;
+using System.Windows;
+
+namespace ch5_텍스트박스
+{
+    /// <summary>
+    /// App.xaml에 대한 상호작용 논리
+    /// WPF 애플리케이션의 전역 애플리케이션 클래스
+    /// </summary>
+    /*
+     * App 클래스 설명:
+     * 
+     * 이 클래스는 WPF 애플리케이션의 진입점 역할을 합니다.
+     * Application 클래스를 상속받아 애플리케이션의 수명 주기를 관리합니다.
+     * 
+     * 주요 기능:
+     * 1. 애플리케이션 시작 및 종료 관리
+     * 2. 전역 리소스 관리 (App.xaml에 정의)
+     * 3. 애플리케이션 수준의 이벤트 처리
+     * 4. 윈도우 관리 및 네비게이션
+     * 
+     * partial 키워드:
+     * - App.xaml 파일과 함께 하나의 클래스를 구성합니다.
+     * - XAML에 정의된 리소스와 C# 코드를 연결합니다.
+     * 
+     * 참고:
+     * - System.Configuration: App.config 파일 설정 접근 (현재 미사용)
+     * - System.Data: 데이터베이스 관련 작업 (현재 미사용)
+     * - System.Windows: WPF 핵심 클래스 포함
+     * 
+     * 현재 상태:
+     * - 기본 구현만 있는 빈 App 클래스입니다.
+     * - 특별한 초기화나 전역 이벤트 처리가 필요 없는 간단한 애플리케이션입니다.
+     * 
+     * 확장 가능한 기능:
+     * - OnStartup: 애플리케이션 시작 시 초기화 로직 추가
+     * - OnExit: 애플리케이션 종료 시 정리 작업 추가
+     * - DispatcherUnhandledException: 처리되지 않은 예외 전역 처리
+     * 
+     * 예제:
+     * protected override void OnStartup(StartupEventArgs e)
+     * {
+     *     base.OnStartup(e);
+     *     // 애플리케이션 초기화 코드
+     * }
+     */
+    public partial class App : Application
+    {
+        // 현재는 추가 구현이 없는 기본 상태입니다.
+        // 필요에 따라 애플리케이션 수준의 로직을 여기에 추가할 수 있습니다.
+    }
+
+}

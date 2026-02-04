@@ -1,0 +1,26 @@
+﻿<Window x:Class="ch22_툴바.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ch22_툴바"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <DockPanel>
+        <ToolBarTray DockPanel.Dock="Top">
+            <ToolBar>
+                <Button>
+                    <Image Width="20" Source="https://cdn0.iconfinder.com/data/icons/business-startup-10/50/61-512.png"></Image>
+                </Button>
+                <TextBlock VerticalAlignment="Center">폰트사이즈:</TextBlock>
+                <ComboBox x:Name="cb">
+                    <ComboBoxItem IsSelected="True">10</ComboBoxItem>
+                    <ComboBoxItem>12</ComboBoxItem>
+                    <ComboBoxItem>14</ComboBoxItem>
+                    <ComboBoxItem>16</ComboBoxItem>
+                </ComboBox>
+            </ToolBar>
+        </ToolBarTray>
+        <TextBox FontSize="{Binding ElementName=cb, Path=Text}"></TextBox>
+    </DockPanel>
+</Window>

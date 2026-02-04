@@ -1,0 +1,27 @@
+<Solution>
+  <Project Path="ch02 Label/ch02 Label.csproj" Id="d1ac86c6-838f-4c7c-bade-10b7895232bd" />
+  <Project Path="ch03 Text Block/ch03 Text Block.csproj" Id="6f9e6318-046c-4c16-83fa-af007e8cfcba" />
+  <Project Path="ch04 Button/ch04 Button.csproj" Id="2cc55420-56df-4544-8c83-6094e4f40a53" />
+  <Project Path="ch05 Text Box/ch05 Text Box.csproj" Id="40ec1d32-4572-49d3-a0ab-02d0c59bc09a" />
+  <Project Path="ch06 Password Box/ch06 Password Box.csproj" Id="631e743f-9e2b-419a-9af2-7783a3a10b9c" />
+  <Project Path="ch07 Image/ch07 Image.csproj" Id="6b1b9354-47e4-4a14-a32b-bf8b28669510" />
+  <Project Path="ch08 Checkbox/ch08 Checkbox.csproj" Id="7552386e-c4dc-4e57-89e2-62351a54b732" />
+  <Project Path="ch09 Radio Button/ch09 Radio Button.csproj" Id="30bc5681-d4d1-48c7-b75c-6a76abdd50f1" />
+  <Project Path="ch10 Calander/ch10 Calander.csproj" Id="881635ac-68fe-4f69-86c1-60e497aab83e" />
+  <Project Path="ch12 Slider/ch12 Slider.csproj" Id="ce786233-263a-49cd-bb32-6cac2b4d96f8" />
+  <Project Path="ch13 Expander/ch13 Expander.csproj" />
+  <Project Path="ch14 StackPanel/ch14 StackPanel.csproj" />
+  <Project Path="ch15 WrapPanel/ch15 WrapPanel.csproj" />
+  <Project Path="ch16 DockPanel/ch16 DockPanel.csproj" />
+  <Project Path="ch17 Grid/ch17 Grid.csproj" />
+  <Project Path="ch18 Uniform Grid/ch18 Uniform Grid.csproj" />
+  <Project Path="ch19 Canvas/ch19 Canvas.csproj" />
+  <Project Path="ch20 ProgressBar/ch20 ProgressBar.csproj" Id="6bad2eb5-3fe7-447f-b8b7-6c3374c446ae" />
+  <Project Path="ch21 StatusBar/ch21 StatusBar.csproj" Id="b760565a-b83d-4680-9700-87dcbfa3c5ca" />
+  <Project Path="ch22 ToolBar/ch22 ToolBar.csproj" Id="ed94c6de-bb10-4fab-aa67-deafa96debe8" />
+  <Project Path="ch23 Menu/ch23 Menu.csproj" Id="0cf3adaf-214e-4ae9-bae5-f165932fe928" />
+  <Project Path="ch24 ContextMenu/ch24 ContextMenu.csproj" Id="d93c58cc-1386-4b5a-9b8c-3a02944ef039" />
+  <Project Path="ch25 DataBinding1/ch25 DataBinding1.csproj" Id="9cc5ff39-c6e0-438b-b75f-450b7573cef5" />
+  <Project Path="DatePicker/ch11 DatePicker.csproj" Id="6a6ac4fe-ac4e-40ea-8ec3-287e9cfdb0a2" />
+  <Project Path="HelloWPF2/HelloWPF2.csproj" />
+</Solution>

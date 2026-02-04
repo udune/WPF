@@ -1,0 +1,23 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v10.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v10.0": {
+      "ch09 Radio Button/1.0.0": {
+        "runtime": {
+          "ch09 Radio Button.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "ch09 Radio Button/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

@@ -1,0 +1,503 @@
+﻿<!-- 
+    ch23 메뉴 - WPF Menu와 MenuItem 컨트롤의 기능을 보여주는 예제 파일
+    Menu는 애플리케이션의 주요 명령을 계층 구조로 제공하는 컨트롤입니다.
+    MenuItem은 Menu의 개별 항목으로, 중첩하여 서브메뉴를 만들 수 있습니다.
+    일반적으로 화면 상단에 배치되어 모든 기능에 체계적으로 접근할 수 있습니다.
+-->
+<Window x:Class="ch23_메뉴.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ch23_메뉴"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    
+    <!-- 
+        DockPanel: Menu를 상단에 고정하기 위한 레이아웃 패널
+        Menu는 일반적으로 화면 최상단에 배치됩니다.
+    -->
+    <DockPanel>
+        <!-- 
+            Menu: 계층적 메뉴 시스템의 최상위 컨테이너
+            MenuItem들을 포함하여 애플리케이션의 명령 구조 제공
+        -->
+        <Menu DockPanel.Dock="Top">
+            <!-- 
+                Menu 기본 개념:
+                - 애플리케이션의 모든 기능을 체계적으로 분류
+                - 계층 구조로 명령 조직화 (메뉴 → 서브메뉴 → 명령)
+                - 일반적으로 화면 최상단에 수평 배치
+                - MenuItem으로 구성
+                
+                DockPanel.Dock="Top":
+                - DockPanel의 상단에 배치
+                - 전체 너비를 차지
+                - 표준 애플리케이션 레이아웃
+                
+                Menu의 특징:
+                1. 계층 구조:
+                   - 최상위 메뉴 (파일, 편집, 보기 등)
+                   - 서브메뉴 (여러 단계 중첩 가능)
+                   - 리프 메뉴 항목 (실제 명령)
+                
+                2. 키보드 접근:
+                   - Alt 키로 메뉴 활성화
+                   - 밑줄(_) 접두사로 단축키 지정
+                   - 화살표 키로 탐색
+                
+                3. 표준 구조:
+                   파일(F) - 새로 만들기, 열기, 저장, 인쇄, 종료
+                   편집(E) - 실행 취소, 잘라내기, 복사, 붙여넣기
+                   보기(V) - 확대/축소, 전체 화면
+                   도구(T) - 옵션, 설정
+                   도움말(H) - 정보, 도움말
+                
+                Menu vs ToolBar:
+                - Menu: 모든 기능, 계층 구조, 체계적 분류
+                - ToolBar: 자주 사용하는 기능, 빠른 접근, 평면 구조
+                
+                Menu vs ContextMenu:
+                - Menu: 화면 상단, 전역 명령
+                - ContextMenu: 마우스 우클릭, 컨텍스트별 명령
+                
+                시각적 구조:
+                ┌────────────────────────────────────┐
+                │ 파일(F)  편집(E)  보기(V)  도움말(H) │ ← Menu
+                └────────────────────────────────────┘
+                  │
+                  ├─ 새로 만들기 (Ctrl+N)
+                  ├─ 열기 (Ctrl+O)
+                  ├─ 저장 (Ctrl+S)
+                  └─ 종료 (Alt+F4)
+            -->
+            
+            <!-- 최상위 메뉴 항목: 파일 -->
+            <MenuItem Header="파일">
+                <!-- 
+                    MenuItem:
+                    - Menu의 개별 항목
+                    - Header로 표시될 텍스트 지정
+                    - 다른 MenuItem을 자식으로 가질 수 있음 (서브메뉴)
+                    
+                    Header="파일":
+                    - 메뉴 항목의 표시 텍스트
+                    - 일반적인 최상위 메뉴: 파일, 편집, 보기, 도구, 도움말
+                    
+                    MenuItem의 역할:
+                    1. 최상위 메뉴: 다른 MenuItem을 포함하는 컨테이너
+                    2. 서브메뉴: 중간 단계 그룹
+                    3. 명령 항목: Click 이벤트로 실제 작업 수행
+                    
+                    계층 구조:
+                    파일 (최상위)
+                    ├─ 새로운문서 (서브메뉴 또는 명령)
+                    ├─ 열기 (명령)
+                    └─ 닫기 (명령)
+                -->
+                
+                <!-- 서브메뉴 항목: 새로운문서 -->
+                <MenuItem Header="새로운문서">
+                    <!-- 
+                        MenuItem with Icon:
+                        - 아이콘과 함께 표시되는 메뉴 항목
+                        - 시각적으로 명령을 쉽게 식별
+                        
+                        Header="새로운문서":
+                        - 메뉴 항목 텍스트
+                        - 실제로는 "새로 만들기"가 더 일반적
+                        
+                        MenuItem.Icon:
+                        - 메뉴 항목 왼쪽에 표시되는 아이콘
+                        - Image, Path, Ellipse 등 다양한 컨트롤 사용 가능
+                        - 일반적으로 16x16 픽셀 아이콘 사용
+                    -->
+                    <MenuItem.Icon>
+                        <Image Source="https://cdn0.iconfinder.com/data/icons/business-startup-10/50/61-512.png"></Image>
+                        <!-- 
+                            Image in MenuItem.Icon:
+                            - 메뉴 항목의 아이콘
+                            
+                            Source:
+                            - 웹 URL 또는 로컬 리소스
+                            - 실제 프로젝트에서는 로컬 리소스 권장
+                            
+                            실제 사용 예:
+                            <Image Source="Images/New.png" Width="16" Height="16"/>
+                            
+                            아이콘 모범 사례:
+                            - 16x16 픽셀 크기
+                            - PNG 형식 (투명 배경)
+                            - 일관된 스타일
+                            - 명령을 명확히 표현
+                            
+                            주의사항:
+                            - 크기 지정 안 하면 원본 크기로 표시
+                            - 너무 크면 메뉴 레이아웃 깨짐
+                            - 웹 URL은 네트워크 필요, 느림
+                        -->
+                    </MenuItem.Icon>
+                </MenuItem>
+                
+                <!-- 서브메뉴 항목: 열기 -->
+                <MenuItem Header="열기"></MenuItem>
+                <!-- 
+                    MenuItem without Icon:
+                    - 아이콘 없는 메뉴 항목
+                    
+                    Header="열기":
+                    - 파일 열기 명령
+                    - 일반적으로 Ctrl+O 단축키
+                    
+                    실제 사용 시 추가 속성:
+                    <MenuItem Header="열기" 
+                             Click="OpenFile_Click"
+                             InputGestureText="Ctrl+O">
+                        <MenuItem.Icon>
+                            <Image Source="Images/Open.png"/>
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    
+                    InputGestureText:
+                    - 단축키 표시 (오른쪽에 표시됨)
+                    - 실제 단축키 기능은 Command로 구현
+                -->
+                
+                <!-- 서브메뉴 항목: 닫기 -->
+                <MenuItem Header="닫기"></MenuItem>
+                <!-- 
+                    MenuItem: 닫기
+                    
+                    Header="닫기":
+                    - 파일 닫기 명령
+                    - 또는 애플리케이션 종료
+                    
+                    일반적인 파일 메뉴 구조:
+                    파일
+                    ├─ 새로 만들기 (Ctrl+N)
+                    ├─ 열기 (Ctrl+O)
+                    ├─ 저장 (Ctrl+S)
+                    ├─ 다른 이름으로 저장 (Ctrl+Shift+S)
+                    ├─ [Separator]
+                    ├─ 인쇄 (Ctrl+P)
+                    ├─ [Separator]
+                    ├─ 최근 파일
+                    │   ├─ Document1.txt
+                    │   └─ Document2.txt
+                    ├─ [Separator]
+                    └─ 종료 (Alt+F4)
+                    
+                    Separator 사용:
+                    <Separator/>
+                    - 메뉴 항목을 논리적으로 그룹화
+                    - 수평선으로 구분
+                -->
+            </MenuItem>
+            
+            <!-- 최상위 메뉴 항목: Move (키보드 단축키 포함) -->
+            <MenuItem Header="_Move" Click="MenuItem_Click"></MenuItem>
+            <!-- 
+                MenuItem with Mnemonic (니모닉):
+                - 키보드 단축키를 제공하는 메뉴 항목
+                
+                Header="_Move":
+                - 밑줄(_) 접두사로 니모닉 지정
+                - Alt+M으로 이 메뉴 항목 활성화
+                - 'M'에 밑줄 표시됨
+                
+                니모닉 규칙:
+                - _ 다음 문자가 단축키
+                - Alt + 해당 문자로 접근
+                - 같은 레벨에서 중복 불가
+                
+                예시:
+                _File → Alt+F
+                _Edit → Alt+E
+                _View → Alt+V
+                _Help → Alt+H
+                
+                한글 사용:
+                _파일 → Alt+ㅍ (한글 키보드)
+                
+                Click="MenuItem_Click":
+                - 메뉴 항목 클릭 시 호출되는 이벤트 핸들러
+                - 코드 비하인드에서 처리
+                - ContentArea에 UserControl1 표시
+                
+                동작 흐름:
+                1. 사용자가 "Move" 메뉴 클릭 (또는 Alt+M)
+                2. MenuItem_Click 이벤트 발생
+                3. ContentArea.Content = new UserControl1()
+                4. UserControl1이 화면에 표시됨
+                
+                주의사항:
+                - 서브메뉴가 없는 최상위 항목
+                - 클릭하면 바로 명령 실행
+                - 일반적이지 않은 구조 (보통 최상위는 서브메뉴 포함)
+            -->
+        </Menu>
+        
+        <!-- ContentControl: 동적 콘텐츠 영역 -->
+        <ContentControl x:Name="ContentArea"></ContentControl>
+        <!-- 
+            ContentControl:
+            - 동적으로 콘텐츠를 변경할 수 있는 컨테이너
+            - DockPanel의 나머지 공간을 모두 차지 (LastChildFill=True, 기본값)
+            
+            x:Name="ContentArea":
+            - 코드 비하인드에서 접근하기 위한 이름
+            - MenuItem_Click에서 Content 설정
+            
+            용도:
+            - 메뉴 선택에 따라 다른 화면 표시
+            - UserControl, Page 등을 동적으로 로드
+            - 화면 전환 기능
+            
+            동작:
+            ContentArea.Content = new UserControl1();
+            - UserControl1 인스턴스 생성
+            - ContentArea에 표시
+            - 기존 콘텐츠는 대체됨
+            
+            ContentControl vs Frame:
+            - ContentControl: 단순 콘텐츠 호스팅, 히스토리 없음
+            - Frame: 탐색 기능, 뒤로/앞으로 히스토리
+            
+            실제 사용 패턴:
+            1. 뷰 전환:
+               ContentArea.Content = new SettingsView();
+               ContentArea.Content = new AboutView();
+            
+            2. MVVM 패턴:
+               ContentArea.Content = new SettingsView { DataContext = new SettingsViewModel() };
+            
+            3. 조건부 표시:
+               if (condition)
+                   ContentArea.Content = new ViewA();
+               else
+                   ContentArea.Content = new ViewB();
+        -->
+    </DockPanel>
+    
+    <!--
+        Menu 추가 기능 및 활용:
+        
+        1. 기본 메뉴 구조:
+           <Menu>
+               <MenuItem Header="파일">
+                   <MenuItem Header="새로 만들기"/>
+                   <MenuItem Header="열기"/>
+                   <MenuItem Header="저장"/>
+               </MenuItem>
+               <MenuItem Header="편집">
+                   <MenuItem Header="실행 취소"/>
+                   <MenuItem Header="잘라내기"/>
+                   <MenuItem Header="복사"/>
+               </MenuItem>
+           </Menu>
+        
+        2. 아이콘과 단축키:
+           <MenuItem Header="새로 만들기" 
+                    Click="New_Click"
+                    InputGestureText="Ctrl+N">
+               <MenuItem.Icon>
+                   <Image Source="Images/New.png" Width="16"/>
+               </MenuItem.Icon>
+           </MenuItem>
+        
+        3. Separator로 그룹 구분:
+           <MenuItem Header="파일">
+               <MenuItem Header="새로 만들기"/>
+               <MenuItem Header="열기"/>
+               <Separator/>
+               <MenuItem Header="저장"/>
+               <MenuItem Header="다른 이름으로 저장"/>
+               <Separator/>
+               <MenuItem Header="종료"/>
+           </MenuItem>
+        
+        4. 체크 가능한 메뉴 항목:
+           <MenuItem Header="보기">
+               <MenuItem Header="도구 모음" 
+                        IsCheckable="True" 
+                        IsChecked="True"/>
+               <MenuItem Header="상태 표시줄" 
+                        IsCheckable="True" 
+                        IsChecked="True"/>
+           </MenuItem>
+        
+        5. 다단계 서브메뉴:
+           <MenuItem Header="도구">
+               <MenuItem Header="옵션">
+                   <MenuItem Header="일반"/>
+                   <MenuItem Header="편집기">
+                       <MenuItem Header="폰트"/>
+                       <MenuItem Header="색상"/>
+                   </MenuItem>
+                   <MenuItem Header="고급"/>
+               </MenuItem>
+           </MenuItem>
+        
+        실전 활용 예제:
+        
+        1. 표준 텍스트 편집기 메뉴:
+           <Menu>
+               <MenuItem Header="_파일">
+                   <MenuItem Header="_새로 만들기" 
+                            InputGestureText="Ctrl+N">
+                       <MenuItem.Icon>
+                           <Image Source="Images/New.png"/>
+                       </MenuItem.Icon>
+                   </MenuItem>
+                   <MenuItem Header="_열기" InputGestureText="Ctrl+O">
+                       <MenuItem.Icon>
+                           <Image Source="Images/Open.png"/>
+                       </MenuItem.Icon>
+                   </MenuItem>
+                   <Separator/>
+                   <MenuItem Header="_저장" InputGestureText="Ctrl+S">
+                       <MenuItem.Icon>
+                           <Image Source="Images/Save.png"/>
+                       </MenuItem.Icon>
+                   </MenuItem>
+                   <MenuItem Header="다른 이름으로 저장" 
+                            InputGestureText="Ctrl+Shift+S"/>
+                   <Separator/>
+                   <MenuItem Header="_인쇄" InputGestureText="Ctrl+P">
+                       <MenuItem.Icon>
+                           <Image Source="Images/Print.png"/>
+                       </MenuItem.Icon>
+                   </MenuItem>
+                   <Separator/>
+                   <MenuItem Header="종료" InputGestureText="Alt+F4"/>
+               </MenuItem>
+               
+               <MenuItem Header="_편집">
+                   <MenuItem Header="_실행 취소" InputGestureText="Ctrl+Z">
+                       <MenuItem.Icon>
+                           <Image Source="Images/Undo.png"/>
+                       </MenuItem.Icon>
+                   </MenuItem>
+                   <MenuItem Header="_다시 실행" InputGestureText="Ctrl+Y">
+                       <MenuItem.Icon>
+                           <Image Source="Images/Redo.png"/>
+                       </MenuItem.Icon>
+                   </MenuItem>
+                   <Separator/>
+                   <MenuItem Header="잘라내기" InputGestureText="Ctrl+X">
+                       <MenuItem.Icon>
+                           <Image Source="Images/Cut.png"/>
+                       </MenuItem.Icon>
+                   </MenuItem>
+                   <MenuItem Header="_복사" InputGestureText="Ctrl+C">
+                       <MenuItem.Icon>
+                           <Image Source="Images/Copy.png"/>
+                       </MenuItem.Icon>
+                   </MenuItem>
+                   <MenuItem Header="_붙여넣기" InputGestureText="Ctrl+V">
+                       <MenuItem.Icon>
+                           <Image Source="Images/Paste.png"/>
+                       </MenuItem.Icon>
+                   </MenuItem>
+                   <Separator/>
+                   <MenuItem Header="모두 선택" InputGestureText="Ctrl+A"/>
+               </MenuItem>
+               
+               <MenuItem Header="_보기">
+                   <MenuItem Header="도구 모음" IsCheckable="True" IsChecked="True"/>
+                   <MenuItem Header="상태 표시줄" IsCheckable="True" IsChecked="True"/>
+                   <Separator/>
+                   <MenuItem Header="확대" InputGestureText="Ctrl++"/>
+                   <MenuItem Header="축소" InputGestureText="Ctrl+-"/>
+                   <MenuItem Header="기본 크기" InputGestureText="Ctrl+0"/>
+               </MenuItem>
+               
+               <MenuItem Header="_도움말">
+                   <MenuItem Header="도움말 보기" InputGestureText="F1"/>
+                   <Separator/>
+                   <MenuItem Header="정보"/>
+               </MenuItem>
+           </Menu>
+        
+        2. 최근 파일 메뉴:
+           <MenuItem Header="최근 파일">
+               <MenuItem Header="Document1.txt"/>
+               <MenuItem Header="Document2.txt"/>
+               <MenuItem Header="Document3.txt"/>
+               <Separator/>
+               <MenuItem Header="최근 파일 지우기"/>
+           </MenuItem>
+        
+        3. 라디오 버튼 스타일 메뉴 (그룹):
+           <MenuItem Header="정렬">
+               <MenuItem Header="왼쪽" 
+                        IsCheckable="True" 
+                        IsChecked="True"
+                        GroupName="Alignment"/>
+               <MenuItem Header="가운데" 
+                        IsCheckable="True"
+                        GroupName="Alignment"/>
+               <MenuItem Header="오른쪽" 
+                        IsCheckable="True"
+                        GroupName="Alignment"/>
+           </MenuItem>
+        
+        Menu 스타일링:
+        
+        1. 배경색 변경:
+           <Menu Background="LightGray">
+               <!-- 메뉴 항목들 -->
+           </Menu>
+        
+        2. MenuItem 스타일:
+           <Menu>
+               <Menu.Resources>
+                   <Style TargetType="MenuItem">
+                       <Setter Property="Padding" Value="5,3"/>
+                   </Style>
+               </Menu.Resources>
+               <!-- 메뉴 항목들 -->
+           </Menu>
+        
+        Menu의 장단점:
+        
+        장점:
+        - 모든 기능을 체계적으로 분류
+        - 표준화된 사용자 경험
+        - 키보드 접근성 우수
+        - 공간 효율적 (펼칠 때만 표시)
+        
+        단점:
+        - 기능이 숨겨져 있어 발견하기 어려움
+        - 마우스 정확도 필요 (서브메뉴)
+        - 모바일/터치 인터페이스에 부적합
+        
+        모범 사례:
+        
+        1. 표준 구조:
+           - 파일, 편집, 보기, 도구, 도움말 순서
+           - 일관된 메뉴 이름
+        
+        2. 니모닉 제공:
+           - 모든 최상위 메뉴에 _로 단축키
+           - Alt+키로 빠른 접근
+        
+        3. 단축키 표시:
+           - InputGestureText로 표시
+           - Command로 실제 기능 구현
+        
+        4. 논리적 그룹:
+           - Separator로 관련 항목 구분
+           - 3-7개 항목마다 그룹화
+        
+        5. 아이콘 사용:
+           - 중요한 명령에만 아이콘
+           - 일관된 크기와 스타일
+        
+        접근성:
+        - AutomationProperties 설정
+        - 키보드로 모든 기능 접근 가능
+        - 단축키 제공
+        - 스크린 리더 지원
+    -->
+</Window>

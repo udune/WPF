@@ -1,0 +1,20 @@
+C:\Users\udune\Desktop\WPF\ch26 데이터바인딩2\bin\Debug\net8.0-windows\ch26 데이터바인딩2.exe
+C:\Users\udune\Desktop\WPF\ch26 데이터바인딩2\bin\Debug\net8.0-windows\ch26 데이터바인딩2.deps.json
+C:\Users\udune\Desktop\WPF\ch26 데이터바인딩2\bin\Debug\net8.0-windows\ch26 데이터바인딩2.runtimeconfig.json
+C:\Users\udune\Desktop\WPF\ch26 데이터바인딩2\bin\Debug\net8.0-windows\ch26 데이터바인딩2.dll
+C:\Users\udune\Desktop\WPF\ch26 데이터바인딩2\bin\Debug\net8.0-windows\ch26 데이터바인딩2.pdb
+C:\Users\udune\Desktop\WPF\ch26 데이터바인딩2\obj\Debug\net8.0-windows\MainWindow.g.cs
+C:\Users\udune\Desktop\WPF\ch26 데이터바인딩2\obj\Debug\net8.0-windows\App.g.cs
+C:\Users\udune\Desktop\WPF\ch26 데이터바인딩2\obj\Debug\net8.0-windows\ch26 데이터바인딩2_MarkupCompile.cache
+C:\Users\udune\Desktop\WPF\ch26 데이터바인딩2\obj\Debug\net8.0-windows\ch26 데이터바인딩2_MarkupCompile.lref
+C:\Users\udune\Desktop\WPF\ch26 데이터바인딩2\obj\Debug\net8.0-windows\MainWindow.baml
+C:\Users\udune\Desktop\WPF\ch26 데이터바인딩2\obj\Debug\net8.0-windows\ch26 데이터바인딩2.g.resources
+C:\Users\udune\Desktop\WPF\ch26 데이터바인딩2\obj\Debug\net8.0-windows\ch26 데이터바인딩2.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\udune\Desktop\WPF\ch26 데이터바인딩2\obj\Debug\net8.0-windows\ch26 데이터바인딩2.AssemblyInfoInputs.cache
+C:\Users\udune\Desktop\WPF\ch26 데이터바인딩2\obj\Debug\net8.0-windows\ch26 데이터바인딩2.AssemblyInfo.cs
+C:\Users\udune\Desktop\WPF\ch26 데이터바인딩2\obj\Debug\net8.0-windows\ch26 데이터바인딩2.csproj.CoreCompileInputs.cache
+C:\Users\udune\Desktop\WPF\ch26 데이터바인딩2\obj\Debug\net8.0-windows\ch26 데이터바인딩2.dll
+C:\Users\udune\Desktop\WPF\ch26 데이터바인딩2\obj\Debug\net8.0-windows\refint\ch26 데이터바인딩2.dll
+C:\Users\udune\Desktop\WPF\ch26 데이터바인딩2\obj\Debug\net8.0-windows\ch26 데이터바인딩2.pdb
+C:\Users\udune\Desktop\WPF\ch26 데이터바인딩2\obj\Debug\net8.0-windows\ch26 데이터바인딩2.genruntimeconfig.cache
+C:\Users\udune\Desktop\WPF\ch26 데이터바인딩2\obj\Debug\net8.0-windows\ref\ch26 데이터바인딩2.dll

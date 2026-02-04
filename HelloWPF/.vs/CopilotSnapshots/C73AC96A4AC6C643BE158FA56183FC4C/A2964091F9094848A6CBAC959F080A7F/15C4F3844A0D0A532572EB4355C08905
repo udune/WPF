@@ -1,0 +1,421 @@
+﻿using System.Text;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Data;
+using System.Windows.Documents;
+using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
+using System.Windows.Shapes;
+
+namespace ch11_데이트피커
+{
+    /// <summary>
+    /// MainWindow.xaml에 대한 상호작용 논리
+    /// DatePicker 컨트롤의 SelectedDateChanged 이벤트를 처리하는 메인 윈도우
+    /// </summary>
+    public partial class MainWindow : Window
+    {
+        /// <summary>
+        /// MainWindow 생성자
+        /// 윈도우가 생성될 때 호출되어 초기화 작업을 수행합니다.
+        /// </summary>
+        public MainWindow()
+        {
+            // XAML에 정의된 UI 요소들을 초기화합니다.
+            InitializeComponent();
+        }
+
+        /// <summary>
+        /// DatePicker의 SelectedDateChanged 이벤트 핸들러
+        /// 사용자가 DatePicker에서 날짜를 선택하거나 변경할 때 실행됩니다.
+        /// </summary>
+        /// <param name="sender">이벤트를 발생시킨 객체 (여기서는 dp DatePicker)</param>
+        /// <param name="e">선택 변경 이벤트 정보 (추가/제거된 날짜 정보 포함)</param>
+        private void dp_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
+        {
+            // tb가 null이 아닌지 확인합니다 (초기화 중에는 null일 수 있음)
+            if (tb != null)
+                // DatePicker의 Text 속성을 TextBlock(tb)에 표시합니다.
+                tb.Text = dp.Text;
+            
+            /*
+             * 동작 설명:
+             * 
+             * 1. 사용자가 DatePicker에서 날짜를 선택하거나 텍스트 박스에 날짜를 입력
+             * 2. SelectedDateChanged 이벤트가 발생
+             * 3. DatePicker의 Text 속성(형식화된 날짜 문자열)을 가져옴
+             * 4. TextBlock(tb)의 Text 속성에 할당하여 화면에 표시
+             * 
+             * null 체크가 필요한 이유:
+             * - XAML 초기화 과정에서 InitializeComponent()가 호출될 때
+             * - DatePicker의 SelectedDate가 설정되면 이벤트가 발생할 수 있음
+             * - 하지만 이 시점에 tb(TextBlock)는 아직 초기화되지 않았을 수 있음
+             * - null 체크를 하지 않으면 NullReferenceException 발생 가능
+             * 
+             * dp.Text vs dp.SelectedDate:
+             * - dp.Text: 텍스트 박스에 표시되는 형식화된 문자열
+             *   예: "2025년 2월 18일 화요일" (SelectedDateFormat이 Long일 때)
+             * - dp.SelectedDate: DateTime? 타입의 날짜 값
+             *   예: 2025-02-18 (시간은 00:00:00)
+             * 
+             * 왜 Text를 사용하는가?
+             * - SelectedDateFormat에 따라 이미 형식화되어 있음
+             * - 별도의 ToString() 호출이나 형식 지정 불필요
+             * - 사용자가 보는 형식 그대로 표시
+             */
+        }
+        
+        /*
+         * DatePicker 이벤트 처리 추가 예제:
+         * 
+         * 1. SelectedDate 사용 (더 안전한 방법):
+         * 
+         *    private void dp_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
+         *    {
+         *        if (tb != null)
+         *        {
+         *            if (dp.SelectedDate.HasValue)
+         *            {
+         *                DateTime selectedDate = dp.SelectedDate.Value;
+         *                tb.Text = selectedDate.ToString("yyyy년 MM월 dd일 (dddd)");
+         *            }
+         *            else
+         *            {
+         *                tb.Text = "날짜를 선택해주세요.";
+         *            }
+         *        }
+         *    }
+         * 
+         * 2. 다양한 형식으로 날짜 표시:
+         * 
+         *    private void dp_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
+         *    {
+         *        if (tb != null && dp.SelectedDate.HasValue)
+         *        {
+         *            DateTime date = dp.SelectedDate.Value;
+         *            
+         *            // 여러 형식으로 표시
+         *            string info = $"선택된 날짜:\n" +
+         *                          $"기본: {date:d}\n" +
+         *                          $"전체: {date:D}\n" +
+         *                          $"커스텀: {date:yyyy-MM-dd}\n" +
+         *                          $"요일: {date.DayOfWeek}\n" +
+         *                          $"올해의 {date.DayOfYear}번째 날";
+         *            
+         *            tb.Text = info;
+         *        }
+         *    }
+         * 
+         * 3. SelectionChangedEventArgs 활용:
+         * 
+         *    private void dp_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
+         *    {
+         *        if (tb != null)
+         *        {
+         *            // 추가된 날짜 (새로 선택된 날짜)
+         *            if (e.AddedItems.Count > 0)
+         *            {
+         *                DateTime newDate = (DateTime)e.AddedItems[0];
+         *                tb.Text = $"새로 선택된 날짜: {newDate:yyyy-MM-dd}";
+         *            }
+         *            
+         *            // 제거된 날짜 (이전에 선택된 날짜)
+         *            if (e.RemovedItems.Count > 0)
+         *            {
+         *                DateTime oldDate = (DateTime)e.RemovedItems[0];
+         *                MessageBox.Show($"이전 날짜: {oldDate:yyyy-MM-dd}");
+         *            }
+         *        }
+         *    }
+         * 
+         * 4. 날짜 유효성 검증:
+         * 
+         *    private void dp_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
+         *    {
+         *        if (tb != null && dp.SelectedDate.HasValue)
+         *        {
+         *            DateTime selected = dp.SelectedDate.Value;
+         *            
+         *            // 과거 날짜 선택 불가
+         *            if (selected < DateTime.Today)
+         *            {
+         *                MessageBox.Show("과거 날짜는 선택할 수 없습니다.", "경고",
+         *                    MessageBoxButton.OK, MessageBoxImage.Warning);
+         *                dp.SelectedDate = DateTime.Today;
+         *                return;
+         *            }
+         *            
+         *            // 너무 먼 미래 날짜 선택 불가
+         *            if (selected > DateTime.Today.AddYears(1))
+         *            {
+         *                MessageBox.Show("1년 이내의 날짜만 선택 가능합니다.", "경고");
+         *                dp.SelectedDate = null;
+         *                return;
+         *            }
+         *            
+         *            // 주말 선택 불가
+         *            if (selected.DayOfWeek == DayOfWeek.Saturday || 
+         *                selected.DayOfWeek == DayOfWeek.Sunday)
+         *            {
+         *                MessageBox.Show("주말은 선택할 수 없습니다.", "경고");
+         *                dp.SelectedDate = null;
+         *                return;
+         *            }
+         *            
+         *            tb.Text = $"유효한 날짜: {selected:yyyy-MM-dd}";
+         *        }
+         *    }
+         * 
+         * 5. 다른 DatePicker와 연동 (시작일/종료일):
+         * 
+         *    private void dpStart_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
+         *    {
+         *        if (dpStart.SelectedDate.HasValue)
+         *        {
+         *            // 종료일의 최소 선택 가능 날짜를 시작일로 설정
+         *            dpEnd.DisplayDateStart = dpStart.SelectedDate.Value;
+         *            
+         *            // 종료일이 시작일보다 이전이면 초기화
+         *            if (dpEnd.SelectedDate.HasValue && 
+         *                dpEnd.SelectedDate.Value < dpStart.SelectedDate.Value)
+         *            {
+         *                dpEnd.SelectedDate = null;
+         *            }
+         *            
+         *            UpdateDateRange();
+         *        }
+         *    }
+         *    
+         *    private void dpEnd_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
+         *    {
+         *        UpdateDateRange();
+         *    }
+         *    
+         *    private void UpdateDateRange()
+         *    {
+         *        if (dpStart.SelectedDate.HasValue && dpEnd.SelectedDate.HasValue)
+         *        {
+         *            DateTime start = dpStart.SelectedDate.Value;
+         *            DateTime end = dpEnd.SelectedDate.Value;
+         *            int days = (end - start).Days + 1;
+         *            
+         *            tb.Text = $"기간: {start:yyyy-MM-dd} ~ {end:yyyy-MM-dd}\n총 {days}일";
+         *        }
+         *    }
+         * 
+         * 6. 비즈니스 로직 적용:
+         * 
+         *    private void dp_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
+         *    {
+         *        if (tb != null && dp.SelectedDate.HasValue)
+         *        {
+         *            DateTime date = dp.SelectedDate.Value;
+         *            
+         *            // 예약 가능 여부 확인
+         *            bool isAvailable = CheckAvailability(date);
+         *            
+         *            if (isAvailable)
+         *            {
+         *                // 가격 계산
+         *                decimal price = CalculatePrice(date);
+         *                
+         *                // 할인율 계산
+         *                int daysUntil = (date - DateTime.Today).Days;
+         *                decimal discount = daysUntil > 30 ? 0.1m : 0m;
+         *                decimal finalPrice = price * (1 - discount);
+         *                
+         *                tb.Text = $"예약 가능\n" +
+         *                          $"날짜: {date:yyyy년 MM월 dd일}\n" +
+         *                          $"기본 가격: {price:N0}원\n" +
+         *                          $"할인: {discount * 100}%\n" +
+         *                          $"최종 가격: {finalPrice:N0}원";
+         *            }
+         *            else
+         *            {
+         *                tb.Text = "선택하신 날짜는 예약이 불가능합니다.";
+         *                dp.SelectedDate = null;
+         *            }
+         *        }
+         *    }
+         *    
+         *    private bool CheckAvailability(DateTime date)
+         *    {
+         *        // 데이터베이스 확인 또는 비즈니스 로직
+         *        return true;
+         *    }
+         *    
+         *    private decimal CalculatePrice(DateTime date)
+         *    {
+         *        // 성수기/비수기 가격 차등
+         *        bool isPeakSeason = (date.Month >= 7 && date.Month <= 8) || 
+         *                            date.Month == 12;
+         *        return isPeakSeason ? 150000 : 100000;
+         *    }
+         * 
+         * 7. DateValidationError 이벤트 처리:
+         * 
+         *    public MainWindow()
+         *    {
+         *        InitializeComponent();
+         *        dp.DateValidationError += Dp_DateValidationError;
+         *    }
+         *    
+         *    private void Dp_DateValidationError(object? sender, DatePickerDateValidationErrorEventArgs e)
+         *    {
+         *        // 잘못된 날짜 형식 입력 시
+         *        MessageBox.Show($"잘못된 날짜 형식입니다.\n입력: {e.Text}", "오류",
+         *            MessageBoxButton.OK, MessageBoxImage.Error);
+         *        
+         *        // 예외를 처리했음을 표시 (예외가 throw되지 않음)
+         *        e.ThrowException = false;
+         *    }
+         * 
+         * 8. CalendarOpened/CalendarClosed 이벤트:
+         * 
+         *    public MainWindow()
+         *    {
+         *        InitializeComponent();
+         *        dp.CalendarOpened += Dp_CalendarOpened;
+         *        dp.CalendarClosed += Dp_CalendarClosed;
+         *    }
+         *    
+         *    private void Dp_CalendarOpened(object? sender, RoutedEventArgs e)
+         *    {
+         *        // 달력이 열릴 때
+         *        tb.Text = "달력이 열렸습니다.";
+         *    }
+         *    
+         *    private void Dp_CalendarClosed(object? sender, RoutedEventArgs e)
+         *    {
+         *        // 달력이 닫힐 때
+         *        if (dp.SelectedDate.HasValue)
+         *        {
+         *            tb.Text = $"선택 완료: {dp.Text}";
+         *        }
+         *        else
+         *        {
+         *            tb.Text = "날짜가 선택되지 않았습니다.";
+         *        }
+         *    }
+         * 
+         * 9. 설정 저장 및 복원:
+         * 
+         *    private void SaveSelectedDate()
+         *    {
+         *        if (dp.SelectedDate.HasValue)
+         *        {
+         *            Properties.Settings.Default.LastSelectedDate = dp.SelectedDate.Value;
+         *            Properties.Settings.Default.Save();
+         *        }
+         *    }
+         *    
+         *    private void LoadSelectedDate()
+         *    {
+         *        DateTime savedDate = Properties.Settings.Default.LastSelectedDate;
+         *        if (savedDate != DateTime.MinValue)
+         *        {
+         *            dp.SelectedDate = savedDate;
+         *        }
+         *    }
+         *    
+         *    protected override void OnClosing(System.ComponentModel.CancelEventArgs e)
+         *    {
+         *        base.OnClosing(e);
+         *        SaveSelectedDate();
+         *    }
+         * 
+         * 10. D-Day 계산기:
+         * 
+         *     private void dp_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
+         *     {
+         *         if (tb != null && dp.SelectedDate.HasValue)
+         *         {
+         *             DateTime target = dp.SelectedDate.Value;
+         *             DateTime today = DateTime.Today;
+         *             TimeSpan diff = target - today;
+         *             int days = diff.Days;
+         *             
+         *             string message;
+         *             if (days > 0)
+         *             {
+         *                 message = $"D-Day: D-{days}\n" +
+         *                           $"목표일: {target:yyyy년 MM월 dd일}\n" +
+         *                           $"{days}일 남았습니다.";
+         *             }
+         *             else if (days == 0)
+         *             {
+         *                 message = "D-Day!\n오늘이 목표일입니다!";
+         *             }
+         *             else
+         *             {
+         *                 message = $"D+{Math.Abs(days)}\n" +
+         *                           $"목표일로부터 {Math.Abs(days)}일 지났습니다.";
+         *             }
+         *             
+         *             tb.Text = message;
+         *         }
+         *     }
+         * 
+         * DatePicker 이벤트 관련 중요 사항:
+         * 
+         * 1. SelectedDateChanged 이벤트 발생 시점:
+         *    - 사용자가 달력에서 날짜를 클릭할 때
+         *    - 사용자가 텍스트 박스에 날짜를 입력하고 포커스를 벗어날 때
+         *    - 코드에서 SelectedDate를 변경할 때
+         * 
+         * 2. null 체크의 중요성:
+         *    - 초기화 과정에서 이벤트가 발생할 수 있음
+         *    - 모든 컨트롤이 준비되지 않은 상태일 수 있음
+         *    - tb != null 체크는 필수
+         * 
+         * 3. Text vs SelectedDate:
+         *    - Text: 사용자 입력 그대로 또는 형식화된 문자열
+         *    - SelectedDate: 파싱된 DateTime? 값
+         *    - 유효성 검증은 SelectedDate로 수행
+         * 
+         * 4. SelectionChangedEventArgs:
+         *    - AddedItems: 새로 선택된 날짜 (1개)
+         *    - RemovedItems: 이전 선택 날짜 (1개)
+         *    - DatePicker는 단일 선택만 가능
+         * 
+         * 5. 성능 고려사항:
+         *    - 이벤트 핸들러 내에서 무거운 작업 피하기
+         *    - 데이터베이스 조회는 비동기로 처리
+         *    - 자주 호출되므로 최적화 필요
+         * 
+         * 6. 순환 참조 방지:
+         *    - 이벤트 핸들러 내에서 SelectedDate를 변경하면 다시 이벤트 발생
+         *    - 무한 루프 방지 필요
+         *    - 플래그 변수 사용
+         * 
+         * 예제 - 순환 참조 방지:
+         * 
+         * private bool isUpdating = false;
+         * 
+         * private void dp_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
+         * {
+         *     if (isUpdating) return;
+         *     
+         *     try
+         *     {
+         *         isUpdating = true;
+         *         
+         *         if (dp.SelectedDate.HasValue)
+         *         {
+         *             DateTime date = dp.SelectedDate.Value;
+         *             
+         *             // 유효성 검증 후 수정
+         *             if (IsInvalidDate(date))
+         *             {
+         *                 dp.SelectedDate = GetNearestValidDate(date);
+         *             }
+         *         }
+         *     }
+         *     finally
+         *     {
+         *         isUpdating = false;
+         *     }
+         * }
+         */

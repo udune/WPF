@@ -1,0 +1,31 @@
+﻿<Window x:Class="ch09_Radio_Button.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ch09_Radio_Button"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <StackPanel>
+            <StackPanel x:Name="PersonGroup" Margin="10">
+                <TextBlock Text="가장 좋아하는 사람은?" FontWeight="Bold" Grid.ColumnSpan="2"/>
+                <RadioButton Content="홍길동" x:Name="rb"/>
+                <RadioButton Content="김유신"/>
+                <RadioButton Content="이순신"/>
+            </StackPanel>
+
+            <GroupBox Header="좋아하는 과일은?">
+                <StackPanel Margin="10">
+                    <RadioButton Content="청사과" GroupName="FruitChoice"
+                                 Checked="GreenApple_Checked" Unchecked="GreenApple_Unchecked"/>
+                    <RadioButton Content="딸기" GroupName="FruitChoice"/>
+                    <RadioButton Content="포도" GroupName="FruitChoice"/>
+                </StackPanel>
+            </GroupBox>
+
+            <Button Content="선택된 사람 확인" Click="btnCheck_Click" Margin="10"/>
+            <TextBlock x:Name="ResultText"/>
+        </StackPanel>
+    </Grid>
+</Window>

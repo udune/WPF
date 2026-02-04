@@ -1,0 +1,325 @@
+﻿<!-- 
+    ch9 라디오버튼 - WPF RadioButton 컨트롤의 다양한 기능을 보여주는 예제 파일
+    RadioButton은 여러 옵션 중 하나만 선택할 수 있는 상호 배타적 선택 컨트롤입니다.
+    같은 그룹 내에서는 하나의 RadioButton만 선택 가능합니다.
+-->
+<Window x:Class="ch9_라디오버튼.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ch9_라디오버튼"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <!-- 
+            StackPanel: 자식 요소들을 세로 방향으로 순차적으로 배치
+            HorizontalAlignment="Center": StackPanel을 Grid의 중앙에 배치
+        -->
+        <StackPanel HorizontalAlignment="Center">
+            <!-- 첫 번째 그룹: "좋아하는 사람은?" 질문 -->
+            <Label>좋아하는 사람은?</Label>
+            
+            <!-- 
+                예제 1: RadioButton 기본 그룹 (GroupName 없음)
+                같은 부모 컨테이너(StackPanel) 안에 있는 RadioButton들은 자동으로 하나의 그룹을 형성합니다.
+                GroupName을 지정하지 않으면 같은 부모 내에서 상호 배타적으로 동작합니다.
+            -->
+            <RadioButton x:Name="rb">홍길동</RadioButton>
+            <!-- 
+                x:Name="rb": 코드 비하인드에서 접근할 수 있는 고유 식별자
+            -->
+            
+            <!-- 
+                예제 2: 기본적으로 선택된 RadioButton
+                IsChecked="True": 페이지 로드 시 이 RadioButton이 선택된 상태로 표시됨
+            -->
+            <RadioButton IsChecked="True">타요</RadioButton>
+            <!-- 
+                RadioButton의 상호 배타성:
+                - "타요"가 기본 선택된 상태로 시작
+                - 사용자가 다른 RadioButton을 클릭하면 "타요"의 선택이 자동으로 해제됨
+            -->
+            
+            <RadioButton>뽀로로</RadioButton>
+            <RadioButton>임꺽정</RadioButton>
+            <!-- 
+                그룹화 규칙:
+                - 위 4개의 RadioButton(홍길동, 타요, 뽀로로, 임꺽정)은 같은 StackPanel 내에 있으므로
+                  자동으로 하나의 그룹을 형성
+                - 이 그룹 내에서는 한 번에 하나의 RadioButton만 선택 가능
+            -->
+            
+            <!-- 두 번째 그룹: "좋아하는 과일은?" 질문 -->
+            <Label>좋아하는 과일은?</Label>
+            
+            <!-- 
+                예제 3: GroupName을 사용한 명시적 그룹화
+                GroupName 속성을 사용하면 다른 컨테이너에 있어도 같은 그룹으로 묶을 수 있습니다.
+            -->
+            <RadioButton GroupName="Fruit">딸기</RadioButton>
+            <RadioButton GroupName="Fruit">사과</RadioButton>
+            <RadioButton GroupName="Fruit">수박</RadioButton>
+            <!-- 
+                GroupName="Fruit":
+                - "Fruit" 그룹으로 명시적으로 지정
+                - 이 그룹은 위의 "좋아하는 사람은?" 그룹과 독립적으로 동작
+                - 사용자는 "타요"와 "딸기"를 동시에 선택할 수 있음
+                
+                GroupName의 중요성:
+                - GroupName이 없으면 같은 부모 컨테이너 내에서만 그룹화
+                - GroupName이 있으면 부모가 달라도 같은 그룹으로 동작
+                - 서로 다른 StackPanel이나 Grid에 있어도 같은 GroupName이면 하나의 그룹
+            -->
+            
+            <!-- 
+                예제 4: 이벤트와 복잡한 콘텐츠를 가진 RadioButton
+                이미지와 텍스트를 함께 표시하고 이벤트를 처리하는 고급 사용법
+            -->
+            <RadioButton GroupName="Fruit"
+                         Checked="RadioButton_Checked"
+                         Unchecked="RadioButton_Unchecked"
+                         VerticalContentAlignment="Center">
+                <!-- 
+                    RadioButton 속성 상세 설명:
+                    
+                    GroupName="Fruit": 
+                    - 위의 과일 RadioButton들과 같은 그룹
+                    - 이 RadioButton을 선택하면 "딸기", "사과", "수박" 중 선택된 것이 자동 해제됨
+                    
+                    Checked="RadioButton_Checked": 
+                    - 이 RadioButton이 선택될 때 실행되는 이벤트 핸들러
+                    
+                    Unchecked="RadioButton_Unchecked": 
+                    - 이 RadioButton의 선택이 해제될 때 실행되는 이벤트 핸들러
+                    - 다른 RadioButton을 선택하면 이 이벤트가 발생
+                    
+                    VerticalContentAlignment="Center": 
+                    - RadioButton 내부 콘텐츠를 수직 방향으로 중앙 정렬
+                -->
+                
+                <!-- 
+                    WrapPanel: 자식 요소들을 가로 방향으로 배치하되, 공간이 부족하면 자동으로 다음 줄로 넘김
+                    여기서는 이미지와 레이블을 가로로 나란히 배치
+                -->
+                <WrapPanel>
+                    <!-- 오렌지 이미지 아이콘 -->
+                    <Image Width="30" Source="https://cdn0.iconfinder.com/data/icons/fruity-3/512/Orange-512.png"/>
+                    <!-- 이미지 옆에 표시되는 텍스트 -->
+                    <Label>청사과</Label>
+                </WrapPanel>
+                <!-- 
+                    결과:
+                    ◯ [오렌지 아이콘] 청사과
+                    이런 형태의 RadioButton이 생성됨
+                -->
+            </RadioButton>
+            
+            <!-- 
+                예제 5: GroupBox를 사용한 RadioButton 그룹화 (기본 스타일)
+                GroupBox는 관련된 컨트롤들을 시각적으로 그룹화하는 컨테이너입니다.
+            -->
+            <GroupBox BorderThickness="3" Header="그룹박스예제">
+                <!-- 
+                    GroupBox 속성:
+                    BorderThickness="3": 테두리 두께를 3픽셀로 설정
+                    Header="그룹박스예제": GroupBox 상단에 표시되는 제목
+                    
+                    GroupBox의 역할:
+                    - RadioButton들을 시각적으로 그룹화
+                    - 같은 GroupBox 내의 RadioButton들은 자동으로 하나의 그룹을 형성
+                    - GroupName을 지정하지 않아도 GroupBox가 그룹 경계를 만듦
+                -->
+                <StackPanel>
+                    <RadioButton>1</RadioButton>
+                    <RadioButton>2</RadioButton>
+                    <RadioButton>3</RadioButton>
+                    <!-- 
+                        이 3개의 RadioButton은:
+                        - GroupBox 내에 있으므로 자동으로 하나의 독립적인 그룹을 형성
+                        - 위의 "좋아하는 사람" 그룹이나 "Fruit" 그룹과는 독립적으로 동작
+                        - 사용자는 이 그룹에서 1개, "사람" 그룹에서 1개, "과일" 그룹에서 1개를 각각 선택 가능
+                    -->
+                </StackPanel>
+            </GroupBox>
+            
+            <!-- 
+                예제 6: GroupBox의 Header를 커스터마이징
+                단순 텍스트 대신 이미지와 텍스트를 함께 표시하는 고급 Header
+            -->
+            <GroupBox BorderThickness="3">
+                <!-- 
+                    GroupBox.Header: Header를 복잡한 콘텐츠로 정의
+                    속성 요소 구문(Property Element Syntax)을 사용하여
+                    Header 안에 여러 요소를 배치
+                -->
+                <GroupBox.Header>
+                    <!-- WrapPanel: 이미지와 레이블을 가로로 배치 -->
+                    <WrapPanel>
+                        <!-- Header에 표시될 아이콘 이미지 -->
+                        <Image Width="30" Source="https://cdn0.iconfinder.com/data/icons/fruity-3/512/Orange-512.png"/>
+                        <!-- Header에 표시될 텍스트 -->
+                        <Label>그룹박스예제</Label>
+                    </WrapPanel>
+                    <!-- 
+                        결과:
+                        GroupBox의 상단 테두리에 [오렌지 아이콘] 그룹박스예제 형태로 표시됨
+                        
+                        용도:
+                        - 시각적으로 풍부한 그룹 제목
+                        - 아이콘으로 그룹의 의미를 명확히 전달
+                        - 체크박스나 버튼을 Header에 넣어 그룹 전체를 제어하는 UI도 가능
+                    -->
+                </GroupBox.Header>
+                
+                <!-- GroupBox 내부의 RadioButton 그룹 -->
+                <StackPanel>
+                    <RadioButton>1</RadioButton>
+                    <RadioButton>2</RadioButton>
+                    <RadioButton>3</RadioButton>
+                    <!-- 이 그룹도 위의 GroupBox와 독립적인 별도 그룹 -->
+                </StackPanel>
+            </GroupBox>
+        </StackPanel>
+    </Grid>
+    
+    <!--
+        RadioButton 컨트롤의 추가 유용한 속성:
+        
+        1. IsChecked (선택 상태):
+           - true: 선택됨
+           - false: 선택 안 됨
+           - null: 불확정 상태 (거의 사용 안 함)
+           
+           코드에서 확인:
+           if (rb.IsChecked == true)
+           {
+               // 선택된 경우의 처리
+           }
+        
+        2. GroupName (그룹 지정):
+           - 같은 GroupName을 가진 RadioButton들끼리 하나의 그룹 형성
+           - 다른 컨테이너에 있어도 같은 그룹으로 동작
+           
+           예제:
+           <StackPanel>
+               <RadioButton GroupName="A">옵션1</RadioButton>
+           </StackPanel>
+           <StackPanel>
+               <RadioButton GroupName="A">옵션2</RadioButton>
+           </StackPanel>
+           <!-- 다른 StackPanel이지만 같은 그룹 -->
+        
+        3. IsEnabled (활성화/비활성화):
+           - true: 사용자가 선택 가능
+           - false: 회색으로 표시되며 선택 불가
+           
+           예제:
+           <RadioButton IsEnabled="False">비활성화됨</RadioButton>
+        
+        4. Command (MVVM 패턴):
+           - ICommand를 사용하여 선택 시 명령 실행
+           
+           예제:
+           <RadioButton Command="{Binding SelectOptionCommand}" 
+                        CommandParameter="Option1"/>
+        
+        주요 이벤트:
+        - Checked: RadioButton이 선택될 때
+        - Unchecked: RadioButton의 선택이 해제될 때
+        - Click: RadioButton을 클릭할 때
+        
+        RadioButton vs CheckBox:
+        
+        RadioButton:
+        - 그룹 내에서 하나만 선택 가능 (상호 배타적)
+        - 한 번 선택하면 같은 그룹의 다른 것을 선택하지 않는 한 해제 불가
+        - 예: 성별 선택 (남성/여성), 배송 방법 선택 (일반/빠른/당일)
+        
+        CheckBox:
+        - 여러 개를 동시에 선택 가능 (독립적)
+        - 클릭할 때마다 선택/해제 토글
+        - 예: 취미 선택 (운동/독서/음악 모두 선택 가능)
+        
+        그룹화 방법 정리:
+        
+        1. 부모 컨테이너로 그룹화 (GroupName 없음):
+           - 같은 StackPanel, Grid 등 내부의 RadioButton들이 자동으로 그룹화
+           - 가장 간단하지만 유연성이 낮음
+        
+        2. GroupName으로 그룹화:
+           - 같은 GroupName을 가진 RadioButton들끼리 그룹화
+           - 부모 컨테이너가 달라도 같은 그룹으로 동작
+           - 가장 유연하고 권장되는 방법
+        
+        3. GroupBox로 그룹화:
+           - 시각적 그룹화 + 기능적 그룹화를 동시에 제공
+           - RadioButton들을 테두리로 감싸서 명확히 구분
+           - 사용자 경험(UX)이 좋음
+        
+        실전 활용 예제:
+        
+        1. 설문 조사:
+           <Label>귀하의 연령대는?</Label>
+           <RadioButton GroupName="Age">10대</RadioButton>
+           <RadioButton GroupName="Age">20대</RadioButton>
+           <RadioButton GroupName="Age">30대</RadioButton>
+           <RadioButton GroupName="Age">40대 이상</RadioButton>
+        
+        2. 옵션 선택:
+           <GroupBox Header="배송 방법">
+               <StackPanel>
+                   <RadioButton>일반 배송 (무료)</RadioButton>
+                   <RadioButton>빠른 배송 (+3,000원)</RadioButton>
+                   <RadioButton>당일 배송 (+5,000원)</RadioButton>
+               </StackPanel>
+           </GroupBox>
+        
+        3. 정렬 옵션:
+           <Label>정렬 기준</Label>
+           <RadioButton GroupName="Sort" IsChecked="True">최신순</RadioButton>
+           <RadioButton GroupName="Sort">인기순</RadioButton>
+           <RadioButton GroupName="Sort">가격 낮은순</RadioButton>
+           <RadioButton GroupName="Sort">가격 높은순</RadioButton>
+        
+        4. 파일 저장 형식:
+           <GroupBox Header="파일 형식 선택">
+               <StackPanel>
+                   <RadioButton IsChecked="True">PNG (.png)</RadioButton>
+                   <RadioButton>JPEG (.jpg)</RadioButton>
+                   <RadioButton>BMP (.bmp)</RadioButton>
+                   <RadioButton>GIF (.gif)</RadioButton>
+               </StackPanel>
+           </GroupBox>
+        
+        스타일링:
+        - Background: 배경색
+        - Foreground: 텍스트 색상
+        - FontSize, FontWeight: 텍스트 스타일
+        - Margin, Padding: 여백
+        
+        예제:
+        <RadioButton Content="스타일 적용" 
+                     Foreground="Blue" 
+                     FontSize="16" 
+                     FontWeight="Bold"/>
+        
+        선택된 RadioButton 찾기 (코드):
+        
+        // 방법 1: 각 RadioButton을 직접 확인
+        if (rb1.IsChecked == true)
+            selectedValue = "옵션1";
+        else if (rb2.IsChecked == true)
+            selectedValue = "옵션2";
+        
+        // 방법 2: 컨테이너 내의 RadioButton 검색
+        foreach (var child in myStackPanel.Children)
+        {
+            if (child is RadioButton rb && rb.IsChecked == true)
+            {
+                selectedValue = rb.Content?.ToString();
+                break;
+            }
+        }
+    -->
+</Window>

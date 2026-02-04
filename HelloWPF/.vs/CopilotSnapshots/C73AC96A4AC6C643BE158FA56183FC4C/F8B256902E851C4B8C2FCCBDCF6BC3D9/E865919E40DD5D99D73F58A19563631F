@@ -1,0 +1,437 @@
+﻿using System.Text;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Data;
+using System.Windows.Documents;
+using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
+using System.Windows.Shapes;
+
+namespace ch23_메뉴
+{
+    /// <summary>
+    /// MainWindow.xaml에 대한 상호작용 논리
+    /// Menu와 MenuItem 컨트롤의 사용법을 시연하는 메인 윈도우
+    /// </summary>
+    public partial class MainWindow : Window
+    {
+        /// <summary>
+        /// MainWindow 생성자
+        /// 윈도우가 생성될 때 호출되어 초기화 작업을 수행합니다.
+        /// </summary>
+        public MainWindow()
+        {
+            // XAML에 정의된 UI 요소들을 초기화합니다.
+            InitializeComponent();
+            
+            /*
+             * 이 예제는 기본적인 Menu 사용법을 보여줍니다.
+             * - 계층적 메뉴 구조 (파일 → 서브메뉴)
+             * - 아이콘이 있는 MenuItem
+             * - 니모닉(_) 사용한 키보드 단축키
+             * - Click 이벤트로 화면 전환
+             * 
+             * 실제 프로젝트에서는:
+             * - Command 패턴으로 메뉴 명령 구현
+             * - InputGestureText로 단축키 표시
+             * - IsEnabled로 메뉴 항목 활성화/비활성화
+             * - IsCheckable로 체크 가능한 메뉴
+             * - Separator로 논리적 그룹 구분
+             */
+        }
+
+        /// <summary>
+        /// MenuItem의 Click 이벤트 핸들러
+        /// "Move" 메뉴를 클릭하면 ContentArea에 UserControl1을 표시합니다.
+        /// </summary>
+        /// <param name="sender">이벤트를 발생시킨 객체 (MenuItem)</param>
+        /// <param name="e">이벤트 데이터</param>
+        private void MenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            ContentArea.Content = new UserControl1();
+            // UserControl1의 새 인스턴스를 생성하여 ContentArea에 표시
+            // 이전 콘텐츠는 자동으로 대체됨
+            
+            /*
+             * 동작 설명:
+             * 
+             * 1. 사용자가 "Move" 메뉴 클릭 (또는 Alt+M)
+             * 2. MenuItem_Click 이벤트 발생
+             * 3. UserControl1 인스턴스 생성
+             * 4. ContentArea.Content에 할당
+             * 5. ContentArea에 UserControl1이 표시됨
+             * 6. UserControl1에는 "또 다른 화면입니다." 레이블과 Salmon 배경
+             * 
+             * 화면 전환 패턴:
+             * - ContentControl.Content를 변경하여 화면 전환
+             * - 각 화면을 UserControl로 구현
+             * - 메뉴 선택에 따라 다른 UserControl 표시
+             * 
+             * 개선 사항:
+             * - 인스턴스 재사용 (매번 new 하지 않기)
+             * - 히스토리 관리 (뒤로 가기)
+             * - 애니메이션 전환 효과
+             * - ViewModel과 데이터 전달
+             */
+        }
+        
+        /*
+         * Menu 코드 비하인드 활용 예제:
+         * 
+         * 1. 메뉴 항목 Click 이벤트:
+         * 
+         *    XAML:
+         *    <MenuItem Header="새로 만들기" Click="NewFile_Click"/>
+         *    <MenuItem Header="열기" Click="OpenFile_Click"/>
+         *    <MenuItem Header="저장" Click="SaveFile_Click"/>
+         *    
+         *    코드:
+         *    private void NewFile_Click(object sender, RoutedEventArgs e)
+         *    {
+         *        textBox.Clear();
+         *        currentFileName = null;
+         *        MessageBox.Show("새 문서가 생성되었습니다.");
+         *    }
+         *    
+         *    private void OpenFile_Click(object sender, RoutedEventArgs e)
+         *    {
+         *        var dialog = new Microsoft.Win32.OpenFileDialog
+         *        {
+         *            Filter = "텍스트 파일 (*.txt)|*.txt|모든 파일 (*.*)|*.*"
+         *        };
+         *        
+         *        if (dialog.ShowDialog() == true)
+         *        {
+         *            textBox.Text = System.IO.File.ReadAllText(dialog.FileName);
+         *            currentFileName = dialog.FileName;
+         *        }
+         *    }
+         *    
+         *    private void SaveFile_Click(object sender, RoutedEventArgs e)
+         *    {
+         *        if (currentFileName != null)
+         *        {
+         *            System.IO.File.WriteAllText(currentFileName, textBox.Text);
+         *            MessageBox.Show("파일이 저장되었습니다.");
+         *        }
+         *        else
+         *        {
+         *            SaveFileAs_Click(sender, e);
+         *        }
+         *    }
+         * 
+         * 2. Command 패턴 사용:
+         * 
+         *    public static RoutedCommand NewCommand = new RoutedCommand();
+         *    public static RoutedCommand OpenCommand = new RoutedCommand();
+         *    public static RoutedCommand SaveCommand = new RoutedCommand();
+         *    
+         *    public MainWindow()
+         *    {
+         *        InitializeComponent();
+         *        
+         *        // Command 바인딩
+         *        CommandBindings.Add(new CommandBinding(NewCommand, NewCommand_Executed));
+         *        CommandBindings.Add(new CommandBinding(OpenCommand, OpenCommand_Executed));
+         *        CommandBindings.Add(new CommandBinding(SaveCommand, SaveCommand_Executed, SaveCommand_CanExecute));
+         *        
+         *        // 키보드 단축키
+         *        InputBindings.Add(new KeyBinding(NewCommand, Key.N, ModifierKeys.Control));
+         *        InputBindings.Add(new KeyBinding(OpenCommand, Key.O, ModifierKeys.Control));
+         *        InputBindings.Add(new KeyBinding(SaveCommand, Key.S, ModifierKeys.Control));
+         *    }
+         *    
+         *    private void NewCommand_Executed(object sender, ExecutedRoutedEventArgs e)
+         *    {
+         *        textBox.Clear();
+         *    }
+         *    
+         *    private void SaveCommand_CanExecute(object sender, CanExecuteRoutedEventArgs e)
+         *    {
+         *        // TextBox에 내용이 있을 때만 저장 가능
+         *        e.CanExecute = !string.IsNullOrEmpty(textBox?.Text);
+         *    }
+         *    
+         *    XAML:
+         *    <MenuItem Header="새로 만들기" 
+         *             Command="{x:Static local:MainWindow.NewCommand}"
+         *             InputGestureText="Ctrl+N">
+         *        <MenuItem.Icon>
+         *            <Image Source="Images/New.png"/>
+         *        </MenuItem.Icon>
+         *    </MenuItem>
+         * 
+         * 3. 체크 가능한 메뉴 항목:
+         * 
+         *    XAML:
+         *    <MenuItem Header="도구 모음" 
+         *             IsCheckable="True" 
+         *             IsChecked="True"
+         *             Checked="ToolBar_Checked"
+         *             Unchecked="ToolBar_Unchecked"/>
+         *    
+         *    코드:
+         *    private void ToolBar_Checked(object sender, RoutedEventArgs e)
+         *    {
+         *        toolBarTray.Visibility = Visibility.Visible;
+         *    }
+         *    
+         *    private void ToolBar_Unchecked(object sender, RoutedEventArgs e)
+         *    {
+         *        toolBarTray.Visibility = Visibility.Collapsed;
+         *    }
+         * 
+         * 4. 동적으로 메뉴 항목 추가:
+         * 
+         *    private void AddRecentFile(string filePath)
+         *    {
+         *        // 기존 최근 파일 메뉴 찾기
+         *        MenuItem recentMenu = (MenuItem)fileMenu.Items[fileMenu.Items.Count - 1];
+         *        
+         *        // 새 메뉴 항목 생성
+         *        var newItem = new MenuItem
+         *        {
+         *            Header = System.IO.Path.GetFileName(filePath),
+         *            Tag = filePath
+         *        };
+         *        newItem.Click += RecentFile_Click;
+         *        
+         *        // 최근 파일 메뉴에 추가
+         *        recentMenu.Items.Insert(0, newItem);
+         *        
+         *        // 최대 10개만 유지
+         *        if (recentMenu.Items.Count > 10)
+         *        {
+         *            recentMenu.Items.RemoveAt(10);
+         *        }
+         *    }
+         *    
+         *    private void RecentFile_Click(object sender, RoutedEventArgs e)
+         *    {
+         *        if (sender is MenuItem menuItem)
+         *        {
+         *            string filePath = menuItem.Tag as string;
+         *            if (System.IO.File.Exists(filePath))
+         *            {
+         *                textBox.Text = System.IO.File.ReadAllText(filePath);
+         *            }
+         *            else
+         *            {
+         *                MessageBox.Show("파일을 찾을 수 없습니다.");
+         *            }
+         *        }
+         *    }
+         * 
+         * 5. 메뉴 항목 활성화/비활성화:
+         * 
+         *    private void UpdateMenuState()
+         *    {
+         *        bool hasText = !string.IsNullOrEmpty(textBox.Text);
+         *        bool hasSelection = textBox.SelectionLength > 0;
+         *        
+         *        // 저장 메뉴
+         *        saveMenuItem.IsEnabled = hasText;
+         *        
+         *        // 잘라내기/복사 메뉴
+         *        cutMenuItem.IsEnabled = hasSelection;
+         *        copyMenuItem.IsEnabled = hasSelection;
+         *        
+         *        // 붙여넣기 메뉴
+         *        pasteMenuItem.IsEnabled = Clipboard.ContainsText();
+         *        
+         *        // 실행 취소/다시 실행
+         *        undoMenuItem.IsEnabled = textBox.CanUndo;
+         *    }
+         *    
+         *    private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
+         *    {
+         *        UpdateMenuState();
+         *    }
+         * 
+         * 6. 라디오 버튼 스타일 메뉴 (상호 배타적):
+         * 
+         *    private MenuItem leftAlignMenuItem;
+         *    private MenuItem centerAlignMenuItem;
+         *    private MenuItem rightAlignMenuItem;
+         *    
+         *    private void LeftAlign_Click(object sender, RoutedEventArgs e)
+         *    {
+         *        textBox.TextAlignment = TextAlignment.Left;
+         *        leftAlignMenuItem.IsChecked = true;
+         *        centerAlignMenuItem.IsChecked = false;
+         *        rightAlignMenuItem.IsChecked = false;
+         *    }
+         *    
+         *    private void CenterAlign_Click(object sender, RoutedEventArgs e)
+         *    {
+         *        textBox.TextAlignment = TextAlignment.Center;
+         *        leftAlignMenuItem.IsChecked = false;
+         *        centerAlignMenuItem.IsChecked = true;
+         *        rightAlignMenuItem.IsChecked = false;
+         *    }
+         * 
+         * 7. 서브메뉴 동적 생성:
+         * 
+         *    private void CreateFontMenu()
+         *    {
+         *        var fontMenu = new MenuItem { Header = "폰트" };
+         *        
+         *        var fonts = new[] { "Arial", "Times New Roman", "Courier New", "맑은 고딕", "나눔고딕" };
+         *        
+         *        foreach (var fontName in fonts)
+         *        {
+         *            var fontItem = new MenuItem
+         *            {
+         *                Header = fontName,
+         *                IsCheckable = true
+         *            };
+         *            fontItem.Click += (s, e) =>
+         *            {
+         *                textBox.FontFamily = new FontFamily(fontName);
+         *                
+         *                // 다른 폰트 체크 해제
+         *                foreach (MenuItem item in fontMenu.Items)
+         *                {
+         *                    item.IsChecked = (item == s);
+         *                }
+         *            };
+         *            
+         *            fontMenu.Items.Add(fontItem);
+         *        }
+         *        
+         *        formatMenu.Items.Add(fontMenu);
+         *    }
+         * 
+         * 8. 컨텍스트 정보와 함께 메뉴 표시:
+         * 
+         *    private void ShowContextualMenu(string context)
+         *    {
+         *        // 컨텍스트에 따라 메뉴 항목 변경
+         *        if (context == "Image")
+         *        {
+         *            imageMenuItem.Visibility = Visibility.Visible;
+         *            textMenuItem.Visibility = Visibility.Collapsed;
+         *        }
+         *        else if (context == "Text")
+         *        {
+         *            imageMenuItem.Visibility = Visibility.Collapsed;
+         *            textMenuItem.Visibility = Visibility.Visible;
+         *        }
+         *    }
+         * 
+         * 9. 화면 전환 관리:
+         * 
+         *    private Dictionary<string, UserControl> viewCache = new Dictionary<string, UserControl>();
+         *    
+         *    private void ShowView(string viewName)
+         *    {
+         *        // 캐시에서 뷰 가져오기 또는 생성
+         *        if (!viewCache.ContainsKey(viewName))
+         *        {
+         *            UserControl view = viewName switch
+         *            {
+         *                "Home" => new HomeView(),
+         *                "Settings" => new SettingsView(),
+         *                "About" => new AboutView(),
+         *                _ => throw new ArgumentException("Unknown view")
+         *            };
+         *            
+         *            viewCache[viewName] = view;
+         *        }
+         *        
+         *        ContentArea.Content = viewCache[viewName];
+         *    }
+         *    
+         *    private void Home_Click(object sender, RoutedEventArgs e)
+         *    {
+         *        ShowView("Home");
+         *    }
+         *    
+         *    private void Settings_Click(object sender, RoutedEventArgs e)
+         *    {
+         *        ShowView("Settings");
+         *    }
+         * 
+         * 10. 메뉴 상태 저장 및 복원:
+         * 
+         *     private void SaveMenuState()
+         *     {
+         *         var settings = Properties.Settings.Default;
+         *         settings.ShowToolBar = toolBarMenuItem.IsChecked;
+         *         settings.ShowStatusBar = statusBarMenuItem.IsChecked;
+         *         settings.Save();
+         *     }
+         *     
+         *     private void LoadMenuState()
+         *     {
+         *         var settings = Properties.Settings.Default;
+         *         toolBarMenuItem.IsChecked = settings.ShowToolBar;
+         *         statusBarMenuItem.IsChecked = settings.ShowStatusBar;
+         *         
+         *         toolBarTray.Visibility = settings.ShowToolBar ? Visibility.Visible : Visibility.Collapsed;
+         *         statusBar.Visibility = settings.ShowStatusBar ? Visibility.Visible : Visibility.Collapsed;
+         *     }
+         * 
+         * Menu 코드 조작 관련 중요 사항:
+         * 
+         * 1. MenuItem 접근:
+         *    - XAML에서 Name 지정
+         *    - Items 컬렉션으로 자식 접근
+         *    
+         *    foreach (var item in fileMenu.Items)
+         *    {
+         *        if (item is MenuItem menuItem)
+         *        {
+         *            // 메뉴 항목 처리
+         *        }
+         *    }
+         * 
+         * 2. Command 패턴:
+         *    - RoutedCommand 사용
+         *    - CommandBinding으로 연결
+         *    - CanExecute로 활성화 제어
+         *    - InputBinding으로 단축키
+         * 
+         * 3. IsCheckable 속성:
+         *    - 체크 가능한 메뉴 항목
+         *    - IsChecked로 상태 확인
+         *    - Checked/Unchecked 이벤트
+         * 
+         * 4. InputGestureText:
+         *    - 단축키 표시 (오른쪽)
+         *    - 실제 기능은 Command로 구현
+         * 
+         * 5. MenuItem.Icon:
+         *    - Image, Path 등 사용
+         *    - 16x16 픽셀 권장
+         * 
+         * 6. Separator:
+         *    menuItem.Items.Add(new Separator());
+         * 
+         * 7. 동적 항목 관리:
+         *    - Items.Add(menuItem)
+         *    - Items.Remove(menuItem)
+         *    - Items.Clear()
+         *    - Items.Insert(index, menuItem)
+         * 
+         * 8. 이벤트:
+         *    - Click
+         *    - Checked/Unchecked
+         *    - SubmenuOpened/SubmenuClosed
+         * 
+         * 9. MVVM 패턴:
+         *    - Command 바인딩
+         *    - IsEnabled 바인딩
+         *    - IsChecked 바인딩
+         *    
+         *    <MenuItem Header="저장" 
+         *             Command="{Binding SaveCommand}"
+         *             IsEnabled="{Binding CanSave}"/>
+         * 
+         * 10. 스타일:
+         *     myMenuItem.Style = (Style)FindResource("CustomMenuItemStyle");
+         */
+    }
+}

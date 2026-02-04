@@ -1,0 +1,383 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Data;
+using System.Windows.Documents;
+using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
+using System.Windows.Shapes;
+
+namespace ch32_스타일
+{
+    /// <summary>
+    /// UserControl1.xaml에 대한 상호 작용 논리
+    /// Dictionary1.xaml의 "버튼스타일"을 사용하는 재사용 가능한 컨트롤입니다.
+    /// </summary>
+    public partial class UserControl1 : UserControl
+    {
+        /// <summary>
+        /// UserControl1 생성자
+        /// 컨트롤이 생성될 때 호출되어 초기화 작업을 수행합니다.
+        /// </summary>
+        public UserControl1()
+        {
+            InitializeComponent();
+            /*
+             * InitializeComponent() 호출 후:
+             * 1. XAML 로드 및 파싱
+             * 2. Grid 생성
+             * 3. Button 생성
+             * 4. StaticResource "버튼스타일" 조회
+             *    - Button의 Resources 검색 (없음)
+             *    - Grid의 Resources 검색 (없음)
+             *    - UserControl.Resources 검색 (주석 처리, 없음)
+             *    - 부모 컨트롤의 Resources 검색
+             *    - Application.Resources 검색
+             *    - MergedDictionaries 확인
+             *    - Dictionary1.xaml에서 "버튼스타일" 발견
+             * 5. 스타일 적용
+             *    - Background: Salmon
+             *    - 둥근 모서리, 손 모양 커서 등
+             * 6. UI 렌더링
+             * 
+             * UserControl의 리소스 조회:
+             * - 자체 Resources → 부모 → Application
+             * - 계층적 조회
+             * 
+             * 전역 리소스 공유:
+             * - MainWindow, UserControl1: "버튼스타일" (Salmon)
+             * - Page1: "버튼스타일2" (LightGreen)
+             * - 중앙 관리, 일관성 유지
+             */
+        }
+        
+        /*
+         * UserControl에서 스타일 사용 예제:
+         * 
+         * ========== 1. 속성으로 스타일 키 전달 ========= =
+         * 
+         * UserControl1.xaml.cs:
+         * public static readonly DependencyProperty ButtonStyleKeyProperty =
+         *     DependencyProperty.Register("ButtonStyleKey", typeof(string),
+         *         typeof(UserControl1), new PropertyMetadata("버튼스타일", OnStyleKeyChanged));
+         * 
+         * public string ButtonStyleKey
+         * {
+         *     get { return (string)GetValue(ButtonStyleKeyProperty); }
+         *     set { SetValue(ButtonStyleKeyProperty, value); }
+         * }
+         * 
+         * private static void OnStyleKeyChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+         * {
+         *     var control = d as UserControl1;
+         *     var styleKey = e.NewValue as string;
+         *     
+         *     if (Application.Current.Resources.Contains(styleKey))
+         *     {
+         *         control.myButton.Style = (Style)Application.Current.Resources[styleKey];
+         *     }
+         * }
+         * 
+         * UserControl1.xaml:
+         * <Button x:Name="myButton"/>
+         * 
+         * 사용:
+         * <local:UserControl1 ButtonStyleKey="버튼스타일"/>
+         * <local:UserControl1 ButtonStyleKey="버튼스타일2"/>
+         * 
+         * ========== 2. 로컬 스타일 오버라이드 ========= =
+         * 
+         * public UserControl1()
+         * {
+         *     InitializeComponent();
+         *     
+         *     // 조건에 따라 다른 스타일
+         *     if (ShouldUseAlternateStyle())
+         *     {
+         *         myButton.Style = (Style)Application.Current.Resources["버튼스타일2"];
+         *     }
+         * }
+         * 
+         * private bool ShouldUseAlternateStyle()
+         * {
+         *     // 비즈니스 로직
+         *     return DateTime.Now.Hour >= 18;
+         * }
+         * 
+         * ========== 3. 스타일 동적 변경 메서드 ========= =
+         * 
+         * public void SetButtonStyle(string styleKey)
+         * {
+         *     if (Application.Current.Resources.Contains(styleKey))
+         *     {
+         *         myButton.Style = (Style)Application.Current.Resources[styleKey];
+         *     }
+         *     else
+         *     {
+         *         throw new ArgumentException($"스타일 '{styleKey}'을(를) 찾을 수 없습니다.");
+         *     }
+         * }
+         * 
+         * 사용:
+         * MainWindow.xaml.cs:
+         * userControl1.SetButtonStyle("버튼스타일2");
+         * 
+         * ========== 4. 이벤트 노출 ========= =
+         * 
+         * public event RoutedEventHandler ButtonClick;
+         * 
+         * public UserControl1()
+         * {
+         *     InitializeComponent();
+         *     myButton.Click += MyButton_Click;
+         * }
+         * 
+         * private void MyButton_Click(object sender, RoutedEventArgs e)
+         * {
+         *     ButtonClick?.Invoke(this, e);
+         * }
+         * 
+         * MainWindow.xaml:
+         * <local:UserControl1 ButtonClick="UserControl1_ButtonClick"/>
+         * 
+         * MainWindow.xaml.cs:
+         * private void UserControl1_ButtonClick(object sender, RoutedEventArgs e)
+         * {
+         *     MessageBox.Show("UserControl의 버튼 클릭!");
+         * }
+         * 
+         * ========== 5. 스타일 상태 관리 ========= =
+         * 
+         * private bool _isActive = true;
+         * 
+         * public bool IsActive
+         * {
+         *     get { return _isActive; }
+         *     set
+         *     {
+         *         _isActive = value;
+         *         UpdateButtonStyle();
+         *     }
+         * }
+         * 
+         * private void UpdateButtonStyle()
+         * {
+         *     string styleKey = _isActive ? "버튼스타일" : "DisabledButtonStyle";
+         *     myButton.Style = (Style)Application.Current.Resources[styleKey];
+         *     myButton.IsEnabled = _isActive;
+         * }
+         * 
+         * ========== 6. 여러 UserControl 인스턴스 관리 ========= =
+         * 
+         * MainWindow.xaml:
+         * <StackPanel>
+         *     <local:UserControl1 x:Name="control1"/>
+         *     <local:UserControl1 x:Name="control2"/>
+         *     <local:UserControl1 x:Name="control3"/>
+         * </StackPanel>
+         * 
+         * MainWindow.xaml.cs:
+         * private void ApplyStyleToAll(string styleKey)
+         * {
+         *     control1.SetButtonStyle(styleKey);
+         *     control2.SetButtonStyle(styleKey);
+         *     control3.SetButtonStyle(styleKey);
+         * }
+         * 
+         * private void ApplyStyleToAll_Alternative()
+         * {
+         *     foreach (var control in mainPanel.Children.OfType<UserControl1>())
+         *     {
+         *         control.SetButtonStyle("버튼스타일2");
+         *     }
+         * }
+         * 
+         * ========== 7. 테마 변경 지원 ========= =
+         * 
+         * UserControl1.xaml:
+         * <Button Style="{DynamicResource 버튼스타일}">버튼</Button>
+         * 
+         * MainWindow.xaml.cs:
+         * private void SwitchTheme()
+         * {
+         *     // 테마 변경
+         *     var newStyle = CreateNewStyle();
+         *     Application.Current.Resources["버튼스타일"] = newStyle;
+         *     
+         *     // 모든 UserControl의 버튼이 자동 업데이트 (DynamicResource)
+         * }
+         * 
+         * ========== 8. 커스텀 속성으로 스타일 제어 ========= =
+         * 
+         * public enum ButtonType
+         * {
+         *     Primary,
+         *     Secondary,
+         *     Success,
+         *     Danger
+         * }
+         * 
+         * public static readonly DependencyProperty TypeProperty =
+         *     DependencyProperty.Register("Type", typeof(ButtonType),
+         *         typeof(UserControl1), new PropertyMetadata(ButtonType.Primary, OnTypeChanged));
+         * 
+         * public ButtonType Type
+         * {
+         *     get { return (ButtonType)GetValue(TypeProperty); }
+         *     set { SetValue(TypeProperty, value); }
+         * }
+         * 
+         * private static void OnTypeChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+         * {
+         *     var control = d as UserControl1;
+         *     var type = (ButtonType)e.NewValue;
+         *     
+         *     string styleKey = type switch
+         *     {
+         *         ButtonType.Primary => "버튼스타일",
+         *         ButtonType.Secondary => "버튼스타일2",
+         *         ButtonType.Success => "SuccessButtonStyle",
+         *         ButtonType.Danger => "DangerButtonStyle",
+         *         _ => "버튼스타일"
+         *     };
+         *     
+         *     control.myButton.Style = (Style)Application.Current.Resources[styleKey];
+         * }
+         * 
+         * 사용:
+         * <local:UserControl1 Type="Primary"/>
+         * <local:UserControl1 Type="Secondary"/>
+         * <local:UserControl1 Type="Success"/>
+         * 
+         * ========== 9. 스타일 애니메이션 ========= =
+         * 
+         * public async void AnimateStyleChange(string newStyleKey)
+         * {
+         *     // 페이드 아웃
+         *     var fadeOut = new DoubleAnimation(1, 0, TimeSpan.FromMilliseconds(200));
+         *     myButton.BeginAnimation(OpacityProperty, fadeOut);
+         *     await Task.Delay(200);
+         *     
+         *     // 스타일 변경
+         *     myButton.Style = (Style)Application.Current.Resources[newStyleKey];
+         *     
+         *     // 페이드 인
+         *     var fadeIn = new DoubleAnimation(0, 1, TimeSpan.FromMilliseconds(200));
+         *     myButton.BeginAnimation(OpacityProperty, fadeIn);
+         * }
+         * 
+         * ========== 10. 라이브러리로 배포 시 고려사항 ========= =
+         * 
+         * 독립적인 스타일 포함:
+         * Themes/Generic.xaml:
+         * <ResourceDictionary>
+         *     <Style TargetType="local:UserControl1">
+         *         <Setter Property="Template">
+         *             <Setter.Value>
+         *                 <ControlTemplate TargetType="local:UserControl1">
+         *                     <Button Style="{StaticResource DefaultButtonStyle}">
+         *                         <ContentPresenter/>
+         *                     </Button>
+         *                 </ControlTemplate>
+         *             </Setter.Value>
+         *         </Setter>
+         *     </Style>
+         *     
+         *     <Style x:Key="DefaultButtonStyle" TargetType="Button">
+         *         <Setter Property="Background" Value="Gray"/>
+         *         <!-- 기본 스타일 정의 -->
+         *     </Style>
+         * </ResourceDictionary>
+         * 
+         * UserControl1.xaml.cs:
+         * static UserControl1()
+         * {
+         *     DefaultStyleKeyProperty.OverrideMetadata(typeof(UserControl1),
+         *         new FrameworkPropertyMetadata(typeof(UserControl1)));
+         * }
+         * 
+         * 장점:
+         * - 외부 의존 없음
+         * - 독립적으로 동작
+         * - 재배포 가능
+         * 
+         * ========== 실전 활용 시나리오 ========= =
+         * 
+         * 1. 폼 컨트롤:
+         * public class FormControl : UserControl
+         * {
+         *     public bool IsValid { get; set; }
+         *     
+         *     public void Validate()
+         *     {
+         *         string styleKey = IsValid ? "ValidButtonStyle" : "InvalidButtonStyle";
+         *         submitButton.Style = (Style)Resources[styleKey];
+         *     }
+         * }
+         * 
+         * 2. 로딩 상태:
+         * public async Task LoadDataAsync()
+         * {
+         *     SetButtonStyle("LoadingButtonStyle");
+         *     myButton.IsEnabled = false;
+         *     
+         *     try
+         *     {
+         *         await FetchDataAsync();
+         *         SetButtonStyle("버튼스타일");
+         *     }
+         *     catch
+         *     {
+         *         SetButtonStyle("ErrorButtonStyle");
+         *     }
+         *     finally
+         *     {
+         *         myButton.IsEnabled = true;
+         *     }
+         * }
+         * 
+         * 3. 권한 기반 스타일:
+         * public void ApplyUserPermissionStyle(UserRole role)
+         * {
+         *     string styleKey = role switch
+         *     {
+         *         UserRole.Admin => "AdminButtonStyle",
+         *         UserRole.User => "버튼스타일",
+         *         UserRole.Guest => "DisabledButtonStyle",
+         *         _ => "버튼스타일"
+         *     };
+         *     
+         *     myButton.Style = (Style)Application.Current.Resources[styleKey];
+         *     myButton.IsEnabled = role != UserRole.Guest;
+         * }
+         * 
+         * ========== 주의사항 ========= =
+         * 
+         * 1. 캡슐화:
+         *    - UserControl은 독립적이어야 함
+         *    - 외부 리소스 의존 최소화
+         * 
+         * 2. 재사용성:
+         *    - 다양한 환경에서 동작
+         *    - 기본 스타일 제공
+         * 
+         * 3. 테마 지원:
+         *    - DynamicResource 고려
+         *    - 런타임 변경 지원
+         * 
+         * 4. 성능:
+         *    - 많은 인스턴스 생성 시 고려
+         *    - 리소스 조회 최소화
+         * 
+         * 5. 의존성:
+         *    - 전역 리소스 키 문서화
+         *    - 누락 시 예외 처리
+         */
+    }
+}

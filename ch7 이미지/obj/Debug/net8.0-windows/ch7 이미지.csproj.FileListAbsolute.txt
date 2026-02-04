@@ -1,0 +1,20 @@
+C:\Users\udune\Desktop\WPF\ch7 이미지\bin\Debug\net8.0-windows\ch7 이미지.exe
+C:\Users\udune\Desktop\WPF\ch7 이미지\bin\Debug\net8.0-windows\ch7 이미지.deps.json
+C:\Users\udune\Desktop\WPF\ch7 이미지\bin\Debug\net8.0-windows\ch7 이미지.runtimeconfig.json
+C:\Users\udune\Desktop\WPF\ch7 이미지\bin\Debug\net8.0-windows\ch7 이미지.dll
+C:\Users\udune\Desktop\WPF\ch7 이미지\bin\Debug\net8.0-windows\ch7 이미지.pdb
+C:\Users\udune\Desktop\WPF\ch7 이미지\obj\Debug\net8.0-windows\MainWindow.g.cs
+C:\Users\udune\Desktop\WPF\ch7 이미지\obj\Debug\net8.0-windows\App.g.cs
+C:\Users\udune\Desktop\WPF\ch7 이미지\obj\Debug\net8.0-windows\ch7 이미지_MarkupCompile.cache
+C:\Users\udune\Desktop\WPF\ch7 이미지\obj\Debug\net8.0-windows\ch7 이미지_MarkupCompile.lref
+C:\Users\udune\Desktop\WPF\ch7 이미지\obj\Debug\net8.0-windows\MainWindow.baml
+C:\Users\udune\Desktop\WPF\ch7 이미지\obj\Debug\net8.0-windows\ch7 이미지.g.resources
+C:\Users\udune\Desktop\WPF\ch7 이미지\obj\Debug\net8.0-windows\ch7 이미지.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\udune\Desktop\WPF\ch7 이미지\obj\Debug\net8.0-windows\ch7 이미지.AssemblyInfoInputs.cache
+C:\Users\udune\Desktop\WPF\ch7 이미지\obj\Debug\net8.0-windows\ch7 이미지.AssemblyInfo.cs
+C:\Users\udune\Desktop\WPF\ch7 이미지\obj\Debug\net8.0-windows\ch7 이미지.csproj.CoreCompileInputs.cache
+C:\Users\udune\Desktop\WPF\ch7 이미지\obj\Debug\net8.0-windows\ch7 이미지.dll
+C:\Users\udune\Desktop\WPF\ch7 이미지\obj\Debug\net8.0-windows\refint\ch7 이미지.dll
+C:\Users\udune\Desktop\WPF\ch7 이미지\obj\Debug\net8.0-windows\ch7 이미지.pdb
+C:\Users\udune\Desktop\WPF\ch7 이미지\obj\Debug\net8.0-windows\ch7 이미지.genruntimeconfig.cache
+C:\Users\udune\Desktop\WPF\ch7 이미지\obj\Debug\net8.0-windows\ref\ch7 이미지.dll

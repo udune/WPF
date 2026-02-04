@@ -1,0 +1,253 @@
+﻿using System.Text;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Data;
+using System.Windows.Documents;
+using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
+using System.Windows.Shapes;
+
+namespace ch34_MVVM
+{
+    /// <summary>
+    /// MainWindow.xaml에 대한 상호 작용 논리
+    /// 이 클래스는 사용되지 않습니다.
+    /// App.xaml의 StartupUri가 PersonView.xaml로 설정되어 있어
+    /// MainWindow는 생성되지 않습니다.
+    /// 
+    /// 일반적인 MVVM 애플리케이션:
+    /// - MainWindow가 Frame을 호스팅
+    /// - Frame에서 Page를 표시
+    /// - NavigationService로 화면 전환
+    /// </summary>
+    public partial class MainWindow : Window
+    {
+        /*
+         * ========== MainWindow의 역할 (일반적) ==========
+         * 
+         * 1. Frame 호스팅:
+         * public MainWindow()
+         * {
+         *     InitializeComponent();
+         *     MainFrame.Navigate(new PersonView());
+         * }
+         * 
+         * 2. Navigation:
+         * public void NavigateToPersonView()
+         * {
+         *     MainFrame.Navigate(new PersonView());
+         * }
+         * 
+         * 3. ViewModel 바인딩:
+         * public MainWindow()
+         * {
+         *     InitializeComponent();
+         *     DataContext = new MainViewModel();
+         * }
+         * 
+         * ========== MVVM 네비게이션 패턴 ==========
+         * 
+         * 1. Frame + Page:
+         * MainWindow.xaml:
+         * <Frame x:Name="MainFrame" 
+         *        NavigationUIVisibility="Hidden"
+         *        Content="{Binding CurrentPage}"/>
+         * 
+         * MainViewModel:
+         * public object CurrentPage { get; set; }
+         * 
+         * private void ShowPersonView()
+         * {
+         *     CurrentPage = new PersonView();
+         *     OnPropertyChanged(nameof(CurrentPage));
+         * }
+         * 
+         * 2. ContentControl:
+         * MainWindow.xaml:
+         * <ContentControl Content="{Binding CurrentViewModel}">
+         *     <ContentControl.Resources>
+         *         <DataTemplate DataType="{x:Type vm:PersonViewModel}">
+         *             <views:PersonView/>
+         *         </DataTemplate>
+         *     </ContentControl.Resources>
+         * </ContentControl>
+         * 
+         * MainViewModel:
+         * public object CurrentViewModel { get; set; }
+         * 
+         * private void ShowPersonView()
+         * {
+         *     CurrentViewModel = new PersonViewModel();
+         *     OnPropertyChanged(nameof(CurrentViewModel));
+         * }
+         * 
+         * 3. NavigationService:
+         * public interface INavigationService
+         * {
+         *     void NavigateTo<TView>() where TView : Page;
+         *     void NavigateTo<TView, TViewModel>(TViewModel viewModel) 
+         *         where TView : Page;
+         * }
+         * 
+         * public class NavigationService : INavigationService
+         * {
+         *     private readonly Frame _frame;
+         *     
+         *     public NavigationService(Frame frame)
+         *     {
+         *         _frame = frame;
+         *     }
+         *     
+         *     public void NavigateTo<TView>() where TView : Page
+         *     {
+         *         var page = Activator.CreateInstance<TView>();
+         *         _frame.Navigate(page);
+         *     }
+         *     
+         *     public void NavigateTo<TView, TViewModel>(TViewModel viewModel) 
+         *         where TView : Page
+         *     {
+         *         var page = Activator.CreateInstance<TView>();
+         *         page.DataContext = viewModel;
+         *         _frame.Navigate(page);
+         *     }
+         * }
+         * 
+         * 사용:
+         * public MainViewModel(INavigationService navigationService)
+         * {
+         *     _navigationService = navigationService;
+         *     ShowPersonViewCommand = new RelayCommand(ShowPersonView);
+         * }
+         * 
+         * private void ShowPersonView()
+         * {
+         *     _navigationService.NavigateTo<PersonView>();
+         * }
+         */
+        
+        /// <summary>
+        /// MainWindow 생성자
+        /// 이 예제에서는 호출되지 않습니다.
+        /// </summary>
+        public MainWindow()
+        {
+            InitializeComponent();
+            /*
+             * InitializeComponent():
+             * - XAML 로드
+             * - UI 요소 생성
+             * 
+             * 이 예제:
+             * - MainWindow는 생성되지 않음
+             * - App.xaml의 StartupUri="Views/PersonView.xaml"
+             * - PersonView가 직접 시작
+             * 
+             * 일반적인 패턴:
+             * public MainWindow()
+             * {
+             *     InitializeComponent();
+             *     
+             *     // ViewModel 설정
+             *     DataContext = new MainViewModel();
+             *     
+             *     // 초기 페이지 표시
+             *     MainFrame.Navigate(new PersonView());
+             * }
+             * 
+             * Frame 이벤트:
+             * public MainWindow()
+             * {
+             *     InitializeComponent();
+             *     
+             *     // 네비게이션 이벤트
+             *     MainFrame.Navigating += MainFrame_Navigating;
+             *     MainFrame.Navigated += MainFrame_Navigated;
+             * }
+             * 
+             * private void MainFrame_Navigating(object sender, NavigatingCancelEventArgs e)
+             * {
+             *     // 네비게이션 전 처리
+             *     // 예: 저장 확인
+             * }
+             * 
+             * private void MainFrame_Navigated(object sender, NavigationEventArgs e)
+             * {
+             *     // 네비게이션 후 처리
+             *     // 예: 히스토리 업데이트
+             * }
+             */
+        }
+        
+        /*
+         * ========== MainWindow 고급 패턴 ==========
+         * 
+         * 1. 메뉴 기반 네비게이션:
+         * MainWindow.xaml:
+         * <DockPanel>
+         *     <Menu DockPanel.Dock="Top">
+         *         <MenuItem Header="파일">
+         *             <MenuItem Header="종료" Command="{Binding ExitCommand}"/>
+         *         </MenuItem>
+         *         <MenuItem Header="화면">
+         *             <MenuItem Header="사람 목록" Command="{Binding ShowPersonViewCommand}"/>
+         *             <MenuItem Header="설정" Command="{Binding ShowSettingsViewCommand}"/>
+         *         </MenuItem>
+         *     </Menu>
+         *     <Frame x:Name="MainFrame" NavigationUIVisibility="Hidden"/>
+         * </DockPanel>
+         * 
+         * MainViewModel:
+         * public ICommand ShowPersonViewCommand { get; }
+         * public ICommand ShowSettingsViewCommand { get; }
+         * 
+         * public MainViewModel(INavigationService navigationService)
+         * {
+         *     _navigationService = navigationService;
+         *     ShowPersonViewCommand = new RelayCommand(() => _navigationService.NavigateTo<PersonView>());
+         *     ShowSettingsViewCommand = new RelayCommand(() => _navigationService.NavigateTo<SettingsView>());
+         * }
+         * 
+         * 2. 탭 기반:
+         * <TabControl ItemsSource="{Binding OpenTabs}" 
+         *             SelectedItem="{Binding SelectedTab}">
+         *     <TabControl.ItemTemplate>
+         *         <DataTemplate>
+         *             <TextBlock Text="{Binding Title}"/>
+         *         </DataTemplate>
+         *     </TabControl.ItemTemplate>
+         *     <TabControl.ContentTemplate>
+         *         <DataTemplate>
+         *             <ContentControl Content="{Binding Content}"/>
+         *         </DataTemplate>
+         *     </TabControl.ContentTemplate>
+         * </TabControl>
+         * 
+         * 3. Region 기반 (Prism):
+         * <ContentControl prism:RegionManager.RegionName="MainRegion"/>
+         * 
+         * RegionManager.RegisterViewWithRegion("MainRegion", typeof(PersonView));
+         * 
+         * ========== 주의사항 ==========
+         * 
+         * 1. 메모리 관리:
+         *    - Frame의 NavigationService는 히스토리 유지
+         *    - 메모리 누수 가능
+         *    - JournalOwnership="OwnJournal" 고려
+         * 
+         * 2. ViewModel 라이프사이클:
+         *    - Singleton: 앱 전체에서 하나
+         *    - Transient: 네비게이션마다 새로 생성
+         * 
+         * 3. Back/Forward:
+         *    - Frame.CanGoBack, Frame.CanGoForward
+         *    - Frame.GoBack(), Frame.GoForward()
+         * 
+         * 4. 네비게이션 매개변수:
+         *    - Frame.Navigate(new PersonView(), parameter);
+         *    - NavigationService.Navigate(typeof(PersonView), parameter);
+         */
+    }
+}

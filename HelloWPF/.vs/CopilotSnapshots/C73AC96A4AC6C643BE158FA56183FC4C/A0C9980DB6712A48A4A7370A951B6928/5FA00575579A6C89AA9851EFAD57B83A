@@ -1,0 +1,404 @@
+﻿<!-- 
+    ch18 유니폼그리드 - WPF UniformGrid 레이아웃 컨트롤의 기능을 보여주는 예제 파일
+    UniformGrid는 모든 셀이 동일한 크기를 가지는 특수한 형태의 Grid입니다.
+    Grid와 달리 행/열 정의가 필요 없으며, 자동으로 균등하게 공간을 분배합니다.
+-->
+<Window x:Class="ch18_유니폼그리드.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ch18_유니폼그리드"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    
+    <!-- 
+        UniformGrid: 모든 셀이 동일한 크기를 가지는 그리드 레이아웃
+        간단한 균등 분할 레이아웃에 최적
+    -->
+    <UniformGrid Columns="3" Rows="3">
+        <!-- 
+            UniformGrid 기본 개념:
+            - Grid의 특수한 형태
+            - 모든 셀(Cell)이 정확히 같은 크기
+            - 행/열 정의(RowDefinitions, ColumnDefinitions) 불필요
+            - 자식 요소를 순서대로 자동 배치
+            - Grid.Row, Grid.Column 속성 사용 불가
+            
+            Grid vs UniformGrid:
+            
+            Grid:
+            - 각 행/열의 크기를 개별적으로 설정 가능
+            - Auto, *, 고정 값 등 유연한 크기 조정
+            - 특정 위치에 요소 배치 (Grid.Row, Grid.Column)
+            - 셀 병합 가능 (RowSpan, ColumnSpan)
+            - 복잡한 레이아웃에 적합
+            
+            UniformGrid:
+            - 모든 셀이 동일한 크기
+            - 자동으로 균등 분할
+            - 순차적으로 자동 배치
+            - 셀 병합 불가
+            - 간단한 균등 레이아웃에 적합
+            
+            시각적 비교:
+            
+            Grid (다양한 크기):
+            ┌────┬──────────┬───┐
+            │    │          │   │
+            ├────┴──────────┤   │
+            │               │   │
+            └───────────────┴───┘
+            
+            UniformGrid (동일한 크기):
+            ┌────┬────┬────┐
+            │    │    │    │
+            ├────┼────┼────┤
+            │    │    │    │
+            ├────┼────┼────┤
+            │    │    │    │
+            └────┴────┴────┘
+        -->
+        
+        <!-- 
+            UniformGrid 속성:
+            
+            Columns="3":
+            - 3개의 열로 구성
+            - 각 열의 너비는 전체 너비를 3등분
+            - 너비 = 전체 너비 / 3
+            
+            Rows="3":
+            - 3개의 행으로 구성
+            - 각 행의 높이는 전체 높이를 3등분
+            - 높이 = 전체 높이 / 3
+            
+            결과: 3×3 = 9개의 동일한 크기 셀
+            
+            ┌────────┬────────┬────────┐
+            │ 버튼1  │ 버튼2  │ 버튼3  │ ← 행 0
+            ├────────┼────────┼────────┤
+            │ 버튼4  │ 버튼5  │ 버튼6  │ ← 행 1
+            ├────────┼────────┼────────┤
+            │ 버튼7  │ 버튼8  │ 버튼9  │ ← 행 2
+            └────────┴────────┴────────┘
+               열 0     열 1     열 2
+            
+            속성 조합:
+            - Columns와 Rows 둘 다 지정: 정확한 행×열 구조
+            - Columns만 지정: 열 개수 고정, 행은 자동 계산
+            - Rows만 지정: 행 개수 고정, 열은 자동 계산
+            - 둘 다 미지정: 자동으로 정사각형에 가까운 구조
+        -->
+        
+        <!-- 자식 요소들을 순서대로 배치 -->
+        <Button>버튼1</Button>
+        <!-- 
+            첫 번째 버튼: (0, 0) 위치
+            - 왼쪽에서 오른쪽으로 먼저 채움
+            - 첫 번째 행, 첫 번째 열
+        -->
+        
+        <Button>버튼2</Button>
+        <!-- 
+            두 번째 버튼: (0, 1) 위치
+            - 첫 번째 행, 두 번째 열
+        -->
+        
+        <Button>버튼3</Button>
+        <!-- 
+            세 번째 버튼: (0, 2) 위치
+            - 첫 번째 행, 세 번째 열
+            - 행이 채워지면 다음 행으로 이동
+        -->
+        
+        <Button>버튼4</Button>
+        <!-- 
+            네 번째 버튼: (1, 0) 위치
+            - 두 번째 행, 첫 번째 열
+        -->
+        
+        <Button>버튼5</Button>
+        <!-- 
+            다섯 번째 버튼: (1, 1) 위치
+            - 두 번째 행, 두 번째 열
+        -->
+        
+        <Button>버튼6</Button>
+        <!-- 
+            여섯 번째 버튼: (1, 2) 위치
+            - 두 번째 행, 세 번째 열
+        -->
+        
+        <Button>버튼7</Button>
+        <!-- 
+            일곱 번째 버튼: (2, 0) 위치
+            - 세 번째 행, 첫 번째 열
+        -->
+        
+        <Button>버튼8</Button>
+        <!-- 
+            여덟 번째 버튼: (2, 1) 위치
+            - 세 번째 행, 두 번째 열
+        -->
+        
+        <Button>버튼9</Button>
+        <!-- 
+            아홉 번째 버튼: (2, 2) 위치
+            - 세 번째 행, 세 번째 열
+            - 모든 셀이 채워짐
+        -->
+        
+        <Button>버튼10</Button>
+        <!-- 
+            열 번째 버튼: 추가 버튼
+            - Rows="3" Columns="3"으로 9개 셀만 정의됨
+            - 버튼10은 정의된 셀을 초과
+            
+            초과 요소 처리:
+            - UniformGrid는 초과 요소를 무시하지 않음
+            - 자동으로 추가 행을 생성
+            - 4번째 행이 생성되어 (3, 0) 위치에 배치
+            
+            결과:
+            ┌────────┬────────┬────────┐
+            │ 버튼1  │ 버튼2  │ 버튼3  │
+            ├────────┼────────┼────────┤
+            │ 버튼4  │ 버튼5  │ 버튼6  │
+            ├────────┼────────┼────────┤
+            │ 버튼7  │ 버튼8  │ 버튼9  │
+            ├────────┼────────┼────────┤
+            │버튼10  │        │        │ ← 자동 추가된 행
+            └────────┴────────┴────────┘
+            
+            주의: 
+            - 초과 요소로 인해 레이아웃이 의도와 다를 수 있음
+            - 정확한 행×열 개수만큼만 자식 요소를 배치하는 것이 좋음
+            - 또는 Rows 속성을 생략하여 자동 계산
+        -->
+    </UniformGrid>
+    
+    <!--
+        UniformGrid 추가 속성 및 기능:
+        
+        1. FirstColumn (시작 열):
+           - 첫 번째 자식을 배치할 열 지정
+           - 기본값: 0
+           
+           예제:
+           <UniformGrid Columns="3" FirstColumn="1">
+               <Button>버튼1</Button> <!-- (0, 1) 위치에 배치 -->
+               <Button>버튼2</Button> <!-- (0, 2) 위치에 배치 -->
+               <Button>버튼3</Button> <!-- (1, 0) 위치에 배치 -->
+           </UniformGrid>
+           
+           결과:
+           ┌────┬────┬────┐
+           │(빈)│버튼1│버튼2│
+           ├────┼────┼────┤
+           │버튼3│    │    │
+           └────┴────┴────┘
+        
+        2. Columns만 지정 (자동 행 계산):
+           <UniformGrid Columns="3">
+               <Button>버튼1</Button>
+               <Button>버튼2</Button>
+               <Button>버튼3</Button>
+               <Button>버튼4</Button>
+               <Button>버튼5</Button>
+           </UniformGrid>
+           
+           결과: 자식 5개, 열 3개 → 행 2개 자동 계산
+           ┌────┬────┬────┐
+           │버튼1│버튼2│버튼3│
+           ├────┼────┼────┤
+           │버튼4│버튼5│(빈)│
+           └────┴────┴────┘
+        
+        3. Rows만 지정 (자동 열 계산):
+           <UniformGrid Rows="2">
+               <Button>버튼1</Button>
+               <Button>버튼2</Button>
+               <Button>버튼3</Button>
+               <Button>버튼4</Button>
+               <Button>버튼5</Button>
+           </UniformGrid>
+           
+           결과: 자식 5개, 행 2개 → 열 3개 자동 계산
+           ┌────┬────┬────┐
+           │버튼1│버튼2│버튼3│
+           ├────┼────┼────┤
+           │버튼4│버튼5│(빈)│
+           └────┴────┴────┘
+        
+        4. 둘 다 미지정 (완전 자동):
+           <UniformGrid>
+               <Button>버튼1</Button>
+               <Button>버튼2</Button>
+               <Button>버튼3</Button>
+               <Button>버튼4</Button>
+           </UniformGrid>
+           
+           결과: 2×2 그리드 (가장 정사각형에 가까운 구조)
+           ┌──────┬──────┐
+           │버튼1 │버튼2 │
+           ├──────┼──────┤
+           │버튼3 │버튼4 │
+           └──────┴──────┘
+        
+        실전 활용 예제:
+        
+        1. 숫자 키패드:
+           <UniformGrid Columns="3" Rows="4">
+               <Button>1</Button>
+               <Button>2</Button>
+               <Button>3</Button>
+               <Button>4</Button>
+               <Button>5</Button>
+               <Button>6</Button>
+               <Button>7</Button>
+               <Button>8</Button>
+               <Button>9</Button>
+               <Button>*</Button>
+               <Button>0</Button>
+               <Button>#</Button>
+           </UniformGrid>
+        
+        2. 색상 팔레트:
+           <UniformGrid Columns="8" Rows="8">
+               <!-- 64개의 색상 버튼 -->
+           </UniformGrid>
+        
+        3. 아이콘 그리드:
+           <UniformGrid Columns="4">
+               <Button>
+                   <Image Source="icon1.png"/>
+               </Button>
+               <Button>
+                   <Image Source="icon2.png"/>
+               </Button>
+               <!-- 더 많은 아이콘들 -->
+           </UniformGrid>
+        
+        4. 이미지 갤러리:
+           <UniformGrid Columns="3">
+               <Border>
+                   <Image Source="photo1.jpg" Stretch="UniformToFill"/>
+               </Border>
+               <Border>
+                   <Image Source="photo2.jpg" Stretch="UniformToFill"/>
+               </Border>
+               <Border>
+                   <Image Source="photo3.jpg" Stretch="UniformToFill"/>
+               </Border>
+               <!-- 더 많은 이미지들 -->
+           </UniformGrid>
+        
+        5. 타일 메뉴:
+           <UniformGrid Columns="2" Rows="2">
+               <Button Background="LightBlue">
+                   <StackPanel>
+                       <TextBlock Text="📊" FontSize="48"/>
+                       <TextBlock Text="통계"/>
+                   </StackPanel>
+               </Button>
+               <Button Background="LightGreen">
+                   <StackPanel>
+                       <TextBlock Text="⚙️" FontSize="48"/>
+                       <TextBlock Text="설정"/>
+                   </StackPanel>
+               </Button>
+               <Button Background="LightCoral">
+                   <StackPanel>
+                       <TextBlock Text="📁" FontSize="48"/>
+                       <TextBlock Text="파일"/>
+                   </StackPanel>
+               </Button>
+               <Button Background="LightYellow">
+                   <StackPanel>
+                       <TextBlock Text="ℹ️" FontSize="48"/>
+                       <TextBlock Text="정보"/>
+                   </StackPanel>
+               </Button>
+           </UniformGrid>
+        
+        6. 캘린더 그리드 (요일):
+           <StackPanel>
+               <!-- 요일 헤더 -->
+               <UniformGrid Columns="7">
+                   <TextBlock Text="일" HorizontalAlignment="Center"/>
+                   <TextBlock Text="월" HorizontalAlignment="Center"/>
+                   <TextBlock Text="화" HorizontalAlignment="Center"/>
+                   <TextBlock Text="수" HorizontalAlignment="Center"/>
+                   <TextBlock Text="목" HorizontalAlignment="Center"/>
+                   <TextBlock Text="금" HorizontalAlignment="Center"/>
+                   <TextBlock Text="토" HorizontalAlignment="Center"/>
+               </UniformGrid>
+               
+               <!-- 날짜 그리드 -->
+               <UniformGrid Columns="7" Rows="5">
+                   <!-- 35개의 날짜 버튼 -->
+               </UniformGrid>
+           </StackPanel>
+        
+        7. 게임 보드 (체스, 오목):
+           <UniformGrid Columns="8" Rows="8">
+               <!-- 64개의 셀 -->
+           </UniformGrid>
+        
+        UniformGrid의 장단점:
+        
+        장점:
+        - 매우 간단한 사용법
+        - 자동 균등 분할
+        - 코드가 깔끔함
+        - 정확히 같은 크기가 필요한 레이아웃에 최적
+        - 계산기, 키패드, 색상 팔레트 등에 이상적
+        
+        단점:
+        - 모든 셀이 같은 크기만 가능
+        - 유연성 부족
+        - 셀 병합 불가
+        - 특정 위치에 배치 불가 (순차 배치만 가능)
+        - 복잡한 레이아웃에는 부적합
+        
+        다른 레이아웃 패널과의 비교:
+        
+        UniformGrid vs Grid:
+        - UniformGrid: 균등 분할, 간단함
+        - Grid: 유연한 크기, 복잡한 레이아웃
+        
+        UniformGrid vs WrapPanel:
+        - UniformGrid: 고정된 행/열 구조
+        - WrapPanel: 자동 줄바꿈, 유동적
+        
+        UniformGrid vs StackPanel:
+        - UniformGrid: 2차원 균등 배치
+        - StackPanel: 1차원 순차 배치
+        
+        성능:
+        - UniformGrid는 매우 효율적
+        - 모든 셀이 같은 크기이므로 레이아웃 계산이 빠름
+        - 많은 자식 요소에도 성능 우수
+        
+        주의사항:
+        - 자식 요소 수와 행×열 개수 일치 권장
+        - 초과 요소는 추가 행 생성
+        - 부족한 요소는 빈 셀 남김
+        - 반응형이 필요하면 WrapPanel 고려
+        - 다양한 크기가 필요하면 Grid 사용
+        
+        스타일링:
+        <UniformGrid Columns="3" 
+                     Background="LightGray"
+                     Margin="10">
+            <UniformGrid.Resources>
+                <Style TargetType="Button">
+                    <Setter Property="Margin" Value="5"/>
+                    <Setter Property="FontSize" Value="16"/>
+                </Style>
+            </UniformGrid.Resources>
+            <!-- 버튼들 -->
+        </UniformGrid>
+    -->
+</Window>

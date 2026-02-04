@@ -1,0 +1,381 @@
+﻿<!-- 
+    ch13 익스팬더 - WPF Expander 컨트롤의 다양한 기능을 보여주는 예제 파일
+    Expander는 접을 수 있는(Collapsible) 컨테이너 컨트롤로, 헤더를 클릭하여 내용을 
+    펼치거나 접을 수 있습니다. 공간을 절약하면서 필요할 때만 상세 정보를 표시하는데 유용합니다.
+-->
+<Window x:Class="ch13_익스팬더.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ch13_익스팬더"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <StackPanel>
+            <!-- 
+                예제 1: Expander 기본 사용법
+                간단한 헤더와 내용을 가진 접을 수 있는 컨트롤
+            -->
+            <Expander Header="확장" Expanded="Expander_Expanded">
+                <!-- 
+                    Expander 기본 구조:
+                    - Header: 항상 표시되는 제목 부분 (클릭 가능)
+                    - Content: 펼쳤을 때만 표시되는 내용 부분
+                    
+                    Expander 속성 상세 설명:
+                    
+                    Header="확장": 
+                    - Expander의 헤더(제목) 텍스트
+                    - 헤더는 항상 표시되며 클릭하여 내용을 펼치거나 접을 수 있음
+                    - 단순 텍스트 또는 복잡한 UI 요소 모두 가능
+                    
+                    Expanded="Expander_Expanded": 
+                    - Expander가 펼쳐질 때(확장될 때) 발생하는 이벤트
+                    - 사용자가 헤더를 클릭하여 내용을 펼칠 때 실행됨
+                    - 코드에서 IsExpanded = true로 설정해도 이벤트 발생
+                    
+                    기본 동작:
+                    - 처음에는 접힌 상태 (IsExpanded="False" 기본값)
+                    - 헤더 왼쪽에 삼각형(▶) 아이콘 표시
+                    - 헤더를 클릭하면 내용이 펼쳐지고 아이콘이 아래로(▼) 변경됨
+                    - 다시 클릭하면 내용이 접히고 아이콘이 오른쪽으로(▶) 변경됨
+                    
+                    시각적 표현:
+                    
+                    접힌 상태:
+                    ┌─────────────────┐
+                    │ ▶ 확장          │
+                    └─────────────────┘
+                    
+                    펼쳐진 상태:
+                    ┌─────────────────┐
+                    │ ▼ 확장          │
+                    ├─────────────────┤
+                    │ 텍스트 블럭     │
+                    │ [버튼]          │
+                    └─────────────────┘
+                -->
+                
+                <!-- 
+                    Expander의 Content (내용 부분)
+                    StackPanel을 사용하여 여러 컨트롤을 세로로 배치
+                -->
+                <StackPanel>
+                    <TextBlock>텍스트 블럭</TextBlock>
+                    <Button>버튼</Button>
+                </StackPanel>
+                <!-- 
+                    Content 영역:
+                    - Expander가 펼쳐졌을 때만 표시됨
+                    - 접혀 있을 때는 화면에서 완전히 사라짐 (공간도 차지하지 않음)
+                    - 단일 요소만 직접 넣거나, StackPanel/Grid 등으로 여러 요소를 구성 가능
+                    
+                    사용 사례:
+                    - 고급 옵션 표시/숨김
+                    - 상세 정보 펼치기
+                    - FAQ (자주 묻는 질문) 섹션
+                    - 필터/검색 옵션 접기
+                -->
+            </Expander>
+            
+            <!-- 
+                예제 2: 커스터마이징된 Expander
+                복잡한 헤더와 기본적으로 펼쳐진 상태의 Expander
+            -->
+            <Expander IsExpanded="True">
+                <!-- 
+                    IsExpanded="True": 
+                    - Expander가 처음부터 펼쳐진 상태로 표시됨
+                    - false: 접힌 상태 (기본값)
+                    - true: 펼쳐진 상태
+                    - 코드에서 동적으로 변경 가능
+                    
+                    용도:
+                    - 중요한 정보를 기본적으로 표시
+                    - 사용자가 자주 사용하는 옵션을 펼쳐 놓음
+                    - 초기 화면에서 바로 내용을 보여주고 싶을 때
+                -->
+                
+                <!-- 
+                    Expander.Header: 속성 요소 구문(Property Element Syntax)
+                    단순 텍스트가 아닌 복잡한 UI를 헤더로 사용할 때 사용
+                -->
+                <Expander.Header>
+                    <!-- 
+                        WrapPanel: 자식 요소들을 가로로 배치하되, 
+                        공간이 부족하면 자동으로 다음 줄로 넘김
+                        여기서는 이미지와 텍스트를 가로로 나란히 배치
+                    -->
+                    <WrapPanel>
+                        <!-- 헤더에 표시될 아이콘 이미지 -->
+                        <Image Width="20" Source="https://cdn4.iconfinder.com/data/icons/smileys-for-fun/128/smiley__18-512.png"/>
+                        <!-- 이미지 옆에 표시될 텍스트 -->
+                        <TextBlock VerticalAlignment="Center">확장2</TextBlock>
+                    </WrapPanel>
+                    <!-- 
+                        커스텀 헤더의 장점:
+                        - 시각적으로 풍부한 헤더 디자인
+                        - 아이콘으로 Expander의 내용을 직관적으로 표현
+                        - 여러 요소를 조합하여 정보 전달력 향상
+                        
+                        결과:
+                        ┌─────────────────┐
+                        │ ▼ 😊 확장2      │
+                        ├─────────────────┤
+                        │ 텍스트 블럭 [버튼]│
+                        └─────────────────┘
+                        
+                        다른 헤더 커스터마이징 예제:
+                        - CheckBox를 헤더에 넣어 전체 선택/해제
+                        - Button을 헤더에 넣어 추가 기능 제공
+                        - ProgressBar를 넣어 진행 상황 표시
+                        - 여러 TextBlock으로 제목과 부제목 구성
+                    -->
+                </Expander.Header>
+                
+                <!-- 
+                    Content 영역: WrapPanel을 사용한 가로 배치
+                    TextBlock과 Button을 가로로 나란히 배치
+                -->
+                <WrapPanel>
+                    <TextBlock>텍스트 블럭</TextBlock>
+                    <Button>버튼</Button>
+                </WrapPanel>
+                <!-- 
+                    Content 배치 옵션:
+                    - StackPanel: 세로 또는 가로로 순차 배치
+                    - WrapPanel: 자동 줄바꿈 가능한 가로 배치
+                    - Grid: 복잡한 레이아웃 구성
+                    - ScrollViewer: 내용이 많을 때 스크롤 가능하게
+                -->
+            </Expander>
+        </StackPanel>
+    </Grid>
+    
+    <!--
+        Expander 컨트롤의 추가 유용한 속성:
+        
+        1. IsExpanded (펼침/접힘 상태):
+           - true: 펼쳐진 상태
+           - false: 접힌 상태 (기본값)
+           - 양방향 바인딩 가능
+           
+           예제:
+           <Expander IsExpanded="True"/>
+           <!-- 처음부터 펼쳐진 상태 -->
+           
+           코드에서 사용:
+           expander.IsExpanded = true; // 펼치기
+           expander.IsExpanded = false; // 접기
+        
+        2. ExpandDirection (펼침 방향):
+           - Down: 아래로 펼침 (기본값)
+           - Up: 위로 펼침
+           - Left: 왼쪽으로 펼침
+           - Right: 오른쪽으로 펼침
+           
+           예제:
+           <Expander ExpandDirection="Right"/>
+           <!-- 오른쪽으로 펼쳐지는 Expander -->
+           
+           시각적 차이:
+           Down (기본):        Right:
+           ┌─────┐            ┌───┬─────┐
+           │▼ 제목│            │►제│내용 │
+           ├─────┤            │  목│     │
+           │내용 │            └───┴─────┘
+           └─────┘
+        
+        3. Header (헤더 내용):
+           - 단순 문자열 또는 복잡한 UI 요소
+           - 속성 또는 속성 요소 구문으로 설정 가능
+           
+           예제:
+           <Expander Header="간단한 제목"/>
+           
+           또는
+           <Expander>
+               <Expander.Header>
+                   <StackPanel Orientation="Horizontal">
+                       <Image Source="icon.png"/>
+                       <TextBlock Text="복잡한 제목"/>
+                   </StackPanel>
+               </Expander.Header>
+           </Expander>
+        
+        주요 이벤트:
+        
+        1. Expanded:
+           - Expander가 펼쳐질 때 발생
+           - IsExpanded가 false → true로 변경될 때
+        
+        2. Collapsed:
+           - Expander가 접힐 때 발생
+           - IsExpanded가 true → false로 변경될 때
+        
+        이벤트 예제:
+        <Expander Expanded="OnExpanded" Collapsed="OnCollapsed"/>
+        
+        C#:
+        private void OnExpanded(object sender, RoutedEventArgs e)
+        {
+            // 펼쳐졌을 때 처리
+        }
+        
+        private void OnCollapsed(object sender, RoutedEventArgs e)
+        {
+            // 접혔을 때 처리
+        }
+        
+        코드에서 사용 예제:
+        
+        // 상태 확인
+        bool isOpen = expander.IsExpanded;
+        
+        // 프로그래밍 방식으로 펼치기/접기
+        expander.IsExpanded = !expander.IsExpanded; // 토글
+        
+        // 헤더 동적 변경
+        expander.Header = "새로운 제목";
+        
+        실전 활용 예제:
+        
+        1. 고급 검색 옵션:
+           <Expander Header="고급 검색 옵션">
+               <StackPanel>
+                   <Label>날짜 범위</Label>
+                   <DatePicker/>
+                   <Label>가격 범위</Label>
+                   <Slider/>
+               </StackPanel>
+           </Expander>
+        
+        2. 설정 그룹:
+           <StackPanel>
+               <Expander Header="일반 설정" IsExpanded="True">
+                   <StackPanel>
+                       <CheckBox>자동 시작</CheckBox>
+                       <CheckBox>알림 받기</CheckBox>
+                   </StackPanel>
+               </Expander>
+               
+               <Expander Header="고급 설정">
+                   <StackPanel>
+                       <CheckBox>디버그 모드</CheckBox>
+                       <CheckBox>로그 기록</CheckBox>
+                   </StackPanel>
+               </Expander>
+           </StackPanel>
+        
+        3. FAQ (자주 묻는 질문):
+           <StackPanel>
+               <Expander Header="Q: 어떻게 사용하나요?">
+                   <TextBlock TextWrapping="Wrap">
+                       A: 다음 단계를 따라하세요...
+                   </TextBlock>
+               </Expander>
+               
+               <Expander Header="Q: 가격은 얼마인가요?">
+                   <TextBlock TextWrapping="Wrap">
+                       A: 기본 플랜은 무료입니다...
+                   </TextBlock>
+               </Expander>
+           </StackPanel>
+        
+        4. 상세 정보 표시:
+           <Expander Header="제품 상세 정보">
+               <Grid>
+                   <Grid.RowDefinitions>
+                       <RowDefinition Height="Auto"/>
+                       <RowDefinition Height="Auto"/>
+                   </Grid.RowDefinitions>
+                   <TextBlock Grid.Row="0">사양: ...</TextBlock>
+                   <TextBlock Grid.Row="1">가격: ...</TextBlock>
+               </Grid>
+           </Expander>
+        
+        5. 필터 패널:
+           <Expander Header="필터" ExpandDirection="Right">
+               <StackPanel Width="200">
+                   <Label>카테고리</Label>
+                   <CheckBox>전자제품</CheckBox>
+                   <CheckBox>의류</CheckBox>
+                   <Label>가격</Label>
+                   <Slider/>
+               </StackPanel>
+           </Expander>
+        
+        6. 동적 헤더 (상태 표시):
+           <Expander x:Name="taskExpander">
+               <Expander.Header>
+                   <StackPanel Orientation="Horizontal">
+                       <TextBlock Text="작업 목록"/>
+                       <TextBlock Margin="10,0,0,0" 
+                                  Text="{Binding TaskCount, StringFormat='({0}개)'}"/>
+                   </StackPanel>
+               </Expander.Header>
+               <ListBox ItemsSource="{Binding Tasks}"/>
+           </Expander>
+        
+        스타일링:
+        
+        예제:
+        <Expander Background="LightBlue"
+                  BorderBrush="DarkBlue"
+                  BorderThickness="2"
+                  Foreground="DarkBlue"
+                  FontWeight="Bold">
+            <Expander.Header>
+                <TextBlock Text="스타일 적용된 Expander"/>
+            </Expander.Header>
+            <TextBlock>내용...</TextBlock>
+        </Expander>
+        
+        Expander vs GroupBox:
+        
+        Expander:
+        - 접을 수 있음 (공간 절약)
+        - 클릭으로 내용 표시/숨김
+        - 많은 정보를 단계적으로 표시
+        - 사용자가 필요할 때만 내용 확인
+        
+        GroupBox:
+        - 항상 표시됨
+        - 관련 컨트롤의 시각적 그룹화
+        - 항상 보여야 하는 정보
+        - RadioButton 그룹화
+        
+        선택 가이드:
+        - 선택적 정보 → Expander
+        - 필수 정보 → GroupBox
+        - 공간 제약 → Expander
+        - 간단한 그룹화 → GroupBox
+        
+        접근성 고려사항:
+        - 키보드로 조작 가능 (Space/Enter로 펼침/접힘)
+        - 스크린 리더가 현재 상태를 읽을 수 있음
+        - 명확한 Header 텍스트 제공
+        - 중요한 정보는 기본적으로 펼쳐 놓기
+        
+        성능 팁:
+        - 접힌 상태에서는 Content가 렌더링되지 않음
+        - 많은 Expander를 사용할 때는 가상화 고려
+        - 무거운 내용은 Expanded 이벤트에서 지연 로드
+        
+        지연 로드 예제:
+        private void Expander_Expanded(object sender, RoutedEventArgs e)
+        {
+            if (sender is Expander expander && expander.Content == null)
+            {
+                // 처음 펼칠 때만 내용 로드
+                expander.Content = CreateContent();
+            }
+        }
+        
+        애니메이션:
+        - Expander는 기본적으로 펼침/접힘 애니메이션 제공
+        - 부드러운 전환 효과
+        - 사용자 경험 향상
+    -->
+</Window>

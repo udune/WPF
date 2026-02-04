@@ -1,0 +1,29 @@
+﻿<Window x:Class="ch10_캘린더.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ch10_캘린더"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <Calendar DisplayMode="Decade"></Calendar>
+                <Calendar DisplayMode="Year"></Calendar>
+                <Calendar DisplayMode="Month"
+                          x:Name="cal"
+                          SelectedDatesChanged="cal_SelectedDatesChanged">
+                    <Calendar.BlackoutDates>
+                        <CalendarDateRange Start="02.01.2025" End="02.05.2025"/>
+                    </Calendar.BlackoutDates>
+                </Calendar>
+            </StackPanel>
+            <TextBlock x:Name="tb">텍스트블럭</TextBlock>
+            <TextBlock Text="{Binding ElementName=cal, 
+            Path=SelectedDate, 
+            StringFormat='yyyy-MM-dd tt hh:mm:ss', 
+            ConverterCulture='ko-KR'}">텍스트블럭</TextBlock>
+        </StackPanel>
+    </Grid>
+</Window>

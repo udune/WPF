@@ -1,0 +1,97 @@
+﻿<Application x:Class="ch23_메뉴.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:ch23_메뉴"
+             StartupUri="MainWindow.xaml">
+    <Application.Resources>
+         
+    </Application.Resources>
+</Application>
+                            <MenuItem Header="14"/>
+                            <MenuItem Header="16"/>
+                        </MenuItem>
+                        <Separator/>
+                        <MenuItem Header="굵게" InputGestureText="Ctrl+B"/>
+                        <MenuItem Header="기울임꼴" InputGestureText="Ctrl+I"/>
+                        <MenuItem Header="밑줄" InputGestureText="Ctrl+U"/>
+                    </MenuItem>
+                    
+                    <MenuItem Header="_도구">
+                        <MenuItem Header="옵션">
+                            <MenuItem Header="일반"/>
+                            <MenuItem Header="편집기"/>
+                            <MenuItem Header="고급"/>
+                        </MenuItem>
+                        <MenuItem Header="사용자 지정"/>
+                    </MenuItem>
+                    
+                    <MenuItem Header="_도움말">
+                        <MenuItem Header="도움말 보기" InputGestureText="F1"/>
+                        <MenuItem Header="팁 및 요령"/>
+                        <Separator/>
+                        <MenuItem Header="업데이트 확인"/>
+                        <Separator/>
+                        <MenuItem Header="정보"/>
+                    </MenuItem>
+                </Menu>
+            </ControlTemplate>
+            
+            간단한 메뉴 템플릿:
+            <ControlTemplate x:Key="SimpleMenuTemplate">
+                <Menu>
+                    <MenuItem Header="파일">
+                        <MenuItem Header="새로 만들기"/>
+                        <MenuItem Header="열기"/>
+                        <MenuItem Header="저장"/>
+                        <Separator/>
+                        <MenuItem Header="종료"/>
+                    </MenuItem>
+                    <MenuItem Header="편집">
+                        <MenuItem Header="복사"/>
+                        <MenuItem Header="붙여넣기"/>
+                    </MenuItem>
+                    <MenuItem Header="도움말">
+                        <MenuItem Header="정보"/>
+                    </MenuItem>
+                </Menu>
+            </ControlTemplate>
+            
+            최근 파일 MenuItem 스타일:
+            <Style x:Key="RecentFileMenuItemStyle" TargetType="MenuItem">
+                <Setter Property="Header" Value="{Binding FileName}"/>
+                <Setter Property="Command" Value="{Binding OpenRecentCommand}"/>
+                <Setter Property="CommandParameter" Value="{Binding FilePath}"/>
+            </Style>
+            
+            체크 가능한 MenuItem 스타일:
+            <Style x:Key="CheckableMenuItemStyle" TargetType="MenuItem">
+                <Setter Property="IsCheckable" Value="True"/>
+                <Style.Triggers>
+                    <Trigger Property="IsChecked" Value="True">
+                        <Setter Property="FontWeight" Value="Bold"/>
+                    </Trigger>
+                </Style.Triggers>
+            </Style>
+            
+            메뉴 항목 그룹 스타일 (라디오 버튼처럼):
+            <Style x:Key="RadioMenuItemStyle" TargetType="MenuItem">
+                <Setter Property="IsCheckable" Value="True"/>
+                <EventSetter Event="Click" Handler="RadioMenuItem_Click"/>
+            </Style>
+            
+            사용 예제:
+            <Menu>
+                <MenuItem Header="파일" Style="{StaticResource TopLevelMenuItemStyle}">
+                    <MenuItem Header="새로 만들기">
+                        <MenuItem.Icon>
+                            <Image Source="Images/New.png"/>
+                        </MenuItem.Icon>
+                    </MenuItem>
+                </MenuItem>
+            </Menu>
+        </Application.Resources>
+    -->
+    <Application.Resources>
+         <!-- 현재 비어 있음 - 필요시 전역 Menu 스타일이나 리소스 추가 -->
+    </Application.Resources>
+</Application>

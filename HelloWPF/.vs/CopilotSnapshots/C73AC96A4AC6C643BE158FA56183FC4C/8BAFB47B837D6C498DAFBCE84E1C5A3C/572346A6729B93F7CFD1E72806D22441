@@ -1,0 +1,464 @@
+﻿using System.Text;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Data;
+using System.Windows.Documents;
+using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
+using System.Windows.Shapes;
+
+namespace ch16_독패널
+{
+    /// <summary>
+    /// Interaction logic for MainWindow.xaml
+    /// DockPanel 레이아웃 컨트롤의 도킹 기능을 시연하는 메인 윈도우
+    /// </summary>
+    public partial class MainWindow : Window
+    {
+        /// <summary>
+        /// MainWindow 생성자
+        /// 윈도우가 생성될 때 호출되어 초기화 작업을 수행합니다.
+        /// </summary>
+        public MainWindow()
+        {
+            // XAML에 정의된 UI 요소들을 초기화합니다.
+            InitializeComponent();
+            
+            /*
+             * 이 예제는 순수하게 XAML로 구현되어 있어
+             * 코드 비하인드에 특별한 로직이 없습니다.
+             * 
+             * 하지만 실제 프로젝트에서는 DockPanel을 
+             * 코드에서 동적으로 조작하거나
+             * Dock 위치를 런타임에 변경하는 경우가 있습니다.
+             */
+        }
+        
+        /*
+         * DockPanel 코드 비하인드 활용 예제:
+         * 
+         * 1. 동적으로 Dock 위치 변경:
+         * 
+         *    private void ToggleDockPosition_Click(object sender, RoutedEventArgs e)
+         *    {
+         *        if (sender is Button button)
+         *        {
+         *            // 현재 Dock 위치 가져오기
+         *            Dock currentDock = DockPanel.GetDock(button);
+         *            
+         *            // Dock 위치 순환 변경 (Left → Top → Right → Bottom → Left)
+         *            Dock newDock = currentDock switch
+         *            {
+         *                Dock.Left => Dock.Top,
+         *                Dock.Top => Dock.Right,
+         *                Dock.Right => Dock.Bottom,
+         *                Dock.Bottom => Dock.Left,
+         *                _ => Dock.Left
+         *            };
+         *            
+         *            // 새 Dock 위치 설정
+         *            DockPanel.SetDock(button, newDock);
+         *            
+         *            // 버튼 텍스트 업데이트
+         *            button.Content = $"{newDock} 도킹";
+         *        }
+         *    }
+         * 
+         * 2. 애플리케이션 레이아웃 동적 생성:
+         * 
+         *    private void CreateAppLayout()
+         *    {
+         *        DockPanel mainDock = new DockPanel();
+         *        
+         *        // 상단 메뉴바
+         *        Menu menu = new Menu
+         *        {
+         *            Background = new SolidColorBrush(Colors.LightGray)
+         *        };
+         *        MenuItem fileMenu = new MenuItem { Header = "파일" };
+         *        fileMenu.Items.Add(new MenuItem { Header = "새로 만들기" });
+         *        fileMenu.Items.Add(new MenuItem { Header = "열기" });
+         *        fileMenu.Items.Add(new MenuItem { Header = "저장" });
+         *        menu.Items.Add(fileMenu);
+         *        
+         *        DockPanel.SetDock(menu, Dock.Top);
+         *        mainDock.Children.Add(menu);
+         *        
+         *        // 상단 툴바
+         *        ToolBarTray toolBarTray = new ToolBarTray();
+         *        ToolBar toolBar = new ToolBar();
+         *        toolBar.Items.Add(new Button { Content = "새로 만들기" });
+         *        toolBar.Items.Add(new Button { Content = "열기" });
+         *        toolBar.Items.Add(new Button { Content = "저장" });
+         *        toolBarTray.ToolBars.Add(toolBar);
+         *        
+         *        DockPanel.SetDock(toolBarTray, Dock.Top);
+         *        mainDock.Children.Add(toolBarTray);
+         *        
+         *        // 하단 상태바
+         *        StatusBar statusBar = new StatusBar
+         *        {
+         *            Background = new SolidColorBrush(Colors.LightGray)
+         *        };
+         *        statusBar.Items.Add(new TextBlock { Text = "준비" });
+         *        
+         *        DockPanel.SetDock(statusBar, Dock.Bottom);
+         *        mainDock.Children.Add(statusBar);
+         *        
+         *        // 왼쪽 사이드바
+         *        TreeView treeView = new TreeView
+         *        {
+         *            Width = 200,
+         *            Background = new SolidColorBrush(Colors.WhiteSmoke)
+         *        };
+         *        TreeViewItem rootItem = new TreeViewItem { Header = "프로젝트" };
+         *        rootItem.Items.Add(new TreeViewItem { Header = "폴더1" });
+         *        rootItem.Items.Add(new TreeViewItem { Header = "폴더2" });
+         *        treeView.Items.Add(rootItem);
+         *        
+         *        DockPanel.SetDock(treeView, Dock.Left);
+         *        mainDock.Children.Add(treeView);
+         *        
+         *        // 중앙 콘텐츠 영역
+         *        TextBox contentArea = new TextBox
+         *        {
+         *            AcceptsReturn = true,
+         *            VerticalScrollBarVisibility = ScrollBarVisibility.Auto,
+         *            HorizontalScrollBarVisibility = ScrollBarVisibility.Auto,
+         *            FontSize = 14
+         *        };
+         *        mainDock.Children.Add(contentArea);
+         *        
+         *        // 메인 윈도우에 적용
+         *        this.Content = mainDock;
+         *    }
+         * 
+         * 3. 사이드바 토글 (표시/숨김):
+         * 
+         *    private void ToggleSidebar_Click(object sender, RoutedEventArgs e)
+         *    {
+         *        if (leftSidebar.Visibility == Visibility.Visible)
+         *        {
+         *            leftSidebar.Visibility = Visibility.Collapsed;
+         *            toggleButton.Content = "사이드바 표시";
+         *        }
+         *        else
+         *        {
+         *            leftSidebar.Visibility = Visibility.Visible;
+         *            toggleButton.Content = "사이드바 숨김";
+         *        }
+         *    }
+         * 
+         * 4. 패널 크기 동적 조정:
+         * 
+         *    private void ExpandPanel_Click(object sender, RoutedEventArgs e)
+         *    {
+         *        if (leftPanel.Width == 200)
+         *        {
+         *            leftPanel.Width = 300;
+         *        }
+         *        else
+         *        {
+         *            leftPanel.Width = 200;
+         *        }
+         *    }
+         * 
+         * 5. 분할 뷰 생성 (GridSplitter와 함께):
+         * 
+         *    private void CreateSplitView()
+         *    {
+         *        DockPanel dock = new DockPanel();
+         *        
+         *        // 왼쪽 패널
+         *        Border leftPanel = new Border
+         *        {
+         *            Width = 250,
+         *            Background = new SolidColorBrush(Colors.LightBlue),
+         *            Child = new TextBlock 
+         *            { 
+         *                Text = "왼쪽 패널",
+         *                Margin = new Thickness(10)
+         *            }
+         *        };
+         *        DockPanel.SetDock(leftPanel, Dock.Left);
+         *        dock.Children.Add(leftPanel);
+         *        
+         *        // GridSplitter (크기 조정 가능)
+         *        GridSplitter splitter = new GridSplitter
+         *        {
+         *            Width = 5,
+         *            Background = new SolidColorBrush(Colors.Gray),
+         *            HorizontalAlignment = HorizontalAlignment.Stretch
+         *        };
+         *        DockPanel.SetDock(splitter, Dock.Left);
+         *        dock.Children.Add(splitter);
+         *        
+         *        // 오른쪽 패널 (남은 공간)
+         *        Border rightPanel = new Border
+         *        {
+         *            Background = new SolidColorBrush(Colors.LightGreen),
+         *            Child = new TextBlock 
+         *            { 
+         *                Text = "오른쪽 패널",
+         *                Margin = new Thickness(10)
+         *            }
+         *        };
+         *        dock.Children.Add(rightPanel);
+         *        
+         *        this.Content = dock;
+         *    }
+         * 
+         * 6. 동적 패널 추가/제거:
+         * 
+         *    private void AddTopPanel_Click(object sender, RoutedEventArgs e)
+         *    {
+         *        Border newPanel = new Border
+         *        {
+         *            Height = 50,
+         *            Background = new SolidColorBrush(Colors.Yellow),
+         *            Child = new TextBlock 
+         *            { 
+         *                Text = "새 상단 패널",
+         *                VerticalAlignment = VerticalAlignment.Center,
+         *                HorizontalAlignment = HorizontalAlignment.Center
+         *            }
+         *        };
+         *        
+         *        DockPanel.SetDock(newPanel, Dock.Top);
+         *        
+         *        // 마지막 자식 바로 전에 삽입
+         *        int insertIndex = mainDockPanel.Children.Count - 1;
+         *        mainDockPanel.Children.Insert(insertIndex, newPanel);
+         *    }
+         *    
+         *    private void RemoveTopPanel_Click(object sender, RoutedEventArgs e)
+         *    {
+         *        // Dock이 Top인 패널 찾아서 제거
+         *        UIElement? toRemove = null;
+         *        foreach (UIElement child in mainDockPanel.Children)
+         *        {
+         *            if (DockPanel.GetDock(child) == Dock.Top)
+         *            {
+         *                toRemove = child;
+         *                break;
+         *            }
+         *        }
+         *        
+         *        if (toRemove != null)
+         *        {
+         *            mainDockPanel.Children.Remove(toRemove);
+         *        }
+         *    }
+         * 
+         * 7. 레이아웃 프리셋 전환:
+         * 
+         *    private void SwitchToLayout1_Click(object sender, RoutedEventArgs e)
+         *    {
+         *        // 레이아웃 1: 상단 메뉴 + 왼쪽 사이드바 + 중앙
+         *        ResetLayout();
+         *        
+         *        DockPanel.SetDock(menuBar, Dock.Top);
+         *        mainDockPanel.Children.Add(menuBar);
+         *        
+         *        DockPanel.SetDock(leftSidebar, Dock.Left);
+         *        mainDockPanel.Children.Add(leftSidebar);
+         *        
+         *        mainDockPanel.Children.Add(contentArea);
+         *    }
+         *    
+         *    private void SwitchToLayout2_Click(object sender, RoutedEventArgs e)
+         *    {
+         *        // 레이아웃 2: 상단 메뉴 + 오른쪽 사이드바 + 중앙
+         *        ResetLayout();
+         *        
+         *        DockPanel.SetDock(menuBar, Dock.Top);
+         *        mainDockPanel.Children.Add(menuBar);
+         *        
+         *        DockPanel.SetDock(rightSidebar, Dock.Right);
+         *        mainDockPanel.Children.Add(rightSidebar);
+         *        
+         *        mainDockPanel.Children.Add(contentArea);
+         *    }
+         *    
+         *    private void ResetLayout()
+         *    {
+         *        mainDockPanel.Children.Clear();
+         *    }
+         * 
+         * 8. 패널 상태 저장 및 복원:
+         * 
+         *    private void SaveLayout()
+         *    {
+         *        // 각 패널의 Dock 위치와 크기 저장
+         *        Properties.Settings.Default.LeftPanelWidth = leftPanel.Width;
+         *        Properties.Settings.Default.LeftPanelVisible = leftPanel.Visibility == Visibility.Visible;
+         *        Properties.Settings.Default.Save();
+         *    }
+         *    
+         *    private void RestoreLayout()
+         *    {
+         *        // 저장된 레이아웃 복원
+         *        leftPanel.Width = Properties.Settings.Default.LeftPanelWidth;
+         *        leftPanel.Visibility = Properties.Settings.Default.LeftPanelVisible 
+         *            ? Visibility.Visible 
+         *            : Visibility.Collapsed;
+         *    }
+         *    
+         *    protected override void OnClosing(System.ComponentModel.CancelEventArgs e)
+         *    {
+         *        base.OnClosing(e);
+         *        SaveLayout();
+         *    }
+         * 
+         * 9. 전체 화면 모드:
+         * 
+         *    private void ToggleFullScreen_Click(object sender, RoutedEventArgs e)
+         *    {
+         *        if (this.WindowState == WindowState.Maximized && 
+         *            this.WindowStyle == WindowStyle.None)
+         *        {
+         *            // 일반 모드로 복원
+         *            this.WindowState = WindowState.Normal;
+         *            this.WindowStyle = WindowStyle.SingleBorderWindow;
+         *            
+         *            // UI 요소들 표시
+         *            menuBar.Visibility = Visibility.Visible;
+         *            toolBar.Visibility = Visibility.Visible;
+         *            statusBar.Visibility = Visibility.Visible;
+         *        }
+         *        else
+         *        {
+         *            // 전체 화면 모드
+         *            this.WindowState = WindowState.Maximized;
+         *            this.WindowStyle = WindowStyle.None;
+         *            
+         *            // UI 요소들 숨김
+         *            menuBar.Visibility = Visibility.Collapsed;
+         *            toolBar.Visibility = Visibility.Collapsed;
+         *            statusBar.Visibility = Visibility.Collapsed;
+         *        }
+         *    }
+         * 
+         * 10. 드래그 앤 드롭으로 패널 재배치:
+         * 
+         *     private UIElement? draggedPanel;
+         *     private Dock originalDock;
+         *     
+         *     private void Panel_MouseDown(object sender, MouseButtonEventArgs e)
+         *     {
+         *         if (e.LeftButton == MouseButtonState.Pressed && sender is UIElement element)
+         *         {
+         *             draggedPanel = element;
+         *             originalDock = DockPanel.GetDock(element);
+         *             DragDrop.DoDragDrop(element, element, DragDropEffects.Move);
+         *         }
+         *     }
+         *     
+         *     private void DockPanel_Drop(object sender, DragEventArgs e)
+         *     {
+         *         if (draggedPanel != null && sender is DockPanel dockPanel)
+         *         {
+         *             // 드롭 위치에 따라 새 Dock 결정
+         *             Point dropPosition = e.GetPosition(dockPanel);
+         *             Dock newDock = GetDockFromPosition(dockPanel, dropPosition);
+         *             
+         *             // Dock 위치 변경
+         *             DockPanel.SetDock(draggedPanel, newDock);
+         *             
+         *             // 순서 재배치
+         *             dockPanel.Children.Remove(draggedPanel);
+         *             int insertIndex = GetInsertIndex(dockPanel, newDock);
+         *             dockPanel.Children.Insert(insertIndex, draggedPanel);
+         *             
+         *             draggedPanel = null;
+         *         }
+         *     }
+         *     
+         *     private Dock GetDockFromPosition(DockPanel panel, Point position)
+         *     {
+         *         double width = panel.ActualWidth;
+         *         double height = panel.ActualHeight;
+         *         
+         *         // 위치에 따라 가장 가까운 Dock 반환
+         *         if (position.Y < height / 4)
+         *             return Dock.Top;
+         *         if (position.Y > height * 3 / 4)
+         *             return Dock.Bottom;
+         *         if (position.X < width / 4)
+         *             return Dock.Left;
+         *         if (position.X > width * 3 / 4)
+         *             return Dock.Right;
+         *         
+         *         return Dock.Left; // 기본값
+         *     }
+         *     
+         *     private int GetInsertIndex(DockPanel panel, Dock targetDock)
+         *     {
+         *         // 같은 Dock 위치의 마지막 인덱스 찾기
+         *         int lastIndex = 0;
+         *         foreach (UIElement child in panel.Children)
+         *         {
+         *             if (DockPanel.GetDock(child) == targetDock)
+         *                 lastIndex = panel.Children.IndexOf(child) + 1;
+         *         }
+         *         return lastIndex;
+         *     }
+         * 
+         * DockPanel 코드 조작 관련 중요 사항:
+         * 
+         * 1. Dock 속성 설정/가져오기:
+         *    - DockPanel.SetDock(element, Dock.Top)
+         *    - Dock dock = DockPanel.GetDock(element)
+         *    - 첨부 속성(Attached Property) 방식
+         * 
+         * 2. Children 컬렉션 조작:
+         *    - Add, Insert, Remove, Clear 메서드
+         *    - 순서가 중요함 (배치 순서 = 추가 순서)
+         * 
+         * 3. LastChildFill 속성:
+         *    - 마지막 자식의 Dock 속성을 무시할지 결정
+         *    - 중앙 콘텐츠 영역 구현에 필수
+         * 
+         * 4. 동적 레이아웃 변경:
+         *    - 런타임에 Dock 위치 변경 가능
+         *    - 패널 추가/제거로 레이아웃 재구성
+         * 
+         * 5. GridSplitter 통합:
+         *    - GridSplitter도 Dock 속성 필요
+         *    - 사이즈 조정 가능한 분할 뷰 구현
+         * 
+         * 6. 성능 고려사항:
+         *    - DockPanel은 매우 효율적
+         *    - 중첩 최소화로 성능 향상
+         *    - 복잡한 레이아웃은 Grid 고려
+         * 
+         * 7. 이벤트 처리:
+         *    - 각 도킹된 패널에 독립적인 이벤트 핸들러
+         *    - SizeChanged 이벤트로 반응형 처리
+         * 
+         * 8. MVVM 패턴:
+         *    - Visibility 바인딩으로 패널 표시/숨김
+         *    - Width/Height 바인딩으로 크기 제어
+         * 
+         * 예제 - MVVM:
+         * XAML:
+         * <TreeView DockPanel.Dock="Left" 
+         *           Width="{Binding SidebarWidth}"
+         *           Visibility="{Binding IsSidebarVisible, 
+         *                               Converter={StaticResource BoolToVisibilityConverter}}"/>
+         * 
+         * ViewModel:
+         * public double SidebarWidth { get; set; } = 200;
+         * public bool IsSidebarVisible { get; set; } = true;
+         * 
+         * 9. 애니메이션:
+         *    - Width/Height 애니메이션으로 부드러운 전환
+         *    - Visibility 변경 시 페이드 효과
+         * 
+         * 10. 디버깅:
+         *     - Snoop이나 Live Visual Tree로 레이아웃 검사
+         *     - Dock 속성 값 확인
+         *     - 배치 순서 확인
+         */

@@ -1,0 +1,63 @@
+﻿using System.Windows;
+
+/*
+ * AssemblyInfo.cs - WPF 애플리케이션의 테마 정보 설정 파일
+ * 
+ * 이 파일은 WPF 애플리케이션의 리소스 딕셔너리 위치를 정의합니다.
+ * .NET Core/.NET 5+ WPF 프로젝트에서 자동 생성되는 표준 파일입니다.
+ * 
+ * ThemeInfo 속성:
+ * WPF의 테마 시스템이 리소스(스타일, 템플릿 등)를 검색하는 방법을 지정합니다.
+ */
+
+[assembly: ThemeInfo(
+    ResourceDictionaryLocation.None,            //where theme specific resource dictionaries are located
+                                                //(used if a resource is not found in the page,
+                                                // or application resource dictionaries)
+    ResourceDictionaryLocation.SourceAssembly   //where the generic resource dictionary is located
+                                                //(used if a resource is not found in the page,
+                                                // app, or any theme specific resource dictionaries)
+)]
+
+/*
+ * ThemeInfo 매개변수 설명:
+ * 
+ * 첫 번째 매개변수: ResourceDictionaryLocation.None
+ * - 테마별 리소스 딕셔너리의 위치를 지정
+ * - None: 테마별 리소스 딕셔너리를 사용하지 않음
+ * - 테마별 리소스란? Windows의 테마(Aero, Luna, Classic 등)에 따라 다른 스타일을 적용
+ * 
+ * 두 번째 매개변수: ResourceDictionaryLocation.SourceAssembly
+ * - 제네릭(일반) 리소스 딕셔너리의 위치를 지정
+ * - SourceAssembly: 현재 어셈블리에 제네릭 리소스가 포함되어 있음
+ * - 이 설정은 커스텀 컨트롤이나 스타일을 정의할 때 사용됨
+ * 
+ * 리소스 검색 순서:
+ * WPF가 리소스(예: Image의 Source, Button의 Style)를 찾는 순서:
+ * 1. 현재 요소의 Resources
+ * 2. 부모 요소들의 Resources (상위로 올라가며 검색)
+ * 3. Page 또는 Window의 Resources
+ * 4. Application.Resources (App.xaml의 Application.Resources)
+ * 5. 테마별 리소스 딕셔너리 (첫 번째 매개변수)
+ * 6. 제네릭 리소스 딕셔너리 (두 번째 매개변수)
+ * 7. 시스템 리소스
+ * 
+ * 이미지 리소스와의 관계:
+ * - 이 설정은 주로 스타일과 템플릿에 영향을 줌
+ * - 이미지 파일 자체(Source)와는 직접적인 관련이 없음
+ * - 하지만 Image 컨트롤의 기본 스타일은 이 설정의 영향을 받을 수 있음
+ * 
+ * 언제 수정하나?
+ * - 커스텀 컨트롤 라이브러리를 만들 때
+ * - 테마별로 다른 이미지나 스타일을 제공하고 싶을 때
+ * - 외부 어셈블리의 리소스를 사용할 때
+ * 
+ * 일반적인 애플리케이션 개발:
+ * - 이 파일을 수정할 필요가 거의 없음
+ * - 기본 설정으로 충분함
+ * - Image 파일은 프로젝트에 추가하고 Build Action을 "Resource"로 설정하면 됨
+ * 
+ * 참고:
+ * - 이 파일은 WPF의 고급 기능에 관한 설정입니다.
+ * - ch7 이미지 프로젝트에서는 기본 설정으로 충분합니다.
+ */

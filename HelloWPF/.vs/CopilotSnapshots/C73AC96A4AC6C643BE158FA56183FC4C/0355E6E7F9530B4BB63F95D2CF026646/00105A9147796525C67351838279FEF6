@@ -1,0 +1,197 @@
+﻿<!-- 
+    ch8 체크박스 - WPF CheckBox 컨트롤의 다양한 기능을 보여주는 예제 파일
+    CheckBox는 사용자가 여러 옵션 중 하나 이상을 선택할 수 있는 컨트롤입니다.
+    Boolean 상태(선택/미선택)를 표시하며, 선택적으로 3-상태(Checked/Unchecked/Indeterminate)도 지원합니다.
+-->
+<Window x:Class="ch8_체크박스.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ch8_체크박스"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <!-- 
+            StackPanel: 자식 요소들을 세로 방향으로 순차적으로 배치
+            HorizontalAlignment="Center": StackPanel을 Grid의 중앙에 배치
+        -->
+        <StackPanel HorizontalAlignment="Center">
+            <!-- 과일 선택 카테고리 제목 -->
+            <Label>과일</Label>
+            
+            <!-- 
+                예제 1: CheckBox 기본 사용법 - 태그 사이에 텍스트 직접 작성
+                간단한 체크박스 정의 방식
+            -->
+            <CheckBox>딸기</CheckBox>
+            
+            <!-- 
+                예제 2: CheckBox 기본 사용법 - Content 속성 사용
+                더 명시적이고 권장되는 방식
+            -->
+            <CheckBox Content="사과"/>
+            
+            <!-- 
+                예제 3: 기본적으로 선택된 상태의 CheckBox
+                IsChecked="True": 체크박스가 처음부터 선택된 상태로 표시됨
+            -->
+            <CheckBox IsChecked="True" Content="수박"/>
+            <!-- 
+                IsChecked 속성:
+                - True: 체크박스가 선택된 상태 (체크 표시)
+                - False: 체크박스가 선택되지 않은 상태 (빈 상자)
+                - null: 불확정 상태 (IsThreeState="True"일 때만 사용 가능)
+            -->
+            
+            <!-- 예제 4: 단순 체크박스 -->
+            <CheckBox Content="배"/>
+            
+            <!-- 
+                예제 5: 이벤트와 복잡한 콘텐츠를 가진 CheckBox
+                체크박스 안에 이미지와 텍스트를 함께 표시하는 고급 사용법
+            -->
+            <CheckBox 
+                x:Name="chkApple"
+                Checked="chkApple_Checked"
+                Unchecked="chkApple_Unchecked"
+                VerticalContentAlignment="Center">
+                <!-- 
+                    CheckBox 속성 상세 설명:
+                    
+                    x:Name="chkApple": 
+                    - 코드 비하인드에서 접근할 수 있는 고유 식별자
+                    - 이벤트 핸들러에서 이 체크박스를 참조할 때 사용
+                    
+                    Checked="chkApple_Checked": 
+                    - 체크박스가 선택될 때(체크될 때) 실행되는 이벤트 핸들러
+                    - 사용자가 빈 체크박스를 클릭하여 체크 표시를 만들 때 발생
+                    
+                    Unchecked="chkApple_Unchecked": 
+                    - 체크박스가 선택 해제될 때(체크가 해제될 때) 실행되는 이벤트 핸들러
+                    - 사용자가 체크된 체크박스를 클릭하여 체크를 해제할 때 발생
+                    
+                    VerticalContentAlignment="Center": 
+                    - 체크박스 내부 콘텐츠를 수직 방향으로 중앙 정렬
+                    - 이미지와 텍스트가 체크박스 높이의 중앙에 위치하도록 함
+                -->
+                
+                <!-- 
+                    CheckBox의 복합 콘텐츠:
+                    단순 텍스트 대신 StackPanel을 사용하여 여러 요소를 포함
+                -->
+                <StackPanel Orientation="Horizontal">
+                    <!-- 
+                        Image: 체크박스 옆에 표시될 아이콘
+                        오렌지 이미지를 외부 URL에서 로드
+                    -->
+                    <Image Width="50" Source="https://cdn0.iconfinder.com/data/icons/fruity-3/512/Orange-512.png"/>
+                    
+                    <!-- 
+                        TextBlock: 이미지 옆에 표시될 텍스트
+                        VerticalAlignment="Center": 이미지와 수직 정렬을 맞춤
+                        x:Name="tb": 코드 비하인드에서 텍스트를 변경할 수 있도록 이름 지정
+                    -->
+                    <TextBlock VerticalAlignment="Center" Text="청사과" x:Name="tb"></TextBlock>
+                </StackPanel>
+                <!-- 
+                    결과:
+                    [☐] [오렌지 아이콘] 청사과
+                    이런 형태의 체크박스가 생성됨
+                    
+                    용도:
+                    - 시각적으로 풍부한 체크박스 옵션
+                    - 설정 화면, 옵션 선택, 기능 활성화/비활성화 등에 활용
+                -->
+            </CheckBox>
+        </StackPanel>
+    </Grid>
+    
+    <!--
+        CheckBox 컨트롤의 추가 유용한 속성:
+        
+        1. IsThreeState (3-상태 체크박스):
+           - True: Checked, Unchecked, Indeterminate 세 가지 상태 사용 가능
+           - False: Checked, Unchecked 두 가지 상태만 사용 (기본값)
+           
+           예제:
+           <CheckBox IsThreeState="True" Content="전체 선택">
+               <CheckBox.IsChecked>
+                   {x:Null}  <!-- Indeterminate 상태 -->
+               </CheckBox.IsChecked>
+           </CheckBox>
+           
+           용도: 하위 항목이 일부만 선택된 경우 표시 (예: 파일 탐색기의 폴더 선택)
+        
+        2. IsEnabled:
+           - True: 체크박스 활성화 (사용자가 클릭 가능)
+           - False: 체크박스 비활성화 (회색으로 표시, 클릭 불가)
+           
+           예제:
+           <CheckBox IsEnabled="False" Content="비활성화됨"/>
+        
+        3. Command (MVVM 패턴):
+           - ICommand를 사용하여 체크 상태 변경 시 명령 실행
+           
+           예제:
+           <CheckBox Command="{Binding SelectItemCommand}" 
+                     CommandParameter="{Binding}"/>
+        
+        4. GroupName (논리적 그룹화):
+           - RadioButton과 달리 CheckBox는 GroupName을 직접 지원하지 않음
+           - 여러 체크박스를 함께 관리하려면 코드에서 처리 필요
+        
+        주요 이벤트:
+        - Checked: 체크박스가 선택될 때
+        - Unchecked: 체크박스가 선택 해제될 때
+        - Indeterminate: 불확정 상태가 될 때 (IsThreeState="True"일 때)
+        - Click: 체크박스를 클릭할 때 (상태 변경 전/후 모두 발생)
+        
+        CheckBox vs RadioButton:
+        
+        CheckBox:
+        - 여러 개를 동시에 선택 가능
+        - 독립적인 선택 (다른 체크박스에 영향 없음)
+        - 예: 취미 선택 (운동, 독서, 음악 모두 선택 가능)
+        
+        RadioButton:
+        - 그룹 내에서 하나만 선택 가능
+        - 상호 배타적 선택 (하나 선택 시 다른 것은 자동 해제)
+        - 예: 성별 선택 (남성, 여성 중 하나만 선택)
+        
+        실전 활용 예제:
+        
+        1. 전체 선택/해제:
+           <CheckBox x:Name="chkAll" Content="전체 선택" 
+                     Checked="CheckAll" Unchecked="UncheckAll"/>
+           <CheckBox Content="항목 1"/>
+           <CheckBox Content="항목 2"/>
+           <CheckBox Content="항목 3"/>
+        
+        2. 옵션 설정:
+           <CheckBox Content="알림 받기" IsChecked="True"/>
+           <CheckBox Content="자동 저장" IsChecked="True"/>
+           <CheckBox Content="시작 시 자동 실행"/>
+        
+        3. 기능 활성화/비활성화:
+           <CheckBox x:Name="chkAdvanced" Content="고급 옵션 표시" 
+                     Checked="ShowAdvanced" Unchecked="HideAdvanced"/>
+           <StackPanel x:Name="pnlAdvanced" Visibility="Collapsed">
+               <!-- 고급 옵션들 -->
+           </StackPanel>
+        
+        스타일링:
+        - Background: 배경색
+        - Foreground: 텍스트 색상
+        - BorderBrush: 테두리 색상
+        - FontSize, FontWeight: 텍스트 스타일
+        - Margin, Padding: 여백 설정
+        
+        예제:
+        <CheckBox Content="스타일 적용" 
+                  Background="LightBlue" 
+                  Foreground="DarkBlue" 
+                  FontSize="16" 
+                  FontWeight="Bold"/>
+    -->
+</Window>

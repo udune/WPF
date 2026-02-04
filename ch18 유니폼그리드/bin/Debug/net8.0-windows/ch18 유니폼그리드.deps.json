@@ -1,0 +1,23 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v8.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v8.0": {
+      "ch18 유니폼그리드/1.0.0": {
+        "runtime": {
+          "ch18 유니폼그리드.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "ch18 유니폼그리드/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

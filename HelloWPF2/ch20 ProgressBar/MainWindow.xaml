@@ -1,0 +1,73 @@
+<Window x:Class="ch20_ProgressBar.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ch20_ProgressBar"
+        mc:Ignorable="d"
+        Title="ProgressBar 예제" Height="500" Width="500">
+    <StackPanel Margin="20">
+
+        <!-- 1. 기본 ProgressBar -->
+        <GroupBox Header="1. 기본 ProgressBar" Margin="0,0,0,15">
+            <StackPanel Margin="10">
+                <ProgressBar Height="20" Value="70" Minimum="0" Maximum="100"/>
+                <TextBlock Text="Value=70, Minimum=0, Maximum=100"
+                           Foreground="Gray" Margin="0,5,0,0"/>
+            </StackPanel>
+        </GroupBox>
+
+        <!-- 2. Indeterminate 모드 (로딩 표시) -->
+        <GroupBox Header="2. Indeterminate 모드 (로딩 표시)" Margin="0,0,0,15">
+            <StackPanel Margin="10">
+                <ProgressBar Height="20" IsIndeterminate="True"/>
+                <TextBlock Text="IsIndeterminate=True (무한 애니메이션)"
+                           Foreground="Gray" Margin="0,5,0,0"/>
+            </StackPanel>
+        </GroupBox>
+
+        <!-- 3. 퍼센트 표시가 있는 ProgressBar -->
+        <GroupBox Header="3. 퍼센트 표시가 있는 ProgressBar" Margin="0,0,0,15">
+            <StackPanel Margin="10">
+                <Grid>
+                    <ProgressBar x:Name="pbWithText" Height="25" Maximum="100" Value="0"
+                                 Foreground="#4CAF50"/>
+                    <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center"
+                               FontWeight="Bold"
+                               Text="{Binding ElementName=pbWithText, Path=Value, StringFormat={}{0:0}%}"/>
+                </Grid>
+                <StackPanel Orientation="Horizontal" Margin="0,10,0,0">
+                    <Button Content="+10" Width="60" Margin="0,0,5,0" Click="Increase_Click"/>
+                    <Button Content="-10" Width="60" Margin="0,0,5,0" Click="Decrease_Click"/>
+                    <Button Content="리셋" Width="60" Margin="0,0,5,0" Click="Reset_Click"/>
+                </StackPanel>
+            </StackPanel>
+        </GroupBox>
+
+        <!-- 4. Slider와 연동된 ProgressBar -->
+        <GroupBox Header="4. Slider와 연동된 ProgressBar" Margin="0,0,0,15">
+            <StackPanel Margin="10">
+                <ProgressBar x:Name="pbSlider" Height="20" Maximum="100"
+                             Value="{Binding ElementName=slider, Path=Value}"
+                             Foreground="#2196F3"/>
+                <Slider x:Name="slider" Minimum="0" Maximum="100" Value="30" Margin="0,10,0,0"/>
+                <TextBlock Text="{Binding ElementName=slider, Path=Value, StringFormat=현재 값: {0:0}}"
+                           Foreground="Gray" Margin="0,5,0,0"/>
+            </StackPanel>
+        </GroupBox>
+
+        <!-- 5. 비동기 작업 시뮬레이션 -->
+        <GroupBox Header="5. 비동기 작업 시뮬레이션" Margin="0,0,0,15">
+            <StackPanel Margin="10">
+                <Grid>
+                    <ProgressBar x:Name="pbAsync" Height="25" Maximum="100"
+                                 Foreground="#FF9800"/>
+                    <TextBlock x:Name="tbStatus" HorizontalAlignment="Center" VerticalAlignment="Center"
+                               FontWeight="Bold" Text="대기 중"/>
+                </Grid>
+                <Button x:Name="btnStart" Content="작업 시작" Margin="0,10,0,0" Click="StartAsync_Click"/>
+            </StackPanel>
+        </GroupBox>
+
+    </StackPanel>
+</Window>

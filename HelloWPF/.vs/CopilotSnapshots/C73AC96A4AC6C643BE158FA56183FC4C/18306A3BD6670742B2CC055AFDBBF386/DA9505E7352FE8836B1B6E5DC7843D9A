@@ -1,0 +1,119 @@
+﻿using System.Text;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Data;
+using System.Windows.Documents;
+using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
+using System.Windows.Shapes;
+
+namespace ch6_패스워드박스
+{
+    /// <summary>
+    /// MainWindow.xaml에 대한 상호작용 논리
+    /// PasswordBox 컨트롤의 기본 사용법을 보여주는 메인 윈도우
+    /// </summary>
+    public partial class MainWindow : Window
+    {
+        /// <summary>
+        /// MainWindow 생성자
+        /// 윈도우가 생성될 때 호출되어 초기화 작업을 수행합니다.
+        /// </summary>
+        public MainWindow()
+        {
+            // XAML에 정의된 UI 요소들을 초기화합니다.
+            InitializeComponent();
+        }
+
+        /// <summary>
+        /// "패스워드확인" 버튼 클릭 이벤트 핸들러
+        /// PasswordBox에 입력된 비밀번호를 MessageBox로 표시합니다.
+        /// </summary>
+        /// <param name="sender">이벤트를 발생시킨 객체 (여기서는 Button)</param>
+        /// <param name="e">라우팅 이벤트 정보를 담고 있는 인자</param>
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            // PasswordBox의 Password 속성을 사용하여 입력된 비밀번호를 가져옵니다.
+            // MessageBox.Show()로 비밀번호를 표시합니다.
+            //
+            // pwd.Password:
+            // - PasswordBox에 입력된 실제 비밀번호 문자열을 반환 (string 타입)
+            // - 화면에는 "*" 문자로 마스킹되어 보이지만, 이 속성은 실제 문자열을 반환
+            // - 예: 사용자가 "abc"를 입력하면 화면에는 "***"로 보이지만 
+            //       pwd.Password는 "abc"를 반환
+            MessageBox.Show(pwd.Password);
+            
+            /*
+             * 보안 고려사항:
+             * 
+             * 1. 현재 코드의 문제점:
+             *    - Password 속성은 string 타입으로 평문을 반환합니다.
+             *    - string은 immutable(불변)이므로 메모리에서 즉시 제거되지 않습니다.
+             *    - 가비지 컬렉션이 발생할 때까지 메모리에 평문으로 남아 있어 보안에 취약합니다.
+             *    - MessageBox로 비밀번호를 표시하는 것은 실제 프로젝트에서는 절대 하면 안 됩니다!
+             * 
+             * 2. 더 안전한 방법 - SecureString 사용:
+             *    
+             *    // SecureString으로 비밀번호 가져오기
+             *    SecureString securePassword = pwd.SecurePassword;
+             *    
+             *    // SecureString의 장점:
+             *    // - 메모리에 암호화되어 저장됨
+             *    // - Dispose() 호출 시 메모리에서 즉시 제거됨
+             *    // - 메모리 덤프로부터 비밀번호 보호
+             * 
+             * 3. 실제 프로젝트에서의 사용 예:
+             *    
+             *    private void Button_Click(object sender, RoutedEventArgs e)
+             *    {
+             *        // 비밀번호 길이 검증
+             *        if (pwd.Password.Length < 8)
+             *        {
+             *            MessageBox.Show("비밀번호는 8자 이상이어야 합니다.", "오류", 
+             *                MessageBoxButton.OK, MessageBoxImage.Warning);
+             *            return;
+             *        }
+             *        
+             *        // SecureString으로 안전하게 처리
+             *        using (SecureString securePassword = pwd.SecurePassword)
+             *        {
+             *            // 인증 서비스에 전달하여 검증
+             *            bool isValid = AuthenticationService.ValidatePassword(securePassword);
+             *            
+             *            if (isValid)
+             *            {
+             *                MessageBox.Show("로그인 성공!");
+             *                // 다음 화면으로 이동
+             *            }
+             *            else
+             *            {
+             *                MessageBox.Show("비밀번호가 올바르지 않습니다.");
+             *                pwd.Clear(); // 비밀번호 입력 필드 초기화
+             *            }
+             *        }
+             *        // using 블록을 벗어나면 SecureString이 자동으로 Dispose됨
+             *    }
+             * 
+             * 4. 비밀번호 처리 모범 사례:
+             *    - 비밀번호를 로그에 남기지 말 것
+             *    - 비밀번호를 MessageBox로 표시하지 말 것
+             *    - 비밀번호를 문자열 변수에 저장하지 말고 즉시 처리
+             *    - 가능한 SecureString 사용
+             *    - 전송 시 HTTPS 등 암호화된 채널 사용
+             *    - 서버에 저장 시 해시 알고리즘(bcrypt, PBKDF2 등) 사용
+             * 
+             * 5. PasswordBox의 유용한 메서드:
+             *    - pwd.Clear(): 비밀번호 입력 필드를 비움
+             *    - pwd.Paste(): 클립보드의 내용을 붙여넣기 (보안상 비활성화 권장)
+             *    - pwd.SelectAll(): 모든 문자 선택
+             * 
+             * 참고:
+             * - 이 예제는 학습 목적으로 Password 속성을 직접 표시하지만,
+             *   실제 애플리케이션에서는 절대 이렇게 사용하면 안 됩니다.
+             * - 데모 목적으로만 사용하세요!
+             */
+        }
+    }
+}

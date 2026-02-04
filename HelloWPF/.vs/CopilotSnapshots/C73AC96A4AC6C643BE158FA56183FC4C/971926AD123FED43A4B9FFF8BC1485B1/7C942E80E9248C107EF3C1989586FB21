@@ -1,0 +1,61 @@
+﻿using System.Configuration;
+using System.Data;
+using System.Windows;
+
+namespace HelloWPF
+{
+    /// <summary>
+    /// Interaction logic for App.xaml
+    /// </summary>
+    /* 
+     * 코드 리뷰:
+     * 
+     * 장점:
+     * 1. 표준 WPF 애플리케이션 구조를 따르고 있습니다.
+     * 2. partial class로 App.xaml과 올바르게 연결되어 있습니다.
+     * 
+     * 개선 사항:
+     * 1. 사용하지 않는 using 문이 포함되어 있습니다:
+     *    - System.Configuration: 주로 App.config 파일을 읽을 때 사용
+     *    - System.Data: 데이터베이스 작업 시 사용
+     *    현재 코드에서 사용하지 않으므로 제거하는 것이 좋습니다.
+     * 
+     * 2. 애플리케이션 수준의 이벤트 핸들러가 없습니다.
+     *    다음과 같은 이벤트를 오버라이드하여 전역 기능을 구현할 수 있습니다:
+     *    - OnStartup: 애플리케이션 시작 시 초기화 로직
+     *    - OnExit: 애플리케이션 종료 시 정리 작업
+     *    - DispatcherUnhandledException: 처리되지 않은 예외 처리
+     * 
+     * 3. 전역 설정이나 서비스 초기화가 필요한 경우 OnStartup 메서드를
+     *    활용하는 것을 권장합니다.
+     * 
+     * 예제:
+     * protected override void OnStartup(StartupEventArgs e)
+     * {
+     *     base.OnStartup(e);
+     *     // 전역 초기화 로직
+     * }
+     * 
+     * protected override void OnExit(ExitEventArgs e)
+     * {
+     *     base.OnExit(e);
+     *     // 리소스 정리 및 종료 로직
+     * }
+     * 
+     * 예외 처리:
+     * this.DispatcherUnhandledException += App_DispatcherUnhandledException;
+     * 
+     * private void App_DispatcherUnhandledException(object sender, 
+     *     System.Windows.Threading.DispatcherUnhandledExceptionEventArgs e)
+     * {
+     *     MessageBox.Show($"오류 발생: {e.Exception.Message}", "오류", 
+     *         MessageBoxButton.OK, MessageBoxImage.Error);
+     *     e.Handled = true;
+     * }
+     */
+    public partial class App : Application
+    {
+        // TODO: 애플리케이션 수준의 이벤트 핸들러나 전역 초기화 로직을 여기에 추가
+    }
+
+}
