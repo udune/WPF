@@ -3,9 +3,6 @@
   "WorkspaceRootPath": "C:\\Users\\udune\\Desktop\\WPF\\HelloWPF\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{3BA6E64F-6ABF-43B8-9827-4094B853DE98}|..\\ch21 \uC2A4\uD14C\uC774\uD130\uC2A4\uBC14\\ch21 \uC2A4\uD14C\uC774\uD130\uC2A4\uBC14.csproj|c:\\users\\udune\\desktop\\wpf\\ch21 \uC2A4\uD14C\uC774\uD130\uC2A4\uBC14\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{8836CB2F-A0D2-4C12-8F1E-DD104991ADF9}|..\\ch22 \uD234\uBC14\\ch22 \uD234\uBC14.csproj|c:\\users\\udune\\desktop\\wpf\\ch22 \uD234\uBC14\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     }
   ],
@@ -16,7 +13,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 4,
+          "SelectedChildIndex": 3,
           "Children": [
             {
               "$type": "Bookmark",
@@ -32,7 +29,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
               "Title": "MainWindow.xaml",
               "DocumentMoniker": "C:\\Users\\udune\\Desktop\\WPF\\ch22 \uD234\uBC14\\MainWindow.xaml",
               "RelativeDocumentMoniker": "..\\ch22 \uD234\uBC14\\MainWindow.xaml",
@@ -40,18 +37,6 @@
               "RelativeToolTip": "..\\ch22 \uD234\uBC14\\MainWindow.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
               "WhenOpened": "2026-02-04T04:23:53.222Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "MainWindow.xaml",
-              "DocumentMoniker": "C:\\Users\\udune\\Desktop\\WPF\\ch21 \uC2A4\uD14C\uC774\uD130\uC2A4\uBC14\\MainWindow.xaml",
-              "RelativeDocumentMoniker": "..\\ch21 \uC2A4\uD14C\uC774\uD130\uC2A4\uBC14\\MainWindow.xaml",
-              "ToolTip": "C:\\Users\\udune\\Desktop\\WPF\\ch21 \uC2A4\uD14C\uC774\uD130\uC2A4\uBC14\\MainWindow.xaml",
-              "RelativeToolTip": "..\\ch21 \uC2A4\uD14C\uC774\uD130\uC2A4\uBC14\\MainWindow.xaml",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2026-02-04T04:02:17.43Z",
               "EditorCaption": ""
             }
           ]

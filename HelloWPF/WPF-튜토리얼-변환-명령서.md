@@ -99,3 +99,5 @@
 | ch19 캔버스 | Canvas | 5 | 완료 |
 | ch20 프로그레스바 | ProgressBar | 5 | 완료 |
 | ch21 스테이터스바 | StatusBar | 5 | 완료 |
+| ch22 툴바 | ToolBar | 5 | 완료 |
+| ch23 메뉴 | Menu | 5 | 완료 |
