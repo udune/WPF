@@ -18,3 +18,4 @@ C:\Users\udune\Desktop\WPF\ch22 툴바\obj\Debug\net8.0-windows\refint\ch22 툴�
 C:\Users\udune\Desktop\WPF\ch22 툴바\obj\Debug\net8.0-windows\ch22 툴바.pdb
 C:\Users\udune\Desktop\WPF\ch22 툴바\obj\Debug\net8.0-windows\ch22 툴바.genruntimeconfig.cache
 C:\Users\udune\Desktop\WPF\ch22 툴바\obj\Debug\net8.0-windows\ref\ch22 툴바.dll
+C:\Users\udune\Desktop\WPF\ch22 툴바\obj\Debug\net8.0-windows\ch22 툴바.sourcelink.json
