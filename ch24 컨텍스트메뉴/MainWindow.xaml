@@ -1,9 +1,3 @@
-﻿<!-- 
-    ch24 컨텍스트메뉴 - WPF ContextMenu의 기능을 보여주는 예제 파일
-    ContextMenu는 마우스 우클릭(또는 키보드)으로 표시되는 팝업 메뉴입니다.
-    특정 컨트롤이나 영역에 대한 컨텍스트별 명령을 제공합니다.
-    Menu와 달리 화면에 고정되지 않고, 필요할 때만 표시됩니다.
--->
 <Window x:Class="ch24_컨텍스트메뉴.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
@@ -11,45 +5,540 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ch24_컨텍스트메뉴"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="ch24 ContextMenu 튜토리얼" Height="600" Width="850">
 
-    <StackPanel>
-        <TextBlock Text="마우스 우클릭" FontSize="20" x:Name="tb">
-            <TextBlock.ContextMenu>
-                <ContextMenu>
-                    <MenuItem Header="진하게" Click="MenuItem_Click">
-                        <MenuItem.Icon>
-                            <Image Source="https://cdn0.iconfinder.com/data/icons/business-startup-10/50/61-512.png"/>
-                        </MenuItem.Icon>
-                    </MenuItem>
-                    <MenuItem Header="기울기" IsCheckable="True" Checked="MenuItem_Checked" Unchecked="MenuItem_Unchecked">
-                        <MenuItem.Icon>
-                            <Image Source="https://cdn0.iconfinder.com/data/icons/business-startup-10/50/61-512.png"/>
-                        </MenuItem.Icon>
-                    </MenuItem>
-                </ContextMenu>
-            </TextBlock.ContextMenu>
-        </TextBlock>
+    <Window.Resources>
+        <Style x:Key="CodeExpanderStyle" TargetType="Expander">
+            <Setter Property="Header" Value="코드 보기"/>
+            <Setter Property="Margin" Value="0,0,0,12"/>
+            <Setter Property="IsExpanded" Value="False"/>
+        </Style>
+        <Style x:Key="CodeTextBoxStyle" TargetType="TextBox">
+            <Setter Property="IsReadOnly" Value="True"/>
+            <Setter Property="FontFamily" Value="Consolas"/>
+            <Setter Property="FontSize" Value="12"/>
+            <Setter Property="Background" Value="#1E1E1E"/>
+            <Setter Property="Foreground" Value="#DCDCDC"/>
+            <Setter Property="Padding" Value="10"/>
+            <Setter Property="TextWrapping" Value="Wrap"/>
+            <Setter Property="AcceptsReturn" Value="True"/>
+            <Setter Property="VerticalScrollBarVisibility" Value="Auto"/>
+            <Setter Property="MaxHeight" Value="300"/>
+            <Setter Property="BorderBrush" Value="#333333"/>
+            <Setter Property="BorderThickness" Value="1"/>
+        </Style>
+    </Window.Resources>
 
-        <!-- Button with ContextMenu -->
-        <Button Content="버튼 우클릭">
-            <Button.ContextMenu>
-                <ContextMenu>
-                    <MenuItem Header="진하게" Click="MenuItem_Click">
-                        <!-- 동일한 이벤트 핸들러 사용 -->
-                        <MenuItem.Icon>
-                            <Image Source="https://cdn0.iconfinder.com/data/icons/business-startup-10/50/61-512.png"/>
-                        </MenuItem.Icon>
-                    </MenuItem>
+    <Grid>
+        <TabControl>
+            <!-- 탭 1: 기본 사용법 -->
+            <TabItem Header="기본 사용법">
+                <ScrollViewer VerticalScrollBarVisibility="Auto" Padding="20">
+                    <StackPanel>
+                        <TextBlock Text="ContextMenu 기본 사용법" FontSize="18" FontWeight="Bold" Margin="0,0,0,15"/>
 
-                    <MenuItem Header="기울기" IsCheckable="True" Checked="MenuItem_Checked" Unchecked="MenuItem_Unchecked">
-                        <!-- 동일한 이벤트 핸들러 사용 -->
-                        <MenuItem.Icon>
-                            <Image Source="https://cdn0.iconfinder.com/data/icons/business-startup-10/50/61-512.png"/>
-                        </MenuItem.Icon>
-                    </MenuItem>
-                </ContextMenu>
-            </Button.ContextMenu>
-        </Button>
-    </StackPanel>
+                        <!-- 기본 ContextMenu -->
+                        <GroupBox Header="기본 ContextMenu" Margin="0,0,0,10">
+                            <StackPanel Margin="10">
+                                <TextBlock Text="마우스 우클릭으로 ContextMenu를 표시합니다:" Margin="0,0,0,5"/>
+                                <Border Background="LightBlue" Padding="20" CornerRadius="5">
+                                    <Border.ContextMenu>
+                                        <ContextMenu>
+                                            <MenuItem Header="항목 1"/>
+                                            <MenuItem Header="항목 2"/>
+                                            <MenuItem Header="항목 3"/>
+                                        </ContextMenu>
+                                    </Border.ContextMenu>
+                                    <TextBlock Text="이 영역에서 마우스 우클릭하세요" HorizontalAlignment="Center"/>
+                                </Border>
+                            </StackPanel>
+                        </GroupBox>
+                        <Expander Style="{StaticResource CodeExpanderStyle}">
+                            <TextBox Style="{StaticResource CodeTextBoxStyle}" Text="&lt;Border Background=&quot;LightBlue&quot; Padding=&quot;20&quot;&gt;&#10;    &lt;Border.ContextMenu&gt;&#10;        &lt;ContextMenu&gt;&#10;            &lt;MenuItem Header=&quot;항목 1&quot;/&gt;&#10;            &lt;MenuItem Header=&quot;항목 2&quot;/&gt;&#10;            &lt;MenuItem Header=&quot;항목 3&quot;/&gt;&#10;        &lt;/ContextMenu&gt;&#10;    &lt;/Border.ContextMenu&gt;&#10;    &lt;TextBlock Text=&quot;이 영역에서 마우스 우클릭하세요&quot;/&gt;&#10;&lt;/Border&gt;"/>
+                        </Expander>
+
+                        <!-- TextBlock에 ContextMenu -->
+                        <GroupBox Header="TextBlock에 ContextMenu" Margin="0,0,0,10">
+                            <StackPanel Margin="10">
+                                <TextBlock Text="TextBlock에 ContextMenu를 연결합니다:" Margin="0,0,0,5"/>
+                                <TextBlock x:Name="contextTextBlock" Text="이 텍스트를 우클릭하세요"
+                                           FontSize="16" Padding="10" Background="LightYellow">
+                                    <TextBlock.ContextMenu>
+                                        <ContextMenu>
+                                            <MenuItem Header="복사"/>
+                                            <MenuItem Header="잘라내기"/>
+                                            <MenuItem Header="붙여넣기"/>
+                                        </ContextMenu>
+                                    </TextBlock.ContextMenu>
+                                </TextBlock>
+                            </StackPanel>
+                        </GroupBox>
+                        <Expander Style="{StaticResource CodeExpanderStyle}">
+                            <TextBox Style="{StaticResource CodeTextBoxStyle}" Text="&lt;TextBlock Text=&quot;이 텍스트를 우클릭하세요&quot; FontSize=&quot;16&quot;&gt;&#10;    &lt;TextBlock.ContextMenu&gt;&#10;        &lt;ContextMenu&gt;&#10;            &lt;MenuItem Header=&quot;복사&quot;/&gt;&#10;            &lt;MenuItem Header=&quot;잘라내기&quot;/&gt;&#10;            &lt;MenuItem Header=&quot;붙여넣기&quot;/&gt;&#10;        &lt;/ContextMenu&gt;&#10;    &lt;/TextBlock.ContextMenu&gt;&#10;&lt;/TextBlock&gt;"/>
+                        </Expander>
+
+                        <!-- Button에 ContextMenu -->
+                        <GroupBox Header="Button에 ContextMenu" Margin="0,0,0,10">
+                            <StackPanel Margin="10">
+                                <TextBlock Text="Button에 ContextMenu를 연결합니다:" Margin="0,0,0,5"/>
+                                <Button Content="이 버튼을 우클릭하세요" Padding="20,10" HorizontalAlignment="Left">
+                                    <Button.ContextMenu>
+                                        <ContextMenu>
+                                            <MenuItem Header="실행"/>
+                                            <MenuItem Header="설정"/>
+                                            <Separator/>
+                                            <MenuItem Header="도움말"/>
+                                        </ContextMenu>
+                                    </Button.ContextMenu>
+                                </Button>
+                            </StackPanel>
+                        </GroupBox>
+                        <Expander Style="{StaticResource CodeExpanderStyle}">
+                            <TextBox Style="{StaticResource CodeTextBoxStyle}" Text="&lt;Button Content=&quot;이 버튼을 우클릭하세요&quot; Padding=&quot;20,10&quot;&gt;&#10;    &lt;Button.ContextMenu&gt;&#10;        &lt;ContextMenu&gt;&#10;            &lt;MenuItem Header=&quot;실행&quot;/&gt;&#10;            &lt;MenuItem Header=&quot;설정&quot;/&gt;&#10;            &lt;Separator/&gt;&#10;            &lt;MenuItem Header=&quot;도움말&quot;/&gt;&#10;        &lt;/ContextMenu&gt;&#10;    &lt;/Button.ContextMenu&gt;&#10;&lt;/Button&gt;"/>
+                        </Expander>
+
+                        <!-- Click 이벤트 -->
+                        <GroupBox Header="Click 이벤트 처리" Margin="0,0,0,10">
+                            <StackPanel Margin="10">
+                                <TextBlock Text="MenuItem의 Click 이벤트로 동작을 처리합니다:" Margin="0,0,0,5"/>
+                                <Border Background="LightGreen" Padding="20" CornerRadius="5">
+                                    <Border.ContextMenu>
+                                        <ContextMenu>
+                                            <MenuItem Header="메시지 표시" Click="ShowMessage_Click"/>
+                                            <MenuItem Header="시간 표시" Click="ShowTime_Click"/>
+                                        </ContextMenu>
+                                    </Border.ContextMenu>
+                                    <TextBlock Text="우클릭하여 메뉴 선택" HorizontalAlignment="Center"/>
+                                </Border>
+                            </StackPanel>
+                        </GroupBox>
+                        <Expander Style="{StaticResource CodeExpanderStyle}">
+                            <TextBox Style="{StaticResource CodeTextBoxStyle}" Text="&lt;MenuItem Header=&quot;메시지 표시&quot; Click=&quot;ShowMessage_Click&quot;/&gt;&#10;&#10;// C# 코드&#10;private void ShowMessage_Click(object sender, RoutedEventArgs e)&#10;{&#10;    MessageBox.Show(&quot;메뉴 항목이 클릭되었습니다!&quot;, &quot;알림&quot;);&#10;}"/>
+                        </Expander>
+                    </StackPanel>
+                </ScrollViewer>
+            </TabItem>
+
+            <!-- 탭 2: 계층 구조와 스타일 -->
+            <TabItem Header="계층 구조와 스타일">
+                <ScrollViewer VerticalScrollBarVisibility="Auto" Padding="20">
+                    <StackPanel>
+                        <TextBlock Text="계층 구조와 스타일" FontSize="18" FontWeight="Bold" Margin="0,0,0,15"/>
+
+                        <!-- 서브메뉴 -->
+                        <GroupBox Header="서브메뉴 (중첩 MenuItem)" Margin="0,0,0,10">
+                            <StackPanel Margin="10">
+                                <TextBlock Text="MenuItem을 중첩하여 서브메뉴를 만듭니다:" Margin="0,0,0,5"/>
+                                <Border Background="LightCoral" Padding="20" CornerRadius="5">
+                                    <Border.ContextMenu>
+                                        <ContextMenu>
+                                            <MenuItem Header="파일">
+                                                <MenuItem Header="새로 만들기"/>
+                                                <MenuItem Header="열기"/>
+                                                <MenuItem Header="저장"/>
+                                            </MenuItem>
+                                            <MenuItem Header="편집">
+                                                <MenuItem Header="잘라내기"/>
+                                                <MenuItem Header="복사"/>
+                                                <MenuItem Header="붙여넣기"/>
+                                            </MenuItem>
+                                        </ContextMenu>
+                                    </Border.ContextMenu>
+                                    <TextBlock Text="우클릭하여 서브메뉴 확인" HorizontalAlignment="Center"/>
+                                </Border>
+                            </StackPanel>
+                        </GroupBox>
+                        <Expander Style="{StaticResource CodeExpanderStyle}">
+                            <TextBox Style="{StaticResource CodeTextBoxStyle}" Text="&lt;ContextMenu&gt;&#10;    &lt;MenuItem Header=&quot;파일&quot;&gt;&#10;        &lt;MenuItem Header=&quot;새로 만들기&quot;/&gt;&#10;        &lt;MenuItem Header=&quot;열기&quot;/&gt;&#10;        &lt;MenuItem Header=&quot;저장&quot;/&gt;&#10;    &lt;/MenuItem&gt;&#10;    &lt;MenuItem Header=&quot;편집&quot;&gt;&#10;        &lt;MenuItem Header=&quot;잘라내기&quot;/&gt;&#10;        &lt;MenuItem Header=&quot;복사&quot;/&gt;&#10;        &lt;MenuItem Header=&quot;붙여넣기&quot;/&gt;&#10;    &lt;/MenuItem&gt;&#10;&lt;/ContextMenu&gt;"/>
+                        </Expander>
+
+                        <!-- 아이콘과 단축키 -->
+                        <GroupBox Header="아이콘과 InputGestureText" Margin="0,0,0,10">
+                            <StackPanel Margin="10">
+                                <TextBlock Text="아이콘과 단축키 표시를 추가합니다:" Margin="0,0,0,5"/>
+                                <Border Background="LightSteelBlue" Padding="20" CornerRadius="5">
+                                    <Border.ContextMenu>
+                                        <ContextMenu>
+                                            <MenuItem Header="새로 만들기" InputGestureText="Ctrl+N">
+                                                <MenuItem.Icon>
+                                                    <Rectangle Width="14" Height="14" Fill="LightBlue" Stroke="DarkBlue"/>
+                                                </MenuItem.Icon>
+                                            </MenuItem>
+                                            <MenuItem Header="열기" InputGestureText="Ctrl+O">
+                                                <MenuItem.Icon>
+                                                    <Ellipse Width="14" Height="14" Fill="Yellow" Stroke="Orange"/>
+                                                </MenuItem.Icon>
+                                            </MenuItem>
+                                            <MenuItem Header="저장" InputGestureText="Ctrl+S">
+                                                <MenuItem.Icon>
+                                                    <Polygon Points="7,0 14,14 0,14" Fill="Green"/>
+                                                </MenuItem.Icon>
+                                            </MenuItem>
+                                        </ContextMenu>
+                                    </Border.ContextMenu>
+                                    <TextBlock Text="우클릭하여 아이콘/단축키 확인" HorizontalAlignment="Center"/>
+                                </Border>
+                            </StackPanel>
+                        </GroupBox>
+                        <Expander Style="{StaticResource CodeExpanderStyle}">
+                            <TextBox Style="{StaticResource CodeTextBoxStyle}" Text="&lt;MenuItem Header=&quot;새로 만들기&quot; InputGestureText=&quot;Ctrl+N&quot;&gt;&#10;    &lt;MenuItem.Icon&gt;&#10;        &lt;Rectangle Width=&quot;14&quot; Height=&quot;14&quot; Fill=&quot;LightBlue&quot; Stroke=&quot;DarkBlue&quot;/&gt;&#10;    &lt;/MenuItem.Icon&gt;&#10;&lt;/MenuItem&gt;&#10;&lt;MenuItem Header=&quot;열기&quot; InputGestureText=&quot;Ctrl+O&quot;&gt;&#10;    &lt;MenuItem.Icon&gt;&#10;        &lt;Ellipse Width=&quot;14&quot; Height=&quot;14&quot; Fill=&quot;Yellow&quot; Stroke=&quot;Orange&quot;/&gt;&#10;    &lt;/MenuItem.Icon&gt;&#10;&lt;/MenuItem&gt;"/>
+                        </Expander>
+
+                        <!-- IsCheckable -->
+                        <GroupBox Header="IsCheckable (체크 가능 메뉴)" Margin="0,0,0,10">
+                            <StackPanel Margin="10">
+                                <TextBlock Text="IsCheckable로 토글 가능한 메뉴를 만듭니다:" Margin="0,0,0,5"/>
+                                <TextBlock x:Name="checkableText" Text="이 텍스트를 우클릭하세요"
+                                           FontSize="16" Padding="10" Background="LightPink">
+                                    <TextBlock.ContextMenu>
+                                        <ContextMenu>
+                                            <MenuItem Header="굵게" IsCheckable="True" Checked="Bold_Checked" Unchecked="Bold_Unchecked"/>
+                                            <MenuItem Header="기울임" IsCheckable="True" Checked="Italic_Checked" Unchecked="Italic_Unchecked"/>
+                                            <MenuItem Header="밑줄" IsCheckable="True" Checked="Underline_Checked" Unchecked="Underline_Unchecked"/>
+                                        </ContextMenu>
+                                    </TextBlock.ContextMenu>
+                                </TextBlock>
+                            </StackPanel>
+                        </GroupBox>
+                        <Expander Style="{StaticResource CodeExpanderStyle}">
+                            <TextBox Style="{StaticResource CodeTextBoxStyle}" Text="&lt;MenuItem Header=&quot;굵게&quot; IsCheckable=&quot;True&quot; Checked=&quot;Bold_Checked&quot; Unchecked=&quot;Bold_Unchecked&quot;/&gt;&#10;&lt;MenuItem Header=&quot;기울임&quot; IsCheckable=&quot;True&quot; Checked=&quot;Italic_Checked&quot; Unchecked=&quot;Italic_Unchecked&quot;/&gt;&#10;&#10;// C# 코드&#10;private void Bold_Checked(object sender, RoutedEventArgs e)&#10;{&#10;    checkableText.FontWeight = FontWeights.Bold;&#10;}&#10;private void Bold_Unchecked(object sender, RoutedEventArgs e)&#10;{&#10;    checkableText.FontWeight = FontWeights.Normal;&#10;}"/>
+                        </Expander>
+
+                        <!-- IsEnabled -->
+                        <GroupBox Header="IsEnabled (활성화/비활성화)" Margin="0,0,0,10">
+                            <StackPanel Margin="10">
+                                <TextBlock Text="IsEnabled로 메뉴 항목을 비활성화할 수 있습니다:" Margin="0,0,0,5"/>
+                                <Border Background="LightGray" Padding="20" CornerRadius="5">
+                                    <Border.ContextMenu>
+                                        <ContextMenu>
+                                            <MenuItem Header="실행 취소" IsEnabled="False"/>
+                                            <MenuItem Header="다시 실행" IsEnabled="False"/>
+                                            <Separator/>
+                                            <MenuItem Header="잘라내기"/>
+                                            <MenuItem Header="복사"/>
+                                            <MenuItem Header="붙여넣기" IsEnabled="False"/>
+                                        </ContextMenu>
+                                    </Border.ContextMenu>
+                                    <TextBlock Text="우클릭하여 비활성화된 항목 확인" HorizontalAlignment="Center"/>
+                                </Border>
+                            </StackPanel>
+                        </GroupBox>
+                        <Expander Style="{StaticResource CodeExpanderStyle}">
+                            <TextBox Style="{StaticResource CodeTextBoxStyle}" Text="&lt;ContextMenu&gt;&#10;    &lt;MenuItem Header=&quot;실행 취소&quot; IsEnabled=&quot;False&quot;/&gt;&#10;    &lt;MenuItem Header=&quot;다시 실행&quot; IsEnabled=&quot;False&quot;/&gt;&#10;    &lt;Separator/&gt;&#10;    &lt;MenuItem Header=&quot;잘라내기&quot;/&gt;&#10;    &lt;MenuItem Header=&quot;복사&quot;/&gt;&#10;    &lt;MenuItem Header=&quot;붙여넣기&quot; IsEnabled=&quot;False&quot;/&gt;&#10;&lt;/ContextMenu&gt;"/>
+                        </Expander>
+                    </StackPanel>
+                </ScrollViewer>
+            </TabItem>
+
+            <!-- 탭 3: 다양한 컨트롤 적용 -->
+            <TabItem Header="다양한 컨트롤 적용">
+                <ScrollViewer VerticalScrollBarVisibility="Auto" Padding="20">
+                    <StackPanel>
+                        <TextBlock Text="다양한 컨트롤에 적용" FontSize="18" FontWeight="Bold" Margin="0,0,0,15"/>
+
+                        <!-- ListBox에 적용 -->
+                        <GroupBox Header="ListBox에 ContextMenu" Margin="0,0,0,10">
+                            <StackPanel Margin="10">
+                                <TextBlock Text="ListBox 항목에 ContextMenu를 적용합니다:" Margin="0,0,0,5"/>
+                                <ListBox Height="100">
+                                    <ListBox.ContextMenu>
+                                        <ContextMenu>
+                                            <MenuItem Header="항목 추가" Click="AddItem_Click"/>
+                                            <MenuItem Header="선택 항목 삭제" Click="DeleteItem_Click"/>
+                                            <Separator/>
+                                            <MenuItem Header="모두 선택"/>
+                                            <MenuItem Header="선택 해제"/>
+                                        </ContextMenu>
+                                    </ListBox.ContextMenu>
+                                    <ListBoxItem Content="항목 1"/>
+                                    <ListBoxItem Content="항목 2"/>
+                                    <ListBoxItem Content="항목 3"/>
+                                </ListBox>
+                            </StackPanel>
+                        </GroupBox>
+                        <Expander Style="{StaticResource CodeExpanderStyle}">
+                            <TextBox Style="{StaticResource CodeTextBoxStyle}" Text="&lt;ListBox Height=&quot;100&quot;&gt;&#10;    &lt;ListBox.ContextMenu&gt;&#10;        &lt;ContextMenu&gt;&#10;            &lt;MenuItem Header=&quot;항목 추가&quot; Click=&quot;AddItem_Click&quot;/&gt;&#10;            &lt;MenuItem Header=&quot;선택 항목 삭제&quot; Click=&quot;DeleteItem_Click&quot;/&gt;&#10;            &lt;Separator/&gt;&#10;            &lt;MenuItem Header=&quot;모두 선택&quot;/&gt;&#10;        &lt;/ContextMenu&gt;&#10;    &lt;/ListBox.ContextMenu&gt;&#10;    &lt;ListBoxItem Content=&quot;항목 1&quot;/&gt;&#10;    &lt;ListBoxItem Content=&quot;항목 2&quot;/&gt;&#10;&lt;/ListBox&gt;"/>
+                        </Expander>
+
+                        <!-- Image에 적용 -->
+                        <GroupBox Header="Image/도형에 ContextMenu" Margin="0,0,0,10">
+                            <StackPanel Margin="10">
+                                <TextBlock Text="도형에 ContextMenu를 적용합니다:" Margin="0,0,0,5"/>
+                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                                    <Rectangle x:Name="colorRect" Width="80" Height="80" Fill="Blue" Margin="10">
+                                        <Rectangle.ContextMenu>
+                                            <ContextMenu>
+                                                <MenuItem Header="빨강" Click="SetRed_Click"/>
+                                                <MenuItem Header="초록" Click="SetGreen_Click"/>
+                                                <MenuItem Header="파랑" Click="SetBlue_Click"/>
+                                                <Separator/>
+                                                <MenuItem Header="랜덤 색상" Click="SetRandom_Click"/>
+                                            </ContextMenu>
+                                        </Rectangle.ContextMenu>
+                                    </Rectangle>
+                                    <Ellipse x:Name="colorEllipse" Width="80" Height="80" Fill="Green" Margin="10">
+                                        <Ellipse.ContextMenu>
+                                            <ContextMenu>
+                                                <MenuItem Header="빨강" Click="SetEllipseRed_Click"/>
+                                                <MenuItem Header="초록" Click="SetEllipseGreen_Click"/>
+                                                <MenuItem Header="파랑" Click="SetEllipseBlue_Click"/>
+                                            </ContextMenu>
+                                        </Ellipse.ContextMenu>
+                                    </Ellipse>
+                                </StackPanel>
+                                <TextBlock Text="각 도형을 우클릭하여 색상 변경" HorizontalAlignment="Center" Margin="0,5,0,0"/>
+                            </StackPanel>
+                        </GroupBox>
+                        <Expander Style="{StaticResource CodeExpanderStyle}">
+                            <TextBox Style="{StaticResource CodeTextBoxStyle}" Text="&lt;Rectangle x:Name=&quot;colorRect&quot; Width=&quot;80&quot; Height=&quot;80&quot; Fill=&quot;Blue&quot;&gt;&#10;    &lt;Rectangle.ContextMenu&gt;&#10;        &lt;ContextMenu&gt;&#10;            &lt;MenuItem Header=&quot;빨강&quot; Click=&quot;SetRed_Click&quot;/&gt;&#10;            &lt;MenuItem Header=&quot;초록&quot; Click=&quot;SetGreen_Click&quot;/&gt;&#10;            &lt;MenuItem Header=&quot;파랑&quot; Click=&quot;SetBlue_Click&quot;/&gt;&#10;        &lt;/ContextMenu&gt;&#10;    &lt;/Rectangle.ContextMenu&gt;&#10;&lt;/Rectangle&gt;"/>
+                        </Expander>
+
+                        <!-- Grid 영역에 적용 -->
+                        <GroupBox Header="Grid 영역에 ContextMenu" Margin="0,0,0,10">
+                            <Grid Height="100" Background="LightCyan" Margin="10">
+                                <Grid.ContextMenu>
+                                    <ContextMenu>
+                                        <MenuItem Header="속성"/>
+                                        <MenuItem Header="레이아웃">
+                                            <MenuItem Header="가로 정렬"/>
+                                            <MenuItem Header="세로 정렬"/>
+                                        </MenuItem>
+                                        <Separator/>
+                                        <MenuItem Header="배경색 변경"/>
+                                    </ContextMenu>
+                                </Grid.ContextMenu>
+                                <TextBlock Text="Grid 영역 우클릭" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            </Grid>
+                        </GroupBox>
+                        <Expander Style="{StaticResource CodeExpanderStyle}">
+                            <TextBox Style="{StaticResource CodeTextBoxStyle}" Text="&lt;Grid Height=&quot;100&quot; Background=&quot;LightCyan&quot;&gt;&#10;    &lt;Grid.ContextMenu&gt;&#10;        &lt;ContextMenu&gt;&#10;            &lt;MenuItem Header=&quot;속성&quot;/&gt;&#10;            &lt;MenuItem Header=&quot;레이아웃&quot;&gt;&#10;                &lt;MenuItem Header=&quot;가로 정렬&quot;/&gt;&#10;                &lt;MenuItem Header=&quot;세로 정렬&quot;/&gt;&#10;            &lt;/MenuItem&gt;&#10;            &lt;Separator/&gt;&#10;            &lt;MenuItem Header=&quot;배경색 변경&quot;/&gt;&#10;        &lt;/ContextMenu&gt;&#10;    &lt;/Grid.ContextMenu&gt;&#10;&lt;/Grid&gt;"/>
+                        </Expander>
+
+                        <!-- TextBox에 적용 -->
+                        <GroupBox Header="TextBox에 ContextMenu (기본 덮어쓰기)" Margin="0,0,0,10">
+                            <StackPanel Margin="10">
+                                <TextBlock Text="TextBox의 기본 ContextMenu를 커스텀 메뉴로 대체합니다:" Margin="0,0,0,5"/>
+                                <TextBox x:Name="customContextTextBox" Text="텍스트를 입력하고 우클릭하세요" Padding="10">
+                                    <TextBox.ContextMenu>
+                                        <ContextMenu>
+                                            <MenuItem Header="잘라내기" Command="ApplicationCommands.Cut"/>
+                                            <MenuItem Header="복사" Command="ApplicationCommands.Copy"/>
+                                            <MenuItem Header="붙여넣기" Command="ApplicationCommands.Paste"/>
+                                            <Separator/>
+                                            <MenuItem Header="모두 선택" Command="ApplicationCommands.SelectAll"/>
+                                            <Separator/>
+                                            <MenuItem Header="지우기" Click="ClearText_Click"/>
+                                        </ContextMenu>
+                                    </TextBox.ContextMenu>
+                                </TextBox>
+                            </StackPanel>
+                        </GroupBox>
+                        <Expander Style="{StaticResource CodeExpanderStyle}">
+                            <TextBox Style="{StaticResource CodeTextBoxStyle}" Text="&lt;TextBox x:Name=&quot;customContextTextBox&quot; Text=&quot;텍스트 입력&quot;&gt;&#10;    &lt;TextBox.ContextMenu&gt;&#10;        &lt;ContextMenu&gt;&#10;            &lt;MenuItem Header=&quot;잘라내기&quot; Command=&quot;ApplicationCommands.Cut&quot;/&gt;&#10;            &lt;MenuItem Header=&quot;복사&quot; Command=&quot;ApplicationCommands.Copy&quot;/&gt;&#10;            &lt;MenuItem Header=&quot;붙여넣기&quot; Command=&quot;ApplicationCommands.Paste&quot;/&gt;&#10;            &lt;Separator/&gt;&#10;            &lt;MenuItem Header=&quot;모두 선택&quot; Command=&quot;ApplicationCommands.SelectAll&quot;/&gt;&#10;            &lt;Separator/&gt;&#10;            &lt;MenuItem Header=&quot;지우기&quot; Click=&quot;ClearText_Click&quot;/&gt;&#10;        &lt;/ContextMenu&gt;&#10;    &lt;/TextBox.ContextMenu&gt;&#10;&lt;/TextBox&gt;"/>
+                        </Expander>
+                    </StackPanel>
+                </ScrollViewer>
+            </TabItem>
+
+            <!-- 탭 4: 동적 ContextMenu -->
+            <TabItem Header="동적 ContextMenu">
+                <ScrollViewer VerticalScrollBarVisibility="Auto" Padding="20">
+                    <StackPanel>
+                        <TextBlock Text="동적 ContextMenu" FontSize="18" FontWeight="Bold" Margin="0,0,0,15"/>
+
+                        <!-- 코드에서 ContextMenu 생성 -->
+                        <GroupBox Header="코드에서 ContextMenu 생성" Margin="0,0,0,10">
+                            <StackPanel Margin="10">
+                                <TextBlock Text="버튼 클릭으로 ContextMenu를 동적으로 생성합니다:" Margin="0,0,0,5"/>
+                                <Button Content="ContextMenu 생성" Click="CreateContextMenu_Click"
+                                        Padding="15,8" HorizontalAlignment="Left" Margin="0,0,0,10"/>
+                                <Border x:Name="dynamicContextBorder" Background="Wheat" Padding="20" CornerRadius="5">
+                                    <TextBlock Text="이 영역에 동적 ContextMenu가 적용됩니다" HorizontalAlignment="Center"/>
+                                </Border>
+                            </StackPanel>
+                        </GroupBox>
+                        <Expander Style="{StaticResource CodeExpanderStyle}">
+                            <TextBox Style="{StaticResource CodeTextBoxStyle}" Text="// C# 코드 - 동적 ContextMenu 생성&#10;private void CreateContextMenu_Click(object sender, RoutedEventArgs e)&#10;{&#10;    var contextMenu = new ContextMenu();&#10;    &#10;    var item1 = new MenuItem { Header = &quot;동적 항목 1&quot; };&#10;    item1.Click += (s, args) =&gt; MessageBox.Show(&quot;항목 1 클릭&quot;);&#10;    &#10;    var item2 = new MenuItem { Header = &quot;동적 항목 2&quot; };&#10;    item2.Click += (s, args) =&gt; MessageBox.Show(&quot;항목 2 클릭&quot;);&#10;    &#10;    contextMenu.Items.Add(item1);&#10;    contextMenu.Items.Add(item2);&#10;    &#10;    dynamicContextBorder.ContextMenu = contextMenu;&#10;}"/>
+                        </Expander>
+
+                        <!-- ContextMenuOpening 이벤트 -->
+                        <GroupBox Header="ContextMenuOpening 이벤트" Margin="0,0,0,10">
+                            <StackPanel Margin="10">
+                                <TextBlock Text="메뉴가 열릴 때 동적으로 항목을 변경합니다:" Margin="0,0,0,5"/>
+                                <Border Background="LightGreen" Padding="20" CornerRadius="5"
+                                        ContextMenuOpening="DynamicBorder_ContextMenuOpening">
+                                    <Border.ContextMenu>
+                                        <ContextMenu x:Name="dynamicMenu">
+                                            <MenuItem Header="고정 항목"/>
+                                        </ContextMenu>
+                                    </Border.ContextMenu>
+                                    <TextBlock Text="우클릭할 때마다 시간이 업데이트됩니다" HorizontalAlignment="Center"/>
+                                </Border>
+                            </StackPanel>
+                        </GroupBox>
+                        <Expander Style="{StaticResource CodeExpanderStyle}">
+                            <TextBox Style="{StaticResource CodeTextBoxStyle}" Text="&lt;Border ContextMenuOpening=&quot;DynamicBorder_ContextMenuOpening&quot;&gt;&#10;    &lt;Border.ContextMenu&gt;&#10;        &lt;ContextMenu x:Name=&quot;dynamicMenu&quot;&gt;&#10;            &lt;MenuItem Header=&quot;고정 항목&quot;/&gt;&#10;        &lt;/ContextMenu&gt;&#10;    &lt;/Border.ContextMenu&gt;&#10;&lt;/Border&gt;&#10;&#10;// C# 코드&#10;private void DynamicBorder_ContextMenuOpening(object sender, ContextMenuEventArgs e)&#10;{&#10;    // 기존 동적 항목 제거 후 새로 추가&#10;    while (dynamicMenu.Items.Count &gt; 1)&#10;        dynamicMenu.Items.RemoveAt(1);&#10;    &#10;    dynamicMenu.Items.Add(new Separator());&#10;    dynamicMenu.Items.Add(new MenuItem { Header = $&quot;현재 시간: {DateTime.Now:HH:mm:ss}&quot; });&#10;}"/>
+                        </Expander>
+
+                        <!-- 조건부 ContextMenu -->
+                        <GroupBox Header="조건부 메뉴 활성화" Margin="0,0,0,10">
+                            <StackPanel Margin="10">
+                                <TextBlock Text="체크박스 상태에 따라 메뉴 항목이 활성화됩니다:" Margin="0,0,0,5"/>
+                                <CheckBox x:Name="enableDeleteCheck" Content="삭제 메뉴 활성화" Margin="0,0,0,10"/>
+                                <Border Background="LightSalmon" Padding="20" CornerRadius="5"
+                                        ContextMenuOpening="ConditionalBorder_ContextMenuOpening">
+                                    <Border.ContextMenu>
+                                        <ContextMenu>
+                                            <MenuItem Header="보기"/>
+                                            <MenuItem Header="편집"/>
+                                            <MenuItem x:Name="deleteMenuItem" Header="삭제" IsEnabled="False"/>
+                                        </ContextMenu>
+                                    </Border.ContextMenu>
+                                    <TextBlock Text="체크박스를 켜고 우클릭하세요" HorizontalAlignment="Center"/>
+                                </Border>
+                            </StackPanel>
+                        </GroupBox>
+                        <Expander Style="{StaticResource CodeExpanderStyle}">
+                            <TextBox Style="{StaticResource CodeTextBoxStyle}" Text="&lt;CheckBox x:Name=&quot;enableDeleteCheck&quot; Content=&quot;삭제 메뉴 활성화&quot;/&gt;&#10;&lt;Border ContextMenuOpening=&quot;ConditionalBorder_ContextMenuOpening&quot;&gt;&#10;    &lt;Border.ContextMenu&gt;&#10;        &lt;ContextMenu&gt;&#10;            &lt;MenuItem Header=&quot;보기&quot;/&gt;&#10;            &lt;MenuItem x:Name=&quot;deleteMenuItem&quot; Header=&quot;삭제&quot; IsEnabled=&quot;False&quot;/&gt;&#10;        &lt;/ContextMenu&gt;&#10;    &lt;/Border.ContextMenu&gt;&#10;&lt;/Border&gt;&#10;&#10;// C# 코드&#10;private void ConditionalBorder_ContextMenuOpening(object sender, ContextMenuEventArgs e)&#10;{&#10;    deleteMenuItem.IsEnabled = enableDeleteCheck.IsChecked == true;&#10;}"/>
+                        </Expander>
+
+                        <!-- 프로그래밍 방식으로 열기 -->
+                        <GroupBox Header="프로그래밍 방식으로 ContextMenu 열기" Margin="0,0,0,10">
+                            <StackPanel Margin="10">
+                                <TextBlock Text="버튼 클릭으로 ContextMenu를 프로그래밍 방식으로 엽니다:" Margin="0,0,0,5"/>
+                                <Button x:Name="programmaticButton" Content="클릭하면 ContextMenu 열기"
+                                        Click="OpenContextMenu_Click" Padding="15,8" HorizontalAlignment="Left">
+                                    <Button.ContextMenu>
+                                        <ContextMenu>
+                                            <MenuItem Header="프로그래밍 방식으로 열림"/>
+                                            <MenuItem Header="옵션 1"/>
+                                            <MenuItem Header="옵션 2"/>
+                                        </ContextMenu>
+                                    </Button.ContextMenu>
+                                </Button>
+                            </StackPanel>
+                        </GroupBox>
+                        <Expander Style="{StaticResource CodeExpanderStyle}">
+                            <TextBox Style="{StaticResource CodeTextBoxStyle}" Text="&lt;Button x:Name=&quot;programmaticButton&quot; Content=&quot;클릭하면 ContextMenu 열기&quot; Click=&quot;OpenContextMenu_Click&quot;&gt;&#10;    &lt;Button.ContextMenu&gt;&#10;        &lt;ContextMenu&gt;&#10;            &lt;MenuItem Header=&quot;프로그래밍 방식으로 열림&quot;/&gt;&#10;        &lt;/ContextMenu&gt;&#10;    &lt;/Button.ContextMenu&gt;&#10;&lt;/Button&gt;&#10;&#10;// C# 코드&#10;private void OpenContextMenu_Click(object sender, RoutedEventArgs e)&#10;{&#10;    programmaticButton.ContextMenu.PlacementTarget = programmaticButton;&#10;    programmaticButton.ContextMenu.IsOpen = true;&#10;}"/>
+                        </Expander>
+                    </StackPanel>
+                </ScrollViewer>
+            </TabItem>
+
+            <!-- 탭 5: 실용 예제 -->
+            <TabItem Header="실용 예제">
+                <ScrollViewer VerticalScrollBarVisibility="Auto" Padding="20">
+                    <StackPanel>
+                        <TextBlock Text="실용 예제" FontSize="18" FontWeight="Bold" Margin="0,0,0,15"/>
+
+                        <!-- 텍스트 편집기 -->
+                        <GroupBox Header="텍스트 편집기" Margin="0,0,0,10">
+                            <StackPanel Margin="10">
+                                <TextBox x:Name="editorTextBox" Height="100" AcceptsReturn="True"
+                                         TextWrapping="Wrap" VerticalScrollBarVisibility="Auto"
+                                         Text="텍스트를 입력하고 선택한 후 우클릭하세요...">
+                                    <TextBox.ContextMenu>
+                                        <ContextMenu>
+                                            <MenuItem Header="실행 취소" Command="ApplicationCommands.Undo" InputGestureText="Ctrl+Z">
+                                                <MenuItem.Icon>
+                                                    <Ellipse Width="12" Height="12" Fill="Orange"/>
+                                                </MenuItem.Icon>
+                                            </MenuItem>
+                                            <MenuItem Header="다시 실행" Command="ApplicationCommands.Redo" InputGestureText="Ctrl+Y">
+                                                <MenuItem.Icon>
+                                                    <Ellipse Width="12" Height="12" Fill="LightGreen"/>
+                                                </MenuItem.Icon>
+                                            </MenuItem>
+                                            <Separator/>
+                                            <MenuItem Header="잘라내기" Command="ApplicationCommands.Cut" InputGestureText="Ctrl+X"/>
+                                            <MenuItem Header="복사" Command="ApplicationCommands.Copy" InputGestureText="Ctrl+C"/>
+                                            <MenuItem Header="붙여넣기" Command="ApplicationCommands.Paste" InputGestureText="Ctrl+V"/>
+                                            <MenuItem Header="삭제" Command="ApplicationCommands.Delete"/>
+                                            <Separator/>
+                                            <MenuItem Header="모두 선택" Command="ApplicationCommands.SelectAll" InputGestureText="Ctrl+A"/>
+                                        </ContextMenu>
+                                    </TextBox.ContextMenu>
+                                </TextBox>
+                            </StackPanel>
+                        </GroupBox>
+                        <Expander Style="{StaticResource CodeExpanderStyle}">
+                            <TextBox Style="{StaticResource CodeTextBoxStyle}" Text="&lt;TextBox.ContextMenu&gt;&#10;    &lt;ContextMenu&gt;&#10;        &lt;MenuItem Header=&quot;실행 취소&quot; Command=&quot;ApplicationCommands.Undo&quot; InputGestureText=&quot;Ctrl+Z&quot;/&gt;&#10;        &lt;MenuItem Header=&quot;다시 실행&quot; Command=&quot;ApplicationCommands.Redo&quot; InputGestureText=&quot;Ctrl+Y&quot;/&gt;&#10;        &lt;Separator/&gt;&#10;        &lt;MenuItem Header=&quot;잘라내기&quot; Command=&quot;ApplicationCommands.Cut&quot;/&gt;&#10;        &lt;MenuItem Header=&quot;복사&quot; Command=&quot;ApplicationCommands.Copy&quot;/&gt;&#10;        &lt;MenuItem Header=&quot;붙여넣기&quot; Command=&quot;ApplicationCommands.Paste&quot;/&gt;&#10;        &lt;Separator/&gt;&#10;        &lt;MenuItem Header=&quot;모두 선택&quot; Command=&quot;ApplicationCommands.SelectAll&quot;/&gt;&#10;    &lt;/ContextMenu&gt;&#10;&lt;/TextBox.ContextMenu&gt;"/>
+                        </Expander>
+
+                        <!-- 파일 목록 -->
+                        <GroupBox Header="파일 탐색기 스타일" Margin="0,0,0,10">
+                            <ListBox x:Name="fileListBox" Height="120" SelectionMode="Extended">
+                                <ListBox.ContextMenu>
+                                    <ContextMenu>
+                                        <MenuItem Header="열기" InputGestureText="Enter" Click="OpenFile_Click">
+                                            <MenuItem.Icon>
+                                                <Rectangle Width="12" Height="12" Fill="LightBlue"/>
+                                            </MenuItem.Icon>
+                                        </MenuItem>
+                                        <MenuItem Header="편집"/>
+                                        <Separator/>
+                                        <MenuItem Header="잘라내기" InputGestureText="Ctrl+X"/>
+                                        <MenuItem Header="복사" InputGestureText="Ctrl+C"/>
+                                        <MenuItem Header="붙여넣기" InputGestureText="Ctrl+V" IsEnabled="False"/>
+                                        <Separator/>
+                                        <MenuItem Header="삭제" InputGestureText="Delete" Click="DeleteFile_Click"/>
+                                        <MenuItem Header="이름 바꾸기" InputGestureText="F2"/>
+                                        <Separator/>
+                                        <MenuItem Header="속성" Click="FileProperties_Click"/>
+                                    </ContextMenu>
+                                </ListBox.ContextMenu>
+                                <ListBoxItem Content="📄 문서1.txt"/>
+                                <ListBoxItem Content="📄 보고서.docx"/>
+                                <ListBoxItem Content="📁 프로젝트"/>
+                                <ListBoxItem Content="🖼️ 이미지.png"/>
+                                <ListBoxItem Content="📄 데이터.xlsx"/>
+                            </ListBox>
+                        </GroupBox>
+                        <Expander Style="{StaticResource CodeExpanderStyle}">
+                            <TextBox Style="{StaticResource CodeTextBoxStyle}" Text="&lt;ListBox x:Name=&quot;fileListBox&quot; SelectionMode=&quot;Extended&quot;&gt;&#10;    &lt;ListBox.ContextMenu&gt;&#10;        &lt;ContextMenu&gt;&#10;            &lt;MenuItem Header=&quot;열기&quot; InputGestureText=&quot;Enter&quot; Click=&quot;OpenFile_Click&quot;/&gt;&#10;            &lt;MenuItem Header=&quot;편집&quot;/&gt;&#10;            &lt;Separator/&gt;&#10;            &lt;MenuItem Header=&quot;잘라내기&quot; InputGestureText=&quot;Ctrl+X&quot;/&gt;&#10;            &lt;MenuItem Header=&quot;복사&quot; InputGestureText=&quot;Ctrl+C&quot;/&gt;&#10;            &lt;Separator/&gt;&#10;            &lt;MenuItem Header=&quot;삭제&quot; InputGestureText=&quot;Delete&quot;/&gt;&#10;            &lt;MenuItem Header=&quot;이름 바꾸기&quot; InputGestureText=&quot;F2&quot;/&gt;&#10;            &lt;Separator/&gt;&#10;            &lt;MenuItem Header=&quot;속성&quot;/&gt;&#10;        &lt;/ContextMenu&gt;&#10;    &lt;/ListBox.ContextMenu&gt;&#10;&lt;/ListBox&gt;"/>
+                        </Expander>
+
+                        <!-- 이미지 뷰어 -->
+                        <GroupBox Header="이미지 뷰어" Margin="0,0,0,10">
+                            <Border x:Name="imageViewerBorder" Background="DarkGray" Height="150">
+                                <Border.ContextMenu>
+                                    <ContextMenu>
+                                        <MenuItem Header="확대" InputGestureText="Ctrl++">
+                                            <MenuItem.Icon>
+                                                <Ellipse Width="12" Height="12" Fill="LightGreen"/>
+                                            </MenuItem.Icon>
+                                        </MenuItem>
+                                        <MenuItem Header="축소" InputGestureText="Ctrl+-">
+                                            <MenuItem.Icon>
+                                                <Ellipse Width="12" Height="12" Fill="LightCoral"/>
+                                            </MenuItem.Icon>
+                                        </MenuItem>
+                                        <MenuItem Header="원본 크기" InputGestureText="Ctrl+0"/>
+                                        <Separator/>
+                                        <MenuItem Header="회전">
+                                            <MenuItem Header="시계 방향 90°"/>
+                                            <MenuItem Header="반시계 방향 90°"/>
+                                            <MenuItem Header="180°"/>
+                                        </MenuItem>
+                                        <MenuItem Header="뒤집기">
+                                            <MenuItem Header="수평 뒤집기"/>
+                                            <MenuItem Header="수직 뒤집기"/>
+                                        </MenuItem>
+                                        <Separator/>
+                                        <MenuItem Header="다른 이름으로 저장..." InputGestureText="Ctrl+Shift+S"/>
+                                        <MenuItem Header="배경으로 설정"/>
+                                    </ContextMenu>
+                                </Border.ContextMenu>
+                                <TextBlock Text="이미지 영역 (우클릭)" Foreground="White"
+                                           HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            </Border>
+                        </GroupBox>
+                        <Expander Style="{StaticResource CodeExpanderStyle}">
+                            <TextBox Style="{StaticResource CodeTextBoxStyle}" Text="&lt;Border Background=&quot;DarkGray&quot;&gt;&#10;    &lt;Border.ContextMenu&gt;&#10;        &lt;ContextMenu&gt;&#10;            &lt;MenuItem Header=&quot;확대&quot; InputGestureText=&quot;Ctrl++&quot;/&gt;&#10;            &lt;MenuItem Header=&quot;축소&quot; InputGestureText=&quot;Ctrl+-&quot;/&gt;&#10;            &lt;MenuItem Header=&quot;원본 크기&quot;/&gt;&#10;            &lt;Separator/&gt;&#10;            &lt;MenuItem Header=&quot;회전&quot;&gt;&#10;                &lt;MenuItem Header=&quot;시계 방향 90°&quot;/&gt;&#10;                &lt;MenuItem Header=&quot;반시계 방향 90°&quot;/&gt;&#10;            &lt;/MenuItem&gt;&#10;            &lt;MenuItem Header=&quot;뒤집기&quot;&gt;&#10;                &lt;MenuItem Header=&quot;수평 뒤집기&quot;/&gt;&#10;                &lt;MenuItem Header=&quot;수직 뒤집기&quot;/&gt;&#10;            &lt;/MenuItem&gt;&#10;        &lt;/ContextMenu&gt;&#10;    &lt;/Border.ContextMenu&gt;&#10;&lt;/Border&gt;"/>
+                        </Expander>
+                    </StackPanel>
+                </ScrollViewer>
+            </TabItem>
+        </TabControl>
+    </Grid>
 </Window>
