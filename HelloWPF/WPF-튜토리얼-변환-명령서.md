@@ -102,3 +102,4 @@
 | ch22 툴바 | ToolBar | 5 | 완료 |
 | ch23 메뉴 | Menu | 5 | 완료 |
 | ch24 컨텍스트메뉴 | ContextMenu | 5 | 완료 |
+| ch25 데이터바인딩1 | DataBinding | 5 | 완료 |
