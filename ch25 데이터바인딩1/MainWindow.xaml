@@ -291,8 +291,9 @@
                                            FontStyle="Italic" Foreground="Gray" Margin="0,5,0,0"/>
 
                                 <Border Margin="0,15,0,0" BorderBrush="Gray" BorderThickness="1" Padding="10"
+                                        Height="80"
                                         Width="{Binding RelativeSource={RelativeSource Self}, Path=ActualHeight}">
-                                    <TextBlock Text="정사각형 Border (Width=Height)" TextWrapping="Wrap"
+                                    <TextBlock Text="정사각형 Border (Width=Height)"
                                                HorizontalAlignment="Center" VerticalAlignment="Center"/>
                                 </Border>
                             </StackPanel>

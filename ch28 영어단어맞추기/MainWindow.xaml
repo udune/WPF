@@ -1,57 +1,434 @@
-﻿<Window x:Class="ch28_영어단어맞추기.MainWindow"
+<Window x:Class="ch28_영어단어맞추기.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ch28_영어단어맞추기"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="ch28 영어단어 맞추기 게임 튜토리얼" Height="650" Width="900">
+
+    <Window.Resources>
+        <Style x:Key="CodeExpanderStyle" TargetType="Expander">
+            <Setter Property="Header" Value="코드 보기"/>
+            <Setter Property="Margin" Value="0,0,0,12"/>
+            <Setter Property="IsExpanded" Value="False"/>
+        </Style>
+        <Style x:Key="CodeTextBoxStyle" TargetType="TextBox">
+            <Setter Property="IsReadOnly" Value="True"/>
+            <Setter Property="FontFamily" Value="Consolas"/>
+            <Setter Property="FontSize" Value="12"/>
+            <Setter Property="Background" Value="#1E1E1E"/>
+            <Setter Property="Foreground" Value="#DCDCDC"/>
+            <Setter Property="Padding" Value="10"/>
+            <Setter Property="TextWrapping" Value="Wrap"/>
+            <Setter Property="AcceptsReturn" Value="True"/>
+            <Setter Property="VerticalScrollBarVisibility" Value="Auto"/>
+            <Setter Property="MaxHeight" Value="300"/>
+            <Setter Property="BorderBrush" Value="#333333"/>
+            <Setter Property="BorderThickness" Value="1"/>
+        </Style>
+    </Window.Resources>
+
     <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="1*"></RowDefinition>
-            <RowDefinition Height="1*"></RowDefinition>
-        </Grid.RowDefinitions>
-        <StackPanel Grid.Row="0">
-            <Label Content="{Binding WrongStatus}"
-                   FontWeight="Bold"
-                   HorizontalAlignment="Center"/>
-            <Label Content="{Binding SelKor}"
-                   FontSize="30"
-                   HorizontalAlignment="Center"/>
-            <Label Content="{Binding SelEng}"
-                   FontSize="40"
-                   HorizontalAlignment="Center"/>
-            <Label Content="{Binding Message}"
-                   FontSize="20"
-                   FontWeight="Bold"
-                   Foreground="White"
-                   Background="Red"
-                   HorizontalContentAlignment="Center"/>
-            <Button Content="다시하기"
-                    HorizontalAlignment="Center"
-                    Width="100" Margin="10"
-                    Click="Button_Click"></Button>
-        </StackPanel>
-        <UniformGrid Grid.Row="1">
-            <ItemsControl Name="ic">
-                <ItemsControl.ItemsPanel>
-                    <ItemsPanelTemplate>
-                        <UniformGrid Columns="10"/>
-                    </ItemsPanelTemplate>
-                </ItemsControl.ItemsPanel>
-                <ItemsControl.ItemTemplate>
-                    <DataTemplate>
-                        <Button
-                            Content="{Binding .}"
-                            FontSize="30"
-                            FontWeight="Bold"
-                            Background="Salmon"
-                            Foreground="White"
-                            Margin="10"
-                            Click="Button_Click_1"/>
-                    </DataTemplate>
-                </ItemsControl.ItemTemplate>
-            </ItemsControl>
-        </UniformGrid>
+        <TabControl>
+            <!-- 탭 1: 게임 플레이 -->
+            <TabItem Header="게임 플레이">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+
+                    <!-- 게임 영역 -->
+                    <Border Grid.Row="0" Background="#F5F5F5" Margin="20" Padding="20" CornerRadius="10">
+                        <StackPanel>
+                            <TextBlock Text="🎮 영어단어 맞추기 게임" FontSize="24" FontWeight="Bold"
+                                       HorizontalAlignment="Center" Margin="0,0,0,15"/>
+
+                            <!-- 상태 표시 -->
+                            <Border Background="White" CornerRadius="8" Padding="15" Margin="0,0,0,15">
+                                <StackPanel>
+                                    <TextBlock Text="{Binding WrongStatus}" FontWeight="Bold" FontSize="16"
+                                               HorizontalAlignment="Center" Foreground="DarkRed"/>
+                                    <TextBlock Text="{Binding SelKor}" FontSize="24" HorizontalAlignment="Center"
+                                               Margin="0,10,0,5" Foreground="DarkBlue"/>
+                                    <TextBlock Text="{Binding SelEng}" FontSize="36" FontWeight="Bold"
+                                               HorizontalAlignment="Center" FontFamily="Consolas"/>
+                                </StackPanel>
+                            </Border>
+
+                            <!-- 메시지 -->
+                            <Border x:Name="messageBorder" CornerRadius="5" Padding="10" Margin="0,0,0,15"
+                                    Background="{Binding MessageBackground}">
+                                <TextBlock Text="{Binding Message}" FontSize="18" FontWeight="Bold"
+                                           Foreground="White" HorizontalAlignment="Center"/>
+                            </Border>
+
+                            <!-- 다시하기 버튼 -->
+                            <Button Content="🔄 다시하기" Click="NewGame_Click" Padding="20,10"
+                                    FontSize="16" HorizontalAlignment="Center" Cursor="Hand">
+                                <Button.Style>
+                                    <Style TargetType="Button">
+                                        <Setter Property="Background" Value="#4CAF50"/>
+                                        <Setter Property="Foreground" Value="White"/>
+                                        <Setter Property="BorderThickness" Value="0"/>
+                                        <Setter Property="Template">
+                                            <Setter.Value>
+                                                <ControlTemplate TargetType="Button">
+                                                    <Border Background="{TemplateBinding Background}"
+                                                            CornerRadius="5" Padding="{TemplateBinding Padding}">
+                                                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                                    </Border>
+                                                </ControlTemplate>
+                                            </Setter.Value>
+                                        </Setter>
+                                    </Style>
+                                </Button.Style>
+                            </Button>
+                        </StackPanel>
+                    </Border>
+
+                    <!-- 알파벳 버튼 -->
+                    <Border Grid.Row="1" Margin="20,0,20,20">
+                        <ItemsControl x:Name="alphabetButtons">
+                            <ItemsControl.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <UniformGrid Columns="13"/>
+                                </ItemsPanelTemplate>
+                            </ItemsControl.ItemsPanel>
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate>
+                                    <Button Content="{Binding .}" FontSize="20" FontWeight="Bold"
+                                            Margin="3" Height="50" Click="Alphabet_Click" Cursor="Hand">
+                                        <Button.Style>
+                                            <Style TargetType="Button">
+                                                <Setter Property="Background" Value="#2196F3"/>
+                                                <Setter Property="Foreground" Value="White"/>
+                                                <Setter Property="BorderThickness" Value="0"/>
+                                                <Setter Property="Template">
+                                                    <Setter.Value>
+                                                        <ControlTemplate TargetType="Button">
+                                                            <Border x:Name="border" Background="{TemplateBinding Background}"
+                                                                    CornerRadius="5">
+                                                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                                            </Border>
+                                                            <ControlTemplate.Triggers>
+                                                                <Trigger Property="IsEnabled" Value="False">
+                                                                    <Setter TargetName="border" Property="Background" Value="#BDBDBD"/>
+                                                                </Trigger>
+                                                                <Trigger Property="IsMouseOver" Value="True">
+                                                                    <Setter TargetName="border" Property="Background" Value="#1976D2"/>
+                                                                </Trigger>
+                                                            </ControlTemplate.Triggers>
+                                                        </ControlTemplate>
+                                                    </Setter.Value>
+                                                </Setter>
+                                            </Style>
+                                        </Button.Style>
+                                    </Button>
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                        </ItemsControl>
+                    </Border>
+                </Grid>
+            </TabItem>
+
+            <!-- 탭 2: INotifyPropertyChanged -->
+            <TabItem Header="INotifyPropertyChanged">
+                <ScrollViewer VerticalScrollBarVisibility="Auto" Padding="20">
+                    <StackPanel>
+                        <TextBlock Text="INotifyPropertyChanged 활용" FontSize="18" FontWeight="Bold" Margin="0,0,0,15"/>
+
+                        <!-- 개념 설명 -->
+                        <GroupBox Header="게임에서 INotifyPropertyChanged가 필요한 이유" Margin="0,0,0,10">
+                            <StackPanel Margin="10">
+                                <TextBlock TextWrapping="Wrap" Margin="0,0,0,10">
+                                    게임 상태(점수, 메시지, 단어 등)가 변경될 때마다 UI가 자동으로 업데이트되어야 합니다.
+                                    INotifyPropertyChanged를 구현하면 속성 변경 시 바인딩된 UI가 즉시 반영됩니다.
+                                </TextBlock>
+                                <Border Background="LightYellow" Padding="10" CornerRadius="5">
+                                    <StackPanel>
+                                        <TextBlock Text="게임에서 변경되는 속성들:" FontWeight="Bold"/>
+                                        <TextBlock Text="• WrongStatus: 틀린 횟수 표시"/>
+                                        <TextBlock Text="• SelEng: 현재 영어 단어 (마스킹된 상태)"/>
+                                        <TextBlock Text="• SelKor: 한글 힌트"/>
+                                        <TextBlock Text="• Message: 게임 상태 메시지"/>
+                                    </StackPanel>
+                                </Border>
+                            </StackPanel>
+                        </GroupBox>
+                        <Expander Style="{StaticResource CodeExpanderStyle}">
+                            <TextBox Style="{StaticResource CodeTextBoxStyle}" Text="public partial class MainWindow : Window, INotifyPropertyChanged&#10;{&#10;    public event PropertyChangedEventHandler? PropertyChanged;&#10;&#10;    protected void OnPropertyChanged(string name)&#10;    {&#10;        PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));&#10;    }&#10;&#10;    private string wrongStatus;&#10;    public string WrongStatus&#10;    {&#10;        get =&gt; wrongStatus;&#10;        set { wrongStatus = value; OnPropertyChanged(nameof(WrongStatus)); }&#10;    }&#10;}"/>
+                        </Expander>
+
+                        <!-- DataContext 설정 -->
+                        <GroupBox Header="DataContext 설정" Margin="0,0,0,10">
+                            <StackPanel Margin="10">
+                                <TextBlock TextWrapping="Wrap" Margin="0,0,0,10">
+                                    Window 자신을 DataContext로 설정하여 Window의 속성에 직접 바인딩합니다.
+                                </TextBlock>
+                                <Border Background="LightCyan" Padding="10" CornerRadius="5">
+                                    <StackPanel>
+                                        <TextBlock Text="MainWindow() 생성자에서:" FontWeight="Bold"/>
+                                        <TextBlock Text="DataContext = this;" FontFamily="Consolas" Margin="0,5,0,0"/>
+                                    </StackPanel>
+                                </Border>
+                            </StackPanel>
+                        </GroupBox>
+                        <Expander Style="{StaticResource CodeExpanderStyle}">
+                            <TextBox Style="{StaticResource CodeTextBoxStyle}" Text="public MainWindow()&#10;{&#10;    InitializeComponent();&#10;    DataContext = this;  // Window 자신을 DataContext로 설정&#10;    // 이제 XAML에서 {Binding 속성명}으로 바인딩 가능&#10;}&#10;&#10;&lt;!-- XAML에서 바인딩 --&gt;&#10;&lt;TextBlock Text=&quot;{Binding WrongStatus}&quot;/&gt;&#10;&lt;TextBlock Text=&quot;{Binding SelEng}&quot;/&gt;"/>
+                        </Expander>
+
+                        <!-- 실시간 업데이트 예시 -->
+                        <GroupBox Header="실시간 업데이트 데모" Margin="0,0,0,10">
+                            <StackPanel Margin="10">
+                                <TextBlock Text="속성 변경 시 UI 자동 업데이트:" Margin="0,0,0,10"/>
+                                <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
+                                    <TextBlock Text="현재 점수: " VerticalAlignment="Center"/>
+                                    <TextBlock x:Name="demoScore" Text="0" FontWeight="Bold" FontSize="24"
+                                               Foreground="Blue" VerticalAlignment="Center" Width="50"/>
+                                    <Button Content=" + " Width="40" Margin="10,0" Click="DemoIncrement_Click"/>
+                                    <Button Content=" - " Width="40" Click="DemoDecrement_Click"/>
+                                    <Button Content="Reset" Width="60" Margin="10,0" Click="DemoReset_Click"/>
+                                </StackPanel>
+                            </StackPanel>
+                        </GroupBox>
+                        <Expander Style="{StaticResource CodeExpanderStyle}">
+                            <TextBox Style="{StaticResource CodeTextBoxStyle}" Text="// 속성 변경만 하면 UI가 자동 업데이트&#10;private void IncrementScore()&#10;{&#10;    Score++;  // setter에서 OnPropertyChanged 호출&#10;    // UI가 자동으로 새 값을 표시&#10;}"/>
+                        </Expander>
+                    </StackPanel>
+                </ScrollViewer>
+            </TabItem>
+
+            <!-- 탭 3: ItemsControl -->
+            <TabItem Header="ItemsControl">
+                <ScrollViewer VerticalScrollBarVisibility="Auto" Padding="20">
+                    <StackPanel>
+                        <TextBlock Text="ItemsControl과 UniformGrid" FontSize="18" FontWeight="Bold" Margin="0,0,0,15"/>
+
+                        <!-- ItemsControl 개념 -->
+                        <GroupBox Header="ItemsControl이란?" Margin="0,0,0,10">
+                            <StackPanel Margin="10">
+                                <TextBlock TextWrapping="Wrap" Margin="0,0,0,10">
+                                    <Run FontWeight="Bold">ItemsControl</Run>
+                                    <Run>은 컬렉션의 각 항목을 시각적으로 표시하는 기본 컨트롤입니다.</Run>
+                                    <LineBreak/>
+                                    <Run>ListBox, ListView와 달리 선택 기능이 없어 순수하게 항목을 표시하는 데 사용됩니다.</Run>
+                                </TextBlock>
+                                <Border Background="LightGreen" Padding="10" CornerRadius="5">
+                                    <StackPanel>
+                                        <TextBlock Text="게임에서 사용:" FontWeight="Bold"/>
+                                        <TextBlock Text="• 26개의 알파벳 버튼을 동적으로 생성"/>
+                                        <TextBlock Text="• UniformGrid로 균등한 격자 배치"/>
+                                        <TextBlock Text="• DataTemplate으로 각 버튼 스타일 정의"/>
+                                    </StackPanel>
+                                </Border>
+                            </StackPanel>
+                        </GroupBox>
+                        <Expander Style="{StaticResource CodeExpanderStyle}">
+                            <TextBox Style="{StaticResource CodeTextBoxStyle}" Text="&lt;ItemsControl x:Name=&quot;alphabetButtons&quot;&gt;&#10;    &lt;!-- 항목 배치 방식: UniformGrid --&gt;&#10;    &lt;ItemsControl.ItemsPanel&gt;&#10;        &lt;ItemsPanelTemplate&gt;&#10;            &lt;UniformGrid Columns=&quot;13&quot;/&gt;&#10;        &lt;/ItemsPanelTemplate&gt;&#10;    &lt;/ItemsControl.ItemsPanel&gt;&#10;    &#10;    &lt;!-- 각 항목 템플릿 --&gt;&#10;    &lt;ItemsControl.ItemTemplate&gt;&#10;        &lt;DataTemplate&gt;&#10;            &lt;Button Content=&quot;{Binding .}&quot; Click=&quot;Alphabet_Click&quot;/&gt;&#10;        &lt;/DataTemplate&gt;&#10;    &lt;/ItemsControl.ItemTemplate&gt;&#10;&lt;/ItemsControl&gt;"/>
+                        </Expander>
+
+                        <!-- UniformGrid -->
+                        <GroupBox Header="UniformGrid" Margin="0,0,0,10">
+                            <StackPanel Margin="10">
+                                <TextBlock TextWrapping="Wrap" Margin="0,0,0,10">
+                                    UniformGrid는 모든 셀의 크기가 동일한 격자입니다.
+                                    Columns 또는 Rows만 지정하면 나머지는 자동 계산됩니다.
+                                </TextBlock>
+                                <TextBlock Text="UniformGrid 예시 (Columns=5):" Margin="0,0,0,5"/>
+                                <ItemsControl Height="80">
+                                    <ItemsControl.ItemsPanel>
+                                        <ItemsPanelTemplate>
+                                            <UniformGrid Columns="5"/>
+                                        </ItemsPanelTemplate>
+                                    </ItemsControl.ItemsPanel>
+                                    <Border Background="Coral" Margin="2"><TextBlock Text="1" HorizontalAlignment="Center" VerticalAlignment="Center"/></Border>
+                                    <Border Background="LightBlue" Margin="2"><TextBlock Text="2" HorizontalAlignment="Center" VerticalAlignment="Center"/></Border>
+                                    <Border Background="LightGreen" Margin="2"><TextBlock Text="3" HorizontalAlignment="Center" VerticalAlignment="Center"/></Border>
+                                    <Border Background="Gold" Margin="2"><TextBlock Text="4" HorizontalAlignment="Center" VerticalAlignment="Center"/></Border>
+                                    <Border Background="Plum" Margin="2"><TextBlock Text="5" HorizontalAlignment="Center" VerticalAlignment="Center"/></Border>
+                                    <Border Background="LightPink" Margin="2"><TextBlock Text="6" HorizontalAlignment="Center" VerticalAlignment="Center"/></Border>
+                                    <Border Background="LightCyan" Margin="2"><TextBlock Text="7" HorizontalAlignment="Center" VerticalAlignment="Center"/></Border>
+                                    <Border Background="Wheat" Margin="2"><TextBlock Text="8" HorizontalAlignment="Center" VerticalAlignment="Center"/></Border>
+                                    <Border Background="Lavender" Margin="2"><TextBlock Text="9" HorizontalAlignment="Center" VerticalAlignment="Center"/></Border>
+                                    <Border Background="MistyRose" Margin="2"><TextBlock Text="10" HorizontalAlignment="Center" VerticalAlignment="Center"/></Border>
+                                </ItemsControl>
+                            </StackPanel>
+                        </GroupBox>
+                        <Expander Style="{StaticResource CodeExpanderStyle}">
+                            <TextBox Style="{StaticResource CodeTextBoxStyle}" Text="&lt;UniformGrid Columns=&quot;5&quot;&gt;&#10;    &lt;!-- 항목들이 자동으로 5열로 배치됨 --&gt;&#10;    &lt;!-- 10개 항목이면 2행 5열이 됨 --&gt;&#10;&lt;/UniformGrid&gt;&#10;&#10;&lt;UniformGrid Rows=&quot;3&quot;&gt;&#10;    &lt;!-- 3행으로 고정, 열 수는 자동 계산 --&gt;&#10;&lt;/UniformGrid&gt;"/>
+                        </Expander>
+
+                        <!-- 알파벳 배열 바인딩 -->
+                        <GroupBox Header="알파벳 컬렉션 바인딩" Margin="0,0,0,10">
+                            <StackPanel Margin="10">
+                                <TextBlock TextWrapping="Wrap" Margin="0,0,0,10">
+                                    char 배열을 ItemsSource에 바인딩하여 알파벳 버튼을 생성합니다.
+                                </TextBlock>
+                                <Border Background="LightYellow" Padding="10" CornerRadius="5">
+                                    <TextBlock FontFamily="Consolas" Text="List&lt;char&gt; alphabets = new List&lt;char&gt;();&#10;alphabets.AddRange(&quot;abcdefghijklmnopqrstuvwxyz&quot;);&#10;alphabetButtons.ItemsSource = alphabets;"/>
+                                </Border>
+                            </StackPanel>
+                        </GroupBox>
+                        <Expander Style="{StaticResource CodeExpanderStyle}">
+                            <TextBox Style="{StaticResource CodeTextBoxStyle}" Text="// 알파벳 리스트 생성&#10;List&lt;char&gt; alphabets = new List&lt;char&gt;();&#10;alphabets.AddRange(&quot;abcdefghijklmnopqrstuvwxyz&quot;);&#10;&#10;// ItemsControl에 바인딩&#10;alphabetButtons.ItemsSource = alphabets;&#10;&#10;// DataTemplate에서 {Binding .}는 현재 항목(char) 자체를 의미&#10;&lt;Button Content=&quot;{Binding .}&quot;/&gt;  &lt;!-- 'a', 'b', 'c'... 표시 --&gt;"/>
+                        </Expander>
+                    </StackPanel>
+                </ScrollViewer>
+            </TabItem>
+
+            <!-- 탭 4: 게임 로직 -->
+            <TabItem Header="게임 로직">
+                <ScrollViewer VerticalScrollBarVisibility="Auto" Padding="20">
+                    <StackPanel>
+                        <TextBlock Text="게임 로직 구현" FontSize="18" FontWeight="Bold" Margin="0,0,0,15"/>
+
+                        <!-- 단어 데이터 -->
+                        <GroupBox Header="단어 데이터 구조" Margin="0,0,0,10">
+                            <StackPanel Margin="10">
+                                <TextBlock TextWrapping="Wrap" Margin="0,0,0,10">
+                                    영어단어와 한글 뜻을 쉼표로 구분하여 저장합니다.
+                                </TextBlock>
+                                <Border Background="LightCyan" Padding="10" CornerRadius="5">
+                                    <TextBlock FontFamily="Consolas" FontSize="11" Text="List&lt;string&gt; words = new List&lt;string&gt;()&#10;{&#10;    &quot;apple,사과&quot;,&#10;    &quot;school,학교&quot;,&#10;    &quot;computer,컴퓨터&quot;,&#10;    &quot;happiness,행복&quot;&#10;};"/>
+                                </Border>
+                            </StackPanel>
+                        </GroupBox>
+                        <Expander Style="{StaticResource CodeExpanderStyle}">
+                            <TextBox Style="{StaticResource CodeTextBoxStyle}" Text="// 단어 리스트&#10;List&lt;string&gt; words = new List&lt;string&gt;()&#10;{&#10;    &quot;apple,사과&quot;,&#10;    &quot;school,학교&quot;,&#10;    &quot;computer,컴퓨터&quot;&#10;};&#10;&#10;// 랜덤 단어 선택&#10;private void SelectRandomWord()&#10;{&#10;    string[] parts = words[random.Next(words.Count)].Split(&quot;,&quot;);&#10;    currentWord = parts[0];  // 영어&#10;    hint = parts[1];         // 한글&#10;}"/>
+                        </Expander>
+
+                        <!-- 마스킹 로직 -->
+                        <GroupBox Header="단어 마스킹 (*로 가리기)" Margin="0,0,0,10">
+                            <StackPanel Margin="10">
+                                <TextBlock TextWrapping="Wrap" Margin="0,0,0,10">
+                                    선택되지 않은 글자는 *로 표시하고, 맞춘 글자만 보여줍니다.
+                                </TextBlock>
+                                <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
+                                    <TextBlock Text="원본: " Width="50"/>
+                                    <TextBlock Text="apple" FontFamily="Consolas" FontSize="16"/>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
+                                    <TextBlock Text="선택: " Width="50"/>
+                                    <TextBlock Text="a, p" FontFamily="Consolas" FontSize="16" Foreground="Blue"/>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="표시: " Width="50"/>
+                                    <TextBlock Text="a p p * *" FontFamily="Consolas" FontSize="16" FontWeight="Bold"/>
+                                </StackPanel>
+                            </StackPanel>
+                        </GroupBox>
+                        <Expander Style="{StaticResource CodeExpanderStyle}">
+                            <TextBox Style="{StaticResource CodeTextBoxStyle}" Text="// 마스킹 로직 - LINQ 활용&#10;private void UpdateMaskedWord()&#10;{&#10;    // 선택된 글자는 그대로, 아니면 *로 변환&#10;    char[] masked = currentWord&#10;        .Select(c =&gt; selectedChars.Contains(c) ? c : '*')&#10;        .ToArray();&#10;    &#10;    // 글자 사이에 공백 추가하여 표시&#10;    DisplayWord = string.Join(' ', masked);&#10;}&#10;&#10;// 예: &quot;apple&quot; + 선택 ['a','p'] =&gt; &quot;a p p * *&quot;"/>
+                        </Expander>
+
+                        <!-- 승패 판정 -->
+                        <GroupBox Header="승패 판정" Margin="0,0,0,10">
+                            <Grid Margin="10">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <Border Background="LightGreen" Padding="15" CornerRadius="5" Margin="0,0,5,0">
+                                    <StackPanel>
+                                        <TextBlock Text="🏆 승리 조건" FontWeight="Bold" FontSize="14"/>
+                                        <TextBlock Text="마스킹된 단어에 *가 없으면" Margin="0,5,0,0"/>
+                                        <TextBlock Text="(모든 글자를 맞춤)" Foreground="Gray" FontSize="11"/>
+                                    </StackPanel>
+                                </Border>
+                                <Border Grid.Column="1" Background="LightCoral" Padding="15" CornerRadius="5" Margin="5,0,0,0">
+                                    <StackPanel>
+                                        <TextBlock Text="💀 패배 조건" FontWeight="Bold" FontSize="14"/>
+                                        <TextBlock Text="틀린 횟수가 최대치 도달" Margin="0,5,0,0"/>
+                                        <TextBlock Text="(기본: 3번)" Foreground="Gray" FontSize="11"/>
+                                    </StackPanel>
+                                </Border>
+                            </Grid>
+                        </GroupBox>
+                        <Expander Style="{StaticResource CodeExpanderStyle}">
+                            <TextBox Style="{StaticResource CodeTextBoxStyle}" Text="// 승리 확인&#10;private void CheckWin()&#10;{&#10;    // 마스킹된 단어에서 공백 제거 후 원본과 비교&#10;    if (currentWord == DisplayWord.Replace(&quot; &quot;, &quot;&quot;))&#10;    {&#10;        Message = &quot;🎉 You Win!&quot;;&#10;        DisableAllButtons();&#10;    }&#10;}&#10;&#10;// 패배 확인&#10;private void CheckLose()&#10;{&#10;    if (wrongCount &gt;= maxWrong)&#10;    {&#10;        Message = &quot;😢 You Lost!&quot;;&#10;        DisableAllButtons();&#10;    }&#10;}"/>
+                        </Expander>
+                    </StackPanel>
+                </ScrollViewer>
+            </TabItem>
+
+            <!-- 탭 5: 버튼 제어 -->
+            <TabItem Header="버튼 제어">
+                <ScrollViewer VerticalScrollBarVisibility="Auto" Padding="20">
+                    <StackPanel>
+                        <TextBlock Text="동적 버튼 제어" FontSize="18" FontWeight="Bold" Margin="0,0,0,15"/>
+
+                        <!-- 버튼 클릭 이벤트 -->
+                        <GroupBox Header="알파벳 버튼 클릭 처리" Margin="0,0,0,10">
+                            <StackPanel Margin="10">
+                                <TextBlock TextWrapping="Wrap" Margin="0,0,0,10">
+                                    DataTemplate 내의 버튼 클릭 시 어떤 알파벳이 클릭되었는지 확인합니다.
+                                </TextBlock>
+                                <Border Background="LightYellow" Padding="10" CornerRadius="5">
+                                    <StackPanel>
+                                        <TextBlock Text="클릭 흐름:" FontWeight="Bold"/>
+                                        <TextBlock Text="1. 버튼 클릭 → Click 이벤트 발생"/>
+                                        <TextBlock Text="2. sender를 Button으로 캐스팅"/>
+                                        <TextBlock Text="3. Button.Content에서 알파벳 추출"/>
+                                        <TextBlock Text="4. 정답 확인 후 UI 업데이트"/>
+                                    </StackPanel>
+                                </Border>
+                            </StackPanel>
+                        </GroupBox>
+                        <Expander Style="{StaticResource CodeExpanderStyle}">
+                            <TextBox Style="{StaticResource CodeTextBoxStyle}" Text="private void Alphabet_Click(object sender, RoutedEventArgs e)&#10;{&#10;    var button = sender as Button;&#10;    if (button != null)&#10;    {&#10;        char letter = button.Content.ToString()[0];&#10;        CheckLetter(letter);&#10;        button.IsEnabled = false;  // 클릭한 버튼 비활성화&#10;    }&#10;}"/>
+                        </Expander>
+
+                        <!-- 버튼 비활성화 -->
+                        <GroupBox Header="모든 버튼 비활성화 (게임 종료 시)" Margin="0,0,0,10">
+                            <StackPanel Margin="10">
+                                <TextBlock TextWrapping="Wrap" Margin="0,0,0,10">
+                                    게임이 끝나면 모든 알파벳 버튼을 비활성화합니다.
+                                    ItemContainerGenerator를 사용하여 각 항목의 컨테이너(버튼)에 접근합니다.
+                                </TextBlock>
+                                <Border Background="MistyRose" Padding="10" CornerRadius="5">
+                                    <StackPanel>
+                                        <TextBlock Text="ItemContainerGenerator" FontWeight="Bold"/>
+                                        <TextBlock TextWrapping="Wrap" Margin="0,5,0,0"
+                                                   Text="ItemsControl의 각 데이터 항목에 대해 생성된 UI 요소(컨테이너)를 가져올 수 있습니다."/>
+                                    </StackPanel>
+                                </Border>
+                            </StackPanel>
+                        </GroupBox>
+                        <Expander Style="{StaticResource CodeExpanderStyle}">
+                            <TextBox Style="{StaticResource CodeTextBoxStyle}" Text="private void DisableAllButtons()&#10;{&#10;    foreach (var item in alphabetButtons.Items)&#10;    {&#10;        // 데이터 항목 → UI 컨테이너 변환&#10;        var container = alphabetButtons&#10;            .ItemContainerGenerator&#10;            .ContainerFromItem(item);&#10;        &#10;        if (container is ContentPresenter presenter)&#10;        {&#10;            // ContentPresenter 내부의 Button 찾기&#10;            var button = FindVisualChild&lt;Button&gt;(presenter);&#10;            if (button != null)&#10;                button.IsEnabled = false;&#10;        }&#10;    }&#10;}"/>
+                        </Expander>
+
+                        <!-- 버튼 활성화 (새 게임) -->
+                        <GroupBox Header="버튼 활성화 (새 게임 시작)" Margin="0,0,0,10">
+                            <StackPanel Margin="10">
+                                <TextBlock TextWrapping="Wrap" Margin="0,0,0,10">
+                                    새 게임 시작 시 모든 버튼을 다시 활성화합니다.
+                                </TextBlock>
+                                <Button Content="버튼 상태 테스트" Click="TestButtonState_Click"
+                                        Padding="15,8" HorizontalAlignment="Left"/>
+                                <TextBlock x:Name="buttonStateText" Text="" Margin="0,10,0,0" Foreground="Gray"/>
+                            </StackPanel>
+                        </GroupBox>
+                        <Expander Style="{StaticResource CodeExpanderStyle}">
+                            <TextBox Style="{StaticResource CodeTextBoxStyle}" Text="private void EnableAllButtons()&#10;{&#10;    foreach (var item in alphabetButtons.Items)&#10;    {&#10;        var container = alphabetButtons&#10;            .ItemContainerGenerator&#10;            .ContainerFromItem(item);&#10;        &#10;        if (container is ContentPresenter presenter)&#10;        {&#10;            var button = FindVisualChild&lt;Button&gt;(presenter);&#10;            if (button != null)&#10;                button.IsEnabled = true;&#10;        }&#10;    }&#10;}"/>
+                        </Expander>
+
+                        <!-- VisualTreeHelper -->
+                        <GroupBox Header="VisualTreeHelper로 자식 요소 찾기" Margin="0,0,0,10">
+                            <StackPanel Margin="10">
+                                <TextBlock TextWrapping="Wrap" Margin="0,0,0,10">
+                                    WPF의 시각적 트리에서 특정 타입의 자식 요소를 찾는 헬퍼 메서드입니다.
+                                </TextBlock>
+                            </StackPanel>
+                        </GroupBox>
+                        <Expander Style="{StaticResource CodeExpanderStyle}">
+                            <TextBox Style="{StaticResource CodeTextBoxStyle}" Text="// 시각적 트리에서 특정 타입의 자식 찾기&#10;private T? FindVisualChild&lt;T&gt;(DependencyObject parent) where T : DependencyObject&#10;{&#10;    for (int i = 0; i &lt; VisualTreeHelper.GetChildrenCount(parent); i++)&#10;    {&#10;        var child = VisualTreeHelper.GetChild(parent, i);&#10;        &#10;        if (child is T typedChild)&#10;            return typedChild;&#10;        &#10;        var result = FindVisualChild&lt;T&gt;(child);&#10;        if (result != null)&#10;            return result;&#10;    }&#10;    return null;&#10;}"/>
+                        </Expander>
+                    </StackPanel>
+                </ScrollViewer>
+            </TabItem>
+        </TabControl>
     </Grid>
 </Window>
