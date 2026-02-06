@@ -364,17 +364,19 @@
                                             IsEnabled="{Binding ElementName=agreeCheck, Path=IsChecked}"/>
                                 </StackPanel>
 
-                                <StackPanel Grid.Column="1" Background="LightGray" Padding="10">
-                                    <TextBlock Text="미리보기:" FontWeight="Bold" Margin="0,0,0,10"/>
-                                    <TextBlock Text="사용자명:"/>
-                                    <TextBlock Text="{Binding ElementName=usernameInput, Path=Text}"
-                                               FontWeight="Bold" Margin="0,2,0,10"/>
-                                    <TextBlock Text="이메일:"/>
-                                    <TextBlock Text="{Binding ElementName=emailInput, Path=Text}"
-                                               FontWeight="Bold" Margin="0,2,0,10"/>
-                                    <TextBlock Text="{Binding ElementName=agreeCheck, Path=IsChecked,
-                                               StringFormat=동의 여부: {0}}"/>
-                                </StackPanel>
+                                <Border Grid.Column="1" Background="LightGray" Padding="10">
+                                    <StackPanel>
+                                        <TextBlock Text="미리보기:" FontWeight="Bold" Margin="0,0,0,10"/>
+                                        <TextBlock Text="사용자명:"/>
+                                        <TextBlock Text="{Binding ElementName=usernameInput, Path=Text}"
+                                                   FontWeight="Bold" Margin="0,2,0,10"/>
+                                        <TextBlock Text="이메일:"/>
+                                        <TextBlock Text="{Binding ElementName=emailInput, Path=Text}"
+                                                   FontWeight="Bold" Margin="0,2,0,10"/>
+                                        <TextBlock Text="{Binding ElementName=agreeCheck, Path=IsChecked,
+                                                   StringFormat=동의 여부: {0}}"/>
+                                    </StackPanel>
+                                </Border>
                             </Grid>
                         </GroupBox>
                         <Expander Style="{StaticResource CodeExpanderStyle}">
