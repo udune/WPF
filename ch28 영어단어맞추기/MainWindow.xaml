@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ch28_영어단어맞추기"
         mc:Ignorable="d"
-        Title="ch28 영어단어 맞추기 게임 튜토리얼" Height="650" Width="900">
+        Title="ch28 영어단어 맞추기 게임 튜토리얼" Height="600" Width="850">
 
     <Window.Resources>
         <Style x:Key="CodeExpanderStyle" TargetType="Expander">
@@ -61,7 +61,7 @@
                             <Border x:Name="messageBorder" CornerRadius="5" Padding="10" Margin="0,0,0,15"
                                     Background="{Binding MessageBackground}">
                                 <TextBlock Text="{Binding Message}" FontSize="18" FontWeight="Bold"
-                                           Foreground="White" HorizontalAlignment="Center"/>
+                                           Foreground="{Binding MessageForeground}" HorizontalAlignment="Center"/>
                             </Border>
 
                             <!-- 다시하기 버튼 -->

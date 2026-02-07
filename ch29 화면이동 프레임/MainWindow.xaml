@@ -1,14 +1,3 @@
-﻿<!-- 
-    ch29 화면이동 프레임 - Frame과 NavigationService를 사용한 페이지 네비게이션 예제
-    Frame 컨트롤을 사용하여 여러 Page를 전환하고 탐색 기록을 관리합니다.
-    웹 브라우저처럼 뒤로/앞으로 버튼으로 페이지 간 이동이 가능합니다.
-    
-    핵심 개념:
-    - Frame: Page를 호스팅하는 컨테이너 컨트롤
-    - Page: 재사용 가능한 콘텐츠 단위
-    - NavigationService: 페이지 탐색 서비스
-    - 탐색 기록: 방문한 페이지 기록 관리 (Back/Forward)
--->
 <Window x:Class="ch29_화면이동_프레임.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
@@ -16,413 +5,416 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ch29_화면이동_프레임"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    
+        Title="ch29 Frame 화면이동 튜토리얼" Height="600" Width="850">
+
+    <Window.Resources>
+        <Style x:Key="CodeExpanderStyle" TargetType="Expander">
+            <Setter Property="Header" Value="코드 보기"/>
+            <Setter Property="Margin" Value="0,0,0,12"/>
+            <Setter Property="IsExpanded" Value="False"/>
+        </Style>
+        <Style x:Key="CodeTextBoxStyle" TargetType="TextBox">
+            <Setter Property="IsReadOnly" Value="True"/>
+            <Setter Property="FontFamily" Value="Consolas"/>
+            <Setter Property="FontSize" Value="12"/>
+            <Setter Property="Background" Value="#1E1E1E"/>
+            <Setter Property="Foreground" Value="#DCDCDC"/>
+            <Setter Property="Padding" Value="10"/>
+            <Setter Property="TextWrapping" Value="Wrap"/>
+            <Setter Property="AcceptsReturn" Value="True"/>
+            <Setter Property="VerticalScrollBarVisibility" Value="Auto"/>
+            <Setter Property="MaxHeight" Value="300"/>
+            <Setter Property="BorderBrush" Value="#333333"/>
+            <Setter Property="BorderThickness" Value="1"/>
+        </Style>
+    </Window.Resources>
+
     <Grid>
-        <!-- 
-            Grid: 화면을 두 개의 행으로 분할
-            - 1행: 네비게이션 버튼 영역 (뒤로/앞으로)
-            - 2행: Frame 영역 (페이지 표시)
-        -->
-        
-        <Grid.RowDefinitions>
-            <RowDefinition Height="1*"/>
-            <!-- 
-                1행: 네비게이션 버튼 영역
-                Height="1*": 전체 높이의 1/6 (1:5 비율)
-                상단에 작은 영역으로 버튼 배치
-            -->
-            <RowDefinition Height="5*"/>
-            <!-- 
-                2행: Frame 영역
-                Height="5*": 전체 높이의 5/6 (1:5 비율)
-                대부분의 공간을 페이지 표시에 할당
-            -->
-        </Grid.RowDefinitions>
-        
-        <!-- ========== 네비게이션 버튼 영역 ========== -->
-        
-        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-            <!-- 
-                StackPanel:
-                - 뒤로/앞으로 버튼을 가로로 배치
-                
-                Orientation="Horizontal":
-                - 버튼을 가로 방향으로 나열
-                
-                HorizontalAlignment="Center":
-                - 버튼을 화면 중앙에 배치
-                
-                배치:
-                [     <  >     ]
-                  (화면 중앙)
-            -->
-            
-            <Button FontSize="20" Name="뒤로" Click="Back_Click">&lt;</Button>
-            <!-- 
-                뒤로 버튼:
-                
-                FontSize="20":
-                - 버튼 텍스트 크기 20포인트
-                
-                Name="뒤로":
-                - 코드 비하인드에서 접근 가능한 이름
-                - 하지만 이 예제에서는 직접 사용 안 함
-                
-                Click="Back_Click":
-                - 클릭 이벤트 핸들러
-                - MainWindow.xaml.cs의 Back_Click 메서드
-                
-                &lt;:
-                - XML 엔티티 (< 기호)
-                - < 를 텍스트로 표시하기 위해 사용
-                - &lt; = Less Than (<)
-                
-                동작:
-                1. 버튼 클릭
-                2. Back_Click 이벤트 발생
-                3. frm.NavigationService.GoBack() 호출
-                4. 이전 페이지로 이동
-                
-                웹 브라우저 비유:
-                - 뒤로 가기 버튼 (←)
-                - 이전에 방문한 페이지로 이동
-                - 탐색 기록에서 이전 항목
-            -->
-            
-            <Button FontSize="20" Name="앞으로" Click="Front_Click">&gt;</Button>
-            <!-- 
-                앞으로 버튼:
-                
-                FontSize="20":
-                - 버튼 텍스트 크기 20포인트
-                
-                Name="앞으로":
-                - 코드 비하인드에서 접근 가능한 이름
-                
-                Click="Front_Click":
-                - 클릭 이벤트 핸들러
-                - MainWindow.xaml.cs의 Front_Click 메서드
-                
-                &gt;:
-                - XML 엔티티 (> 기호)
-                - > 를 텍스트로 표시하기 위해 사용
-                - &gt; = Greater Than (>)
-                
-                동작:
-                1. 버튼 클릭
-                2. Front_Click 이벤트 발생
-                3. frm.NavigationService.GoForward() 호출
-                4. 다음 페이지로 이동
-                
-                웹 브라우저 비유:
-                - 앞으로 가기 버튼 (→)
-                - 뒤로 간 후 다시 앞으로 이동
-                - 탐색 기록에서 다음 항목
-                
-                활성화 조건:
-                - GoBack() 호출 후에만 활성화 가능
-                - 앞으로 갈 페이지가 있어야 함
-            -->
-        </StackPanel>
-        
-        <!-- ========== Frame 영역 (페이지 표시) ========== -->
-        
-        <Frame Name="frm" Grid.Row="1" Source="/Views/Page1.xaml" NavigationUIVisibility="Hidden"></Frame>
-        <!-- 
-            Frame:
-            - Page를 호스팅하는 컨테이너 컨트롤
-            - 웹 브라우저의 iframe과 유사
-            - 여러 Page 간 전환 가능
-            - 탐색 기록 자동 관리
-            
-            Name="frm":
-            - 코드 비하인드에서 접근할 이름
-            - Back_Click, Front_Click에서 사용
-            - frm.NavigationService로 탐색 제어
-            
-            Grid.Row="1":
-            - 2번째 행에 배치
-            - 화면의 대부분을 차지
-            
-            Source="/Views/Page1.xaml":
-            - 초기에 표시할 페이지
-            - 절대 경로 형식 (루트부터 시작)
-            - /Views/Page1.xaml 경로
-            - 애플리케이션 시작 시 Page1이 표시됨
-            
-            NavigationUIVisibility="Hidden":
-            - Frame의 기본 네비게이션 UI 숨김
-            - 기본 UI: 뒤로/앞으로 버튼, 주소 표시줄
-            - Hidden: 네비게이션 UI 완전히 숨김
-            - 사용자 정의 버튼 사용
-            
-            Frame의 기본 네비게이션 UI:
-            - Visible: 모두 표시 (기본값 아님)
-            - Hidden: 모두 숨김 (이 예제)
-            - Automatic: 필요 시 표시
-            
-            Frame vs ContentControl:
-            - Frame: 탐색 기록 관리, NavigationService
-            - ContentControl: 단순 콘텐츠 표시
-            
-            동작 흐름:
-            1. MainWindow 로드
-            2. Frame에 Page1.xaml 로드
-            3. Page1의 "이동" 버튼 클릭
-            4. NavigationService.Navigate(Page2) 호출
-            5. Frame에 Page2 표시
-            6. 탐색 기록에 Page1 → Page2 저장
-            7. "뒤로" 버튼 클릭 가능
-            
-            탐색 기록:
-            [Page1] → [Page2] → [Page3]
-               ↑ 현재      ↑ 뒤로   ↑ 앞으로
-            
-            NavigationService:
-            - frm.NavigationService: Frame의 탐색 서비스
-            - Navigate(page): 페이지 이동
-            - GoBack(): 이전 페이지
-            - GoForward(): 다음 페이지
-            - CanGoBack: 뒤로 갈 수 있는지
-            - CanGoForward: 앞으로 갈 수 있는지
-            
-            Page 생명주기:
-            1. Page 인스턴스 생성 (new Page2())
-            2. InitializeComponent() 호출
-            3. Frame에 로드 (Loaded 이벤트)
-            4. 화면에 표시
-            5. 다른 페이지로 이동 (Unloaded 이벤트)
-            
-            데이터 전달:
-            NavigationService.Navigate(page, data);
-            
-            Page에서 수신:
-            protected override void OnNavigatedTo(NavigationEventArgs e)
-            {
-                var data = e.ExtraData;
-            }
-        -->
+        <TabControl>
+            <!-- 탭 1: 실습 -->
+            <TabItem Header="실습">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+
+                    <!-- 네비게이션 바 -->
+                    <Border Grid.Row="0" Background="#2196F3" Padding="10">
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                            <Button Content="◀ 뒤로" Click="Back_Click" Width="80" Margin="5,0"
+                                    Background="#1976D2" Foreground="White" BorderThickness="0" Padding="10,5"/>
+                            <Button Content="앞으로 ▶" Click="Forward_Click" Width="80" Margin="5,0"
+                                    Background="#1976D2" Foreground="White" BorderThickness="0" Padding="10,5"/>
+                            <Button Content="🏠 홈" Click="Home_Click" Width="80" Margin="5,0"
+                                    Background="#4CAF50" Foreground="White" BorderThickness="0" Padding="10,5"/>
+                        </StackPanel>
+                    </Border>
+
+                    <!-- Frame 영역 -->
+                    <Border Grid.Row="1" BorderBrush="#CCCCCC" BorderThickness="1" Margin="20,10">
+                        <Frame x:Name="mainFrame" Source="/Views/Page1.xaml" NavigationUIVisibility="Hidden"/>
+                    </Border>
+
+                    <!-- 상태 표시 -->
+                    <Border Grid.Row="2" Background="#F5F5F5" Padding="10">
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                            <TextBlock Text="탐색 기록: " FontWeight="Bold"/>
+                            <TextBlock x:Name="navStatus" Text="뒤로: 불가 | 앞으로: 불가"/>
+                        </StackPanel>
+                    </Border>
+                </Grid>
+            </TabItem>
+
+            <!-- 탭 2: Frame 기초 -->
+            <TabItem Header="Frame 기초">
+                <ScrollViewer VerticalScrollBarVisibility="Auto" Padding="20">
+                    <StackPanel>
+                        <TextBlock Text="Frame 컨트롤" FontSize="18" FontWeight="Bold" Margin="0,0,0,15"/>
+
+                        <!-- Frame이란? -->
+                        <GroupBox Header="Frame이란?" Margin="0,0,0,10">
+                            <StackPanel Margin="10">
+                                <TextBlock TextWrapping="Wrap" Margin="0,0,0,10">
+                                    <Run FontWeight="Bold">Frame</Run>
+                                    <Run>은 Page를 호스팅하고 탐색 기능을 제공하는 컨트롤입니다.</Run>
+                                    <LineBreak/>
+                                    <Run>웹 브라우저처럼 뒤로/앞으로 이동이 가능하며, 탐색 기록을 관리합니다.</Run>
+                                </TextBlock>
+                                <Border Background="LightYellow" Padding="10" CornerRadius="5">
+                                    <StackPanel>
+                                        <TextBlock Text="Frame의 주요 특징:" FontWeight="Bold"/>
+                                        <TextBlock Text="• Page 컨트롤을 호스팅"/>
+                                        <TextBlock Text="• NavigationService 제공"/>
+                                        <TextBlock Text="• 탐색 기록 (뒤로/앞으로) 관리"/>
+                                        <TextBlock Text="• Journal (탐색 일지) 유지"/>
+                                    </StackPanel>
+                                </Border>
+                            </StackPanel>
+                        </GroupBox>
+                        <Expander Style="{StaticResource CodeExpanderStyle}">
+                            <TextBox Style="{StaticResource CodeTextBoxStyle}" Text="&lt;!-- 기본 Frame 선언 --&gt;&#10;&lt;Frame x:Name=&quot;mainFrame&quot;&#10;       Source=&quot;/Views/Page1.xaml&quot;&#10;       NavigationUIVisibility=&quot;Hidden&quot;/&gt;&#10;&#10;&lt;!-- 속성 설명 --&gt;&#10;&lt;!-- Source: 초기에 로드할 Page 경로 --&gt;&#10;&lt;!-- NavigationUIVisibility: 내장 탐색 UI 표시 여부 --&gt;&#10;&lt;!--   Hidden: 숨김 (커스텀 UI 사용 시) --&gt;&#10;&lt;!--   Visible: 표시 --&gt;&#10;&lt;!--   Automatic: 자동 --&gt;"/>
+                        </Expander>
+
+                        <!-- Frame vs Window -->
+                        <GroupBox Header="Frame vs Window" Margin="0,0,0,10">
+                            <Grid Margin="10">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <Border Background="LightBlue" Padding="15" CornerRadius="5" Margin="0,0,5,0">
+                                    <StackPanel>
+                                        <TextBlock Text="Frame + Page" FontWeight="Bold" FontSize="14"/>
+                                        <TextBlock Text="• 동일 창 내 화면 전환" Margin="0,5,0,0"/>
+                                        <TextBlock Text="• 탐색 기록 자동 관리"/>
+                                        <TextBlock Text="• 뒤로/앞으로 지원"/>
+                                        <TextBlock Text="• 마법사, 설정 화면에 적합"/>
+                                    </StackPanel>
+                                </Border>
+                                <Border Grid.Column="1" Background="LightCoral" Padding="15" CornerRadius="5" Margin="5,0,0,0">
+                                    <StackPanel>
+                                        <TextBlock Text="별도 Window" FontWeight="Bold" FontSize="14"/>
+                                        <TextBlock Text="• 새 창 열기" Margin="0,5,0,0"/>
+                                        <TextBlock Text="• 독립적인 수명주기"/>
+                                        <TextBlock Text="• Show() / ShowDialog()"/>
+                                        <TextBlock Text="• 대화상자, 팝업에 적합"/>
+                                    </StackPanel>
+                                </Border>
+                            </Grid>
+                        </GroupBox>
+                        <Expander Style="{StaticResource CodeExpanderStyle}">
+                            <TextBox Style="{StaticResource CodeTextBoxStyle}" Text="// Frame + Page 방식&#10;mainFrame.Navigate(new SettingsPage());&#10;&#10;// 별도 Window 방식&#10;var dialog = new SettingsWindow();&#10;dialog.ShowDialog();"/>
+                        </Expander>
+
+                        <!-- 탐색 UI 옵션 -->
+                        <GroupBox Header="NavigationUIVisibility 옵션" Margin="0,0,0,10">
+                            <StackPanel Margin="10">
+                                <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
+                                    <Border Background="#E3F2FD" Padding="10" CornerRadius="5" Width="160" Margin="0,0,10,0">
+                                        <StackPanel>
+                                            <TextBlock Text="Hidden" FontWeight="Bold" HorizontalAlignment="Center"/>
+                                            <TextBlock Text="탐색 UI 숨김" HorizontalAlignment="Center" FontSize="11"/>
+                                        </StackPanel>
+                                    </Border>
+                                    <Border Background="#E8F5E9" Padding="10" CornerRadius="5" Width="160" Margin="0,0,10,0">
+                                        <StackPanel>
+                                            <TextBlock Text="Visible" FontWeight="Bold" HorizontalAlignment="Center"/>
+                                            <TextBlock Text="항상 표시" HorizontalAlignment="Center" FontSize="11"/>
+                                        </StackPanel>
+                                    </Border>
+                                    <Border Background="#FFF3E0" Padding="10" CornerRadius="5" Width="160">
+                                        <StackPanel>
+                                            <TextBlock Text="Automatic" FontWeight="Bold" HorizontalAlignment="Center"/>
+                                            <TextBlock Text="필요 시 표시" HorizontalAlignment="Center" FontSize="11"/>
+                                        </StackPanel>
+                                    </Border>
+                                </StackPanel>
+                                <TextBlock Text="보통 Hidden으로 설정하고 커스텀 네비게이션 버튼을 사용합니다."
+                                           Foreground="Gray" FontSize="11"/>
+                            </StackPanel>
+                        </GroupBox>
+                        <Expander Style="{StaticResource CodeExpanderStyle}">
+                            <TextBox Style="{StaticResource CodeTextBoxStyle}" Text="&lt;!-- 탐색 UI 숨기기 (권장) --&gt;&#10;&lt;Frame NavigationUIVisibility=&quot;Hidden&quot;/&gt;&#10;&#10;&lt;!-- 커스텀 네비게이션 버튼 --&gt;&#10;&lt;Button Content=&quot;뒤로&quot; Click=&quot;Back_Click&quot;/&gt;&#10;&lt;Button Content=&quot;앞으로&quot; Click=&quot;Forward_Click&quot;/&gt;"/>
+                        </Expander>
+                    </StackPanel>
+                </ScrollViewer>
+            </TabItem>
+
+            <!-- 탭 3: Page 클래스 -->
+            <TabItem Header="Page 클래스">
+                <ScrollViewer VerticalScrollBarVisibility="Auto" Padding="20">
+                    <StackPanel>
+                        <TextBlock Text="Page 클래스" FontSize="18" FontWeight="Bold" Margin="0,0,0,15"/>
+
+                        <!-- Page란? -->
+                        <GroupBox Header="Page란?" Margin="0,0,0,10">
+                            <StackPanel Margin="10">
+                                <TextBlock TextWrapping="Wrap" Margin="0,0,0,10">
+                                    <Run FontWeight="Bold">Page</Run>
+                                    <Run>는 Frame 내에서 호스팅되는 화면 단위입니다.</Run>
+                                    <LineBreak/>
+                                    <Run>Window와 비슷하지만 독립적인 창이 아닌 Frame 내부에서 표시됩니다.</Run>
+                                </TextBlock>
+                                <Border Background="LightGreen" Padding="10" CornerRadius="5">
+                                    <StackPanel>
+                                        <TextBlock Text="Page 생성 방법:" FontWeight="Bold"/>
+                                        <TextBlock Text="1. 프로젝트 우클릭 → 추가 → 새 항목"/>
+                                        <TextBlock Text="2. WPF → Page (WPF) 선택"/>
+                                        <TextBlock Text="3. 이름 지정 후 추가"/>
+                                    </StackPanel>
+                                </Border>
+                            </StackPanel>
+                        </GroupBox>
+                        <Expander Style="{StaticResource CodeExpanderStyle}">
+                            <TextBox Style="{StaticResource CodeTextBoxStyle}" Text="&lt;!-- Page1.xaml --&gt;&#10;&lt;Page x:Class=&quot;MyApp.Views.Page1&quot;&#10;      xmlns=&quot;http://schemas.microsoft.com/winfx/2006/xaml/presentation&quot;&#10;      xmlns:x=&quot;http://schemas.microsoft.com/winfx/2006/xaml&quot;&#10;      Title=&quot;Page1&quot;&#10;      Background=&quot;Salmon&quot;&gt;&#10;    &#10;    &lt;StackPanel&gt;&#10;        &lt;Label FontSize=&quot;20&quot;&gt;페이지1&lt;/Label&gt;&#10;        &lt;Button Content=&quot;다음&quot; Click=&quot;Next_Click&quot;/&gt;&#10;    &lt;/StackPanel&gt;&#10;&lt;/Page&gt;"/>
+                        </Expander>
+
+                        <!-- Page vs UserControl -->
+                        <GroupBox Header="Page vs UserControl" Margin="0,0,0,10">
+                            <Grid Margin="10">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <Border Background="#E1F5FE" Padding="15" CornerRadius="5" Margin="0,0,5,0">
+                                    <StackPanel>
+                                        <TextBlock Text="Page" FontWeight="Bold" FontSize="14"/>
+                                        <TextBlock Text="• Frame에서만 사용" Margin="0,5,0,0"/>
+                                        <TextBlock Text="• NavigationService 제공"/>
+                                        <TextBlock Text="• 전체 화면 전환용"/>
+                                        <TextBlock Text="• 탐색 기록 관리"/>
+                                    </StackPanel>
+                                </Border>
+                                <Border Grid.Column="1" Background="#F3E5F5" Padding="15" CornerRadius="5" Margin="5,0,0,0">
+                                    <StackPanel>
+                                        <TextBlock Text="UserControl" FontWeight="Bold" FontSize="14"/>
+                                        <TextBlock Text="• 어디서나 사용 가능" Margin="0,5,0,0"/>
+                                        <TextBlock Text="• 재사용 가능한 컴포넌트"/>
+                                        <TextBlock Text="• 부분 UI 구성"/>
+                                        <TextBlock Text="• 탐색 기능 없음"/>
+                                    </StackPanel>
+                                </Border>
+                            </Grid>
+                        </GroupBox>
+                        <Expander Style="{StaticResource CodeExpanderStyle}">
+                            <TextBox Style="{StaticResource CodeTextBoxStyle}" Text="// Page - Frame 내에서 탐색&#10;public partial class Page1 : Page&#10;{&#10;    private void Next_Click(object sender, RoutedEventArgs e)&#10;    {&#10;        NavigationService.Navigate(new Page2());&#10;    }&#10;}&#10;&#10;// UserControl - 재사용 컴포넌트&#10;public partial class MyControl : UserControl&#10;{&#10;    // 어떤 컨테이너에서든 사용 가능&#10;}"/>
+                        </Expander>
+
+                        <!-- Page 생명주기 -->
+                        <GroupBox Header="Page 생명주기" Margin="0,0,0,10">
+                            <StackPanel Margin="10">
+                                <TextBlock Text="Page가 로드되고 언로드되는 과정:" Margin="0,0,0,10"/>
+                                <Border Background="#FFFDE7" Padding="15" CornerRadius="5">
+                                    <StackPanel>
+                                        <TextBlock Text="1. 생성자 호출 (new Page1())" FontFamily="Consolas"/>
+                                        <TextBlock Text="   ↓" HorizontalAlignment="Center"/>
+                                        <TextBlock Text="2. InitializeComponent()" FontFamily="Consolas"/>
+                                        <TextBlock Text="   ↓" HorizontalAlignment="Center"/>
+                                        <TextBlock Text="3. Loaded 이벤트" FontFamily="Consolas"/>
+                                        <TextBlock Text="   ↓" HorizontalAlignment="Center"/>
+                                        <TextBlock Text="4. OnNavigatedTo 호출" FontFamily="Consolas"/>
+                                        <TextBlock Text="   ↓" HorizontalAlignment="Center"/>
+                                        <TextBlock Text="5. 화면에 표시" FontFamily="Consolas" FontWeight="Bold"/>
+                                        <TextBlock Text="   ↓" HorizontalAlignment="Center"/>
+                                        <TextBlock Text="6. OnNavigatingFrom (떠나기 전)" FontFamily="Consolas"/>
+                                        <TextBlock Text="   ↓" HorizontalAlignment="Center"/>
+                                        <TextBlock Text="7. OnNavigatedFrom (떠난 후)" FontFamily="Consolas"/>
+                                    </StackPanel>
+                                </Border>
+                            </StackPanel>
+                        </GroupBox>
+                        <Expander Style="{StaticResource CodeExpanderStyle}">
+                            <TextBox Style="{StaticResource CodeTextBoxStyle}" Text="public partial class Page1 : Page&#10;{&#10;    public Page1()&#10;    {&#10;        InitializeComponent();&#10;    }&#10;&#10;    // 페이지로 탐색 완료&#10;    protected override void OnNavigatedTo(NavigationEventArgs e)&#10;    {&#10;        base.OnNavigatedTo(e);&#10;        // 데이터 로드, 초기화 작업&#10;    }&#10;&#10;    // 페이지를 떠나기 전&#10;    protected override void OnNavigatingFrom(NavigatingCancelEventArgs e)&#10;    {&#10;        base.OnNavigatingFrom(e);&#10;        // e.Cancel = true; // 탐색 취소 가능&#10;    }&#10;&#10;    // 페이지를 떠난 후&#10;    protected override void OnNavigatedFrom(NavigationEventArgs e)&#10;    {&#10;        base.OnNavigatedFrom(e);&#10;        // 정리 작업&#10;    }&#10;}"/>
+                        </Expander>
+                    </StackPanel>
+                </ScrollViewer>
+            </TabItem>
+
+            <!-- 탭 4: NavigationService -->
+            <TabItem Header="NavigationService">
+                <ScrollViewer VerticalScrollBarVisibility="Auto" Padding="20">
+                    <StackPanel>
+                        <TextBlock Text="NavigationService 사용법" FontSize="18" FontWeight="Bold" Margin="0,0,0,15"/>
+
+                        <!-- Navigate -->
+                        <GroupBox Header="페이지 이동 (Navigate)" Margin="0,0,0,10">
+                            <StackPanel Margin="10">
+                                <TextBlock TextWrapping="Wrap" Margin="0,0,0,10">
+                                    Navigate 메서드로 다른 페이지로 이동합니다. 탐색 기록에 자동으로 추가됩니다.
+                                </TextBlock>
+                                <Border Background="LightCyan" Padding="10" CornerRadius="5">
+                                    <StackPanel>
+                                        <TextBlock Text="Navigate 방법:" FontWeight="Bold"/>
+                                        <TextBlock Text="• Page 인스턴스로 이동" FontFamily="Consolas" Margin="0,5,0,0"/>
+                                        <TextBlock Text="• URI로 이동" FontFamily="Consolas"/>
+                                        <TextBlock Text="• 데이터와 함께 이동" FontFamily="Consolas"/>
+                                    </StackPanel>
+                                </Border>
+                            </StackPanel>
+                        </GroupBox>
+                        <Expander Style="{StaticResource CodeExpanderStyle}">
+                            <TextBox Style="{StaticResource CodeTextBoxStyle}" Text="// 1. Page 인스턴스로 이동&#10;NavigationService.Navigate(new Page2());&#10;&#10;// 2. URI로 이동&#10;NavigationService.Navigate(new Uri(&quot;/Views/Page2.xaml&quot;, UriKind.Relative));&#10;&#10;// 3. 데이터와 함께 이동&#10;var userData = new UserData { Name = &quot;홍길동&quot;, Age = 30 };&#10;NavigationService.Navigate(new Page2(), userData);&#10;&#10;// Frame에서 직접 호출&#10;mainFrame.Navigate(new Page2());&#10;mainFrame.NavigationService.Navigate(new Page2());"/>
+                        </Expander>
+
+                        <!-- GoBack / GoForward -->
+                        <GroupBox Header="뒤로/앞으로 이동" Margin="0,0,0,10">
+                            <StackPanel Margin="10">
+                                <TextBlock TextWrapping="Wrap" Margin="0,0,0,10">
+                                    GoBack()과 GoForward()로 탐색 기록을 따라 이동합니다.
+                                </TextBlock>
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Border Background="#BBDEFB" Padding="10" CornerRadius="5" Margin="0,0,5,0">
+                                        <StackPanel>
+                                            <TextBlock Text="◀ GoBack()" FontWeight="Bold"/>
+                                            <TextBlock Text="이전 페이지로 이동" Margin="0,5,0,0"/>
+                                            <TextBlock Text="CanGoBack으로 확인" FontSize="11" Foreground="Gray"/>
+                                        </StackPanel>
+                                    </Border>
+                                    <Border Grid.Column="1" Background="#C8E6C9" Padding="10" CornerRadius="5" Margin="5,0,0,0">
+                                        <StackPanel>
+                                            <TextBlock Text="GoForward() ▶" FontWeight="Bold"/>
+                                            <TextBlock Text="다음 페이지로 이동" Margin="0,5,0,0"/>
+                                            <TextBlock Text="CanGoForward로 확인" FontSize="11" Foreground="Gray"/>
+                                        </StackPanel>
+                                    </Border>
+                                </Grid>
+                            </StackPanel>
+                        </GroupBox>
+                        <Expander Style="{StaticResource CodeExpanderStyle}">
+                            <TextBox Style="{StaticResource CodeTextBoxStyle}" Text="// 뒤로 가기&#10;private void Back_Click(object sender, RoutedEventArgs e)&#10;{&#10;    if (mainFrame.CanGoBack)&#10;    {&#10;        mainFrame.GoBack();&#10;    }&#10;}&#10;&#10;// 앞으로 가기&#10;private void Forward_Click(object sender, RoutedEventArgs e)&#10;{&#10;    if (mainFrame.CanGoForward)&#10;    {&#10;        mainFrame.GoForward();&#10;    }&#10;}&#10;&#10;// Page 내부에서&#10;if (NavigationService.CanGoBack)&#10;{&#10;    NavigationService.GoBack();&#10;}"/>
+                        </Expander>
+
+                        <!-- 탐색 기록 관리 -->
+                        <GroupBox Header="탐색 기록 관리" Margin="0,0,0,10">
+                            <StackPanel Margin="10">
+                                <TextBlock TextWrapping="Wrap" Margin="0,0,0,10">
+                                    RemoveBackEntry()로 탐색 기록을 제거할 수 있습니다.
+                                    로그인 후 뒤로가기 방지 등에 사용됩니다.
+                                </TextBlock>
+                                <Border Background="MistyRose" Padding="10" CornerRadius="5">
+                                    <StackPanel>
+                                        <TextBlock Text="활용 예시:" FontWeight="Bold"/>
+                                        <TextBlock Text="• 로그인 후: 로그인 페이지 기록 제거"/>
+                                        <TextBlock Text="• 마법사 완료: 중간 단계 기록 제거"/>
+                                        <TextBlock Text="• 결제 완료: 결제 페이지 기록 제거"/>
+                                    </StackPanel>
+                                </Border>
+                            </StackPanel>
+                        </GroupBox>
+                        <Expander Style="{StaticResource CodeExpanderStyle}">
+                            <TextBox Style="{StaticResource CodeTextBoxStyle}" Text="// 마지막 기록 제거&#10;NavigationService.RemoveBackEntry();&#10;&#10;// 모든 기록 제거&#10;while (NavigationService.CanGoBack)&#10;{&#10;    NavigationService.RemoveBackEntry();&#10;}&#10;&#10;// 첫 페이지로 이동 (기록 유지)&#10;while (NavigationService.CanGoBack)&#10;{&#10;    NavigationService.GoBack();&#10;}"/>
+                        </Expander>
+
+                        <!-- 탐색 이벤트 -->
+                        <GroupBox Header="탐색 이벤트" Margin="0,0,0,10">
+                            <StackPanel Margin="10">
+                                <TextBlock TextWrapping="Wrap" Margin="0,0,0,10">
+                                    Frame의 탐색 이벤트를 구독하여 탐색 상태를 모니터링할 수 있습니다.
+                                </TextBlock>
+                            </StackPanel>
+                        </GroupBox>
+                        <Expander Style="{StaticResource CodeExpanderStyle}">
+                            <TextBox Style="{StaticResource CodeTextBoxStyle}" Text="public MainWindow()&#10;{&#10;    InitializeComponent();&#10;    &#10;    // 탐색 완료 이벤트&#10;    mainFrame.Navigated += MainFrame_Navigated;&#10;    &#10;    // 탐색 시작 이벤트&#10;    mainFrame.Navigating += MainFrame_Navigating;&#10;}&#10;&#10;private void MainFrame_Navigated(object sender, NavigationEventArgs e)&#10;{&#10;    // 탐색 완료 후 상태 업데이트&#10;    UpdateNavigationStatus();&#10;}&#10;&#10;private void MainFrame_Navigating(object sender, NavigatingCancelEventArgs e)&#10;{&#10;    // 탐색 전 확인&#10;    // e.Cancel = true; // 필요시 탐색 취소&#10;}"/>
+                        </Expander>
+                    </StackPanel>
+                </ScrollViewer>
+            </TabItem>
+
+            <!-- 탭 5: 데이터 전달 -->
+            <TabItem Header="데이터 전달">
+                <ScrollViewer VerticalScrollBarVisibility="Auto" Padding="20">
+                    <StackPanel>
+                        <TextBlock Text="페이지 간 데이터 전달" FontSize="18" FontWeight="Bold" Margin="0,0,0,15"/>
+
+                        <!-- Navigate로 데이터 전달 -->
+                        <GroupBox Header="Navigate로 데이터 전달" Margin="0,0,0,10">
+                            <StackPanel Margin="10">
+                                <TextBlock TextWrapping="Wrap" Margin="0,0,0,10">
+                                    Navigate 메서드의 두 번째 인자로 데이터를 전달할 수 있습니다.
+                                    받는 페이지에서는 OnNavigatedTo의 e.ExtraData로 수신합니다.
+                                </TextBlock>
+                                <Border Background="LightYellow" Padding="10" CornerRadius="5">
+                                    <StackPanel>
+                                        <TextBlock Text="전달 가능한 데이터:" FontWeight="Bold"/>
+                                        <TextBlock Text="• 문자열, 숫자 등 기본 타입"/>
+                                        <TextBlock Text="• 커스텀 클래스 객체"/>
+                                        <TextBlock Text="• Dictionary, List 등 컬렉션"/>
+                                    </StackPanel>
+                                </Border>
+                            </StackPanel>
+                        </GroupBox>
+                        <Expander Style="{StaticResource CodeExpanderStyle}">
+                            <TextBox Style="{StaticResource CodeTextBoxStyle}" Text="// Page1에서 데이터 전달&#10;public class UserData&#10;{&#10;    public string Name { get; set; }&#10;    public int Age { get; set; }&#10;}&#10;&#10;private void Next_Click(object sender, RoutedEventArgs e)&#10;{&#10;    var data = new UserData { Name = &quot;홍길동&quot;, Age = 30 };&#10;    NavigationService.Navigate(new Page2(), data);&#10;}"/>
+                        </Expander>
+
+                        <!-- OnNavigatedTo에서 데이터 수신 -->
+                        <GroupBox Header="데이터 수신" Margin="0,0,0,10">
+                            <StackPanel Margin="10">
+                                <TextBlock TextWrapping="Wrap" Margin="0,0,0,10">
+                                    OnNavigatedTo 메서드를 오버라이드하여 전달된 데이터를 받습니다.
+                                </TextBlock>
+                            </StackPanel>
+                        </GroupBox>
+                        <Expander Style="{StaticResource CodeExpanderStyle}">
+                            <TextBox Style="{StaticResource CodeTextBoxStyle}" Text="// Page2에서 데이터 수신&#10;public partial class Page2 : Page&#10;{&#10;    protected override void OnNavigatedTo(NavigationEventArgs e)&#10;    {&#10;        base.OnNavigatedTo(e);&#10;        &#10;        // 전달된 데이터 확인&#10;        if (e.ExtraData is UserData userData)&#10;        {&#10;            nameLabel.Content = userData.Name;&#10;            ageLabel.Content = $&quot;{userData.Age}세&quot;;&#10;        }&#10;    }&#10;}"/>
+                        </Expander>
+
+                        <!-- 생성자로 데이터 전달 -->
+                        <GroupBox Header="생성자로 데이터 전달" Margin="0,0,0,10">
+                            <StackPanel Margin="10">
+                                <TextBlock TextWrapping="Wrap" Margin="0,0,0,10">
+                                    Page 생성자에 매개변수를 추가하여 데이터를 전달할 수도 있습니다.
+                                </TextBlock>
+                            </StackPanel>
+                        </GroupBox>
+                        <Expander Style="{StaticResource CodeExpanderStyle}">
+                            <TextBox Style="{StaticResource CodeTextBoxStyle}" Text="// Page2 생성자에 매개변수 추가&#10;public partial class Page2 : Page&#10;{&#10;    public Page2(UserData userData)&#10;    {&#10;        InitializeComponent();&#10;        nameLabel.Content = userData.Name;&#10;        ageLabel.Content = $&quot;{userData.Age}세&quot;;&#10;    }&#10;}&#10;&#10;// Page1에서 호출&#10;private void Next_Click(object sender, RoutedEventArgs e)&#10;{&#10;    var data = new UserData { Name = &quot;홍길동&quot;, Age = 30 };&#10;    NavigationService.Navigate(new Page2(data));&#10;}"/>
+                        </Expander>
+
+                        <!-- 탐색 취소 -->
+                        <GroupBox Header="탐색 확인 및 취소" Margin="0,0,0,10">
+                            <StackPanel Margin="10">
+                                <TextBlock TextWrapping="Wrap" Margin="0,0,0,10">
+                                    OnNavigatingFrom에서 탐색을 취소할 수 있습니다.
+                                    저장되지 않은 데이터 확인 등에 활용됩니다.
+                                </TextBlock>
+                                <Border Background="LightCoral" Padding="10" CornerRadius="5">
+                                    <TextBlock Text="e.Cancel = true; → 탐색이 취소됨" FontWeight="Bold"/>
+                                </Border>
+                            </StackPanel>
+                        </GroupBox>
+                        <Expander Style="{StaticResource CodeExpanderStyle}">
+                            <TextBox Style="{StaticResource CodeTextBoxStyle}" Text="protected override void OnNavigatingFrom(NavigatingCancelEventArgs e)&#10;{&#10;    base.OnNavigatingFrom(e);&#10;    &#10;    if (hasUnsavedChanges)&#10;    {&#10;        var result = MessageBox.Show(&#10;            &quot;저장하지 않은 변경사항이 있습니다.\n계속하시겠습니까?&quot;,&#10;            &quot;확인&quot;,&#10;            MessageBoxButton.YesNo);&#10;        &#10;        if (result == MessageBoxResult.No)&#10;        {&#10;            e.Cancel = true; // 탐색 취소&#10;        }&#10;    }&#10;}"/>
+                        </Expander>
+                    </StackPanel>
+                </ScrollViewer>
+            </TabItem>
+        </TabControl>
     </Grid>
-    
-    <!--
-        Frame과 NavigationService 전체 요약:
-        
-        ========== Frame의 주요 기능 ==========
-        
-        1. 페이지 호스팅:
-           - Page 객체를 표시
-           - 한 번에 하나의 Page만
-        
-        2. 탐색 관리:
-           - NavigationService 제공
-           - 탐색 기록 자동 관리
-           - Back/Forward 스택
-        
-        3. 네비게이션 UI:
-           - 기본 UI 제공 (선택적)
-           - NavigationUIVisibility로 제어
-        
-        ========== NavigationService 메서드 ==========
-        
-        1. Navigate(Uri):
-           NavigationService.Navigate(new Uri("/Views/Page2.xaml", UriKind.Relative));
-        
-        2. Navigate(Page):
-           NavigationService.Navigate(new Page2());
-        
-        3. Navigate(Page, object):
-           NavigationService.Navigate(new Page2(), userData);
-        
-        4. GoBack():
-           if (NavigationService.CanGoBack)
-               NavigationService.GoBack();
-        
-        5. GoForward():
-           if (NavigationService.CanGoForward)
-               NavigationService.GoForward();
-        
-        6. RemoveBackEntry():
-           NavigationService.RemoveBackEntry(); // 이전 항목 제거
-        
-        ========== 탐색 이벤트 ==========
-        
-        Page에서 재정의:
-        
-        1. OnNavigatedTo (페이지 로드):
-           protected override void OnNavigatedTo(NavigationEventArgs e)
-           {
-               base.OnNavigatedTo(e);
-               var data = e.ExtraData; // 전달된 데이터
-           }
-        
-        2. OnNavigatedFrom (페이지 떠남):
-           protected override void OnNavigatedFrom(NavigationEventArgs e)
-           {
-               base.OnNavigatedFrom(e);
-               // 정리 작업
-           }
-        
-        3. OnNavigating (탐색 중):
-           protected override void OnNavigating(NavigatingCancelEventArgs e)
-           {
-               base.OnNavigating(e);
-               e.Cancel = true; // 탐색 취소 가능
-           }
-        
-        ========== 실전 활용 예제 ==========
-        
-        1. 데이터 전달:
-           Page1:
-           var data = new UserData { Name = "홍길동", Age = 30 };
-           NavigationService.Navigate(new Page2(), data);
-           
-           Page2:
-           protected override void OnNavigatedTo(NavigationEventArgs e)
-           {
-               if (e.ExtraData is UserData data)
-               {
-                   nameLabel.Content = data.Name;
-               }
-           }
-        
-        2. 조건부 탐색:
-           private void Navigate_Click(object sender, RoutedEventArgs e)
-           {
-               if (ValidateInput())
-               {
-                   NavigationService.Navigate(new Page2());
-               }
-               else
-               {
-                   MessageBox.Show("입력을 확인하세요.");
-               }
-           }
-        
-        3. 탐색 확인:
-           protected override void OnNavigating(NavigatingCancelEventArgs e)
-           {
-               if (hasUnsavedChanges)
-               {
-                   var result = MessageBox.Show("저장하지 않은 변경사항이 있습니다. 계속하시겠습니까?", 
-                                                "확인", MessageBoxButton.YesNo);
-                   if (result == MessageBoxResult.No)
-                   {
-                       e.Cancel = true; // 탐색 취소
-                   }
-               }
-           }
-        
-        4. 기록 제거:
-           NavigationService.Navigate(new LoginPage());
-           NavigationService.RemoveBackEntry(); // 로그인 페이지로 돌아갈 수 없게
-        
-        5. URI 기반 탐색:
-           NavigationService.Navigate(new Uri("/Views/Page2.xaml", UriKind.Relative));
-        
-        6. 매개변수 포함 URI:
-           NavigationService.Navigate(new Uri($"/Views/DetailPage.xaml?id={itemId}", UriKind.Relative));
-           
-           DetailPage:
-           protected override void OnNavigatedTo(NavigationEventArgs e)
-           {
-               var uri = e.Uri;
-               var query = uri.Query; // ?id=123
-               // 파싱하여 사용
-           }
-        
-        7. Journal 관리:
-           Frame.JournalOwnership = JournalOwnership.OwnsJournal; // 독립적인 저널
-           Frame.JournalOwnership = JournalOwnership.UsesParentJournal; // 부모 저널 공유
-        
-        8. 중첩 Frame:
-           <Frame Name="mainFrame">
-               <Page>
-                   <Frame Name="subFrame"/>
-               </Page>
-           </Frame>
-        
-        ========== Window vs Frame ==========
-        
-        Window (모달/모달리스):
-        - 독립적인 창
-        - ShowDialog() / Show()
-        - 창 관리 오버헤드
-        
-        Frame + Page:
-        - 동일한 창 내에서 전환
-        - 빠른 전환
-        - 탐색 기록 관리
-        
-        사용 시나리오:
-        - Window: 설정, 다이얼로그, 별도 창
-        - Frame: 마법사, 다단계 폼, 앱 네비게이션
-        
-        ========== MVVM 패턴과 Frame ==========
-        
-        ViewModel에서 탐색:
-        
-        1. INavigationService 인터페이스:
-           public interface INavigationService
-           {
-               void Navigate<T>() where T : Page;
-               void Navigate<T>(object parameter) where T : Page;
-               void GoBack();
-           }
-        
-        2. 구현:
-           public class NavigationService : INavigationService
-           {
-               private Frame _frame;
-               
-               public NavigationService(Frame frame)
-               {
-                   _frame = frame;
-               }
-               
-               public void Navigate<T>() where T : Page
-               {
-                   var page = Activator.CreateInstance<T>();
-                   _frame.Navigate(page);
-               }
-               
-               public void GoBack()
-               {
-                   if (_frame.CanGoBack)
-                       _frame.GoBack();
-               }
-           }
-        
-        3. ViewModel 사용:
-           public class MainViewModel
-           {
-               private INavigationService _navigationService;
-               
-               public ICommand NavigateCommand { get; }
-               
-               public MainViewModel(INavigationService navigationService)
-               {
-                   _navigationService = navigationService;
-                   NavigateCommand = new RelayCommand(() => _navigationService.Navigate<Page2>());
-               }
-           }
-        
-        ========== 주의사항 ==========
-        
-        1. Page 수명:
-           - Navigate()마다 새 인스턴스 생성
-           - 상태 유지 필요 시 ViewModel 사용
-        
-        2. 메모리 관리:
-           - 탐색 기록이 계속 쌓임
-           - 필요 시 RemoveBackEntry() 호출
-        
-        3. 순환 참조:
-           - Page가 Frame 참조 시 주의
-           - NavigationService 사용 권장
-        
-        4. XAML vs 코드:
-           - Source 속성: XAML에서 초기 페이지
-           - Navigate(): 코드에서 동적 이동
-    -->
 </Window>
