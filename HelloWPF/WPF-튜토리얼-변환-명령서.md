@@ -103,3 +103,5 @@
 | ch23 메뉴 | Menu | 5 | 완료 |
 | ch24 컨텍스트메뉴 | ContextMenu | 5 | 완료 |
 | ch25 데이터바인딩1 | DataBinding | 5 | 완료 |
+| ch29 화면이동 프레임 | Frame/Page | 5 | 완료 |
+| ch30 탭컨트롤 모달 모달리스 | TabControl/Modal | 5 | 완료 |
