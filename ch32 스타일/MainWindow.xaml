@@ -1,13 +1,3 @@
-﻿<!-- 
-    ch32 스타일 - MainWindow.xaml
-    Dictionary1.xaml에 정의된 전역 스타일을 사용하는 메인 윈도우입니다.
-    StaticResource로 "버튼스타일"을 참조하여 버튼에 적용합니다.
-    
-    핵심 개념:
-    - StaticResource: 리소스 참조 (정적)
-    - Window.Resources: 윈도우 수준 리소스 (주석 처리됨)
-    - 전역 리소스 사용: App.xaml의 MergedDictionaries
--->
 <Window x:Class="ch32_스타일.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
@@ -15,326 +5,567 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ch32_스타일"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    
-    <!--<Window.Resources>
-        <Style TargetType="Button" x:Key="버튼스타일">
-            <Setter Property="Cursor" Value="Hand"></Setter>
-            <Setter Property="Background" Value="Salmon"></Setter>
-            <Setter Property="Foreground" Value="White"></Setter>
-            <Setter Property="Width" Value="150"></Setter>
-            <Setter Property="Height" Value="50"></Setter>
-            <Setter Property="FontSize" Value="20"></Setter>
-            <Setter Property="FontWeight" Value="Bold"></Setter>
-            <Setter Property="Margin" Value="10"></Setter>
+        Title="ch32 스타일 튜토리얼" Height="600" Width="850">
+
+    <Window.Resources>
+        <Style x:Key="CodeExpanderStyle" TargetType="Expander">
+            <Setter Property="Header" Value="코드 보기"/>
+            <Setter Property="Margin" Value="0,0,0,12"/>
+            <Setter Property="IsExpanded" Value="False"/>
+        </Style>
+        <Style x:Key="CodeTextBoxStyle" TargetType="TextBox">
+            <Setter Property="IsReadOnly" Value="True"/>
+            <Setter Property="FontFamily" Value="Consolas"/>
+            <Setter Property="FontSize" Value="12"/>
+            <Setter Property="Background" Value="#1E1E1E"/>
+            <Setter Property="Foreground" Value="#DCDCDC"/>
+            <Setter Property="Padding" Value="10"/>
+            <Setter Property="TextWrapping" Value="Wrap"/>
+            <Setter Property="AcceptsReturn" Value="True"/>
+            <Setter Property="VerticalScrollBarVisibility" Value="Auto"/>
+            <Setter Property="MaxHeight" Value="300"/>
+            <Setter Property="BorderBrush" Value="#333333"/>
+            <Setter Property="BorderThickness" Value="1"/>
+        </Style>
+
+        <Style x:Key="SampleButtonStyle" TargetType="Button">
+            <Setter Property="Background" Value="Salmon"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="Padding" Value="15,8"/>
+            <Setter Property="Margin" Value="5"/>
+            <Setter Property="Cursor" Value="Hand"/>
+        </Style>
+
+        <Style x:Key="GreenButtonStyle" TargetType="Button">
+            <Setter Property="Background" Value="LightGreen"/>
+            <Setter Property="Foreground" Value="DarkGreen"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="Padding" Value="15,8"/>
+            <Setter Property="Margin" Value="5"/>
+            <Setter Property="Cursor" Value="Hand"/>
+        </Style>
+
+        <Style x:Key="RoundButtonStyle" TargetType="Button">
+            <Setter Property="Background" Value="DodgerBlue"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="Width" Value="120"/>
+            <Setter Property="Height" Value="40"/>
+            <Setter Property="Cursor" Value="Hand"/>
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="Button">
-                        <Border CornerRadius="20"
-                                Background="{TemplateBinding Background}">
-                            <ContentPresenter HorizontalAlignment="Center"
-                                              VerticalAlignment="Center">
-                                
-                            </ContentPresenter>
+                        <Border CornerRadius="20" Background="{TemplateBinding Background}">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
                         </Border>
                     </ControlTemplate>
                 </Setter.Value>
             </Setter>
         </Style>
-    </Window.Resources>-->
-    <!-- 
-        Window.Resources (주석 처리됨):
-        - 원래 이 윈도우에만 적용되던 로컬 스타일
-        - Dictionary1.xaml로 이동하여 전역 리소스로 변경
-        
-        주석 처리 이유:
-        - 리소스 중앙 관리
-        - 여러 윈도우에서 재사용
-        - App.xaml의 MergedDictionaries로 병합
-        
-        로컬 리소스 vs 전역 리소스:
-        
-        로컬 리소스 (Window.Resources):
-        - 장점:
-          - 빠른 프로토타이핑
-          - 해당 윈도우에만 영향
-          - 간단한 구조
-        - 단점:
-          - 재사용 불가
-          - 코드 중복
-          - 유지보수 어려움
-        
-        전역 리소스 (App.xaml):
-        - 장점:
-          - 재사용 가능
-          - 중앙 관리
-          - 일관성 유지
-          - 유지보수 용이
-        - 단점:
-          - 초기 설정 복잡
-          - 범위 관리 필요
-        
-        리소스 조회 순서:
-        1. 현재 컨트롤의 Resources
-        2. 부모 컨트롤의 Resources
-        3. Window.Resources (이 파일, 주석 처리됨)
-        4. Application.Resources (App.xaml)
-           - MergedDictionaries (Dictionary1.xaml) ✓
-        5. 시스템 리소스
-        
-        이 예제:
-        - Window.Resources 주석 처리
-        - App.xaml에서 Dictionary1.xaml 병합
-        - 전역 리소스로 "버튼스타일" 사용
-        
-        재활성화하려면:
-        - 주석 제거
-        - Window.Resources의 스타일이 우선 적용
-        - Dictionary1.xaml의 스타일 무시
-    -->
-    
-    <Grid>
-        <!-- 
-            Grid:
-            - 간단한 레이아웃
-            - 버튼 하나만 포함
-        -->
-        
-        <Button Style="{StaticResource 버튼스타일}">버튼</Button>
-        <!-- 
-            Button:
-            - Dictionary1.xaml의 "버튼스타일" 적용
-            
-            Style="{StaticResource 버튼스타일}":
-            - StaticResource 마크업 확장
-            - "버튼스타일" 키로 리소스 검색
-            - 컴파일 타임에 해결
-            
-            StaticResource:
-            - 정적 리소스 참조
-            - XAML 로드 시 한 번만 해결
-            - 리소스 변경 시 UI 자동 업데이트 안 됨
-            
-            리소스 조회 과정:
-            1. Button의 Resources 검색 (없음)
-            2. Grid의 Resources 검색 (없음)
-            3. Window.Resources 검색 (주석 처리, 없음)
-            4. Application.Resources 검색
-               - MergedDictionaries 확인
-               - Dictionary1.xaml에서 "버튼스타일" 발견 ✓
-            5. 스타일 적용
-            
-            적용된 속성:
-            - Cursor: Hand (손 모양)
-            - Background: Salmon (연어색)
-            - Foreground: White (흰색 텍스트)
-            - Width: 150px
-            - Height: 50px
-            - FontSize: 20px
-            - FontWeight: Bold
-            - Margin: 10px (모든 방향)
-            - Template: 둥근 모서리 (CornerRadius=20)
-            
-            Content="버튼":
-            - 버튼에 표시될 텍스트
-            - ContentPresenter가 렌더링
-            
-            결과:
-            ┌─────────────────┐
-            │   버튼          │ ← Salmon 배경, 흰색 텍스트
-            └─────────────────┘
-               둥근 모서리 (CornerRadius=20)
-            
-            StaticResource vs DynamicResource:
-            
-            StaticResource:
-            - 컴파일 타임 해결
-            - 빠름
-            - 리소스 변경 시 자동 업데이트 안 됨
-            - 대부분의 경우 사용
-            
-            예:
-            <Button Style="{StaticResource 버튼스타일}"/>
-            
-            DynamicResource:
-            - 런타임 해결
-            - 느림
-            - 리소스 변경 시 자동 업데이트
-            - 테마 전환 등에 사용
-            
-            예:
-            <Button Style="{DynamicResource 버튼스타일}"/>
-            
-            리소스 변경:
-            Application.Current.Resources["버튼스타일"] = newStyle;
-            → StaticResource: 변경 안 됨
-            → DynamicResource: 자동 업데이트
-            
-            스타일 미적용 (기본):
-            <Button>버튼</Button>
-            - 기본 버튼 스타일
-            - 사각형, 회색 배경
-            
-            스타일 적용:
-            <Button Style="{StaticResource 버튼스타일}">버튼</Button>
-            - 사용자 정의 스타일
-            - 둥근 모서리, Salmon 배경
-            
-            로컬에서 속성 재정의:
-            <Button Style="{StaticResource 버튼스타일}" Background="Blue">버튼</Button>
-            - 로컬 속성이 스타일보다 우선
-            - Background: Blue (Salmon 대신)
-            - 다른 속성은 스타일 적용
-            
-            스타일 없이 직접 설정:
-            <Button Cursor="Hand" Background="Salmon" Foreground="White"
-                    Width="150" Height="50" FontSize="20" FontWeight="Bold"
-                    Margin="10">버튼</Button>
-            - 스타일 없이 모든 속성 직접 설정
-            - Template은 설정 불가 (XAML에서 복잡)
-            - 코드 중복, 유지보수 어려움
-        -->
-    </Grid>
-    
-    <!--
-        스타일 사용 패턴:
-        
-        ========== 1. 기본 사용 ==========
-        
-        <Button Style="{StaticResource 버튼스타일}">버튼</Button>
-        
-        ========== 2. 로컬 속성 재정의 ==========
-        
-        <Button Style="{StaticResource 버튼스타일}" 
-                Background="Blue" 
-                Width="200">
-            버튼
-        </Button>
-        
-        적용 순서:
-        1. 스타일 적용 (Salmon, Width=150)
-        2. 로컬 속성 재정의 (Blue, Width=200)
-        
-        결과:
-        - Background: Blue (재정의됨)
-        - Width: 200 (재정의됨)
-        - 나머지: 스타일 적용
-        
-        ========== 3. 여러 버튼에 적용 ==========
-        
-        <StackPanel>
-            <Button Style="{StaticResource 버튼스타일}">버튼1</Button>
-            <Button Style="{StaticResource 버튼스타일}">버튼2</Button>
-            <Button Style="{StaticResource 버튼스타일}">버튼3</Button>
-        </StackPanel>
-        
-        모든 버튼이 동일한 스타일:
-        - 일관성 유지
-        - 한 곳에서 수정
-        
-        ========== 4. 다른 스타일 사용 ==========
-        
-        <StackPanel>
-            <Button Style="{StaticResource 버튼스타일}">Salmon</Button>
-            <Button Style="{StaticResource 버튼스타일2}">LightGreen</Button>
-        </StackPanel>
-        
-        ========== 5. 조건부 스타일 적용 ==========
-        
-        코드:
-        private void ApplyStyle(bool condition)
-        {
-            if (condition)
-                myButton.Style = (Style)Resources["버튼스타일"];
-            else
-                myButton.Style = (Style)Resources["버튼스타일2"];
-        }
-        
-        ========== 6. Trigger로 동적 변경 ==========
-        
-        <Button Style="{StaticResource 버튼스타일}">
-            <Button.Triggers>
-                <EventTrigger RoutedEvent="MouseEnter">
-                    <BeginStoryboard>
-                        <Storyboard>
-                            <ColorAnimation Storyboard.TargetProperty="(Button.Background).(SolidColorBrush.Color)"
-                                          To="Red" Duration="0:0:0.3"/>
-                        </Storyboard>
-                    </BeginStoryboard>
-                </EventTrigger>
-            </Button.Triggers>
-        </Button>
-        
-        ========== 7. 데이터 바인딩과 함께 사용 ==========
-        
-        <ItemsControl ItemsSource="{Binding Items}">
-            <ItemsControl.ItemTemplate>
-                <DataTemplate>
-                    <Button Style="{StaticResource 버튼스타일}" 
-                            Content="{Binding Name}"/>
-                </DataTemplate>
-            </ItemsControl.ItemTemplate>
-        </ItemsControl>
-        
-        ========== 8. 암시적 스타일 (x:Key 없음) ==========
-        
-        Dictionary1.xaml:
-        <Style TargetType="Button">
-            <Setter Property="Background" Value="Salmon"/>
+
+        <Style x:Key="BaseButtonStyle" TargetType="Button">
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="Padding" Value="15,8"/>
+            <Setter Property="Margin" Value="5"/>
+            <Setter Property="Cursor" Value="Hand"/>
         </Style>
-        
-        MainWindow.xaml:
-        <Button>버튼</Button>
-        
-        장점:
-        - Style 지정 생략
-        - 모든 Button에 자동 적용
-        
-        단점:
-        - 선택적 적용 불가
-        - 기본 스타일 원할 때 불편
-        
-        ========== 9. 리소스 존재 확인 ==========
-        
-        코드:
-        if (Resources.Contains("버튼스타일"))
-        {
-            var style = (Style)Resources["버튼스타일"];
-            myButton.Style = style;
-        }
-        
-        ========== 10. 런타임 스타일 변경 ==========
-        
-        private void ChangeTheme()
-        {
-            var dict = new ResourceDictionary
-            {
-                Source = new Uri("Dictionary2.xaml", UriKind.Relative)
-            };
-            
-            Application.Current.Resources.MergedDictionaries.Clear();
-            Application.Current.Resources.MergedDictionaries.Add(dict);
-        }
-        
-        ========== 주의사항 ==========
-        
-        1. StaticResource vs DynamicResource:
-           - 대부분 StaticResource 사용
-           - 테마 전환은 DynamicResource
-        
-        2. 리소스 키:
-           - 대소문자 구분
-           - "버튼스타일" ≠ "버튼스타일"
-        
-        3. 로컬 속성 우선:
-           - Style의 속성보다 로컬 속성이 우선
-        
-        4. Template 재정의:
-           - Template은 로컬에서 재정의 어려움
-           - 새 스타일 만들기 권장
-        
-        5. 성능:
-           - StaticResource가 DynamicResource보다 빠름
-           - 변경이 잦지 않으면 StaticResource
-    -->
+
+        <Style x:Key="PrimaryButtonStyle" TargetType="Button" BasedOn="{StaticResource BaseButtonStyle}">
+            <Setter Property="Background" Value="#007ACC"/>
+            <Setter Property="Foreground" Value="White"/>
+        </Style>
+
+        <Style x:Key="SecondaryButtonStyle" TargetType="Button" BasedOn="{StaticResource BaseButtonStyle}">
+            <Setter Property="Background" Value="#6C757D"/>
+            <Setter Property="Foreground" Value="White"/>
+        </Style>
+
+        <Style x:Key="TriggerButtonStyle" TargetType="Button">
+            <Setter Property="Background" Value="LightBlue"/>
+            <Setter Property="Foreground" Value="Black"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="Padding" Value="20,10"/>
+            <Setter Property="Margin" Value="5"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="DeepSkyBlue"/>
+                    <Setter Property="Foreground" Value="White"/>
+                </Trigger>
+                <Trigger Property="IsPressed" Value="True">
+                    <Setter Property="Background" Value="DarkBlue"/>
+                    <Setter Property="Foreground" Value="White"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </Window.Resources>
+
+    <TabControl>
+        <TabItem Header="기본 스타일">
+            <ScrollViewer VerticalScrollBarVisibility="Auto">
+                <StackPanel Margin="20">
+                    <TextBlock Text="Style 기본 사용법" FontSize="22" FontWeight="Bold" Margin="0,0,0,15"/>
+                    <TextBlock Text="Style은 여러 속성을 하나로 묶어 컨트롤에 적용할 수 있는 리소스입니다. 일관된 UI를 유지하고 코드 중복을 줄일 수 있습니다."
+                               TextWrapping="Wrap" Margin="0,0,0,20"/>
+
+                    <GroupBox Header="1. Style 정의하기" Margin="0,0,0,15" Padding="10">
+                        <StackPanel>
+                            <TextBlock Text="Window.Resources 안에 Style을 정의하고 x:Key로 이름을 지정합니다:" Margin="0,0,0,10"/>
+                            <StackPanel Orientation="Horizontal">
+                                <Button Style="{StaticResource SampleButtonStyle}" Content="스타일 적용"/>
+                                <Button Content="스타일 없음" Margin="5" Padding="15,8"/>
+                            </StackPanel>
+                        </StackPanel>
+                    </GroupBox>
+                    <Expander Style="{StaticResource CodeExpanderStyle}">
+                        <TextBox Style="{StaticResource CodeTextBoxStyle}"
+                                 Text="&lt;Window.Resources&gt;&#10;    &lt;Style x:Key=&quot;SampleButtonStyle&quot; TargetType=&quot;Button&quot;&gt;&#10;        &lt;Setter Property=&quot;Background&quot; Value=&quot;Salmon&quot;/&gt;&#10;        &lt;Setter Property=&quot;Foreground&quot; Value=&quot;White&quot;/&gt;&#10;        &lt;Setter Property=&quot;FontSize&quot; Value=&quot;14&quot;/&gt;&#10;        &lt;Setter Property=&quot;FontWeight&quot; Value=&quot;Bold&quot;/&gt;&#10;        &lt;Setter Property=&quot;Padding&quot; Value=&quot;15,8&quot;/&gt;&#10;        &lt;Setter Property=&quot;Margin&quot; Value=&quot;5&quot;/&gt;&#10;        &lt;Setter Property=&quot;Cursor&quot; Value=&quot;Hand&quot;/&gt;&#10;    &lt;/Style&gt;&#10;&lt;/Window.Resources&gt;&#10;&#10;&lt;!-- 스타일 적용 --&gt;&#10;&lt;Button Style=&quot;{StaticResource SampleButtonStyle}&quot; Content=&quot;스타일 적용&quot;/&gt;"/>
+                    </Expander>
+
+                    <GroupBox Header="2. 여러 버튼에 동일 스타일 적용" Margin="0,0,0,15" Padding="10">
+                        <StackPanel>
+                            <TextBlock Text="같은 스타일을 여러 컨트롤에 적용하여 일관성을 유지합니다:" Margin="0,0,0,10"/>
+                            <StackPanel Orientation="Horizontal">
+                                <Button Style="{StaticResource SampleButtonStyle}" Content="버튼 1"/>
+                                <Button Style="{StaticResource SampleButtonStyle}" Content="버튼 2"/>
+                                <Button Style="{StaticResource SampleButtonStyle}" Content="버튼 3"/>
+                            </StackPanel>
+                        </StackPanel>
+                    </GroupBox>
+                    <Expander Style="{StaticResource CodeExpanderStyle}">
+                        <TextBox Style="{StaticResource CodeTextBoxStyle}"
+                                 Text="&lt;!-- 동일한 스타일을 여러 버튼에 적용 --&gt;&#10;&lt;Button Style=&quot;{StaticResource SampleButtonStyle}&quot; Content=&quot;버튼 1&quot;/&gt;&#10;&lt;Button Style=&quot;{StaticResource SampleButtonStyle}&quot; Content=&quot;버튼 2&quot;/&gt;&#10;&lt;Button Style=&quot;{StaticResource SampleButtonStyle}&quot; Content=&quot;버튼 3&quot;/&gt;&#10;&#10;&lt;!-- 장점 --&gt;&#10;&lt;!-- 1. 코드 중복 제거 --&gt;&#10;&lt;!-- 2. 스타일 수정 시 모든 버튼에 반영 --&gt;&#10;&lt;!-- 3. 일관된 UI 유지 --&gt;"/>
+                    </Expander>
+
+                    <GroupBox Header="3. 다양한 스타일 정의" Margin="0,0,0,15" Padding="10">
+                        <StackPanel>
+                            <TextBlock Text="목적에 따라 여러 스타일을 정의하고 선택적으로 적용합니다:" Margin="0,0,0,10"/>
+                            <StackPanel Orientation="Horizontal">
+                                <Button Style="{StaticResource SampleButtonStyle}" Content="Salmon"/>
+                                <Button Style="{StaticResource GreenButtonStyle}" Content="Green"/>
+                            </StackPanel>
+                        </StackPanel>
+                    </GroupBox>
+                    <Expander Style="{StaticResource CodeExpanderStyle}">
+                        <TextBox Style="{StaticResource CodeTextBoxStyle}"
+                                 Text="&lt;!-- 여러 스타일 정의 --&gt;&#10;&lt;Style x:Key=&quot;SampleButtonStyle&quot; TargetType=&quot;Button&quot;&gt;&#10;    &lt;Setter Property=&quot;Background&quot; Value=&quot;Salmon&quot;/&gt;&#10;    &lt;Setter Property=&quot;Foreground&quot; Value=&quot;White&quot;/&gt;&#10;&lt;/Style&gt;&#10;&#10;&lt;Style x:Key=&quot;GreenButtonStyle&quot; TargetType=&quot;Button&quot;&gt;&#10;    &lt;Setter Property=&quot;Background&quot; Value=&quot;LightGreen&quot;/&gt;&#10;    &lt;Setter Property=&quot;Foreground&quot; Value=&quot;DarkGreen&quot;/&gt;&#10;&lt;/Style&gt;&#10;&#10;&lt;!-- 상황에 맞는 스타일 적용 --&gt;&#10;&lt;Button Style=&quot;{StaticResource SampleButtonStyle}&quot; Content=&quot;Salmon&quot;/&gt;&#10;&lt;Button Style=&quot;{StaticResource GreenButtonStyle}&quot; Content=&quot;Green&quot;/&gt;"/>
+                    </Expander>
+
+                    <GroupBox Header="4. 로컬 속성 재정의" Margin="0,0,0,15" Padding="10">
+                        <StackPanel>
+                            <TextBlock Text="스타일이 적용된 컨트롤에서 개별 속성을 재정의할 수 있습니다:" Margin="0,0,0,10"/>
+                            <StackPanel Orientation="Horizontal">
+                                <Button Style="{StaticResource SampleButtonStyle}" Content="기본"/>
+                                <Button Style="{StaticResource SampleButtonStyle}" Content="배경 변경" Background="Purple"/>
+                                <Button Style="{StaticResource SampleButtonStyle}" Content="폰트 변경" FontSize="18"/>
+                            </StackPanel>
+                            <TextBlock Text="※ 로컬에서 설정한 속성이 스타일보다 우선합니다."
+                                       FontStyle="Italic" Foreground="Gray" Margin="0,5,0,0"/>
+                        </StackPanel>
+                    </GroupBox>
+                    <Expander Style="{StaticResource CodeExpanderStyle}">
+                        <TextBox Style="{StaticResource CodeTextBoxStyle}"
+                                 Text="&lt;!-- 스타일 적용 + 로컬 속성 재정의 --&gt;&#10;&lt;Button Style=&quot;{StaticResource SampleButtonStyle}&quot; Content=&quot;기본&quot;/&gt;&#10;&#10;&lt;!-- Background 속성만 재정의 --&gt;&#10;&lt;Button Style=&quot;{StaticResource SampleButtonStyle}&quot; &#10;        Content=&quot;배경 변경&quot; &#10;        Background=&quot;Purple&quot;/&gt;&#10;&#10;&lt;!-- FontSize 속성만 재정의 --&gt;&#10;&lt;Button Style=&quot;{StaticResource SampleButtonStyle}&quot; &#10;        Content=&quot;폰트 변경&quot; &#10;        FontSize=&quot;18&quot;/&gt;&#10;&#10;&lt;!-- 적용 순서: 스타일 → 로컬 속성 (로컬이 우선) --&gt;"/>
+                    </Expander>
+                </StackPanel>
+            </ScrollViewer>
+        </TabItem>
+
+        <TabItem Header="전역 리소스">
+            <ScrollViewer VerticalScrollBarVisibility="Auto">
+                <StackPanel Margin="20">
+                    <TextBlock Text="ResourceDictionary와 전역 리소스" FontSize="22" FontWeight="Bold" Margin="0,0,0,15"/>
+                    <TextBlock Text="ResourceDictionary를 사용하면 스타일을 별도 파일로 분리하여 애플리케이션 전체에서 공유할 수 있습니다."
+                               TextWrapping="Wrap" Margin="0,0,0,20"/>
+
+                    <GroupBox Header="1. ResourceDictionary 파일 구조" Margin="0,0,0,15" Padding="10">
+                        <StackPanel>
+                            <TextBlock Text="스타일을 별도의 XAML 파일로 분리합니다:" Margin="0,0,0,10"/>
+                            <Border Background="#F5F5F5" Padding="10" CornerRadius="5">
+                                <TextBlock FontFamily="Consolas" FontSize="12">
+                                    📁 프로젝트&#x0a;
+                                    ├── App.xaml (MergedDictionaries)&#x0a;
+                                    ├── MainWindow.xaml&#x0a;
+                                    └── Dictionary1.xaml (스타일 정의)
+                                </TextBlock>
+                            </Border>
+                        </StackPanel>
+                    </GroupBox>
+                    <Expander Style="{StaticResource CodeExpanderStyle}">
+                        <TextBox Style="{StaticResource CodeTextBoxStyle}"
+                                 Text="&lt;!-- Dictionary1.xaml --&gt;&#10;&lt;ResourceDictionary &#10;    xmlns=&quot;http://schemas.microsoft.com/winfx/2006/xaml/presentation&quot;&#10;    xmlns:x=&quot;http://schemas.microsoft.com/winfx/2006/xaml&quot;&gt;&#10;&#10;    &lt;Style TargetType=&quot;Button&quot; x:Key=&quot;버튼스타일&quot;&gt;&#10;        &lt;Setter Property=&quot;Background&quot; Value=&quot;Salmon&quot;/&gt;&#10;        &lt;Setter Property=&quot;Foreground&quot; Value=&quot;White&quot;/&gt;&#10;        &lt;Setter Property=&quot;FontSize&quot; Value=&quot;20&quot;/&gt;&#10;        &lt;Setter Property=&quot;FontWeight&quot; Value=&quot;Bold&quot;/&gt;&#10;        &lt;Setter Property=&quot;Cursor&quot; Value=&quot;Hand&quot;/&gt;&#10;    &lt;/Style&gt;&#10;&lt;/ResourceDictionary&gt;"/>
+                    </Expander>
+
+                    <GroupBox Header="2. App.xaml에서 병합" Margin="0,0,0,15" Padding="10">
+                        <StackPanel>
+                            <TextBlock Text="App.xaml에서 MergedDictionaries로 ResourceDictionary를 병합합니다:" Margin="0,0,0,10"/>
+                            <Border Background="#E8F5E9" Padding="10" CornerRadius="5">
+                                <StackPanel>
+                                    <TextBlock FontWeight="Bold" Margin="0,0,0,5">MergedDictionaries 장점:</TextBlock>
+                                    <TextBlock Text="• 스타일을 별도 파일로 관리" Margin="5,2"/>
+                                    <TextBlock Text="• 여러 프로젝트에서 재사용" Margin="5,2"/>
+                                    <TextBlock Text="• 테마 전환 용이" Margin="5,2"/>
+                                    <TextBlock Text="• 협업 시 충돌 감소" Margin="5,2"/>
+                                </StackPanel>
+                            </Border>
+                        </StackPanel>
+                    </GroupBox>
+                    <Expander Style="{StaticResource CodeExpanderStyle}">
+                        <TextBox Style="{StaticResource CodeTextBoxStyle}"
+                                 Text="&lt;!-- App.xaml --&gt;&#10;&lt;Application x:Class=&quot;ch32_스타일.App&quot;&#10;             xmlns=&quot;http://schemas.microsoft.com/winfx/2006/xaml/presentation&quot;&#10;             xmlns:x=&quot;http://schemas.microsoft.com/winfx/2006/xaml&quot;&#10;             StartupUri=&quot;MainWindow.xaml&quot;&gt;&#10;    &lt;Application.Resources&gt;&#10;        &lt;ResourceDictionary&gt;&#10;            &lt;ResourceDictionary.MergedDictionaries&gt;&#10;                &lt;ResourceDictionary Source=&quot;Dictionary1.xaml&quot;/&gt;&#10;            &lt;/ResourceDictionary.MergedDictionaries&gt;&#10;        &lt;/ResourceDictionary&gt;&#10;    &lt;/Application.Resources&gt;&#10;&lt;/Application&gt;"/>
+                    </Expander>
+
+                    <GroupBox Header="3. 전역 스타일 사용" Margin="0,0,0,15" Padding="10">
+                        <StackPanel>
+                            <TextBlock Text="Dictionary1.xaml에 정의된 스타일을 어디서나 사용할 수 있습니다:" Margin="0,0,0,10"/>
+                            <StackPanel Orientation="Horizontal">
+                                <Button Style="{StaticResource 버튼스타일}" Content="전역 스타일"/>
+                                <Button Style="{StaticResource 버튼스타일2}" Content="전역 스타일2"/>
+                            </StackPanel>
+                        </StackPanel>
+                    </GroupBox>
+                    <Expander Style="{StaticResource CodeExpanderStyle}">
+                        <TextBox Style="{StaticResource CodeTextBoxStyle}"
+                                 Text="&lt;!-- MainWindow.xaml 또는 다른 어떤 XAML에서도 사용 가능 --&gt;&#10;&lt;Button Style=&quot;{StaticResource 버튼스타일}&quot; Content=&quot;전역 스타일&quot;/&gt;&#10;&lt;Button Style=&quot;{StaticResource 버튼스타일2}&quot; Content=&quot;전역 스타일2&quot;/&gt;&#10;&#10;&lt;!-- 리소스 조회 순서 --&gt;&#10;&lt;!-- 1. 현재 컨트롤의 Resources --&gt;&#10;&lt;!-- 2. 부모 컨트롤의 Resources --&gt;&#10;&lt;!-- 3. Window.Resources --&gt;&#10;&lt;!-- 4. Application.Resources (App.xaml) --&gt;&#10;&lt;!-- 5. 시스템 리소스 --&gt;"/>
+                    </Expander>
+
+                    <GroupBox Header="4. StaticResource vs DynamicResource" Margin="0,0,0,15" Padding="10">
+                        <StackPanel>
+                            <TextBlock Text="두 가지 리소스 참조 방법의 차이점:" Margin="0,0,0,10"/>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <Border Background="#E3F2FD" Padding="10" Margin="0,0,5,0" CornerRadius="5">
+                                    <StackPanel>
+                                        <TextBlock FontWeight="Bold" Text="StaticResource"/>
+                                        <TextBlock Text="• 컴파일 타임 해결" Margin="0,5,0,2"/>
+                                        <TextBlock Text="• 빠른 성능" Margin="0,2"/>
+                                        <TextBlock Text="• 변경 시 업데이트 안 됨" Margin="0,2"/>
+                                        <TextBlock Text="• 대부분의 경우 사용" Margin="0,2"/>
+                                    </StackPanel>
+                                </Border>
+                                <Border Background="#FFF3E0" Padding="10" Margin="5,0,0,0" CornerRadius="5" Grid.Column="1">
+                                    <StackPanel>
+                                        <TextBlock FontWeight="Bold" Text="DynamicResource"/>
+                                        <TextBlock Text="• 런타임 해결" Margin="0,5,0,2"/>
+                                        <TextBlock Text="• 상대적으로 느림" Margin="0,2"/>
+                                        <TextBlock Text="• 변경 시 자동 업데이트" Margin="0,2"/>
+                                        <TextBlock Text="• 테마 전환 시 사용" Margin="0,2"/>
+                                    </StackPanel>
+                                </Border>
+                            </Grid>
+                        </StackPanel>
+                    </GroupBox>
+                    <Expander Style="{StaticResource CodeExpanderStyle}">
+                        <TextBox Style="{StaticResource CodeTextBoxStyle}"
+                                 Text="&lt;!-- StaticResource - 정적 참조 (권장) --&gt;&#10;&lt;Button Style=&quot;{StaticResource 버튼스타일}&quot;/&gt;&#10;&#10;&lt;!-- DynamicResource - 동적 참조 --&gt;&#10;&lt;Button Style=&quot;{DynamicResource 버튼스타일}&quot;/&gt;&#10;&#10;&lt;!-- 런타임에 리소스 변경 시 --&gt;&#10;// C# 코드&#10;Application.Current.Resources[&quot;버튼스타일&quot;] = newStyle;&#10;// StaticResource: 변경 안 됨&#10;// DynamicResource: 자동 업데이트"/>
+                    </Expander>
+                </StackPanel>
+            </ScrollViewer>
+        </TabItem>
+
+        <TabItem Header="ControlTemplate">
+            <ScrollViewer VerticalScrollBarVisibility="Auto">
+                <StackPanel Margin="20">
+                    <TextBlock Text="ControlTemplate으로 외관 변경" FontSize="22" FontWeight="Bold" Margin="0,0,0,15"/>
+                    <TextBlock Text="ControlTemplate을 사용하면 컨트롤의 시각적 구조를 완전히 재정의할 수 있습니다."
+                               TextWrapping="Wrap" Margin="0,0,0,20"/>
+
+                    <GroupBox Header="1. 둥근 버튼 만들기" Margin="0,0,0,15" Padding="10">
+                        <StackPanel>
+                            <TextBlock Text="ControlTemplate으로 버튼의 모서리를 둥글게 만듭니다:" Margin="0,0,0,10"/>
+                            <StackPanel Orientation="Horizontal">
+                                <Button Content="기본 버튼" Padding="15,8" Margin="5"/>
+                                <Button Style="{StaticResource RoundButtonStyle}" Content="둥근 버튼"/>
+                            </StackPanel>
+                        </StackPanel>
+                    </GroupBox>
+                    <Expander Style="{StaticResource CodeExpanderStyle}">
+                        <TextBox Style="{StaticResource CodeTextBoxStyle}"
+                                 Text="&lt;Style x:Key=&quot;RoundButtonStyle&quot; TargetType=&quot;Button&quot;&gt;&#10;    &lt;Setter Property=&quot;Background&quot; Value=&quot;DodgerBlue&quot;/&gt;&#10;    &lt;Setter Property=&quot;Foreground&quot; Value=&quot;White&quot;/&gt;&#10;    &lt;Setter Property=&quot;Width&quot; Value=&quot;120&quot;/&gt;&#10;    &lt;Setter Property=&quot;Height&quot; Value=&quot;40&quot;/&gt;&#10;    &lt;Setter Property=&quot;Template&quot;&gt;&#10;        &lt;Setter.Value&gt;&#10;            &lt;ControlTemplate TargetType=&quot;Button&quot;&gt;&#10;                &lt;Border CornerRadius=&quot;20&quot; &#10;                        Background=&quot;{TemplateBinding Background}&quot;&gt;&#10;                    &lt;ContentPresenter &#10;                        HorizontalAlignment=&quot;Center&quot; &#10;                        VerticalAlignment=&quot;Center&quot;/&gt;&#10;                &lt;/Border&gt;&#10;            &lt;/ControlTemplate&gt;&#10;        &lt;/Setter.Value&gt;&#10;    &lt;/Setter&gt;&#10;&lt;/Style&gt;"/>
+                    </Expander>
+
+                    <GroupBox Header="2. TemplateBinding" Margin="0,0,0,15" Padding="10">
+                        <StackPanel>
+                            <TextBlock Text="TemplateBinding으로 컨트롤 속성을 템플릿에 연결합니다:" Margin="0,0,0,10"/>
+                            <Border Background="#F5F5F5" Padding="10" CornerRadius="5">
+                                <StackPanel>
+                                    <TextBlock FontWeight="Bold" Margin="0,0,0,5">TemplateBinding 작동 방식:</TextBlock>
+                                    <TextBlock FontFamily="Consolas" FontSize="11">
+                                        Button.Background (DodgerBlue)&#x0a;
+                                        ↓ TemplateBinding&#x0a;
+                                        Border.Background (DodgerBlue)
+                                    </TextBlock>
+                                </StackPanel>
+                            </Border>
+                        </StackPanel>
+                    </GroupBox>
+                    <Expander Style="{StaticResource CodeExpanderStyle}">
+                        <TextBox Style="{StaticResource CodeTextBoxStyle}"
+                                 Text="&lt;ControlTemplate TargetType=&quot;Button&quot;&gt;&#10;    &lt;Border &#10;        CornerRadius=&quot;20&quot;&#10;        Background=&quot;{TemplateBinding Background}&quot;&#10;        BorderBrush=&quot;{TemplateBinding BorderBrush}&quot;&#10;        BorderThickness=&quot;{TemplateBinding BorderThickness}&quot;&#10;        Padding=&quot;{TemplateBinding Padding}&quot;&gt;&#10;        &#10;        &lt;ContentPresenter &#10;            HorizontalAlignment=&quot;{TemplateBinding HorizontalContentAlignment}&quot;&#10;            VerticalAlignment=&quot;{TemplateBinding VerticalContentAlignment}&quot;/&gt;&#10;    &lt;/Border&gt;&#10;&lt;/ControlTemplate&gt;&#10;&#10;&lt;!-- TemplateBinding: 템플릿 내에서 부모 컨트롤 속성 참조 --&gt;&#10;&lt;!-- 단방향 바인딩 (OneWay) --&gt;"/>
+                    </Expander>
+
+                    <GroupBox Header="3. ContentPresenter" Margin="0,0,0,15" Padding="10">
+                        <StackPanel>
+                            <TextBlock Text="ContentPresenter는 버튼의 Content를 표시하는 핵심 요소입니다:" Margin="0,0,0,10"/>
+                            <Border Background="#E8F5E9" Padding="10" CornerRadius="5">
+                                <StackPanel>
+                                    <TextBlock FontWeight="Bold" Margin="0,0,0,5">ContentPresenter 역할:</TextBlock>
+                                    <TextBlock Text="• 버튼의 Content 속성 값을 렌더링" Margin="5,2"/>
+                                    <TextBlock Text="• 텍스트, 이미지, 복합 콘텐츠 모두 지원" Margin="5,2"/>
+                                    <TextBlock Text="• 템플릿에 필수 요소" Margin="5,2"/>
+                                </StackPanel>
+                            </Border>
+                        </StackPanel>
+                    </GroupBox>
+                    <Expander Style="{StaticResource CodeExpanderStyle}">
+                        <TextBox Style="{StaticResource CodeTextBoxStyle}"
+                                 Text="&lt;!-- 간단한 텍스트 콘텐츠 --&gt;&#10;&lt;Button Content=&quot;버튼&quot;/&gt;&#10;&#10;&lt;!-- 복합 콘텐츠 --&gt;&#10;&lt;Button&gt;&#10;    &lt;StackPanel Orientation=&quot;Horizontal&quot;&gt;&#10;        &lt;Image Source=&quot;icon.png&quot; Width=&quot;16&quot;/&gt;&#10;        &lt;TextBlock Text=&quot;저장&quot; Margin=&quot;5,0,0,0&quot;/&gt;&#10;    &lt;/StackPanel&gt;&#10;&lt;/Button&gt;&#10;&#10;&lt;!-- ContentPresenter가 모든 종류의 Content를 표시 --&gt;"/>
+                    </Expander>
+
+                    <GroupBox Header="4. Template Trigger" Margin="0,0,0,15" Padding="10">
+                        <StackPanel>
+                            <TextBlock Text="ControlTemplate 내에서 Trigger를 사용하여 상태별 외관을 정의합니다:" Margin="0,0,0,10"/>
+                            <Button x:Name="btnTemplateDemo" Content="마우스를 올려보세요" Width="180" Height="45">
+                                <Button.Template>
+                                    <ControlTemplate TargetType="Button">
+                                        <Border x:Name="border" CornerRadius="10" Background="SteelBlue" Padding="15,10">
+                                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                        </Border>
+                                        <ControlTemplate.Triggers>
+                                            <Trigger Property="IsMouseOver" Value="True">
+                                                <Setter TargetName="border" Property="Background" Value="DarkOrange"/>
+                                            </Trigger>
+                                            <Trigger Property="IsPressed" Value="True">
+                                                <Setter TargetName="border" Property="Background" Value="DarkRed"/>
+                                            </Trigger>
+                                        </ControlTemplate.Triggers>
+                                    </ControlTemplate>
+                                </Button.Template>
+                            </Button>
+                        </StackPanel>
+                    </GroupBox>
+                    <Expander Style="{StaticResource CodeExpanderStyle}">
+                        <TextBox Style="{StaticResource CodeTextBoxStyle}"
+                                 Text="&lt;ControlTemplate TargetType=&quot;Button&quot;&gt;&#10;    &lt;Border x:Name=&quot;border&quot; CornerRadius=&quot;10&quot; &#10;            Background=&quot;SteelBlue&quot; Padding=&quot;15,10&quot;&gt;&#10;        &lt;ContentPresenter HorizontalAlignment=&quot;Center&quot; &#10;                          VerticalAlignment=&quot;Center&quot;/&gt;&#10;    &lt;/Border&gt;&#10;    &lt;ControlTemplate.Triggers&gt;&#10;        &lt;Trigger Property=&quot;IsMouseOver&quot; Value=&quot;True&quot;&gt;&#10;            &lt;Setter TargetName=&quot;border&quot; &#10;                    Property=&quot;Background&quot; Value=&quot;DarkOrange&quot;/&gt;&#10;        &lt;/Trigger&gt;&#10;        &lt;Trigger Property=&quot;IsPressed&quot; Value=&quot;True&quot;&gt;&#10;            &lt;Setter TargetName=&quot;border&quot; &#10;                    Property=&quot;Background&quot; Value=&quot;DarkRed&quot;/&gt;&#10;        &lt;/Trigger&gt;&#10;    &lt;/ControlTemplate.Triggers&gt;&#10;&lt;/ControlTemplate&gt;"/>
+                    </Expander>
+                </StackPanel>
+            </ScrollViewer>
+        </TabItem>
+
+        <TabItem Header="스타일 상속">
+            <ScrollViewer VerticalScrollBarVisibility="Auto">
+                <StackPanel Margin="20">
+                    <TextBlock Text="BasedOn을 사용한 스타일 상속" FontSize="22" FontWeight="Bold" Margin="0,0,0,15"/>
+                    <TextBlock Text="BasedOn 속성을 사용하면 기존 스타일을 상속받아 새로운 스타일을 만들 수 있습니다. 코드 중복을 줄이고 유지보수를 쉽게 합니다."
+                               TextWrapping="Wrap" Margin="0,0,0,20"/>
+
+                    <GroupBox Header="1. 베이스 스타일 정의" Margin="0,0,0,15" Padding="10">
+                        <StackPanel>
+                            <TextBlock Text="공통 속성을 가진 베이스 스타일을 먼저 정의합니다:" Margin="0,0,0,10"/>
+                            <Button Style="{StaticResource BaseButtonStyle}" Content="베이스 스타일" Background="Gray" Foreground="White"/>
+                        </StackPanel>
+                    </GroupBox>
+                    <Expander Style="{StaticResource CodeExpanderStyle}">
+                        <TextBox Style="{StaticResource CodeTextBoxStyle}"
+                                 Text="&lt;!-- 베이스 스타일 - 공통 속성만 정의 --&gt;&#10;&lt;Style x:Key=&quot;BaseButtonStyle&quot; TargetType=&quot;Button&quot;&gt;&#10;    &lt;Setter Property=&quot;FontSize&quot; Value=&quot;14&quot;/&gt;&#10;    &lt;Setter Property=&quot;FontWeight&quot; Value=&quot;Bold&quot;/&gt;&#10;    &lt;Setter Property=&quot;Padding&quot; Value=&quot;15,8&quot;/&gt;&#10;    &lt;Setter Property=&quot;Margin&quot; Value=&quot;5&quot;/&gt;&#10;    &lt;Setter Property=&quot;Cursor&quot; Value=&quot;Hand&quot;/&gt;&#10;&lt;/Style&gt;"/>
+                    </Expander>
+
+                    <GroupBox Header="2. 파생 스타일 정의" Margin="0,0,0,15" Padding="10">
+                        <StackPanel>
+                            <TextBlock Text="BasedOn으로 베이스 스타일을 상속받아 새 스타일을 만듭니다:" Margin="0,0,0,10"/>
+                            <StackPanel Orientation="Horizontal">
+                                <Button Style="{StaticResource PrimaryButtonStyle}" Content="Primary"/>
+                                <Button Style="{StaticResource SecondaryButtonStyle}" Content="Secondary"/>
+                            </StackPanel>
+                        </StackPanel>
+                    </GroupBox>
+                    <Expander Style="{StaticResource CodeExpanderStyle}">
+                        <TextBox Style="{StaticResource CodeTextBoxStyle}"
+                                 Text="&lt;!-- Primary 스타일 - BaseButtonStyle 상속 --&gt;&#10;&lt;Style x:Key=&quot;PrimaryButtonStyle&quot; TargetType=&quot;Button&quot; &#10;       BasedOn=&quot;{StaticResource BaseButtonStyle}&quot;&gt;&#10;    &lt;Setter Property=&quot;Background&quot; Value=&quot;#007ACC&quot;/&gt;&#10;    &lt;Setter Property=&quot;Foreground&quot; Value=&quot;White&quot;/&gt;&#10;&lt;/Style&gt;&#10;&#10;&lt;!-- Secondary 스타일 - BaseButtonStyle 상속 --&gt;&#10;&lt;Style x:Key=&quot;SecondaryButtonStyle&quot; TargetType=&quot;Button&quot; &#10;       BasedOn=&quot;{StaticResource BaseButtonStyle}&quot;&gt;&#10;    &lt;Setter Property=&quot;Background&quot; Value=&quot;#6C757D&quot;/&gt;&#10;    &lt;Setter Property=&quot;Foreground&quot; Value=&quot;White&quot;/&gt;&#10;&lt;/Style&gt;"/>
+                    </Expander>
+
+                    <GroupBox Header="3. 상속의 장점" Margin="0,0,0,15" Padding="10">
+                        <StackPanel>
+                            <TextBlock Text="스타일 상속을 사용하면 다음과 같은 장점이 있습니다:" Margin="0,0,0,10"/>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <Border Background="#FFEBEE" Padding="10" Margin="0,0,5,0" CornerRadius="5">
+                                    <StackPanel>
+                                        <TextBlock FontWeight="Bold" Foreground="Red">상속 없이 (중복 코드)</TextBlock>
+                                        <TextBlock FontFamily="Consolas" FontSize="10" Margin="0,5,0,0">
+                                            Style1: 7개 Setter&#x0a;Style2: 7개 Setter&#x0a;Style3: 7개 Setter&#x0a;총 21개 Setter
+                                        </TextBlock>
+                                    </StackPanel>
+                                </Border>
+                                <Border Background="#E8F5E9" Padding="10" Margin="5,0,0,0" CornerRadius="5" Grid.Column="1">
+                                    <StackPanel>
+                                        <TextBlock FontWeight="Bold" Foreground="Green">상속 사용 (중복 제거)</TextBlock>
+                                        <TextBlock FontFamily="Consolas" FontSize="10" Margin="0,5,0,0">
+                                            BaseStyle: 5개 Setter&#x0a;Style1: 2개 Setter&#x0a;Style2: 2개 Setter&#x0a;총 9개 Setter
+                                        </TextBlock>
+                                    </StackPanel>
+                                </Border>
+                            </Grid>
+                        </StackPanel>
+                    </GroupBox>
+                    <Expander Style="{StaticResource CodeExpanderStyle}">
+                        <TextBox Style="{StaticResource CodeTextBoxStyle}"
+                                 Text="&lt;!-- 상속의 장점 --&gt;&#10;&#10;1. 코드 중복 제거&#10;   - 공통 속성을 한 곳에서 관리&#10;&#10;2. 유지보수 용이&#10;   - BaseStyle 수정 시 모든 파생 스타일에 반영&#10;&#10;3. 일관성 유지&#10;   - 모든 버튼이 같은 기본 특성 공유&#10;&#10;4. 확장성&#10;   - 새로운 스타일 추가가 쉬움&#10;   - BasedOn만 지정하면 됨&#10;&#10;&lt;!-- 다단계 상속도 가능 --&gt;&#10;&lt;Style x:Key=&quot;DangerButtonStyle&quot; &#10;       BasedOn=&quot;{StaticResource PrimaryButtonStyle}&quot;&gt;&#10;    &lt;Setter Property=&quot;Background&quot; Value=&quot;Red&quot;/&gt;&#10;&lt;/Style&gt;"/>
+                    </Expander>
+
+                    <GroupBox Header="4. 실용적인 버튼 세트" Margin="0,0,0,15" Padding="10">
+                        <StackPanel>
+                            <TextBlock Text="실제 애플리케이션에서 사용할 수 있는 버튼 스타일 세트:" Margin="0,0,0,10"/>
+                            <WrapPanel>
+                                <Button Style="{StaticResource PrimaryButtonStyle}" Content="저장"/>
+                                <Button Style="{StaticResource SecondaryButtonStyle}" Content="취소"/>
+                                <Button Style="{StaticResource BaseButtonStyle}" Background="#28A745" Foreground="White" Content="확인"/>
+                                <Button Style="{StaticResource BaseButtonStyle}" Background="#DC3545" Foreground="White" Content="삭제"/>
+                                <Button Style="{StaticResource BaseButtonStyle}" Background="#FFC107" Foreground="Black" Content="경고"/>
+                            </WrapPanel>
+                        </StackPanel>
+                    </GroupBox>
+                    <Expander Style="{StaticResource CodeExpanderStyle}">
+                        <TextBox Style="{StaticResource CodeTextBoxStyle}"
+                                 Text="&lt;!-- Bootstrap 스타일 버튼 세트 예제 --&gt;&#10;&#10;&lt;Style x:Key=&quot;SuccessButtonStyle&quot; BasedOn=&quot;{StaticResource BaseButtonStyle}&quot;&gt;&#10;    &lt;Setter Property=&quot;Background&quot; Value=&quot;#28A745&quot;/&gt;&#10;    &lt;Setter Property=&quot;Foreground&quot; Value=&quot;White&quot;/&gt;&#10;&lt;/Style&gt;&#10;&#10;&lt;Style x:Key=&quot;DangerButtonStyle&quot; BasedOn=&quot;{StaticResource BaseButtonStyle}&quot;&gt;&#10;    &lt;Setter Property=&quot;Background&quot; Value=&quot;#DC3545&quot;/&gt;&#10;    &lt;Setter Property=&quot;Foreground&quot; Value=&quot;White&quot;/&gt;&#10;&lt;/Style&gt;&#10;&#10;&lt;Style x:Key=&quot;WarningButtonStyle&quot; BasedOn=&quot;{StaticResource BaseButtonStyle}&quot;&gt;&#10;    &lt;Setter Property=&quot;Background&quot; Value=&quot;#FFC107&quot;/&gt;&#10;    &lt;Setter Property=&quot;Foreground&quot; Value=&quot;Black&quot;/&gt;&#10;&lt;/Style&gt;"/>
+                    </Expander>
+                </StackPanel>
+            </ScrollViewer>
+        </TabItem>
+
+        <TabItem Header="트리거">
+            <ScrollViewer VerticalScrollBarVisibility="Auto">
+                <StackPanel Margin="20">
+                    <TextBlock Text="Style Trigger로 동적 스타일 적용" FontSize="22" FontWeight="Bold" Margin="0,0,0,15"/>
+                    <TextBlock Text="Trigger를 사용하면 특정 조건에 따라 스타일을 동적으로 변경할 수 있습니다."
+                               TextWrapping="Wrap" Margin="0,0,0,20"/>
+
+                    <GroupBox Header="1. Property Trigger" Margin="0,0,0,15" Padding="10">
+                        <StackPanel>
+                            <TextBlock Text="속성 값에 따라 스타일을 변경합니다 (마우스를 올려보세요):" Margin="0,0,0,10"/>
+                            <Button Style="{StaticResource TriggerButtonStyle}" Content="Hover &amp; Click"/>
+                        </StackPanel>
+                    </GroupBox>
+                    <Expander Style="{StaticResource CodeExpanderStyle}">
+                        <TextBox Style="{StaticResource CodeTextBoxStyle}"
+                                 Text="&lt;Style x:Key=&quot;TriggerButtonStyle&quot; TargetType=&quot;Button&quot;&gt;&#10;    &lt;Setter Property=&quot;Background&quot; Value=&quot;LightBlue&quot;/&gt;&#10;    &lt;Setter Property=&quot;Foreground&quot; Value=&quot;Black&quot;/&gt;&#10;    &lt;Setter Property=&quot;FontSize&quot; Value=&quot;14&quot;/&gt;&#10;    &lt;Setter Property=&quot;Padding&quot; Value=&quot;20,10&quot;/&gt;&#10;    &#10;    &lt;Style.Triggers&gt;&#10;        &lt;!-- 마우스 오버 시 --&gt;&#10;        &lt;Trigger Property=&quot;IsMouseOver&quot; Value=&quot;True&quot;&gt;&#10;            &lt;Setter Property=&quot;Background&quot; Value=&quot;DeepSkyBlue&quot;/&gt;&#10;            &lt;Setter Property=&quot;Foreground&quot; Value=&quot;White&quot;/&gt;&#10;        &lt;/Trigger&gt;&#10;        &#10;        &lt;!-- 클릭 시 --&gt;&#10;        &lt;Trigger Property=&quot;IsPressed&quot; Value=&quot;True&quot;&gt;&#10;            &lt;Setter Property=&quot;Background&quot; Value=&quot;DarkBlue&quot;/&gt;&#10;            &lt;Setter Property=&quot;Foreground&quot; Value=&quot;White&quot;/&gt;&#10;        &lt;/Trigger&gt;&#10;    &lt;/Style.Triggers&gt;&#10;&lt;/Style&gt;"/>
+                    </Expander>
+
+                    <GroupBox Header="2. IsEnabled Trigger" Margin="0,0,0,15" Padding="10">
+                        <StackPanel>
+                            <TextBlock Text="활성화/비활성화 상태에 따른 스타일 변경:" Margin="0,0,0,10"/>
+                            <StackPanel Orientation="Horizontal">
+                                <Button Content="활성화" Padding="15,8" Margin="5">
+                                    <Button.Style>
+                                        <Style TargetType="Button">
+                                            <Setter Property="Background" Value="LimeGreen"/>
+                                            <Setter Property="Foreground" Value="White"/>
+                                            <Style.Triggers>
+                                                <Trigger Property="IsEnabled" Value="False">
+                                                    <Setter Property="Background" Value="Gray"/>
+                                                    <Setter Property="Opacity" Value="0.5"/>
+                                                </Trigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </Button.Style>
+                                </Button>
+                                <Button Content="비활성화" IsEnabled="False" Padding="15,8" Margin="5">
+                                    <Button.Style>
+                                        <Style TargetType="Button">
+                                            <Setter Property="Background" Value="LimeGreen"/>
+                                            <Setter Property="Foreground" Value="White"/>
+                                            <Style.Triggers>
+                                                <Trigger Property="IsEnabled" Value="False">
+                                                    <Setter Property="Background" Value="Gray"/>
+                                                    <Setter Property="Opacity" Value="0.5"/>
+                                                </Trigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </Button.Style>
+                                </Button>
+                            </StackPanel>
+                        </StackPanel>
+                    </GroupBox>
+                    <Expander Style="{StaticResource CodeExpanderStyle}">
+                        <TextBox Style="{StaticResource CodeTextBoxStyle}"
+                                 Text="&lt;Style TargetType=&quot;Button&quot;&gt;&#10;    &lt;Setter Property=&quot;Background&quot; Value=&quot;LimeGreen&quot;/&gt;&#10;    &lt;Setter Property=&quot;Foreground&quot; Value=&quot;White&quot;/&gt;&#10;    &#10;    &lt;Style.Triggers&gt;&#10;        &lt;Trigger Property=&quot;IsEnabled&quot; Value=&quot;False&quot;&gt;&#10;            &lt;Setter Property=&quot;Background&quot; Value=&quot;Gray&quot;/&gt;&#10;            &lt;Setter Property=&quot;Opacity&quot; Value=&quot;0.5&quot;/&gt;&#10;        &lt;/Trigger&gt;&#10;    &lt;/Style.Triggers&gt;&#10;&lt;/Style&gt;&#10;&#10;&lt;Button Content=&quot;활성화&quot;/&gt;&#10;&lt;Button Content=&quot;비활성화&quot; IsEnabled=&quot;False&quot;/&gt;"/>
+                    </Expander>
+
+                    <GroupBox Header="3. MultiTrigger" Margin="0,0,0,15" Padding="10">
+                        <StackPanel>
+                            <TextBlock Text="여러 조건을 동시에 만족할 때 스타일을 변경합니다:" Margin="0,0,0,10"/>
+                            <CheckBox x:Name="chkFocus" Content="IsFocused 시뮬레이션" Margin="0,0,0,10"/>
+                            <Button Content="Focus + Hover" Padding="20,10" Margin="5">
+                                <Button.Style>
+                                    <Style TargetType="Button">
+                                        <Setter Property="Background" Value="LightGray"/>
+                                        <Style.Triggers>
+                                            <MultiTrigger>
+                                                <MultiTrigger.Conditions>
+                                                    <Condition Property="IsMouseOver" Value="True"/>
+                                                    <Condition Property="IsFocused" Value="True"/>
+                                                </MultiTrigger.Conditions>
+                                                <Setter Property="Background" Value="Gold"/>
+                                                <Setter Property="FontWeight" Value="Bold"/>
+                                            </MultiTrigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </Button.Style>
+                            </Button>
+                            <TextBlock Text="버튼을 클릭(포커스)한 후 마우스를 올려보세요." FontStyle="Italic" Foreground="Gray" Margin="5,5,0,0"/>
+                        </StackPanel>
+                    </GroupBox>
+                    <Expander Style="{StaticResource CodeExpanderStyle}">
+                        <TextBox Style="{StaticResource CodeTextBoxStyle}"
+                                 Text="&lt;Style TargetType=&quot;Button&quot;&gt;&#10;    &lt;Setter Property=&quot;Background&quot; Value=&quot;LightGray&quot;/&gt;&#10;    &#10;    &lt;Style.Triggers&gt;&#10;        &lt;!-- 여러 조건을 AND로 결합 --&gt;&#10;        &lt;MultiTrigger&gt;&#10;            &lt;MultiTrigger.Conditions&gt;&#10;                &lt;Condition Property=&quot;IsMouseOver&quot; Value=&quot;True&quot;/&gt;&#10;                &lt;Condition Property=&quot;IsFocused&quot; Value=&quot;True&quot;/&gt;&#10;            &lt;/MultiTrigger.Conditions&gt;&#10;            &lt;Setter Property=&quot;Background&quot; Value=&quot;Gold&quot;/&gt;&#10;            &lt;Setter Property=&quot;FontWeight&quot; Value=&quot;Bold&quot;/&gt;&#10;        &lt;/MultiTrigger&gt;&#10;    &lt;/Style.Triggers&gt;&#10;&lt;/Style&gt;"/>
+                    </Expander>
+
+                    <GroupBox Header="4. 자주 사용하는 Trigger 속성" Margin="0,0,0,15" Padding="10">
+                        <StackPanel>
+                            <TextBlock Text="WPF에서 자주 사용하는 Trigger 조건들:" Margin="0,0,0,10"/>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <Border Background="#E3F2FD" Padding="10" Margin="0,0,5,0" CornerRadius="5">
+                                    <StackPanel>
+                                        <TextBlock FontWeight="Bold" Margin="0,0,0,5">Button/Control</TextBlock>
+                                        <TextBlock Text="• IsMouseOver" Margin="5,2"/>
+                                        <TextBlock Text="• IsPressed" Margin="5,2"/>
+                                        <TextBlock Text="• IsFocused" Margin="5,2"/>
+                                        <TextBlock Text="• IsEnabled" Margin="5,2"/>
+                                    </StackPanel>
+                                </Border>
+                                <Border Background="#FFF3E0" Padding="10" Margin="5,0,0,0" CornerRadius="5" Grid.Column="1">
+                                    <StackPanel>
+                                        <TextBlock FontWeight="Bold" Margin="0,0,0,5">CheckBox/RadioButton</TextBlock>
+                                        <TextBlock Text="• IsChecked" Margin="5,2"/>
+                                        <TextBlock Text="• IsMouseOver" Margin="5,2"/>
+                                        <TextBlock Text="• IsFocused" Margin="5,2"/>
+                                        <TextBlock Text="• IsEnabled" Margin="5,2"/>
+                                    </StackPanel>
+                                </Border>
+                            </Grid>
+                        </StackPanel>
+                    </GroupBox>
+                    <Expander Style="{StaticResource CodeExpanderStyle}">
+                        <TextBox Style="{StaticResource CodeTextBoxStyle}"
+                                 Text="&lt;!-- CheckBox 스타일 예제 --&gt;&#10;&lt;Style TargetType=&quot;CheckBox&quot;&gt;&#10;    &lt;Style.Triggers&gt;&#10;        &lt;Trigger Property=&quot;IsChecked&quot; Value=&quot;True&quot;&gt;&#10;            &lt;Setter Property=&quot;Foreground&quot; Value=&quot;Green&quot;/&gt;&#10;            &lt;Setter Property=&quot;FontWeight&quot; Value=&quot;Bold&quot;/&gt;&#10;        &lt;/Trigger&gt;&#10;    &lt;/Style.Triggers&gt;&#10;&lt;/Style&gt;&#10;&#10;&lt;!-- TextBox 스타일 예제 --&gt;&#10;&lt;Style TargetType=&quot;TextBox&quot;&gt;&#10;    &lt;Style.Triggers&gt;&#10;        &lt;Trigger Property=&quot;IsFocused&quot; Value=&quot;True&quot;&gt;&#10;            &lt;Setter Property=&quot;BorderBrush&quot; Value=&quot;Blue&quot;/&gt;&#10;            &lt;Setter Property=&quot;BorderThickness&quot; Value=&quot;2&quot;/&gt;&#10;        &lt;/Trigger&gt;&#10;    &lt;/Style.Triggers&gt;&#10;&lt;/Style&gt;"/>
+                    </Expander>
+                </StackPanel>
+            </ScrollViewer>
+        </TabItem>
+    </TabControl>
 </Window>

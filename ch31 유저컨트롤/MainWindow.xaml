@@ -1,385 +1,435 @@
-﻿<Window x:Class="ch31_유저컨트롤.MainWindow"
+<Window x:Class="ch31_유저컨트롤.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ch31_유저컨트롤"
-        xmlns:local2="clr-namespace:ch31_유저컨트롤.uc"
+        xmlns:uc="clr-namespace:ch31_유저컨트롤.uc"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <!-- 
-        네임스페이스 선언:
-        
-        xmlns:local="clr-namespace:ch31_유저컨트롤"
-        - 기본 프로젝트 네임스페이스
-        - MainWindow, App 등
-        
-        xmlns:local2="clr-namespace:ch31_유저컨트롤.uc"
-        - UserControl이 있는 네임스페이스
-        - ch31_유저컨트롤.uc 네임스페이스
-        - UserControl1 클래스 포함
-        
-        네임스페이스 사용:
-        - local2:UserControl1
-        - local2는 접두사 (prefix)
-        - UserControl1은 클래스 이름
-        
-        다른 네임스페이스 예:
-        xmlns:controls="clr-namespace:MyProject.Controls"
-        xmlns:views="clr-namespace:MyProject.Views"
-        xmlns:uc="clr-namespace:MyProject.UserControls"
-    -->
+        Title="ch31 유저컨트롤 튜토리얼" Height="600" Width="850">
 
-    <StackPanel>
-        <!-- 
-            StackPanel:
-            - UserControl과 버튼을 세로로 배치
-            - 3개의 UserControl1 인스턴스
-            - 2개의 Button
-        -->
-        
-        <!-- ========== 첫 번째 UserControl1 인스턴스 ========== -->
-        <local2:UserControl1 Title="제목" MaxLength="30" PbHeight="20"/>
-        <!-- 
-            첫 번째 UserControl1:
-            
-            local2:UserControl1:
-            - ch31_유저컨트롤.uc 네임스페이스의 UserControl1 클래스
-            - XAML에서 객체 생성 (new UserControl1())
-            - 인스턴스화
-            
-            속성 설정:
-            
-            Title="제목":
-            - UserControl1.Title 속성에 "제목" 설정
-            - public string Title { get; set; }
-            - Label의 Content에 바인딩됨
-            
-            MaxLength="30":
-            - UserControl1.MaxLength 속성에 "30" 설정
-            - public string MaxLength { get; set; }
-            - TextBox.MaxLength에 바인딩됨
-            - ProgressBar.Maximum에 바인딩됨
-            
-            PbHeight="20":
-            - UserControl1.PbHeight 속성에 "20" 설정
-            - public string PbHeight { get; set; }
-            - ProgressBar.Height에 바인딩됨
-            
-            Name 없음:
-            - x:Name 속성 없음
-            - 코드 비하인드에서 접근 불가능
-            - 독립적으로 동작
-            
-            동작:
-            1. UserControl1 인스턴스 생성
-            2. 속성 설정 (Title, MaxLength, PbHeight)
-            3. DataContext = this (생성자에서)
-            4. 바인딩 활성화
-            5. UI 렌더링
-            
-            결과:
-            - Label: "제목"
-            - TextBox: 최대 30자
-            - ProgressBar: 높이 20픽셀, 최대값 30
-        -->
-        
-        <!-- ========== 두 번째 UserControl1 인스턴스 (uc1) ========== -->
-        <local2:UserControl1 Title="제목" MaxLength="30" PbHeight="20" x:Name="uc1"/>
-        <!-- 
-            두 번째 UserControl1:
-            
-            x:Name="uc1":
-            - 코드 비하인드에서 접근 가능한 이름
-            - MainWindow.xaml.cs에서 uc1 사용
-            - uc1.txt.Text로 TextBox 내용 읽기
-            
-            Button_Click에서 사용:
-            MessageBox.Show(uc1.txt.Text);
-            
-            접근 가능한 요소:
-            - uc1: UserControl1 인스턴스
-            - uc1.txt: TextBox (Name="txt")
-            - uc1.Pb: ProgressBar (Name="Pb")
-            - uc1.Title: Title 속성
-            
-            동일한 속성:
-            - 첫 번째 인스턴스와 동일한 속성
-            - Title="제목", MaxLength="30", PbHeight="20"
-            - 하지만 독립적인 객체
-            - 각자의 상태 관리
-            
-            독립성:
-            - uc1의 TextBox와 uc2의 TextBox는 별개
-            - 각각 다른 내용 입력 가능
-            - 각각의 ProgressBar 값 독립적
-        -->
-        
-        <!-- ========== 세 번째 UserControl1 인스턴스 (uc2) ========== -->
-        <local2:UserControl1 Title="제목" MaxLength="30" PbHeight="20" x:Name="uc2"/>
-        <!-- 
-            세 번째 UserControl1:
-            
-            x:Name="uc2":
-            - 코드 비하인드에서 접근 가능
-            - MainWindow.xaml.cs에서 uc2 사용
-            - uc2.Pb.Value로 ProgressBar 값 읽기
-            
-            Button_Click_1에서 사용:
-            MessageBox.Show(uc2.Pb.Value.ToString());
-            
-            접근 가능한 요소:
-            - uc2: UserControl1 인스턴스
-            - uc2.txt: TextBox
-            - uc2.Pb: ProgressBar
-            
-            세 개의 인스턴스 비교:
-            
-            인스턴스1 (이름 없음):
-            - 독립적으로 동작
-            - 코드에서 접근 불가
-            - 시각적 표시만
-            
-            인스턴스2 (uc1):
-            - txt.Text 읽기
-            - "버튼1" 클릭 시 사용
-            
-            인스턴스3 (uc2):
-            - Pb.Value 읽기
-            - "버튼2" 클릭 시 사용
-            
-            각 인스턴스는 완전히 독립적:
-            - 별도의 메모리 공간
-            - 별도의 UI 요소
-            - 별도의 상태
-        -->
-        
-        <!-- ========== 버튼 1: uc1의 텍스트 표시 ========== -->
-        <Button Click="Button_Click">버튼1</Button>
-        <!-- 
-            버튼1:
-            
-            Click="Button_Click":
-            - 클릭 이벤트 핸들러
-            - MainWindow.xaml.cs의 Button_Click 메서드
-            
-            Content:
-            - "버튼1" 텍스트
-            
-            동작:
-            1. 버튼 클릭
-            2. Button_Click 이벤트 발생
-            3. uc1.txt.Text 읽기
-            4. MessageBox로 표시
-            
-            코드:
-            MessageBox.Show(uc1.txt.Text);
-            
-            결과:
-            - uc1 (두 번째 UserControl1)의 TextBox 내용 표시
-            - 사용자가 입력한 텍스트 표시
-        -->
-        
-        <!-- ========== 버튼 2: uc2의 ProgressBar 값 표시 ========== -->
-        <Button Click="Button_Click_1">버튼2</Button>
-        <!-- 
-            버튼2:
-            
-            Click="Button_Click_1":
-            - 클릭 이벤트 핸들러
-            - MainWindow.xaml.cs의 Button_Click_1 메서드
-            
-            Content:
-            - "버튼2" 텍스트
-            
-            동작:
-            1. 버튼 클릭
-            2. Button_Click_1 이벤트 발생
-            3. uc2.Pb.Value 읽기
-            4. MessageBox로 표시
-            
-            코드:
-            MessageBox.Show(uc2.Pb.Value.ToString());
-            
-            결과:
-            - uc2 (세 번째 UserControl1)의 ProgressBar 값 표시
-            - 현재 글자 수 표시 (0~30)
-        -->
-    </StackPanel>
-    
-    <!--
-        UserControl 전체 요약:
-        
-        ========== UserControl이란? ==========
-        
-        정의:
-        - 재사용 가능한 사용자 정의 컨트롤
-        - 여러 WPF 컨트롤을 조합하여 하나의 단위로 만듦
-        - 프로젝트 내에서 여러 번 사용 가능
-        
-        장점:
-        - 코드 재사용
-        - 일관된 UI
-        - 유지보수 용이
-        - 모듈화
-        
-        구성:
-        - XAML 파일: UI 정의 (UserControl1.xaml)
-        - C# 파일: 로직 정의 (UserControl1.xaml.cs)
-        - 속성: 외부에서 설정 가능한 값
-        
-        ========== 이 예제의 UserControl1 구조 ==========
-        
-        UI 구성:
-        1. Label: 제목 표시 (Title 속성)
-        2. 글자 수 표시: 현재/최대 글자 수
-        3. TextBox: 텍스트 입력 (MaxLength 제한)
-        4. ProgressBar: 글자 수 진행률 표시
-        
-        속성:
-        - Title: 제목 (string)
-        - MaxLength: 최대 글자 수 (string)
-        - PbHeight: ProgressBar 높이 (string)
-        
-        바인딩:
-        - Title → Label.Content
-        - MaxLength → TextBox.MaxLength, ProgressBar.Maximum
-        - PbHeight → ProgressBar.Height
-        - txt.Text.Length → ProgressBar.Value
-        
-        ========== 네임스페이스 참조 ==========
-        
-        선언:
-        xmlns:local2="clr-namespace:ch31_유저컨트롤.uc"
-        
-        사용:
-        <local2:UserControl1 .../>
-        
-        다른 어셈블리의 UserControl:
-        xmlns:controls="clr-namespace:MyLibrary.Controls;assembly=MyLibrary"
-        <controls:CustomControl .../>
-        
-        ========== 여러 인스턴스 사용 ==========
-        
-        이 예제:
-        - 3개의 UserControl1 인스턴스
-        - 각각 독립적인 객체
-        - 동일한 속성으로 초기화
-        - 하지만 런타임에 독립적으로 동작
-        
-        시나리오:
-        1. 사용자가 uc1의 TextBox에 "안녕" 입력
-        2. 사용자가 uc2의 TextBox에 "Hello" 입력
-        3. 버튼1 클릭 → "안녕" 표시
-        4. 버튼2 클릭 → "5" 표시 ("Hello" 길이)
-        
-        ========== 실전 활용 예제 ==========
-        
-        1. 다양한 속성으로 사용:
-           <local2:UserControl1 Title="이름" MaxLength="20" PbHeight="15"/>
-           <local2:UserControl1 Title="주소" MaxLength="100" PbHeight="25"/>
-           <local2:UserControl1 Title="설명" MaxLength="500" PbHeight="30"/>
-        
-        2. 동적 생성:
-           private void AddControl_Click(object sender, RoutedEventArgs e)
-           {
-               var newControl = new UserControl1
-               {
-                   Title = "동적 컨트롤",
-                   MaxLength = "50",
-                   PbHeight = "20"
-               };
-               stackPanel.Children.Add(newControl);
-           }
-        
-        3. 이벤트 처리:
-           UserControl1에 이벤트 추가:
-           public event EventHandler TextChanged;
-           
-           TextBox.TextChanged += (s, e) =>
-           {
-               TextChanged?.Invoke(this, EventArgs.Empty);
-           };
-           
-           MainWindow:
-           uc1.TextChanged += (s, e) =>
-           {
-               MessageBox.Show("텍스트 변경됨");
-           };
-        
-        4. 데이터 바인딩:
-           ViewModel:
-           public ObservableCollection<ItemViewModel> Items { get; set; }
-           
-           MainWindow:
-           <ItemsControl ItemsSource="{Binding Items}">
-               <ItemsControl.ItemTemplate>
-                   <DataTemplate>
-                       <local2:UserControl1 
-                           Title="{Binding Name}"
-                           MaxLength="{Binding MaxChars}"
-                           PbHeight="20"/>
-                   </DataTemplate>
-               </ItemsControl.ItemTemplate>
-           </ItemsControl>
-        
-        5. ScrollViewer로 여러 개 표시:
-           <ScrollViewer VerticalScrollBarVisibility="Auto">
-               <StackPanel>
-                   <local2:UserControl1 Title="항목1" MaxLength="30" PbHeight="20"/>
-                   <local2:UserControl1 Title="항목2" MaxLength="30" PbHeight="20"/>
-                   <local2:UserControl1 Title="항목3" MaxLength="30" PbHeight="20"/>
-               </StackPanel>
-           </ScrollViewer>
-        
-        ========== UserControl vs CustomControl ==========
-        
-        UserControl:
-        - XAML + C# 조합
-        - 빠른 개발
-        - 특정 UI 조합
-        - 이 예제가 UserControl
-        
-        CustomControl:
-        - C# + Generic.xaml (테마)
-        - 완전한 커스터마이징
-        - 재템플릿 가능
-        - 컨트롤 라이브러리
-        
-        ========== UserControl vs Page ==========
-        
-        UserControl:
-        - 재사용 가능한 UI 컴포넌트
-        - Window나 Page에 배치
-        - 여러 개 동시 사용 가능
-        
-        Page:
-        - Frame에서 호스팅
-        - 전체 화면 단위
-        - NavigationService
-        
-        ========== 주의사항 ==========
-        
-        1. 속성 타입:
-           - 이 예제는 string 사용
-           - 실무에서는 적절한 타입 사용 권장
-           - int, double, bool 등
-        
-        2. 의존성 속성 (DependencyProperty):
-           - 바인딩, 애니메이션, 스타일 지원
-           - 실무에서 권장
-           - 이 예제는 단순 속성 사용
-        
-        3. 네임스페이스:
-           - xmlns 선언 필수
-           - 네임스페이스 이름 명확히
-        
-        4. 접근 제한자:
-           - Name 속성 (x:Name)
-           - public으로 선언해야 외부 접근 가능
-        
-        5. 메모리:
-           - 많은 인스턴스 생성 시 메모리 고려
-           - 가상화 (Virtualization) 고려
-    -->
+    <Window.Resources>
+        <!-- 코드 보기 Expander 스타일 -->
+        <Style x:Key="CodeExpanderStyle" TargetType="Expander">
+            <Setter Property="Header" Value="코드 보기"/>
+            <Setter Property="Margin" Value="0,0,0,12"/>
+            <Setter Property="IsExpanded" Value="False"/>
+        </Style>
+        <!-- 코드 표시 TextBox 스타일 -->
+        <Style x:Key="CodeTextBoxStyle" TargetType="TextBox">
+            <Setter Property="IsReadOnly" Value="True"/>
+            <Setter Property="FontFamily" Value="Consolas"/>
+            <Setter Property="FontSize" Value="12"/>
+            <Setter Property="Background" Value="#1E1E1E"/>
+            <Setter Property="Foreground" Value="#DCDCDC"/>
+            <Setter Property="Padding" Value="10"/>
+            <Setter Property="TextWrapping" Value="Wrap"/>
+            <Setter Property="AcceptsReturn" Value="True"/>
+            <Setter Property="VerticalScrollBarVisibility" Value="Auto"/>
+            <Setter Property="MaxHeight" Value="300"/>
+            <Setter Property="BorderBrush" Value="#333333"/>
+            <Setter Property="BorderThickness" Value="1"/>
+        </Style>
+    </Window.Resources>
+
+    <TabControl>
+        <!-- 탭 1: 기본 사용법 -->
+        <TabItem Header="기본 사용법">
+            <ScrollViewer VerticalScrollBarVisibility="Auto">
+                <StackPanel Margin="20">
+                    <TextBlock Text="UserControl 기본 사용법" FontSize="22" FontWeight="Bold" Margin="0,0,0,15"/>
+                    <TextBlock Text="UserControl은 재사용 가능한 사용자 정의 컨트롤입니다. 여러 컨트롤을 하나로 묶어 재사용할 수 있습니다."
+                               TextWrapping="Wrap" Margin="0,0,0,20"/>
+
+                    <!-- 예제 1: 기본 UserControl 사용 -->
+                    <GroupBox Header="1. 기본 UserControl 사용" Margin="0,0,0,15" Padding="10">
+                        <StackPanel>
+                            <TextBlock Text="UserControl을 XAML에서 선언하고 속성을 설정합니다:" Margin="0,0,0,10"/>
+                            <uc:UserControl1 Title="기본 예제" MaxLength="50" PbHeight="15"/>
+                        </StackPanel>
+                    </GroupBox>
+                    <Expander Style="{StaticResource CodeExpanderStyle}">
+                        <TextBox Style="{StaticResource CodeTextBoxStyle}"
+                                 Text="&lt;!-- 1. xmlns에 UserControl 네임스페이스 등록 --&gt;&#10;xmlns:uc=&quot;clr-namespace:ch31_유저컨트롤.uc&quot;&#10;&#10;&lt;!-- 2. UserControl 사용 --&gt;&#10;&lt;uc:UserControl1 Title=&quot;기본 예제&quot; MaxLength=&quot;50&quot; PbHeight=&quot;15&quot;/&gt;"/>
+                    </Expander>
+
+                    <!-- 예제 2: 여러 UserControl 인스턴스 -->
+                    <GroupBox Header="2. 여러 UserControl 인스턴스" Margin="0,0,0,15" Padding="10">
+                        <StackPanel>
+                            <TextBlock Text="하나의 UserControl을 여러 번 재사용할 수 있습니다:" Margin="0,0,0,10"/>
+                            <uc:UserControl1 Title="이름 입력" MaxLength="20" PbHeight="10" Margin="0,0,0,5"/>
+                            <uc:UserControl1 Title="이메일 입력" MaxLength="50" PbHeight="10" Margin="0,0,0,5"/>
+                            <uc:UserControl1 Title="주소 입력" MaxLength="100" PbHeight="10"/>
+                        </StackPanel>
+                    </GroupBox>
+                    <Expander Style="{StaticResource CodeExpanderStyle}">
+                        <TextBox Style="{StaticResource CodeTextBoxStyle}"
+                                 Text="&lt;!-- 같은 UserControl을 다른 속성으로 여러 번 사용 --&gt;&#10;&lt;uc:UserControl1 Title=&quot;이름 입력&quot; MaxLength=&quot;20&quot; PbHeight=&quot;10&quot;/&gt;&#10;&lt;uc:UserControl1 Title=&quot;이메일 입력&quot; MaxLength=&quot;50&quot; PbHeight=&quot;10&quot;/&gt;&#10;&lt;uc:UserControl1 Title=&quot;주소 입력&quot; MaxLength=&quot;100&quot; PbHeight=&quot;10&quot;/&gt;"/>
+                    </Expander>
+
+                    <!-- 예제 3: UserControl 구조 설명 -->
+                    <GroupBox Header="3. UserControl 파일 구조" Margin="0,0,0,15" Padding="10">
+                        <StackPanel>
+                            <TextBlock TextWrapping="Wrap" Margin="0,0,0,10">
+                                <Run FontWeight="Bold">UserControl 프로젝트 구조:</Run>
+                            </TextBlock>
+                            <TextBlock FontFamily="Consolas" Margin="10,0,0,0">
+                                📁 uc/&#x0a;
+                                    ├── UserControl1.xaml (UI 정의)&#x0a;
+                                    └── UserControl1.xaml.cs (코드 비하인드)
+                            </TextBlock>
+                        </StackPanel>
+                    </GroupBox>
+                    <Expander Style="{StaticResource CodeExpanderStyle}">
+                        <TextBox Style="{StaticResource CodeTextBoxStyle}"
+                                 Text="// UserControl1.xaml.cs - 기본 구조&#10;namespace ch31_유저컨트롤.uc&#10;{&#10;    public partial class UserControl1 : UserControl&#10;    {&#10;        // 외부에서 설정 가능한 속성&#10;        public string Title { get; set; }&#10;        public string MaxLength { get; set; }&#10;        public string PbHeight { get; set; }&#10;&#10;        public UserControl1()&#10;        {&#10;            InitializeComponent();&#10;            DataContext = this;  // 바인딩을 위해 필수&#10;        }&#10;    }&#10;}"/>
+                    </Expander>
+                </StackPanel>
+            </ScrollViewer>
+        </TabItem>
+
+        <!-- 탭 2: 속성과 바인딩 -->
+        <TabItem Header="속성과 바인딩">
+            <ScrollViewer VerticalScrollBarVisibility="Auto">
+                <StackPanel Margin="20">
+                    <TextBlock Text="UserControl 속성과 바인딩" FontSize="22" FontWeight="Bold" Margin="0,0,0,15"/>
+                    <TextBlock Text="UserControl은 속성을 정의하고 DataContext를 통해 바인딩할 수 있습니다."
+                               TextWrapping="Wrap" Margin="0,0,0,20"/>
+
+                    <!-- 예제 1: DataContext 바인딩 -->
+                    <GroupBox Header="1. DataContext 바인딩" Margin="0,0,0,15" Padding="10">
+                        <StackPanel>
+                            <TextBlock Text="UserControl 생성자에서 DataContext = this로 설정하면 속성에 바인딩할 수 있습니다:"
+                                       TextWrapping="Wrap" Margin="0,0,0,10"/>
+                            <Border Background="#F5F5F5" Padding="10" CornerRadius="5">
+                                <StackPanel>
+                                    <TextBlock Text="속성 바인딩 흐름:" FontWeight="Bold" Margin="0,0,0,5"/>
+                                    <TextBlock FontFamily="Consolas" FontSize="11" TextWrapping="Wrap">
+                                        외부 XAML: Title="제목"&#x0a;
+                                        → UserControl1.Title = "제목"&#x0a;
+                                        → DataContext.Title&#x0a;
+                                        → {Binding Title} → Label.Content
+                                    </TextBlock>
+                                </StackPanel>
+                            </Border>
+                        </StackPanel>
+                    </GroupBox>
+                    <Expander Style="{StaticResource CodeExpanderStyle}">
+                        <TextBox Style="{StaticResource CodeTextBoxStyle}"
+                                 Text="// UserControl1.xaml.cs&#10;public partial class UserControl1 : UserControl&#10;{&#10;    public string Title { get; set; }&#10;&#10;    public UserControl1()&#10;    {&#10;        InitializeComponent();&#10;        DataContext = this;  // 중요! 이게 없으면 바인딩 안 됨&#10;    }&#10;}&#10;&#10;&lt;!-- UserControl1.xaml --&gt;&#10;&lt;Label Content=&quot;{Binding Title}&quot;/&gt;"/>
+                    </Expander>
+
+                    <!-- 예제 2: ElementName 바인딩 -->
+                    <GroupBox Header="2. ElementName 바인딩" Margin="0,0,0,15" Padding="10">
+                        <StackPanel>
+                            <TextBlock Text="UserControl 내부에서 다른 요소의 속성을 바인딩할 수 있습니다:"
+                                       TextWrapping="Wrap" Margin="0,0,0,10"/>
+                            <uc:UserControl1 Title="ElementName 바인딩 예제" MaxLength="30" PbHeight="20"/>
+                            <TextBlock Text="↑ TextBox의 Text.Length가 ProgressBar.Value와 글자 수 표시에 바인딩됩니다."
+                                       FontStyle="Italic" Foreground="Gray" Margin="0,5,0,0"/>
+                        </StackPanel>
+                    </GroupBox>
+                    <Expander Style="{StaticResource CodeExpanderStyle}">
+                        <TextBox Style="{StaticResource CodeTextBoxStyle}"
+                                 Text="&lt;!-- UserControl1.xaml 내부 --&gt;&#10;&#10;&lt;!-- TextBox에 Name 지정 --&gt;&#10;&lt;TextBox Name=&quot;txt&quot; MaxLength=&quot;{Binding MaxLength}&quot;/&gt;&#10;&#10;&lt;!-- ElementName으로 txt 참조 --&gt;&#10;&lt;TextBlock Text=&quot;{Binding ElementName=txt, Path=Text.Length}&quot;/&gt;&#10;&#10;&lt;!-- ProgressBar도 txt에 바인딩 --&gt;&#10;&lt;ProgressBar Value=&quot;{Binding ElementName=txt, Path=Text.Length, Mode=OneWay}&quot;&#10;             Maximum=&quot;{Binding MaxLength}&quot;/&gt;"/>
+                    </Expander>
+
+                    <!-- 예제 3: 바인딩 모드 -->
+                    <GroupBox Header="3. 바인딩 모드" Margin="0,0,0,15" Padding="10">
+                        <StackPanel>
+                            <TextBlock Text="WPF 바인딩 모드 종류:" FontWeight="Bold" Margin="0,0,0,10"/>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="100"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                </Grid.RowDefinitions>
+                                <TextBlock Text="OneWay" FontWeight="Bold" Grid.Row="0" Grid.Column="0"/>
+                                <TextBlock Text="소스 → 대상 (읽기 전용)" Grid.Row="0" Grid.Column="1"/>
+                                <TextBlock Text="TwoWay" FontWeight="Bold" Grid.Row="1" Grid.Column="0"/>
+                                <TextBlock Text="소스 ↔ 대상 (양방향)" Grid.Row="1" Grid.Column="1"/>
+                                <TextBlock Text="OneTime" FontWeight="Bold" Grid.Row="2" Grid.Column="0"/>
+                                <TextBlock Text="처음 한 번만 바인딩" Grid.Row="2" Grid.Column="1"/>
+                                <TextBlock Text="OneWayToSource" FontWeight="Bold" Grid.Row="3" Grid.Column="0"/>
+                                <TextBlock Text="대상 → 소스" Grid.Row="3" Grid.Column="1"/>
+                            </Grid>
+                        </StackPanel>
+                    </GroupBox>
+                    <Expander Style="{StaticResource CodeExpanderStyle}">
+                        <TextBox Style="{StaticResource CodeTextBoxStyle}"
+                                 Text="&lt;!-- 바인딩 모드 예제 --&gt;&#10;&#10;&lt;!-- OneWay: 기본값 (Label, TextBlock 등) --&gt;&#10;&lt;TextBlock Text=&quot;{Binding Name, Mode=OneWay}&quot;/&gt;&#10;&#10;&lt;!-- TwoWay: TextBox 등 입력 컨트롤 기본값 --&gt;&#10;&lt;TextBox Text=&quot;{Binding Name, Mode=TwoWay}&quot;/&gt;&#10;&#10;&lt;!-- OneTime: 초기값만 필요할 때 --&gt;&#10;&lt;Label Content=&quot;{Binding Title, Mode=OneTime}&quot;/&gt;&#10;&#10;&lt;!-- ProgressBar는 OneWay가 적절 --&gt;&#10;&lt;ProgressBar Value=&quot;{Binding Progress, Mode=OneWay}&quot;/&gt;"/>
+                    </Expander>
+                </StackPanel>
+            </ScrollViewer>
+        </TabItem>
+
+        <!-- 탭 3: 레이아웃과 구성 -->
+        <TabItem Header="레이아웃과 구성">
+            <ScrollViewer VerticalScrollBarVisibility="Auto">
+                <StackPanel Margin="20">
+                    <TextBlock Text="UserControl 레이아웃과 구성" FontSize="22" FontWeight="Bold" Margin="0,0,0,15"/>
+                    <TextBlock Text="UserControl 내부 레이아웃을 구성하는 방법을 알아봅니다."
+                               TextWrapping="Wrap" Margin="0,0,0,20"/>
+
+                    <!-- 예제 1: Grid 레이아웃 -->
+                    <GroupBox Header="1. Grid 레이아웃" Margin="0,0,0,15" Padding="10">
+                        <StackPanel>
+                            <TextBlock Text="UserControl 내부에서 Grid를 사용하여 구조적인 레이아웃을 만듭니다:"
+                                       TextWrapping="Wrap" Margin="0,0,0,10"/>
+                            <Border Background="#FFE4E1" Padding="10" CornerRadius="5">
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="Auto"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
+                                    </Grid.RowDefinitions>
+                                    <TextBlock Text="제목 Label" Grid.Row="0" Grid.Column="0" FontWeight="Bold"/>
+                                    <TextBlock Text="글자 수 표시" Grid.Row="0" Grid.Column="1"/>
+                                    <TextBlock Text="TextBox (ColumnSpan=2)" Grid.Row="1" Grid.ColumnSpan="2"
+                                               Background="White" Padding="5" Margin="0,5"/>
+                                    <TextBlock Text="ProgressBar (ColumnSpan=2)" Grid.Row="2" Grid.ColumnSpan="2"
+                                               Background="LightGreen" Padding="5"/>
+                                </Grid>
+                            </Border>
+                        </StackPanel>
+                    </GroupBox>
+                    <Expander Style="{StaticResource CodeExpanderStyle}">
+                        <TextBox Style="{StaticResource CodeTextBoxStyle}"
+                                 Text="&lt;Grid&gt;&#10;    &lt;Grid.ColumnDefinitions&gt;&#10;        &lt;ColumnDefinition Width=&quot;*&quot;/&gt;     &lt;!-- 남은 공간 --&gt;&#10;        &lt;ColumnDefinition Width=&quot;Auto&quot;/&gt;  &lt;!-- 내용에 맞춤 --&gt;&#10;    &lt;/Grid.ColumnDefinitions&gt;&#10;    &lt;Grid.RowDefinitions&gt;&#10;        &lt;RowDefinition Height=&quot;Auto&quot;/&gt;&#10;        &lt;RowDefinition Height=&quot;Auto&quot;/&gt;&#10;        &lt;RowDefinition Height=&quot;Auto&quot;/&gt;&#10;    &lt;/Grid.RowDefinitions&gt;&#10;&#10;    &lt;!-- 1행: 제목과 글자 수 --&gt;&#10;    &lt;Label Grid.Row=&quot;0&quot; Grid.Column=&quot;0&quot; Content=&quot;{Binding Title}&quot;/&gt;&#10;    &lt;StackPanel Grid.Row=&quot;0&quot; Grid.Column=&quot;1&quot; Orientation=&quot;Horizontal&quot;&gt;&#10;        &lt;TextBlock Text=&quot;{Binding ElementName=txt, Path=Text.Length}&quot;/&gt;&#10;    &lt;/StackPanel&gt;&#10;&#10;    &lt;!-- 2행: TextBox (2열 병합) --&gt;&#10;    &lt;TextBox Grid.Row=&quot;1&quot; Grid.ColumnSpan=&quot;2&quot; Name=&quot;txt&quot;/&gt;&#10;&#10;    &lt;!-- 3행: ProgressBar (2열 병합) --&gt;&#10;    &lt;ProgressBar Grid.Row=&quot;2&quot; Grid.ColumnSpan=&quot;2&quot;/&gt;&#10;&lt;/Grid&gt;"/>
+                    </Expander>
+
+                    <!-- 예제 2: ColumnSpan/RowSpan -->
+                    <GroupBox Header="2. ColumnSpan과 RowSpan" Margin="0,0,0,15" Padding="10">
+                        <StackPanel>
+                            <TextBlock Text="Grid.ColumnSpan과 Grid.RowSpan을 사용하여 셀을 병합합니다:"
+                                       TextWrapping="Wrap" Margin="0,0,0,10"/>
+                            <Grid ShowGridLines="True" Height="100">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition/>
+                                    <ColumnDefinition/>
+                                    <ColumnDefinition/>
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                </Grid.RowDefinitions>
+                                <Border Background="LightBlue" Grid.ColumnSpan="2">
+                                    <TextBlock Text="ColumnSpan=2" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                </Border>
+                                <Border Background="LightCoral" Grid.Column="2" Grid.RowSpan="2">
+                                    <TextBlock Text="RowSpan=2" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                </Border>
+                                <Border Background="LightGreen" Grid.Row="1" Grid.ColumnSpan="2">
+                                    <TextBlock Text="Row=1, ColumnSpan=2" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                </Border>
+                            </Grid>
+                        </StackPanel>
+                    </GroupBox>
+                    <Expander Style="{StaticResource CodeExpanderStyle}">
+                        <TextBox Style="{StaticResource CodeTextBoxStyle}"
+                                 Text="&lt;Grid&gt;&#10;    &lt;Grid.ColumnDefinitions&gt;&#10;        &lt;ColumnDefinition/&gt;&#10;        &lt;ColumnDefinition/&gt;&#10;        &lt;ColumnDefinition/&gt;&#10;    &lt;/Grid.ColumnDefinitions&gt;&#10;    &lt;Grid.RowDefinitions&gt;&#10;        &lt;RowDefinition/&gt;&#10;        &lt;RowDefinition/&gt;&#10;    &lt;/Grid.RowDefinitions&gt;&#10;&#10;    &lt;!-- 2열 병합 --&gt;&#10;    &lt;Border Grid.ColumnSpan=&quot;2&quot; Background=&quot;LightBlue&quot;/&gt;&#10;&#10;    &lt;!-- 2행 병합 --&gt;&#10;    &lt;Border Grid.Column=&quot;2&quot; Grid.RowSpan=&quot;2&quot; Background=&quot;LightCoral&quot;/&gt;&#10;&#10;    &lt;!-- Row 지정 + 2열 병합 --&gt;&#10;    &lt;Border Grid.Row=&quot;1&quot; Grid.ColumnSpan=&quot;2&quot; Background=&quot;LightGreen&quot;/&gt;&#10;&lt;/Grid&gt;"/>
+                    </Expander>
+
+                    <!-- 예제 3: UserControl Background -->
+                    <GroupBox Header="3. UserControl 배경색" Margin="0,0,0,15" Padding="10">
+                        <StackPanel>
+                            <TextBlock Text="UserControl에 Background를 설정하여 영역을 시각적으로 구분합니다:"
+                                       TextWrapping="Wrap" Margin="0,0,0,10"/>
+                            <uc:UserControl1 Title="배경색이 있는 UserControl" MaxLength="25" PbHeight="12"/>
+                            <TextBlock Text="↑ UserControl1은 Background='Salmon'으로 설정되어 있습니다."
+                                       FontStyle="Italic" Foreground="Gray" Margin="0,5,0,0"/>
+                        </StackPanel>
+                    </GroupBox>
+                    <Expander Style="{StaticResource CodeExpanderStyle}">
+                        <TextBox Style="{StaticResource CodeTextBoxStyle}"
+                                 Text="&lt;UserControl x:Class=&quot;ch31_유저컨트롤.uc.UserControl1&quot;&#10;             xmlns=&quot;http://schemas.microsoft.com/winfx/2006/xaml/presentation&quot;&#10;             xmlns:x=&quot;http://schemas.microsoft.com/winfx/2006/xaml&quot;&#10;             Background=&quot;Salmon&quot;&gt;  &lt;!-- 배경색 설정 --&gt;&#10;&#10;    &lt;Grid&gt;&#10;        &lt;!-- UserControl 내용 --&gt;&#10;    &lt;/Grid&gt;&#10;&lt;/UserControl&gt;"/>
+                    </Expander>
+                </StackPanel>
+            </ScrollViewer>
+        </TabItem>
+
+        <!-- 탭 4: 외부 접근 -->
+        <TabItem Header="외부 접근">
+            <ScrollViewer VerticalScrollBarVisibility="Auto">
+                <StackPanel Margin="20">
+                    <TextBlock Text="UserControl 외부 접근" FontSize="22" FontWeight="Bold" Margin="0,0,0,15"/>
+                    <TextBlock Text="UserControl의 내부 요소에 외부에서 접근하는 방법을 알아봅니다."
+                               TextWrapping="Wrap" Margin="0,0,0,20"/>
+
+                    <!-- 예제 1: x:Name으로 접근 -->
+                    <GroupBox Header="1. x:Name으로 UserControl 접근" Margin="0,0,0,15" Padding="10">
+                        <StackPanel>
+                            <TextBlock Text="UserControl에 x:Name을 지정하고 코드에서 접근합니다:"
+                                       TextWrapping="Wrap" Margin="0,0,0,10"/>
+                            <uc:UserControl1 x:Name="uc1" Title="이름" MaxLength="30" PbHeight="18"/>
+                            <StackPanel Orientation="Horizontal" Margin="0,10,0,0">
+                                <Button Content="텍스트 가져오기" Click="Button_GetText_Click" Padding="10,5" Margin="0,0,10,0"/>
+                                <Button Content="진행률 가져오기" Click="Button_GetProgress_Click" Padding="10,5"/>
+                            </StackPanel>
+                        </StackPanel>
+                    </GroupBox>
+                    <Expander Style="{StaticResource CodeExpanderStyle}">
+                        <TextBox Style="{StaticResource CodeTextBoxStyle}"
+                                 Text="&lt;!-- XAML: x:Name 지정 --&gt;&#10;&lt;uc:UserControl1 x:Name=&quot;uc1&quot; Title=&quot;이름&quot; MaxLength=&quot;30&quot; PbHeight=&quot;18&quot;/&gt;&#10;&lt;Button Content=&quot;텍스트 가져오기&quot; Click=&quot;Button_GetText_Click&quot;/&gt;&#10;&lt;Button Content=&quot;진행률 가져오기&quot; Click=&quot;Button_GetProgress_Click&quot;/&gt;&#10;&#10;// C# 코드 비하인드&#10;private void Button_GetText_Click(object sender, RoutedEventArgs e)&#10;{&#10;    // UserControl1 내부의 txt(TextBox)에 접근&#10;    MessageBox.Show($&quot;입력된 텍스트: {uc1.txt.Text}&quot;);&#10;}&#10;&#10;private void Button_GetProgress_Click(object sender, RoutedEventArgs e)&#10;{&#10;    // UserControl1 내부의 Pb(ProgressBar)에 접근&#10;    MessageBox.Show($&quot;진행률: {uc1.Pb.Value}/{uc1.Pb.Maximum}&quot;);&#10;}"/>
+                    </Expander>
+
+                    <!-- 예제 2: 두 번째 UserControl -->
+                    <GroupBox Header="2. 여러 UserControl 접근" Margin="0,0,0,15" Padding="10">
+                        <StackPanel>
+                            <TextBlock Text="여러 UserControl에 각각 다른 이름으로 접근합니다:"
+                                       TextWrapping="Wrap" Margin="0,0,0,10"/>
+                            <uc:UserControl1 x:Name="uc2" Title="설명" MaxLength="50" PbHeight="18"/>
+                            <StackPanel Orientation="Horizontal" Margin="0,10,0,0">
+                                <Button Content="uc2 텍스트 가져오기" Click="Button_GetUc2Text_Click" Padding="10,5" Margin="0,0,10,0"/>
+                                <Button Content="uc2 텍스트 설정하기" Click="Button_SetUc2Text_Click" Padding="10,5"/>
+                            </StackPanel>
+                        </StackPanel>
+                    </GroupBox>
+                    <Expander Style="{StaticResource CodeExpanderStyle}">
+                        <TextBox Style="{StaticResource CodeTextBoxStyle}"
+                                 Text="&lt;!-- XAML --&gt;&#10;&lt;uc:UserControl1 x:Name=&quot;uc2&quot; Title=&quot;설명&quot; MaxLength=&quot;50&quot; PbHeight=&quot;18&quot;/&gt;&#10;&lt;Button Content=&quot;uc2 텍스트 가져오기&quot; Click=&quot;Button_GetUc2Text_Click&quot;/&gt;&#10;&lt;Button Content=&quot;uc2 텍스트 설정하기&quot; Click=&quot;Button_SetUc2Text_Click&quot;/&gt;&#10;&#10;// C# 코드 비하인드&#10;private void Button_GetUc2Text_Click(object sender, RoutedEventArgs e)&#10;{&#10;    MessageBox.Show($&quot;uc2 텍스트: {uc2.txt.Text}&quot;);&#10;}&#10;&#10;private void Button_SetUc2Text_Click(object sender, RoutedEventArgs e)&#10;{&#10;    uc2.txt.Text = &quot;코드에서 설정한 텍스트입니다.&quot;;&#10;}"/>
+                    </Expander>
+
+                    <!-- 예제 3: 내부 요소 Name 규칙 -->
+                    <GroupBox Header="3. 내부 요소 접근 패턴" Margin="0,0,0,15" Padding="10">
+                        <StackPanel>
+                            <TextBlock Text="UserControl 내부 요소에 Name을 지정하면 외부에서 접근 가능합니다:"
+                                       TextWrapping="Wrap" Margin="0,0,0,10"/>
+                            <Border Background="#F0F0F0" Padding="10" CornerRadius="5">
+                                <StackPanel>
+                                    <TextBlock FontFamily="Consolas" FontSize="12">
+                                        UserControl1 내부:&#x0a;
+                                        - txt (TextBox) → uc1.txt.Text&#x0a;
+                                        - Pb (ProgressBar) → uc1.Pb.Value
+                                    </TextBlock>
+                                </StackPanel>
+                            </Border>
+                            <TextBlock Text="※ 캡슐화를 위해 속성/메서드로 노출하는 것이 권장됩니다."
+                                       FontStyle="Italic" Foreground="OrangeRed" Margin="0,10,0,0"/>
+                        </StackPanel>
+                    </GroupBox>
+                    <Expander Style="{StaticResource CodeExpanderStyle}">
+                        <TextBox Style="{StaticResource CodeTextBoxStyle}"
+                                 Text="// UserControl1.xaml.cs - 권장되는 캡슐화 방식&#10;public partial class UserControl1 : UserControl&#10;{&#10;    // 내부 요소를 직접 노출하는 대신 속성으로 노출&#10;    public string TextContent =&gt; txt.Text;&#10;    public double ProgressValue =&gt; Pb.Value;&#10;    public int CurrentLength =&gt; txt.Text.Length;&#10;&#10;    // 메서드로 기능 노출&#10;    public void SetText(string text)&#10;    {&#10;        txt.Text = text;&#10;    }&#10;&#10;    public void ClearText()&#10;    {&#10;        txt.Clear();&#10;    }&#10;}&#10;&#10;// MainWindow에서 사용&#10;string text = uc1.TextContent;&#10;uc1.SetText(&quot;새 텍스트&quot;);&#10;uc1.ClearText();"/>
+                    </Expander>
+                </StackPanel>
+            </ScrollViewer>
+        </TabItem>
+
+        <!-- 탭 5: 고급 기능 -->
+        <TabItem Header="고급 기능">
+            <ScrollViewer VerticalScrollBarVisibility="Auto">
+                <StackPanel Margin="20">
+                    <TextBlock Text="UserControl 고급 기능" FontSize="22" FontWeight="Bold" Margin="0,0,0,15"/>
+                    <TextBlock Text="의존성 속성, INotifyPropertyChanged, 이벤트 등 고급 기능을 알아봅니다."
+                               TextWrapping="Wrap" Margin="0,0,0,20"/>
+
+                    <!-- 예제 1: 의존성 속성 -->
+                    <GroupBox Header="1. 의존성 속성 (DependencyProperty)" Margin="0,0,0,15" Padding="10">
+                        <StackPanel>
+                            <TextBlock Text="의존성 속성은 바인딩, 애니메이션, 스타일을 완벽하게 지원합니다:"
+                                       TextWrapping="Wrap" Margin="0,0,0,10"/>
+                            <Border Background="#E8F5E9" Padding="10" CornerRadius="5">
+                                <StackPanel>
+                                    <TextBlock FontWeight="Bold" Margin="0,0,0,5">의존성 속성의 장점:</TextBlock>
+                                    <TextBlock Text="• 바인딩 완벽 지원" Margin="5,2"/>
+                                    <TextBlock Text="• 애니메이션 지원" Margin="5,2"/>
+                                    <TextBlock Text="• 스타일/템플릿 지원" Margin="5,2"/>
+                                    <TextBlock Text="• 값 상속 (트리 구조)" Margin="5,2"/>
+                                    <TextBlock Text="• 변경 콜백 지원" Margin="5,2"/>
+                                </StackPanel>
+                            </Border>
+                        </StackPanel>
+                    </GroupBox>
+                    <Expander Style="{StaticResource CodeExpanderStyle}">
+                        <TextBox Style="{StaticResource CodeTextBoxStyle}"
+                                 Text="// 의존성 속성 정의 예제&#10;public partial class UserControl1 : UserControl&#10;{&#10;    // 의존성 속성 등록&#10;    public static readonly DependencyProperty TitleProperty =&#10;        DependencyProperty.Register(&#10;            &quot;Title&quot;,                    // 속성 이름&#10;            typeof(string),              // 속성 타입&#10;            typeof(UserControl1),        // 소유자 타입&#10;            new PropertyMetadata(        // 메타데이터&#10;                string.Empty,            // 기본값&#10;                OnTitleChanged           // 변경 콜백&#10;            )&#10;        );&#10;&#10;    // CLR 래퍼 속성&#10;    public string Title&#10;    {&#10;        get { return (string)GetValue(TitleProperty); }&#10;        set { SetValue(TitleProperty, value); }&#10;    }&#10;&#10;    // 변경 콜백&#10;    private static void OnTitleChanged(&#10;        DependencyObject d, &#10;        DependencyPropertyChangedEventArgs e)&#10;    {&#10;        var control = d as UserControl1;&#10;        // Title 변경 시 추가 작업&#10;    }&#10;}"/>
+                    </Expander>
+
+                    <!-- 예제 2: INotifyPropertyChanged -->
+                    <GroupBox Header="2. INotifyPropertyChanged" Margin="0,0,0,15" Padding="10">
+                        <StackPanel>
+                            <TextBlock Text="속성 변경 시 UI를 자동으로 업데이트합니다:"
+                                       TextWrapping="Wrap" Margin="0,0,0,10"/>
+                            <Border Background="#FFF3E0" Padding="10" CornerRadius="5">
+                                <StackPanel>
+                                    <TextBlock FontWeight="Bold" Margin="0,0,0,5">INotifyPropertyChanged 사용 시기:</TextBlock>
+                                    <TextBlock Text="• 런타임에 속성이 변경될 때" Margin="5,2"/>
+                                    <TextBlock Text="• UI와 데이터 동기화가 필요할 때" Margin="5,2"/>
+                                    <TextBlock Text="• MVVM 패턴 구현 시" Margin="5,2"/>
+                                </StackPanel>
+                            </Border>
+                        </StackPanel>
+                    </GroupBox>
+                    <Expander Style="{StaticResource CodeExpanderStyle}">
+                        <TextBox Style="{StaticResource CodeTextBoxStyle}"
+                                 Text="using System.ComponentModel;&#10;using System.Runtime.CompilerServices;&#10;&#10;public partial class UserControl1 : UserControl, INotifyPropertyChanged&#10;{&#10;    public event PropertyChangedEventHandler PropertyChanged;&#10;&#10;    private string _title;&#10;    public string Title&#10;    {&#10;        get { return _title; }&#10;        set&#10;        {&#10;            if (_title != value)&#10;            {&#10;                _title = value;&#10;                OnPropertyChanged();  // 변경 알림&#10;            }&#10;        }&#10;    }&#10;&#10;    protected void OnPropertyChanged(&#10;        [CallerMemberName] string propertyName = null)&#10;    {&#10;        PropertyChanged?.Invoke(this, &#10;            new PropertyChangedEventArgs(propertyName));&#10;    }&#10;}"/>
+                    </Expander>
+
+                    <!-- 예제 3: 커스텀 이벤트 -->
+                    <GroupBox Header="3. 커스텀 이벤트" Margin="0,0,0,15" Padding="10">
+                        <StackPanel>
+                            <TextBlock Text="UserControl에서 외부로 이벤트를 발생시킵니다:"
+                                       TextWrapping="Wrap" Margin="0,0,0,10"/>
+                            <Border Background="#E3F2FD" Padding="10" CornerRadius="5">
+                                <StackPanel>
+                                    <TextBlock FontWeight="Bold" Margin="0,0,0,5">커스텀 이벤트 활용:</TextBlock>
+                                    <TextBlock Text="• TextChanged - 텍스트 변경 알림" Margin="5,2"/>
+                                    <TextBlock Text="• MaxLengthReached - 최대 글자 수 도달" Margin="5,2"/>
+                                    <TextBlock Text="• Submitted - 입력 완료" Margin="5,2"/>
+                                </StackPanel>
+                            </Border>
+                        </StackPanel>
+                    </GroupBox>
+                    <Expander Style="{StaticResource CodeExpanderStyle}">
+                        <TextBox Style="{StaticResource CodeTextBoxStyle}"
+                                 Text="// UserControl1.xaml.cs&#10;public partial class UserControl1 : UserControl&#10;{&#10;    // 커스텀 이벤트 정의&#10;    public event EventHandler&lt;string&gt; TextChanged;&#10;    public event EventHandler MaxLengthReached;&#10;&#10;    public UserControl1()&#10;    {&#10;        InitializeComponent();&#10;        DataContext = this;&#10;&#10;        // 내부 TextBox의 이벤트 연결&#10;        txt.TextChanged += Txt_TextChanged;&#10;    }&#10;&#10;    private void Txt_TextChanged(object sender, TextChangedEventArgs e)&#10;    {&#10;        // 외부로 이벤트 발생&#10;        TextChanged?.Invoke(this, txt.Text);&#10;&#10;        // 최대 글자 수 도달 시 이벤트&#10;        if (txt.Text.Length &gt;= txt.MaxLength)&#10;        {&#10;            MaxLengthReached?.Invoke(this, EventArgs.Empty);&#10;        }&#10;    }&#10;}&#10;&#10;// MainWindow에서 이벤트 구독&#10;uc1.TextChanged += (s, text) =&gt;&#10;{&#10;    Console.WriteLine($&quot;텍스트 변경: {text}&quot;);&#10;};&#10;&#10;uc1.MaxLengthReached += (s, e) =&gt;&#10;{&#10;    MessageBox.Show(&quot;최대 글자 수에 도달했습니다!&quot;);&#10;};"/>
+                    </Expander>
+
+                    <!-- 예제 4: 타입 안전 속성 -->
+                    <GroupBox Header="4. 타입 안전 속성 개선" Margin="0,0,0,15" Padding="10">
+                        <StackPanel>
+                            <TextBlock Text="string 대신 적절한 타입을 사용하여 타입 안전성을 높입니다:"
+                                       TextWrapping="Wrap" Margin="0,0,0,10"/>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <Border Background="#FFEBEE" Padding="10" Margin="0,0,5,0" CornerRadius="5">
+                                    <StackPanel>
+                                        <TextBlock FontWeight="Bold" Foreground="Red">현재 (권장하지 않음)</TextBlock>
+                                        <TextBlock FontFamily="Consolas" FontSize="11" Margin="0,5,0,0">
+                                            public string MaxLength&#x0a;public string PbHeight
+                                        </TextBlock>
+                                    </StackPanel>
+                                </Border>
+                                <Border Background="#E8F5E9" Padding="10" Margin="5,0,0,0" CornerRadius="5" Grid.Column="1">
+                                    <StackPanel>
+                                        <TextBlock FontWeight="Bold" Foreground="Green">개선 (권장)</TextBlock>
+                                        <TextBlock FontFamily="Consolas" FontSize="11" Margin="0,5,0,0">
+                                            public int MaxLength = 100;&#x0a;public double PbHeight = 20;
+                                        </TextBlock>
+                                    </StackPanel>
+                                </Border>
+                            </Grid>
+                        </StackPanel>
+                    </GroupBox>
+                    <Expander Style="{StaticResource CodeExpanderStyle}">
+                        <TextBox Style="{StaticResource CodeTextBoxStyle}"
+                                 Text="// 개선된 속성 정의&#10;public partial class UserControl1 : UserControl, INotifyPropertyChanged&#10;{&#10;    public event PropertyChangedEventHandler PropertyChanged;&#10;&#10;    // 타입 안전 속성 + 기본값&#10;    private int _maxLength = 100;&#10;    public int MaxLength&#10;    {&#10;        get =&gt; _maxLength;&#10;        set&#10;        {&#10;            if (value &gt; 0 &amp;&amp; value &lt;= 1000)&#10;            {&#10;                _maxLength = value;&#10;                OnPropertyChanged();&#10;            }&#10;        }&#10;    }&#10;&#10;    private double _pbHeight = 20.0;&#10;    public double ProgressBarHeight&#10;    {&#10;        get =&gt; _pbHeight;&#10;        set&#10;        {&#10;            if (value &gt; 0)&#10;            {&#10;                _pbHeight = value;&#10;                OnPropertyChanged();&#10;            }&#10;        }&#10;    }&#10;&#10;    protected void OnPropertyChanged([CallerMemberName] string name = null)&#10;    {&#10;        PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));&#10;    }&#10;}"/>
+                    </Expander>
+                </StackPanel>
+            </ScrollViewer>
+        </TabItem>
+    </TabControl>
 </Window>

@@ -1,512 +1,56 @@
-﻿<!-- 
-    UserControl1.xaml - 재사용 가능한 사용자 정의 컨트롤
-    텍스트 입력과 글자 수 표시, 진행률을 보여주는 컨트롤입니다.
-    Title, MaxLength, PbHeight 속성을 외부에서 설정할 수 있습니다.
-    
-    핵심 개념:
-    - UserControl: 재사용 가능한 컨트롤
-    - 속성 (Property): 외부에서 설정 가능
-    - DataContext: 바인딩 소스
-    - ElementName 바인딩: 같은 UI 내의 요소 간 바인딩
--->
 <UserControl x:Class="ch31_유저컨트롤.uc.UserControl1"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:local="clr-namespace:ch31_유저컨트롤.uc"
-             mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800" Background="Salmon">
-    <!-- 
-        UserControl 속성:
-        
-        x:Class:
-        - 코드 비하인드 클래스
-        - ch31_유저컨트롤.uc.UserControl1
-        
-        d:DesignHeight, d:DesignWidth:
-        - 디자인 타임 크기
-        - 디자이너에서 미리보기
-        - 런타임에는 실제 크기 사용
-        
-        Background="Salmon":
-        - 연어색 배경
-        - UserControl 영역 시각적으로 구분
-        - 디버깅에 유용
-        
-        UserControl vs Window:
-        - UserControl: 재사용 가능한 컴포넌트
-        - Window: 독립적인 창
-    -->
-    
+             mc:Ignorable="d"
+             d:DesignHeight="100" d:DesignWidth="400" Background="Salmon">
+
     <Grid>
-        <!-- 
-            Grid:
-            - UserControl의 메인 레이아웃
-            - 2열 3행 구조
-            
-            레이아웃:
-            ┌─────────────────┬──────────────────┐
-            │ Label (제목)    │ 글자 수 표시     │ ← 1행
-            ├─────────────────┴──────────────────┤
-            │ TextBox (입력)                     │ ← 2행
-            ├────────────────────────────────────┤
-            │ ProgressBar (진행률)               │ ← 3행
-            └────────────────────────────────────┘
-        -->
-        
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*"></ColumnDefinition>
-            <!-- 
-                1열: 가변 너비
-                Width="*": 남은 공간 모두 차지
-                Label (제목) 배치
-            -->
-            <ColumnDefinition Width="Auto"></ColumnDefinition>
-            <!-- 
-                2열: 자동 너비
-                Width="Auto": 내용에 맞춤
-                글자 수 표시 StackPanel 배치
-            -->
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="Auto"/>
         </Grid.ColumnDefinitions>
-        
+
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
-            <!-- 
-                1행: 자동 높이
-                Height="Auto": 내용에 맞춤
-                Label과 글자 수 표시
-            -->
             <RowDefinition Height="Auto"/>
-            <!-- 
-                2행: 자동 높이
-                TextBox 배치
-            -->
             <RowDefinition Height="Auto"/>
-            <!-- 
-                3행: 자동 높이
-                ProgressBar 배치
-                PbHeight 속성으로 높이 설정
-            -->
         </Grid.RowDefinitions>
-        
-        <!-- ========== 제목 Label ========== -->
-        <Label Content="{Binding Title}"
-           Grid.Row="0" Grid.Column="0"
-           HorizontalAlignment="Center"/>
-        <!-- 
-            Label:
-            - 컨트롤의 제목 표시
-            
-            Content="{Binding Title}":
-            - 데이터 바인딩
-            - Title 속성에 바인딩
-            - UserControl1.Title 값 표시
-            
-            DataContext:
-            - UserControl1.xaml.cs의 생성자에서 설정
-            - DataContext = this;
-            - this는 UserControl1 인스턴스
-            
-            바인딩 소스:
-            - DataContext = UserControl1 인스턴스
-            - Title = UserControl1.Title 속성
-            
-            예:
-            <local2:UserControl1 Title="이름"/>
-            → Label.Content = "이름"
-            
-            Grid.Row="0" Grid.Column="0":
-            - 1행 1열에 배치
-            
-            HorizontalAlignment="Center":
-            - 가로 중앙 정렬
-        -->
-        
-        <!-- ========== 글자 수 표시 StackPanel ========== -->
-        <StackPanel Orientation="Horizontal"
-                VerticalAlignment="Center"
-                Grid.Row="0" Grid.Column="1">
-            <!-- 
-                StackPanel:
-                - 글자 수 관련 요소를 가로로 배치
-                
-                Orientation="Horizontal":
-                - 가로 방향 정렬
-                
-                VerticalAlignment="Center":
-                - 세로 중앙 정렬
-                
-                Grid.Row="0" Grid.Column="1":
-                - 1행 2열에 배치
-                
-                레이아웃:
-                [현재글자수:] [5] [최대글자수:] [30]
-            -->
-            
-            <Label>현재글자수:</Label>
-            <!-- 
-                Label:
-                - "현재글자수:" 텍스트 표시
-                - 고정 텍스트
-            -->
-            
-            <TextBlock Text="{Binding ElementName=txt, Path=Text.Length}" VerticalAlignment="Center"></TextBlock>
-            <!-- 
-                TextBlock:
-                - 현재 글자 수 표시
-                
-                Text="{Binding ElementName=txt, Path=Text.Length}":
-                - ElementName 바인딩
-                - 같은 XAML 내의 다른 요소에 바인딩
-                
-                ElementName=txt:
-                - 바인딩 소스: txt (TextBox의 Name)
-                - Grid의 TextBox 요소
-                
-                Path=Text.Length:
-                - txt의 Text 속성의 Length
-                - txt.Text.Length
-                - 입력된 텍스트의 길이
-                
-                동작:
-                1. 사용자가 TextBox에 텍스트 입력
-                2. txt.Text 변경
-                3. txt.Text.Length 자동 계산
-                4. TextBlock.Text 자동 업데이트
-                
-                예:
-                사용자가 "Hello" 입력
-                → txt.Text = "Hello"
-                → txt.Text.Length = 5
-                → TextBlock.Text = "5"
-                
-                VerticalAlignment="Center":
-                - 세로 중앙 정렬
-            -->
-            
-            <Label>최대글자수:</Label>
-            <!-- 
-                Label:
-                - "최대글자수:" 텍스트 표시
-                - 고정 텍스트
-            -->
-            
-            <TextBlock VerticalAlignment="Center" Text="{Binding MaxLength}"></TextBlock>
-            <!-- 
-                TextBlock:
-                - 최대 글자 수 표시
-                
-                Text="{Binding MaxLength}":
-                - DataContext 바인딩
-                - UserControl1.MaxLength 속성
-                
-                바인딩 소스:
-                - DataContext = UserControl1 인스턴스
-                - MaxLength = UserControl1.MaxLength 속성
-                
-                예:
-                <local2:UserControl1 MaxLength="30"/>
-                → TextBlock.Text = "30"
-                
-                VerticalAlignment="Center":
-                - 세로 중앙 정렬
-            -->
-        </StackPanel>
-        
-        <!-- ========== TextBox (텍스트 입력) ========== -->
-        <TextBox Grid.Row="1" Grid.ColumnSpan="2"
-             Name="txt" MaxLength="{Binding MaxLength}"
-             TextWrapping="Wrap" AcceptsReturn="True">
 
-        </TextBox>
-        <!-- 
-            TextBox:
-            - 사용자 입력 영역
-            - 여러 줄 입력 가능
-            
-            Grid.Row="1":
-            - 2행에 배치
-            
-            Grid.ColumnSpan="2":
-            - 2개의 열에 걸쳐 배치 (1열 + 2열)
-            - 전체 너비 사용
-            
-            Name="txt":
-            - 코드와 바인딩에서 접근 가능
-            - ElementName 바인딩의 소스
-            - MainWindow에서 uc1.txt로 접근
-            
-            MaxLength="{Binding MaxLength}":
-            - 최대 글자 수 제한
-            - UserControl1.MaxLength 속성에 바인딩
-            
-            바인딩 동작:
-            <local2:UserControl1 MaxLength="30"/>
-            → UserControl1.MaxLength = "30"
-            → TextBox.MaxLength = 30 (string → int 변환)
-            → 30자 이상 입력 불가
-            
-            TextWrapping="Wrap":
-            - 자동 줄바꿈
-            - 텍스트가 너비를 초과하면 다음 줄로
-            
-            AcceptsReturn="True":
-            - Enter 키로 줄바꿈 가능
-            - 여러 줄 입력 가능
-            
-            동작:
-            1. 사용자가 텍스트 입력
-            2. Text 속성 변경
-            3. Text.Length 자동 계산
-            4. ElementName 바인딩으로 업데이트:
-               - 현재글자수 TextBlock
-               - ProgressBar.Value
-        -->
-        
-        <!-- ========== ProgressBar (진행률 표시) ========== -->
+        <!-- 1행: 제목 Label -->
+        <Label Content="{Binding Title}"
+               Grid.Row="0" Grid.Column="0"
+               HorizontalAlignment="Center"
+               FontWeight="Bold"/>
+
+        <!-- 1행: 글자 수 표시 -->
+        <StackPanel Orientation="Horizontal"
+                    VerticalAlignment="Center"
+                    Grid.Row="0" Grid.Column="1">
+            <Label Content="현재글자수:"/>
+            <TextBlock Text="{Binding ElementName=txt, Path=Text.Length}"
+                       VerticalAlignment="Center"/>
+            <Label Content="최대글자수:"/>
+            <TextBlock VerticalAlignment="Center"
+                       Text="{Binding MaxLength}"/>
+        </StackPanel>
+
+        <!-- 2행: TextBox -->
+        <TextBox Grid.Row="1" Grid.ColumnSpan="2"
+                 Name="txt"
+                 MaxLength="{Binding MaxLength}"
+                 TextWrapping="Wrap"
+                 AcceptsReturn="True"
+                 Margin="5"/>
+
+        <!-- 3행: ProgressBar -->
         <ProgressBar Grid.Row="2" Grid.ColumnSpan="2"
-                 Height="{Binding PbHeight}" Name="Pb"
-                 Value="{Binding ElementName=txt, Path=Text.Length, Mode=OneWay}"
-                 Maximum="{Binding MaxLength}"/>
-        <!-- 
-            ProgressBar:
-            - 글자 수 진행률 표시
-            - 현재 글자 수 / 최대 글자 수
-            
-            Grid.Row="2":
-            - 3행에 배치
-            
-            Grid.ColumnSpan="2":
-            - 2개의 열에 걸쳐 배치
-            - 전체 너비 사용
-            
-            Height="{Binding PbHeight}":
-            - 높이를 외부에서 설정
-            - UserControl1.PbHeight 속성에 바인딩
-            
-            바인딩 동작:
-            <local2:UserControl1 PbHeight="20"/>
-            → UserControl1.PbHeight = "20"
-            → ProgressBar.Height = 20 (string → double 변환)
-            
-            Name="Pb":
-            - 코드에서 접근 가능
-            - MainWindow에서 uc2.Pb로 접근
-            
-            Value="{Binding ElementName=txt, Path=Text.Length, Mode=OneWay}":
-            - ElementName 바인딩
-            - 현재 진행률 값
-            
-            ElementName=txt:
-            - 바인딩 소스: txt (TextBox)
-            
-            Path=Text.Length:
-            - txt.Text.Length
-            - 입력된 글자 수
-            
-            Mode=OneWay:
-            - 단방향 바인딩
-            - txt → ProgressBar (읽기 전용)
-            - ProgressBar → txt 불가능
-            
-            동작:
-            사용자가 "Hello" 입력
-            → txt.Text = "Hello"
-            → txt.Text.Length = 5
-            → ProgressBar.Value = 5
-            
-            Maximum="{Binding MaxLength}":
-            - 최대값 설정
-            - UserControl1.MaxLength 속성에 바인딩
-            
-            바인딩 동작:
-            <local2:UserControl1 MaxLength="30"/>
-            → ProgressBar.Maximum = 30
-            
-            진행률 계산:
-            - 진행률 (%) = (Value / Maximum) * 100
-            - 예: Value=5, Maximum=30
-            - 진행률 = (5 / 30) * 100 = 16.67%
-            
-            시각적 표현:
-            [████░░░░░░░░░░░░░░░] 5/30 (16.67%)
-            
-            동적 업데이트:
-            1. 사용자가 텍스트 입력
-            2. txt.Text.Length 변경
-            3. ProgressBar.Value 자동 업데이트
-            4. 진행률 바 시각적으로 변화
-        -->
+                     Height="{Binding PbHeight}"
+                     Name="Pb"
+                     Value="{Binding ElementName=txt, Path=Text.Length, Mode=OneWay}"
+                     Maximum="{Binding MaxLength}"
+                     Margin="5,0,5,5"/>
     </Grid>
-    
-    <!--
-        UserControl1 전체 요약:
-        
-        ========== UI 구조 ==========
-        
-        ┌─────────────────────────────────────┐
-        │ [제목]        현재글자수:5 최대:30  │ ← 1행
-        ├─────────────────────────────────────┤
-        │ [텍스트 입력 영역]                  │ ← 2행
-        │                                     │
-        ├─────────────────────────────────────┤
-        │ [████░░░░░░░░░░░░░░░] 5/30         │ ← 3행
-        └─────────────────────────────────────┘
-        
-        ========== 속성 (Properties) ==========
-        
-        1. Title (string):
-           - 제목 표시
-           - Label.Content에 바인딩
-           - 외부에서 설정 가능
-        
-        2. MaxLength (string):
-           - 최대 글자 수
-           - TextBox.MaxLength에 바인딩
-           - ProgressBar.Maximum에 바인딩
-           - 외부에서 설정 가능
-        
-        3. PbHeight (string):
-           - ProgressBar 높이
-           - ProgressBar.Height에 바인딩
-           - 외부에서 설정 가능
-        
-        ========== 바인딩 구조 ==========
-        
-        DataContext 바인딩:
-        - 소스: UserControl1 인스턴스 (this)
-        - 대상: Title, MaxLength, PbHeight
-        
-        ElementName 바인딩:
-        - 소스: txt (TextBox)
-        - 대상: 현재글자수 TextBlock, ProgressBar.Value
-        
-        바인딩 흐름:
-        외부 (MainWindow)
-          ↓ 속성 설정
-        UserControl1 (this)
-          ↓ DataContext 바인딩
-        Label, TextBox, ProgressBar
-          ↓ ElementName 바인딩
-        TextBlock (현재글자수), ProgressBar (Value)
-        
-        ========== 실시간 업데이트 ==========
-        
-        사용자 입력:
-        1. TextBox에 텍스트 입력
-        2. txt.Text 변경
-        3. txt.Text.Length 자동 계산
-        4. 자동 업데이트:
-           - 현재글자수 TextBlock
-           - ProgressBar.Value
-        
-        예:
-        입력: ""      → 현재:0,  진행률:0%
-        입력: "H"     → 현재:1,  진행률:3.3%
-        입력: "Hello" → 현재:5,  진행률:16.7%
-        입력: "..."   → 현재:30, 진행률:100%
-        
-        ========== 외부 사용 예제 ==========
-        
-        기본 사용:
-        <local2:UserControl1 Title="이름" MaxLength="20" PbHeight="15"/>
-        
-        다양한 설정:
-        <local2:UserControl1 Title="주소" MaxLength="100" PbHeight="25"/>
-        <local2:UserControl1 Title="설명" MaxLength="500" PbHeight="30"/>
-        
-        코드에서 접근:
-        <local2:UserControl1 x:Name="uc1" Title="제목" MaxLength="30" PbHeight="20"/>
-        
-        MainWindow.xaml.cs:
-        string text = uc1.txt.Text;
-        double progress = uc1.Pb.Value;
-        
-        ========== 개선 방안 ==========
-        
-        1. 의존성 속성 (DependencyProperty):
-           - 바인딩, 애니메이션, 스타일 지원
-           - WPF 표준
-           
-           public static readonly DependencyProperty TitleProperty =
-               DependencyProperty.Register("Title", typeof(string),
-                   typeof(UserControl1), new PropertyMetadata(string.Empty));
-           
-           public string Title
-           {
-               get { return (string)GetValue(TitleProperty); }
-               set { SetValue(TitleProperty, value); }
-           }
-        
-        2. 타입 안전성:
-           - 속성 타입을 적절히 변경
-           - MaxLength: string → int
-           - PbHeight: string → double
-        
-        3. 이벤트 추가:
-           - TextChanged 이벤트
-           - MaxLengthReached 이벤트
-           
-           public event EventHandler<string> TextChanged;
-           
-           private void txt_TextChanged(object sender, TextChangedEventArgs e)
-           {
-               TextChanged?.Invoke(this, txt.Text);
-           }
-        
-        4. 유효성 검사:
-           - 입력 제한 (숫자만, 영문만 등)
-           - 필수 입력 표시
-           
-           public bool IsRequired { get; set; }
-           
-           public bool Validate()
-           {
-               if (IsRequired && string.IsNullOrWhiteSpace(txt.Text))
-               {
-                   // 오류 표시
-                   return false;
-               }
-               return true;
-           }
-        
-        5. 캡슐화:
-           - 내부 컨트롤 직접 접근 방지
-           - 속성/메서드로 노출
-           
-           public string TextContent
-           {
-               get { return txt.Text; }
-               set { txt.Text = value; }
-           }
-           
-           public void ClearText()
-           {
-               txt.Clear();
-           }
-        
-        ========== 주의사항 ==========
-        
-        1. DataContext 설정:
-           - 생성자에서 DataContext = this
-           - 바인딩이 제대로 작동하려면 필수
-        
-        2. Name 속성:
-           - 외부에서 접근할 요소는 Name 지정
-           - txt, Pb는 MainWindow에서 접근
-        
-        3. 타입 변환:
-           - 속성이 string이면 자동 변환 필요
-           - MaxLength="30" (string) → MaxLength (int)
-        
-        4. 바인딩 모드:
-           - OneWay: 소스 → 대상만
-           - TwoWay: 양방향 (기본값, TextBox.Text)
-           - OneTime: 한 번만
-        
-        5. 성능:
-           - ElementName 바인딩은 효율적
-           - 복잡한 바인딩은 성능 고려
-    -->
 </UserControl>
