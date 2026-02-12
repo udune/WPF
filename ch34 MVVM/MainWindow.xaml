@@ -1,12 +1,504 @@
-﻿<Window x:Class="ch34_MVVM.MainWindow"
+<Window x:Class="ch34_MVVM.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ch34_MVVM"
+        xmlns:vm="clr-namespace:ch34_MVVM.ViewModels"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
+        Title="ch34 MVVM 튜토리얼" Height="600" Width="850">
 
-    </Grid>
+    <Window.Resources>
+        <Style x:Key="CodeExpanderStyle" TargetType="Expander">
+            <Setter Property="Header" Value="코드 보기"/>
+            <Setter Property="Margin" Value="0,0,0,12"/>
+            <Setter Property="IsExpanded" Value="False"/>
+        </Style>
+        <Style x:Key="CodeTextBoxStyle" TargetType="TextBox">
+            <Setter Property="IsReadOnly" Value="True"/>
+            <Setter Property="FontFamily" Value="Consolas"/>
+            <Setter Property="FontSize" Value="12"/>
+            <Setter Property="Background" Value="#1E1E1E"/>
+            <Setter Property="Foreground" Value="#DCDCDC"/>
+            <Setter Property="Padding" Value="10"/>
+            <Setter Property="TextWrapping" Value="Wrap"/>
+            <Setter Property="AcceptsReturn" Value="True"/>
+            <Setter Property="VerticalScrollBarVisibility" Value="Auto"/>
+            <Setter Property="MaxHeight" Value="300"/>
+            <Setter Property="BorderBrush" Value="#333333"/>
+            <Setter Property="BorderThickness" Value="1"/>
+        </Style>
+    </Window.Resources>
+
+    <TabControl>
+        <TabItem Header="MVVM 패턴 개요">
+            <ScrollViewer VerticalScrollBarVisibility="Auto">
+                <StackPanel Margin="20">
+                    <TextBlock Text="MVVM 패턴이란?" FontSize="22" FontWeight="Bold" Margin="0,0,0,15"/>
+                    <TextBlock Text="MVVM(Model-View-ViewModel)은 WPF의 데이터 바인딩을 활용한 디자인 패턴입니다. UI와 비즈니스 로직을 완전히 분리하여 테스트와 유지보수를 용이하게 합니다."
+                               TextWrapping="Wrap" Margin="0,0,0,20"/>
+
+                    <GroupBox Header="1. MVVM 구성 요소" Margin="0,0,0,15" Padding="10">
+                        <StackPanel>
+                            <TextBlock Text="MVVM 패턴의 세 가지 핵심 구성 요소:" Margin="0,0,0,10"/>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <Border Background="#E3F2FD" Padding="10" Margin="0,0,5,0" CornerRadius="5">
+                                    <StackPanel>
+                                        <TextBlock Text="Model" FontWeight="Bold" FontSize="14" Foreground="#1565C0" Margin="0,0,0,5"/>
+                                        <TextBlock Text="• 데이터 구조 정의" FontSize="11"/>
+                                        <TextBlock Text="• 비즈니스 로직" FontSize="11"/>
+                                        <TextBlock Text="• INotifyPropertyChanged" FontSize="11"/>
+                                        <TextBlock Text="• View/ViewModel 독립적" FontSize="11"/>
+                                    </StackPanel>
+                                </Border>
+                                <Border Background="#E8F5E9" Padding="10" Margin="5,0,5,0" CornerRadius="5" Grid.Column="1">
+                                    <StackPanel>
+                                        <TextBlock Text="View" FontWeight="Bold" FontSize="14" Foreground="#2E7D32" Margin="0,0,0,5"/>
+                                        <TextBlock Text="• XAML UI 정의" FontSize="11"/>
+                                        <TextBlock Text="• 사용자 인터페이스" FontSize="11"/>
+                                        <TextBlock Text="• DataContext 바인딩" FontSize="11"/>
+                                        <TextBlock Text="• 코드 비하인드 최소화" FontSize="11"/>
+                                    </StackPanel>
+                                </Border>
+                                <Border Background="#FFF3E0" Padding="10" Margin="5,0,0,0" CornerRadius="5" Grid.Column="2">
+                                    <StackPanel>
+                                        <TextBlock Text="ViewModel" FontWeight="Bold" FontSize="14" Foreground="#E65100" Margin="0,0,0,5"/>
+                                        <TextBlock Text="• View와 Model 중재" FontSize="11"/>
+                                        <TextBlock Text="• Command 제공" FontSize="11"/>
+                                        <TextBlock Text="• 표시용 데이터 가공" FontSize="11"/>
+                                        <TextBlock Text="• View 참조 없음" FontSize="11"/>
+                                    </StackPanel>
+                                </Border>
+                            </Grid>
+                        </StackPanel>
+                    </GroupBox>
+                    <Expander Style="{StaticResource CodeExpanderStyle}">
+                        <TextBox Style="{StaticResource CodeTextBoxStyle}"
+                                 Text="// MVVM 프로젝트 폴더 구조&#10;&#10;ch34 MVVM/&#10;├── Models/&#10;│   └── PersonModel.cs      // 데이터 모델&#10;├── ViewModels/&#10;│   └── PersonViewModel.cs  // 뷰모델&#10;├── Commands/&#10;│   └── PersonCommand.cs    // ICommand 구현&#10;├── Views/&#10;│   └── PersonView.xaml     // View (XAML)&#10;├── MainWindow.xaml&#10;└── MainWindow.xaml.cs"/>
+                    </Expander>
+
+                    <GroupBox Header="2. 데이터 흐름" Margin="0,0,0,15" Padding="10">
+                        <StackPanel>
+                            <TextBlock Text="MVVM 패턴에서 데이터가 흐르는 방식:" Margin="0,0,0,10"/>
+                            <Border Background="#F5F5F5" Padding="15" CornerRadius="5">
+                                <StackPanel>
+                                    <TextBlock Text="View ←→ DataBinding ←→ ViewModel ←→ Model" FontFamily="Consolas" FontSize="14" HorizontalAlignment="Center" Margin="0,0,0,10"/>
+                                    <TextBlock Text="• View: 사용자 입력을 받아 ViewModel에 전달" FontSize="11"/>
+                                    <TextBlock Text="• ViewModel: Model의 데이터를 View에 맞게 가공" FontSize="11"/>
+                                    <TextBlock Text="• Model: 실제 데이터 저장 및 비즈니스 로직 처리" FontSize="11"/>
+                                    <TextBlock Text="• DataBinding: 자동으로 데이터 동기화" FontSize="11"/>
+                                </StackPanel>
+                            </Border>
+                        </StackPanel>
+                    </GroupBox>
+                    <Expander Style="{StaticResource CodeExpanderStyle}">
+                        <TextBox Style="{StaticResource CodeTextBoxStyle}"
+                                 Text="&lt;!-- View에서 ViewModel 연결 --&gt;&#10;&lt;Window.DataContext&gt;&#10;    &lt;vm:PersonViewModel/&gt;&#10;&lt;/Window.DataContext&gt;&#10;&#10;&lt;!-- 또는 코드 비하인드에서 --&gt;&#10;public MainWindow()&#10;{&#10;    InitializeComponent();&#10;    DataContext = new PersonViewModel();&#10;}&#10;&#10;&lt;!-- 데이터 바인딩 --&gt;&#10;&lt;TextBox Text=&quot;{Binding Name, Mode=TwoWay}&quot;/&gt;&#10;&lt;Button Command=&quot;{Binding SaveCommand}&quot;/&gt;"/>
+                    </Expander>
+
+                    <GroupBox Header="3. MVVM의 장점" Margin="0,0,0,15" Padding="10">
+                        <StackPanel>
+                            <TextBlock Text="MVVM 패턴을 사용하면 얻을 수 있는 이점:" Margin="0,0,0,10"/>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <Border Background="#FFEBEE" Padding="10" Margin="0,0,5,0" CornerRadius="5">
+                                    <StackPanel>
+                                        <TextBlock Text="개발 측면" FontWeight="Bold" Margin="0,0,0,5"/>
+                                        <TextBlock Text="• 코드 재사용성 향상" FontSize="11"/>
+                                        <TextBlock Text="• 단위 테스트 용이" FontSize="11"/>
+                                        <TextBlock Text="• 유지보수성 향상" FontSize="11"/>
+                                        <TextBlock Text="• 디자이너-개발자 협업" FontSize="11"/>
+                                    </StackPanel>
+                                </Border>
+                                <Border Background="#E8EAF6" Padding="10" Margin="5,0,0,0" CornerRadius="5" Grid.Column="1">
+                                    <StackPanel>
+                                        <TextBlock Text="아키텍처 측면" FontWeight="Bold" Margin="0,0,0,5"/>
+                                        <TextBlock Text="• 관심사 분리 (SoC)" FontSize="11"/>
+                                        <TextBlock Text="• 느슨한 결합" FontSize="11"/>
+                                        <TextBlock Text="• 확장성" FontSize="11"/>
+                                        <TextBlock Text="• 코드 가독성" FontSize="11"/>
+                                    </StackPanel>
+                                </Border>
+                            </Grid>
+                        </StackPanel>
+                    </GroupBox>
+                    <Expander Style="{StaticResource CodeExpanderStyle}">
+                        <TextBox Style="{StaticResource CodeTextBoxStyle}"
+                                 Text="// 테스트 용이성 예제&#10;[Fact]&#10;public void PersonCommand_WithValidText_CanExecute()&#10;{&#10;    // Arrange&#10;    var viewModel = new PersonViewModel();&#10;    &#10;    // Act&#10;    var canExecute = viewModel.PersonCommand.CanExecute(&quot;홍길동&quot;);&#10;    &#10;    // Assert&#10;    Assert.True(canExecute);&#10;}&#10;&#10;// ViewModel은 View 없이 테스트 가능!"/>
+                    </Expander>
+                </StackPanel>
+            </ScrollViewer>
+        </TabItem>
+
+        <TabItem Header="Model">
+            <ScrollViewer VerticalScrollBarVisibility="Auto">
+                <StackPanel Margin="20">
+                    <TextBlock Text="Model - 데이터와 비즈니스 로직" FontSize="22" FontWeight="Bold" Margin="0,0,0,15"/>
+                    <TextBlock Text="Model은 애플리케이션의 데이터 구조와 비즈니스 로직을 담당합니다. INotifyPropertyChanged를 구현하여 속성 변경 시 UI에 자동으로 반영됩니다."
+                               TextWrapping="Wrap" Margin="0,0,0,20"/>
+
+                    <GroupBox Header="1. INotifyPropertyChanged 인터페이스" Margin="0,0,0,15" Padding="10">
+                        <StackPanel>
+                            <TextBlock Text="데이터 바인딩의 핵심 메커니즘입니다:" Margin="0,0,0,10"/>
+                            <Border Background="#E8F5E9" Padding="10" CornerRadius="5">
+                                <StackPanel>
+                                    <TextBlock Text="작동 원리:" FontWeight="Bold" Margin="0,0,0,5"/>
+                                    <TextBlock Text="1. 속성 값이 변경됨" FontSize="11"/>
+                                    <TextBlock Text="2. OnPropertyChanged 메서드 호출" FontSize="11"/>
+                                    <TextBlock Text="3. PropertyChanged 이벤트 발생" FontSize="11"/>
+                                    <TextBlock Text="4. 바인딩 시스템이 이벤트 감지" FontSize="11"/>
+                                    <TextBlock Text="5. UI 자동 업데이트" FontSize="11"/>
+                                </StackPanel>
+                            </Border>
+                        </StackPanel>
+                    </GroupBox>
+                    <Expander Style="{StaticResource CodeExpanderStyle}">
+                        <TextBox Style="{StaticResource CodeTextBoxStyle}"
+                                 Text="using System.ComponentModel;&#10;&#10;public class PersonModel : INotifyPropertyChanged&#10;{&#10;    // PropertyChanged 이벤트 선언&#10;    public event PropertyChangedEventHandler? PropertyChanged;&#10;    &#10;    // 이벤트 발생 메서드&#10;    private void OnPropertyChanged(string name)&#10;    {&#10;        PropertyChanged?.Invoke(this, &#10;            new PropertyChangedEventArgs(name));&#10;    }&#10;}"/>
+                    </Expander>
+
+                    <GroupBox Header="2. 속성 정의와 변경 알림" Margin="0,0,0,15" Padding="10">
+                        <StackPanel>
+                            <TextBlock Text="백킹 필드와 속성을 정의하고 변경 시 알림을 보냅니다:" Margin="0,0,0,10"/>
+                            <Border Background="#FFF3E0" Padding="10" CornerRadius="5">
+                                <StackPanel>
+                                    <TextBlock Text="구성 요소:" FontWeight="Bold" Margin="0,0,0,5"/>
+                                    <TextBlock Text="• 백킹 필드 (private): 실제 데이터 저장" FontSize="11"/>
+                                    <TextBlock Text="• Getter: 필드 값 반환" FontSize="11"/>
+                                    <TextBlock Text="• Setter: 값 설정 + OnPropertyChanged 호출" FontSize="11"/>
+                                </StackPanel>
+                            </Border>
+                        </StackPanel>
+                    </GroupBox>
+                    <Expander Style="{StaticResource CodeExpanderStyle}">
+                        <TextBox Style="{StaticResource CodeTextBoxStyle}"
+                                 Text="// 백킹 필드&#10;private string name = string.Empty;&#10;private int age;&#10;&#10;// Name 속성&#10;public string Name&#10;{&#10;    get =&gt; name;&#10;    set&#10;    {&#10;        name = value;&#10;        OnPropertyChanged(&quot;Name&quot;);  // 또는 nameof(Name)&#10;    }&#10;}&#10;&#10;// Age 속성&#10;public int Age&#10;{&#10;    get =&gt; age;&#10;    set&#10;    {&#10;        age = value;&#10;        OnPropertyChanged(nameof(Age));&#10;    }&#10;}"/>
+                    </Expander>
+
+                    <GroupBox Header="3. 개선된 패턴 (값 변경 체크)" Margin="0,0,0,15" Padding="10">
+                        <StackPanel>
+                            <TextBlock Text="불필요한 이벤트 발생을 방지하는 패턴:" Margin="0,0,0,10"/>
+                            <Border Background="#E3F2FD" Padding="10" CornerRadius="5">
+                                <StackPanel>
+                                    <TextBlock Text="장점:" FontWeight="Bold" Margin="0,0,0,5"/>
+                                    <TextBlock Text="• 값이 같으면 이벤트 발생 안함" FontSize="11"/>
+                                    <TextBlock Text="• 성능 향상" FontSize="11"/>
+                                    <TextBlock Text="• 무한 루프 방지" FontSize="11"/>
+                                </StackPanel>
+                            </Border>
+                        </StackPanel>
+                    </GroupBox>
+                    <Expander Style="{StaticResource CodeExpanderStyle}">
+                        <TextBox Style="{StaticResource CodeTextBoxStyle}"
+                                 Text="// 값 변경 체크 포함 버전&#10;public string Name&#10;{&#10;    get =&gt; name;&#10;    set&#10;    {&#10;        if (name != value)  // 값이 다를 때만&#10;        {&#10;            name = value;&#10;            OnPropertyChanged(nameof(Name));&#10;        }&#10;    }&#10;}&#10;&#10;// CallerMemberName 사용 (더 간편)&#10;private void OnPropertyChanged(&#10;    [CallerMemberName] string name = &quot;&quot;)&#10;{&#10;    PropertyChanged?.Invoke(this, &#10;        new PropertyChangedEventArgs(name));&#10;}&#10;&#10;// 호출: OnPropertyChanged(); // 속성 이름 자동 전달"/>
+                    </Expander>
+
+                    <GroupBox Header="4. 완전한 PersonModel 예제" Margin="0,0,0,15" Padding="10">
+                        <StackPanel>
+                            <TextBlock Text="실제 프로젝트에서 사용되는 PersonModel:" Margin="0,0,0,10"/>
+                        </StackPanel>
+                    </GroupBox>
+                    <Expander Style="{StaticResource CodeExpanderStyle}">
+                        <TextBox Style="{StaticResource CodeTextBoxStyle}"
+                                 Text="using System.ComponentModel;&#10;&#10;namespace ch34_MVVM.Models&#10;{&#10;    public class PersonModel : INotifyPropertyChanged&#10;    {&#10;        public event PropertyChangedEventHandler? PropertyChanged;&#10;        &#10;        private void OnPropertyChanged(string name)&#10;        {&#10;            PropertyChangedEventHandler? handler = PropertyChanged;&#10;            if (handler != null)&#10;                handler(this, new PropertyChangedEventArgs(name));&#10;        }&#10;        &#10;        private string name = string.Empty;&#10;        private int age;&#10;        &#10;        public string Name&#10;        {&#10;            get =&gt; name;&#10;            set { name = value; OnPropertyChanged(&quot;Name&quot;); }&#10;        }&#10;        &#10;        public int Age&#10;        {&#10;            get =&gt; age;&#10;            set { age = value; OnPropertyChanged(&quot;Age&quot;); }&#10;        }&#10;    }&#10;}"/>
+                    </Expander>
+                </StackPanel>
+            </ScrollViewer>
+        </TabItem>
+
+        <TabItem Header="ViewModel">
+            <ScrollViewer VerticalScrollBarVisibility="Auto">
+                <StackPanel Margin="20">
+                    <TextBlock Text="ViewModel - View와 Model의 중재자" FontSize="22" FontWeight="Bold" Margin="0,0,0,15"/>
+                    <TextBlock Text="ViewModel은 View에 표시할 데이터와 Command를 제공합니다. View와 Model 사이에서 데이터를 가공하고 사용자 입력을 처리합니다."
+                               TextWrapping="Wrap" Margin="0,0,0,20"/>
+
+                    <GroupBox Header="1. ViewModel의 역할" Margin="0,0,0,15" Padding="10">
+                        <StackPanel>
+                            <TextBlock Text="ViewModel이 수행하는 주요 기능:" Margin="0,0,0,10"/>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <Border Background="#E8F5E9" Padding="10" Margin="0,0,5,0" CornerRadius="5">
+                                    <StackPanel>
+                                        <TextBlock Text="데이터 관리" FontWeight="Bold" Margin="0,0,0,5"/>
+                                        <TextBlock Text="• Model 데이터 보관" FontSize="11"/>
+                                        <TextBlock Text="• 컬렉션 관리" FontSize="11"/>
+                                        <TextBlock Text="• 데이터 가공/변환" FontSize="11"/>
+                                        <TextBlock Text="• 선택 상태 관리" FontSize="11"/>
+                                    </StackPanel>
+                                </Border>
+                                <Border Background="#FFF3E0" Padding="10" Margin="5,0,0,0" CornerRadius="5" Grid.Column="1">
+                                    <StackPanel>
+                                        <TextBlock Text="동작 처리" FontWeight="Bold" Margin="0,0,0,5"/>
+                                        <TextBlock Text="• Command 제공" FontSize="11"/>
+                                        <TextBlock Text="• 버튼 활성화 제어" FontSize="11"/>
+                                        <TextBlock Text="• 비즈니스 로직 호출" FontSize="11"/>
+                                        <TextBlock Text="• 이벤트 처리" FontSize="11"/>
+                                    </StackPanel>
+                                </Border>
+                            </Grid>
+                        </StackPanel>
+                    </GroupBox>
+                    <Expander Style="{StaticResource CodeExpanderStyle}">
+                        <TextBox Style="{StaticResource CodeTextBoxStyle}"
+                                 Text="public class PersonViewModel&#10;{&#10;    // Command: 버튼 등의 동작 처리&#10;    public PersonCommand PersonCommand { get; set; }&#10;    &#10;    // 데이터: ListView 등에 표시&#10;    public List&lt;PersonModel&gt; PersonList { get; set; }&#10;    &#10;    // 선택된 항목 (선택 사항)&#10;    public PersonModel? SelectedPerson { get; set; }&#10;}"/>
+                    </Expander>
+
+                    <GroupBox Header="2. 데이터 컬렉션" Margin="0,0,0,15" Padding="10">
+                        <StackPanel>
+                            <TextBlock Text="ViewModel에서 데이터 컬렉션 관리:" Margin="0,0,0,10"/>
+                            <Border Background="#E3F2FD" Padding="10" CornerRadius="5">
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <StackPanel>
+                                        <TextBlock Text="List&lt;T&gt;" FontWeight="Bold" Margin="0,0,0,5"/>
+                                        <TextBlock Text="• 변경 알림 없음" FontSize="11"/>
+                                        <TextBlock Text="• 읽기 전용 표시에 적합" FontSize="11"/>
+                                        <TextBlock Text="• 단순한 사용" FontSize="11"/>
+                                    </StackPanel>
+                                    <StackPanel Grid.Column="1">
+                                        <TextBlock Text="ObservableCollection&lt;T&gt;" FontWeight="Bold" Margin="0,0,0,5"/>
+                                        <TextBlock Text="• Add/Remove 시 UI 업데이트" FontSize="11"/>
+                                        <TextBlock Text="• 동적 컬렉션에 적합" FontSize="11"/>
+                                        <TextBlock Text="• MVVM에서 권장" FontSize="11"/>
+                                    </StackPanel>
+                                </Grid>
+                            </Border>
+                        </StackPanel>
+                    </GroupBox>
+                    <Expander Style="{StaticResource CodeExpanderStyle}">
+                        <TextBox Style="{StaticResource CodeTextBoxStyle}"
+                                 Text="// List 사용 (초기 데이터만 표시)&#10;public List&lt;PersonModel&gt; PersonList { get; set; }&#10;&#10;PersonList = new List&lt;PersonModel&gt;&#10;{&#10;    new PersonModel { Name = &quot;홍길동&quot;, Age = 100 },&#10;    new PersonModel { Name = &quot;임꺽정&quot;, Age = 90 }&#10;};&#10;&#10;// ObservableCollection 사용 (동적 추가/삭제)&#10;public ObservableCollection&lt;PersonModel&gt; PersonList { get; set; }&#10;&#10;PersonList = new ObservableCollection&lt;PersonModel&gt;();&#10;PersonList.Add(new PersonModel { Name = &quot;새사람&quot; });&#10;// → ListView에 자동으로 추가됨"/>
+                    </Expander>
+
+                    <GroupBox Header="3. Command 초기화" Margin="0,0,0,15" Padding="10">
+                        <StackPanel>
+                            <TextBlock Text="생성자에서 Command를 초기화합니다:" Margin="0,0,0,10"/>
+                        </StackPanel>
+                    </GroupBox>
+                    <Expander Style="{StaticResource CodeExpanderStyle}">
+                        <TextBox Style="{StaticResource CodeTextBoxStyle}"
+                                 Text="public PersonViewModel()&#10;{&#10;    // 데이터 초기화&#10;    PersonList = new List&lt;PersonModel&gt;&#10;    {&#10;        new PersonModel { Name = &quot;홍길동&quot;, Age = 100 },&#10;        new PersonModel { Name = &quot;임꺽정&quot;, Age = 90 }&#10;    };&#10;    &#10;    // Command 초기화 (메서드 참조)&#10;    PersonCommand = new PersonCommand(Message, CheckMessage);&#10;    &#10;    // 또는 람다 표현식&#10;    PersonCommand = new PersonCommand(&#10;        txt =&gt; MessageBox.Show(txt),&#10;        txt =&gt; !string.IsNullOrEmpty(txt)&#10;    );&#10;}"/>
+                    </Expander>
+
+                    <GroupBox Header="4. Execute/CanExecute 메서드" Margin="0,0,0,15" Padding="10">
+                        <StackPanel>
+                            <TextBlock Text="Command가 호출할 메서드를 정의합니다:" Margin="0,0,0,10"/>
+                        </StackPanel>
+                    </GroupBox>
+                    <Expander Style="{StaticResource CodeExpanderStyle}">
+                        <TextBox Style="{StaticResource CodeTextBoxStyle}"
+                                 Text="// Execute: 명령 실행 시 호출&#10;private void Message(string? txt)&#10;{&#10;    MessageBox.Show(txt);&#10;}&#10;&#10;// CanExecute: 실행 가능 여부 판단&#10;private bool CheckMessage(string? txt)&#10;{&#10;    // 텍스트가 있으면 버튼 활성화&#10;    if (txt?.Length &gt; 0) return true;&#10;    return false;&#10;    &#10;    // 간결한 버전&#10;    // return !string.IsNullOrEmpty(txt);&#10;}"/>
+                    </Expander>
+
+                    <GroupBox Header="5. 완전한 PersonViewModel" Margin="0,0,0,15" Padding="10">
+                        <StackPanel>
+                            <TextBlock Text="실제 프로젝트의 전체 ViewModel 코드:" Margin="0,0,0,10"/>
+                        </StackPanel>
+                    </GroupBox>
+                    <Expander Style="{StaticResource CodeExpanderStyle}">
+                        <TextBox Style="{StaticResource CodeTextBoxStyle}"
+                                 Text="using System.Windows;&#10;using ch34_MVVM.Models;&#10;using ch34_MVVM.Commands;&#10;&#10;namespace ch34_MVVM.ViewModels&#10;{&#10;    public class PersonViewModel&#10;    {&#10;        public PersonCommand PersonCommand { get; set; }&#10;        public List&lt;PersonModel&gt; PersonList { get; set; }&#10;        &#10;        public PersonViewModel()&#10;        {&#10;            PersonList = new List&lt;PersonModel&gt;&#10;            {&#10;                new PersonModel { Name = &quot;홍길동&quot;, Age = 100 },&#10;                new PersonModel { Name = &quot;임꺽정&quot;, Age = 90 }&#10;            };&#10;            &#10;            PersonCommand = new PersonCommand(Message, CheckMessage);&#10;        }&#10;        &#10;        private void Message(string? txt)&#10;        {&#10;            MessageBox.Show(txt);&#10;        }&#10;        &#10;        private bool CheckMessage(string? txt)&#10;        {&#10;            return txt?.Length &gt; 0;&#10;        }&#10;    }&#10;}"/>
+                    </Expander>
+                </StackPanel>
+            </ScrollViewer>
+        </TabItem>
+
+        <TabItem Header="Command">
+            <ScrollViewer VerticalScrollBarVisibility="Auto">
+                <StackPanel Margin="20">
+                    <TextBlock Text="ICommand - 사용자 동작 처리" FontSize="22" FontWeight="Bold" Margin="0,0,0,15"/>
+                    <TextBlock Text="ICommand 인터페이스를 구현하여 버튼 클릭 등의 사용자 동작을 코드 비하인드 없이 ViewModel에서 처리할 수 있습니다."
+                               TextWrapping="Wrap" Margin="0,0,0,20"/>
+
+                    <GroupBox Header="1. ICommand 인터페이스" Margin="0,0,0,15" Padding="10">
+                        <StackPanel>
+                            <TextBlock Text="ICommand가 요구하는 구현 멤버:" Margin="0,0,0,10"/>
+                            <Border Background="#E3F2FD" Padding="10" CornerRadius="5">
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition/>
+                                        <RowDefinition/>
+                                        <RowDefinition/>
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto"/>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <TextBlock Text="Execute" FontWeight="Bold" Grid.Row="0" Margin="0,2"/>
+                                    <TextBlock Text="명령이 실행될 때 호출되는 메서드" Grid.Row="0" Grid.Column="1" Margin="10,2,0,2"/>
+                                    <TextBlock Text="CanExecute" FontWeight="Bold" Grid.Row="1" Margin="0,2"/>
+                                    <TextBlock Text="명령 실행 가능 여부 반환 (버튼 활성화)" Grid.Row="1" Grid.Column="1" Margin="10,2,0,2"/>
+                                    <TextBlock Text="CanExecuteChanged" FontWeight="Bold" Grid.Row="2" Margin="0,2"/>
+                                    <TextBlock Text="실행 가능 여부 변경 시 발생하는 이벤트" Grid.Row="2" Grid.Column="1" Margin="10,2,0,2"/>
+                                </Grid>
+                            </Border>
+                        </StackPanel>
+                    </GroupBox>
+                    <Expander Style="{StaticResource CodeExpanderStyle}">
+                        <TextBox Style="{StaticResource CodeTextBoxStyle}"
+                                 Text="public interface ICommand&#10;{&#10;    event EventHandler? CanExecuteChanged;&#10;    bool CanExecute(object? parameter);&#10;    void Execute(object? parameter);&#10;}&#10;&#10;// XAML에서 사용&#10;&lt;Button Command=&quot;{Binding PersonCommand}&quot;&#10;        CommandParameter=&quot;{Binding Text, ElementName=txtInput}&quot;&gt;&#10;    실행&#10;&lt;/Button&gt;"/>
+                    </Expander>
+
+                    <GroupBox Header="2. 델리게이트 필드" Margin="0,0,0,15" Padding="10">
+                        <StackPanel>
+                            <TextBlock Text="실행 로직과 검증 로직을 저장하는 필드:" Margin="0,0,0,10"/>
+                            <Border Background="#FFF3E0" Padding="10" CornerRadius="5">
+                                <StackPanel>
+                                    <TextBlock FontFamily="Consolas" FontSize="11">
+                                        Action&lt;string?&gt;: 반환값 없는 메서드 (Execute용)
+                                    </TextBlock>
+                                    <TextBlock FontFamily="Consolas" FontSize="11" Margin="0,5,0,0">
+                                        Predicate&lt;string?&gt;: bool 반환 메서드 (CanExecute용)
+                                    </TextBlock>
+                                </StackPanel>
+                            </Border>
+                        </StackPanel>
+                    </GroupBox>
+                    <Expander Style="{StaticResource CodeExpanderStyle}">
+                        <TextBox Style="{StaticResource CodeTextBoxStyle}"
+                                 Text="public class PersonCommand : ICommand&#10;{&#10;    // 이벤트&#10;    public event EventHandler? CanExecuteChanged;&#10;    &#10;    // 델리게이트 필드&#10;    Action&lt;string?&gt; execute;      // 실행할 메서드&#10;    Predicate&lt;string?&gt; canExecute; // 실행 가능 판단 메서드&#10;    &#10;    // 생성자: 의존성 주입&#10;    public PersonCommand(Action&lt;string?&gt; msg, &#10;                         Predicate&lt;string?&gt; check)&#10;    {&#10;        execute = msg;&#10;        canExecute = check;&#10;    }&#10;}"/>
+                    </Expander>
+
+                    <GroupBox Header="3. CanExecute 구현" Margin="0,0,0,15" Padding="10">
+                        <StackPanel>
+                            <TextBlock Text="버튼 활성화 여부를 결정합니다:" Margin="0,0,0,10"/>
+                            <Border Background="#E8F5E9" Padding="10" CornerRadius="5">
+                                <StackPanel>
+                                    <TextBlock Text="• parameter: CommandParameter로 전달된 값" FontSize="11"/>
+                                    <TextBlock Text="• 반환값이 false면 버튼 비활성화" FontSize="11"/>
+                                    <TextBlock Text="• 자주 호출되므로 빠르게 실행되어야 함" FontSize="11"/>
+                                </StackPanel>
+                            </Border>
+                        </StackPanel>
+                    </GroupBox>
+                    <Expander Style="{StaticResource CodeExpanderStyle}">
+                        <TextBox Style="{StaticResource CodeTextBoxStyle}"
+                                 Text="public bool CanExecute(object? parameter)&#10;{&#10;    // parameter를 string으로 변환하여 검증&#10;    return canExecute.Invoke(parameter as string);&#10;}&#10;&#10;// ViewModel에서 정의한 검증 메서드&#10;private bool CheckMessage(string? txt)&#10;{&#10;    if (txt?.Length &gt; 0) return true;&#10;    return false;&#10;}&#10;&#10;// 결과:&#10;// txt = null → false (버튼 비활성화)&#10;// txt = &quot;&quot;   → false (버튼 비활성화)&#10;// txt = &quot;a&quot;  → true  (버튼 활성화)"/>
+                    </Expander>
+
+                    <GroupBox Header="4. Execute 구현" Margin="0,0,0,15" Padding="10">
+                        <StackPanel>
+                            <TextBlock Text="버튼 클릭 시 실제 동작을 수행합니다:" Margin="0,0,0,10"/>
+                        </StackPanel>
+                    </GroupBox>
+                    <Expander Style="{StaticResource CodeExpanderStyle}">
+                        <TextBox Style="{StaticResource CodeTextBoxStyle}"
+                                 Text="public void Execute(object? parameter)&#10;{&#10;    // parameter를 string으로 변환하여 실행&#10;    execute.Invoke(parameter as string);&#10;}&#10;&#10;// ViewModel에서 정의한 실행 메서드&#10;private void Message(string? txt)&#10;{&#10;    MessageBox.Show(txt);&#10;}&#10;&#10;// 실행 흐름:&#10;// 1. 버튼 클릭&#10;// 2. CanExecute(&quot;입력값&quot;) → true&#10;// 3. Execute(&quot;입력값&quot;) 호출&#10;// 4. Message(&quot;입력값&quot;) 실행&#10;// 5. MessageBox 표시"/>
+                    </Expander>
+
+                    <GroupBox Header="5. RelayCommand 패턴" Margin="0,0,0,15" Padding="10">
+                        <StackPanel>
+                            <TextBlock Text="더 범용적인 Command 구현 (일반적인 패턴):" Margin="0,0,0,10"/>
+                        </StackPanel>
+                    </GroupBox>
+                    <Expander Style="{StaticResource CodeExpanderStyle}">
+                        <TextBox Style="{StaticResource CodeTextBoxStyle}"
+                                 Text="public class RelayCommand : ICommand&#10;{&#10;    private readonly Action&lt;object?&gt; _execute;&#10;    private readonly Predicate&lt;object?&gt;? _canExecute;&#10;    &#10;    public RelayCommand(Action&lt;object?&gt; execute, &#10;                        Predicate&lt;object?&gt;? canExecute = null)&#10;    {&#10;        _execute = execute ?? throw new ArgumentNullException(nameof(execute));&#10;        _canExecute = canExecute;&#10;    }&#10;    &#10;    // CommandManager와 연동&#10;    public event EventHandler? CanExecuteChanged&#10;    {&#10;        add =&gt; CommandManager.RequerySuggested += value;&#10;        remove =&gt; CommandManager.RequerySuggested -= value;&#10;    }&#10;    &#10;    public bool CanExecute(object? parameter)&#10;        =&gt; _canExecute == null || _canExecute(parameter);&#10;    &#10;    public void Execute(object? parameter)&#10;        =&gt; _execute(parameter);&#10;}"/>
+                    </Expander>
+                </StackPanel>
+            </ScrollViewer>
+        </TabItem>
+
+        <TabItem Header="실전 예제">
+            <ScrollViewer VerticalScrollBarVisibility="Auto">
+                <StackPanel Margin="20">
+                    <TextBlock Text="MVVM 실전 예제" FontSize="22" FontWeight="Bold" Margin="0,0,0,15"/>
+                    <TextBlock Text="아래는 MVVM 패턴을 적용한 완전한 예제입니다. 텍스트 입력과 버튼 클릭, 리스트 표시를 구현합니다."
+                               TextWrapping="Wrap" Margin="0,0,0,20"/>
+
+                    <GroupBox Header="실제 동작하는 MVVM 예제" Margin="0,0,0,15" Padding="10">
+                        <StackPanel>
+                            <StackPanel.DataContext>
+                                <vm:PersonViewModel/>
+                            </StackPanel.DataContext>
+
+                            <TextBlock Text="텍스트를 입력하고 버튼을 클릭하세요:" Margin="0,0,0,10"/>
+                            <StackPanel Orientation="Horizontal" Margin="0,0,0,15">
+                                <TextBox x:Name="inputBox" Width="200" Padding="5" Margin="0,0,10,0"/>
+                                <Button Content="메시지 표시" Padding="15,5"
+                                        Command="{Binding PersonCommand}"
+                                        CommandParameter="{Binding Text, ElementName=inputBox}"/>
+                            </StackPanel>
+
+                            <TextBlock Text="PersonList 데이터:" FontWeight="Bold" Margin="0,10,0,5"/>
+                            <ListView ItemsSource="{Binding PersonList}" Height="120">
+                                <ListView.View>
+                                    <GridView>
+                                        <GridViewColumn Header="이름" Width="150" DisplayMemberBinding="{Binding Name}"/>
+                                        <GridViewColumn Header="나이" Width="80" DisplayMemberBinding="{Binding Age}"/>
+                                    </GridView>
+                                </ListView.View>
+                            </ListView>
+                        </StackPanel>
+                    </GroupBox>
+                    <Expander Style="{StaticResource CodeExpanderStyle}">
+                        <TextBox Style="{StaticResource CodeTextBoxStyle}"
+                                 Text="&lt;!-- View (XAML) --&gt;&#10;&lt;StackPanel&gt;&#10;    &lt;StackPanel.DataContext&gt;&#10;        &lt;vm:PersonViewModel/&gt;&#10;    &lt;/StackPanel.DataContext&gt;&#10;    &#10;    &lt;TextBox x:Name=&quot;inputBox&quot; Width=&quot;200&quot;/&gt;&#10;    &#10;    &lt;Button Content=&quot;메시지 표시&quot;&#10;            Command=&quot;{Binding PersonCommand}&quot;&#10;            CommandParameter=&quot;{Binding Text, ElementName=inputBox}&quot;/&gt;&#10;    &#10;    &lt;ListView ItemsSource=&quot;{Binding PersonList}&quot;&gt;&#10;        &lt;ListView.View&gt;&#10;            &lt;GridView&gt;&#10;                &lt;GridViewColumn Header=&quot;이름&quot; &#10;                    DisplayMemberBinding=&quot;{Binding Name}&quot;/&gt;&#10;                &lt;GridViewColumn Header=&quot;나이&quot; &#10;                    DisplayMemberBinding=&quot;{Binding Age}&quot;/&gt;&#10;            &lt;/GridView&gt;&#10;        &lt;/ListView.View&gt;&#10;    &lt;/ListView&gt;&#10;&lt;/StackPanel&gt;"/>
+                    </Expander>
+
+                    <GroupBox Header="양방향 바인딩 예제" Margin="0,0,0,15" Padding="10">
+                        <StackPanel>
+                            <StackPanel.DataContext>
+                                <vm:PersonViewModel/>
+                            </StackPanel.DataContext>
+
+                            <TextBlock Text="ListView에서 항목을 선택하면 아래 TextBox에 반영됩니다:" Margin="0,0,0,10"/>
+                            <ListView x:Name="personListView" ItemsSource="{Binding PersonList}" Height="100" Margin="0,0,0,10">
+                                <ListView.View>
+                                    <GridView>
+                                        <GridViewColumn Header="이름" Width="150" DisplayMemberBinding="{Binding Name}"/>
+                                        <GridViewColumn Header="나이" Width="80" DisplayMemberBinding="{Binding Age}"/>
+                                    </GridView>
+                                </ListView.View>
+                            </ListView>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="선택된 이름:" VerticalAlignment="Center" Margin="0,0,10,0"/>
+                                <TextBox Width="150" Padding="5"
+                                         Text="{Binding SelectedItem.Name, ElementName=personListView, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                            </StackPanel>
+                        </StackPanel>
+                    </GroupBox>
+                    <Expander Style="{StaticResource CodeExpanderStyle}">
+                        <TextBox Style="{StaticResource CodeTextBoxStyle}"
+                                 Text="&lt;!-- 양방향 바인딩 --&gt;&#10;&lt;ListView x:Name=&quot;personListView&quot; &#10;          ItemsSource=&quot;{Binding PersonList}&quot;/&gt;&#10;&#10;&lt;TextBox Text=&quot;{Binding SelectedItem.Name, &#10;                ElementName=personListView, &#10;                Mode=TwoWay, &#10;                UpdateSourceTrigger=PropertyChanged}&quot;/&gt;&#10;&#10;&lt;!-- Mode 옵션 --&gt;&#10;&lt;!-- OneWay: Source → Target (기본) --&gt;&#10;&lt;!-- TwoWay: Source ↔ Target --&gt;&#10;&lt;!-- OneWayToSource: Target → Source --&gt;&#10;&#10;&lt;!-- UpdateSourceTrigger 옵션 --&gt;&#10;&lt;!-- PropertyChanged: 즉시 업데이트 --&gt;&#10;&lt;!-- LostFocus: 포커스 이동 시 업데이트 --&gt;"/>
+                    </Expander>
+
+                    <GroupBox Header="MVVM 체크리스트" Margin="0,0,0,15" Padding="10">
+                        <StackPanel>
+                            <TextBlock Text="MVVM 패턴 적용 시 확인사항:" Margin="0,0,0,10"/>
+                            <Border Background="#F5F5F5" Padding="10" CornerRadius="5">
+                                <StackPanel>
+                                    <TextBlock Text="✓ Model에 INotifyPropertyChanged 구현" Margin="0,2"/>
+                                    <TextBlock Text="✓ ViewModel에 Command와 데이터 컬렉션 정의" Margin="0,2"/>
+                                    <TextBlock Text="✓ View의 DataContext에 ViewModel 연결" Margin="0,2"/>
+                                    <TextBlock Text="✓ 코드 비하인드에 로직 없음 (InitializeComponent만)" Margin="0,2"/>
+                                    <TextBlock Text="✓ ViewModel이 View를 참조하지 않음" Margin="0,2"/>
+                                    <TextBlock Text="✓ 동적 컬렉션은 ObservableCollection 사용" Margin="0,2"/>
+                                </StackPanel>
+                            </Border>
+                        </StackPanel>
+                    </GroupBox>
+                    <Expander Style="{StaticResource CodeExpanderStyle}">
+                        <TextBox Style="{StaticResource CodeTextBoxStyle}"
+                                 Text="// 이상적인 코드 비하인드 (최소화)&#10;public partial class MainWindow : Window&#10;{&#10;    public MainWindow()&#10;    {&#10;        InitializeComponent();&#10;        // DataContext = new PersonViewModel();&#10;        // 또는 XAML에서 설정&#10;    }&#10;}&#10;&#10;&lt;!-- XAML에서 DataContext 설정 (권장) --&gt;&#10;&lt;Window.DataContext&gt;&#10;    &lt;vm:PersonViewModel/&gt;&#10;&lt;/Window.DataContext&gt;"/>
+                    </Expander>
+                </StackPanel>
+            </ScrollViewer>
+        </TabItem>
+    </TabControl>
 </Window>
