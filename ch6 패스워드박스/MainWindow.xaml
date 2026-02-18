@@ -27,6 +27,39 @@
             <Setter Property="BorderBrush" Value="#333333"/>
             <Setter Property="BorderThickness" Value="1"/>
         </Style>
+
+        <!-- 직접 해보기 스타일 -->
+        <Style x:Key="PracticeExpanderStyle" TargetType="Expander">
+            <Setter Property="Header" Value="직접 해보기"/>
+            <Setter Property="Margin" Value="0,0,0,15"/>
+            <Setter Property="IsExpanded" Value="False"/>
+            <Setter Property="Background" Value="#F5F5F5"/>
+        </Style>
+        <Style x:Key="PracticeInputStyle" TargetType="TextBox">
+            <Setter Property="AcceptsReturn" Value="True"/>
+            <Setter Property="FontFamily" Value="Consolas"/>
+            <Setter Property="FontSize" Value="12"/>
+            <Setter Property="Height" Value="50"/>
+            <Setter Property="VerticalScrollBarVisibility" Value="Auto"/>
+            <Setter Property="Padding" Value="5"/>
+        </Style>
+        <Style x:Key="RunButtonStyle" TargetType="Button">
+            <Setter Property="Width" Value="60"/>
+            <Setter Property="Padding" Value="5,3"/>
+            <Setter Property="Background" Value="#4CAF50"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="BorderThickness" Value="0"/>
+        </Style>
+        <Style x:Key="HintButtonStyle" TargetType="Button">
+            <Setter Property="Width" Value="50"/>
+            <Setter Property="Padding" Value="5,3"/>
+            <Setter Property="Margin" Value="5,0,0,0"/>
+        </Style>
+        <Style x:Key="AnswerButtonStyle" TargetType="Button">
+            <Setter Property="Width" Value="70"/>
+            <Setter Property="Padding" Value="5,3"/>
+            <Setter Property="Margin" Value="5,0,0,0"/>
+        </Style>
     </Window.Resources>
 
     <TabControl>
@@ -97,6 +130,69 @@
                     <Expander Style="{StaticResource CodeExpanderStyle}">
                         <TextBox Style="{StaticResource CodeTextBoxStyle}" Text="&lt;PasswordBox Password=&quot;초기값설정가능&quot;/&gt;&#10;&#10;// Password는 DependencyProperty가 아니므로&#10;// {Binding ...} 사용 불가&#10;// 코드 비하인드에서 직접 접근:&#10;string pw = myPasswordBox.Password;"/>
                     </Expander>
+
+                    <!-- 직접 해보기 -->
+                    <TextBlock Text="직접 해보기" FontSize="18" FontWeight="Bold" Margin="0,20,0,10" Foreground="#1976D2"/>
+
+                    <Expander Style="{StaticResource PracticeExpanderStyle}">
+                        <StackPanel Margin="10">
+                            <TextBlock Text="과제: PasswordChar를 '*'로 설정한 PasswordBox를 만들어보세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
+                            <TextBox x:Name="txtPractice1_1"
+                                     Style="{StaticResource PracticeInputStyle}"
+                                     Text="&lt;PasswordBox /&gt;"/>
+                            <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
+                                <Button Content="실행" Style="{StaticResource RunButtonStyle}" Click="BtnRun_Click" Tag="1_1"/>
+                                <Button Content="힌트" Style="{StaticResource HintButtonStyle}" Click="BtnHint_Click" Tag="1_1"/>
+                                <Button Content="정답 보기" Style="{StaticResource AnswerButtonStyle}" Click="BtnAnswer_Click" Tag="1_1"/>
+                            </StackPanel>
+                            <TextBlock x:Name="txtHint1_1"
+                                       Text="힌트: PasswordChar 속성에 마스킹할 문자를 지정합니다."
+                                       Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                            <Border x:Name="resultBorder1_1" Background="White" Margin="0,8,0,0" Padding="10" Visibility="Collapsed">
+                                <StackPanel x:Name="resultPanel1_1"/>
+                            </Border>
+                        </StackPanel>
+                    </Expander>
+
+                    <Expander Style="{StaticResource PracticeExpanderStyle}">
+                        <StackPanel Margin="10">
+                            <TextBlock Text="과제: MaxLength를 6으로 설정하여 6자리 PIN 입력용 PasswordBox를 만들어보세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
+                            <TextBox x:Name="txtPractice1_2"
+                                     Style="{StaticResource PracticeInputStyle}"
+                                     Text="&lt;PasswordBox /&gt;"/>
+                            <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
+                                <Button Content="실행" Style="{StaticResource RunButtonStyle}" Click="BtnRun_Click" Tag="1_2"/>
+                                <Button Content="힌트" Style="{StaticResource HintButtonStyle}" Click="BtnHint_Click" Tag="1_2"/>
+                                <Button Content="정답 보기" Style="{StaticResource AnswerButtonStyle}" Click="BtnAnswer_Click" Tag="1_2"/>
+                            </StackPanel>
+                            <TextBlock x:Name="txtHint1_2"
+                                       Text="힌트: MaxLength 속성으로 최대 입력 글자 수를 제한합니다."
+                                       Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                            <Border x:Name="resultBorder1_2" Background="White" Margin="0,8,0,0" Padding="10" Visibility="Collapsed">
+                                <StackPanel x:Name="resultPanel1_2"/>
+                            </Border>
+                        </StackPanel>
+                    </Expander>
+
+                    <Expander Style="{StaticResource PracticeExpanderStyle}">
+                        <StackPanel Margin="10">
+                            <TextBlock Text="과제: Password 속성에 'test1234' 초기값을 설정하고, PasswordChar를 '#'으로 변경해보세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
+                            <TextBox x:Name="txtPractice1_3"
+                                     Style="{StaticResource PracticeInputStyle}"
+                                     Text="&lt;PasswordBox /&gt;"/>
+                            <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
+                                <Button Content="실행" Style="{StaticResource RunButtonStyle}" Click="BtnRun_Click" Tag="1_3"/>
+                                <Button Content="힌트" Style="{StaticResource HintButtonStyle}" Click="BtnHint_Click" Tag="1_3"/>
+                                <Button Content="정답 보기" Style="{StaticResource AnswerButtonStyle}" Click="BtnAnswer_Click" Tag="1_3"/>
+                            </StackPanel>
+                            <TextBlock x:Name="txtHint1_3"
+                                       Text="힌트: Password=&quot;값&quot;과 PasswordChar=&quot;문자&quot;를 함께 사용합니다."
+                                       Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                            <Border x:Name="resultBorder1_3" Background="White" Margin="0,8,0,0" Padding="10" Visibility="Collapsed">
+                                <StackPanel x:Name="resultPanel1_3"/>
+                            </Border>
+                        </StackPanel>
+                    </Expander>
                 </StackPanel>
             </ScrollViewer>
         </TabItem>
@@ -146,6 +242,49 @@
                     <Expander Style="{StaticResource CodeExpanderStyle}">
                         <TextBox Style="{StaticResource CodeTextBoxStyle}" Text="&lt;PasswordBox Width=&quot;200&quot; Height=&quot;30&quot;/&gt;&#10;&lt;PasswordBox Width=&quot;250&quot; Height=&quot;40&quot;/&gt;&#10;&lt;PasswordBox Width=&quot;300&quot; Height=&quot;50&quot;/&gt;"/>
                     </Expander>
+
+                    <!-- 직접 해보기 -->
+                    <TextBlock Text="직접 해보기" FontSize="18" FontWeight="Bold" Margin="0,20,0,10" Foreground="#1976D2"/>
+
+                    <Expander Style="{StaticResource PracticeExpanderStyle}">
+                        <StackPanel Margin="10">
+                            <TextBlock Text="과제: HorizontalAlignment를 Center로 설정하고 Width를 250으로 지정한 PasswordBox를 만들어보세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
+                            <TextBox x:Name="txtPractice2_1"
+                                     Style="{StaticResource PracticeInputStyle}"
+                                     Text="&lt;PasswordBox /&gt;"/>
+                            <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
+                                <Button Content="실행" Style="{StaticResource RunButtonStyle}" Click="BtnRun_Click" Tag="2_1"/>
+                                <Button Content="힌트" Style="{StaticResource HintButtonStyle}" Click="BtnHint_Click" Tag="2_1"/>
+                                <Button Content="정답 보기" Style="{StaticResource AnswerButtonStyle}" Click="BtnAnswer_Click" Tag="2_1"/>
+                            </StackPanel>
+                            <TextBlock x:Name="txtHint2_1"
+                                       Text="힌트: HorizontalAlignment 속성으로 컨트롤의 수평 위치를 지정합니다."
+                                       Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                            <Border x:Name="resultBorder2_1" Background="White" Margin="0,8,0,0" Padding="10" Visibility="Collapsed">
+                                <StackPanel x:Name="resultPanel2_1"/>
+                            </Border>
+                        </StackPanel>
+                    </Expander>
+
+                    <Expander Style="{StaticResource PracticeExpanderStyle}">
+                        <StackPanel Margin="10">
+                            <TextBlock Text="과제: HorizontalContentAlignment을 Right로 설정하여 내부 텍스트가 오른쪽 정렬되는 PasswordBox를 만들어보세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
+                            <TextBox x:Name="txtPractice2_2"
+                                     Style="{StaticResource PracticeInputStyle}"
+                                     Text="&lt;PasswordBox /&gt;"/>
+                            <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
+                                <Button Content="실행" Style="{StaticResource RunButtonStyle}" Click="BtnRun_Click" Tag="2_2"/>
+                                <Button Content="힌트" Style="{StaticResource HintButtonStyle}" Click="BtnHint_Click" Tag="2_2"/>
+                                <Button Content="정답 보기" Style="{StaticResource AnswerButtonStyle}" Click="BtnAnswer_Click" Tag="2_2"/>
+                            </StackPanel>
+                            <TextBlock x:Name="txtHint2_2"
+                                       Text="힌트: HorizontalContentAlignment 속성으로 내부 콘텐츠의 수평 정렬을 지정합니다."
+                                       Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                            <Border x:Name="resultBorder2_2" Background="White" Margin="0,8,0,0" Padding="10" Visibility="Collapsed">
+                                <StackPanel x:Name="resultPanel2_2"/>
+                            </Border>
+                        </StackPanel>
+                    </Expander>
                 </StackPanel>
             </ScrollViewer>
         </TabItem>
@@ -188,6 +327,69 @@
                     <PasswordBox Password="맑은고딕" FontFamily="맑은 고딕" FontSize="14" Padding="4" Margin="0,2" HorizontalAlignment="Left" Width="300"/>
                     <Expander Style="{StaticResource CodeExpanderStyle}">
                         <TextBox Style="{StaticResource CodeTextBoxStyle}" Text="&lt;PasswordBox FontFamily=&quot;Arial&quot;/&gt;&#10;&lt;PasswordBox FontFamily=&quot;Times New Roman&quot;/&gt;&#10;&lt;PasswordBox FontFamily=&quot;Consolas&quot;/&gt;&#10;&lt;PasswordBox FontFamily=&quot;맑은 고딕&quot;/&gt;"/>
+                    </Expander>
+
+                    <!-- 직접 해보기 -->
+                    <TextBlock Text="직접 해보기" FontSize="18" FontWeight="Bold" Margin="0,20,0,10" Foreground="#1976D2"/>
+
+                    <Expander Style="{StaticResource PracticeExpanderStyle}">
+                        <StackPanel Margin="10">
+                            <TextBlock Text="과제: FontSize를 20으로 설정한 PasswordBox를 만들어보세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
+                            <TextBox x:Name="txtPractice3_1"
+                                     Style="{StaticResource PracticeInputStyle}"
+                                     Text="&lt;PasswordBox /&gt;"/>
+                            <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
+                                <Button Content="실행" Style="{StaticResource RunButtonStyle}" Click="BtnRun_Click" Tag="3_1"/>
+                                <Button Content="힌트" Style="{StaticResource HintButtonStyle}" Click="BtnHint_Click" Tag="3_1"/>
+                                <Button Content="정답 보기" Style="{StaticResource AnswerButtonStyle}" Click="BtnAnswer_Click" Tag="3_1"/>
+                            </StackPanel>
+                            <TextBlock x:Name="txtHint3_1"
+                                       Text="힌트: FontSize 속성에 숫자를 지정합니다."
+                                       Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                            <Border x:Name="resultBorder3_1" Background="White" Margin="0,8,0,0" Padding="10" Visibility="Collapsed">
+                                <StackPanel x:Name="resultPanel3_1"/>
+                            </Border>
+                        </StackPanel>
+                    </Expander>
+
+                    <Expander Style="{StaticResource PracticeExpanderStyle}">
+                        <StackPanel Margin="10">
+                            <TextBlock Text="과제: FontWeight를 Bold로, FontSize를 16으로 설정한 PasswordBox를 만들어보세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
+                            <TextBox x:Name="txtPractice3_2"
+                                     Style="{StaticResource PracticeInputStyle}"
+                                     Text="&lt;PasswordBox /&gt;"/>
+                            <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
+                                <Button Content="실행" Style="{StaticResource RunButtonStyle}" Click="BtnRun_Click" Tag="3_2"/>
+                                <Button Content="힌트" Style="{StaticResource HintButtonStyle}" Click="BtnHint_Click" Tag="3_2"/>
+                                <Button Content="정답 보기" Style="{StaticResource AnswerButtonStyle}" Click="BtnAnswer_Click" Tag="3_2"/>
+                            </StackPanel>
+                            <TextBlock x:Name="txtHint3_2"
+                                       Text="힌트: FontWeight 속성으로 굵기를 지정합니다. Bold, Normal, Light 등 사용 가능합니다."
+                                       Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                            <Border x:Name="resultBorder3_2" Background="White" Margin="0,8,0,0" Padding="10" Visibility="Collapsed">
+                                <StackPanel x:Name="resultPanel3_2"/>
+                            </Border>
+                        </StackPanel>
+                    </Expander>
+
+                    <Expander Style="{StaticResource PracticeExpanderStyle}">
+                        <StackPanel Margin="10">
+                            <TextBlock Text="과제: FontFamily를 Consolas로 설정한 PasswordBox를 만들어보세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
+                            <TextBox x:Name="txtPractice3_3"
+                                     Style="{StaticResource PracticeInputStyle}"
+                                     Text="&lt;PasswordBox /&gt;"/>
+                            <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
+                                <Button Content="실행" Style="{StaticResource RunButtonStyle}" Click="BtnRun_Click" Tag="3_3"/>
+                                <Button Content="힌트" Style="{StaticResource HintButtonStyle}" Click="BtnHint_Click" Tag="3_3"/>
+                                <Button Content="정답 보기" Style="{StaticResource AnswerButtonStyle}" Click="BtnAnswer_Click" Tag="3_3"/>
+                            </StackPanel>
+                            <TextBlock x:Name="txtHint3_3"
+                                       Text="힌트: FontFamily 속성으로 글꼴을 지정합니다."
+                                       Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                            <Border x:Name="resultBorder3_3" Background="White" Margin="0,8,0,0" Padding="10" Visibility="Collapsed">
+                                <StackPanel x:Name="resultPanel3_3"/>
+                            </Border>
+                        </StackPanel>
                     </Expander>
                 </StackPanel>
             </ScrollViewer>
@@ -242,6 +444,69 @@
                     </GroupBox>
                     <Expander Style="{StaticResource CodeExpanderStyle}">
                         <TextBox Style="{StaticResource CodeTextBoxStyle}" Text="&lt;PasswordBox CaretBrush=&quot;Red&quot;/&gt;&#10;&lt;PasswordBox SelectionBrush=&quot;Green&quot;/&gt;"/>
+                    </Expander>
+
+                    <!-- 직접 해보기 -->
+                    <TextBlock Text="직접 해보기" FontSize="18" FontWeight="Bold" Margin="0,20,0,10" Foreground="#1976D2"/>
+
+                    <Expander Style="{StaticResource PracticeExpanderStyle}">
+                        <StackPanel Margin="10">
+                            <TextBlock Text="과제: Background를 LightBlue, Foreground를 DarkBlue로 설정한 PasswordBox를 만들어보세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
+                            <TextBox x:Name="txtPractice4_1"
+                                     Style="{StaticResource PracticeInputStyle}"
+                                     Text="&lt;PasswordBox /&gt;"/>
+                            <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
+                                <Button Content="실행" Style="{StaticResource RunButtonStyle}" Click="BtnRun_Click" Tag="4_1"/>
+                                <Button Content="힌트" Style="{StaticResource HintButtonStyle}" Click="BtnHint_Click" Tag="4_1"/>
+                                <Button Content="정답 보기" Style="{StaticResource AnswerButtonStyle}" Click="BtnAnswer_Click" Tag="4_1"/>
+                            </StackPanel>
+                            <TextBlock x:Name="txtHint4_1"
+                                       Text="힌트: Background와 Foreground 속성에 색상 이름을 지정합니다."
+                                       Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                            <Border x:Name="resultBorder4_1" Background="White" Margin="0,8,0,0" Padding="10" Visibility="Collapsed">
+                                <StackPanel x:Name="resultPanel4_1"/>
+                            </Border>
+                        </StackPanel>
+                    </Expander>
+
+                    <Expander Style="{StaticResource PracticeExpanderStyle}">
+                        <StackPanel Margin="10">
+                            <TextBlock Text="과제: BorderBrush를 Red, BorderThickness를 2로 설정한 PasswordBox를 만들어보세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
+                            <TextBox x:Name="txtPractice4_2"
+                                     Style="{StaticResource PracticeInputStyle}"
+                                     Text="&lt;PasswordBox /&gt;"/>
+                            <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
+                                <Button Content="실행" Style="{StaticResource RunButtonStyle}" Click="BtnRun_Click" Tag="4_2"/>
+                                <Button Content="힌트" Style="{StaticResource HintButtonStyle}" Click="BtnHint_Click" Tag="4_2"/>
+                                <Button Content="정답 보기" Style="{StaticResource AnswerButtonStyle}" Click="BtnAnswer_Click" Tag="4_2"/>
+                            </StackPanel>
+                            <TextBlock x:Name="txtHint4_2"
+                                       Text="힌트: BorderBrush로 테두리 색상, BorderThickness로 테두리 두께를 지정합니다."
+                                       Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                            <Border x:Name="resultBorder4_2" Background="White" Margin="0,8,0,0" Padding="10" Visibility="Collapsed">
+                                <StackPanel x:Name="resultPanel4_2"/>
+                            </Border>
+                        </StackPanel>
+                    </Expander>
+
+                    <Expander Style="{StaticResource PracticeExpanderStyle}">
+                        <StackPanel Margin="10">
+                            <TextBlock Text="과제: Opacity를 0.5로 설정하고 Background를 Orange로 지정한 PasswordBox를 만들어보세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
+                            <TextBox x:Name="txtPractice4_3"
+                                     Style="{StaticResource PracticeInputStyle}"
+                                     Text="&lt;PasswordBox /&gt;"/>
+                            <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
+                                <Button Content="실행" Style="{StaticResource RunButtonStyle}" Click="BtnRun_Click" Tag="4_3"/>
+                                <Button Content="힌트" Style="{StaticResource HintButtonStyle}" Click="BtnHint_Click" Tag="4_3"/>
+                                <Button Content="정답 보기" Style="{StaticResource AnswerButtonStyle}" Click="BtnAnswer_Click" Tag="4_3"/>
+                            </StackPanel>
+                            <TextBlock x:Name="txtHint4_3"
+                                       Text="힌트: Opacity 속성은 0.0(투명)부터 1.0(불투명) 사이의 값을 가집니다."
+                                       Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                            <Border x:Name="resultBorder4_3" Background="White" Margin="0,8,0,0" Padding="10" Visibility="Collapsed">
+                                <StackPanel x:Name="resultPanel4_3"/>
+                            </Border>
+                        </StackPanel>
                     </Expander>
                 </StackPanel>
             </ScrollViewer>
@@ -316,6 +581,72 @@
                     </GroupBox>
                     <Expander Style="{StaticResource CodeExpanderStyle}">
                         <TextBox Style="{StaticResource CodeTextBoxStyle}" Text="&lt;!-- XAML --&gt;&#10;&lt;PasswordBox x:Name=&quot;pwdFirst&quot;/&gt;&#10;&lt;PasswordBox x:Name=&quot;pwdSecond&quot;/&gt;&#10;&lt;Button Content=&quot;비밀번호 확인&quot; Click=&quot;BtnCheckMatch_Click&quot;/&gt;&#10;&lt;TextBlock x:Name=&quot;txtMatchResult&quot;/&gt;&#10;&#10;// C# 코드 비하인드&#10;private void BtnCheckMatch_Click(object sender, RoutedEventArgs e)&#10;{&#10;    if (string.IsNullOrEmpty(pwdFirst.Password))&#10;        txtMatchResult.Text = &quot;비밀번호를 입력해주세요.&quot;;&#10;    else if (pwdFirst.Password == pwdSecond.Password)&#10;        txtMatchResult.Text = &quot;비밀번호가 일치합니다!&quot;;&#10;    else&#10;        txtMatchResult.Text = &quot;비밀번호가 일치하지 않습니다.&quot;;&#10;}"/>
+                    </Expander>
+
+                    <!-- 직접 해보기 -->
+                    <TextBlock Text="직접 해보기" FontSize="18" FontWeight="Bold" Margin="0,20,0,10" Foreground="#1976D2"/>
+
+                    <Expander Style="{StaticResource PracticeExpanderStyle}">
+                        <StackPanel Margin="10">
+                            <TextBlock Text="과제: PasswordChanged 이벤트 핸들러를 작성하세요. 비밀번호 길이를 txtLength.Text에 표시해야 합니다." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
+                            <TextBox x:Name="txtPractice5_1"
+                                     Style="{StaticResource PracticeInputStyle}"
+                                     Height="120"
+                                     AcceptsReturn="True"
+                                     Text="private void Pwd_PasswordChanged(object sender, RoutedEventArgs e)&#x0a;{&#x0a;    &#x0a;}"/>
+                            <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
+                                <Button Content="확인" Style="{StaticResource RunButtonStyle}" Click="BtnCheck_Click" Tag="5_1"/>
+                                <Button Content="힌트" Style="{StaticResource HintButtonStyle}" Click="BtnHint_Click" Tag="5_1"/>
+                                <Button Content="정답 보기" Style="{StaticResource AnswerButtonStyle}" Click="BtnAnswer_Click" Tag="5_1"/>
+                            </StackPanel>
+                            <TextBlock x:Name="txtHint5_1"
+                                       Text="힌트: PasswordBox의 Password 속성으로 입력된 비밀번호에 접근하고, .Length로 길이를 구합니다."
+                                       Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                            <TextBlock x:Name="txtResult5_1"
+                                       Margin="0,8,0,0" FontWeight="Bold" Visibility="Collapsed"/>
+                        </StackPanel>
+                    </Expander>
+
+                    <Expander Style="{StaticResource PracticeExpanderStyle}">
+                        <StackPanel Margin="10">
+                            <TextBlock Text="과제: 비밀번호 강도 체크 함수를 작성하세요. 4자 미만은 '약함', 4~7자는 '보통', 8자 이상은 '강함'으로 txtStrengthResult.Text에 표시합니다." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
+                            <TextBox x:Name="txtPractice5_2"
+                                     Style="{StaticResource PracticeInputStyle}"
+                                     Height="150"
+                                     AcceptsReturn="True"
+                                     Text="private void CheckStrength(string password)&#x0a;{&#x0a;    &#x0a;}"/>
+                            <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
+                                <Button Content="확인" Style="{StaticResource RunButtonStyle}" Click="BtnCheck_Click" Tag="5_2"/>
+                                <Button Content="힌트" Style="{StaticResource HintButtonStyle}" Click="BtnHint_Click" Tag="5_2"/>
+                                <Button Content="정답 보기" Style="{StaticResource AnswerButtonStyle}" Click="BtnAnswer_Click" Tag="5_2"/>
+                            </StackPanel>
+                            <TextBlock x:Name="txtHint5_2"
+                                       Text="힌트: if-else if-else 구문으로 password.Length를 비교합니다."
+                                       Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                            <TextBlock x:Name="txtResult5_2"
+                                       Margin="0,8,0,0" FontWeight="Bold" Visibility="Collapsed"/>
+                        </StackPanel>
+                    </Expander>
+
+                    <Expander Style="{StaticResource PracticeExpanderStyle}">
+                        <StackPanel Margin="10">
+                            <TextBlock Text="과제: 두 비밀번호 일치 검사 함수를 작성하세요. pwd1과 pwd2가 일치하면 true, 아니면 false를 반환합니다." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
+                            <TextBox x:Name="txtPractice5_3"
+                                     Style="{StaticResource PracticeInputStyle}"
+                                     Height="120"
+                                     AcceptsReturn="True"
+                                     Text="private bool CheckMatch(string pwd1, string pwd2)&#x0a;{&#x0a;    &#x0a;}"/>
+                            <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
+                                <Button Content="확인" Style="{StaticResource RunButtonStyle}" Click="BtnCheck_Click" Tag="5_3"/>
+                                <Button Content="힌트" Style="{StaticResource HintButtonStyle}" Click="BtnHint_Click" Tag="5_3"/>
+                                <Button Content="정답 보기" Style="{StaticResource AnswerButtonStyle}" Click="BtnAnswer_Click" Tag="5_3"/>
+                            </StackPanel>
+                            <TextBlock x:Name="txtHint5_3"
+                                       Text="힌트: == 연산자로 두 문자열을 비교하거나 string.Equals() 메서드를 사용합니다."
+                                       Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                            <TextBlock x:Name="txtResult5_3"
+                                       Margin="0,8,0,0" FontWeight="Bold" Visibility="Collapsed"/>
+                        </StackPanel>
                     </Expander>
                 </StackPanel>
             </ScrollViewer>
