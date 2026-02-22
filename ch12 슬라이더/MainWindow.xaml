@@ -1,24 +1,765 @@
-﻿<Window x:Class="ch12_슬라이더.MainWindow"
+<Window x:Class="ch12_슬라이더.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ch12_슬라이더"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        <StackPanel VerticalAlignment="Center" Background="Salmon">
-            <TextBlock x:Name="tb" 
-                       Text="텍스트 블럭"
-                       FontSize="{Binding ElementName=sld, Path=Value}"/>
-            <Slider x:Name="sld" 
-                    ValueChanged="sld_ValueChanged"
-                    TickPlacement="TopLeft"
-                    IsSnapToTickEnabled="True"
-                    Minimum="10"
-                    Maximum="100"
-                    TickFrequency="10">
-            </Slider>
-        </StackPanel>
-    </Grid>
+        Title="ch12 Slider 튜토리얼" Height="600" Width="850">
+
+    <Window.Resources>
+        <Style x:Key="CodeExpanderStyle" TargetType="Expander">
+            <Setter Property="Header" Value="코드 보기"/>
+            <Setter Property="Margin" Value="0,5,0,0"/>
+            <Setter Property="FontSize" Value="12"/>
+        </Style>
+        <Style x:Key="CodeTextBoxStyle" TargetType="TextBox">
+            <Setter Property="FontFamily" Value="Consolas"/>
+            <Setter Property="FontSize" Value="12"/>
+            <Setter Property="Background" Value="#1E1E1E"/>
+            <Setter Property="Foreground" Value="#DCDCDC"/>
+            <Setter Property="Padding" Value="10"/>
+            <Setter Property="IsReadOnly" Value="True"/>
+            <Setter Property="TextWrapping" Value="Wrap"/>
+            <Setter Property="AcceptsReturn" Value="True"/>
+            <Setter Property="VerticalScrollBarVisibility" Value="Auto"/>
+            <Setter Property="MaxHeight" Value="200"/>
+        </Style>
+
+        <!-- 직접 해보기 스타일 -->
+        <Style x:Key="PracticeExpanderStyle" TargetType="Expander">
+            <Setter Property="Header" Value="직접 해보기"/>
+            <Setter Property="Margin" Value="0,0,0,15"/>
+            <Setter Property="IsExpanded" Value="False"/>
+            <Setter Property="Background" Value="#F5F5F5"/>
+        </Style>
+        <Style x:Key="PracticeInputStyle" TargetType="TextBox">
+            <Setter Property="AcceptsReturn" Value="True"/>
+            <Setter Property="FontFamily" Value="Consolas"/>
+            <Setter Property="FontSize" Value="12"/>
+            <Setter Property="Height" Value="50"/>
+            <Setter Property="VerticalScrollBarVisibility" Value="Auto"/>
+            <Setter Property="Padding" Value="5"/>
+        </Style>
+        <Style x:Key="RunButtonStyle" TargetType="Button">
+            <Setter Property="Width" Value="60"/>
+            <Setter Property="Padding" Value="5,3"/>
+            <Setter Property="Background" Value="#4CAF50"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="BorderThickness" Value="0"/>
+        </Style>
+        <Style x:Key="HintButtonStyle" TargetType="Button">
+            <Setter Property="Width" Value="50"/>
+            <Setter Property="Padding" Value="5,3"/>
+            <Setter Property="Margin" Value="5,0,0,0"/>
+        </Style>
+        <Style x:Key="AnswerButtonStyle" TargetType="Button">
+            <Setter Property="Width" Value="70"/>
+            <Setter Property="Padding" Value="5,3"/>
+            <Setter Property="Margin" Value="5,0,0,0"/>
+        </Style>
+    </Window.Resources>
+
+    <TabControl>
+
+        <!-- ==================== 탭 1: 기본 사용법 ==================== -->
+        <TabItem Header="1. 기본 사용법">
+            <ScrollViewer VerticalScrollBarVisibility="Auto">
+                <StackPanel Margin="15">
+                    <TextBlock Text="Slider 기본 사용법" FontSize="20" FontWeight="Bold" Margin="0,0,0,10"/>
+
+                    <!-- 기본 Slider -->
+                    <GroupBox Header="기본 Slider" Margin="0,0,0,10" Padding="10">
+                        <StackPanel>
+                            <Slider Margin="0,5"/>
+                            <TextBlock Text="→ 기본 Slider는 0~10 범위, 왼쪽에서 오른쪽으로 드래그합니다." Margin="0,5,0,0" Foreground="Gray" FontSize="11"/>
+                            <Expander Style="{StaticResource CodeExpanderStyle}">
+                                <TextBox Style="{StaticResource CodeTextBoxStyle}" Text="&lt;Slider /&gt;"/>
+                            </Expander>
+                        </StackPanel>
+                    </GroupBox>
+
+                    <!-- 직접 해보기 1_1 -->
+                    <Expander Style="{StaticResource PracticeExpanderStyle}">
+                        <StackPanel Margin="10">
+                            <TextBlock Text="과제: 기본 Slider를 만들어보세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
+                            <TextBox x:Name="txtPractice1_1"
+                                     Style="{StaticResource PracticeInputStyle}"
+                                     Text="&lt;Slider /&gt;"/>
+                            <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
+                                <Button Content="실행" Style="{StaticResource RunButtonStyle}" Click="BtnRun_Click" Tag="1_1"/>
+                                <Button Content="힌트" Style="{StaticResource HintButtonStyle}" Click="BtnHint_Click" Tag="1_1"/>
+                                <Button Content="정답 보기" Style="{StaticResource AnswerButtonStyle}" Click="BtnAnswer_Click" Tag="1_1"/>
+                            </StackPanel>
+                            <TextBlock x:Name="txtHint1_1"
+                                       Text="힌트: &lt;Slider /&gt; 태그만 작성하면 됩니다."
+                                       Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                            <Border x:Name="resultBorder1_1" Background="White" Margin="0,8,0,0" Padding="10" Visibility="Collapsed">
+                                <StackPanel x:Name="resultPanel1_1"/>
+                            </Border>
+                        </StackPanel>
+                    </Expander>
+
+                    <!-- Minimum / Maximum -->
+                    <GroupBox Header="Minimum / Maximum (범위 설정)" Margin="0,0,0,10" Padding="10">
+                        <StackPanel>
+                            <TextBlock Text="0 ~ 100 범위:" Margin="0,0,0,3"/>
+                            <Slider Minimum="0" Maximum="100" Value="50" Margin="0,0,0,10"/>
+                            <TextBlock Text="1 ~ 10 범위:" Margin="0,0,0,3"/>
+                            <Slider Minimum="1" Maximum="10" Value="5" Margin="0,0,0,10"/>
+                            <TextBlock Text="-50 ~ 50 범위:" Margin="0,0,0,3"/>
+                            <Slider Minimum="-50" Maximum="50" Value="0"/>
+                            <Expander Style="{StaticResource CodeExpanderStyle}">
+                                <TextBox Style="{StaticResource CodeTextBoxStyle}" Text="&lt;Slider Minimum=&quot;0&quot; Maximum=&quot;100&quot; Value=&quot;50&quot; /&gt;&#10;&lt;Slider Minimum=&quot;1&quot; Maximum=&quot;10&quot; Value=&quot;5&quot; /&gt;&#10;&lt;Slider Minimum=&quot;-50&quot; Maximum=&quot;50&quot; Value=&quot;0&quot; /&gt;"/>
+                            </Expander>
+                        </StackPanel>
+                    </GroupBox>
+
+                    <!-- 직접 해보기 1_2 -->
+                    <Expander Style="{StaticResource PracticeExpanderStyle}">
+                        <StackPanel Margin="10">
+                            <TextBlock Text="과제: Minimum=0, Maximum=200, Value=100인 Slider를 만들어보세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
+                            <TextBox x:Name="txtPractice1_2"
+                                     Style="{StaticResource PracticeInputStyle}"
+                                     Text="&lt;Slider /&gt;"/>
+                            <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
+                                <Button Content="실행" Style="{StaticResource RunButtonStyle}" Click="BtnRun_Click" Tag="1_2"/>
+                                <Button Content="힌트" Style="{StaticResource HintButtonStyle}" Click="BtnHint_Click" Tag="1_2"/>
+                                <Button Content="정답 보기" Style="{StaticResource AnswerButtonStyle}" Click="BtnAnswer_Click" Tag="1_2"/>
+                            </StackPanel>
+                            <TextBlock x:Name="txtHint1_2"
+                                       Text="힌트: Minimum, Maximum, Value 속성을 설정합니다."
+                                       Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                            <Border x:Name="resultBorder1_2" Background="White" Margin="0,8,0,0" Padding="10" Visibility="Collapsed">
+                                <StackPanel x:Name="resultPanel1_2"/>
+                            </Border>
+                        </StackPanel>
+                    </Expander>
+
+                    <!-- SmallChange / LargeChange -->
+                    <GroupBox Header="SmallChange / LargeChange (증감 단위)" Margin="0,0,0,10" Padding="10">
+                        <StackPanel>
+                            <TextBlock Text="SmallChange=1 (화살표키), LargeChange=10 (트랙 클릭):" Margin="0,0,0,3"/>
+                            <Slider Minimum="0" Maximum="100" SmallChange="1" LargeChange="10" Value="50"/>
+                            <TextBlock Text="→ 키보드 화살표: SmallChange 만큼, 트랙 클릭: LargeChange 만큼 이동" Margin="0,5,0,0" Foreground="Gray" FontSize="11"/>
+                            <Expander Style="{StaticResource CodeExpanderStyle}">
+                                <TextBox Style="{StaticResource CodeTextBoxStyle}" Text="&lt;Slider Minimum=&quot;0&quot; Maximum=&quot;100&quot;&#10;        SmallChange=&quot;1&quot; LargeChange=&quot;10&quot;&#10;        Value=&quot;50&quot; /&gt;"/>
+                            </Expander>
+                        </StackPanel>
+                    </GroupBox>
+
+                    <!-- 직접 해보기 1_3 -->
+                    <Expander Style="{StaticResource PracticeExpanderStyle}">
+                        <StackPanel Margin="10">
+                            <TextBlock Text="과제: SmallChange=5, LargeChange=20인 Slider를 만들어보세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
+                            <TextBox x:Name="txtPractice1_3"
+                                     Style="{StaticResource PracticeInputStyle}"
+                                     Text="&lt;Slider /&gt;"/>
+                            <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
+                                <Button Content="실행" Style="{StaticResource RunButtonStyle}" Click="BtnRun_Click" Tag="1_3"/>
+                                <Button Content="힌트" Style="{StaticResource HintButtonStyle}" Click="BtnHint_Click" Tag="1_3"/>
+                                <Button Content="정답 보기" Style="{StaticResource AnswerButtonStyle}" Click="BtnAnswer_Click" Tag="1_3"/>
+                            </StackPanel>
+                            <TextBlock x:Name="txtHint1_3"
+                                       Text="힌트: SmallChange와 LargeChange 속성을 추가합니다."
+                                       Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                            <Border x:Name="resultBorder1_3" Background="White" Margin="0,8,0,0" Padding="10" Visibility="Collapsed">
+                                <StackPanel x:Name="resultPanel1_3"/>
+                            </Border>
+                        </StackPanel>
+                    </Expander>
+
+                    <!-- IsEnabled -->
+                    <GroupBox Header="IsEnabled (활성화/비활성화)" Margin="0,0,0,10" Padding="10">
+                        <StackPanel>
+                            <TextBlock Text="활성화된 슬라이더:" Margin="0,0,0,3"/>
+                            <Slider Value="30" Margin="0,0,0,10"/>
+                            <TextBlock Text="비활성화된 슬라이더:" Margin="0,0,0,3"/>
+                            <Slider Value="70" IsEnabled="False"/>
+                            <Expander Style="{StaticResource CodeExpanderStyle}">
+                                <TextBox Style="{StaticResource CodeTextBoxStyle}" Text="&lt;Slider Value=&quot;30&quot; /&gt;&#10;&lt;Slider Value=&quot;70&quot; IsEnabled=&quot;False&quot; /&gt;"/>
+                            </Expander>
+                        </StackPanel>
+                    </GroupBox>
+
+                </StackPanel>
+            </ScrollViewer>
+        </TabItem>
+
+        <!-- ==================== 탭 2: 방향과 크기 ==================== -->
+        <TabItem Header="2. 방향과 크기">
+            <ScrollViewer VerticalScrollBarVisibility="Auto">
+                <StackPanel Margin="15">
+                    <TextBlock Text="Slider 방향과 크기" FontSize="20" FontWeight="Bold" Margin="0,0,0,10"/>
+
+                    <!-- Orientation -->
+                    <GroupBox Header="Orientation (방향)" Margin="0,0,0,10" Padding="10">
+                        <StackPanel>
+                            <TextBlock Text="Horizontal (기본값):" Margin="0,0,0,3"/>
+                            <Slider Orientation="Horizontal" Width="300" HorizontalAlignment="Left" Margin="0,0,0,15"/>
+                            <TextBlock Text="Vertical:" Margin="0,0,0,3"/>
+                            <Slider Orientation="Vertical" Height="100" HorizontalAlignment="Left"/>
+                            <Expander Style="{StaticResource CodeExpanderStyle}">
+                                <TextBox Style="{StaticResource CodeTextBoxStyle}" Text="&lt;Slider Orientation=&quot;Horizontal&quot; Width=&quot;300&quot; /&gt;&#10;&lt;Slider Orientation=&quot;Vertical&quot; Height=&quot;100&quot; /&gt;"/>
+                            </Expander>
+                        </StackPanel>
+                    </GroupBox>
+
+                    <!-- 직접 해보기 2_1 -->
+                    <Expander Style="{StaticResource PracticeExpanderStyle}">
+                        <StackPanel Margin="10">
+                            <TextBlock Text="과제: Orientation을 Vertical로 설정하고 Height가 150인 Slider를 만들어보세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
+                            <TextBox x:Name="txtPractice2_1"
+                                     Style="{StaticResource PracticeInputStyle}"
+                                     Text="&lt;Slider /&gt;"/>
+                            <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
+                                <Button Content="실행" Style="{StaticResource RunButtonStyle}" Click="BtnRun_Click" Tag="2_1"/>
+                                <Button Content="힌트" Style="{StaticResource HintButtonStyle}" Click="BtnHint_Click" Tag="2_1"/>
+                                <Button Content="정답 보기" Style="{StaticResource AnswerButtonStyle}" Click="BtnAnswer_Click" Tag="2_1"/>
+                            </StackPanel>
+                            <TextBlock x:Name="txtHint2_1"
+                                       Text="힌트: Orientation=&quot;Vertical&quot;과 Height=&quot;150&quot;을 추가합니다."
+                                       Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                            <Border x:Name="resultBorder2_1" Background="White" Margin="0,8,0,0" Padding="10" Visibility="Collapsed">
+                                <StackPanel x:Name="resultPanel2_1"/>
+                            </Border>
+                        </StackPanel>
+                    </Expander>
+
+                    <!-- Width / Height -->
+                    <GroupBox Header="Width / Height (크기)" Margin="0,0,0,10" Padding="10">
+                        <StackPanel>
+                            <TextBlock Text="Width=200:" Margin="0,0,0,3"/>
+                            <Slider Width="200" HorizontalAlignment="Left" Margin="0,0,0,10"/>
+                            <TextBlock Text="Width=400:" Margin="0,0,0,3"/>
+                            <Slider Width="400" HorizontalAlignment="Left"/>
+                            <Expander Style="{StaticResource CodeExpanderStyle}">
+                                <TextBox Style="{StaticResource CodeTextBoxStyle}" Text="&lt;Slider Width=&quot;200&quot; HorizontalAlignment=&quot;Left&quot; /&gt;&#10;&lt;Slider Width=&quot;400&quot; HorizontalAlignment=&quot;Left&quot; /&gt;"/>
+                            </Expander>
+                        </StackPanel>
+                    </GroupBox>
+
+                    <!-- 직접 해보기 2_2 -->
+                    <Expander Style="{StaticResource PracticeExpanderStyle}">
+                        <StackPanel Margin="10">
+                            <TextBlock Text="과제: Width가 300인 Slider를 만들어보세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
+                            <TextBox x:Name="txtPractice2_2"
+                                     Style="{StaticResource PracticeInputStyle}"
+                                     Text="&lt;Slider /&gt;"/>
+                            <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
+                                <Button Content="실행" Style="{StaticResource RunButtonStyle}" Click="BtnRun_Click" Tag="2_2"/>
+                                <Button Content="힌트" Style="{StaticResource HintButtonStyle}" Click="BtnHint_Click" Tag="2_2"/>
+                                <Button Content="정답 보기" Style="{StaticResource AnswerButtonStyle}" Click="BtnAnswer_Click" Tag="2_2"/>
+                            </StackPanel>
+                            <TextBlock x:Name="txtHint2_2"
+                                       Text="힌트: Width=&quot;300&quot;을 추가합니다."
+                                       Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                            <Border x:Name="resultBorder2_2" Background="White" Margin="0,8,0,0" Padding="10" Visibility="Collapsed">
+                                <StackPanel x:Name="resultPanel2_2"/>
+                            </Border>
+                        </StackPanel>
+                    </Expander>
+
+                    <!-- IsDirectionReversed -->
+                    <GroupBox Header="IsDirectionReversed (방향 반전)" Margin="0,0,0,10" Padding="10">
+                        <StackPanel>
+                            <TextBlock Text="기본 방향 (왼쪽→오른쪽):" Margin="0,0,0,3"/>
+                            <Slider Width="300" HorizontalAlignment="Left" Value="3" Margin="0,0,0,10"/>
+                            <TextBlock Text="반전 방향 (오른쪽→왼쪽):" Margin="0,0,0,3"/>
+                            <Slider Width="300" HorizontalAlignment="Left" Value="3" IsDirectionReversed="True"/>
+                            <TextBlock Text="→ IsDirectionReversed=True로 설정하면 방향이 반대가 됩니다." Margin="0,5,0,0" Foreground="Gray" FontSize="11"/>
+                            <Expander Style="{StaticResource CodeExpanderStyle}">
+                                <TextBox Style="{StaticResource CodeTextBoxStyle}" Text="&lt;Slider Value=&quot;3&quot; /&gt;&#10;&lt;Slider Value=&quot;3&quot; IsDirectionReversed=&quot;True&quot; /&gt;"/>
+                            </Expander>
+                        </StackPanel>
+                    </GroupBox>
+
+                    <!-- 직접 해보기 2_3 -->
+                    <Expander Style="{StaticResource PracticeExpanderStyle}">
+                        <StackPanel Margin="10">
+                            <TextBlock Text="과제: IsDirectionReversed를 True로 설정한 Slider를 만들어보세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
+                            <TextBox x:Name="txtPractice2_3"
+                                     Style="{StaticResource PracticeInputStyle}"
+                                     Text="&lt;Slider /&gt;"/>
+                            <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
+                                <Button Content="실행" Style="{StaticResource RunButtonStyle}" Click="BtnRun_Click" Tag="2_3"/>
+                                <Button Content="힌트" Style="{StaticResource HintButtonStyle}" Click="BtnHint_Click" Tag="2_3"/>
+                                <Button Content="정답 보기" Style="{StaticResource AnswerButtonStyle}" Click="BtnAnswer_Click" Tag="2_3"/>
+                            </StackPanel>
+                            <TextBlock x:Name="txtHint2_3"
+                                       Text="힌트: IsDirectionReversed=&quot;True&quot;를 추가합니다."
+                                       Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                            <Border x:Name="resultBorder2_3" Background="White" Margin="0,8,0,0" Padding="10" Visibility="Collapsed">
+                                <StackPanel x:Name="resultPanel2_3"/>
+                            </Border>
+                        </StackPanel>
+                    </Expander>
+
+                    <!-- HorizontalAlignment -->
+                    <GroupBox Header="HorizontalAlignment" Margin="0,0,0,10" Padding="10">
+                        <StackPanel>
+                            <Slider Width="200" HorizontalAlignment="Left" Margin="0,3"/>
+                            <Slider Width="200" HorizontalAlignment="Center" Margin="0,3"/>
+                            <Slider Width="200" HorizontalAlignment="Right" Margin="0,3"/>
+                            <Slider HorizontalAlignment="Stretch" Margin="0,3"/>
+                            <Expander Style="{StaticResource CodeExpanderStyle}">
+                                <TextBox Style="{StaticResource CodeTextBoxStyle}" Text="&lt;Slider Width=&quot;200&quot; HorizontalAlignment=&quot;Left&quot; /&gt;&#10;&lt;Slider Width=&quot;200&quot; HorizontalAlignment=&quot;Center&quot; /&gt;&#10;&lt;Slider Width=&quot;200&quot; HorizontalAlignment=&quot;Right&quot; /&gt;&#10;&lt;Slider HorizontalAlignment=&quot;Stretch&quot; /&gt;"/>
+                            </Expander>
+                        </StackPanel>
+                    </GroupBox>
+
+                </StackPanel>
+            </ScrollViewer>
+        </TabItem>
+
+        <!-- ==================== 탭 3: 틱과 스냅 ==================== -->
+        <TabItem Header="3. 틱과 스냅">
+            <ScrollViewer VerticalScrollBarVisibility="Auto">
+                <StackPanel Margin="15">
+                    <TextBlock Text="Slider 틱과 스냅" FontSize="20" FontWeight="Bold" Margin="0,0,0,10"/>
+
+                    <!-- TickPlacement -->
+                    <GroupBox Header="TickPlacement (틱 위치)" Margin="0,0,0,10" Padding="10">
+                        <StackPanel>
+                            <TextBlock Text="None (기본값 - 틱 없음):" Margin="0,0,0,3"/>
+                            <Slider TickPlacement="None" Margin="0,0,0,15"/>
+                            <TextBlock Text="TopLeft:" Margin="0,0,0,3"/>
+                            <Slider TickPlacement="TopLeft" Margin="0,0,0,15"/>
+                            <TextBlock Text="BottomRight:" Margin="0,0,0,3"/>
+                            <Slider TickPlacement="BottomRight" Margin="0,0,0,15"/>
+                            <TextBlock Text="Both:" Margin="0,0,0,3"/>
+                            <Slider TickPlacement="Both"/>
+                            <Expander Style="{StaticResource CodeExpanderStyle}">
+                                <TextBox Style="{StaticResource CodeTextBoxStyle}" Text="&lt;Slider TickPlacement=&quot;None&quot; /&gt;&#10;&lt;Slider TickPlacement=&quot;TopLeft&quot; /&gt;&#10;&lt;Slider TickPlacement=&quot;BottomRight&quot; /&gt;&#10;&lt;Slider TickPlacement=&quot;Both&quot; /&gt;"/>
+                            </Expander>
+                        </StackPanel>
+                    </GroupBox>
+
+                    <!-- 직접 해보기 3_1 -->
+                    <Expander Style="{StaticResource PracticeExpanderStyle}">
+                        <StackPanel Margin="10">
+                            <TextBlock Text="과제: TickPlacement을 Both로 설정한 Slider를 만들어보세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
+                            <TextBox x:Name="txtPractice3_1"
+                                     Style="{StaticResource PracticeInputStyle}"
+                                     Text="&lt;Slider /&gt;"/>
+                            <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
+                                <Button Content="실행" Style="{StaticResource RunButtonStyle}" Click="BtnRun_Click" Tag="3_1"/>
+                                <Button Content="힌트" Style="{StaticResource HintButtonStyle}" Click="BtnHint_Click" Tag="3_1"/>
+                                <Button Content="정답 보기" Style="{StaticResource AnswerButtonStyle}" Click="BtnAnswer_Click" Tag="3_1"/>
+                            </StackPanel>
+                            <TextBlock x:Name="txtHint3_1"
+                                       Text="힌트: TickPlacement=&quot;Both&quot;를 추가합니다."
+                                       Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                            <Border x:Name="resultBorder3_1" Background="White" Margin="0,8,0,0" Padding="10" Visibility="Collapsed">
+                                <StackPanel x:Name="resultPanel3_1"/>
+                            </Border>
+                        </StackPanel>
+                    </Expander>
+
+                    <!-- TickFrequency -->
+                    <GroupBox Header="TickFrequency (틱 간격)" Margin="0,0,0,10" Padding="10">
+                        <StackPanel>
+                            <TextBlock Text="TickFrequency=1 (기본값):" Margin="0,0,0,3"/>
+                            <Slider TickPlacement="BottomRight" TickFrequency="1" Margin="0,0,0,15"/>
+                            <TextBlock Text="TickFrequency=2:" Margin="0,0,0,3"/>
+                            <Slider TickPlacement="BottomRight" TickFrequency="2" Margin="0,0,0,15"/>
+                            <TextBlock Text="TickFrequency=5:" Margin="0,0,0,3"/>
+                            <Slider TickPlacement="BottomRight" TickFrequency="5"/>
+                            <Expander Style="{StaticResource CodeExpanderStyle}">
+                                <TextBox Style="{StaticResource CodeTextBoxStyle}" Text="&lt;Slider TickPlacement=&quot;BottomRight&quot; TickFrequency=&quot;1&quot; /&gt;&#10;&lt;Slider TickPlacement=&quot;BottomRight&quot; TickFrequency=&quot;2&quot; /&gt;&#10;&lt;Slider TickPlacement=&quot;BottomRight&quot; TickFrequency=&quot;5&quot; /&gt;"/>
+                            </Expander>
+                        </StackPanel>
+                    </GroupBox>
+
+                    <!-- 직접 해보기 3_2 -->
+                    <Expander Style="{StaticResource PracticeExpanderStyle}">
+                        <StackPanel Margin="10">
+                            <TextBlock Text="과제: TickPlacement=TopLeft, TickFrequency=2인 Slider를 만들어보세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
+                            <TextBox x:Name="txtPractice3_2"
+                                     Style="{StaticResource PracticeInputStyle}"
+                                     Text="&lt;Slider /&gt;"/>
+                            <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
+                                <Button Content="실행" Style="{StaticResource RunButtonStyle}" Click="BtnRun_Click" Tag="3_2"/>
+                                <Button Content="힌트" Style="{StaticResource HintButtonStyle}" Click="BtnHint_Click" Tag="3_2"/>
+                                <Button Content="정답 보기" Style="{StaticResource AnswerButtonStyle}" Click="BtnAnswer_Click" Tag="3_2"/>
+                            </StackPanel>
+                            <TextBlock x:Name="txtHint3_2"
+                                       Text="힌트: TickPlacement과 TickFrequency 속성을 함께 설정합니다."
+                                       Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                            <Border x:Name="resultBorder3_2" Background="White" Margin="0,8,0,0" Padding="10" Visibility="Collapsed">
+                                <StackPanel x:Name="resultPanel3_2"/>
+                            </Border>
+                        </StackPanel>
+                    </Expander>
+
+                    <!-- IsSnapToTickEnabled -->
+                    <GroupBox Header="IsSnapToTickEnabled (틱에 스냅)" Margin="0,0,0,10" Padding="10">
+                        <StackPanel>
+                            <TextBlock Text="스냅 비활성화 (자유롭게 이동):" Margin="0,0,0,3"/>
+                            <Slider TickPlacement="BottomRight" TickFrequency="2" IsSnapToTickEnabled="False" Margin="0,0,0,15"/>
+                            <TextBlock Text="스냅 활성화 (틱 위치에만 멈춤):" Margin="0,0,0,3"/>
+                            <Slider TickPlacement="BottomRight" TickFrequency="2" IsSnapToTickEnabled="True"/>
+                            <TextBlock Text="→ IsSnapToTickEnabled=True면 틱 위치에만 값이 설정됩니다." Margin="0,5,0,0" Foreground="Gray" FontSize="11"/>
+                            <Expander Style="{StaticResource CodeExpanderStyle}">
+                                <TextBox Style="{StaticResource CodeTextBoxStyle}" Text="&lt;Slider TickPlacement=&quot;BottomRight&quot;&#10;        TickFrequency=&quot;2&quot;&#10;        IsSnapToTickEnabled=&quot;True&quot; /&gt;"/>
+                            </Expander>
+                        </StackPanel>
+                    </GroupBox>
+
+                    <!-- 직접 해보기 3_3 -->
+                    <Expander Style="{StaticResource PracticeExpanderStyle}">
+                        <StackPanel Margin="10">
+                            <TextBlock Text="과제: TickFrequency=5이고 IsSnapToTickEnabled=True인 Slider를 만들어보세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
+                            <TextBox x:Name="txtPractice3_3"
+                                     Style="{StaticResource PracticeInputStyle}"
+                                     Text="&lt;Slider TickPlacement=&quot;BottomRight&quot; /&gt;"/>
+                            <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
+                                <Button Content="실행" Style="{StaticResource RunButtonStyle}" Click="BtnRun_Click" Tag="3_3"/>
+                                <Button Content="힌트" Style="{StaticResource HintButtonStyle}" Click="BtnHint_Click" Tag="3_3"/>
+                                <Button Content="정답 보기" Style="{StaticResource AnswerButtonStyle}" Click="BtnAnswer_Click" Tag="3_3"/>
+                            </StackPanel>
+                            <TextBlock x:Name="txtHint3_3"
+                                       Text="힌트: TickFrequency=&quot;5&quot;와 IsSnapToTickEnabled=&quot;True&quot;를 추가합니다."
+                                       Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                            <Border x:Name="resultBorder3_3" Background="White" Margin="0,8,0,0" Padding="10" Visibility="Collapsed">
+                                <StackPanel x:Name="resultPanel3_3"/>
+                            </Border>
+                        </StackPanel>
+                    </Expander>
+
+                    <!-- Ticks (사용자 정의 틱) -->
+                    <GroupBox Header="Ticks (사용자 정의 틱 위치)" Margin="0,0,0,10" Padding="10">
+                        <StackPanel>
+                            <TextBlock Text="Ticks=&quot;0,3,5,7,10&quot; (불규칙 간격):" Margin="0,0,0,3"/>
+                            <Slider TickPlacement="BottomRight" Ticks="0,3,5,7,10" IsSnapToTickEnabled="True"/>
+                            <TextBlock Text="→ Ticks 속성으로 원하는 위치에만 틱을 표시할 수 있습니다." Margin="0,5,0,0" Foreground="Gray" FontSize="11"/>
+                            <Expander Style="{StaticResource CodeExpanderStyle}">
+                                <TextBox Style="{StaticResource CodeTextBoxStyle}" Text="&lt;Slider TickPlacement=&quot;BottomRight&quot;&#10;        Ticks=&quot;0,3,5,7,10&quot;&#10;        IsSnapToTickEnabled=&quot;True&quot; /&gt;"/>
+                            </Expander>
+                        </StackPanel>
+                    </GroupBox>
+
+                    <!-- 직접 해보기 3_4 -->
+                    <Expander Style="{StaticResource PracticeExpanderStyle}">
+                        <StackPanel Margin="10">
+                            <TextBlock Text="과제: Ticks=&quot;0,2,4,6,8,10&quot;으로 짝수만 틱을 표시하는 Slider를 만들어보세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
+                            <TextBox x:Name="txtPractice3_4"
+                                     Style="{StaticResource PracticeInputStyle}"
+                                     Text="&lt;Slider TickPlacement=&quot;BottomRight&quot; /&gt;"/>
+                            <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
+                                <Button Content="실행" Style="{StaticResource RunButtonStyle}" Click="BtnRun_Click" Tag="3_4"/>
+                                <Button Content="힌트" Style="{StaticResource HintButtonStyle}" Click="BtnHint_Click" Tag="3_4"/>
+                                <Button Content="정답 보기" Style="{StaticResource AnswerButtonStyle}" Click="BtnAnswer_Click" Tag="3_4"/>
+                            </StackPanel>
+                            <TextBlock x:Name="txtHint3_4"
+                                       Text="힌트: Ticks=&quot;0,2,4,6,8,10&quot;을 추가합니다."
+                                       Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                            <Border x:Name="resultBorder3_4" Background="White" Margin="0,8,0,0" Padding="10" Visibility="Collapsed">
+                                <StackPanel x:Name="resultPanel3_4"/>
+                            </Border>
+                        </StackPanel>
+                    </Expander>
+
+                </StackPanel>
+            </ScrollViewer>
+        </TabItem>
+
+        <!-- ==================== 탭 4: 색상과 외관 ==================== -->
+        <TabItem Header="4. 색상과 외관">
+            <ScrollViewer VerticalScrollBarVisibility="Auto">
+                <StackPanel Margin="15">
+                    <TextBlock Text="Slider 색상과 외관" FontSize="20" FontWeight="Bold" Margin="0,0,0,10"/>
+
+                    <!-- Background / Foreground -->
+                    <GroupBox Header="Background / Foreground" Margin="0,0,0,10" Padding="10">
+                        <StackPanel>
+                            <TextBlock Text="Background=LightBlue:" Margin="0,0,0,3"/>
+                            <Slider Background="LightBlue" TickPlacement="BottomRight" Margin="0,0,0,10"/>
+                            <TextBlock Text="Foreground=Red (틱 색상):" Margin="0,0,0,3"/>
+                            <Slider Foreground="Red" TickPlacement="BottomRight" Margin="0,0,0,10"/>
+                            <TextBlock Text="Background + Foreground:" Margin="0,0,0,3"/>
+                            <Slider Background="LightYellow" Foreground="DarkOrange" TickPlacement="BottomRight"/>
+                            <Expander Style="{StaticResource CodeExpanderStyle}">
+                                <TextBox Style="{StaticResource CodeTextBoxStyle}" Text="&lt;Slider Background=&quot;LightBlue&quot; TickPlacement=&quot;BottomRight&quot; /&gt;&#10;&lt;Slider Foreground=&quot;Red&quot; TickPlacement=&quot;BottomRight&quot; /&gt;&#10;&lt;Slider Background=&quot;LightYellow&quot; Foreground=&quot;DarkOrange&quot;&#10;        TickPlacement=&quot;BottomRight&quot; /&gt;"/>
+                            </Expander>
+                        </StackPanel>
+                    </GroupBox>
+
+                    <!-- 직접 해보기 4_1 -->
+                    <Expander Style="{StaticResource PracticeExpanderStyle}">
+                        <StackPanel Margin="10">
+                            <TextBlock Text="과제: Background가 LightGreen인 Slider를 만들어보세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
+                            <TextBox x:Name="txtPractice4_1"
+                                     Style="{StaticResource PracticeInputStyle}"
+                                     Text="&lt;Slider /&gt;"/>
+                            <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
+                                <Button Content="실행" Style="{StaticResource RunButtonStyle}" Click="BtnRun_Click" Tag="4_1"/>
+                                <Button Content="힌트" Style="{StaticResource HintButtonStyle}" Click="BtnHint_Click" Tag="4_1"/>
+                                <Button Content="정답 보기" Style="{StaticResource AnswerButtonStyle}" Click="BtnAnswer_Click" Tag="4_1"/>
+                            </StackPanel>
+                            <TextBlock x:Name="txtHint4_1"
+                                       Text="힌트: Background=&quot;LightGreen&quot;을 추가합니다."
+                                       Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                            <Border x:Name="resultBorder4_1" Background="White" Margin="0,8,0,0" Padding="10" Visibility="Collapsed">
+                                <StackPanel x:Name="resultPanel4_1"/>
+                            </Border>
+                        </StackPanel>
+                    </Expander>
+
+                    <!-- 직접 해보기 4_2 -->
+                    <Expander Style="{StaticResource PracticeExpanderStyle}">
+                        <StackPanel Margin="10">
+                            <TextBlock Text="과제: Foreground가 Blue이고 TickPlacement이 Both인 Slider를 만들어보세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
+                            <TextBox x:Name="txtPractice4_2"
+                                     Style="{StaticResource PracticeInputStyle}"
+                                     Text="&lt;Slider /&gt;"/>
+                            <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
+                                <Button Content="실행" Style="{StaticResource RunButtonStyle}" Click="BtnRun_Click" Tag="4_2"/>
+                                <Button Content="힌트" Style="{StaticResource HintButtonStyle}" Click="BtnHint_Click" Tag="4_2"/>
+                                <Button Content="정답 보기" Style="{StaticResource AnswerButtonStyle}" Click="BtnAnswer_Click" Tag="4_2"/>
+                            </StackPanel>
+                            <TextBlock x:Name="txtHint4_2"
+                                       Text="힌트: Foreground=&quot;Blue&quot;와 TickPlacement=&quot;Both&quot;를 추가합니다."
+                                       Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                            <Border x:Name="resultBorder4_2" Background="White" Margin="0,8,0,0" Padding="10" Visibility="Collapsed">
+                                <StackPanel x:Name="resultPanel4_2"/>
+                            </Border>
+                        </StackPanel>
+                    </Expander>
+
+                    <!-- Margin / Padding -->
+                    <GroupBox Header="Margin (외부 여백)" Margin="0,0,0,10" Padding="10">
+                        <StackPanel Background="#E0E0E0">
+                            <Slider Margin="0" Background="LightCoral"/>
+                            <Slider Margin="20,10" Background="LightBlue"/>
+                            <Slider Margin="50,5,50,5" Background="LightGreen"/>
+                            <Expander Style="{StaticResource CodeExpanderStyle}">
+                                <TextBox Style="{StaticResource CodeTextBoxStyle}" Text="&lt;Slider Margin=&quot;0&quot; Background=&quot;LightCoral&quot; /&gt;&#10;&lt;Slider Margin=&quot;20,10&quot; Background=&quot;LightBlue&quot; /&gt;&#10;&lt;Slider Margin=&quot;50,5,50,5&quot; Background=&quot;LightGreen&quot; /&gt;"/>
+                            </Expander>
+                        </StackPanel>
+                    </GroupBox>
+
+                    <!-- 직접 해보기 4_3 -->
+                    <Expander Style="{StaticResource PracticeExpanderStyle}">
+                        <StackPanel Margin="10">
+                            <TextBlock Text="과제: Margin이 10이고 Background가 LightPink인 Slider를 만들어보세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
+                            <TextBox x:Name="txtPractice4_3"
+                                     Style="{StaticResource PracticeInputStyle}"
+                                     Text="&lt;Slider /&gt;"/>
+                            <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
+                                <Button Content="실행" Style="{StaticResource RunButtonStyle}" Click="BtnRun_Click" Tag="4_3"/>
+                                <Button Content="힌트" Style="{StaticResource HintButtonStyle}" Click="BtnHint_Click" Tag="4_3"/>
+                                <Button Content="정답 보기" Style="{StaticResource AnswerButtonStyle}" Click="BtnAnswer_Click" Tag="4_3"/>
+                            </StackPanel>
+                            <TextBlock x:Name="txtHint4_3"
+                                       Text="힌트: Margin=&quot;10&quot;과 Background=&quot;LightPink&quot;를 추가합니다."
+                                       Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                            <Border x:Name="resultBorder4_3" Background="White" Margin="0,8,0,0" Padding="10" Visibility="Collapsed">
+                                <StackPanel x:Name="resultPanel4_3"/>
+                            </Border>
+                        </StackPanel>
+                    </Expander>
+
+                    <!-- AutoToolTipPlacement -->
+                    <GroupBox Header="AutoToolTipPlacement (값 툴팁)" Margin="0,0,0,10" Padding="10">
+                        <StackPanel>
+                            <TextBlock Text="None (기본값 - 툴팁 없음):" Margin="0,0,0,3"/>
+                            <Slider AutoToolTipPlacement="None" Margin="0,0,0,15"/>
+                            <TextBlock Text="TopLeft (위쪽에 값 표시):" Margin="0,0,0,3"/>
+                            <Slider AutoToolTipPlacement="TopLeft" Margin="0,0,0,15"/>
+                            <TextBlock Text="BottomRight (아래쪽에 값 표시):" Margin="0,0,0,3"/>
+                            <Slider AutoToolTipPlacement="BottomRight"/>
+                            <TextBlock Text="→ 드래그 중 현재 값이 툴팁으로 표시됩니다." Margin="0,5,0,0" Foreground="Gray" FontSize="11"/>
+                            <Expander Style="{StaticResource CodeExpanderStyle}">
+                                <TextBox Style="{StaticResource CodeTextBoxStyle}" Text="&lt;Slider AutoToolTipPlacement=&quot;TopLeft&quot; /&gt;&#10;&lt;Slider AutoToolTipPlacement=&quot;BottomRight&quot; /&gt;"/>
+                            </Expander>
+                        </StackPanel>
+                    </GroupBox>
+
+                    <!-- 직접 해보기 4_4 -->
+                    <Expander Style="{StaticResource PracticeExpanderStyle}">
+                        <StackPanel Margin="10">
+                            <TextBlock Text="과제: AutoToolTipPlacement을 TopLeft로 설정한 Slider를 만들어보세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
+                            <TextBox x:Name="txtPractice4_4"
+                                     Style="{StaticResource PracticeInputStyle}"
+                                     Text="&lt;Slider /&gt;"/>
+                            <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
+                                <Button Content="실행" Style="{StaticResource RunButtonStyle}" Click="BtnRun_Click" Tag="4_4"/>
+                                <Button Content="힌트" Style="{StaticResource HintButtonStyle}" Click="BtnHint_Click" Tag="4_4"/>
+                                <Button Content="정답 보기" Style="{StaticResource AnswerButtonStyle}" Click="BtnAnswer_Click" Tag="4_4"/>
+                            </StackPanel>
+                            <TextBlock x:Name="txtHint4_4"
+                                       Text="힌트: AutoToolTipPlacement=&quot;TopLeft&quot;를 추가합니다."
+                                       Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                            <Border x:Name="resultBorder4_4" Background="White" Margin="0,8,0,0" Padding="10" Visibility="Collapsed">
+                                <StackPanel x:Name="resultPanel4_4"/>
+                            </Border>
+                        </StackPanel>
+                    </Expander>
+
+                </StackPanel>
+            </ScrollViewer>
+        </TabItem>
+
+        <!-- ==================== 탭 5: 이벤트와 바인딩 ==================== -->
+        <TabItem Header="5. 이벤트와 바인딩">
+            <ScrollViewer VerticalScrollBarVisibility="Auto">
+                <StackPanel Margin="15">
+                    <TextBlock Text="Slider 이벤트와 바인딩" FontSize="20" FontWeight="Bold" Margin="0,0,0,10"/>
+
+                    <!-- ValueChanged 이벤트 -->
+                    <GroupBox Header="ValueChanged 이벤트" Margin="0,0,0,10" Padding="10">
+                        <StackPanel>
+                            <Slider x:Name="sldEvent" Minimum="0" Maximum="100" ValueChanged="SldEvent_ValueChanged"/>
+                            <TextBlock x:Name="txtEventValue" Text="현재 값: 0" Margin="0,5,0,0" FontWeight="Bold"/>
+                            <Expander Style="{StaticResource CodeExpanderStyle}">
+                                <TextBox Style="{StaticResource CodeTextBoxStyle}" Text="&lt;Slider x:Name=&quot;sldEvent&quot; ValueChanged=&quot;SldEvent_ValueChanged&quot; /&gt;&#10;&lt;TextBlock x:Name=&quot;txtEventValue&quot; Text=&quot;현재 값: 0&quot; /&gt;&#10;&#10;// C# 코드-비하인드&#10;private void SldEvent_ValueChanged(object sender, RoutedPropertyChangedEventArgs&lt;double&gt; e)&#10;{&#10;    txtEventValue.Text = $&quot;현재 값: {e.NewValue:F1}&quot;;&#10;}"/>
+                            </Expander>
+                        </StackPanel>
+                    </GroupBox>
+
+                    <!-- 직접 해보기 5_1 -->
+                    <Expander Style="{StaticResource PracticeExpanderStyle}">
+                        <StackPanel Margin="10">
+                            <TextBlock Text="과제: ValueChanged 이벤트 핸들러를 작성하세요. e.NewValue를 사용해 현재 값을 표시하세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
+                            <TextBox x:Name="txtPractice5_1"
+                                     Style="{StaticResource PracticeInputStyle}"
+                                     Height="120"
+                                     Text="private void Slider_ValueChanged(object sender, RoutedPropertyChangedEventArgs&lt;double&gt; e)&#x0a;{&#x0a;    &#x0a;}"/>
+                            <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
+                                <Button Content="확인" Style="{StaticResource RunButtonStyle}" Click="BtnCheck_Click" Tag="5_1"/>
+                                <Button Content="힌트" Style="{StaticResource HintButtonStyle}" Click="BtnHint_Click" Tag="5_1"/>
+                                <Button Content="정답 보기" Style="{StaticResource AnswerButtonStyle}" Click="BtnAnswer_Click" Tag="5_1"/>
+                            </StackPanel>
+                            <TextBlock x:Name="txtHint5_1"
+                                       Text="힌트: e.NewValue로 새 값을, e.OldValue로 이전 값을 얻을 수 있습니다."
+                                       Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                            <TextBlock x:Name="txtResult5_1"
+                                       Margin="0,8,0,0" FontWeight="Bold" Visibility="Collapsed"/>
+                        </StackPanel>
+                    </Expander>
+
+                    <!-- ElementName 바인딩 -->
+                    <GroupBox Header="ElementName 바인딩 (실시간 연동)" Margin="0,0,0,10" Padding="10">
+                        <StackPanel>
+                            <Slider x:Name="sldBinding" Minimum="10" Maximum="50" Value="20"/>
+                            <TextBlock Text="슬라이더와 연동된 텍스트"
+                                       FontSize="{Binding ElementName=sldBinding, Path=Value}"
+                                       Margin="0,10,0,0"/>
+                            <TextBlock Text="→ FontSize가 슬라이더 값에 바인딩되어 실시간으로 변경됩니다." Margin="0,5,0,0" Foreground="Gray" FontSize="11"/>
+                            <Expander Style="{StaticResource CodeExpanderStyle}">
+                                <TextBox Style="{StaticResource CodeTextBoxStyle}" Text="&lt;Slider x:Name=&quot;sldBinding&quot; Minimum=&quot;10&quot; Maximum=&quot;50&quot; Value=&quot;20&quot; /&gt;&#10;&lt;TextBlock Text=&quot;연동된 텍스트&quot;&#10;           FontSize=&quot;{Binding ElementName=sldBinding, Path=Value}&quot; /&gt;"/>
+                            </Expander>
+                        </StackPanel>
+                    </GroupBox>
+
+                    <!-- 직접 해보기 5_2 -->
+                    <Expander Style="{StaticResource PracticeExpanderStyle}">
+                        <StackPanel Margin="10">
+                            <TextBlock Text="과제: ElementName 바인딩을 사용하여 Slider의 Value를 TextBlock의 FontSize에 연결하는 XAML을 작성하세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
+                            <TextBox x:Name="txtPractice5_2"
+                                     Style="{StaticResource PracticeInputStyle}"
+                                     Height="80"
+                                     Text="FontSize=&quot;{Binding }&quot;"/>
+                            <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
+                                <Button Content="확인" Style="{StaticResource RunButtonStyle}" Click="BtnCheck_Click" Tag="5_2"/>
+                                <Button Content="힌트" Style="{StaticResource HintButtonStyle}" Click="BtnHint_Click" Tag="5_2"/>
+                                <Button Content="정답 보기" Style="{StaticResource AnswerButtonStyle}" Click="BtnAnswer_Click" Tag="5_2"/>
+                            </StackPanel>
+                            <TextBlock x:Name="txtHint5_2"
+                                       Text="힌트: ElementName=슬라이더이름, Path=Value 형식으로 작성합니다."
+                                       Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                            <TextBlock x:Name="txtResult5_2"
+                                       Margin="0,8,0,0" FontWeight="Bold" Visibility="Collapsed"/>
+                        </StackPanel>
+                    </Expander>
+
+                    <!-- Opacity 바인딩 -->
+                    <GroupBox Header="Opacity 바인딩 예제" Margin="0,0,0,10" Padding="10">
+                        <StackPanel>
+                            <TextBlock Text="투명도 조절:" Margin="0,0,0,3"/>
+                            <Slider x:Name="sldOpacity" Minimum="0" Maximum="1" Value="1" LargeChange="0.1" SmallChange="0.05"/>
+                            <Border Background="SteelBlue" Height="60" Margin="0,10,0,0"
+                                    Opacity="{Binding ElementName=sldOpacity, Path=Value}">
+                                <TextBlock Text="투명도 조절 가능" Foreground="White"
+                                           VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Bold"/>
+                            </Border>
+                            <Expander Style="{StaticResource CodeExpanderStyle}">
+                                <TextBox Style="{StaticResource CodeTextBoxStyle}" Text="&lt;Slider x:Name=&quot;sldOpacity&quot; Minimum=&quot;0&quot; Maximum=&quot;1&quot; Value=&quot;1&quot; /&gt;&#10;&lt;Border Opacity=&quot;{Binding ElementName=sldOpacity, Path=Value}&quot;&gt;&#10;    ...&#10;&lt;/Border&gt;"/>
+                            </Expander>
+                        </StackPanel>
+                    </GroupBox>
+
+                    <!-- 직접 해보기 5_3 -->
+                    <Expander Style="{StaticResource PracticeExpanderStyle}">
+                        <StackPanel Margin="10">
+                            <TextBlock Text="과제: 코드에서 Slider의 Value를 50으로 설정하는 코드를 작성하세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
+                            <TextBox x:Name="txtPractice5_3"
+                                     Style="{StaticResource PracticeInputStyle}"
+                                     Height="100"
+                                     Text="private void SetSliderValue()&#x0a;{&#x0a;    // mySlider의 값을 50으로 설정&#x0a;    &#x0a;}"/>
+                            <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
+                                <Button Content="확인" Style="{StaticResource RunButtonStyle}" Click="BtnCheck_Click" Tag="5_3"/>
+                                <Button Content="힌트" Style="{StaticResource HintButtonStyle}" Click="BtnHint_Click" Tag="5_3"/>
+                                <Button Content="정답 보기" Style="{StaticResource AnswerButtonStyle}" Click="BtnAnswer_Click" Tag="5_3"/>
+                            </StackPanel>
+                            <TextBlock x:Name="txtHint5_3"
+                                       Text="힌트: mySlider.Value = 50;으로 설정합니다."
+                                       Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                            <TextBlock x:Name="txtResult5_3"
+                                       Margin="0,8,0,0" FontWeight="Bold" Visibility="Collapsed"/>
+                        </StackPanel>
+                    </Expander>
+
+                    <!-- 볼륨 조절 예제 -->
+                    <GroupBox Header="실전 예제: 볼륨 조절 UI" Margin="0,0,0,10" Padding="10">
+                        <StackPanel>
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                                <TextBlock Text="🔈" FontSize="20" VerticalAlignment="Center" Margin="0,0,10,0"/>
+                                <Slider x:Name="sldVolume" Width="200" Minimum="0" Maximum="100" Value="50"
+                                        TickPlacement="BottomRight" TickFrequency="10" IsSnapToTickEnabled="True"
+                                        AutoToolTipPlacement="TopLeft" ValueChanged="SldVolume_ValueChanged"/>
+                                <TextBlock Text="🔊" FontSize="20" VerticalAlignment="Center" Margin="10,0,0,0"/>
+                            </StackPanel>
+                            <TextBlock x:Name="txtVolume" Text="볼륨: 50%" HorizontalAlignment="Center" Margin="0,10,0,0" FontWeight="Bold"/>
+                            <Expander Style="{StaticResource CodeExpanderStyle}">
+                                <TextBox Style="{StaticResource CodeTextBoxStyle}" Text="&lt;Slider x:Name=&quot;sldVolume&quot; Width=&quot;200&quot;&#10;        Minimum=&quot;0&quot; Maximum=&quot;100&quot; Value=&quot;50&quot;&#10;        TickPlacement=&quot;BottomRight&quot; TickFrequency=&quot;10&quot;&#10;        IsSnapToTickEnabled=&quot;True&quot;&#10;        AutoToolTipPlacement=&quot;TopLeft&quot;&#10;        ValueChanged=&quot;SldVolume_ValueChanged&quot; /&gt;"/>
+                            </Expander>
+                        </StackPanel>
+                    </GroupBox>
+
+                    <!-- RGB 색상 조절 예제 -->
+                    <GroupBox Header="실전 예제: RGB 색상 조절" Margin="0,0,0,10" Padding="10">
+                        <StackPanel>
+                            <StackPanel Orientation="Horizontal" Margin="0,0,0,5">
+                                <TextBlock Text="R:" Width="20" VerticalAlignment="Center"/>
+                                <Slider x:Name="sldR" Width="200" Minimum="0" Maximum="255" Value="100" ValueChanged="SldRGB_ValueChanged"/>
+                                <TextBlock x:Name="txtR" Text="100" Width="40" Margin="10,0,0,0" VerticalAlignment="Center"/>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal" Margin="0,0,0,5">
+                                <TextBlock Text="G:" Width="20" VerticalAlignment="Center"/>
+                                <Slider x:Name="sldG" Width="200" Minimum="0" Maximum="255" Value="150" ValueChanged="SldRGB_ValueChanged"/>
+                                <TextBlock x:Name="txtG" Text="150" Width="40" Margin="10,0,0,0" VerticalAlignment="Center"/>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal" Margin="0,0,0,5">
+                                <TextBlock Text="B:" Width="20" VerticalAlignment="Center"/>
+                                <Slider x:Name="sldB" Width="200" Minimum="0" Maximum="255" Value="200" ValueChanged="SldRGB_ValueChanged"/>
+                                <TextBlock x:Name="txtB" Text="200" Width="40" Margin="10,0,0,0" VerticalAlignment="Center"/>
+                            </StackPanel>
+                            <Border x:Name="brdColorPreview" Height="50" CornerRadius="5" Margin="0,10,0,0">
+                                <Border.Background>
+                                    <SolidColorBrush x:Name="brushPreview" Color="#FF6496C8"/>
+                                </Border.Background>
+                            </Border>
+                            <Expander Style="{StaticResource CodeExpanderStyle}">
+                                <TextBox Style="{StaticResource CodeTextBoxStyle}" Text="// RGB 값을 조합하여 색상 생성&#10;private void SldRGB_ValueChanged(...)&#10;{&#10;    byte r = (byte)sldR.Value;&#10;    byte g = (byte)sldG.Value;&#10;    byte b = (byte)sldB.Value;&#10;    brushPreview.Color = Color.FromRgb(r, g, b);&#10;}"/>
+                            </Expander>
+                        </StackPanel>
+                    </GroupBox>
+
+                </StackPanel>
+            </ScrollViewer>
+        </TabItem>
+
+    </TabControl>
 </Window>
