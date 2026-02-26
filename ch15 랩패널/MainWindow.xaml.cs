@@ -1,4 +1,3 @@
-using System;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Markup;
@@ -220,7 +219,7 @@ namespace ch15_랩패널
         // 탭5: 슬라이더로 ItemWidth 변경
         private void sliderItemWidth_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
-            if (wpItemWidth != null)
+            if (wpItemWidth != null && tbItemWidth != null)
             {
                 wpItemWidth.ItemWidth = sliderItemWidth.Value;
                 tbItemWidth.Text = ((int)sliderItemWidth.Value).ToString();
