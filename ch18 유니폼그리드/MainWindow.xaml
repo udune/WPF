@@ -23,6 +23,39 @@
             <Setter Property="BorderBrush" Value="#333333"/>
             <Setter Property="BorderThickness" Value="1"/>
         </Style>
+
+        <!-- 직접 해보기 스타일 -->
+        <Style x:Key="PracticeExpanderStyle" TargetType="Expander">
+            <Setter Property="Header" Value="직접 해보기"/>
+            <Setter Property="Margin" Value="0,0,0,15"/>
+            <Setter Property="IsExpanded" Value="False"/>
+            <Setter Property="Background" Value="#F5F5F5"/>
+        </Style>
+        <Style x:Key="PracticeInputStyle" TargetType="TextBox">
+            <Setter Property="AcceptsReturn" Value="True"/>
+            <Setter Property="FontFamily" Value="Consolas"/>
+            <Setter Property="FontSize" Value="12"/>
+            <Setter Property="Height" Value="80"/>
+            <Setter Property="VerticalScrollBarVisibility" Value="Auto"/>
+            <Setter Property="Padding" Value="5"/>
+        </Style>
+        <Style x:Key="RunButtonStyle" TargetType="Button">
+            <Setter Property="Width" Value="60"/>
+            <Setter Property="Padding" Value="5,3"/>
+            <Setter Property="Background" Value="#4CAF50"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="BorderThickness" Value="0"/>
+        </Style>
+        <Style x:Key="HintButtonStyle" TargetType="Button">
+            <Setter Property="Width" Value="50"/>
+            <Setter Property="Padding" Value="5,3"/>
+            <Setter Property="Margin" Value="5,0,0,0"/>
+        </Style>
+        <Style x:Key="AnswerButtonStyle" TargetType="Button">
+            <Setter Property="Width" Value="70"/>
+            <Setter Property="Padding" Value="5,3"/>
+            <Setter Property="Margin" Value="5,0,0,0"/>
+        </Style>
     </Window.Resources>
 
     <TabControl>
@@ -48,6 +81,27 @@
                     </GroupBox>
                     <Expander Style="{StaticResource CodeExpanderStyle}">
                         <TextBox Style="{StaticResource CodeTextBoxStyle}" Text="&lt;UniformGrid Rows=&quot;2&quot; Columns=&quot;3&quot;&gt;&#10;    &lt;Button Content=&quot;1&quot;/&gt;&#10;    &lt;Button Content=&quot;2&quot;/&gt;&#10;    &lt;Button Content=&quot;3&quot;/&gt;&#10;    &lt;Button Content=&quot;4&quot;/&gt;&#10;    &lt;Button Content=&quot;5&quot;/&gt;&#10;    &lt;Button Content=&quot;6&quot;/&gt;&#10;&lt;/UniformGrid&gt;&#10;&#10;&lt;!-- 모든 셀이 동일한 크기로 균등 분할됩니다 --&gt;&#10;&lt;!-- 자식 요소는 왼쪽→오른쪽, 위→아래 순서로 배치 --&gt;"/>
+                    </Expander>
+
+                    <!-- 직접 해보기 1_1 -->
+                    <Expander Style="{StaticResource PracticeExpanderStyle}">
+                        <StackPanel Margin="10">
+                            <TextBlock Text="과제: 3행 2열의 UniformGrid를 만들고 버튼 6개를 배치하세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
+                            <TextBox x:Name="txtPractice1_1"
+                                     Style="{StaticResource PracticeInputStyle}"
+                                     Text="&lt;UniformGrid &gt;&#10;    &lt;Button Content=&quot;A&quot;/&gt;&#10;&lt;/UniformGrid&gt;"/>
+                            <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
+                                <Button Content="실행" Style="{StaticResource RunButtonStyle}" Click="BtnRun_Click" Tag="1_1"/>
+                                <Button Content="힌트" Style="{StaticResource HintButtonStyle}" Click="BtnHint_Click" Tag="1_1"/>
+                                <Button Content="정답 보기" Style="{StaticResource AnswerButtonStyle}" Click="BtnAnswer_Click" Tag="1_1"/>
+                            </StackPanel>
+                            <TextBlock x:Name="txtHint1_1"
+                                       Text="힌트: Rows=&quot;3&quot; Columns=&quot;2&quot; 속성을 사용하세요."
+                                       Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                            <Border x:Name="resultBorder1_1" Background="White" Margin="0,8,0,0" Padding="10" Visibility="Collapsed">
+                                <StackPanel x:Name="resultPanel1_1"/>
+                            </Border>
+                        </StackPanel>
                     </Expander>
 
                     <!-- Grid와 비교 -->
@@ -94,6 +148,28 @@
                         <TextBox Style="{StaticResource CodeTextBoxStyle}" Text="&lt;UniformGrid Rows=&quot;3&quot; Columns=&quot;3&quot;&gt;&#10;    &lt;!-- 배치 순서: --&gt;&#10;    &lt;!-- (0,0) (0,1) (0,2) --&gt;&#10;    &lt;!-- (1,0) (1,1) (1,2) --&gt;&#10;    &lt;!-- (2,0) (2,1) (2,2) --&gt;&#10;    &lt;Border&gt;&lt;TextBlock Text=&quot;1&quot;/&gt;&lt;/Border&gt;&#10;    &lt;Border&gt;&lt;TextBlock Text=&quot;2&quot;/&gt;&lt;/Border&gt;&#10;    &lt;Border&gt;&lt;TextBlock Text=&quot;3&quot;/&gt;&lt;/Border&gt;&#10;    ...&#10;&lt;/UniformGrid&gt;&#10;&#10;&lt;!-- Grid.Row, Grid.Column 속성은 사용 불가 --&gt;&#10;&lt;!-- 자동으로 순서대로 배치됩니다 --&gt;"/>
                     </Expander>
 
+                    <!-- 직접 해보기 1_2 -->
+                    <Expander Style="{StaticResource PracticeExpanderStyle}">
+                        <StackPanel Margin="10">
+                            <TextBlock Text="과제: 2행 4열의 UniformGrid에 Border 8개를 배치하고, 각 Border에 서로 다른 배경색을 지정하세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
+                            <TextBox x:Name="txtPractice1_2"
+                                     Style="{StaticResource PracticeInputStyle}"
+                                     Height="120"
+                                     Text="&lt;UniformGrid Rows=&quot;2&quot; Columns=&quot;4&quot;&gt;&#10;    &lt;Border Background=&quot;Red&quot; Margin=&quot;2&quot;/&gt;&#10;&lt;/UniformGrid&gt;"/>
+                            <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
+                                <Button Content="실행" Style="{StaticResource RunButtonStyle}" Click="BtnRun_Click" Tag="1_2"/>
+                                <Button Content="힌트" Style="{StaticResource HintButtonStyle}" Click="BtnHint_Click" Tag="1_2"/>
+                                <Button Content="정답 보기" Style="{StaticResource AnswerButtonStyle}" Click="BtnAnswer_Click" Tag="1_2"/>
+                            </StackPanel>
+                            <TextBlock x:Name="txtHint1_2"
+                                       Text="힌트: Border를 8개 추가하고 각각 다른 Background 색상을 지정하세요."
+                                       Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                            <Border x:Name="resultBorder1_2" Background="White" Margin="0,8,0,0" Padding="10" Visibility="Collapsed">
+                                <StackPanel x:Name="resultPanel1_2"/>
+                            </Border>
+                        </StackPanel>
+                    </Expander>
+
                 </StackPanel>
             </ScrollViewer>
         </TabItem>
@@ -126,6 +202,28 @@
                     </GroupBox>
                     <Expander Style="{StaticResource CodeExpanderStyle}">
                         <TextBox Style="{StaticResource CodeTextBoxStyle}" Text="&lt;UniformGrid Columns=&quot;4&quot;&gt;&#10;    &lt;!-- 자식 10개 / 4열 = 3행 (올림) --&gt;&#10;    &lt;Button Content=&quot;1&quot;/&gt;&#10;    &lt;Button Content=&quot;2&quot;/&gt;&#10;    ...&#10;    &lt;Button Content=&quot;10&quot;/&gt;&#10;&lt;/UniformGrid&gt;&#10;&#10;&lt;!-- 마지막 행의 빈 셀은 비어있습니다 --&gt;"/>
+                    </Expander>
+
+                    <!-- 직접 해보기 2_1 -->
+                    <Expander Style="{StaticResource PracticeExpanderStyle}">
+                        <StackPanel Margin="10">
+                            <TextBlock Text="과제: Columns만 3으로 지정하고 버튼 7개를 배치하세요. (행은 자동 계산)" FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
+                            <TextBox x:Name="txtPractice2_1"
+                                     Style="{StaticResource PracticeInputStyle}"
+                                     Height="100"
+                                     Text="&lt;UniformGrid&gt;&#10;    &lt;Button Content=&quot;1&quot;/&gt;&#10;&lt;/UniformGrid&gt;"/>
+                            <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
+                                <Button Content="실행" Style="{StaticResource RunButtonStyle}" Click="BtnRun_Click" Tag="2_1"/>
+                                <Button Content="힌트" Style="{StaticResource HintButtonStyle}" Click="BtnHint_Click" Tag="2_1"/>
+                                <Button Content="정답 보기" Style="{StaticResource AnswerButtonStyle}" Click="BtnAnswer_Click" Tag="2_1"/>
+                            </StackPanel>
+                            <TextBlock x:Name="txtHint2_1"
+                                       Text="힌트: Columns=&quot;3&quot;만 지정하면 7개 버튼에 대해 3행이 자동으로 생성됩니다."
+                                       Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                            <Border x:Name="resultBorder2_1" Background="White" Margin="0,8,0,0" Padding="10" Visibility="Collapsed">
+                                <StackPanel x:Name="resultPanel2_1"/>
+                            </Border>
+                        </StackPanel>
                     </Expander>
 
                     <!-- Rows만 지정 -->
@@ -182,6 +280,28 @@
                         <TextBox Style="{StaticResource CodeTextBoxStyle}" Text="&lt;UniformGrid Columns=&quot;4&quot; FirstColumn=&quot;1&quot;&gt;&#10;    &lt;!-- 첫 번째 행의 0번 열이 비어있음 --&gt;&#10;    &lt;!-- 배치: (빈) 1 2 3 --&gt;&#10;    &lt;!--       4   5     --&gt;&#10;    &lt;Border&gt;&lt;TextBlock Text=&quot;1&quot;/&gt;&lt;/Border&gt;&#10;    &lt;Border&gt;&lt;TextBlock Text=&quot;2&quot;/&gt;&lt;/Border&gt;&#10;    &lt;Border&gt;&lt;TextBlock Text=&quot;3&quot;/&gt;&lt;/Border&gt;&#10;    &lt;Border&gt;&lt;TextBlock Text=&quot;4&quot;/&gt;&lt;/Border&gt;&#10;    &lt;Border&gt;&lt;TextBlock Text=&quot;5&quot;/&gt;&lt;/Border&gt;&#10;&lt;/UniformGrid&gt;&#10;&#10;&lt;!-- 캘린더에서 첫 주 시작 요일 조정에 유용 --&gt;"/>
                     </Expander>
 
+                    <!-- 직접 해보기 2_2 -->
+                    <Expander Style="{StaticResource PracticeExpanderStyle}">
+                        <StackPanel Margin="10">
+                            <TextBlock Text="과제: 5열짜리 UniformGrid에 FirstColumn=2를 설정하여 첫 두 셀을 비우고 버튼 6개를 배치하세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
+                            <TextBox x:Name="txtPractice2_2"
+                                     Style="{StaticResource PracticeInputStyle}"
+                                     Height="100"
+                                     Text="&lt;UniformGrid Columns=&quot;5&quot;&gt;&#10;    &lt;Button Content=&quot;1&quot;/&gt;&#10;&lt;/UniformGrid&gt;"/>
+                            <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
+                                <Button Content="실행" Style="{StaticResource RunButtonStyle}" Click="BtnRun_Click" Tag="2_2"/>
+                                <Button Content="힌트" Style="{StaticResource HintButtonStyle}" Click="BtnHint_Click" Tag="2_2"/>
+                                <Button Content="정답 보기" Style="{StaticResource AnswerButtonStyle}" Click="BtnAnswer_Click" Tag="2_2"/>
+                            </StackPanel>
+                            <TextBlock x:Name="txtHint2_2"
+                                       Text="힌트: FirstColumn=&quot;2&quot; 속성을 추가하면 첫 행의 앞 두 셀이 비워집니다."
+                                       Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                            <Border x:Name="resultBorder2_2" Background="White" Margin="0,8,0,0" Padding="10" Visibility="Collapsed">
+                                <StackPanel x:Name="resultPanel2_2"/>
+                            </Border>
+                        </StackPanel>
+                    </Expander>
+
                 </StackPanel>
             </ScrollViewer>
         </TabItem>
@@ -214,6 +334,28 @@
                         <TextBox Style="{StaticResource CodeTextBoxStyle}" Text="&lt;UniformGrid Columns=&quot;3&quot; Rows=&quot;4&quot; Width=&quot;180&quot; Height=&quot;240&quot;&gt;&#10;    &lt;Button Content=&quot;1&quot;/&gt;&#10;    &lt;Button Content=&quot;2&quot;/&gt;&#10;    &lt;Button Content=&quot;3&quot;/&gt;&#10;    &lt;Button Content=&quot;4&quot;/&gt;&#10;    &lt;Button Content=&quot;5&quot;/&gt;&#10;    &lt;Button Content=&quot;6&quot;/&gt;&#10;    &lt;Button Content=&quot;7&quot;/&gt;&#10;    &lt;Button Content=&quot;8&quot;/&gt;&#10;    &lt;Button Content=&quot;9&quot;/&gt;&#10;    &lt;Button Content=&quot;*&quot;/&gt;&#10;    &lt;Button Content=&quot;0&quot;/&gt;&#10;    &lt;Button Content=&quot;#&quot;/&gt;&#10;&lt;/UniformGrid&gt;"/>
                     </Expander>
 
+                    <!-- 직접 해보기 3_1 -->
+                    <Expander Style="{StaticResource PracticeExpanderStyle}">
+                        <StackPanel Margin="10">
+                            <TextBlock Text="과제: 3열 4행의 간단한 계산기 키패드를 만드세요. (7,8,9,4,5,6,1,2,3,0,+,-)" FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
+                            <TextBox x:Name="txtPractice3_1"
+                                     Style="{StaticResource PracticeInputStyle}"
+                                     Height="140"
+                                     Text="&lt;UniformGrid Columns=&quot;3&quot; Rows=&quot;4&quot;&gt;&#10;    &lt;Button Content=&quot;7&quot;/&gt;&#10;&lt;/UniformGrid&gt;"/>
+                            <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
+                                <Button Content="실행" Style="{StaticResource RunButtonStyle}" Click="BtnRun_Click" Tag="3_1"/>
+                                <Button Content="힌트" Style="{StaticResource HintButtonStyle}" Click="BtnHint_Click" Tag="3_1"/>
+                                <Button Content="정답 보기" Style="{StaticResource AnswerButtonStyle}" Click="BtnAnswer_Click" Tag="3_1"/>
+                            </StackPanel>
+                            <TextBlock x:Name="txtHint3_1"
+                                       Text="힌트: 버튼 12개를 순서대로 배치하면 됩니다. 일반적인 계산기 배열을 참고하세요."
+                                       Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                            <Border x:Name="resultBorder3_1" Background="White" Margin="0,8,0,0" Padding="10" Visibility="Collapsed">
+                                <StackPanel x:Name="resultPanel3_1"/>
+                            </Border>
+                        </StackPanel>
+                    </Expander>
+
                     <!-- 색상 팔레트 -->
                     <GroupBox Header="색상 팔레트" Margin="0,0,0,8">
                         <UniformGrid Columns="8" Rows="2" Width="320" Height="80" HorizontalAlignment="Left">
@@ -237,6 +379,28 @@
                     </GroupBox>
                     <Expander Style="{StaticResource CodeExpanderStyle}">
                         <TextBox Style="{StaticResource CodeTextBoxStyle}" Text="&lt;UniformGrid Columns=&quot;8&quot; Rows=&quot;2&quot;&gt;&#10;    &lt;Border Background=&quot;#F44336&quot;/&gt;&#10;    &lt;Border Background=&quot;#E91E63&quot;/&gt;&#10;    &lt;Border Background=&quot;#9C27B0&quot;/&gt;&#10;    &lt;Border Background=&quot;#673AB7&quot;/&gt;&#10;    ...&#10;&lt;/UniformGrid&gt;&#10;&#10;&lt;!-- 색상 팔레트, 이미지 갤러리 등에 적합 --&gt;"/>
+                    </Expander>
+
+                    <!-- 직접 해보기 3_2 -->
+                    <Expander Style="{StaticResource PracticeExpanderStyle}">
+                        <StackPanel Margin="10">
+                            <TextBlock Text="과제: 4열 2행의 무지개색 팔레트를 만드세요. (빨강, 주황, 노랑, 초록, 파랑, 남색, 보라, 분홍)" FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
+                            <TextBox x:Name="txtPractice3_2"
+                                     Style="{StaticResource PracticeInputStyle}"
+                                     Height="120"
+                                     Text="&lt;UniformGrid Columns=&quot;4&quot; Rows=&quot;2&quot;&gt;&#10;    &lt;Border Background=&quot;Red&quot; Margin=&quot;2&quot;/&gt;&#10;&lt;/UniformGrid&gt;"/>
+                            <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
+                                <Button Content="실행" Style="{StaticResource RunButtonStyle}" Click="BtnRun_Click" Tag="3_2"/>
+                                <Button Content="힌트" Style="{StaticResource HintButtonStyle}" Click="BtnHint_Click" Tag="3_2"/>
+                                <Button Content="정답 보기" Style="{StaticResource AnswerButtonStyle}" Click="BtnAnswer_Click" Tag="3_2"/>
+                            </StackPanel>
+                            <TextBlock x:Name="txtHint3_2"
+                                       Text="힌트: Red, Orange, Yellow, Green, Blue, Navy, Purple, Pink 등의 색상명을 사용하세요."
+                                       Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                            <Border x:Name="resultBorder3_2" Background="White" Margin="0,8,0,0" Padding="10" Visibility="Collapsed">
+                                <StackPanel x:Name="resultPanel3_2"/>
+                            </Border>
+                        </StackPanel>
                     </Expander>
 
                     <!-- 타일 메뉴 -->
@@ -337,6 +501,28 @@
                         <TextBox Style="{StaticResource CodeTextBoxStyle}" Text="&lt;UniformGrid Columns=&quot;3&quot; Background=&quot;#E8F5E9&quot;&gt;&#10;    &lt;Button Content=&quot;1&quot; Margin=&quot;4&quot;/&gt;&#10;    &lt;Button Content=&quot;2&quot; Margin=&quot;4&quot;/&gt;&#10;    ...&#10;&lt;/UniformGrid&gt;"/>
                     </Expander>
 
+                    <!-- 직접 해보기 4_1 -->
+                    <Expander Style="{StaticResource PracticeExpanderStyle}">
+                        <StackPanel Margin="10">
+                            <TextBlock Text="과제: 연한 파랑 배경(#E3F2FD)의 2행 3열 UniformGrid에 버튼 6개를 배치하세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
+                            <TextBox x:Name="txtPractice4_1"
+                                     Style="{StaticResource PracticeInputStyle}"
+                                     Height="100"
+                                     Text="&lt;UniformGrid Rows=&quot;2&quot; Columns=&quot;3&quot;&gt;&#10;    &lt;Button Content=&quot;1&quot;/&gt;&#10;&lt;/UniformGrid&gt;"/>
+                            <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
+                                <Button Content="실행" Style="{StaticResource RunButtonStyle}" Click="BtnRun_Click" Tag="4_1"/>
+                                <Button Content="힌트" Style="{StaticResource HintButtonStyle}" Click="BtnHint_Click" Tag="4_1"/>
+                                <Button Content="정답 보기" Style="{StaticResource AnswerButtonStyle}" Click="BtnAnswer_Click" Tag="4_1"/>
+                            </StackPanel>
+                            <TextBlock x:Name="txtHint4_1"
+                                       Text="힌트: Background=&quot;#E3F2FD&quot; 속성을 UniformGrid에 추가하세요."
+                                       Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                            <Border x:Name="resultBorder4_1" Background="White" Margin="0,8,0,0" Padding="10" Visibility="Collapsed">
+                                <StackPanel x:Name="resultPanel4_1"/>
+                            </Border>
+                        </StackPanel>
+                    </Expander>
+
                     <!-- 자식 요소에 공통 스타일 -->
                     <GroupBox Header="자식 요소에 공통 스타일 적용" Margin="0,0,0,8">
                         <UniformGrid Columns="4" Rows="2" Height="120">
@@ -385,6 +571,28 @@
                         <TextBox Style="{StaticResource CodeTextBoxStyle}" Text="&lt;UniformGrid Columns=&quot;3&quot;&gt;&#10;    &lt;Border Margin=&quot;8&quot;&gt;...&lt;/Border&gt;&#10;    &lt;Border Margin=&quot;4&quot;&gt;...&lt;/Border&gt;&#10;    &lt;Border Margin=&quot;2&quot;&gt;...&lt;/Border&gt;&#10;&lt;/UniformGrid&gt;&#10;&#10;&lt;!-- 자식 요소의 Margin으로 간격 조절 --&gt;"/>
                     </Expander>
 
+                    <!-- 직접 해보기 4_2 -->
+                    <Expander Style="{StaticResource PracticeExpanderStyle}">
+                        <StackPanel Margin="10">
+                            <TextBlock Text="과제: 3열 UniformGrid에 각각 다른 Margin(10, 5, 2)을 가진 Border 3개를 배치하세요. 각 Border에는 Background를 지정하세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
+                            <TextBox x:Name="txtPractice4_2"
+                                     Style="{StaticResource PracticeInputStyle}"
+                                     Height="100"
+                                     Text="&lt;UniformGrid Columns=&quot;3&quot;&gt;&#10;    &lt;Border Background=&quot;LightBlue&quot; Margin=&quot;10&quot;/&gt;&#10;&lt;/UniformGrid&gt;"/>
+                            <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
+                                <Button Content="실행" Style="{StaticResource RunButtonStyle}" Click="BtnRun_Click" Tag="4_2"/>
+                                <Button Content="힌트" Style="{StaticResource HintButtonStyle}" Click="BtnHint_Click" Tag="4_2"/>
+                                <Button Content="정답 보기" Style="{StaticResource AnswerButtonStyle}" Click="BtnAnswer_Click" Tag="4_2"/>
+                            </StackPanel>
+                            <TextBlock x:Name="txtHint4_2"
+                                       Text="힌트: 각 Border에 Margin=&quot;10&quot;, Margin=&quot;5&quot;, Margin=&quot;2&quot;를 각각 지정하세요."
+                                       Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                            <Border x:Name="resultBorder4_2" Background="White" Margin="0,8,0,0" Padding="10" Visibility="Collapsed">
+                                <StackPanel x:Name="resultPanel4_2"/>
+                            </Border>
+                        </StackPanel>
+                    </Expander>
+
                 </StackPanel>
             </ScrollViewer>
         </TabItem>
@@ -409,6 +617,27 @@
                     </GroupBox>
                     <Expander Style="{StaticResource CodeExpanderStyle}">
                         <TextBox Style="{StaticResource CodeTextBoxStyle}" Text="// 자식 추가&#10;var btn = new Button { Content = &quot;버튼&quot; + count };&#10;ugDynamic.Children.Add(btn);&#10;&#10;// 마지막 자식 삭제&#10;if (ugDynamic.Children.Count &gt; 0)&#10;    ugDynamic.Children.RemoveAt(ugDynamic.Children.Count - 1);&#10;&#10;// 전체 삭제&#10;ugDynamic.Children.Clear();"/>
+                    </Expander>
+
+                    <!-- 직접 해보기 5_1 -->
+                    <Expander Style="{StaticResource PracticeExpanderStyle}">
+                        <StackPanel Margin="10">
+                            <TextBlock Text="과제: UniformGrid에 버튼을 동적으로 추가하는 코드를 작성하세요. 버튼 내용은 &quot;Item&quot; + 번호로 설정합니다." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
+                            <TextBox x:Name="txtPractice5_1"
+                                     Style="{StaticResource PracticeInputStyle}"
+                                     Height="120"
+                                     Text="private void AddItem_Click(object sender, RoutedEventArgs e)&#x0a;{&#x0a;    // 코드 작성&#x0a;}"/>
+                            <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
+                                <Button Content="확인" Style="{StaticResource RunButtonStyle}" Click="BtnCheck_Click" Tag="5_1"/>
+                                <Button Content="힌트" Style="{StaticResource HintButtonStyle}" Click="BtnHint_Click" Tag="5_1"/>
+                                <Button Content="정답 보기" Style="{StaticResource AnswerButtonStyle}" Click="BtnAnswer_Click" Tag="5_1"/>
+                            </StackPanel>
+                            <TextBlock x:Name="txtHint5_1"
+                                       Text="힌트: new Button { Content = ... }로 버튼을 생성하고 ugGrid.Children.Add()로 추가합니다."
+                                       Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                            <TextBlock x:Name="txtResult5_1"
+                                       Margin="0,8,0,0" FontWeight="Bold" Visibility="Collapsed"/>
+                        </StackPanel>
                     </Expander>
 
                     <!-- Rows/Columns 동적 변경 -->
@@ -436,6 +665,27 @@
                         <TextBox Style="{StaticResource CodeTextBoxStyle}" Text="// Columns 변경&#10;ugResize.Columns = 3;&#10;&#10;// Rows 변경&#10;ugResize.Rows = 2;&#10;&#10;// 자동 계산으로 되돌리기 (0으로 설정)&#10;ugResize.Columns = 0;&#10;ugResize.Rows = 0;&#10;&#10;// FirstColumn 변경&#10;ugResize.FirstColumn = 2;"/>
                     </Expander>
 
+                    <!-- 직접 해보기 5_2 -->
+                    <Expander Style="{StaticResource PracticeExpanderStyle}">
+                        <StackPanel Margin="10">
+                            <TextBlock Text="과제: UniformGrid를 4행 2열로 변경하는 코드를 작성하세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
+                            <TextBox x:Name="txtPractice5_2"
+                                     Style="{StaticResource PracticeInputStyle}"
+                                     Height="120"
+                                     Text="private void SetLayout_Click(object sender, RoutedEventArgs e)&#x0a;{&#x0a;    // 코드 작성&#x0a;}"/>
+                            <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
+                                <Button Content="확인" Style="{StaticResource RunButtonStyle}" Click="BtnCheck_Click" Tag="5_2"/>
+                                <Button Content="힌트" Style="{StaticResource HintButtonStyle}" Click="BtnHint_Click" Tag="5_2"/>
+                                <Button Content="정답 보기" Style="{StaticResource AnswerButtonStyle}" Click="BtnAnswer_Click" Tag="5_2"/>
+                            </StackPanel>
+                            <TextBlock x:Name="txtHint5_2"
+                                       Text="힌트: ugGrid.Rows = 4; ugGrid.Columns = 2; 처럼 속성을 직접 설정합니다."
+                                       Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                            <TextBlock x:Name="txtResult5_2"
+                                       Margin="0,8,0,0" FontWeight="Bold" Visibility="Collapsed"/>
+                        </StackPanel>
+                    </Expander>
+
                     <!-- FirstColumn 동적 변경 -->
                     <GroupBox Header="FirstColumn 동적 변경" Margin="0,0,0,8">
                         <StackPanel>
@@ -457,6 +707,27 @@
                     </GroupBox>
                     <Expander Style="{StaticResource CodeExpanderStyle}">
                         <TextBox Style="{StaticResource CodeTextBoxStyle}" Text="// FirstColumn 속성 변경&#10;ugFirstCol.FirstColumn = 0;  // 기본값&#10;ugFirstCol.FirstColumn = 1;  // 첫 번째 셀 비움&#10;ugFirstCol.FirstColumn = 2;  // 첫 두 셀 비움&#10;&#10;// 캘린더 구현 시 월 시작 요일 조정에 활용&#10;// 예: 1일이 수요일이면 FirstColumn = 3"/>
+                    </Expander>
+
+                    <!-- 직접 해보기 5_3 -->
+                    <Expander Style="{StaticResource PracticeExpanderStyle}">
+                        <StackPanel Margin="10">
+                            <TextBlock Text="과제: FirstColumn을 3으로 설정하여 첫 3개의 셀을 비우는 코드를 작성하세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
+                            <TextBox x:Name="txtPractice5_3"
+                                     Style="{StaticResource PracticeInputStyle}"
+                                     Height="120"
+                                     Text="private void SetOffset_Click(object sender, RoutedEventArgs e)&#x0a;{&#x0a;    // 코드 작성&#x0a;}"/>
+                            <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
+                                <Button Content="확인" Style="{StaticResource RunButtonStyle}" Click="BtnCheck_Click" Tag="5_3"/>
+                                <Button Content="힌트" Style="{StaticResource HintButtonStyle}" Click="BtnHint_Click" Tag="5_3"/>
+                                <Button Content="정답 보기" Style="{StaticResource AnswerButtonStyle}" Click="BtnAnswer_Click" Tag="5_3"/>
+                            </StackPanel>
+                            <TextBlock x:Name="txtHint5_3"
+                                       Text="힌트: ugGrid.FirstColumn = 3; 으로 시작 열을 지정합니다."
+                                       Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                            <TextBlock x:Name="txtResult5_3"
+                                       Margin="0,8,0,0" FontWeight="Bold" Visibility="Collapsed"/>
+                        </StackPanel>
                     </Expander>
 
                 </StackPanel>

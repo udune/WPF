@@ -1,6 +1,7 @@
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
+using System.Windows.Markup;
 using System.Windows.Media;
 
 namespace ch18_유니폼그리드
@@ -15,6 +16,39 @@ namespace ch18_유니폼그리드
             Color.FromRgb(0xE1, 0xBE, 0xE7),
             Color.FromRgb(0xFF, 0xCC, 0x80),
             Color.FromRgb(0x90, 0xCA, 0xF9)
+        };
+
+        // 각 연습의 정답
+        private readonly Dictionary<string, string> _answers = new()
+        {
+            // 탭1: 기본 사용법
+            { "1_1", "<UniformGrid Rows=\"3\" Columns=\"2\">\n    <Button Content=\"A\"/>\n    <Button Content=\"B\"/>\n    <Button Content=\"C\"/>\n    <Button Content=\"D\"/>\n    <Button Content=\"E\"/>\n    <Button Content=\"F\"/>\n</UniformGrid>" },
+            { "1_2", "<UniformGrid Rows=\"2\" Columns=\"4\">\n    <Border Background=\"Red\" Margin=\"2\"/>\n    <Border Background=\"Orange\" Margin=\"2\"/>\n    <Border Background=\"Yellow\" Margin=\"2\"/>\n    <Border Background=\"Green\" Margin=\"2\"/>\n    <Border Background=\"Blue\" Margin=\"2\"/>\n    <Border Background=\"Navy\" Margin=\"2\"/>\n    <Border Background=\"Purple\" Margin=\"2\"/>\n    <Border Background=\"Pink\" Margin=\"2\"/>\n</UniformGrid>" },
+
+            // 탭2: 행/열 자동 계산
+            { "2_1", "<UniformGrid Columns=\"3\">\n    <Button Content=\"1\"/>\n    <Button Content=\"2\"/>\n    <Button Content=\"3\"/>\n    <Button Content=\"4\"/>\n    <Button Content=\"5\"/>\n    <Button Content=\"6\"/>\n    <Button Content=\"7\"/>\n</UniformGrid>" },
+            { "2_2", "<UniformGrid Columns=\"5\" FirstColumn=\"2\">\n    <Button Content=\"1\"/>\n    <Button Content=\"2\"/>\n    <Button Content=\"3\"/>\n    <Button Content=\"4\"/>\n    <Button Content=\"5\"/>\n    <Button Content=\"6\"/>\n</UniformGrid>" },
+
+            // 탭3: 실용 예제
+            { "3_1", "<UniformGrid Columns=\"3\" Rows=\"4\">\n    <Button Content=\"7\"/>\n    <Button Content=\"8\"/>\n    <Button Content=\"9\"/>\n    <Button Content=\"4\"/>\n    <Button Content=\"5\"/>\n    <Button Content=\"6\"/>\n    <Button Content=\"1\"/>\n    <Button Content=\"2\"/>\n    <Button Content=\"3\"/>\n    <Button Content=\"0\"/>\n    <Button Content=\"+\"/>\n    <Button Content=\"-\"/>\n</UniformGrid>" },
+            { "3_2", "<UniformGrid Columns=\"4\" Rows=\"2\">\n    <Border Background=\"Red\" Margin=\"2\"/>\n    <Border Background=\"Orange\" Margin=\"2\"/>\n    <Border Background=\"Yellow\" Margin=\"2\"/>\n    <Border Background=\"Green\" Margin=\"2\"/>\n    <Border Background=\"Blue\" Margin=\"2\"/>\n    <Border Background=\"Navy\" Margin=\"2\"/>\n    <Border Background=\"Purple\" Margin=\"2\"/>\n    <Border Background=\"Pink\" Margin=\"2\"/>\n</UniformGrid>" },
+
+            // 탭4: 스타일과 외관
+            { "4_1", "<UniformGrid Rows=\"2\" Columns=\"3\" Background=\"#E3F2FD\">\n    <Button Content=\"1\" Margin=\"2\"/>\n    <Button Content=\"2\" Margin=\"2\"/>\n    <Button Content=\"3\" Margin=\"2\"/>\n    <Button Content=\"4\" Margin=\"2\"/>\n    <Button Content=\"5\" Margin=\"2\"/>\n    <Button Content=\"6\" Margin=\"2\"/>\n</UniformGrid>" },
+            { "4_2", "<UniformGrid Columns=\"3\">\n    <Border Background=\"LightBlue\" Margin=\"10\"/>\n    <Border Background=\"LightGreen\" Margin=\"5\"/>\n    <Border Background=\"LightCoral\" Margin=\"2\"/>\n</UniformGrid>" },
+
+            // 탭5: 코드비하인드
+            { "5_1", "private void AddItem_Click(object sender, RoutedEventArgs e)\n{\n    _count++;\n    var btn = new Button { Content = \"Item\" + _count };\n    ugGrid.Children.Add(btn);\n}" },
+            { "5_2", "private void SetLayout_Click(object sender, RoutedEventArgs e)\n{\n    ugGrid.Rows = 4;\n    ugGrid.Columns = 2;\n}" },
+            { "5_3", "private void SetOffset_Click(object sender, RoutedEventArgs e)\n{\n    ugGrid.FirstColumn = 3;\n}" },
+        };
+
+        // 코드 비교 검증용 필수 키워드
+        private readonly Dictionary<string, string[]> _requiredKeywords = new()
+        {
+            { "5_1", new[] { "new Button", "Content", "Item", "Children.Add" } },
+            { "5_2", new[] { "Rows", "Columns", "4", "2" } },
+            { "5_3", new[] { "FirstColumn", "3" } },
         };
 
         public MainWindow()
@@ -127,6 +161,126 @@ namespace ch18_유니폼그리드
         {
             ugFirstCol.FirstColumn = 3;
             tbFirstColInfo.Text = "현재 FirstColumn: 3";
+        }
+
+        // ========== 직접 해보기 기능 ==========
+
+        // XAML 실행 메서드
+        private void ExecuteXaml(string xamlCode, StackPanel resultPanel, Border resultBorder)
+        {
+            resultPanel.Children.Clear();
+            resultBorder.Visibility = Visibility.Visible;
+
+            try
+            {
+                string fullXaml = xamlCode;
+                if (!xamlCode.Contains("xmlns="))
+                {
+                    // UniformGrid에 네임스페이스 추가
+                    fullXaml = xamlCode.Replace("<UniformGrid",
+                        "<UniformGrid xmlns='http://schemas.microsoft.com/winfx/2006/xaml/presentation'");
+                }
+
+                var element = XamlReader.Parse(fullXaml) as UIElement;
+                if (element != null)
+                {
+                    // UniformGrid에 기본 높이 설정
+                    if (element is UniformGrid ug && double.IsNaN(ug.Height))
+                    {
+                        ug.Height = 120;
+                    }
+
+                    resultPanel.Children.Add(element);
+                    resultPanel.Children.Add(new TextBlock
+                    {
+                        Text = "성공적으로 실행되었습니다!",
+                        Foreground = Brushes.Green,
+                        Margin = new Thickness(0, 10, 0, 0)
+                    });
+                }
+            }
+            catch (Exception ex)
+            {
+                resultPanel.Children.Add(new TextBlock
+                {
+                    Text = $"오류: {ex.Message}",
+                    Foreground = Brushes.Red,
+                    TextWrapping = TextWrapping.Wrap
+                });
+            }
+        }
+
+        // XAML 실행 버튼
+        private void BtnRun_Click(object sender, RoutedEventArgs e)
+        {
+            if (sender is Button button && button.Tag is string tag)
+            {
+                var txtPractice = FindName($"txtPractice{tag}") as TextBox;
+                var resultPanel = FindName($"resultPanel{tag}") as StackPanel;
+                var resultBorder = FindName($"resultBorder{tag}") as Border;
+
+                if (txtPractice != null && resultPanel != null && resultBorder != null)
+                {
+                    ExecuteXaml(txtPractice.Text, resultPanel, resultBorder);
+                }
+            }
+        }
+
+        // 힌트 토글 버튼
+        private void BtnHint_Click(object sender, RoutedEventArgs e)
+        {
+            if (sender is Button button && button.Tag is string tag)
+            {
+                var txtHint = FindName($"txtHint{tag}") as TextBlock;
+                if (txtHint != null)
+                {
+                    txtHint.Visibility = txtHint.Visibility == Visibility.Visible
+                        ? Visibility.Collapsed : Visibility.Visible;
+                }
+            }
+        }
+
+        // 정답 보기 버튼
+        private void BtnAnswer_Click(object sender, RoutedEventArgs e)
+        {
+            if (sender is Button button && button.Tag is string tag)
+            {
+                var txtPractice = FindName($"txtPractice{tag}") as TextBox;
+                if (txtPractice != null && _answers.TryGetValue(tag, out var answer))
+                {
+                    txtPractice.Text = answer;
+                }
+            }
+        }
+
+        // 코드 비교 확인 버튼
+        private void BtnCheck_Click(object sender, RoutedEventArgs e)
+        {
+            if (sender is Button button && button.Tag is string tag)
+            {
+                var txtPractice = FindName($"txtPractice{tag}") as TextBox;
+                var txtResult = FindName($"txtResult{tag}") as TextBlock;
+
+                if (txtPractice != null && txtResult != null && _requiredKeywords.TryGetValue(tag, out var keywords))
+                {
+                    txtResult.Visibility = Visibility.Visible;
+                    string userCode = txtPractice.Text;
+
+                    // 모든 필수 키워드가 포함되어 있는지 확인
+                    var missingKeywords = keywords.Where(k => !userCode.Contains(k)).ToList();
+
+                    if (missingKeywords.Count == 0)
+                    {
+                        txtResult.Text = "정답입니다! 모든 필수 요소가 포함되어 있습니다.";
+                        txtResult.Foreground = Brushes.Green;
+                    }
+                    else
+                    {
+                        txtResult.Text = $"다시 확인해보세요. 누락된 요소: {string.Join(", ", missingKeywords)}";
+                        txtResult.Foreground = Brushes.Red;
+                    }
+                }
+            }
         }
     }
 }
