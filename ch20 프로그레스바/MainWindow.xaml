@@ -5,9 +5,10 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ch20_프로그레스바"
         mc:Ignorable="d"
-        Title="ch20 ProgressBar 튜토리얼" Height="600" Width="850">
+        Title="ch20 프로그레스바 튜토리얼" Height="600" Width="850">
 
     <Window.Resources>
+        <!-- 코드 보기 스타일 -->
         <Style x:Key="CodeExpanderStyle" TargetType="Expander">
             <Setter Property="Header" Value="코드 보기"/>
             <Setter Property="Margin" Value="0,0,0,12"/>
@@ -26,6 +27,39 @@
             <Setter Property="MaxHeight" Value="300"/>
             <Setter Property="BorderBrush" Value="#333333"/>
             <Setter Property="BorderThickness" Value="1"/>
+        </Style>
+
+        <!-- 직접 해보기 스타일 -->
+        <Style x:Key="PracticeExpanderStyle" TargetType="Expander">
+            <Setter Property="Header" Value="직접 해보기"/>
+            <Setter Property="Margin" Value="0,0,0,15"/>
+            <Setter Property="IsExpanded" Value="False"/>
+            <Setter Property="Background" Value="#F5F5F5"/>
+        </Style>
+        <Style x:Key="PracticeInputStyle" TargetType="TextBox">
+            <Setter Property="AcceptsReturn" Value="True"/>
+            <Setter Property="FontFamily" Value="Consolas"/>
+            <Setter Property="FontSize" Value="12"/>
+            <Setter Property="Height" Value="80"/>
+            <Setter Property="VerticalScrollBarVisibility" Value="Auto"/>
+            <Setter Property="Padding" Value="5"/>
+        </Style>
+        <Style x:Key="RunButtonStyle" TargetType="Button">
+            <Setter Property="Width" Value="60"/>
+            <Setter Property="Padding" Value="5,3"/>
+            <Setter Property="Background" Value="#4CAF50"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="BorderThickness" Value="0"/>
+        </Style>
+        <Style x:Key="HintButtonStyle" TargetType="Button">
+            <Setter Property="Width" Value="50"/>
+            <Setter Property="Padding" Value="5,3"/>
+            <Setter Property="Margin" Value="5,0,0,0"/>
+        </Style>
+        <Style x:Key="AnswerButtonStyle" TargetType="Button">
+            <Setter Property="Width" Value="70"/>
+            <Setter Property="Padding" Value="5,3"/>
+            <Setter Property="Margin" Value="5,0,0,0"/>
         </Style>
     </Window.Resources>
 
@@ -57,6 +91,28 @@
                         </StackPanel>
                     </GroupBox>
 
+                    <!-- 직접 해보기 1_1 -->
+                    <Expander Style="{StaticResource PracticeExpanderStyle}">
+                        <StackPanel Margin="10">
+                            <TextBlock Text="과제: Value=50인 ProgressBar를 만드세요. Height=&quot;25&quot;로 설정하세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
+                            <TextBox x:Name="txtPractice1_1"
+                                     Style="{StaticResource PracticeInputStyle}"
+                                     Height="50"
+                                     Text="&lt;ProgressBar /&gt;"/>
+                            <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
+                                <Button Content="실행" Style="{StaticResource RunButtonStyle}" Click="BtnRun_Click" Tag="1_1"/>
+                                <Button Content="힌트" Style="{StaticResource HintButtonStyle}" Click="BtnHint_Click" Tag="1_1"/>
+                                <Button Content="정답 보기" Style="{StaticResource AnswerButtonStyle}" Click="BtnAnswer_Click" Tag="1_1"/>
+                            </StackPanel>
+                            <TextBlock x:Name="txtHint1_1"
+                                       Text="힌트: Height와 Value 속성을 설정하세요."
+                                       Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                            <Border x:Name="resultBorder1_1" Background="White" Margin="0,8,0,0" Padding="10" Visibility="Collapsed">
+                                <StackPanel x:Name="resultPanel1_1"/>
+                            </Border>
+                        </StackPanel>
+                    </Expander>
+
                     <!-- 예제 2: Minimum과 Maximum -->
                     <GroupBox Header="Minimum과 Maximum 설정" Margin="0,0,0,15">
                         <StackPanel>
@@ -71,6 +127,28 @@
                             </Expander>
                         </StackPanel>
                     </GroupBox>
+
+                    <!-- 직접 해보기 1_2 -->
+                    <Expander Style="{StaticResource PracticeExpanderStyle}">
+                        <StackPanel Margin="10">
+                            <TextBlock Text="과제: Maximum=500, Value=250인 ProgressBar를 만드세요. (50% 진행률) Height=&quot;25&quot;로 설정하세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
+                            <TextBox x:Name="txtPractice1_2"
+                                     Style="{StaticResource PracticeInputStyle}"
+                                     Height="50"
+                                     Text="&lt;ProgressBar /&gt;"/>
+                            <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
+                                <Button Content="실행" Style="{StaticResource RunButtonStyle}" Click="BtnRun_Click" Tag="1_2"/>
+                                <Button Content="힌트" Style="{StaticResource HintButtonStyle}" Click="BtnHint_Click" Tag="1_2"/>
+                                <Button Content="정답 보기" Style="{StaticResource AnswerButtonStyle}" Click="BtnAnswer_Click" Tag="1_2"/>
+                            </StackPanel>
+                            <TextBlock x:Name="txtHint1_2"
+                                       Text="힌트: Maximum 속성으로 최대값을 설정하고, Value는 그 절반인 250으로 설정하세요."
+                                       Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                            <Border x:Name="resultBorder1_2" Background="White" Margin="0,8,0,0" Padding="10" Visibility="Collapsed">
+                                <StackPanel x:Name="resultPanel1_2"/>
+                            </Border>
+                        </StackPanel>
+                    </Expander>
 
                     <!-- 예제 3: 코드로 값 변경 -->
                     <GroupBox Header="코드로 값 변경" Margin="0,0,0,15">
@@ -126,6 +204,28 @@
                         </StackPanel>
                     </GroupBox>
 
+                    <!-- 직접 해보기 2_1 -->
+                    <Expander Style="{StaticResource PracticeExpanderStyle}">
+                        <StackPanel Margin="10">
+                            <TextBlock Text="과제: 불확정 모드(Indeterminate) ProgressBar를 만드세요. Height=&quot;25&quot;로 설정하세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
+                            <TextBox x:Name="txtPractice2_1"
+                                     Style="{StaticResource PracticeInputStyle}"
+                                     Height="50"
+                                     Text="&lt;ProgressBar /&gt;"/>
+                            <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
+                                <Button Content="실행" Style="{StaticResource RunButtonStyle}" Click="BtnRun_Click" Tag="2_1"/>
+                                <Button Content="힌트" Style="{StaticResource HintButtonStyle}" Click="BtnHint_Click" Tag="2_1"/>
+                                <Button Content="정답 보기" Style="{StaticResource AnswerButtonStyle}" Click="BtnAnswer_Click" Tag="2_1"/>
+                            </StackPanel>
+                            <TextBlock x:Name="txtHint2_1"
+                                       Text="힌트: IsIndeterminate=&quot;True&quot;로 설정하면 불확정 모드가 됩니다."
+                                       Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                            <Border x:Name="resultBorder2_1" Background="White" Margin="0,8,0,0" Padding="10" Visibility="Collapsed">
+                                <StackPanel x:Name="resultPanel2_1"/>
+                            </Border>
+                        </StackPanel>
+                    </Expander>
+
                     <!-- 예제 3: 모드 전환 -->
                     <GroupBox Header="모드 전환" Margin="0,0,0,15">
                         <StackPanel>
@@ -140,6 +240,27 @@
                             </Expander>
                         </StackPanel>
                     </GroupBox>
+
+                    <!-- 직접 해보기 2_2 (코드 비교 방식) -->
+                    <Expander Style="{StaticResource PracticeExpanderStyle}">
+                        <StackPanel Margin="10">
+                            <TextBlock Text="과제: progressBar라는 이름의 ProgressBar를 불확정 모드로 전환하는 코드를 작성하세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
+                            <TextBox x:Name="txtPractice2_2"
+                                     Style="{StaticResource PracticeInputStyle}"
+                                     Height="50"
+                                     Text="// progressBar를 불확정 모드로 설정&#x0a;"/>
+                            <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
+                                <Button Content="확인" Style="{StaticResource RunButtonStyle}" Click="BtnCheck_Click" Tag="2_2"/>
+                                <Button Content="힌트" Style="{StaticResource HintButtonStyle}" Click="BtnHint_Click" Tag="2_2"/>
+                                <Button Content="정답 보기" Style="{StaticResource AnswerButtonStyle}" Click="BtnAnswer_Click" Tag="2_2"/>
+                            </StackPanel>
+                            <TextBlock x:Name="txtHint2_2"
+                                       Text="힌트: IsIndeterminate 속성을 true로 설정합니다."
+                                       Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                            <TextBlock x:Name="txtResult2_2"
+                                       Margin="0,8,0,0" FontWeight="Bold" Visibility="Collapsed"/>
+                        </StackPanel>
+                    </Expander>
 
                     <!-- 예제 4: 사용 시나리오 -->
                     <GroupBox Header="사용 시나리오" Margin="0,0,0,15">
@@ -177,24 +298,35 @@
                             <ProgressBar Height="25" Value="70" Foreground="Orange" Margin="0,0,0,10"/>
 
                             <TextBlock Text="Red" Margin="0,0,0,3"/>
-                            <ProgressBar Height="25" Value="70" Foreground="Red" Margin="0,0,0,10"/>
-
-                            <TextBlock Text="LinearGradientBrush" Margin="0,0,0,3"/>
-                            <ProgressBar Height="25" Value="70">
-                                <ProgressBar.Foreground>
-                                    <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
-                                        <GradientStop Color="Yellow" Offset="0"/>
-                                        <GradientStop Color="Orange" Offset="0.5"/>
-                                        <GradientStop Color="Red" Offset="1"/>
-                                    </LinearGradientBrush>
-                                </ProgressBar.Foreground>
-                            </ProgressBar>
+                            <ProgressBar Height="25" Value="70" Foreground="Red"/>
                             <Expander Style="{StaticResource CodeExpanderStyle}">
                                 <TextBox Style="{StaticResource CodeTextBoxStyle}"
-                                         Text="&lt;ProgressBar Height=&quot;25&quot; Value=&quot;70&quot; Foreground=&quot;Green&quot;/&gt;&#10;&lt;ProgressBar Height=&quot;25&quot; Value=&quot;70&quot; Foreground=&quot;Orange&quot;/&gt;&#10;&lt;ProgressBar Height=&quot;25&quot; Value=&quot;70&quot; Foreground=&quot;Red&quot;/&gt;&#10;&#10;&lt;!-- 그라데이션 --&gt;&#10;&lt;ProgressBar Height=&quot;25&quot; Value=&quot;70&quot;&gt;&#10;    &lt;ProgressBar.Foreground&gt;&#10;        &lt;LinearGradientBrush StartPoint=&quot;0,0&quot; EndPoint=&quot;1,0&quot;&gt;&#10;            &lt;GradientStop Color=&quot;Yellow&quot; Offset=&quot;0&quot;/&gt;&#10;            &lt;GradientStop Color=&quot;Orange&quot; Offset=&quot;0.5&quot;/&gt;&#10;            &lt;GradientStop Color=&quot;Red&quot; Offset=&quot;1&quot;/&gt;&#10;        &lt;/LinearGradientBrush&gt;&#10;    &lt;/ProgressBar.Foreground&gt;&#10;&lt;/ProgressBar&gt;"/>
+                                         Text="&lt;ProgressBar Height=&quot;25&quot; Value=&quot;70&quot; Foreground=&quot;Green&quot;/&gt;&#10;&lt;ProgressBar Height=&quot;25&quot; Value=&quot;70&quot; Foreground=&quot;Orange&quot;/&gt;&#10;&lt;ProgressBar Height=&quot;25&quot; Value=&quot;70&quot; Foreground=&quot;Red&quot;/&gt;"/>
                             </Expander>
                         </StackPanel>
                     </GroupBox>
+
+                    <!-- 직접 해보기 3_1 -->
+                    <Expander Style="{StaticResource PracticeExpanderStyle}">
+                        <StackPanel Margin="10">
+                            <TextBlock Text="과제: Value=80, Foreground=&quot;DodgerBlue&quot;인 ProgressBar를 만드세요. Height=&quot;25&quot;로 설정하세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
+                            <TextBox x:Name="txtPractice3_1"
+                                     Style="{StaticResource PracticeInputStyle}"
+                                     Height="50"
+                                     Text="&lt;ProgressBar /&gt;"/>
+                            <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
+                                <Button Content="실행" Style="{StaticResource RunButtonStyle}" Click="BtnRun_Click" Tag="3_1"/>
+                                <Button Content="힌트" Style="{StaticResource HintButtonStyle}" Click="BtnHint_Click" Tag="3_1"/>
+                                <Button Content="정답 보기" Style="{StaticResource AnswerButtonStyle}" Click="BtnAnswer_Click" Tag="3_1"/>
+                            </StackPanel>
+                            <TextBlock x:Name="txtHint3_1"
+                                       Text="힌트: Foreground 속성으로 진행 막대 색상을 설정합니다."
+                                       Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                            <Border x:Name="resultBorder3_1" Background="White" Margin="0,8,0,0" Padding="10" Visibility="Collapsed">
+                                <StackPanel x:Name="resultPanel3_1"/>
+                            </Border>
+                        </StackPanel>
+                    </Expander>
 
                     <!-- 예제 2: Background 색상 -->
                     <GroupBox Header="Background (배경 색상)" Margin="0,0,0,15">
@@ -208,6 +340,28 @@
                             </Expander>
                         </StackPanel>
                     </GroupBox>
+
+                    <!-- 직접 해보기 3_2 -->
+                    <Expander Style="{StaticResource PracticeExpanderStyle}">
+                        <StackPanel Margin="10">
+                            <TextBlock Text="과제: Background=&quot;#E0E0E0&quot;, Foreground=&quot;Green&quot;, Value=90인 ProgressBar를 만드세요. Height=&quot;30&quot;으로 설정하세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
+                            <TextBox x:Name="txtPractice3_2"
+                                     Style="{StaticResource PracticeInputStyle}"
+                                     Height="50"
+                                     Text="&lt;ProgressBar /&gt;"/>
+                            <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
+                                <Button Content="실행" Style="{StaticResource RunButtonStyle}" Click="BtnRun_Click" Tag="3_2"/>
+                                <Button Content="힌트" Style="{StaticResource HintButtonStyle}" Click="BtnHint_Click" Tag="3_2"/>
+                                <Button Content="정답 보기" Style="{StaticResource AnswerButtonStyle}" Click="BtnAnswer_Click" Tag="3_2"/>
+                            </StackPanel>
+                            <TextBlock x:Name="txtHint3_2"
+                                       Text="힌트: Background와 Foreground 속성을 함께 설정하세요."
+                                       Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                            <Border x:Name="resultBorder3_2" Background="White" Margin="0,8,0,0" Padding="10" Visibility="Collapsed">
+                                <StackPanel x:Name="resultPanel3_2"/>
+                            </Border>
+                        </StackPanel>
+                    </Expander>
 
                     <!-- 예제 3: 높이와 테두리 -->
                     <GroupBox Header="높이와 테두리" Margin="0,0,0,15">
@@ -268,6 +422,28 @@
                         </StackPanel>
                     </GroupBox>
 
+                    <!-- 직접 해보기 4_1 -->
+                    <Expander Style="{StaticResource PracticeExpanderStyle}">
+                        <StackPanel Margin="10">
+                            <TextBlock Text="과제: Grid 안에 ProgressBar(Height=30, Value=65)와 TextBlock(&quot;65%&quot;)을 겹쳐서 배치하세요. TextBlock은 HorizontalAlignment=&quot;Center&quot;, VerticalAlignment=&quot;Center&quot;로 설정하세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
+                            <TextBox x:Name="txtPractice4_1"
+                                     Style="{StaticResource PracticeInputStyle}"
+                                     Height="100"
+                                     Text="&lt;Grid&gt;&#10;    &lt;!-- ProgressBar와 TextBlock 추가 --&gt;&#10;&lt;/Grid&gt;"/>
+                            <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
+                                <Button Content="실행" Style="{StaticResource RunButtonStyle}" Click="BtnRun_Click" Tag="4_1"/>
+                                <Button Content="힌트" Style="{StaticResource HintButtonStyle}" Click="BtnHint_Click" Tag="4_1"/>
+                                <Button Content="정답 보기" Style="{StaticResource AnswerButtonStyle}" Click="BtnAnswer_Click" Tag="4_1"/>
+                            </StackPanel>
+                            <TextBlock x:Name="txtHint4_1"
+                                       Text="힌트: Grid 안에 ProgressBar와 TextBlock을 순서대로 배치하면 자동으로 겹쳐집니다."
+                                       Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                            <Border x:Name="resultBorder4_1" Background="White" Margin="0,8,0,0" Padding="10" Visibility="Collapsed">
+                                <StackPanel x:Name="resultPanel4_1"/>
+                            </Border>
+                        </StackPanel>
+                    </Expander>
+
                     <!-- 예제 2: 다양한 형식 -->
                     <GroupBox Header="다양한 표시 형식" Margin="0,0,0,15">
                         <StackPanel>
@@ -294,6 +470,27 @@
                             </Expander>
                         </StackPanel>
                     </GroupBox>
+
+                    <!-- 직접 해보기 4_2 (코드 비교 방식) -->
+                    <Expander Style="{StaticResource PracticeExpanderStyle}">
+                        <StackPanel Margin="10">
+                            <TextBlock Text="과제: progressBar의 Value를 75로 설정하고, percentText.Text를 &quot;75%&quot;로 업데이트하는 코드를 작성하세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
+                            <TextBox x:Name="txtPractice4_2"
+                                     Style="{StaticResource PracticeInputStyle}"
+                                     Height="60"
+                                     Text="// progressBar와 percentText 업데이트&#x0a;"/>
+                            <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
+                                <Button Content="확인" Style="{StaticResource RunButtonStyle}" Click="BtnCheck_Click" Tag="4_2"/>
+                                <Button Content="힌트" Style="{StaticResource HintButtonStyle}" Click="BtnHint_Click" Tag="4_2"/>
+                                <Button Content="정답 보기" Style="{StaticResource AnswerButtonStyle}" Click="BtnAnswer_Click" Tag="4_2"/>
+                            </StackPanel>
+                            <TextBlock x:Name="txtHint4_2"
+                                       Text="힌트: .Value와 .Text 속성을 사용합니다."
+                                       Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                            <TextBlock x:Name="txtResult4_2"
+                                       Margin="0,8,0,0" FontWeight="Bold" Visibility="Collapsed"/>
+                        </StackPanel>
+                    </Expander>
 
                     <!-- 예제 3: 스타일링된 값 표시 -->
                     <GroupBox Header="스타일링된 값 표시" Margin="0,0,0,15">
@@ -368,6 +565,27 @@
                         </StackPanel>
                     </GroupBox>
 
+                    <!-- 직접 해보기 5_1 (코드 비교 방식) -->
+                    <Expander Style="{StaticResource PracticeExpanderStyle}">
+                        <StackPanel Margin="10">
+                            <TextBlock Text="과제: DispatcherTimer를 생성하고 Interval을 200밀리초로 설정하는 코드를 작성하세요. TimeSpan.FromMilliseconds를 사용하세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
+                            <TextBox x:Name="txtPractice5_1"
+                                     Style="{StaticResource PracticeInputStyle}"
+                                     Height="80"
+                                     Text="DispatcherTimer timer = new DispatcherTimer();&#x0a;// Interval 설정"/>
+                            <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
+                                <Button Content="확인" Style="{StaticResource RunButtonStyle}" Click="BtnCheck_Click" Tag="5_1"/>
+                                <Button Content="힌트" Style="{StaticResource HintButtonStyle}" Click="BtnHint_Click" Tag="5_1"/>
+                                <Button Content="정답 보기" Style="{StaticResource AnswerButtonStyle}" Click="BtnAnswer_Click" Tag="5_1"/>
+                            </StackPanel>
+                            <TextBlock x:Name="txtHint5_1"
+                                       Text="힌트: timer.Interval = TimeSpan.FromMilliseconds(값);"
+                                       Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                            <TextBlock x:Name="txtResult5_1"
+                                       Margin="0,8,0,0" FontWeight="Bold" Visibility="Collapsed"/>
+                        </StackPanel>
+                    </Expander>
+
                     <!-- 예제 2: 파일 다운로드 시뮬레이션 -->
                     <GroupBox Header="다운로드 시뮬레이션" Margin="0,0,0,15">
                         <StackPanel>
@@ -385,6 +603,27 @@
                             </Expander>
                         </StackPanel>
                     </GroupBox>
+
+                    <!-- 직접 해보기 5_2 (코드 비교 방식) -->
+                    <Expander Style="{StaticResource PracticeExpanderStyle}">
+                        <StackPanel Margin="10">
+                            <TextBlock Text="과제: progressBar의 값에 따라 Foreground 색상을 변경하는 조건문을 작성하세요. value &lt; 30이면 Brushes.Red, value &lt; 70이면 Brushes.Orange, 그 외에는 Brushes.Green으로 설정하세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
+                            <TextBox x:Name="txtPractice5_2"
+                                     Style="{StaticResource PracticeInputStyle}"
+                                     Height="120"
+                                     Text="if (value &lt; 30)&#x0a;{&#x0a;    // Red 설정&#x0a;}&#x0a;// 나머지 조건 추가"/>
+                            <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
+                                <Button Content="확인" Style="{StaticResource RunButtonStyle}" Click="BtnCheck_Click" Tag="5_2"/>
+                                <Button Content="힌트" Style="{StaticResource HintButtonStyle}" Click="BtnHint_Click" Tag="5_2"/>
+                                <Button Content="정답 보기" Style="{StaticResource AnswerButtonStyle}" Click="BtnAnswer_Click" Tag="5_2"/>
+                            </StackPanel>
+                            <TextBlock x:Name="txtHint5_2"
+                                       Text="힌트: if - else if - else 구조로 작성하고, progressBar.Foreground = Brushes.색상 형식으로 설정합니다."
+                                       Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                            <TextBlock x:Name="txtResult5_2"
+                                       Margin="0,8,0,0" FontWeight="Bold" Visibility="Collapsed"/>
+                        </StackPanel>
+                    </Expander>
 
                     <!-- 예제 3: 다중 진행률 표시 -->
                     <GroupBox Header="다중 진행률 표시" Margin="0,0,0,15">
