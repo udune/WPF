@@ -1,7 +1,10 @@
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
+using System.Windows.Markup;
 using System.Windows.Media;
 using System.Windows.Shapes;
 
@@ -13,9 +16,167 @@ namespace ch19_캔버스
         private UIElement? draggedElement;
         private Point clickPosition;
 
+        // 각 연습의 정답
+        private readonly Dictionary<string, string> _answers = new()
+        {
+            // 탭 1: 기본 사용법
+            { "1_1", "<Canvas Height=\"120\" Background=\"#EEEEEE\">\n    <Rectangle Fill=\"Orange\" Width=\"100\" Height=\"60\" Canvas.Left=\"50\" Canvas.Top=\"30\"/>\n</Canvas>" },
+            { "1_2", "<Canvas Height=\"120\" Background=\"#FFF8E1\">\n    <Ellipse Fill=\"LightBlue\" Width=\"80\" Height=\"80\" Canvas.Left=\"100\" Canvas.Top=\"20\"/>\n    <TextBlock Text=\"원 위에 텍스트\" Canvas.Left=\"110\" Canvas.Top=\"50\"/>\n</Canvas>" },
+
+            // 탭 2: 위치 지정
+            { "2_1", "<Canvas Height=\"120\" Background=\"#E8EAF6\">\n    <Rectangle Fill=\"Purple\" Width=\"80\" Height=\"50\" Canvas.Right=\"20\" Canvas.Bottom=\"20\"/>\n</Canvas>" },
+            { "2_2", "<Canvas Height=\"120\" Background=\"#ECEFF1\">\n    <Ellipse Fill=\"Red\" Width=\"40\" Height=\"40\" Canvas.Left=\"10\" Canvas.Top=\"10\"/>\n    <Ellipse Fill=\"Blue\" Width=\"40\" Height=\"40\" Canvas.Right=\"10\" Canvas.Top=\"10\"/>\n    <Ellipse Fill=\"Green\" Width=\"40\" Height=\"40\" Canvas.Left=\"10\" Canvas.Bottom=\"10\"/>\n    <Ellipse Fill=\"Yellow\" Width=\"40\" Height=\"40\" Canvas.Right=\"10\" Canvas.Bottom=\"10\"/>\n</Canvas>" },
+
+            // 탭 3: ZIndex
+            { "3_1", "<Canvas Height=\"130\" Background=\"#FAFAFA\">\n    <Ellipse Fill=\"Blue\" Width=\"80\" Height=\"80\" Canvas.Left=\"50\" Canvas.Top=\"25\" Panel.ZIndex=\"1\"/>\n    <Ellipse Fill=\"Red\" Width=\"80\" Height=\"80\" Canvas.Left=\"90\" Canvas.Top=\"35\" Panel.ZIndex=\"2\"/>\n    <Ellipse Fill=\"Yellow\" Width=\"80\" Height=\"80\" Canvas.Left=\"130\" Canvas.Top=\"25\" Panel.ZIndex=\"3\"/>\n</Canvas>" },
+            { "3_2", "Panel.SetZIndex(element, 10);" },
+
+            // 탭 4: 도형 그리기
+            { "4_1", "<Canvas Height=\"120\" Background=\"#F5F5F5\">\n    <Rectangle Fill=\"LightGreen\" Stroke=\"DarkGreen\" StrokeThickness=\"2\" Width=\"100\" Height=\"60\" RadiusX=\"10\" RadiusY=\"10\" Canvas.Left=\"50\" Canvas.Top=\"30\"/>\n</Canvas>" },
+            { "4_2", "<Canvas Height=\"100\" Background=\"#EDE7F6\">\n    <Line X1=\"30\" Y1=\"20\" X2=\"200\" Y2=\"80\" Stroke=\"Purple\" StrokeThickness=\"3\"/>\n</Canvas>" },
+            { "4_3", "<Canvas Height=\"120\" Background=\"#FFF8E1\">\n    <Polygon Points=\"100,20 150,100 50,100\" Fill=\"LightCoral\" Stroke=\"DarkRed\" StrokeThickness=\"2\"/>\n</Canvas>" },
+
+            // 탭 5: 실용 예제
+            { "5_1", "Rectangle rect = new Rectangle\n{\n    Width = 50,\n    Height = 50,\n    Fill = Brushes.Blue\n};\nCanvas.SetLeft(rect, 100);\nCanvas.SetTop(rect, 50);\nmyCanvas.Children.Add(rect);" },
+            { "5_2", "private void Element_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)\n{\n    UIElement element = sender as UIElement;\n    element.CaptureMouse();\n}" },
+        };
+
+        // 코드 비교 검증용 필수 키워드
+        private readonly Dictionary<string, string[]> _requiredKeywords = new()
+        {
+            { "3_2", new[] { "Panel.SetZIndex", "element", "10" } },
+            { "5_1", new[] { "Rectangle", "Width", "Height", "Fill", "Canvas.SetLeft", "Canvas.SetTop", "Children.Add" } },
+            { "5_2", new[] { "UIElement", "sender", "CaptureMouse" } },
+        };
+
         public MainWindow()
         {
             InitializeComponent();
+        }
+
+        // XAML 실행
+        private void ExecuteXaml(string xamlCode, StackPanel resultPanel, Border resultBorder)
+        {
+            resultPanel.Children.Clear();
+            resultBorder.Visibility = Visibility.Visible;
+
+            try
+            {
+                string fullXaml = xamlCode;
+
+                // 네임스페이스가 없으면 추가
+                if (!xamlCode.Contains("xmlns="))
+                {
+                    // Canvas를 포함한 컨테이너 처리
+                    if (xamlCode.TrimStart().StartsWith("<Canvas"))
+                    {
+                        fullXaml = xamlCode.Replace("<Canvas",
+                            "<Canvas xmlns='http://schemas.microsoft.com/winfx/2006/xaml/presentation'");
+                    }
+                    else
+                    {
+                        // 기타 컨트롤
+                        fullXaml = $@"<Canvas xmlns='http://schemas.microsoft.com/winfx/2006/xaml/presentation'
+                                              Height='120' Background='#FAFAFA'>
+                            {xamlCode}
+                        </Canvas>";
+                    }
+                }
+
+                var element = XamlReader.Parse(fullXaml) as UIElement;
+                if (element != null)
+                {
+                    resultPanel.Children.Add(element);
+                    resultPanel.Children.Add(new TextBlock
+                    {
+                        Text = "성공적으로 실행되었습니다!",
+                        Foreground = Brushes.Green,
+                        Margin = new Thickness(0, 10, 0, 0)
+                    });
+                }
+            }
+            catch (Exception ex)
+            {
+                resultPanel.Children.Add(new TextBlock
+                {
+                    Text = $"오류: {ex.Message}",
+                    Foreground = Brushes.Red,
+                    TextWrapping = TextWrapping.Wrap
+                });
+            }
+        }
+
+        // XAML 실행 버튼
+        private void BtnRun_Click(object sender, RoutedEventArgs e)
+        {
+            if (sender is Button button && button.Tag is string tag)
+            {
+                var txtPractice = FindName($"txtPractice{tag}") as TextBox;
+                var resultPanel = FindName($"resultPanel{tag}") as StackPanel;
+                var resultBorder = FindName($"resultBorder{tag}") as Border;
+
+                if (txtPractice != null && resultPanel != null && resultBorder != null)
+                {
+                    ExecuteXaml(txtPractice.Text, resultPanel, resultBorder);
+                }
+            }
+        }
+
+        // 힌트 토글 버튼
+        private void BtnHint_Click(object sender, RoutedEventArgs e)
+        {
+            if (sender is Button button && button.Tag is string tag)
+            {
+                var txtHint = FindName($"txtHint{tag}") as TextBlock;
+                if (txtHint != null)
+                {
+                    txtHint.Visibility = txtHint.Visibility == Visibility.Visible
+                        ? Visibility.Collapsed : Visibility.Visible;
+                }
+            }
+        }
+
+        // 정답 보기 버튼
+        private void BtnAnswer_Click(object sender, RoutedEventArgs e)
+        {
+            if (sender is Button button && button.Tag is string tag)
+            {
+                var txtPractice = FindName($"txtPractice{tag}") as TextBox;
+                if (txtPractice != null && _answers.TryGetValue(tag, out var answer))
+                {
+                    txtPractice.Text = answer;
+                }
+            }
+        }
+
+        // 코드 비교 확인 버튼
+        private void BtnCheck_Click(object sender, RoutedEventArgs e)
+        {
+            if (sender is Button button && button.Tag is string tag)
+            {
+                var txtPractice = FindName($"txtPractice{tag}") as TextBox;
+                var txtResult = FindName($"txtResult{tag}") as TextBlock;
+
+                if (txtPractice != null && txtResult != null && _requiredKeywords.TryGetValue(tag, out var keywords))
+                {
+                    txtResult.Visibility = Visibility.Visible;
+                    string userCode = txtPractice.Text;
+
+                    // 모든 필수 키워드가 포함되어 있는지 확인
+                    var missingKeywords = keywords.Where(k => !userCode.Contains(k)).ToList();
+
+                    if (missingKeywords.Count == 0)
+                    {
+                        txtResult.Text = "정답입니다! 모든 필수 요소가 포함되어 있습니다.";
+                        txtResult.Foreground = Brushes.Green;
+                    }
+                    else
+                    {
+                        txtResult.Text = $"다시 확인해보세요. 누락된 요소: {string.Join(", ", missingKeywords)}";
+                        txtResult.Foreground = Brushes.Red;
+                    }
+                }
+            }
         }
 
         // ZIndex 변경 - 빨강을 위로
