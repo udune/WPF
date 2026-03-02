@@ -5,9 +5,10 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ch19_캔버스"
         mc:Ignorable="d"
-        Title="ch19 Canvas 튜토리얼" Height="600" Width="850">
+        Title="ch19 캔버스 튜토리얼" Height="600" Width="850">
 
     <Window.Resources>
+        <!-- 코드 보기 스타일 -->
         <Style x:Key="CodeExpanderStyle" TargetType="Expander">
             <Setter Property="Header" Value="코드 보기"/>
             <Setter Property="Margin" Value="0,0,0,12"/>
@@ -26,6 +27,39 @@
             <Setter Property="MaxHeight" Value="300"/>
             <Setter Property="BorderBrush" Value="#333333"/>
             <Setter Property="BorderThickness" Value="1"/>
+        </Style>
+
+        <!-- 직접 해보기 스타일 -->
+        <Style x:Key="PracticeExpanderStyle" TargetType="Expander">
+            <Setter Property="Header" Value="직접 해보기"/>
+            <Setter Property="Margin" Value="0,0,0,15"/>
+            <Setter Property="IsExpanded" Value="False"/>
+            <Setter Property="Background" Value="#F5F5F5"/>
+        </Style>
+        <Style x:Key="PracticeInputStyle" TargetType="TextBox">
+            <Setter Property="AcceptsReturn" Value="True"/>
+            <Setter Property="FontFamily" Value="Consolas"/>
+            <Setter Property="FontSize" Value="12"/>
+            <Setter Property="Height" Value="80"/>
+            <Setter Property="VerticalScrollBarVisibility" Value="Auto"/>
+            <Setter Property="Padding" Value="5"/>
+        </Style>
+        <Style x:Key="RunButtonStyle" TargetType="Button">
+            <Setter Property="Width" Value="60"/>
+            <Setter Property="Padding" Value="5,3"/>
+            <Setter Property="Background" Value="#4CAF50"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="BorderThickness" Value="0"/>
+        </Style>
+        <Style x:Key="HintButtonStyle" TargetType="Button">
+            <Setter Property="Width" Value="50"/>
+            <Setter Property="Padding" Value="5,3"/>
+            <Setter Property="Margin" Value="5,0,0,0"/>
+        </Style>
+        <Style x:Key="AnswerButtonStyle" TargetType="Button">
+            <Setter Property="Width" Value="70"/>
+            <Setter Property="Padding" Value="5,3"/>
+            <Setter Property="Margin" Value="5,0,0,0"/>
         </Style>
     </Window.Resources>
 
@@ -54,6 +88,27 @@
                         </StackPanel>
                     </GroupBox>
 
+                    <!-- 직접 해보기 1_1 -->
+                    <Expander Style="{StaticResource PracticeExpanderStyle}">
+                        <StackPanel Margin="10">
+                            <TextBlock Text="과제: Canvas에 Rectangle을 배치하세요. Canvas.Left=&quot;50&quot;, Canvas.Top=&quot;30&quot; 위치에 Width=&quot;100&quot;, Height=&quot;60&quot;, Fill=&quot;Orange&quot;인 사각형을 만드세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
+                            <TextBox x:Name="txtPractice1_1"
+                                     Style="{StaticResource PracticeInputStyle}"
+                                     Text="&lt;Canvas Height=&quot;120&quot; Background=&quot;#EEEEEE&quot;&gt;&#10;    &lt;!-- 여기에 Rectangle 추가 --&gt;&#10;&lt;/Canvas&gt;"/>
+                            <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
+                                <Button Content="실행" Style="{StaticResource RunButtonStyle}" Click="BtnRun_Click" Tag="1_1"/>
+                                <Button Content="힌트" Style="{StaticResource HintButtonStyle}" Click="BtnHint_Click" Tag="1_1"/>
+                                <Button Content="정답 보기" Style="{StaticResource AnswerButtonStyle}" Click="BtnAnswer_Click" Tag="1_1"/>
+                            </StackPanel>
+                            <TextBlock x:Name="txtHint1_1"
+                                       Text="힌트: Rectangle 태그에 Canvas.Left, Canvas.Top 연결 속성을 사용하세요."
+                                       Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                            <Border x:Name="resultBorder1_1" Background="White" Margin="0,8,0,0" Padding="10" Visibility="Collapsed">
+                                <StackPanel x:Name="resultPanel1_1"/>
+                            </Border>
+                        </StackPanel>
+                    </Expander>
+
                     <!-- 예제 2: 컨트롤 배치 -->
                     <GroupBox Header="다양한 컨트롤 배치" Margin="0,0,0,15">
                         <StackPanel>
@@ -69,6 +124,27 @@
                             </Expander>
                         </StackPanel>
                     </GroupBox>
+
+                    <!-- 직접 해보기 1_2 -->
+                    <Expander Style="{StaticResource PracticeExpanderStyle}">
+                        <StackPanel Margin="10">
+                            <TextBlock Text="과제: Canvas에 Ellipse와 TextBlock을 배치하세요. Ellipse(Width=80, Height=80, Fill=LightBlue)를 (100, 20)에, TextBlock(&quot;원 위에 텍스트&quot;)를 (110, 50)에 배치하세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
+                            <TextBox x:Name="txtPractice1_2"
+                                     Style="{StaticResource PracticeInputStyle}"
+                                     Text="&lt;Canvas Height=&quot;120&quot; Background=&quot;#FFF8E1&quot;&gt;&#10;    &lt;!-- Ellipse와 TextBlock 추가 --&gt;&#10;&lt;/Canvas&gt;"/>
+                            <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
+                                <Button Content="실행" Style="{StaticResource RunButtonStyle}" Click="BtnRun_Click" Tag="1_2"/>
+                                <Button Content="힌트" Style="{StaticResource HintButtonStyle}" Click="BtnHint_Click" Tag="1_2"/>
+                                <Button Content="정답 보기" Style="{StaticResource AnswerButtonStyle}" Click="BtnAnswer_Click" Tag="1_2"/>
+                            </StackPanel>
+                            <TextBlock x:Name="txtHint1_2"
+                                       Text="힌트: 두 요소 모두 Canvas.Left와 Canvas.Top 속성을 지정하세요."
+                                       Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                            <Border x:Name="resultBorder1_2" Background="White" Margin="0,8,0,0" Padding="10" Visibility="Collapsed">
+                                <StackPanel x:Name="resultPanel1_2"/>
+                            </Border>
+                        </StackPanel>
+                    </Expander>
 
                     <!-- 예제 3: Canvas 크기 동작 -->
                     <GroupBox Header="Canvas의 크기 특성" Margin="0,0,0,15">
@@ -129,6 +205,27 @@
                         </StackPanel>
                     </GroupBox>
 
+                    <!-- 직접 해보기 2_1 -->
+                    <Expander Style="{StaticResource PracticeExpanderStyle}">
+                        <StackPanel Margin="10">
+                            <TextBlock Text="과제: Canvas.Right와 Canvas.Bottom을 사용하여 Rectangle을 우하단에 배치하세요. Canvas.Right=&quot;20&quot;, Canvas.Bottom=&quot;20&quot;, Width=&quot;80&quot;, Height=&quot;50&quot;, Fill=&quot;Purple&quot;" FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
+                            <TextBox x:Name="txtPractice2_1"
+                                     Style="{StaticResource PracticeInputStyle}"
+                                     Text="&lt;Canvas Height=&quot;120&quot; Background=&quot;#E8EAF6&quot;&gt;&#10;    &lt;!-- Right, Bottom 속성 사용 --&gt;&#10;&lt;/Canvas&gt;"/>
+                            <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
+                                <Button Content="실행" Style="{StaticResource RunButtonStyle}" Click="BtnRun_Click" Tag="2_1"/>
+                                <Button Content="힌트" Style="{StaticResource HintButtonStyle}" Click="BtnHint_Click" Tag="2_1"/>
+                                <Button Content="정답 보기" Style="{StaticResource AnswerButtonStyle}" Click="BtnAnswer_Click" Tag="2_1"/>
+                            </StackPanel>
+                            <TextBlock x:Name="txtHint2_1"
+                                       Text="힌트: Canvas.Right와 Canvas.Bottom은 각각 오른쪽, 아래쪽 가장자리로부터의 거리입니다."
+                                       Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                            <Border x:Name="resultBorder2_1" Background="White" Margin="0,8,0,0" Padding="10" Visibility="Collapsed">
+                                <StackPanel x:Name="resultPanel2_1"/>
+                            </Border>
+                        </StackPanel>
+                    </Expander>
+
                     <!-- 예제 3: 모서리 배치 -->
                     <GroupBox Header="4개 모서리에 배치" Margin="0,0,0,15">
                         <StackPanel>
@@ -145,6 +242,28 @@
                             </Expander>
                         </StackPanel>
                     </GroupBox>
+
+                    <!-- 직접 해보기 2_2 -->
+                    <Expander Style="{StaticResource PracticeExpanderStyle}">
+                        <StackPanel Margin="10">
+                            <TextBlock Text="과제: 4개의 Ellipse를 각 모서리에 배치하세요. 각각 Width=40, Height=40으로 설정하고, 각 모서리에서 10픽셀 떨어진 곳에 배치하세요. Fill 색상은 Red, Blue, Green, Yellow를 사용하세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
+                            <TextBox x:Name="txtPractice2_2"
+                                     Style="{StaticResource PracticeInputStyle}"
+                                     Height="100"
+                                     Text="&lt;Canvas Height=&quot;120&quot; Background=&quot;#ECEFF1&quot;&gt;&#10;    &lt;!-- 좌상단: Red --&gt;&#10;    &lt;!-- 우상단: Blue --&gt;&#10;    &lt;!-- 좌하단: Green --&gt;&#10;    &lt;!-- 우하단: Yellow --&gt;&#10;&lt;/Canvas&gt;"/>
+                            <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
+                                <Button Content="실행" Style="{StaticResource RunButtonStyle}" Click="BtnRun_Click" Tag="2_2"/>
+                                <Button Content="힌트" Style="{StaticResource HintButtonStyle}" Click="BtnHint_Click" Tag="2_2"/>
+                                <Button Content="정답 보기" Style="{StaticResource AnswerButtonStyle}" Click="BtnAnswer_Click" Tag="2_2"/>
+                            </StackPanel>
+                            <TextBlock x:Name="txtHint2_2"
+                                       Text="힌트: 좌상단은 Left+Top, 우상단은 Right+Top, 좌하단은 Left+Bottom, 우하단은 Right+Bottom 조합을 사용하세요."
+                                       Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                            <Border x:Name="resultBorder2_2" Background="White" Margin="0,8,0,0" Padding="10" Visibility="Collapsed">
+                                <StackPanel x:Name="resultPanel2_2"/>
+                            </Border>
+                        </StackPanel>
+                    </Expander>
 
                     <!-- 예제 4: 위치 미지정 시 -->
                     <GroupBox Header="위치 미지정 시 동작" Margin="0,0,0,15">
@@ -206,6 +325,28 @@
                         </StackPanel>
                     </GroupBox>
 
+                    <!-- 직접 해보기 3_1 -->
+                    <Expander Style="{StaticResource PracticeExpanderStyle}">
+                        <StackPanel Margin="10">
+                            <TextBlock Text="과제: 3개의 겹치는 Ellipse를 만들고, Panel.ZIndex를 사용하여 Yellow가 맨 위, Red가 중간, Blue가 맨 아래에 오도록 하세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
+                            <TextBox x:Name="txtPractice3_1"
+                                     Style="{StaticResource PracticeInputStyle}"
+                                     Height="120"
+                                     Text="&lt;Canvas Height=&quot;130&quot; Background=&quot;#FAFAFA&quot;&gt;&#10;    &lt;Ellipse Fill=&quot;Blue&quot; Width=&quot;80&quot; Height=&quot;80&quot; Canvas.Left=&quot;50&quot; Canvas.Top=&quot;25&quot;/&gt;&#10;    &lt;Ellipse Fill=&quot;Red&quot; Width=&quot;80&quot; Height=&quot;80&quot; Canvas.Left=&quot;90&quot; Canvas.Top=&quot;35&quot;/&gt;&#10;    &lt;Ellipse Fill=&quot;Yellow&quot; Width=&quot;80&quot; Height=&quot;80&quot; Canvas.Left=&quot;130&quot; Canvas.Top=&quot;25&quot;/&gt;&#10;&lt;/Canvas&gt;"/>
+                            <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
+                                <Button Content="실행" Style="{StaticResource RunButtonStyle}" Click="BtnRun_Click" Tag="3_1"/>
+                                <Button Content="힌트" Style="{StaticResource HintButtonStyle}" Click="BtnHint_Click" Tag="3_1"/>
+                                <Button Content="정답 보기" Style="{StaticResource AnswerButtonStyle}" Click="BtnAnswer_Click" Tag="3_1"/>
+                            </StackPanel>
+                            <TextBlock x:Name="txtHint3_1"
+                                       Text="힌트: Panel.ZIndex 값이 클수록 위에 표시됩니다. Yellow에 가장 큰 값을, Blue에 가장 작은 값을 주세요."
+                                       Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                            <Border x:Name="resultBorder3_1" Background="White" Margin="0,8,0,0" Padding="10" Visibility="Collapsed">
+                                <StackPanel x:Name="resultPanel3_1"/>
+                            </Border>
+                        </StackPanel>
+                    </Expander>
+
                     <!-- 예제 3: 음수 ZIndex -->
                     <GroupBox Header="음수 ZIndex" Margin="0,0,0,15">
                         <StackPanel>
@@ -238,6 +379,27 @@
                             </Expander>
                         </StackPanel>
                     </GroupBox>
+
+                    <!-- 직접 해보기 3_2 (코드 비교 방식) -->
+                    <Expander Style="{StaticResource PracticeExpanderStyle}">
+                        <StackPanel Margin="10">
+                            <TextBlock Text="과제: Panel.SetZIndex 메서드를 사용하여 element를 맨 위로 올리는 코드를 작성하세요. ZIndex 값은 10으로 설정하세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
+                            <TextBox x:Name="txtPractice3_2"
+                                     Style="{StaticResource PracticeInputStyle}"
+                                     Height="60"
+                                     Text="// element를 맨 위로 올리기&#x0a;"/>
+                            <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
+                                <Button Content="확인" Style="{StaticResource RunButtonStyle}" Click="BtnCheck_Click" Tag="3_2"/>
+                                <Button Content="힌트" Style="{StaticResource HintButtonStyle}" Click="BtnHint_Click" Tag="3_2"/>
+                                <Button Content="정답 보기" Style="{StaticResource AnswerButtonStyle}" Click="BtnAnswer_Click" Tag="3_2"/>
+                            </StackPanel>
+                            <TextBlock x:Name="txtHint3_2"
+                                       Text="힌트: Panel.SetZIndex(요소, 값) 형식으로 사용합니다."
+                                       Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                            <TextBlock x:Name="txtResult3_2"
+                                       Margin="0,8,0,0" FontWeight="Bold" Visibility="Collapsed"/>
+                        </StackPanel>
+                    </Expander>
                 </StackPanel>
             </ScrollViewer>
         </TabItem>
@@ -271,6 +433,27 @@
                         </StackPanel>
                     </GroupBox>
 
+                    <!-- 직접 해보기 4_1 -->
+                    <Expander Style="{StaticResource PracticeExpanderStyle}">
+                        <StackPanel Margin="10">
+                            <TextBlock Text="과제: 둥근 모서리 사각형을 만드세요. Fill=&quot;LightGreen&quot;, Stroke=&quot;DarkGreen&quot;, StrokeThickness=&quot;2&quot;, Width=&quot;100&quot;, Height=&quot;60&quot;, RadiusX=&quot;10&quot;, RadiusY=&quot;10&quot;, 위치는 (50, 30)" FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
+                            <TextBox x:Name="txtPractice4_1"
+                                     Style="{StaticResource PracticeInputStyle}"
+                                     Text="&lt;Canvas Height=&quot;120&quot; Background=&quot;#F5F5F5&quot;&gt;&#10;    &lt;!-- 둥근 모서리 Rectangle --&gt;&#10;&lt;/Canvas&gt;"/>
+                            <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
+                                <Button Content="실행" Style="{StaticResource RunButtonStyle}" Click="BtnRun_Click" Tag="4_1"/>
+                                <Button Content="힌트" Style="{StaticResource HintButtonStyle}" Click="BtnHint_Click" Tag="4_1"/>
+                                <Button Content="정답 보기" Style="{StaticResource AnswerButtonStyle}" Click="BtnAnswer_Click" Tag="4_1"/>
+                            </StackPanel>
+                            <TextBlock x:Name="txtHint4_1"
+                                       Text="힌트: Rectangle의 RadiusX, RadiusY 속성으로 모서리 둥글기를 설정합니다."
+                                       Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                            <Border x:Name="resultBorder4_1" Background="White" Margin="0,8,0,0" Padding="10" Visibility="Collapsed">
+                                <StackPanel x:Name="resultPanel4_1"/>
+                            </Border>
+                        </StackPanel>
+                    </Expander>
+
                     <!-- 예제 2: Line -->
                     <GroupBox Header="Line (선)" Margin="0,0,0,15">
                         <StackPanel>
@@ -287,6 +470,27 @@
                             </Expander>
                         </StackPanel>
                     </GroupBox>
+
+                    <!-- 직접 해보기 4_2 -->
+                    <Expander Style="{StaticResource PracticeExpanderStyle}">
+                        <StackPanel Margin="10">
+                            <TextBlock Text="과제: 대각선 Line을 그리세요. (30, 20)에서 (200, 80)까지, Stroke=&quot;Purple&quot;, StrokeThickness=&quot;3&quot;" FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
+                            <TextBox x:Name="txtPractice4_2"
+                                     Style="{StaticResource PracticeInputStyle}"
+                                     Text="&lt;Canvas Height=&quot;100&quot; Background=&quot;#EDE7F6&quot;&gt;&#10;    &lt;!-- Line 추가 --&gt;&#10;&lt;/Canvas&gt;"/>
+                            <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
+                                <Button Content="실행" Style="{StaticResource RunButtonStyle}" Click="BtnRun_Click" Tag="4_2"/>
+                                <Button Content="힌트" Style="{StaticResource HintButtonStyle}" Click="BtnHint_Click" Tag="4_2"/>
+                                <Button Content="정답 보기" Style="{StaticResource AnswerButtonStyle}" Click="BtnAnswer_Click" Tag="4_2"/>
+                            </StackPanel>
+                            <TextBlock x:Name="txtHint4_2"
+                                       Text="힌트: Line은 X1, Y1 (시작점)과 X2, Y2 (끝점)으로 정의됩니다."
+                                       Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                            <Border x:Name="resultBorder4_2" Background="White" Margin="0,8,0,0" Padding="10" Visibility="Collapsed">
+                                <StackPanel x:Name="resultPanel4_2"/>
+                            </Border>
+                        </StackPanel>
+                    </Expander>
 
                     <!-- 예제 3: Polyline과 Polygon -->
                     <GroupBox Header="Polyline과 Polygon" Margin="0,0,0,15">
@@ -305,6 +509,27 @@
                             </Expander>
                         </StackPanel>
                     </GroupBox>
+
+                    <!-- 직접 해보기 4_3 -->
+                    <Expander Style="{StaticResource PracticeExpanderStyle}">
+                        <StackPanel Margin="10">
+                            <TextBlock Text="과제: Polygon을 사용하여 삼각형을 만드세요. Points=&quot;100,20 150,100 50,100&quot;, Fill=&quot;LightCoral&quot;, Stroke=&quot;DarkRed&quot;, StrokeThickness=&quot;2&quot;" FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
+                            <TextBox x:Name="txtPractice4_3"
+                                     Style="{StaticResource PracticeInputStyle}"
+                                     Text="&lt;Canvas Height=&quot;120&quot; Background=&quot;#FFF8E1&quot;&gt;&#10;    &lt;!-- Polygon 삼각형 --&gt;&#10;&lt;/Canvas&gt;"/>
+                            <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
+                                <Button Content="실행" Style="{StaticResource RunButtonStyle}" Click="BtnRun_Click" Tag="4_3"/>
+                                <Button Content="힌트" Style="{StaticResource HintButtonStyle}" Click="BtnHint_Click" Tag="4_3"/>
+                                <Button Content="정답 보기" Style="{StaticResource AnswerButtonStyle}" Click="BtnAnswer_Click" Tag="4_3"/>
+                            </StackPanel>
+                            <TextBlock x:Name="txtHint4_3"
+                                       Text="힌트: Polygon의 Points 속성에 좌표들을 공백으로 구분하여 입력합니다. 자동으로 닫힙니다."
+                                       Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                            <Border x:Name="resultBorder4_3" Background="White" Margin="0,8,0,0" Padding="10" Visibility="Collapsed">
+                                <StackPanel x:Name="resultPanel4_3"/>
+                            </Border>
+                        </StackPanel>
+                    </Expander>
 
                     <!-- 예제 4: Path -->
                     <GroupBox Header="Path (경로)" Margin="0,0,0,15">
@@ -357,6 +582,27 @@
                         </StackPanel>
                     </GroupBox>
 
+                    <!-- 직접 해보기 5_1 (코드 비교 방식) -->
+                    <Expander Style="{StaticResource PracticeExpanderStyle}">
+                        <StackPanel Margin="10">
+                            <TextBlock Text="과제: Canvas에 동적으로 Rectangle을 추가하는 코드를 작성하세요. Width=50, Height=50, Fill=Brushes.Blue로 설정하고, Canvas.SetLeft와 Canvas.SetTop으로 (100, 50)에 배치한 후 myCanvas.Children.Add로 추가하세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
+                            <TextBox x:Name="txtPractice5_1"
+                                     Style="{StaticResource PracticeInputStyle}"
+                                     Height="120"
+                                     Text="Rectangle rect = new Rectangle&#x0a;{&#x0a;    // 속성 설정&#x0a;};&#x0a;// 위치 설정 및 추가"/>
+                            <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
+                                <Button Content="확인" Style="{StaticResource RunButtonStyle}" Click="BtnCheck_Click" Tag="5_1"/>
+                                <Button Content="힌트" Style="{StaticResource HintButtonStyle}" Click="BtnHint_Click" Tag="5_1"/>
+                                <Button Content="정답 보기" Style="{StaticResource AnswerButtonStyle}" Click="BtnAnswer_Click" Tag="5_1"/>
+                            </StackPanel>
+                            <TextBlock x:Name="txtHint5_1"
+                                       Text="힌트: Canvas.SetLeft(element, x)와 Canvas.SetTop(element, y)로 위치를 설정합니다."
+                                       Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                            <TextBlock x:Name="txtResult5_1"
+                                       Margin="0,8,0,0" FontWeight="Bold" Visibility="Collapsed"/>
+                        </StackPanel>
+                    </Expander>
+
                     <!-- 예제 2: 드래그 앤 드롭 -->
                     <GroupBox Header="드래그 앤 드롭" Margin="0,0,0,15">
                         <StackPanel>
@@ -384,6 +630,27 @@
                             </Expander>
                         </StackPanel>
                     </GroupBox>
+
+                    <!-- 직접 해보기 5_2 (코드 비교 방식) -->
+                    <Expander Style="{StaticResource PracticeExpanderStyle}">
+                        <StackPanel Margin="10">
+                            <TextBlock Text="과제: 드래그 시작 시 마우스를 캡처하는 MouseLeftButtonDown 이벤트 핸들러를 작성하세요. sender를 UIElement로 캐스팅하고, CaptureMouse()를 호출하세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
+                            <TextBox x:Name="txtPractice5_2"
+                                     Style="{StaticResource PracticeInputStyle}"
+                                     Height="100"
+                                     Text="private void Element_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)&#x0a;{&#x0a;    // 구현&#x0a;}"/>
+                            <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
+                                <Button Content="확인" Style="{StaticResource RunButtonStyle}" Click="BtnCheck_Click" Tag="5_2"/>
+                                <Button Content="힌트" Style="{StaticResource HintButtonStyle}" Click="BtnHint_Click" Tag="5_2"/>
+                                <Button Content="정답 보기" Style="{StaticResource AnswerButtonStyle}" Click="BtnAnswer_Click" Tag="5_2"/>
+                            </StackPanel>
+                            <TextBlock x:Name="txtHint5_2"
+                                       Text="힌트: 'sender as UIElement'로 캐스팅하고, CaptureMouse() 메서드로 마우스를 캡처합니다."
+                                       Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                            <TextBlock x:Name="txtResult5_2"
+                                       Margin="0,8,0,0" FontWeight="Bold" Visibility="Collapsed"/>
+                        </StackPanel>
+                    </Expander>
 
                     <!-- 예제 3: 간단한 다이어그램 -->
                     <GroupBox Header="간단한 다이어그램" Margin="0,0,0,15">
