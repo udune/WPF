@@ -1,0 +1,28 @@
+<Project>
+
+  <!--
+    학습 진도 추적기를 루트의 ch* 챕터 프로젝트에만 주입합니다.
+
+    조건 설명:
+      UseWPF                    - Thread(콘솔 앱) 제외
+      MSBuildProjectName ch*    - HelloWPF, HelloWPF_Rider, SignalR 제외
+      부모 폴더에 .git 존재      - 루트 직속 챕터만. HelloWPF2/ch02 Label 등은
+                                  부모가 HelloWPF2 라 .git 이 없으므로 제외됩니다.
+      EnableStudyTracker        - 개별 프로젝트에서 false 로 끌 수 있는 탈출구
+
+    Directory.Build.targets 는 프로젝트 본문 '뒤'에 import 되므로
+    csproj 에서 설정한 UseWPF 를 여기서 읽을 수 있습니다.
+    (Directory.Build.props 였다면 아직 설정되기 전이라 읽을 수 없습니다.)
+  -->
+
+  <PropertyGroup Condition="'$(EnableStudyTracker)' == ''">
+    <EnableStudyTracker Condition="'$(UseWPF)' == 'true' AND $(MSBuildProjectName.StartsWith('ch')) AND Exists('$(MSBuildProjectDirectory)\..\.git')">true</EnableStudyTracker>
+    <EnableStudyTracker Condition="'$(EnableStudyTracker)' == ''">false</EnableStudyTracker>
+  </PropertyGroup>
+
+  <ItemGroup Condition="'$(EnableStudyTracker)' == 'true'">
+    <Compile Include="$(MSBuildThisFileDirectory)Shared\StudyTracker.cs"
+             Link="Shared\StudyTracker.cs" />
+  </ItemGroup>
+
+</Project>
