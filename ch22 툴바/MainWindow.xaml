@@ -27,6 +27,39 @@
             <Setter Property="BorderBrush" Value="#333333"/>
             <Setter Property="BorderThickness" Value="1"/>
         </Style>
+
+        <!-- 직접 해보기 스타일 -->
+        <Style x:Key="PracticeExpanderStyle" TargetType="Expander">
+            <Setter Property="Header" Value="직접 해보기"/>
+            <Setter Property="Margin" Value="0,0,0,15"/>
+            <Setter Property="IsExpanded" Value="False"/>
+            <Setter Property="Background" Value="#F5F5F5"/>
+        </Style>
+        <Style x:Key="PracticeInputStyle" TargetType="TextBox">
+            <Setter Property="AcceptsReturn" Value="True"/>
+            <Setter Property="FontFamily" Value="Consolas"/>
+            <Setter Property="FontSize" Value="12"/>
+            <Setter Property="Height" Value="80"/>
+            <Setter Property="VerticalScrollBarVisibility" Value="Auto"/>
+            <Setter Property="Padding" Value="5"/>
+        </Style>
+        <Style x:Key="RunButtonStyle" TargetType="Button">
+            <Setter Property="Width" Value="60"/>
+            <Setter Property="Padding" Value="5,3"/>
+            <Setter Property="Background" Value="#4CAF50"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="BorderThickness" Value="0"/>
+        </Style>
+        <Style x:Key="HintButtonStyle" TargetType="Button">
+            <Setter Property="Width" Value="50"/>
+            <Setter Property="Padding" Value="5,3"/>
+            <Setter Property="Margin" Value="5,0,0,0"/>
+        </Style>
+        <Style x:Key="AnswerButtonStyle" TargetType="Button">
+            <Setter Property="Width" Value="70"/>
+            <Setter Property="Padding" Value="5,3"/>
+            <Setter Property="Margin" Value="5,0,0,0"/>
+        </Style>
     </Window.Resources>
 
     <TabControl>
@@ -121,7 +154,49 @@
                             </Expander>
                         </StackPanel>
                     </GroupBox>
-                </StackPanel>
+                
+                <!-- 직접 해보기 1_1 -->
+                <Expander Style="{StaticResource PracticeExpanderStyle}">
+                    <StackPanel Margin="10">
+                        <TextBlock Text="과제: ToolBar 안에 &quot;굵게&quot;, &quot;기울임&quot;, &quot;밑줄&quot; 버튼 3개를 넣으세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
+                        <TextBox x:Name="txtPractice1_1"
+                                 Style="{StaticResource PracticeInputStyle}"
+                                 Text="&lt;ToolBar&gt;&#10;    &#10;&lt;/ToolBar&gt;"/>
+                        <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
+                            <Button Content="실행" Style="{StaticResource RunButtonStyle}" Click="BtnRun_Click" Tag="1_1"/>
+                            <Button Content="힌트" Style="{StaticResource HintButtonStyle}" Click="BtnHint_Click" Tag="1_1"/>
+                            <Button Content="정답 보기" Style="{StaticResource AnswerButtonStyle}" Click="BtnAnswer_Click" Tag="1_1"/>
+                        </StackPanel>
+                        <TextBlock x:Name="txtHint1_1"
+                                   Text="힌트: ToolBar 안에 &lt;Button Content=&quot;...&quot;/&gt; 를 나열하면 됩니다."
+                                   Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                        <Border x:Name="resultBorder1_1" Background="White" Margin="0,8,0,0" Padding="10" Visibility="Collapsed">
+                            <StackPanel x:Name="resultPanel1_1"/>
+                        </Border>
+                    </StackPanel>
+                </Expander>
+
+                <!-- 직접 해보기 1_2 -->
+                <Expander Style="{StaticResource PracticeExpanderStyle}">
+                    <StackPanel Margin="10">
+                        <TextBlock Text="과제: ToolBarTray 안에 ToolBar 2개를 배치하고, 첫 ToolBar 안에는 Separator로 버튼을 구분하세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
+                        <TextBox x:Name="txtPractice1_2"
+                                 Style="{StaticResource PracticeInputStyle}"
+                                 Text="&lt;ToolBarTray&gt;&#10;    &#10;&lt;/ToolBarTray&gt;"/>
+                        <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
+                            <Button Content="실행" Style="{StaticResource RunButtonStyle}" Click="BtnRun_Click" Tag="1_2"/>
+                            <Button Content="힌트" Style="{StaticResource HintButtonStyle}" Click="BtnHint_Click" Tag="1_2"/>
+                            <Button Content="정답 보기" Style="{StaticResource AnswerButtonStyle}" Click="BtnAnswer_Click" Tag="1_2"/>
+                        </StackPanel>
+                        <TextBlock x:Name="txtHint1_2"
+                                   Text="힌트: ToolBarTray 는 여러 ToolBar 를 담는 컨테이너입니다. 버튼 사이에 &lt;Separator/&gt; 를 넣으세요."
+                                   Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                        <Border x:Name="resultBorder1_2" Background="White" Margin="0,8,0,0" Padding="10" Visibility="Collapsed">
+                            <StackPanel x:Name="resultPanel1_2"/>
+                        </Border>
+                    </StackPanel>
+                </Expander>
+</StackPanel>
             </ScrollViewer>
         </TabItem>
 
@@ -229,7 +304,49 @@
                             </Expander>
                         </StackPanel>
                     </GroupBox>
-                </StackPanel>
+                
+                <!-- 직접 해보기 2_1 -->
+                <Expander Style="{StaticResource PracticeExpanderStyle}">
+                    <StackPanel Margin="10">
+                        <TextBlock Text="과제: ToolBar 안에 항목이 3개인 ComboBox를 넣고 첫 항목이 선택되게 하세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
+                        <TextBox x:Name="txtPractice2_1"
+                                 Style="{StaticResource PracticeInputStyle}"
+                                 Text="&lt;ToolBar&gt;&#10;    &lt;ComboBox Width=&quot;100&quot;&gt;&#10;        &#10;    &lt;/ComboBox&gt;&#10;&lt;/ToolBar&gt;"/>
+                        <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
+                            <Button Content="실행" Style="{StaticResource RunButtonStyle}" Click="BtnRun_Click" Tag="2_1"/>
+                            <Button Content="힌트" Style="{StaticResource HintButtonStyle}" Click="BtnHint_Click" Tag="2_1"/>
+                            <Button Content="정답 보기" Style="{StaticResource AnswerButtonStyle}" Click="BtnAnswer_Click" Tag="2_1"/>
+                        </StackPanel>
+                        <TextBlock x:Name="txtHint2_1"
+                                   Text="힌트: ComboBoxItem 을 나열하고 SelectedIndex=&quot;0&quot; 을 지정합니다."
+                                   Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                        <Border x:Name="resultBorder2_1" Background="White" Margin="0,8,0,0" Padding="10" Visibility="Collapsed">
+                            <StackPanel x:Name="resultPanel2_1"/>
+                        </Border>
+                    </StackPanel>
+                </Expander>
+
+                <!-- 직접 해보기 2_2 -->
+                <Expander Style="{StaticResource PracticeExpanderStyle}">
+                    <StackPanel Margin="10">
+                        <TextBlock Text="과제: ToolBar 안에 ToggleButton 과 CheckBox 를 각각 하나씩 넣으세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
+                        <TextBox x:Name="txtPractice2_2"
+                                 Style="{StaticResource PracticeInputStyle}"
+                                 Text="&lt;ToolBar&gt;&#10;    &#10;&lt;/ToolBar&gt;"/>
+                        <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
+                            <Button Content="실행" Style="{StaticResource RunButtonStyle}" Click="BtnRun_Click" Tag="2_2"/>
+                            <Button Content="힌트" Style="{StaticResource HintButtonStyle}" Click="BtnHint_Click" Tag="2_2"/>
+                            <Button Content="정답 보기" Style="{StaticResource AnswerButtonStyle}" Click="BtnAnswer_Click" Tag="2_2"/>
+                        </StackPanel>
+                        <TextBlock x:Name="txtHint2_2"
+                                   Text="힌트: ToggleButton 과 CheckBox 모두 Content 로 표시할 글자를 지정합니다."
+                                   Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                        <Border x:Name="resultBorder2_2" Background="White" Margin="0,8,0,0" Padding="10" Visibility="Collapsed">
+                            <StackPanel x:Name="resultPanel2_2"/>
+                        </Border>
+                    </StackPanel>
+                </Expander>
+</StackPanel>
             </ScrollViewer>
         </TabItem>
 
@@ -305,7 +422,49 @@
                             </Expander>
                         </StackPanel>
                     </GroupBox>
-                </StackPanel>
+                
+                <!-- 직접 해보기 3_1 -->
+                <Expander Style="{StaticResource PracticeExpanderStyle}">
+                    <StackPanel Margin="10">
+                        <TextBlock Text="과제: ToolBar 에 버튼 2개를 넣되, 두 번째 버튼은 항상 오버플로우 메뉴로 가도록 만드세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
+                        <TextBox x:Name="txtPractice3_1"
+                                 Style="{StaticResource PracticeInputStyle}"
+                                 Text="&lt;ToolBar Width=&quot;200&quot;&gt;&#10;    &lt;Button Content=&quot;자주 쓰는 명령&quot;/&gt;&#10;    &#10;&lt;/ToolBar&gt;"/>
+                        <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
+                            <Button Content="실행" Style="{StaticResource RunButtonStyle}" Click="BtnRun_Click" Tag="3_1"/>
+                            <Button Content="힌트" Style="{StaticResource HintButtonStyle}" Click="BtnHint_Click" Tag="3_1"/>
+                            <Button Content="정답 보기" Style="{StaticResource AnswerButtonStyle}" Click="BtnAnswer_Click" Tag="3_1"/>
+                        </StackPanel>
+                        <TextBlock x:Name="txtHint3_1"
+                                   Text="힌트: ToolBar.OverflowMode=&quot;Always&quot; 를 첨부 속성으로 지정합니다."
+                                   Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                        <Border x:Name="resultBorder3_1" Background="White" Margin="0,8,0,0" Padding="10" Visibility="Collapsed">
+                            <StackPanel x:Name="resultPanel3_1"/>
+                        </Border>
+                    </StackPanel>
+                </Expander>
+
+                <!-- 직접 해보기 3_2 -->
+                <Expander Style="{StaticResource PracticeExpanderStyle}">
+                    <StackPanel Margin="10">
+                        <TextBlock Text="과제: 폭이 좁은 ToolBar 를 만들고, 첫 버튼만 절대 오버플로우되지 않게 하세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
+                        <TextBox x:Name="txtPractice3_2"
+                                 Style="{StaticResource PracticeInputStyle}"
+                                 Text="&lt;ToolBar Width=&quot;150&quot;&gt;&#10;    &#10;&lt;/ToolBar&gt;"/>
+                        <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
+                            <Button Content="실행" Style="{StaticResource RunButtonStyle}" Click="BtnRun_Click" Tag="3_2"/>
+                            <Button Content="힌트" Style="{StaticResource HintButtonStyle}" Click="BtnHint_Click" Tag="3_2"/>
+                            <Button Content="정답 보기" Style="{StaticResource AnswerButtonStyle}" Click="BtnAnswer_Click" Tag="3_2"/>
+                        </StackPanel>
+                        <TextBlock x:Name="txtHint3_2"
+                                   Text="힌트: ToolBar.OverflowMode=&quot;Never&quot; 를 쓰면 항상 툴바에 남습니다."
+                                   Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                        <Border x:Name="resultBorder3_2" Background="White" Margin="0,8,0,0" Padding="10" Visibility="Collapsed">
+                            <StackPanel x:Name="resultPanel3_2"/>
+                        </Border>
+                    </StackPanel>
+                </Expander>
+</StackPanel>
             </ScrollViewer>
         </TabItem>
 
@@ -411,7 +570,49 @@
                             </Expander>
                         </StackPanel>
                     </GroupBox>
-                </StackPanel>
+                
+                <!-- 직접 해보기 4_1 -->
+                <Expander Style="{StaticResource PracticeExpanderStyle}">
+                    <StackPanel Margin="10">
+                        <TextBlock Text="과제: ToolBarTray 에 ToolBar 2개를 서로 다른 Band 에 배치하세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
+                        <TextBox x:Name="txtPractice4_1"
+                                 Style="{StaticResource PracticeInputStyle}"
+                                 Text="&lt;ToolBarTray&gt;&#10;    &#10;&lt;/ToolBarTray&gt;"/>
+                        <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
+                            <Button Content="실행" Style="{StaticResource RunButtonStyle}" Click="BtnRun_Click" Tag="4_1"/>
+                            <Button Content="힌트" Style="{StaticResource HintButtonStyle}" Click="BtnHint_Click" Tag="4_1"/>
+                            <Button Content="정답 보기" Style="{StaticResource AnswerButtonStyle}" Click="BtnAnswer_Click" Tag="4_1"/>
+                        </StackPanel>
+                        <TextBlock x:Name="txtHint4_1"
+                                   Text="힌트: Band 는 줄 번호, BandIndex 는 같은 줄 안에서의 순서입니다."
+                                   Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                        <Border x:Name="resultBorder4_1" Background="White" Margin="0,8,0,0" Padding="10" Visibility="Collapsed">
+                            <StackPanel x:Name="resultPanel4_1"/>
+                        </Border>
+                    </StackPanel>
+                </Expander>
+
+                <!-- 직접 해보기 4_2 -->
+                <Expander Style="{StaticResource PracticeExpanderStyle}">
+                    <StackPanel Margin="10">
+                        <TextBlock Text="과제: 세로 방향(Vertical) ToolBarTray 를 만들고 버튼 3개를 넣으세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
+                        <TextBox x:Name="txtPractice4_2"
+                                 Style="{StaticResource PracticeInputStyle}"
+                                 Text="&lt;ToolBarTray&gt;&#10;    &#10;&lt;/ToolBarTray&gt;"/>
+                        <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
+                            <Button Content="실행" Style="{StaticResource RunButtonStyle}" Click="BtnRun_Click" Tag="4_2"/>
+                            <Button Content="힌트" Style="{StaticResource HintButtonStyle}" Click="BtnHint_Click" Tag="4_2"/>
+                            <Button Content="정답 보기" Style="{StaticResource AnswerButtonStyle}" Click="BtnAnswer_Click" Tag="4_2"/>
+                        </StackPanel>
+                        <TextBlock x:Name="txtHint4_2"
+                                   Text="힌트: ToolBarTray 에 Orientation=&quot;Vertical&quot; 을 지정합니다."
+                                   Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                        <Border x:Name="resultBorder4_2" Background="White" Margin="0,8,0,0" Padding="10" Visibility="Collapsed">
+                            <StackPanel x:Name="resultPanel4_2"/>
+                        </Border>
+                    </StackPanel>
+                </Expander>
+</StackPanel>
             </ScrollViewer>
         </TabItem>
 
@@ -580,7 +781,47 @@
                             </Expander>
                         </StackPanel>
                     </GroupBox>
-                </StackPanel>
+                
+                <!-- 직접 해보기 5_1 -->
+                <Expander Style="{StaticResource PracticeExpanderStyle}">
+                    <StackPanel Margin="10">
+                        <TextBlock Text="과제: 텍스트 에디터용 툴바를 만드세요. 새로 만들기/열기/저장 다음에 Separator, 그 뒤에 굵게/기울임 토글 버튼을 넣습니다." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
+                        <TextBox x:Name="txtPractice5_1"
+                                 Style="{StaticResource PracticeInputStyle}"
+                                 Text="&lt;ToolBar&gt;&#10;    &#10;&lt;/ToolBar&gt;"/>
+                        <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
+                            <Button Content="실행" Style="{StaticResource RunButtonStyle}" Click="BtnRun_Click" Tag="5_1"/>
+                            <Button Content="힌트" Style="{StaticResource HintButtonStyle}" Click="BtnHint_Click" Tag="5_1"/>
+                            <Button Content="정답 보기" Style="{StaticResource AnswerButtonStyle}" Click="BtnAnswer_Click" Tag="5_1"/>
+                        </StackPanel>
+                        <TextBlock x:Name="txtHint5_1"
+                                   Text="힌트: 파일 명령 3개 → &lt;Separator/&gt; → ToggleButton 2개 순서로 배치합니다."
+                                   Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                        <Border x:Name="resultBorder5_1" Background="White" Margin="0,8,0,0" Padding="10" Visibility="Collapsed">
+                            <StackPanel x:Name="resultPanel5_1"/>
+                        </Border>
+                    </StackPanel>
+                </Expander>
+
+                <!-- 직접 해보기 5_2 -->
+                <Expander Style="{StaticResource PracticeExpanderStyle}">
+                    <StackPanel Margin="10">
+                        <TextBlock Text="과제: 버튼을 눌렀을 때 ToolBarTray(tray)의 드래그를 잠그는 이벤트 핸들러를 작성하세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
+                        <TextBox x:Name="txtPractice5_2"
+                                 Style="{StaticResource PracticeInputStyle}"
+                                 Text="private void Lock_Click(object sender, RoutedEventArgs e)&#10;{&#10;    &#10;}"/>
+                        <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
+                            <Button Content="확인" Style="{StaticResource RunButtonStyle}" Click="BtnCheck_Click" Tag="5_2"/>
+                            <Button Content="힌트" Style="{StaticResource HintButtonStyle}" Click="BtnHint_Click" Tag="5_2"/>
+                            <Button Content="정답 보기" Style="{StaticResource AnswerButtonStyle}" Click="BtnAnswer_Click" Tag="5_2"/>
+                        </StackPanel>
+                        <TextBlock x:Name="txtHint5_2"
+                                   Text="힌트: ToolBarTray 의 IsLocked 속성을 true 로 바꿉니다."
+                                   Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                        <TextBlock x:Name="txtResult5_2" Margin="0,8,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                    </StackPanel>
+                </Expander>
+</StackPanel>
             </ScrollViewer>
         </TabItem>
     </TabControl>

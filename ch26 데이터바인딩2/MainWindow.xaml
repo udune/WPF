@@ -27,6 +27,39 @@
             <Setter Property="BorderBrush" Value="#333333"/>
             <Setter Property="BorderThickness" Value="1"/>
         </Style>
+
+        <!-- 직접 해보기 스타일 -->
+        <Style x:Key="PracticeExpanderStyle" TargetType="Expander">
+            <Setter Property="Header" Value="직접 해보기"/>
+            <Setter Property="Margin" Value="0,0,0,15"/>
+            <Setter Property="IsExpanded" Value="False"/>
+            <Setter Property="Background" Value="#F5F5F5"/>
+        </Style>
+        <Style x:Key="PracticeInputStyle" TargetType="TextBox">
+            <Setter Property="AcceptsReturn" Value="True"/>
+            <Setter Property="FontFamily" Value="Consolas"/>
+            <Setter Property="FontSize" Value="12"/>
+            <Setter Property="Height" Value="80"/>
+            <Setter Property="VerticalScrollBarVisibility" Value="Auto"/>
+            <Setter Property="Padding" Value="5"/>
+        </Style>
+        <Style x:Key="RunButtonStyle" TargetType="Button">
+            <Setter Property="Width" Value="60"/>
+            <Setter Property="Padding" Value="5,3"/>
+            <Setter Property="Background" Value="#4CAF50"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="BorderThickness" Value="0"/>
+        </Style>
+        <Style x:Key="HintButtonStyle" TargetType="Button">
+            <Setter Property="Width" Value="50"/>
+            <Setter Property="Padding" Value="5,3"/>
+            <Setter Property="Margin" Value="5,0,0,0"/>
+        </Style>
+        <Style x:Key="AnswerButtonStyle" TargetType="Button">
+            <Setter Property="Width" Value="70"/>
+            <Setter Property="Padding" Value="5,3"/>
+            <Setter Property="Margin" Value="5,0,0,0"/>
+        </Style>
     </Window.Resources>
 
     <Grid>
@@ -98,7 +131,47 @@
                         <Expander Style="{StaticResource CodeExpanderStyle}">
                             <TextBox Style="{StaticResource CodeTextBoxStyle}" Text="// Person 클래스&#10;public class Person&#10;{&#10;    public string 이름 { get; set; }&#10;    public int 나이 { get; set; }&#10;}&#10;&#10;// 코드 비하인드&#10;Person person = new Person { 이름 = &quot;홍길동&quot;, 나이 = 25 };&#10;personBorder1.DataContext = person;&#10;&#10;// XAML&#10;&lt;Border x:Name=&quot;personBorder1&quot;&gt;&#10;    &lt;TextBlock Text=&quot;{Binding 이름}&quot;/&gt;&#10;    &lt;TextBlock Text=&quot;{Binding 나이}&quot;/&gt;&#10;&lt;/Border&gt;"/>
                         </Expander>
-                    </StackPanel>
+                    
+                    <!-- 직접 해보기 1_1 -->
+                    <Expander Style="{StaticResource PracticeExpanderStyle}">
+                        <StackPanel Margin="10">
+                            <TextBlock Text="과제: StackPanel 의 DataContext 를 설정했다고 가정하고, TextBlock 이 Name 속성을 표시하도록 바인딩하세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
+                            <TextBox x:Name="txtPractice1_1"
+                                     Style="{StaticResource PracticeInputStyle}"
+                                     Text="&lt;StackPanel&gt;&#10;    &lt;TextBlock Text=&quot;{Binding }&quot; FontSize=&quot;16&quot;/&gt;&#10;&lt;/StackPanel&gt;"/>
+                            <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
+                                <Button Content="실행" Style="{StaticResource RunButtonStyle}" Click="BtnRun_Click" Tag="1_1"/>
+                                <Button Content="힌트" Style="{StaticResource HintButtonStyle}" Click="BtnHint_Click" Tag="1_1"/>
+                                <Button Content="정답 보기" Style="{StaticResource AnswerButtonStyle}" Click="BtnAnswer_Click" Tag="1_1"/>
+                            </StackPanel>
+                            <TextBlock x:Name="txtHint1_1"
+                                       Text="힌트: DataContext 가 있으면 {Binding 속성이름} 만 쓰면 됩니다."
+                                       Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                            <Border x:Name="resultBorder1_1" Background="White" Margin="0,8,0,0" Padding="10" Visibility="Collapsed">
+                                <StackPanel x:Name="resultPanel1_1"/>
+                            </Border>
+                        </StackPanel>
+                    </Expander>
+
+                    <!-- 직접 해보기 1_2 -->
+                    <Expander Style="{StaticResource PracticeExpanderStyle}">
+                        <StackPanel Margin="10">
+                            <TextBlock Text="과제: MainWindow 생성자에서 DataContext 를 자기 자신으로 지정하세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
+                            <TextBox x:Name="txtPractice1_2"
+                                     Style="{StaticResource PracticeInputStyle}"
+                                     Text="public MainWindow()&#10;{&#10;    InitializeComponent();&#10;    &#10;}"/>
+                            <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
+                                <Button Content="확인" Style="{StaticResource RunButtonStyle}" Click="BtnCheck_Click" Tag="1_2"/>
+                                <Button Content="힌트" Style="{StaticResource HintButtonStyle}" Click="BtnHint_Click" Tag="1_2"/>
+                                <Button Content="정답 보기" Style="{StaticResource AnswerButtonStyle}" Click="BtnAnswer_Click" Tag="1_2"/>
+                            </StackPanel>
+                            <TextBlock x:Name="txtHint1_2"
+                                       Text="힌트: this.DataContext = this; 한 줄이면 됩니다."
+                                       Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                            <TextBlock x:Name="txtResult1_2" Margin="0,8,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                        </StackPanel>
+                    </Expander>
+</StackPanel>
                 </ScrollViewer>
             </TabItem>
 
@@ -181,7 +254,49 @@
                         <Expander Style="{StaticResource CodeExpanderStyle}">
                             <TextBox Style="{StaticResource CodeTextBoxStyle}" Text="private void SetPersonA_Click(object sender, RoutedEventArgs e)&#10;{&#10;    dynamicContextBorder.DataContext = new Person { 이름 = &quot;김철수&quot;, 나이 = 25 };&#10;}&#10;&#10;private void SetPersonB_Click(object sender, RoutedEventArgs e)&#10;{&#10;    dynamicContextBorder.DataContext = new Person { 이름 = &quot;이영희&quot;, 나이 = 30 };&#10;}&#10;&#10;// DataContext가 변경되면 바인딩된 UI가 자동으로 업데이트됩니다"/>
                         </Expander>
-                    </StackPanel>
+                    
+                    <!-- 직접 해보기 2_1 -->
+                    <Expander Style="{StaticResource PracticeExpanderStyle}">
+                        <StackPanel Margin="10">
+                            <TextBlock Text="과제: 부모 StackPanel 에서 상속받은 DataContext 를 자식 TextBlock 두 개가 각각 Name, Age 로 표시하게 하세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
+                            <TextBox x:Name="txtPractice2_1"
+                                     Style="{StaticResource PracticeInputStyle}"
+                                     Text="&lt;StackPanel&gt;&#10;    &#10;&lt;/StackPanel&gt;"/>
+                            <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
+                                <Button Content="실행" Style="{StaticResource RunButtonStyle}" Click="BtnRun_Click" Tag="2_1"/>
+                                <Button Content="힌트" Style="{StaticResource HintButtonStyle}" Click="BtnHint_Click" Tag="2_1"/>
+                                <Button Content="정답 보기" Style="{StaticResource AnswerButtonStyle}" Click="BtnAnswer_Click" Tag="2_1"/>
+                            </StackPanel>
+                            <TextBlock x:Name="txtHint2_1"
+                                       Text="힌트: 자식은 부모의 DataContext 를 그대로 물려받으므로 {Binding 속성명} 만 쓰면 됩니다."
+                                       Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                            <Border x:Name="resultBorder2_1" Background="White" Margin="0,8,0,0" Padding="10" Visibility="Collapsed">
+                                <StackPanel x:Name="resultPanel2_1"/>
+                            </Border>
+                        </StackPanel>
+                    </Expander>
+
+                    <!-- 직접 해보기 2_2 -->
+                    <Expander Style="{StaticResource PracticeExpanderStyle}">
+                        <StackPanel Margin="10">
+                            <TextBlock Text="과제: Border 안쪽만 다른 DataContext 를 쓰도록, Border 에 DataContext 를 직접 지정하는 형태로 작성하세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
+                            <TextBox x:Name="txtPractice2_2"
+                                     Style="{StaticResource PracticeInputStyle}"
+                                     Text="&lt;StackPanel&gt;&#10;    &lt;TextBlock Text=&quot;{Binding Name}&quot;/&gt;&#10;    &lt;Border BorderBrush=&quot;Gray&quot; BorderThickness=&quot;1&quot; Padding=&quot;8&quot;&gt;&#10;        &#10;    &lt;/Border&gt;&#10;&lt;/StackPanel&gt;"/>
+                            <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
+                                <Button Content="실행" Style="{StaticResource RunButtonStyle}" Click="BtnRun_Click" Tag="2_2"/>
+                                <Button Content="힌트" Style="{StaticResource HintButtonStyle}" Click="BtnHint_Click" Tag="2_2"/>
+                                <Button Content="정답 보기" Style="{StaticResource AnswerButtonStyle}" Click="BtnAnswer_Click" Tag="2_2"/>
+                            </StackPanel>
+                            <TextBlock x:Name="txtHint2_2"
+                                       Text="힌트: Border 에 DataContext 를 주면 그 안쪽 바인딩은 새 원본을 봅니다."
+                                       Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                            <Border x:Name="resultBorder2_2" Background="White" Margin="0,8,0,0" Padding="10" Visibility="Collapsed">
+                                <StackPanel x:Name="resultPanel2_2"/>
+                            </Border>
+                        </StackPanel>
+                    </Expander>
+</StackPanel>
                 </ScrollViewer>
             </TabItem>
 
@@ -287,7 +402,45 @@
                         <Expander Style="{StaticResource CodeExpanderStyle}">
                             <TextBox Style="{StaticResource CodeTextBoxStyle}" Text="&lt;!-- TwoWay 바인딩: UI ↔ 소스 양방향 동기화 --&gt;&#10;&lt;TextBox Text=&quot;{Binding Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}&quot;/&gt;&#10;&#10;&lt;!-- OneWay 바인딩: 소스 → UI 단방향 --&gt;&#10;&lt;TextBlock Text=&quot;{Binding Name}&quot;/&gt;&#10;&#10;// INotifyPropertyChanged 덕분에 양쪽 모두 동기화됨"/>
                         </Expander>
-                    </StackPanel>
+                    
+                    <!-- 직접 해보기 3_1 -->
+                    <Expander Style="{StaticResource PracticeExpanderStyle}">
+                        <StackPanel Margin="10">
+                            <TextBlock Text="과제: INotifyPropertyChanged 를 구현한 클래스의 뼈대를 작성하세요. 이벤트 선언과 알림 메서드가 필요합니다." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
+                            <TextBox x:Name="txtPractice3_1"
+                                     Style="{StaticResource PracticeInputStyle}"
+                                     Text="public class Person : INotifyPropertyChanged&#10;{&#10;    &#10;}"/>
+                            <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
+                                <Button Content="확인" Style="{StaticResource RunButtonStyle}" Click="BtnCheck_Click" Tag="3_1"/>
+                                <Button Content="힌트" Style="{StaticResource HintButtonStyle}" Click="BtnHint_Click" Tag="3_1"/>
+                                <Button Content="정답 보기" Style="{StaticResource AnswerButtonStyle}" Click="BtnAnswer_Click" Tag="3_1"/>
+                            </StackPanel>
+                            <TextBlock x:Name="txtHint3_1"
+                                       Text="힌트: PropertyChangedEventHandler 이벤트와 OnPropertyChanged 메서드를 만듭니다."
+                                       Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                            <TextBlock x:Name="txtResult3_1" Margin="0,8,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                        </StackPanel>
+                    </Expander>
+
+                    <!-- 직접 해보기 3_2 -->
+                    <Expander Style="{StaticResource PracticeExpanderStyle}">
+                        <StackPanel Margin="10">
+                            <TextBlock Text="과제: 값이 바뀔 때 화면에 알리는 Name 속성을 작성하세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
+                            <TextBox x:Name="txtPractice3_2"
+                                     Style="{StaticResource PracticeInputStyle}"
+                                     Text="private string _name = &quot;&quot;;&#10;public string Name&#10;{&#10;    get { return _name; }&#10;    set&#10;    {&#10;        &#10;    }&#10;}"/>
+                            <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
+                                <Button Content="확인" Style="{StaticResource RunButtonStyle}" Click="BtnCheck_Click" Tag="3_2"/>
+                                <Button Content="힌트" Style="{StaticResource HintButtonStyle}" Click="BtnHint_Click" Tag="3_2"/>
+                                <Button Content="정답 보기" Style="{StaticResource AnswerButtonStyle}" Click="BtnAnswer_Click" Tag="3_2"/>
+                            </StackPanel>
+                            <TextBlock x:Name="txtHint3_2"
+                                       Text="힌트: 필드에 값을 넣은 뒤 OnPropertyChanged(&quot;Name&quot;) 을 호출합니다."
+                                       Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                            <TextBlock x:Name="txtResult3_2" Margin="0,8,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                        </StackPanel>
+                    </Expander>
+</StackPanel>
                 </ScrollViewer>
             </TabItem>
 
@@ -358,7 +511,49 @@
                         <Expander Style="{StaticResource CodeExpanderStyle}">
                             <TextBox Style="{StaticResource CodeTextBoxStyle}" Text="// 문자열을 DataContext로 설정&#10;emptyPathBorder.DataContext = &quot;안녕하세요&quot;;&#10;&#10;// 빈 Path 바인딩&#10;&lt;TextBlock Text=&quot;{Binding}&quot;/&gt;           &lt;!-- &quot;안녕하세요&quot; --&gt;&#10;&lt;TextBlock Text=&quot;{Binding Path=.}&quot;/&gt;    &lt;!-- &quot;안녕하세요&quot; (동일) --&gt;&#10;&lt;TextBlock Text=&quot;{Binding Length}&quot;/&gt;    &lt;!-- 5 (문자열 길이) --&gt;"/>
                         </Expander>
-                    </StackPanel>
+                    
+                    <!-- 직접 해보기 4_1 -->
+                    <Expander Style="{StaticResource PracticeExpanderStyle}">
+                        <StackPanel Margin="10">
+                            <TextBlock Text="과제: DataContext 안의 Address 객체의 City 속성을 점(.)으로 파고들어 표시하세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
+                            <TextBox x:Name="txtPractice4_1"
+                                     Style="{StaticResource PracticeInputStyle}"
+                                     Text="&lt;TextBlock Text=&quot;{Binding }&quot; FontSize=&quot;14&quot;/&gt;"/>
+                            <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
+                                <Button Content="실행" Style="{StaticResource RunButtonStyle}" Click="BtnRun_Click" Tag="4_1"/>
+                                <Button Content="힌트" Style="{StaticResource HintButtonStyle}" Click="BtnHint_Click" Tag="4_1"/>
+                                <Button Content="정답 보기" Style="{StaticResource AnswerButtonStyle}" Click="BtnAnswer_Click" Tag="4_1"/>
+                            </StackPanel>
+                            <TextBlock x:Name="txtHint4_1"
+                                       Text="힌트: Path 에 Address.City 처럼 점으로 연결합니다."
+                                       Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                            <Border x:Name="resultBorder4_1" Background="White" Margin="0,8,0,0" Padding="10" Visibility="Collapsed">
+                                <StackPanel x:Name="resultPanel4_1"/>
+                            </Border>
+                        </StackPanel>
+                    </Expander>
+
+                    <!-- 직접 해보기 4_2 -->
+                    <Expander Style="{StaticResource PracticeExpanderStyle}">
+                        <StackPanel Margin="10">
+                            <TextBlock Text="과제: 목록형 DataContext 의 첫 번째 항목을 인덱서로 표시하세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
+                            <TextBox x:Name="txtPractice4_2"
+                                     Style="{StaticResource PracticeInputStyle}"
+                                     Text="&lt;TextBlock Text=&quot;{Binding }&quot; FontSize=&quot;14&quot;/&gt;"/>
+                            <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
+                                <Button Content="실행" Style="{StaticResource RunButtonStyle}" Click="BtnRun_Click" Tag="4_2"/>
+                                <Button Content="힌트" Style="{StaticResource HintButtonStyle}" Click="BtnHint_Click" Tag="4_2"/>
+                                <Button Content="정답 보기" Style="{StaticResource AnswerButtonStyle}" Click="BtnAnswer_Click" Tag="4_2"/>
+                            </StackPanel>
+                            <TextBlock x:Name="txtHint4_2"
+                                       Text="힌트: 대괄호 인덱서를 씁니다. 예: Items[0]"
+                                       Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                            <Border x:Name="resultBorder4_2" Background="White" Margin="0,8,0,0" Padding="10" Visibility="Collapsed">
+                                <StackPanel x:Name="resultPanel4_2"/>
+                            </Border>
+                        </StackPanel>
+                    </Expander>
+</StackPanel>
                 </ScrollViewer>
             </TabItem>
 
@@ -486,7 +681,47 @@
                         <Expander Style="{StaticResource CodeExpanderStyle}">
                             <TextBox Style="{StaticResource CodeTextBoxStyle}" Text="&lt;!-- 슬라이더와 프로그레스바 동기화 --&gt;&#10;&lt;Slider x:Name=&quot;cpuSlider&quot; Maximum=&quot;100&quot; Value=&quot;30&quot;/&gt;&#10;&lt;ProgressBar Value=&quot;{Binding ElementName=cpuSlider, Path=Value}&quot; Maximum=&quot;100&quot;/&gt;&#10;&#10;&lt;!-- StringFormat으로 퍼센트 표시 --&gt;&#10;&lt;TextBlock Text=&quot;{Binding ElementName=cpuSlider, Path=Value, StringFormat={}{0:F0}%}&quot;/&gt;"/>
                         </Expander>
-                    </StackPanel>
+                    
+                    <!-- 직접 해보기 5_1 -->
+                    <Expander Style="{StaticResource PracticeExpanderStyle}">
+                        <StackPanel Margin="10">
+                            <TextBlock Text="과제: 이름과 나이를 보여 주는 간단한 프로필 카드를 Border + StackPanel 로 만들고 두 값을 바인딩하세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
+                            <TextBox x:Name="txtPractice5_1"
+                                     Style="{StaticResource PracticeInputStyle}"
+                                     Text="&lt;Border BorderBrush=&quot;#CCCCCC&quot; BorderThickness=&quot;1&quot; Padding=&quot;12&quot; Width=&quot;240&quot;&gt;&#10;    &#10;&lt;/Border&gt;"/>
+                            <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
+                                <Button Content="실행" Style="{StaticResource RunButtonStyle}" Click="BtnRun_Click" Tag="5_1"/>
+                                <Button Content="힌트" Style="{StaticResource HintButtonStyle}" Click="BtnHint_Click" Tag="5_1"/>
+                                <Button Content="정답 보기" Style="{StaticResource AnswerButtonStyle}" Click="BtnAnswer_Click" Tag="5_1"/>
+                            </StackPanel>
+                            <TextBlock x:Name="txtHint5_1"
+                                       Text="힌트: StackPanel 안에 TextBlock 두 개를 넣고 각각 Name, Age 를 바인딩합니다."
+                                       Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                            <Border x:Name="resultBorder5_1" Background="White" Margin="0,8,0,0" Padding="10" Visibility="Collapsed">
+                                <StackPanel x:Name="resultPanel5_1"/>
+                            </Border>
+                        </StackPanel>
+                    </Expander>
+
+                    <!-- 직접 해보기 5_2 -->
+                    <Expander Style="{StaticResource PracticeExpanderStyle}">
+                        <StackPanel Margin="10">
+                            <TextBlock Text="과제: PropertyChanged 이벤트를 안전하게 발생시키는 한 줄을 작성하세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
+                            <TextBox x:Name="txtPractice5_2"
+                                     Style="{StaticResource PracticeInputStyle}"
+                                     Text="protected void OnPropertyChanged(string name)&#10;{&#10;    &#10;}"/>
+                            <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
+                                <Button Content="확인" Style="{StaticResource RunButtonStyle}" Click="BtnCheck_Click" Tag="5_2"/>
+                                <Button Content="힌트" Style="{StaticResource HintButtonStyle}" Click="BtnHint_Click" Tag="5_2"/>
+                                <Button Content="정답 보기" Style="{StaticResource AnswerButtonStyle}" Click="BtnAnswer_Click" Tag="5_2"/>
+                            </StackPanel>
+                            <TextBlock x:Name="txtHint5_2"
+                                       Text="힌트: null 조건 연산자(?.)와 new PropertyChangedEventArgs 를 씁니다."
+                                       Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                            <TextBlock x:Name="txtResult5_2" Margin="0,8,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                        </StackPanel>
+                    </Expander>
+</StackPanel>
                 </ScrollViewer>
             </TabItem>
         </TabControl>

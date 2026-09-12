@@ -44,7 +44,7 @@ Each chapter's `MainWindow.xaml` is a self-contained interactive lesson, not a m
 
 Structure: `Window` (`Title="ch{N} {컨트롤명} 튜토리얼"`, 600×850) → `TabControl` with 4–5 topic tabs → each `TabItem` is a `ScrollViewer > StackPanel` of `GroupBox` examples.
 
-Two layers of scaffolding appear in every converted chapter, both driven by styles declared in `Window.Resources`:
+All 34 chapters carry both layers of scaffolding below (393 practice blocks in total), driven by styles declared in `Window.Resources`:
 
 **"코드 보기" (view source)** — after each example, an `Expander`/`TextBox` pair using `CodeExpanderStyle` + `CodeTextBoxStyle` showing the example's own XAML on a dark background.
 
@@ -52,14 +52,26 @@ Two layers of scaffolding appear in every converted chapter, both driven by styl
 
 - Every practice block is identified by a `{tab}_{index}` tag, e.g. `1_2`. That tag names all its elements — `txtPractice1_2`, `txtHint1_2`, `resultBorder1_2`, `resultPanel1_2` — and is passed to the shared handlers via `Tag="1_2"`.
 - Handlers `BtnRun_Click` / `BtnHint_Click` / `BtnAnswer_Click` are shared across all blocks in the file. They resolve elements at runtime with `FindName($"txtPractice{tag}")`, so **a name that doesn't follow the pattern silently does nothing**.
-- 실행 feeds the user's text to `ExecuteXaml`, which injects the presentation `xmlns` onto the root tag before `XamlReader.Parse` and renders the result into `resultPanel{tag}`. The injection is per-chapter and hardcoded to that chapter's root control (`if (xamlCode.TrimStart().StartsWith("<StatusBar"))`) — adapt it when porting.
-- Answers live in the code-behind `_answers` dictionary keyed by the same tag. Code-behind exercises (rather than XAML ones) are checked by `BtnCheck_Click` against `_requiredKeywords` instead of being executed.
+- 실행 feeds the user's text to `ExecuteXaml`, which injects the presentation `xmlns` onto the root tag before `XamlReader.Parse` and renders the result into `resultPanel{tag}`. Two variants exist: ch2–ch21 hardcode the chapter's own root control (`if (xamlCode.TrimStart().StartsWith("<StatusBar"))`), while ch22–ch35 use a regex that injects onto whatever the root tag is. Prefer the regex form for new chapters.
+- Answers live in the code-behind `_answers` dictionary keyed by the same tag. Code-behind exercises (rather than XAML ones) use a 확인 button wired to `BtnCheck_Click`, which checks `_requiredKeywords` and writes into `txtResult{tag}` instead of executing anything.
+- A practice block's XAML must parse standalone — the executor declares only the presentation and `x` namespaces, so an answer referencing `local:` or a `{StaticResource}` the snippet doesn't define will throw at 실행. Make such exercises code-type instead.
 
 ### XAML authoring constraints in these files
 
 - Line breaks inside code-display `TextBox` values **must** be `&#10;`. Literal newlines and `xml:space="preserve"` are normalized to spaces in XML attribute values.
 - Escape `<` `>` `"` `&` as `&lt;` `&gt;` `&quot;` `&amp;` inside those attribute values.
 - Root `ch*` projects use Korean identifiers in namespaces (`namespace ch21_스테이터스바`, `x:Class="ch21_스테이터스바.MainWindow"`), derived from the folder name via `RootNamespace`. `HelloWPF2` uses English equivalents.
+
+## 학습 진도 추적 (`.study/`)
+
+Every chapter app records study progress with **no per-chapter code**. `Directory.Build.targets` links `Shared/StudyRecords.cs` + `Shared/StudyTracker.cs` into each root `ch*` project (gated by `EnableStudyTracker`, which also keeps them out of `HelloWPF2/`, `SignalR`, and `Thread`). A `[ModuleInitializer]` registers class handlers on `Window.Loaded` and `Button.Click`, so tracking attaches itself to any chapter without that chapter knowing.
+
+- Progress lands in `.study/{챕터폴더명}.json` — one file per chapter so two chapter apps running at once can't clobber each other. The path is found by walking up from `AppContext.BaseDirectory` to the directory containing `.git`; outside a clone it falls back to `%APPDATA%\WpfStudy`. `.study/` is deliberately **not** git-ignored.
+- Blocks are discovered by walking the **logical** tree for `txtPractice{tag}` names. Using the visual tree would miss unselected `TabItem` contents, which WPF does not realize.
+- Success is judged after the chapter's own handler runs (via `Dispatcher.BeginInvoke`) by reading what it rendered: `"성공"` in `resultPanel{tag}`, or `"정답입니다"` in `txtResult{tag}`. Completing without pressing 정답 보기 is `완료`; after peeking it is `부분완료` and counts half in the dashboard.
+- Tracking is written to never break a lesson — every entry point swallows its exceptions, and a corrupt JSON file is discarded rather than surfaced.
+
+`HelloWPF` is no longer a starter project; it is the **학습 현황판** (dashboard) that reads those files. It counts each chapter's blocks by regex over its `MainWindow.xaml`, so chapters never launched still show a correct denominator.
 
 ## ch34 MVVM
 
