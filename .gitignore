@@ -351,3 +351,11 @@ Temporary Items
 !src/Microsoft.DotNet.Wpf/src/WpfGfx/codegen/mcg/main/*.rsp
 !src/Microsoft.DotNet.Wpf/src/WpfGfx/tools/csp/**/*.rsp
 직접해보기-구현-가이드.md
+
+# ---- 이 저장소 추가 규칙 ----
+
+# Claude Code 로컬 설정 (머신별 설정이라 공유 대상 아님)
+# 선행 ** 없으면 저장소 루트에만 적용되므로 하위 폴더까지 덮도록 지정
+**/.claude/settings.local.json
+
+# 학습 진도 기록(.study/)은 의도적으로 추적합니다. ignore 규칙을 추가하지 마세요.
