@@ -21,6 +21,8 @@
   </PropertyGroup>
 
   <ItemGroup Condition="'$(EnableStudyTracker)' == 'true'">
+    <Compile Include="$(MSBuildThisFileDirectory)Shared\StudyRecords.cs"
+             Link="Shared\StudyRecords.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Shared\StudyTracker.cs"
              Link="Shared\StudyTracker.cs" />
   </ItemGroup>
