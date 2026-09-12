@@ -34,10 +34,9 @@ dotnet build HelloWPF2/HelloWPF2.slnx
 
 There are no tests, linters, or CI in this repository.
 
-**`bin/` and `obj/` are committed** — `.gitignore` has no rules for them, so ~2,800 build artifacts are tracked and every build produces a large diff. Two consequences:
+Build output (`bin/`, `obj/`, `.vs/`, `.idea/`) was committed before `.gitignore` existed and was untracked in a later cleanup. The rules were always present — they simply don't apply to already-tracked files. If build artifacts ever reappear in `git status`, something re-added them; untrack rather than adding new rules.
 
-- When staging, select source files explicitly; a blanket `git add -A` sweeps in binaries.
-- Never override `BaseIntermediateOutputPath`/`BaseOutputPath`. The committed `obj/**/MainWindow.g.cs` files get globbed as compile inputs alongside freshly generated ones, and the build dies with hundreds of `CS0102: already contains a definition` errors.
+Historical note for anyone bisecting: commits before that cleanup carry ~7,200 build artifacts, so old diffs are enormous and `obj/**/MainWindow.g.cs` exists in those trees. Checking one out and overriding `BaseIntermediateOutputPath` makes those stale generated files get globbed as compile inputs alongside fresh ones, and the build dies with hundreds of `CS0102: already contains a definition` errors.
 
 ## Tutorial format (root `ch*` projects)
 
