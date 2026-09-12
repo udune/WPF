@@ -5,6 +5,8 @@ using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
+using System.Text.RegularExpressions;
+using System.Windows.Markup;
 
 namespace ch28_영어단어맞추기
 {
@@ -278,5 +280,150 @@ namespace ch28_영어단어맞추기
 
             buttonStateText.Text = $"활성화: {enabledCount}개, 비활성화: {disabledCount}개";
         }
+
+        // ===== 직접 해보기 =====
+
+        // 각 연습의 정답
+        private readonly Dictionary<string, string> _answers = new()
+        {
+            { "2_1", "private int _score;\npublic int Score\n{\n    get { return _score; }\n    set\n    {\n        _score = value;\n        OnPropertyChanged(\"Score\");\n    }\n}" },
+            { "2_2", "public event PropertyChangedEventHandler? PropertyChanged;\n\nprotected void OnPropertyChanged(string name)\n{\n    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));\n}" },
+            { "3_1", "<ItemsControl>\n    <ItemsControl.ItemsPanel>\n        <ItemsPanelTemplate>\n            <WrapPanel/>\n        </ItemsPanelTemplate>\n    </ItemsControl.ItemsPanel>\n</ItemsControl>" },
+            { "3_2", "<ItemsControl>\n    <ItemsControl.ItemTemplate>\n        <DataTemplate>\n            <Button Content=\"{Binding}\" Width=\"40\" Margin=\"3\"/>\n        </DataTemplate>\n    </ItemsControl.ItemTemplate>\n</ItemsControl>" },
+            { "4_1", "private void Check(string input)\n{\n    if (input.ToLower() == answer.ToLower())\n    {\n        Score = Score + 10;\n    }\n}" },
+            { "4_2", "private void Next()\n{\n    index = (index + 1) % words.Count;\n}" },
+            { "5_1", "private void OnCorrect()\n{\n    nextButton.IsEnabled = true;\n    checkButton.IsEnabled = false;\n}" },
+            { "5_2", "private void Reset()\n{\n    Score = 0;\n    index = 0;\n}" },
+        };
+
+        // 코드 비교 검증용 필수 키워드
+        private readonly Dictionary<string, string[]> _requiredKeywords = new()
+        {
+            { "2_1", new[] { "_score = value", "OnPropertyChanged" } },
+            { "2_2", new[] { "PropertyChanged?.Invoke", "PropertyChangedEventArgs" } },
+            { "4_1", new[] { "ToLower", "==", "Score" } },
+            { "4_2", new[] { "index", "%", "Count" } },
+            { "5_1", new[] { "IsEnabled = true", "IsEnabled = false" } },
+            { "5_2", new[] { "Score = 0", "index = 0" } },
+        };
+
+        // XAML 실행 메서드
+        private void ExecuteXaml(string xamlCode, StackPanel resultPanel, Border resultBorder)
+        {
+            resultPanel.Children.Clear();
+            resultBorder.Visibility = Visibility.Visible;
+
+            try
+            {
+                string fullXaml = xamlCode.Trim();
+
+                if (!fullXaml.Contains("xmlns="))
+                {
+                    // 루트 태그가 무엇이든 프레젠테이션 네임스페이스를 붙여 줍니다.
+                    Match root = Regex.Match(fullXaml, @"^<([A-Za-z_][\w.]*)");
+                    if (root.Success)
+                    {
+                        string name = root.Groups[1].Value;
+                        fullXaml = "<" + name
+                            + " xmlns='http://schemas.microsoft.com/winfx/2006/xaml/presentation'"
+                            + " xmlns:x='http://schemas.microsoft.com/winfx/2006/xaml'"
+                            + fullXaml.Substring(name.Length + 1);
+                    }
+                }
+
+                if (XamlReader.Parse(fullXaml) is UIElement element)
+                {
+                    resultPanel.Children.Add(element);
+                    resultPanel.Children.Add(new TextBlock
+                    {
+                        Text = "성공적으로 실행되었습니다!",
+                        Foreground = Brushes.Green,
+                        Margin = new Thickness(0, 10, 0, 0)
+                    });
+                }
+            }
+            catch (Exception ex)
+            {
+                resultPanel.Children.Add(new TextBlock
+                {
+                    Text = $"오류: {ex.Message}",
+                    Foreground = Brushes.Red,
+                    TextWrapping = TextWrapping.Wrap
+                });
+            }
+        }
+
+        // XAML 실행 버튼
+        private void BtnRun_Click(object sender, RoutedEventArgs e)
+        {
+            if (sender is Button button && button.Tag is string tag)
+            {
+                var txtPractice = FindName($"txtPractice{tag}") as TextBox;
+                var resultPanel = FindName($"resultPanel{tag}") as StackPanel;
+                var resultBorder = FindName($"resultBorder{tag}") as Border;
+
+                if (txtPractice != null && resultPanel != null && resultBorder != null)
+                {
+                    ExecuteXaml(txtPractice.Text, resultPanel, resultBorder);
+                }
+            }
+        }
+
+        // 힌트 토글 버튼
+        private void BtnHint_Click(object sender, RoutedEventArgs e)
+        {
+            if (sender is Button button && button.Tag is string tag)
+            {
+                var txtHint = FindName($"txtHint{tag}") as TextBlock;
+                if (txtHint != null)
+                {
+                    txtHint.Visibility = txtHint.Visibility == Visibility.Visible
+                        ? Visibility.Collapsed : Visibility.Visible;
+                }
+            }
+        }
+
+        // 정답 보기 버튼
+        private void BtnAnswer_Click(object sender, RoutedEventArgs e)
+        {
+            if (sender is Button button && button.Tag is string tag)
+            {
+                var txtPractice = FindName($"txtPractice{tag}") as TextBox;
+                if (txtPractice != null && _answers.TryGetValue(tag, out var answer))
+                {
+                    txtPractice.Text = answer;
+                }
+            }
+        }
+
+        // 코드 비교 확인 버튼
+        private void BtnCheck_Click(object sender, RoutedEventArgs e)
+        {
+            if (sender is Button button && button.Tag is string tag)
+            {
+                var txtPractice = FindName($"txtPractice{tag}") as TextBox;
+                var txtResult = FindName($"txtResult{tag}") as TextBlock;
+
+                if (txtPractice != null && txtResult != null && _requiredKeywords.TryGetValue(tag, out var keywords))
+                {
+                    txtResult.Visibility = Visibility.Visible;
+                    string userCode = txtPractice.Text;
+
+                    var missing = keywords.Where(k => !userCode.Contains(k)).ToList();
+
+                    if (missing.Count == 0)
+                    {
+                        txtResult.Text = "정답입니다! 모든 필수 요소가 포함되어 있습니다.";
+                        txtResult.Foreground = Brushes.Green;
+                    }
+                    else
+                    {
+                        txtResult.Text = $"다시 확인해보세요. 누락된 요소: {string.Join(", ", missing)}";
+                        txtResult.Foreground = Brushes.Red;
+                    }
+                }
+            }
+        }
+
     }
 }
