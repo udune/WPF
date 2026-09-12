@@ -263,7 +263,28 @@
                                        Margin="0,8,0,0" FontWeight="Bold" Visibility="Collapsed"/>
                         </StackPanel>
                     </Expander>
-                </StackPanel>
+                
+                <!-- 직접 해보기 2_3 -->
+                <Expander Style="{StaticResource PracticeExpanderStyle}">
+                    <StackPanel Margin="10">
+                        <TextBlock Text="과제: 오늘 이전 날짜를 고를 수 없도록 BlackoutDates 로 과거를 막으세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
+                        <TextBox x:Name="txtPractice2_3"
+                                 Style="{StaticResource PracticeInputStyle}"
+                                 Text="&lt;Calendar&gt;&#10;    &#10;&lt;/Calendar&gt;"/>
+                        <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
+                            <Button Content="실행" Style="{StaticResource RunButtonStyle}" Click="BtnRun_Click" Tag="2_3"/>
+                            <Button Content="힌트" Style="{StaticResource HintButtonStyle}" Click="BtnHint_Click" Tag="2_3"/>
+                            <Button Content="정답 보기" Style="{StaticResource AnswerButtonStyle}" Click="BtnAnswer_Click" Tag="2_3"/>
+                        </StackPanel>
+                        <TextBlock x:Name="txtHint2_3"
+                                   Text="힌트: &lt;Calendar.BlackoutDates&gt;&lt;CalendarDateRange Start=&quot;..&quot; End=&quot;..&quot;/&gt; 를 씁니다."
+                                   Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                        <Border x:Name="resultBorder2_3" Background="White" Margin="0,8,0,0" Padding="10" Visibility="Collapsed">
+                            <StackPanel x:Name="resultPanel2_3"/>
+                        </Border>
+                    </StackPanel>
+                </Expander>
+</StackPanel>
             </ScrollViewer>
         </TabItem>
 
@@ -347,7 +368,28 @@
                                        Margin="0,8,0,0" FontWeight="Bold" Visibility="Collapsed"/>
                         </StackPanel>
                     </Expander>
-                </StackPanel>
+                
+                <!-- 직접 해보기 3_3 -->
+                <Expander Style="{StaticResource PracticeExpanderStyle}">
+                    <StackPanel Margin="10">
+                        <TextBlock Text="과제: 여러 날짜를 한 번에 고를 수 있도록 선택 모드를 바꾸세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
+                        <TextBox x:Name="txtPractice3_3"
+                                 Style="{StaticResource PracticeInputStyle}"
+                                 Text="&lt;Calendar/&gt;"/>
+                        <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
+                            <Button Content="실행" Style="{StaticResource RunButtonStyle}" Click="BtnRun_Click" Tag="3_3"/>
+                            <Button Content="힌트" Style="{StaticResource HintButtonStyle}" Click="BtnHint_Click" Tag="3_3"/>
+                            <Button Content="정답 보기" Style="{StaticResource AnswerButtonStyle}" Click="BtnAnswer_Click" Tag="3_3"/>
+                        </StackPanel>
+                        <TextBlock x:Name="txtHint3_3"
+                                   Text="힌트: SelectionMode 에 MultipleRange 를 지정합니다."
+                                   Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                        <Border x:Name="resultBorder3_3" Background="White" Margin="0,8,0,0" Padding="10" Visibility="Collapsed">
+                            <StackPanel x:Name="resultPanel3_3"/>
+                        </Border>
+                    </StackPanel>
+                </Expander>
+</StackPanel>
             </ScrollViewer>
         </TabItem>
 
@@ -425,7 +467,47 @@
                     <Expander Style="{StaticResource CodeExpanderStyle}">
                         <TextBox Style="{StaticResource CodeTextBoxStyle}" Text="&lt;Calendar x:Name=&quot;calSource&quot;/&gt;&#10;&#10;&lt;Calendar DisplayDate=&quot;{Binding ElementName=calSource, Path=SelectedDate}&quot;&#10;          SelectionMode=&quot;None&quot;/&gt;"/>
                     </Expander>
-                </StackPanel>
+                
+                <!-- 직접 해보기 4_2 -->
+                <Expander Style="{StaticResource PracticeExpanderStyle}">
+                    <StackPanel Margin="10">
+                        <TextBlock Text="과제: Calendar 에서 고른 날짜를 옆 TextBlock 에 표시하세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
+                        <TextBox x:Name="txtPractice4_2"
+                                 Style="{StaticResource PracticeInputStyle}"
+                                 Text="&lt;StackPanel&gt;&#10;    &lt;Calendar x:Name=&quot;cal&quot;/&gt;&#10;    &lt;TextBlock/&gt;&#10;&lt;/StackPanel&gt;"/>
+                        <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
+                            <Button Content="실행" Style="{StaticResource RunButtonStyle}" Click="BtnRun_Click" Tag="4_2"/>
+                            <Button Content="힌트" Style="{StaticResource HintButtonStyle}" Click="BtnHint_Click" Tag="4_2"/>
+                            <Button Content="정답 보기" Style="{StaticResource AnswerButtonStyle}" Click="BtnAnswer_Click" Tag="4_2"/>
+                        </StackPanel>
+                        <TextBlock x:Name="txtHint4_2"
+                                   Text="힌트: ElementName=cal, Path=SelectedDate 로 바인딩합니다."
+                                   Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                        <Border x:Name="resultBorder4_2" Background="White" Margin="0,8,0,0" Padding="10" Visibility="Collapsed">
+                            <StackPanel x:Name="resultPanel4_2"/>
+                        </Border>
+                    </StackPanel>
+                </Expander>
+
+                <!-- 직접 해보기 4_3 -->
+                <Expander Style="{StaticResource PracticeExpanderStyle}">
+                    <StackPanel Margin="10">
+                        <TextBlock Text="과제: 코드에서 Calendar(cal)의 선택 날짜를 오늘로 지정하세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
+                        <TextBox x:Name="txtPractice4_3"
+                                 Style="{StaticResource PracticeInputStyle}"
+                                 Text="private void Today_Click(object sender, RoutedEventArgs e)&#10;{&#10;    &#10;}"/>
+                        <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
+                            <Button Content="확인" Style="{StaticResource RunButtonStyle}" Click="BtnCheck_Click" Tag="4_3"/>
+                            <Button Content="힌트" Style="{StaticResource HintButtonStyle}" Click="BtnHint_Click" Tag="4_3"/>
+                            <Button Content="정답 보기" Style="{StaticResource AnswerButtonStyle}" Click="BtnAnswer_Click" Tag="4_3"/>
+                        </StackPanel>
+                        <TextBlock x:Name="txtHint4_3"
+                                   Text="힌트: SelectedDate 에 DateTime.Today 를 대입합니다."
+                                   Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                        <TextBlock x:Name="txtResult4_3" Margin="0,8,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                    </StackPanel>
+                </Expander>
+</StackPanel>
             </ScrollViewer>
         </TabItem>
 

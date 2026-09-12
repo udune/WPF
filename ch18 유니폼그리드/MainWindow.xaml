@@ -170,7 +170,28 @@
                         </StackPanel>
                     </Expander>
 
-                </StackPanel>
+                
+                <!-- 직접 해보기 1_3 -->
+                <Expander Style="{StaticResource PracticeExpanderStyle}">
+                    <StackPanel Margin="10">
+                        <TextBlock Text="과제: UniformGrid 에 버튼 4개를 넣어 2x2 로 배치하세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
+                        <TextBox x:Name="txtPractice1_3"
+                                 Style="{StaticResource PracticeInputStyle}"
+                                 Text="&lt;UniformGrid Rows=&quot;2&quot; Columns=&quot;2&quot; Height=&quot;120&quot;&gt;&#10;    &#10;&lt;/UniformGrid&gt;"/>
+                        <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
+                            <Button Content="실행" Style="{StaticResource RunButtonStyle}" Click="BtnRun_Click" Tag="1_3"/>
+                            <Button Content="힌트" Style="{StaticResource HintButtonStyle}" Click="BtnHint_Click" Tag="1_3"/>
+                            <Button Content="정답 보기" Style="{StaticResource AnswerButtonStyle}" Click="BtnAnswer_Click" Tag="1_3"/>
+                        </StackPanel>
+                        <TextBlock x:Name="txtHint1_3"
+                                   Text="힌트: UniformGrid 는 자식을 순서대로 같은 크기 칸에 채웁니다."
+                                   Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                        <Border x:Name="resultBorder1_3" Background="White" Margin="0,8,0,0" Padding="10" Visibility="Collapsed">
+                            <StackPanel x:Name="resultPanel1_3"/>
+                        </Border>
+                    </StackPanel>
+                </Expander>
+</StackPanel>
             </ScrollViewer>
         </TabItem>
 
@@ -302,7 +323,28 @@
                         </StackPanel>
                     </Expander>
 
-                </StackPanel>
+                
+                <!-- 직접 해보기 2_3 -->
+                <Expander Style="{StaticResource PracticeExpanderStyle}">
+                    <StackPanel Margin="10">
+                        <TextBlock Text="과제: Columns 만 3으로 지정하고 자식 5개를 넣어 행이 자동으로 늘어나는지 보세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
+                        <TextBox x:Name="txtPractice2_3"
+                                 Style="{StaticResource PracticeInputStyle}"
+                                 Text="&lt;UniformGrid Columns=&quot;3&quot; Height=&quot;120&quot;&gt;&#10;    &#10;&lt;/UniformGrid&gt;"/>
+                        <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
+                            <Button Content="실행" Style="{StaticResource RunButtonStyle}" Click="BtnRun_Click" Tag="2_3"/>
+                            <Button Content="힌트" Style="{StaticResource HintButtonStyle}" Click="BtnHint_Click" Tag="2_3"/>
+                            <Button Content="정답 보기" Style="{StaticResource AnswerButtonStyle}" Click="BtnAnswer_Click" Tag="2_3"/>
+                        </StackPanel>
+                        <TextBlock x:Name="txtHint2_3"
+                                   Text="힌트: Rows 를 비워 두면 자식 수에 맞춰 행이 자동 계산됩니다."
+                                   Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                        <Border x:Name="resultBorder2_3" Background="White" Margin="0,8,0,0" Padding="10" Visibility="Collapsed">
+                            <StackPanel x:Name="resultPanel2_3"/>
+                        </Border>
+                    </StackPanel>
+                </Expander>
+</StackPanel>
             </ScrollViewer>
         </TabItem>
 
@@ -475,7 +517,28 @@
                         <TextBox Style="{StaticResource CodeTextBoxStyle}" Text="&lt;!-- 요일 헤더 --&gt;&#10;&lt;UniformGrid Columns=&quot;7&quot;&gt;&#10;    &lt;TextBlock Text=&quot;일&quot;/&gt;&#10;    &lt;TextBlock Text=&quot;월&quot;/&gt;&#10;    ...&#10;&lt;/UniformGrid&gt;&#10;&#10;&lt;!-- 날짜 (1일이 수요일에 시작) --&gt;&#10;&lt;UniformGrid Columns=&quot;7&quot; FirstColumn=&quot;3&quot;&gt;&#10;    &lt;!-- FirstColumn=3으로 수요일(4번째 열)부터 시작 --&gt;&#10;    &lt;TextBlock Text=&quot;1&quot;/&gt;&#10;    &lt;TextBlock Text=&quot;2&quot;/&gt;&#10;    ...&#10;&lt;/UniformGrid&gt;"/>
                     </Expander>
 
-                </StackPanel>
+                
+                <!-- 직접 해보기 3_3 -->
+                <Expander Style="{StaticResource PracticeExpanderStyle}">
+                    <StackPanel Margin="10">
+                        <TextBlock Text="과제: 계산기 숫자판처럼 3x3 버튼 배치를 만드세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
+                        <TextBox x:Name="txtPractice3_3"
+                                 Style="{StaticResource PracticeInputStyle}"
+                                 Text="&lt;UniformGrid Rows=&quot;3&quot; Columns=&quot;3&quot; Width=&quot;180&quot; Height=&quot;180&quot;&gt;&#10;    &#10;&lt;/UniformGrid&gt;"/>
+                        <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
+                            <Button Content="실행" Style="{StaticResource RunButtonStyle}" Click="BtnRun_Click" Tag="3_3"/>
+                            <Button Content="힌트" Style="{StaticResource HintButtonStyle}" Click="BtnHint_Click" Tag="3_3"/>
+                            <Button Content="정답 보기" Style="{StaticResource AnswerButtonStyle}" Click="BtnAnswer_Click" Tag="3_3"/>
+                        </StackPanel>
+                        <TextBlock x:Name="txtHint3_3"
+                                   Text="힌트: 버튼 9개를 순서대로 넣기만 하면 됩니다."
+                                   Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                        <Border x:Name="resultBorder3_3" Background="White" Margin="0,8,0,0" Padding="10" Visibility="Collapsed">
+                            <StackPanel x:Name="resultPanel3_3"/>
+                        </Border>
+                    </StackPanel>
+                </Expander>
+</StackPanel>
             </ScrollViewer>
         </TabItem>
 
@@ -593,7 +656,28 @@
                         </StackPanel>
                     </Expander>
 
-                </StackPanel>
+                
+                <!-- 직접 해보기 4_3 -->
+                <Expander Style="{StaticResource PracticeExpanderStyle}">
+                    <StackPanel Margin="10">
+                        <TextBlock Text="과제: UniformGrid 의 첫 칸을 비우고 시작하도록 만드세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
+                        <TextBox x:Name="txtPractice4_3"
+                                 Style="{StaticResource PracticeInputStyle}"
+                                 Text="&lt;UniformGrid Rows=&quot;2&quot; Columns=&quot;3&quot; Height=&quot;100&quot;&gt;&#10;    &lt;Button Content=&quot;A&quot; Margin=&quot;3&quot;/&gt;&#10;    &lt;Button Content=&quot;B&quot; Margin=&quot;3&quot;/&gt;&#10;&lt;/UniformGrid&gt;"/>
+                        <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
+                            <Button Content="실행" Style="{StaticResource RunButtonStyle}" Click="BtnRun_Click" Tag="4_3"/>
+                            <Button Content="힌트" Style="{StaticResource HintButtonStyle}" Click="BtnHint_Click" Tag="4_3"/>
+                            <Button Content="정답 보기" Style="{StaticResource AnswerButtonStyle}" Click="BtnAnswer_Click" Tag="4_3"/>
+                        </StackPanel>
+                        <TextBlock x:Name="txtHint4_3"
+                                   Text="힌트: FirstColumn 속성으로 시작 칸을 밀 수 있습니다."
+                                   Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                        <Border x:Name="resultBorder4_3" Background="White" Margin="0,8,0,0" Padding="10" Visibility="Collapsed">
+                            <StackPanel x:Name="resultPanel4_3"/>
+                        </Border>
+                    </StackPanel>
+                </Expander>
+</StackPanel>
             </ScrollViewer>
         </TabItem>
 

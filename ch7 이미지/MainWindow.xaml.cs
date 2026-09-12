@@ -5,6 +5,7 @@ using System.Windows.Input;
 using System.Windows.Markup;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Text.RegularExpressions;
 
 namespace ch7_이미지
 {
@@ -13,6 +14,9 @@ namespace ch7_이미지
         // 각 연습의 정답
         private readonly Dictionary<string, string> _answers = new()
         {
+            { "1_3", "private void Load_Click(object sender, RoutedEventArgs e)\n{\n    img.Source = new BitmapImage(new Uri(\"1.png\", UriKind.Relative));\n}" },
+            { "2_3", "<Image Width=\"120\" Height=\"90\" HorizontalAlignment=\"Right\" VerticalAlignment=\"Top\"/>" },
+            { "4_3", "<Border BorderBrush=\"Gray\" BorderThickness=\"2\" Padding=\"4\">\n    <Image Width=\"120\" Height=\"90\" Opacity=\"0.5\"/>\n</Border>" },
             // 탭 1: 기본 사용법
             { "1_1", "<Image Source=\"https://via.placeholder.com/100\"/>" },
             { "1_2", "<Image Source=\"https://via.placeholder.com/150\" Width=\"80\" Height=\"80\"/>" },
@@ -39,6 +43,7 @@ namespace ch7_이미지
         // 코드 비교 검증용 필수 키워드
         private readonly Dictionary<string, string[]> _requiredKeywords = new()
         {
+            { "1_3", new[] { "BitmapImage", "new Uri", "Source" } },
             { "5_1", new[] { "Width", "Height", "150" } },
             { "5_2", new[] { "BitmapImage", "Uri", ".Source" } },
             { "5_3", new[] { "Visibility", "Visible", "Collapsed", "if" } }
@@ -132,19 +137,19 @@ namespace ch7_이미지
 
             try
             {
-                string fullXaml = xamlCode;
-                if (!xamlCode.Contains("xmlns="))
+                string fullXaml = xamlCode.Trim();
+
+                if (!fullXaml.Contains("xmlns="))
                 {
-                    // Image 또는 Border에 네임스페이스 추가
-                    if (xamlCode.TrimStart().StartsWith("<Image"))
+                    // 루트 태그가 무엇이든 프레젠테이션 네임스페이스를 붙여 줍니다.
+                    Match root = Regex.Match(fullXaml, @"^<([A-Za-z_][\w.]*)");
+                    if (root.Success)
                     {
-                        fullXaml = xamlCode.Replace("<Image",
-                            "<Image xmlns='http://schemas.microsoft.com/winfx/2006/xaml/presentation'");
-                    }
-                    else if (xamlCode.TrimStart().StartsWith("<Border"))
-                    {
-                        fullXaml = xamlCode.Replace("<Border",
-                            "<Border xmlns='http://schemas.microsoft.com/winfx/2006/xaml/presentation'");
+                        string name = root.Groups[1].Value;
+                        fullXaml = "<" + name
+                            + " xmlns='http://schemas.microsoft.com/winfx/2006/xaml/presentation'"
+                            + " xmlns:x='http://schemas.microsoft.com/winfx/2006/xaml'"
+                            + fullXaml.Substring(name.Length + 1);
                     }
                 }
 

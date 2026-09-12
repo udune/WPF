@@ -44,7 +44,7 @@ Each chapter's `MainWindow.xaml` is a self-contained interactive lesson, not a m
 
 Structure: `Window` (`Title="ch{N} {컨트롤명} 튜토리얼"`, 600×850) → `TabControl` with 4–5 topic tabs → each `TabItem` is a `ScrollViewer > StackPanel` of `GroupBox` examples.
 
-All 34 chapters carry both layers of scaffolding below (393 practice blocks in total), driven by styles declared in `Window.Resources`:
+All 34 chapters carry both layers of scaffolding below — 514 practice blocks, at least 3 in every tab — driven by styles declared in `Window.Resources`:
 
 **"코드 보기" (view source)** — after each example, an `Expander`/`TextBox` pair using `CodeExpanderStyle` + `CodeTextBoxStyle` showing the example's own XAML on a dark background.
 
@@ -52,9 +52,10 @@ All 34 chapters carry both layers of scaffolding below (393 practice blocks in t
 
 - Every practice block is identified by a `{tab}_{index}` tag, e.g. `1_2`. That tag names all its elements — `txtPractice1_2`, `txtHint1_2`, `resultBorder1_2`, `resultPanel1_2` — and is passed to the shared handlers via `Tag="1_2"`.
 - Handlers `BtnRun_Click` / `BtnHint_Click` / `BtnAnswer_Click` are shared across all blocks in the file. They resolve elements at runtime with `FindName($"txtPractice{tag}")`, so **a name that doesn't follow the pattern silently does nothing**.
-- 실행 feeds the user's text to `ExecuteXaml`, which injects the presentation `xmlns` onto the root tag before `XamlReader.Parse` and renders the result into `resultPanel{tag}`. Two variants exist: ch2–ch21 hardcode the chapter's own root control (`if (xamlCode.TrimStart().StartsWith("<StatusBar"))`), while ch22–ch35 use a regex that injects onto whatever the root tag is. Prefer the regex form for new chapters.
+- 실행 feeds the user's text to `ExecuteXaml`, which injects the presentation and `x` namespaces onto the root tag before `XamlReader.Parse` and renders the result into `resultPanel{tag}`. All 34 chapters now use the same regex-based injection that works with any root element; the earlier per-chapter hardcoded form (`if (xamlCode.TrimStart().StartsWith("<StatusBar"))`) accepted only that chapter's own control and has been replaced.
 - Answers live in the code-behind `_answers` dictionary keyed by the same tag. Code-behind exercises (rather than XAML ones) use a 확인 button wired to `BtnCheck_Click`, which checks `_requiredKeywords` and writes into `txtResult{tag}` instead of executing anything.
 - A practice block's XAML must parse standalone — the executor declares only the presentation and `x` namespaces, so an answer referencing `local:` or a `{StaticResource}` the snippet doesn't define will throw at 실행. Make such exercises code-type instead.
+- A `StringFormat` that *starts* with `{` must be escaped as `StringFormat='{}{0:F0}'`; without the leading `{}` the XAML parser reads it as a nested markup extension and throws.
 
 ### XAML authoring constraints in these files
 

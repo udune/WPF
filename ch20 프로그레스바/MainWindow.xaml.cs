@@ -3,6 +3,7 @@ using System.Windows.Controls;
 using System.Windows.Markup;
 using System.Windows.Media;
 using System.Windows.Threading;
+using System.Text.RegularExpressions;
 
 namespace ch20_프로그레스바
 {
@@ -13,6 +14,11 @@ namespace ch20_프로그레스바
         // 각 연습의 정답
         private readonly Dictionary<string, string> _answers = new()
         {
+            { "1_3", "<ProgressBar Height=\"22\" Width=\"260\" Minimum=\"0\" Maximum=\"200\" Value=\"150\"/>" },
+            { "2_3", "<ProgressBar Height=\"22\" Width=\"260\" IsIndeterminate=\"True\"/>" },
+            { "3_3", "<ProgressBar Height=\"22\" Width=\"260\" Value=\"60\" Foreground=\"Orange\" Background=\"#EEEEEE\"/>" },
+            { "4_3", "<Grid Width=\"260\">\n    <ProgressBar x:Name=\"pb\" Height=\"22\" Value=\"72\"/>\n    <TextBlock Text=\"{Binding ElementName=pb, Path=Value, StringFormat='{}{0:F0}%'}\" HorizontalAlignment=\"Center\" VerticalAlignment=\"Center\"/>\n</Grid>" },
+            { "5_3", "<ProgressBar Width=\"24\" Height=\"120\" Value=\"70\" Orientation=\"Vertical\"/>" },
             // 탭 1: 기본 사용법
             { "1_1", "<ProgressBar Height=\"25\" Value=\"50\"/>" },
             { "1_2", "<ProgressBar Height=\"25\" Maximum=\"500\" Value=\"250\"/>" },
@@ -56,29 +62,19 @@ namespace ch20_프로그레스바
 
             try
             {
-                string fullXaml = xamlCode;
+                string fullXaml = xamlCode.Trim();
 
-                // 네임스페이스가 없으면 추가
-                if (!xamlCode.Contains("xmlns="))
+                if (!fullXaml.Contains("xmlns="))
                 {
-                    // ProgressBar 처리
-                    if (xamlCode.TrimStart().StartsWith("<ProgressBar"))
+                    // 루트 태그가 무엇이든 프레젠테이션 네임스페이스를 붙여 줍니다.
+                    Match root = Regex.Match(fullXaml, @"^<([A-Za-z_][\w.]*)");
+                    if (root.Success)
                     {
-                        fullXaml = xamlCode.Replace("<ProgressBar",
-                            "<ProgressBar xmlns='http://schemas.microsoft.com/winfx/2006/xaml/presentation'");
-                    }
-                    // Grid 처리
-                    else if (xamlCode.TrimStart().StartsWith("<Grid"))
-                    {
-                        fullXaml = xamlCode.Replace("<Grid",
-                            "<Grid xmlns='http://schemas.microsoft.com/winfx/2006/xaml/presentation'");
-                    }
-                    else
-                    {
-                        // 기타 컨트롤
-                        fullXaml = $@"<StackPanel xmlns='http://schemas.microsoft.com/winfx/2006/xaml/presentation'>
-                            {xamlCode}
-                        </StackPanel>";
+                        string name = root.Groups[1].Value;
+                        fullXaml = "<" + name
+                            + " xmlns='http://schemas.microsoft.com/winfx/2006/xaml/presentation'"
+                            + " xmlns:x='http://schemas.microsoft.com/winfx/2006/xaml'"
+                            + fullXaml.Substring(name.Length + 1);
                     }
                 }
 

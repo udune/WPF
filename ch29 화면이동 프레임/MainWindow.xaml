@@ -233,6 +233,27 @@
                             </Border>
                         </StackPanel>
                     </Expander>
+
+<!-- 직접 해보기 2_3 -->
+<Expander Style="{StaticResource PracticeExpanderStyle}">
+    <StackPanel Margin="10">
+        <TextBlock Text="과제: Frame 을 위쪽 제목 줄 아래에 채워 넣는 레이아웃을 만드세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
+        <TextBox x:Name="txtPractice2_3"
+                 Style="{StaticResource PracticeInputStyle}"
+                 Text="&lt;DockPanel Height=&quot;160&quot;&gt;&#10;    &#10;&lt;/DockPanel&gt;"/>
+        <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
+            <Button Content="실행" Style="{StaticResource RunButtonStyle}" Click="BtnRun_Click" Tag="2_3"/>
+            <Button Content="힌트" Style="{StaticResource HintButtonStyle}" Click="BtnHint_Click" Tag="2_3"/>
+            <Button Content="정답 보기" Style="{StaticResource AnswerButtonStyle}" Click="BtnAnswer_Click" Tag="2_3"/>
+        </StackPanel>
+        <TextBlock x:Name="txtHint2_3"
+                   Text="힌트: 제목은 Dock=&quot;Top&quot;, Frame 은 마지막 자식으로 두면 남은 공간을 채웁니다."
+                   Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+        <Border x:Name="resultBorder2_3" Background="White" Margin="0,8,0,0" Padding="10" Visibility="Collapsed">
+            <StackPanel x:Name="resultPanel2_3"/>
+        </Border>
+    </StackPanel>
+</Expander>
 </StackPanel>
                 </ScrollViewer>
             </TabItem>
@@ -365,6 +386,27 @@
                             </Border>
                         </StackPanel>
                     </Expander>
+
+<!-- 직접 해보기 3_3 -->
+<Expander Style="{StaticResource PracticeExpanderStyle}">
+    <StackPanel Margin="10">
+        <TextBlock Text="과제: 페이지 안에 뒤로/앞으로 버튼 줄과 본문을 함께 구성하세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
+        <TextBox x:Name="txtPractice3_3"
+                 Style="{StaticResource PracticeInputStyle}"
+                 Text="&lt;DockPanel Height=&quot;140&quot;&gt;&#10;    &#10;&lt;/DockPanel&gt;"/>
+        <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
+            <Button Content="실행" Style="{StaticResource RunButtonStyle}" Click="BtnRun_Click" Tag="3_3"/>
+            <Button Content="힌트" Style="{StaticResource HintButtonStyle}" Click="BtnHint_Click" Tag="3_3"/>
+            <Button Content="정답 보기" Style="{StaticResource AnswerButtonStyle}" Click="BtnAnswer_Click" Tag="3_3"/>
+        </StackPanel>
+        <TextBlock x:Name="txtHint3_3"
+                   Text="힌트: 버튼 줄을 Dock=&quot;Top&quot; 으로 올리고 본문을 아래에 둡니다."
+                   Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+        <Border x:Name="resultBorder3_3" Background="White" Margin="0,8,0,0" Padding="10" Visibility="Collapsed">
+            <StackPanel x:Name="resultPanel3_3"/>
+        </Border>
+    </StackPanel>
+</Expander>
 </StackPanel>
                 </ScrollViewer>
             </TabItem>
@@ -497,6 +539,25 @@
                             <TextBlock x:Name="txtResult4_2" Margin="0,8,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
                         </StackPanel>
                     </Expander>
+
+<!-- 직접 해보기 4_3 -->
+<Expander Style="{StaticResource PracticeExpanderStyle}">
+    <StackPanel Margin="10">
+        <TextBlock Text="과제: 현재 프레임에서 앞으로 갈 수 있을 때만 이동하는 코드를 작성하세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
+        <TextBox x:Name="txtPractice4_3"
+                 Style="{StaticResource PracticeInputStyle}"
+                 Text="private void Forward_Click(object sender, RoutedEventArgs e)&#10;{&#10;    &#10;}"/>
+        <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
+            <Button Content="확인" Style="{StaticResource RunButtonStyle}" Click="BtnCheck_Click" Tag="4_3"/>
+            <Button Content="힌트" Style="{StaticResource HintButtonStyle}" Click="BtnHint_Click" Tag="4_3"/>
+            <Button Content="정답 보기" Style="{StaticResource AnswerButtonStyle}" Click="BtnAnswer_Click" Tag="4_3"/>
+        </StackPanel>
+        <TextBlock x:Name="txtHint4_3"
+                   Text="힌트: CanGoForward 로 확인한 뒤 GoForward() 를 호출합니다."
+                   Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+        <TextBlock x:Name="txtResult4_3" Margin="0,8,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+    </StackPanel>
+</Expander>
 </StackPanel>
                 </ScrollViewer>
             </TabItem>
@@ -605,6 +666,25 @@
                             <TextBlock x:Name="txtResult5_2" Margin="0,8,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
                         </StackPanel>
                     </Expander>
+
+<!-- 직접 해보기 5_3 -->
+<Expander Style="{StaticResource PracticeExpanderStyle}">
+    <StackPanel Margin="10">
+        <TextBlock Text="과제: 이동 기록을 모두 지우는 코드를 작성하세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
+        <TextBox x:Name="txtPractice5_3"
+                 Style="{StaticResource PracticeInputStyle}"
+                 Text="private void ClearHistory_Click(object sender, RoutedEventArgs e)&#10;{&#10;    &#10;}"/>
+        <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
+            <Button Content="확인" Style="{StaticResource RunButtonStyle}" Click="BtnCheck_Click" Tag="5_3"/>
+            <Button Content="힌트" Style="{StaticResource HintButtonStyle}" Click="BtnHint_Click" Tag="5_3"/>
+            <Button Content="정답 보기" Style="{StaticResource AnswerButtonStyle}" Click="BtnAnswer_Click" Tag="5_3"/>
+        </StackPanel>
+        <TextBlock x:Name="txtHint5_3"
+                   Text="힌트: NavigationService.RemoveBackEntry() 를 더 이상 없을 때까지 반복합니다."
+                   Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+        <TextBlock x:Name="txtResult5_3" Margin="0,8,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+    </StackPanel>
+</Expander>
 </StackPanel>
                 </ScrollViewer>
             </TabItem>

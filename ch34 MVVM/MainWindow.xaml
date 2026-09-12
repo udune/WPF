@@ -205,6 +205,25 @@
                         <TextBlock x:Name="txtResult1_2" Margin="0,8,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
                     </StackPanel>
                 </Expander>
+
+<!-- 직접 해보기 1_3 -->
+<Expander Style="{StaticResource PracticeExpanderStyle}">
+    <StackPanel Margin="10">
+        <TextBlock Text="과제: View 가 ViewModel 을 직접 알지 않게 하려면 무엇을 쓰는지 주석으로 정리하세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
+        <TextBox x:Name="txtPractice1_3"
+                 Style="{StaticResource PracticeInputStyle}"
+                 Text="// View 와 ViewModel 의 연결&#10;"/>
+        <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
+            <Button Content="확인" Style="{StaticResource RunButtonStyle}" Click="BtnCheck_Click" Tag="1_3"/>
+            <Button Content="힌트" Style="{StaticResource HintButtonStyle}" Click="BtnHint_Click" Tag="1_3"/>
+            <Button Content="정답 보기" Style="{StaticResource AnswerButtonStyle}" Click="BtnAnswer_Click" Tag="1_3"/>
+        </StackPanel>
+        <TextBlock x:Name="txtHint1_3"
+                   Text="힌트: 연결 고리는 DataContext 와 Binding 입니다."
+                   Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+        <TextBlock x:Name="txtResult1_3" Margin="0,8,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+    </StackPanel>
+</Expander>
 </StackPanel>
             </ScrollViewer>
         </TabItem>
@@ -319,6 +338,25 @@
                         <TextBlock x:Name="txtResult2_2" Margin="0,8,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
                     </StackPanel>
                 </Expander>
+
+<!-- 직접 해보기 2_3 -->
+<Expander Style="{StaticResource PracticeExpanderStyle}">
+    <StackPanel Margin="10">
+        <TextBlock Text="과제: Model 에 계산 결과를 돌려주는 읽기 전용 속성을 추가하세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
+        <TextBox x:Name="txtPractice2_3"
+                 Style="{StaticResource PracticeInputStyle}"
+                 Text="public class PersonModel&#10;{&#10;    public string Name { get; set; } = &quot;&quot;;&#10;    public int Age { get; set; }&#10;    &#10;}"/>
+        <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
+            <Button Content="확인" Style="{StaticResource RunButtonStyle}" Click="BtnCheck_Click" Tag="2_3"/>
+            <Button Content="힌트" Style="{StaticResource HintButtonStyle}" Click="BtnHint_Click" Tag="2_3"/>
+            <Button Content="정답 보기" Style="{StaticResource AnswerButtonStyle}" Click="BtnAnswer_Click" Tag="2_3"/>
+        </StackPanel>
+        <TextBlock x:Name="txtHint2_3"
+                   Text="힌트: get 만 있는 속성으로 다른 속성을 조합합니다."
+                   Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+        <TextBlock x:Name="txtResult2_3" Margin="0,8,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+    </StackPanel>
+</Expander>
 </StackPanel>
             </ScrollViewer>
         </TabItem>
@@ -461,6 +499,25 @@
                         <TextBlock x:Name="txtResult3_2" Margin="0,8,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
                     </StackPanel>
                 </Expander>
+
+<!-- 직접 해보기 3_3 -->
+<Expander Style="{StaticResource PracticeExpanderStyle}">
+    <StackPanel Margin="10">
+        <TextBlock Text="과제: ViewModel 에서 선택된 항목을 담고 변경을 알리는 속성을 작성하세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
+        <TextBox x:Name="txtPractice3_3"
+                 Style="{StaticResource PracticeInputStyle}"
+                 Text="private PersonModel? _selected;&#10;public PersonModel? Selected&#10;{&#10;    get { return _selected; }&#10;    set&#10;    {&#10;        &#10;    }&#10;}"/>
+        <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
+            <Button Content="확인" Style="{StaticResource RunButtonStyle}" Click="BtnCheck_Click" Tag="3_3"/>
+            <Button Content="힌트" Style="{StaticResource HintButtonStyle}" Click="BtnHint_Click" Tag="3_3"/>
+            <Button Content="정답 보기" Style="{StaticResource AnswerButtonStyle}" Click="BtnAnswer_Click" Tag="3_3"/>
+        </StackPanel>
+        <TextBlock x:Name="txtHint3_3"
+                   Text="힌트: 대입한 뒤 OnPropertyChanged(&quot;Selected&quot;) 를 호출합니다."
+                   Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+        <TextBlock x:Name="txtResult3_3" Margin="0,8,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+    </StackPanel>
+</Expander>
 </StackPanel>
             </ScrollViewer>
         </TabItem>
@@ -595,6 +652,25 @@
                         <TextBlock x:Name="txtResult4_2" Margin="0,8,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
                     </StackPanel>
                 </Expander>
+
+<!-- 직접 해보기 4_3 -->
+<Expander Style="{StaticResource PracticeExpanderStyle}">
+    <StackPanel Margin="10">
+        <TextBlock Text="과제: CanExecute 결과가 바뀌었음을 WPF 에 알리는 코드를 작성하세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
+        <TextBox x:Name="txtPractice4_3"
+                 Style="{StaticResource PracticeInputStyle}"
+                 Text="public void RaiseCanExecuteChanged()&#10;{&#10;    &#10;}"/>
+        <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
+            <Button Content="확인" Style="{StaticResource RunButtonStyle}" Click="BtnCheck_Click" Tag="4_3"/>
+            <Button Content="힌트" Style="{StaticResource HintButtonStyle}" Click="BtnHint_Click" Tag="4_3"/>
+            <Button Content="정답 보기" Style="{StaticResource AnswerButtonStyle}" Click="BtnAnswer_Click" Tag="4_3"/>
+        </StackPanel>
+        <TextBlock x:Name="txtHint4_3"
+                   Text="힌트: CanExecuteChanged 이벤트를 발생시킵니다."
+                   Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+        <TextBlock x:Name="txtResult4_3" Margin="0,8,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+    </StackPanel>
+</Expander>
 </StackPanel>
             </ScrollViewer>
         </TabItem>
@@ -724,6 +800,27 @@
                         </Border>
                     </StackPanel>
                 </Expander>
+
+<!-- 직접 해보기 5_3 -->
+<Expander Style="{StaticResource PracticeExpanderStyle}">
+    <StackPanel Margin="10">
+        <TextBlock Text="과제: ListView 에서 고른 항목을 ViewModel 의 Selected 속성과 양방향으로 묶으세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
+        <TextBox x:Name="txtPractice5_3"
+                 Style="{StaticResource PracticeInputStyle}"
+                 Text="&lt;ListView ItemsSource=&quot;{Binding People}&quot; Height=&quot;110&quot;/&gt;"/>
+        <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
+            <Button Content="실행" Style="{StaticResource RunButtonStyle}" Click="BtnRun_Click" Tag="5_3"/>
+            <Button Content="힌트" Style="{StaticResource HintButtonStyle}" Click="BtnHint_Click" Tag="5_3"/>
+            <Button Content="정답 보기" Style="{StaticResource AnswerButtonStyle}" Click="BtnAnswer_Click" Tag="5_3"/>
+        </StackPanel>
+        <TextBlock x:Name="txtHint5_3"
+                   Text="힌트: SelectedItem 에 Mode=TwoWay 바인딩을 겁니다."
+                   Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+        <Border x:Name="resultBorder5_3" Background="White" Margin="0,8,0,0" Padding="10" Visibility="Collapsed">
+            <StackPanel x:Name="resultPanel5_3"/>
+        </Border>
+    </StackPanel>
+</Expander>
 </StackPanel>
             </ScrollViewer>
         </TabItem>

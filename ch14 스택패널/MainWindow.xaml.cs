@@ -2,6 +2,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Markup;
 using System.Windows.Media;
+using System.Text.RegularExpressions;
 
 namespace ch14_스택패널
 {
@@ -12,6 +13,8 @@ namespace ch14_스택패널
         // 각 연습의 정답
         private readonly Dictionary<string, string> _answers = new()
         {
+            { "3_3", "<StackPanel Orientation=\"Horizontal\">\n    <StackPanel Margin=\"10\">\n        <TextBlock Text=\"왼쪽 1\"/>\n        <TextBlock Text=\"왼쪽 2\"/>\n    </StackPanel>\n    <StackPanel Margin=\"10\">\n        <TextBlock Text=\"오른쪽 1\"/>\n        <TextBlock Text=\"오른쪽 2\"/>\n    </StackPanel>\n</StackPanel>" },
+            { "4_3", "<StackPanel>\n    <StackPanel.Resources>\n        <Style TargetType=\"Button\">\n            <Setter Property=\"Width\" Value=\"140\"/>\n            <Setter Property=\"Margin\" Value=\"0,4,0,4\"/>\n        </Style>\n    </StackPanel.Resources>\n    <Button Content=\"첫째\"/>\n    <Button Content=\"둘째\"/>\n</StackPanel>" },
             // 탭 1: 기본 사용법
             { "1_1", "<StackPanel>\n    <Button Content=\"버튼 1\"/>\n    <Button Content=\"버튼 2\"/>\n</StackPanel>" },
             { "1_2", "<StackPanel Orientation=\"Horizontal\">\n    <Button Content=\"A\"/>\n    <Button Content=\"B\"/>\n</StackPanel>" },
@@ -132,26 +135,19 @@ namespace ch14_스택패널
 
             try
             {
-                string fullXaml = xamlCode;
+                string fullXaml = xamlCode.Trim();
 
-                // XAML 네임스페이스 추가
-                if (!xamlCode.Contains("xmlns="))
+                if (!fullXaml.Contains("xmlns="))
                 {
-                    string trimmed = xamlCode.TrimStart();
-                    if (trimmed.StartsWith("<StackPanel"))
+                    // 루트 태그가 무엇이든 프레젠테이션 네임스페이스를 붙여 줍니다.
+                    Match root = Regex.Match(fullXaml, @"^<([A-Za-z_][\w.]*)");
+                    if (root.Success)
                     {
-                        fullXaml = xamlCode.Replace("<StackPanel",
-                            "<StackPanel xmlns='http://schemas.microsoft.com/winfx/2006/xaml/presentation'");
-                    }
-                    else if (trimmed.StartsWith("<Grid"))
-                    {
-                        fullXaml = xamlCode.Replace("<Grid",
-                            "<Grid xmlns='http://schemas.microsoft.com/winfx/2006/xaml/presentation'");
-                    }
-                    else if (trimmed.StartsWith("<Button"))
-                    {
-                        fullXaml = xamlCode.Replace("<Button",
-                            "<Button xmlns='http://schemas.microsoft.com/winfx/2006/xaml/presentation'");
+                        string name = root.Groups[1].Value;
+                        fullXaml = "<" + name
+                            + " xmlns='http://schemas.microsoft.com/winfx/2006/xaml/presentation'"
+                            + " xmlns:x='http://schemas.microsoft.com/winfx/2006/xaml'"
+                            + fullXaml.Substring(name.Length + 1);
                     }
                 }
 

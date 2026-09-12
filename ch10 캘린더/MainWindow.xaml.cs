@@ -3,6 +3,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Markup;
 using System.Windows.Media;
+using System.Text.RegularExpressions;
 
 namespace ch10_캘린더
 {
@@ -11,6 +12,10 @@ namespace ch10_캘린더
         // 각 연습의 정답
         private readonly Dictionary<string, string> _answers = new()
         {
+            { "2_3", "<Calendar>\n    <Calendar.BlackoutDates>\n        <CalendarDateRange Start=\"2020-01-01\" End=\"2024-12-31\"/>\n    </Calendar.BlackoutDates>\n</Calendar>" },
+            { "3_3", "<Calendar SelectionMode=\"MultipleRange\"/>" },
+            { "4_2", "<StackPanel>\n    <Calendar x:Name=\"cal\"/>\n    <TextBlock Text=\"{Binding ElementName=cal, Path=SelectedDate, StringFormat='선택: {0:yyyy-MM-dd}'}\" Margin=\"0,8,0,0\"/>\n</StackPanel>" },
+            { "4_3", "private void Today_Click(object sender, RoutedEventArgs e)\n{\n    cal.SelectedDate = DateTime.Today;\n}" },
             // 탭 1: 기본 사용법
             { "1_1", "<Calendar/>" },
             { "1_2", "<Calendar DisplayMode=\"Year\"/>" },
@@ -36,6 +41,7 @@ namespace ch10_캘린더
         // 코드 비교 검증용 필수 키워드
         private readonly Dictionary<string, string[]> _requiredKeywords = new()
         {
+            { "4_3", new[] { "SelectedDate", "DateTime.Today" } },
             { "2_2", new[] { "BlackoutDates", "AddDatesInPast" } },
             { "3_2", new[] { "SelectedDate", "HasValue", "Value" } },
             { "5_3", new[] { "SelectedDate", "DateTime.Today" } },
@@ -129,21 +135,19 @@ namespace ch10_캘린더
 
             try
             {
-                string fullXaml = xamlCode;
+                string fullXaml = xamlCode.Trim();
 
-                // XAML 네임스페이스 추가
-                if (!xamlCode.Contains("xmlns="))
+                if (!fullXaml.Contains("xmlns="))
                 {
-                    string trimmed = xamlCode.TrimStart();
-                    if (trimmed.StartsWith("<Calendar"))
+                    // 루트 태그가 무엇이든 프레젠테이션 네임스페이스를 붙여 줍니다.
+                    Match root = Regex.Match(fullXaml, @"^<([A-Za-z_][\w.]*)");
+                    if (root.Success)
                     {
-                        fullXaml = xamlCode.Replace("<Calendar",
-                            "<Calendar xmlns='http://schemas.microsoft.com/winfx/2006/xaml/presentation'");
-                    }
-                    else if (trimmed.StartsWith("<StackPanel"))
-                    {
-                        fullXaml = xamlCode.Replace("<StackPanel",
-                            "<StackPanel xmlns='http://schemas.microsoft.com/winfx/2006/xaml/presentation'");
+                        string name = root.Groups[1].Value;
+                        fullXaml = "<" + name
+                            + " xmlns='http://schemas.microsoft.com/winfx/2006/xaml/presentation'"
+                            + " xmlns:x='http://schemas.microsoft.com/winfx/2006/xaml'"
+                            + fullXaml.Substring(name.Length + 1);
                     }
                 }
 

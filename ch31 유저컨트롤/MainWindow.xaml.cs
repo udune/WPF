@@ -52,6 +52,11 @@ namespace ch31_유저컨트롤
         // 각 연습의 정답
         private readonly Dictionary<string, string> _answers = new()
         {
+            { "1_3", "<Border BorderBrush=\"#90A4AE\" BorderThickness=\"1\" Width=\"240\">\n    <DockPanel>\n        <Border DockPanel.Dock=\"Top\" Background=\"#90A4AE\">\n            <TextBlock Text=\"제목\" Foreground=\"White\" Margin=\"8,4\"/>\n        </Border>\n        <TextBlock Text=\"본문\" Margin=\"8\"/>\n    </DockPanel>\n</Border>" },
+            { "2_3", "public static readonly DependencyProperty TitleProperty =\n    DependencyProperty.Register(\"Title\", typeof(string), typeof(MyControl),\n        new PropertyMetadata(\"제목 없음\"));" },
+            { "3_3", "<StackPanel Width=\"240\">\n    <Border BorderBrush=\"#CCCCCC\" BorderThickness=\"1\" Padding=\"8\" Margin=\"0,0,0,6\"><TextBlock Text=\"항목 1\"/></Border>\n    <Border BorderBrush=\"#CCCCCC\" BorderThickness=\"1\" Padding=\"8\" Margin=\"0,0,0,6\"><TextBlock Text=\"항목 2\"/></Border>\n    <Border BorderBrush=\"#CCCCCC\" BorderThickness=\"1\" Padding=\"8\"><TextBlock Text=\"항목 3\"/></Border>\n</StackPanel>" },
+            { "4_3", "public string InputText\n{\n    get { return inputBox.Text; }\n    set { inputBox.Text = value; }\n}" },
+            { "5_3", "public static readonly RoutedEvent SubmittedEvent =\n    EventManager.RegisterRoutedEvent(\"Submitted\", RoutingStrategy.Bubble,\n        typeof(RoutedEventHandler), typeof(MyControl));" },
             { "1_1", "<Border BorderBrush=\"#999999\" BorderThickness=\"1\" Padding=\"10\">\n    <TextBlock Text=\"내 사용자 컨트롤\" FontWeight=\"Bold\"/>\n</Border>" },
             { "1_2", "private void Add_Click(object sender, RoutedEventArgs e)\n{\n    MyControl control = new MyControl();\n    host.Children.Add(control);\n}" },
             { "2_1", "public static readonly DependencyProperty TitleProperty =\n    DependencyProperty.Register(\"Title\", typeof(string), typeof(MyControl));\n\npublic string Title\n{\n    get { return (string)GetValue(TitleProperty); }\n    set { SetValue(TitleProperty, value); }\n}" },
@@ -67,6 +72,9 @@ namespace ch31_유저컨트롤
         // 코드 비교 검증용 필수 키워드
         private readonly Dictionary<string, string[]> _requiredKeywords = new()
         {
+            { "2_3", new[] { "PropertyMetadata", "Register" } },
+            { "4_3", new[] { "get", "inputBox.Text", "set" } },
+            { "5_3", new[] { "RegisterRoutedEvent", "RoutingStrategy", "RoutedEventHandler" } },
             { "1_2", new[] { "new MyControl", "Children.Add" } },
             { "2_1", new[] { "DependencyProperty.Register", "typeof(string)", "GetValue", "SetValue" } },
             { "4_1", new[] { "myControl.Title" } },

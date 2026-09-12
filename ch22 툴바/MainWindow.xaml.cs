@@ -48,6 +48,11 @@ namespace ch22_툴바
         // 각 연습의 정답
         private readonly Dictionary<string, string> _answers = new()
         {
+            { "1_3", "<ToolBarTray>\n    <ToolBar Header=\"편집\">\n        <Button Content=\"복사\"/>\n        <Button Content=\"붙여넣기\"/>\n    </ToolBar>\n</ToolBarTray>" },
+            { "2_3", "<ToolBar>\n    <Button>\n        <Ellipse Width=\"14\" Height=\"14\" Fill=\"Crimson\"/>\n    </Button>\n    <Button>\n        <Rectangle Width=\"14\" Height=\"14\" Fill=\"SeaGreen\"/>\n    </Button>\n</ToolBar>" },
+            { "3_3", "<ToolBar Width=\"180\">\n    <Button Content=\"하나\"/>\n    <Button Content=\"둘\"/>\n    <Button Content=\"셋\"/>\n    <Button Content=\"넷\"/>\n    <Button Content=\"다섯\"/>\n</ToolBar>" },
+            { "4_3", "<ToolBarTray>\n    <ToolBar Band=\"0\" BandIndex=\"0\">\n        <Button Content=\"앞\"/>\n    </ToolBar>\n    <ToolBar Band=\"0\" BandIndex=\"1\">\n        <Button Content=\"뒤\"/>\n    </ToolBar>\n</ToolBarTray>" },
+            { "5_3", "<ToolBar>\n    <Button Content=\"재생\"/>\n    <Button Content=\"일시정지\"/>\n    <Button Content=\"정지\"/>\n    <Separator/>\n    <Slider Width=\"100\" Minimum=\"0\" Maximum=\"100\" Value=\"70\" VerticalAlignment=\"Center\"/>\n</ToolBar>" },
             { "1_1", "<ToolBar>\n    <Button Content=\"굵게\"/>\n    <Button Content=\"기울임\"/>\n    <Button Content=\"밑줄\"/>\n</ToolBar>" },
             { "1_2", "<ToolBarTray>\n    <ToolBar>\n        <Button Content=\"새로 만들기\"/>\n        <Separator/>\n        <Button Content=\"열기\"/>\n    </ToolBar>\n    <ToolBar>\n        <Button Content=\"저장\"/>\n    </ToolBar>\n</ToolBarTray>" },
             { "2_1", "<ToolBar>\n    <ComboBox Width=\"100\" SelectedIndex=\"0\">\n        <ComboBoxItem Content=\"맑은 고딕\"/>\n        <ComboBoxItem Content=\"굴림\"/>\n        <ComboBoxItem Content=\"바탕\"/>\n    </ComboBox>\n</ToolBar>" },

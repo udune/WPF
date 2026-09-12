@@ -3,6 +3,7 @@ using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Markup;
 using System.Windows.Media;
+using System.Text.RegularExpressions;
 
 namespace ch6_패스워드박스
 {
@@ -11,6 +12,7 @@ namespace ch6_패스워드박스
         // 각 연습의 정답
         private readonly Dictionary<string, string> _answers = new()
         {
+            { "2_3", "<PasswordBox Width=\"220\" HorizontalAlignment=\"Center\"/>" },
             // 탭 1: 기본 사용법
             { "1_1", "<PasswordBox PasswordChar=\"*\"/>" },
             { "1_2", "<PasswordBox MaxLength=\"6\"/>" },
@@ -132,12 +134,20 @@ namespace ch6_패스워드박스
 
             try
             {
-                string fullXaml = xamlCode;
-                if (!xamlCode.Contains("xmlns="))
+                string fullXaml = xamlCode.Trim();
+
+                if (!fullXaml.Contains("xmlns="))
                 {
-                    // PasswordBox에 네임스페이스 추가
-                    fullXaml = xamlCode.Replace("<PasswordBox",
-                        "<PasswordBox xmlns='http://schemas.microsoft.com/winfx/2006/xaml/presentation'");
+                    // 루트 태그가 무엇이든 프레젠테이션 네임스페이스를 붙여 줍니다.
+                    Match root = Regex.Match(fullXaml, @"^<([A-Za-z_][\w.]*)");
+                    if (root.Success)
+                    {
+                        string name = root.Groups[1].Value;
+                        fullXaml = "<" + name
+                            + " xmlns='http://schemas.microsoft.com/winfx/2006/xaml/presentation'"
+                            + " xmlns:x='http://schemas.microsoft.com/winfx/2006/xaml'"
+                            + fullXaml.Substring(name.Length + 1);
+                    }
                 }
 
                 var element = XamlReader.Parse(fullXaml) as UIElement;

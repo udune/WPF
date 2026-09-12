@@ -55,6 +55,10 @@ namespace ch30_탭컨트롤_모달_모달리스
         // 각 연습의 정답
         private readonly Dictionary<string, string> _answers = new()
         {
+            { "2_3", "<TabControl Height=\"120\" SelectedIndex=\"1\">\n    <TabItem Header=\"첫째\"/>\n    <TabItem Header=\"둘째\"/>\n    <TabItem Header=\"셋째\"/>\n</TabControl>" },
+            { "3_3", "<TabControl Height=\"120\" TabStripPlacement=\"Bottom\">\n    <TabItem Header=\"가\" FontWeight=\"Bold\"/>\n    <TabItem Header=\"나\"/>\n</TabControl>" },
+            { "4_3", "private void Center_Click(object sender, RoutedEventArgs e)\n{\n    Window1 window = new Window1();\n    window.Owner = this;\n    window.WindowStartupLocation = WindowStartupLocation.CenterOwner;\n    window.ShowDialog();\n}" },
+            { "5_3", "private void Cancel_Click(object sender, RoutedEventArgs e)\n{\n    this.DialogResult = false;\n}" },
             { "2_1", "<TabControl Height=\"120\">\n    <TabItem Header=\"홈\"/>\n    <TabItem Header=\"설정\"/>\n    <TabItem Header=\"정보\"/>\n</TabControl>" },
             { "2_2", "<TabControl Height=\"120\">\n    <TabItem Header=\"홈\">\n        <TextBlock Text=\"홈 화면입니다.\" Margin=\"10\"/>\n    </TabItem>\n    <TabItem Header=\"설정\">\n        <TextBlock Text=\"설정 화면입니다.\" Margin=\"10\"/>\n    </TabItem>\n</TabControl>" },
             { "3_1", "<TabControl Height=\"120\" TabStripPlacement=\"Left\">\n    <TabItem Header=\"첫째\"/>\n    <TabItem Header=\"둘째\"/>\n</TabControl>" },
@@ -68,6 +72,8 @@ namespace ch30_탭컨트롤_모달_모달리스
         // 코드 비교 검증용 필수 키워드
         private readonly Dictionary<string, string[]> _requiredKeywords = new()
         {
+            { "4_3", new[] { "Owner = this", "WindowStartupLocation", "ShowDialog" } },
+            { "5_3", new[] { "DialogResult", "false" } },
             { "4_1", new[] { "new Window1", "ShowDialog" } },
             { "4_2", new[] { "new Window1", "Show()" } },
             { "5_1", new[] { "DialogResult", "true" } },

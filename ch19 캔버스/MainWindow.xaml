@@ -162,7 +162,28 @@
                             </Expander>
                         </StackPanel>
                     </GroupBox>
-                </StackPanel>
+                
+                <!-- 직접 해보기 1_3 -->
+                <Expander Style="{StaticResource PracticeExpanderStyle}">
+                    <StackPanel Margin="10">
+                        <TextBlock Text="과제: Canvas 에 사각형 하나를 왼쪽 20, 위 20 위치에 놓으세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
+                        <TextBox x:Name="txtPractice1_3"
+                                 Style="{StaticResource PracticeInputStyle}"
+                                 Text="&lt;Canvas Height=&quot;140&quot; Background=&quot;#FAFAFA&quot;&gt;&#10;    &#10;&lt;/Canvas&gt;"/>
+                        <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
+                            <Button Content="실행" Style="{StaticResource RunButtonStyle}" Click="BtnRun_Click" Tag="1_3"/>
+                            <Button Content="힌트" Style="{StaticResource HintButtonStyle}" Click="BtnHint_Click" Tag="1_3"/>
+                            <Button Content="정답 보기" Style="{StaticResource AnswerButtonStyle}" Click="BtnAnswer_Click" Tag="1_3"/>
+                        </StackPanel>
+                        <TextBlock x:Name="txtHint1_3"
+                                   Text="힌트: Canvas.Left 와 Canvas.Top 첨부 속성을 씁니다."
+                                   Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                        <Border x:Name="resultBorder1_3" Background="White" Margin="0,8,0,0" Padding="10" Visibility="Collapsed">
+                            <StackPanel x:Name="resultPanel1_3"/>
+                        </Border>
+                    </StackPanel>
+                </Expander>
+</StackPanel>
             </ScrollViewer>
         </TabItem>
 
@@ -280,7 +301,28 @@
                             </Expander>
                         </StackPanel>
                     </GroupBox>
-                </StackPanel>
+                
+                <!-- 직접 해보기 2_3 -->
+                <Expander Style="{StaticResource PracticeExpanderStyle}">
+                    <StackPanel Margin="10">
+                        <TextBlock Text="과제: Canvas 오른쪽 아래 구석에 원을 붙이세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
+                        <TextBox x:Name="txtPractice2_3"
+                                 Style="{StaticResource PracticeInputStyle}"
+                                 Text="&lt;Canvas Height=&quot;140&quot; Background=&quot;#FAFAFA&quot;&gt;&#10;    &#10;&lt;/Canvas&gt;"/>
+                        <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
+                            <Button Content="실행" Style="{StaticResource RunButtonStyle}" Click="BtnRun_Click" Tag="2_3"/>
+                            <Button Content="힌트" Style="{StaticResource HintButtonStyle}" Click="BtnHint_Click" Tag="2_3"/>
+                            <Button Content="정답 보기" Style="{StaticResource AnswerButtonStyle}" Click="BtnAnswer_Click" Tag="2_3"/>
+                        </StackPanel>
+                        <TextBlock x:Name="txtHint2_3"
+                                   Text="힌트: Canvas.Right 와 Canvas.Bottom 을 쓰면 반대쪽 기준으로 배치됩니다."
+                                   Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                        <Border x:Name="resultBorder2_3" Background="White" Margin="0,8,0,0" Padding="10" Visibility="Collapsed">
+                            <StackPanel x:Name="resultPanel2_3"/>
+                        </Border>
+                    </StackPanel>
+                </Expander>
+</StackPanel>
             </ScrollViewer>
         </TabItem>
 
@@ -400,7 +442,28 @@
                                        Margin="0,8,0,0" FontWeight="Bold" Visibility="Collapsed"/>
                         </StackPanel>
                     </Expander>
-                </StackPanel>
+                
+                <!-- 직접 해보기 3_3 -->
+                <Expander Style="{StaticResource PracticeExpanderStyle}">
+                    <StackPanel Margin="10">
+                        <TextBlock Text="과제: 사각형 3개를 겹쳐 놓고 ZIndex 로 초록색이 맨 위에 오게 하세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
+                        <TextBox x:Name="txtPractice3_3"
+                                 Style="{StaticResource PracticeInputStyle}"
+                                 Text="&lt;Canvas Height=&quot;140&quot; Background=&quot;#FAFAFA&quot;&gt;&#10;    &#10;&lt;/Canvas&gt;"/>
+                        <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
+                            <Button Content="실행" Style="{StaticResource RunButtonStyle}" Click="BtnRun_Click" Tag="3_3"/>
+                            <Button Content="힌트" Style="{StaticResource HintButtonStyle}" Click="BtnHint_Click" Tag="3_3"/>
+                            <Button Content="정답 보기" Style="{StaticResource AnswerButtonStyle}" Click="BtnAnswer_Click" Tag="3_3"/>
+                        </StackPanel>
+                        <TextBlock x:Name="txtHint3_3"
+                                   Text="힌트: Panel.ZIndex 값이 클수록 위에 그려집니다."
+                                   Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                        <Border x:Name="resultBorder3_3" Background="White" Margin="0,8,0,0" Padding="10" Visibility="Collapsed">
+                            <StackPanel x:Name="resultPanel3_3"/>
+                        </Border>
+                    </StackPanel>
+                </Expander>
+</StackPanel>
             </ScrollViewer>
         </TabItem>
 
@@ -713,7 +776,28 @@
                             </Expander>
                         </StackPanel>
                     </GroupBox>
-                </StackPanel>
+                
+                <!-- 직접 해보기 5_3 -->
+                <Expander Style="{StaticResource PracticeExpanderStyle}">
+                    <StackPanel Margin="10">
+                        <TextBlock Text="과제: Canvas 로 간단한 막대 그래프를 그리세요. 높이가 다른 막대 3개가 아래쪽에 정렬됩니다." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
+                        <TextBox x:Name="txtPractice5_3"
+                                 Style="{StaticResource PracticeInputStyle}"
+                                 Text="&lt;Canvas Height=&quot;140&quot; Background=&quot;#FAFAFA&quot;&gt;&#10;    &#10;&lt;/Canvas&gt;"/>
+                        <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
+                            <Button Content="실행" Style="{StaticResource RunButtonStyle}" Click="BtnRun_Click" Tag="5_3"/>
+                            <Button Content="힌트" Style="{StaticResource HintButtonStyle}" Click="BtnHint_Click" Tag="5_3"/>
+                            <Button Content="정답 보기" Style="{StaticResource AnswerButtonStyle}" Click="BtnAnswer_Click" Tag="5_3"/>
+                        </StackPanel>
+                        <TextBlock x:Name="txtHint5_3"
+                                   Text="힌트: Canvas.Bottom 을 0 으로 맞추면 아래쪽 기준으로 정렬됩니다."
+                                   Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                        <Border x:Name="resultBorder5_3" Background="White" Margin="0,8,0,0" Padding="10" Visibility="Collapsed">
+                            <StackPanel x:Name="resultPanel5_3"/>
+                        </Border>
+                    </StackPanel>
+                </Expander>
+</StackPanel>
             </ScrollViewer>
         </TabItem>
     </TabControl>

@@ -189,6 +189,11 @@ namespace ch27_데이터바인딩3
         // 각 연습의 정답
         private readonly Dictionary<string, string> _answers = new()
         {
+            { "1_3", "<ListBox Width=\"200\" Height=\"90\" SelectedIndex=\"2\">\n    <ListBoxItem Content=\"하나\"/>\n    <ListBoxItem Content=\"둘\"/>\n    <ListBoxItem Content=\"셋\"/>\n</ListBox>" },
+            { "2_3", "<ListBox Width=\"240\" Height=\"110\">\n    <ListBox.ItemTemplate>\n        <DataTemplate>\n            <StackPanel Margin=\"0,3,0,3\">\n                <TextBlock Text=\"{Binding Name}\" FontWeight=\"Bold\"/>\n                <TextBlock Text=\"{Binding Description}\" FontSize=\"11\" Foreground=\"Gray\"/>\n            </StackPanel>\n        </DataTemplate>\n    </ListBox.ItemTemplate>\n</ListBox>" },
+            { "3_3", "<ListView Width=\"320\" Height=\"110\">\n    <ListView.View>\n        <GridView>\n            <GridViewColumn Header=\"이름\" Width=\"120\" DisplayMemberBinding=\"{Binding Name}\"/>\n            <GridViewColumn Header=\"나이\" Width=\"60\" DisplayMemberBinding=\"{Binding Age}\"/>\n            <GridViewColumn Header=\"도시\" Width=\"100\" DisplayMemberBinding=\"{Binding City}\"/>\n        </GridView>\n    </ListView.View>\n</ListView>" },
+            { "4_3", "<ComboBox Width=\"180\" IsEditable=\"True\">\n    <ComboBoxItem Content=\"서울\"/>\n    <ComboBoxItem Content=\"부산\"/>\n</ComboBox>" },
+            { "5_3", "private void Clear_Click(object sender, RoutedEventArgs e)\n{\n    items.Clear();\n}" },
             { "1_1", "<ListBox Width=\"200\" Height=\"90\">\n    <ListBoxItem Content=\"사과\"/>\n    <ListBoxItem Content=\"바나나\"/>\n    <ListBoxItem Content=\"포도\"/>\n</ListBox>" },
             { "1_2", "private void Load_Click(object sender, RoutedEventArgs e)\n{\n    List<string> items = new List<string> { \"사과\", \"바나나\", \"포도\" };\n    list.ItemsSource = items;\n}" },
             { "2_1", "<ListBox Width=\"220\" Height=\"90\">\n    <ListBox.ItemTemplate>\n        <DataTemplate>\n            <TextBlock Text=\"{Binding Name}\" FontWeight=\"Bold\"/>\n        </DataTemplate>\n    </ListBox.ItemTemplate>\n</ListBox>" },
@@ -204,6 +209,7 @@ namespace ch27_데이터바인딩3
         // 코드 비교 검증용 필수 키워드
         private readonly Dictionary<string, string[]> _requiredKeywords = new()
         {
+            { "5_3", new[] { "items.Clear()" } },
             { "1_2", new[] { "List<string>", "ItemsSource" } },
             { "5_1", new[] { "items.Add" } },
             { "5_2", new[] { "SelectedItem", "items.Remove" } },

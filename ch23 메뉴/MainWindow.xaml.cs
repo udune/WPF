@@ -122,6 +122,11 @@ namespace ch23_메뉴
         // 각 연습의 정답
         private readonly Dictionary<string, string> _answers = new()
         {
+            { "1_3", "<Menu>\n    <MenuItem Header=\"보기\">\n        <MenuItem Header=\"확대\"/>\n        <MenuItem Header=\"축소\"/>\n    </MenuItem>\n</Menu>" },
+            { "2_3", "<Menu>\n    <MenuItem Header=\"삽입\">\n        <MenuItem Header=\"표\">\n            <MenuItem Header=\"행 추가\"/>\n            <MenuItem Header=\"열 추가\"/>\n        </MenuItem>\n    </MenuItem>\n</Menu>" },
+            { "3_3", "<Menu>\n    <MenuItem Header=\"편집\">\n        <MenuItem Header=\"붙여넣기\" InputGestureText=\"Ctrl+V\">\n            <MenuItem.Icon>\n                <Ellipse Width=\"12\" Height=\"12\" Fill=\"Green\"/>\n            </MenuItem.Icon>\n        </MenuItem>\n    </MenuItem>\n</Menu>" },
+            { "4_3", "<Menu>\n    <MenuItem Header=\"편집\">\n        <MenuItem Header=\"실행 취소\" IsEnabled=\"False\"/>\n        <MenuItem Header=\"다시 실행\"/>\n    </MenuItem>\n</Menu>" },
+            { "5_3", "<Menu>\n    <MenuItem Header=\"보기\">\n        <MenuItem Header=\"큰 아이콘\" IsCheckable=\"True\" IsChecked=\"True\"/>\n        <MenuItem Header=\"자세히\" IsCheckable=\"True\"/>\n        <MenuItem Header=\"목록\" IsCheckable=\"True\"/>\n    </MenuItem>\n</Menu>" },
             { "1_1", "<Menu>\n    <MenuItem Header=\"파일\"/>\n    <MenuItem Header=\"편집\"/>\n</Menu>" },
             { "1_2", "<Menu>\n    <MenuItem Header=\"파일\">\n        <MenuItem Header=\"새로 만들기\"/>\n        <MenuItem Header=\"열기\"/>\n        <MenuItem Header=\"종료\"/>\n    </MenuItem>\n</Menu>" },
             { "2_1", "<Menu>\n    <MenuItem Header=\"편집\">\n        <MenuItem Header=\"찾기\">\n            <MenuItem Header=\"현재 문서\"/>\n            <MenuItem Header=\"전체 문서\"/>\n        </MenuItem>\n    </MenuItem>\n</Menu>" },
