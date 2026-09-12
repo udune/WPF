@@ -54,12 +54,22 @@ namespace StudyTracking
             Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping,
         };
 
+        /// <summary>실제 학습 기록을 건드리지 않고 시험해 볼 때 쓰는 환경 변수 이름.</summary>
+        public const string OverrideVariable = "WPF_STUDY_DIR";
+
         /// <summary>
         /// 실행 파일은 bin/Debug/{tfm}/ 에서 돌기 때문에 .git 이 있는 저장소 루트까지
         /// 거슬러 올라가 .study/ 를 찾습니다. 저장소 밖에서 실행되면 %APPDATA% 로 폴백합니다.
+        ///
+        /// WPF_STUDY_DIR 환경 변수가 있으면 그 경로를 씁니다. 테스트나 자동화가 실제
+        /// 학습 기록을 덮어쓰거나 지우는 일을 막기 위한 탈출구입니다.
         /// </summary>
         public static string ResolveDirectory()
         {
+            var overridden = Environment.GetEnvironmentVariable(OverrideVariable);
+            if (!string.IsNullOrWhiteSpace(overridden))
+                return overridden;
+
             var dir = new DirectoryInfo(AppContext.BaseDirectory);
             while (dir != null)
             {
