@@ -13,6 +13,11 @@
     <Compile Remove="ch35 MariaDB연동\**" />
   </ItemGroup>
 
+  <!-- 현황판은 기록 모델만 공유합니다. 후킹 로직(StudyTracker)은 챕터 앱 전용입니다. -->
+  <ItemGroup>
+    <Compile Include="..\Shared\StudyRecords.cs" Link="Shared\StudyRecords.cs" />
+  </ItemGroup>
+
   <ItemGroup>
     <EmbeddedResource Remove="ch21 스테이터스바\**" />
     <EmbeddedResource Remove="ch35 MariaDB연동\**" />

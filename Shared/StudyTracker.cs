@@ -16,7 +16,6 @@ using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Runtime.CompilerServices;
-using System.Text.Encodings.Web;
 using System.Text.Json;
 using System.Text.RegularExpressions;
 using System.Windows;
@@ -26,46 +25,10 @@ using System.Windows.Threading;
 
 namespace StudyTracking
 {
-    /// <summary>연습 블록 하나("직접 해보기" Expander 하나)의 기록.</summary>
-    internal sealed class PracticeRecord
-    {
-        public int Runs { get; set; }
-        public int Successes { get; set; }
-        public int Hints { get; set; }
-        public int Answers { get; set; }
-        public string Status { get; set; } = StudyTracker.StatusTodo;
-        public string? Draft { get; set; }
-        public DateTimeOffset? CompletedAt { get; set; }
-    }
-
-    /// <summary>챕터 하나의 학습 기록. .study/{챕터명}.json 에 그대로 직렬화됩니다.</summary>
-    internal sealed class ChapterRecord
-    {
-        public string Chapter { get; set; } = "";
-        public DateTimeOffset? FirstStudiedAt { get; set; }
-        public DateTimeOffset? LastStudiedAt { get; set; }
-        public long TotalStudySeconds { get; set; }
-        public int LaunchCount { get; set; }
-        public int LastTab { get; set; }
-        public int PracticeTotal { get; set; }
-        public Dictionary<string, PracticeRecord> Practices { get; set; } = new();
-    }
-
     internal static class StudyTracker
     {
-        internal const string StatusTodo = "미완료";
-        internal const string StatusPartial = "부분완료";
-        internal const string StatusDone = "완료";
-
         // 연습 블록 식별자는 "{탭}_{번호}" 형식입니다. (예: 1_2)
         private static readonly Regex TagPattern = new(@"^\d+_\d+$", RegexOptions.Compiled);
-
-        private static readonly JsonSerializerOptions JsonOpts = new()
-        {
-            WriteIndented = true,
-            // 한글이 \uXXXX 로 이스케이프되면 사람이 읽을 수 없으므로 해제합니다.
-            Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping,
-        };
 
         private static readonly Dictionary<string, TextBox> Inputs = new();
         private static readonly Stopwatch ActiveTime = new();
@@ -122,9 +85,9 @@ namespace StudyTracking
                           ?? window.GetType().Namespace
                           ?? "unknown";
 
-            var dir = ResolveStudyDirectory();
+            var dir = StudyPaths.ResolveDirectory();
             Directory.CreateDirectory(dir);
-            _file = Path.Combine(dir, Sanitize(chapter) + ".json");
+            _file = Path.Combine(dir, StudyPaths.Sanitize(chapter) + ".json");
 
             _record = Load(_file) ?? new ChapterRecord();
             _record.Chapter = chapter;
@@ -242,8 +205,8 @@ namespace StudyTracking
 
             expander.Header = status switch
             {
-                StatusDone => "직접 해보기   ✓ 완료",
-                StatusPartial => "직접 해보기   △ 정답 확인함",
+                StudyStatus.Done => "직접 해보기   ✓ 완료",
+                StudyStatus.Partial => "직접 해보기   △ 정답 확인함",
                 _ => "직접 해보기",
             };
         }
@@ -307,10 +270,10 @@ namespace StudyTracking
 
                 record.Successes++;
 
-                if (record.Status != StatusDone)
+                if (record.Status != StudyStatus.Done)
                 {
                     // 정답을 먼저 본 뒤 성공한 경우는 "부분완료" 로 남깁니다.
-                    record.Status = record.Answers > 0 ? StatusPartial : StatusDone;
+                    record.Status = record.Answers > 0 ? StudyStatus.Partial : StudyStatus.Done;
                     record.CompletedAt ??= DateTimeOffset.Now;
 
                     if (Inputs.TryGetValue(tag, out var input))
@@ -372,7 +335,7 @@ namespace StudyTracking
             try
             {
                 return File.Exists(path)
-                    ? JsonSerializer.Deserialize<ChapterRecord>(File.ReadAllText(path), JsonOpts)
+                    ? JsonSerializer.Deserialize<ChapterRecord>(File.ReadAllText(path), StudyPaths.Json)
                     : null;
             }
             catch
@@ -391,37 +354,13 @@ namespace StudyTracking
             {
                 // 저장 도중 앱이 죽어도 기존 기록이 깨지지 않도록 임시 파일에 쓰고 교체합니다.
                 var temp = _file + ".tmp";
-                File.WriteAllText(temp, JsonSerializer.Serialize(_record, JsonOpts));
+                File.WriteAllText(temp, JsonSerializer.Serialize(_record, StudyPaths.Json));
                 File.Move(temp, _file, overwrite: true);
                 _dirty = false;
             }
             catch { /* 디스크 문제로 학습이 중단되지 않도록 무시 */ }
         }
 
-        /// <summary>
-        /// 실행 파일은 bin/Debug/{tfm}/ 에서 돌기 때문에 .git 이 있는 저장소 루트까지
-        /// 거슬러 올라가 .study/ 를 찾습니다. 저장소 밖에서 실행되면 %APPDATA% 로 폴백합니다.
-        /// </summary>
-        private static string ResolveStudyDirectory()
-        {
-            var dir = new DirectoryInfo(AppContext.BaseDirectory);
-            while (dir != null)
-            {
-                if (Directory.Exists(Path.Combine(dir.FullName, ".git")))
-                    return Path.Combine(dir.FullName, ".study");
-                dir = dir.Parent;
-            }
 
-            return Path.Combine(
-                Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData),
-                "WpfStudy");
-        }
-
-        private static string Sanitize(string name)
-        {
-            foreach (var invalid in Path.GetInvalidFileNameChars())
-                name = name.Replace(invalid, '_');
-            return name;
-        }
     }
 }
