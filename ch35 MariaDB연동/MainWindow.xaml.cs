@@ -34,6 +34,11 @@ public partial class MainWindow : Window
         // 각 연습의 정답
         private readonly Dictionary<string, string> _answers = new()
         {
+            { "1_3", "private const string ConnectionString =\n    \"Server=localhost;Port=3306;Database=testdb;Uid=root;Pwd=1234;CharSet=utf8mb4;\";" },
+            { "2_3", "private int CountMembers(MySqlConnection conn)\n{\n    using (var cmd = new MySqlCommand(\"SELECT COUNT(*) FROM member\", conn))\n    {\n        return Convert.ToInt32(cmd.ExecuteScalar());\n    }\n}" },
+            { "3_3", "string sql = \"SELECT id, name FROM member WHERE name LIKE @keyword\";" },
+            { "4_3", "private void RunBatch(MySqlConnection conn)\n{\n    var tx = conn.BeginTransaction();\n    try\n    {\n        // 여러 명령 실행\n        tx.Commit();\n    }\n    catch\n    {\n        tx.Rollback();\n    }\n}" },
+            { "5_3", "private void Fill(MySqlDataReader reader)\n{\n    var rows = new List<string>();\n    while (reader.Read())\n    {\n        rows.Add(reader[\"name\"].ToString());\n    }\n    list.ItemsSource = rows;\n}" },
             { "1_1", "private const string ConnectionString =\n    \"Server=localhost;Port=3306;Database=testdb;Uid=root;Pwd=1234;\";" },
             { "1_2", "private void Connect_Click(object sender, RoutedEventArgs e)\n{\n    using (var conn = new MySqlConnection(ConnectionString))\n    {\n        conn.Open();\n        MessageBox.Show(\"연결 성공\");\n    }\n}" },
             { "2_1", "string sql = \"SELECT id, name, age FROM member ORDER BY id\";" },
@@ -49,6 +54,11 @@ public partial class MainWindow : Window
         // 코드 비교 검증용 필수 키워드
         private readonly Dictionary<string, string[]> _requiredKeywords = new()
         {
+            { "1_3", new[] { "CharSet", "utf8mb4" } },
+            { "2_3", new[] { "ExecuteScalar", "COUNT(*)", "Convert.ToInt32" } },
+            { "3_3", new[] { "SELECT", "WHERE", "LIKE", "@keyword" } },
+            { "4_3", new[] { "BeginTransaction", "Commit", "Rollback" } },
+            { "5_3", new[] { "while (reader.Read())", "rows.Add", "ItemsSource" } },
             { "1_1", new[] { "Server=", "Port=", "Database=", "Uid=", "Pwd=" } },
             { "1_2", new[] { "using", "new MySqlConnection", "conn.Open()" } },
             { "2_1", new[] { "SELECT", "FROM", "member" } },

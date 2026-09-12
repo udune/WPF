@@ -401,7 +401,28 @@
                         <TextBox Style="{StaticResource CodeTextBoxStyle}" Text="&lt;StackPanel Orientation=&quot;Horizontal&quot; Background=&quot;#E0E0E0&quot; Height=&quot;40&quot;&gt;&#10;    &lt;Button Content=&quot;새로 만들기&quot; Padding=&quot;8,4&quot; Margin=&quot;4&quot;/&gt;&#10;    &lt;Button Content=&quot;열기&quot; Padding=&quot;8,4&quot; Margin=&quot;4&quot;/&gt;&#10;    &lt;Separator Margin=&quot;4,8&quot;/&gt;&#10;    &lt;Button Content=&quot;복사&quot; Padding=&quot;8,4&quot; Margin=&quot;4&quot;/&gt;&#10;&lt;/StackPanel&gt;"/>
                     </Expander>
 
-                </StackPanel>
+                
+                <!-- 직접 해보기 3_3 -->
+                <Expander Style="{StaticResource PracticeExpanderStyle}">
+                    <StackPanel Margin="10">
+                        <TextBlock Text="과제: 가로 StackPanel 안에 세로 StackPanel 두 개를 넣어 2단 구성을 만드세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
+                        <TextBox x:Name="txtPractice3_3"
+                                 Style="{StaticResource PracticeInputStyle}"
+                                 Text="&lt;StackPanel Orientation=&quot;Horizontal&quot;&gt;&#10;    &#10;&lt;/StackPanel&gt;"/>
+                        <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
+                            <Button Content="실행" Style="{StaticResource RunButtonStyle}" Click="BtnRun_Click" Tag="3_3"/>
+                            <Button Content="힌트" Style="{StaticResource HintButtonStyle}" Click="BtnHint_Click" Tag="3_3"/>
+                            <Button Content="정답 보기" Style="{StaticResource AnswerButtonStyle}" Click="BtnAnswer_Click" Tag="3_3"/>
+                        </StackPanel>
+                        <TextBlock x:Name="txtHint3_3"
+                                   Text="힌트: StackPanel 안에 StackPanel 을 넣고 Orientation 을 다르게 줍니다."
+                                   Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                        <Border x:Name="resultBorder3_3" Background="White" Margin="0,8,0,0" Padding="10" Visibility="Collapsed">
+                            <StackPanel x:Name="resultPanel3_3"/>
+                        </Border>
+                    </StackPanel>
+                </Expander>
+</StackPanel>
             </ScrollViewer>
         </TabItem>
 
@@ -509,7 +530,28 @@
                         <TextBox Style="{StaticResource CodeTextBoxStyle}" Text="&lt;StackPanel Background=&quot;LightGreen&quot; HorizontalAlignment=&quot;Left&quot;&gt;&#10;    &lt;TextBlock Text=&quot;Left 정렬&quot;/&gt;&#10;&lt;/StackPanel&gt;&#10;&#10;&lt;StackPanel Background=&quot;LightSkyBlue&quot; Width=&quot;300&quot;&gt;&#10;    &lt;TextBlock Text=&quot;고정 너비&quot;/&gt;&#10;&lt;/StackPanel&gt;"/>
                     </Expander>
 
-                </StackPanel>
+                
+                <!-- 직접 해보기 4_3 -->
+                <Expander Style="{StaticResource PracticeExpanderStyle}">
+                    <StackPanel Margin="10">
+                        <TextBlock Text="과제: StackPanel 안의 모든 Button 에 같은 여백과 크기가 적용되도록 스타일을 넣으세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
+                        <TextBox x:Name="txtPractice4_3"
+                                 Style="{StaticResource PracticeInputStyle}"
+                                 Text="&lt;StackPanel&gt;&#10;    &#10;    &lt;Button Content=&quot;첫째&quot;/&gt;&#10;    &lt;Button Content=&quot;둘째&quot;/&gt;&#10;&lt;/StackPanel&gt;"/>
+                        <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
+                            <Button Content="실행" Style="{StaticResource RunButtonStyle}" Click="BtnRun_Click" Tag="4_3"/>
+                            <Button Content="힌트" Style="{StaticResource HintButtonStyle}" Click="BtnHint_Click" Tag="4_3"/>
+                            <Button Content="정답 보기" Style="{StaticResource AnswerButtonStyle}" Click="BtnAnswer_Click" Tag="4_3"/>
+                        </StackPanel>
+                        <TextBlock x:Name="txtHint4_3"
+                                   Text="힌트: StackPanel.Resources 에 x:Key 없는 TargetType 스타일을 넣습니다."
+                                   Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                        <Border x:Name="resultBorder4_3" Background="White" Margin="0,8,0,0" Padding="10" Visibility="Collapsed">
+                            <StackPanel x:Name="resultPanel4_3"/>
+                        </Border>
+                    </StackPanel>
+                </Expander>
+</StackPanel>
             </ScrollViewer>
         </TabItem>
 

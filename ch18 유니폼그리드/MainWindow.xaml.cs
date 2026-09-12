@@ -3,6 +3,7 @@ using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
 using System.Windows.Markup;
 using System.Windows.Media;
+using System.Text.RegularExpressions;
 
 namespace ch18_유니폼그리드
 {
@@ -21,6 +22,10 @@ namespace ch18_유니폼그리드
         // 각 연습의 정답
         private readonly Dictionary<string, string> _answers = new()
         {
+            { "1_3", "<UniformGrid Rows=\"2\" Columns=\"2\" Height=\"120\">\n    <Button Content=\"1\" Margin=\"3\"/>\n    <Button Content=\"2\" Margin=\"3\"/>\n    <Button Content=\"3\" Margin=\"3\"/>\n    <Button Content=\"4\" Margin=\"3\"/>\n</UniformGrid>" },
+            { "2_3", "<UniformGrid Columns=\"3\" Height=\"120\">\n    <Button Content=\"1\" Margin=\"3\"/>\n    <Button Content=\"2\" Margin=\"3\"/>\n    <Button Content=\"3\" Margin=\"3\"/>\n    <Button Content=\"4\" Margin=\"3\"/>\n    <Button Content=\"5\" Margin=\"3\"/>\n</UniformGrid>" },
+            { "3_3", "<UniformGrid Rows=\"3\" Columns=\"3\" Width=\"180\" Height=\"180\">\n    <Button Content=\"7\" Margin=\"2\"/>\n    <Button Content=\"8\" Margin=\"2\"/>\n    <Button Content=\"9\" Margin=\"2\"/>\n    <Button Content=\"4\" Margin=\"2\"/>\n    <Button Content=\"5\" Margin=\"2\"/>\n    <Button Content=\"6\" Margin=\"2\"/>\n    <Button Content=\"1\" Margin=\"2\"/>\n    <Button Content=\"2\" Margin=\"2\"/>\n    <Button Content=\"3\" Margin=\"2\"/>\n</UniformGrid>" },
+            { "4_3", "<UniformGrid Rows=\"2\" Columns=\"3\" FirstColumn=\"1\" Height=\"100\">\n    <Button Content=\"A\" Margin=\"3\"/>\n    <Button Content=\"B\" Margin=\"3\"/>\n</UniformGrid>" },
             // 탭1: 기본 사용법
             { "1_1", "<UniformGrid Rows=\"3\" Columns=\"2\">\n    <Button Content=\"A\"/>\n    <Button Content=\"B\"/>\n    <Button Content=\"C\"/>\n    <Button Content=\"D\"/>\n    <Button Content=\"E\"/>\n    <Button Content=\"F\"/>\n</UniformGrid>" },
             { "1_2", "<UniformGrid Rows=\"2\" Columns=\"4\">\n    <Border Background=\"Red\" Margin=\"2\"/>\n    <Border Background=\"Orange\" Margin=\"2\"/>\n    <Border Background=\"Yellow\" Margin=\"2\"/>\n    <Border Background=\"Green\" Margin=\"2\"/>\n    <Border Background=\"Blue\" Margin=\"2\"/>\n    <Border Background=\"Navy\" Margin=\"2\"/>\n    <Border Background=\"Purple\" Margin=\"2\"/>\n    <Border Background=\"Pink\" Margin=\"2\"/>\n</UniformGrid>" },
@@ -173,12 +178,20 @@ namespace ch18_유니폼그리드
 
             try
             {
-                string fullXaml = xamlCode;
-                if (!xamlCode.Contains("xmlns="))
+                string fullXaml = xamlCode.Trim();
+
+                if (!fullXaml.Contains("xmlns="))
                 {
-                    // UniformGrid에 네임스페이스 추가
-                    fullXaml = xamlCode.Replace("<UniformGrid",
-                        "<UniformGrid xmlns='http://schemas.microsoft.com/winfx/2006/xaml/presentation'");
+                    // 루트 태그가 무엇이든 프레젠테이션 네임스페이스를 붙여 줍니다.
+                    Match root = Regex.Match(fullXaml, @"^<([A-Za-z_][\w.]*)");
+                    if (root.Success)
+                    {
+                        string name = root.Groups[1].Value;
+                        fullXaml = "<" + name
+                            + " xmlns='http://schemas.microsoft.com/winfx/2006/xaml/presentation'"
+                            + " xmlns:x='http://schemas.microsoft.com/winfx/2006/xaml'"
+                            + fullXaml.Substring(name.Length + 1);
+                    }
                 }
 
                 var element = XamlReader.Parse(fullXaml) as UIElement;

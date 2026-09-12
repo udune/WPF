@@ -225,6 +225,11 @@ namespace ch24_컨텍스트메뉴
         // 각 연습의 정답
         private readonly Dictionary<string, string> _answers = new()
         {
+            { "1_3", "<TextBlock Text=\"오른쪽 클릭\" Padding=\"30\" Background=\"#EEEEEE\">\n    <TextBlock.ContextMenu>\n        <ContextMenu>\n            <MenuItem Header=\"새로 고침\"/>\n        </ContextMenu>\n    </TextBlock.ContextMenu>\n</TextBlock>" },
+            { "2_3", "<Button Content=\"오른쪽 클릭\" Padding=\"20,10\">\n    <Button.ContextMenu>\n        <ContextMenu>\n            <MenuItem Header=\"열기\">\n                <MenuItem.Icon>\n                    <Rectangle Width=\"12\" Height=\"12\" Fill=\"#2196F3\"/>\n                </MenuItem.Icon>\n            </MenuItem>\n            <Separator/>\n            <MenuItem Header=\"삭제\"/>\n        </ContextMenu>\n    </Button.ContextMenu>\n</Button>" },
+            { "3_3", "<Border Width=\"160\" Height=\"90\" Background=\"#CFD8DC\">\n    <Border.ContextMenu>\n        <ContextMenu>\n            <MenuItem Header=\"확대\"/>\n            <MenuItem Header=\"축소\"/>\n        </ContextMenu>\n    </Border.ContextMenu>\n</Border>" },
+            { "4_3", "private void Menu_Click(object sender, RoutedEventArgs e)\n{\n    MenuItem item = sender as MenuItem;\n    MessageBox.Show(item.Header.ToString());\n}" },
+            { "5_3", "<Border Background=\"#ECEFF1\" Padding=\"24\">\n    <TextBlock Text=\"삭제된 파일\"/>\n    <Border.ContextMenu>\n        <ContextMenu>\n            <MenuItem Header=\"복원\"/>\n            <Separator/>\n            <MenuItem Header=\"완전 삭제\" Foreground=\"Red\"/>\n        </ContextMenu>\n    </Border.ContextMenu>\n</Border>" },
             { "1_1", "<Button Content=\"마우스 오른쪽 클릭\" Padding=\"20,10\">\n    <Button.ContextMenu>\n        <ContextMenu>\n            <MenuItem Header=\"복사\"/>\n            <MenuItem Header=\"붙여넣기\"/>\n        </ContextMenu>\n    </Button.ContextMenu>\n</Button>" },
             { "1_2", "<TextBox Text=\"여기서 오른쪽 클릭\" Width=\"200\">\n    <TextBox.ContextMenu>\n        <ContextMenu>\n            <MenuItem Header=\"잘라내기\"/>\n            <MenuItem Header=\"삭제\"/>\n        </ContextMenu>\n    </TextBox.ContextMenu>\n</TextBox>" },
             { "2_1", "<Border Background=\"#EEEEEE\" Padding=\"30\">\n    <TextBlock Text=\"오른쪽 클릭\"/>\n    <Border.ContextMenu>\n        <ContextMenu>\n            <MenuItem Header=\"정렬\">\n                <MenuItem Header=\"이름순\"/>\n                <MenuItem Header=\"날짜순\"/>\n            </MenuItem>\n        </ContextMenu>\n    </Border.ContextMenu>\n</Border>" },
@@ -240,6 +245,7 @@ namespace ch24_컨텍스트메뉴
         // 코드 비교 검증용 필수 키워드
         private readonly Dictionary<string, string[]> _requiredKeywords = new()
         {
+            { "4_3", new[] { "as MenuItem", "Header", "MessageBox.Show" } },
             { "4_1", new[] { "new ContextMenu", "Items.Add", "MenuItem", "ContextMenu =" } },
             { "4_2", new[] { "Items.Clear", "Items.Add", "MenuItem" } },
             { "5_2", new[] { "SelectedItem", "Items.Remove" } },

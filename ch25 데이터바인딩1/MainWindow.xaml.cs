@@ -47,6 +47,11 @@ namespace ch25_데이터바인딩1
         // 각 연습의 정답
         private readonly Dictionary<string, string> _answers = new()
         {
+            { "1_3", "<StackPanel>\n    <CheckBox x:Name=\"chk\" Content=\"동의\"/>\n    <TextBlock Text=\"{Binding ElementName=chk, Path=IsChecked}\" Margin=\"0,6,0,0\"/>\n</StackPanel>" },
+            { "2_3", "<StackPanel>\n    <CheckBox x:Name=\"agree\" Content=\"약관에 동의합니다\"/>\n    <Button Content=\"다음\" Width=\"120\" HorizontalAlignment=\"Left\" Margin=\"0,6,0,0\" IsEnabled=\"{Binding ElementName=agree, Path=IsChecked}\"/>\n</StackPanel>" },
+            { "3_3", "<StackPanel>\n    <Slider x:Name=\"s6\" Minimum=\"0\" Maximum=\"100\" Width=\"220\"/>\n    <TextBox Width=\"220\" Text=\"{Binding ElementName=s6, Path=Value, UpdateSourceTrigger=PropertyChanged}\"/>\n</StackPanel>" },
+            { "4_3", "<StackPanel>\n    <Slider x:Name=\"s7\" Minimum=\"0\" Maximum=\"10\" Width=\"220\"/>\n    <TextBlock Text=\"{Binding ElementName=s7, Path=Value, StringFormat='{}{0:F2}'}\" Margin=\"0,6,0,0\"/>\n</StackPanel>" },
+            { "5_3", "<StackPanel>\n    <Slider x:Name=\"size\" Minimum=\"10\" Maximum=\"40\" Value=\"16\" Width=\"220\"/>\n    <TextBlock Text=\"미리보기 글자\" FontSize=\"{Binding ElementName=size, Path=Value}\" Margin=\"0,8,0,0\"/>\n</StackPanel>" },
             { "1_1", "<StackPanel>\n    <Slider x:Name=\"sld\" Minimum=\"0\" Maximum=\"100\" Width=\"200\"/>\n    <TextBlock Text=\"{Binding ElementName=sld, Path=Value}\"/>\n</StackPanel>" },
             { "1_2", "<StackPanel>\n    <TextBox x:Name=\"input\" Width=\"200\"/>\n    <TextBlock Text=\"{Binding ElementName=input, Path=Text}\"/>\n</StackPanel>" },
             { "2_1", "<StackPanel>\n    <TextBox x:Name=\"a\" Width=\"200\" Text=\"처음 값\"/>\n    <TextBox Width=\"200\" Text=\"{Binding ElementName=a, Path=Text, Mode=TwoWay}\"/>\n</StackPanel>" },

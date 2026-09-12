@@ -2,6 +2,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Markup;
 using System.Windows.Media;
+using System.Text.RegularExpressions;
 
 namespace ch17_그리드
 {
@@ -10,6 +11,11 @@ namespace ch17_그리드
         // 직접 해보기 정답
         private readonly Dictionary<string, string> _answers = new()
         {
+            { "1_3", "<Grid Height=\"120\">\n    <Grid.RowDefinitions>\n        <RowDefinition/>\n        <RowDefinition/>\n    </Grid.RowDefinitions>\n    <Grid.ColumnDefinitions>\n        <ColumnDefinition/>\n        <ColumnDefinition/>\n    </Grid.ColumnDefinitions>\n    <TextBlock Grid.Row=\"0\" Grid.Column=\"0\" Text=\"0,0\"/>\n    <TextBlock Grid.Row=\"0\" Grid.Column=\"1\" Text=\"0,1\"/>\n    <TextBlock Grid.Row=\"1\" Grid.Column=\"0\" Text=\"1,0\"/>\n    <TextBlock Grid.Row=\"1\" Grid.Column=\"1\" Text=\"1,1\"/>\n</Grid>" },
+            { "2_3", "<Grid Height=\"60\">\n    <Grid.ColumnDefinitions>\n        <ColumnDefinition Width=\"Auto\"/>\n        <ColumnDefinition Width=\"*\"/>\n    </Grid.ColumnDefinitions>\n    <TextBlock Grid.Column=\"0\" Text=\"이름:\" VerticalAlignment=\"Center\" Margin=\"0,0,8,0\"/>\n    <TextBox Grid.Column=\"1\"/>\n</Grid>" },
+            { "3_3", "<Grid Height=\"120\">\n    <Grid.RowDefinitions>\n        <RowDefinition Height=\"30\"/>\n        <RowDefinition/>\n    </Grid.RowDefinitions>\n    <Grid.ColumnDefinitions>\n        <ColumnDefinition/>\n        <ColumnDefinition/>\n    </Grid.ColumnDefinitions>\n    <TextBlock Grid.Row=\"0\" Grid.Column=\"0\" Grid.ColumnSpan=\"2\" Text=\"제목\" Background=\"#E0E0E0\"/>\n    <TextBlock Grid.Row=\"1\" Grid.Column=\"0\" Text=\"왼쪽\"/>\n    <TextBlock Grid.Row=\"1\" Grid.Column=\"1\" Text=\"오른쪽\"/>\n</Grid>" },
+            { "4_2", "<Grid Height=\"120\">\n    <Grid.ColumnDefinitions>\n        <ColumnDefinition Width=\"*\"/>\n        <ColumnDefinition Width=\"5\"/>\n        <ColumnDefinition Width=\"*\"/>\n    </Grid.ColumnDefinitions>\n    <Border Grid.Column=\"0\" Background=\"#BBDEFB\"/>\n    <GridSplitter Grid.Column=\"1\" Width=\"5\" HorizontalAlignment=\"Stretch\" Background=\"#999999\"/>\n    <Border Grid.Column=\"2\" Background=\"#C8E6C9\"/>\n</Grid>" },
+            { "4_3", "<Grid Height=\"140\">\n    <Grid.RowDefinitions>\n        <RowDefinition Height=\"*\"/>\n        <RowDefinition Height=\"5\"/>\n        <RowDefinition Height=\"*\"/>\n    </Grid.RowDefinitions>\n    <Border Grid.Row=\"0\" Background=\"#FFE0B2\"/>\n    <GridSplitter Grid.Row=\"1\" Height=\"5\" HorizontalAlignment=\"Stretch\" Background=\"#999999\"/>\n    <Border Grid.Row=\"2\" Background=\"#D1C4E9\"/>\n</Grid>" },
             // 탭1: 기본 사용법
             { "1_1", "<Grid ShowGridLines=\"True\" Height=\"120\">\n    <Grid.RowDefinitions>\n        <RowDefinition/>\n        <RowDefinition/>\n    </Grid.RowDefinitions>\n    <Grid.ColumnDefinitions>\n        <ColumnDefinition/>\n        <ColumnDefinition/>\n    </Grid.ColumnDefinitions>\n    <TextBlock Text=\"(0,0)\" Grid.Row=\"0\" Grid.Column=\"0\" HorizontalAlignment=\"Center\" VerticalAlignment=\"Center\"/>\n    <TextBlock Text=\"(0,1)\" Grid.Row=\"0\" Grid.Column=\"1\" HorizontalAlignment=\"Center\" VerticalAlignment=\"Center\"/>\n    <TextBlock Text=\"(1,0)\" Grid.Row=\"1\" Grid.Column=\"0\" HorizontalAlignment=\"Center\" VerticalAlignment=\"Center\"/>\n    <TextBlock Text=\"(1,1)\" Grid.Row=\"1\" Grid.Column=\"1\" HorizontalAlignment=\"Center\" VerticalAlignment=\"Center\"/>\n</Grid>" },
             { "1_2", "<Grid Height=\"50\">\n    <Grid.ColumnDefinitions>\n        <ColumnDefinition/>\n        <ColumnDefinition/>\n        <ColumnDefinition/>\n    </Grid.ColumnDefinitions>\n    <Button Content=\"버튼1\" Grid.Column=\"0\" Margin=\"2\"/>\n    <Button Content=\"버튼2\" Grid.Column=\"1\" Margin=\"2\"/>\n    <Button Content=\"버튼3\" Grid.Column=\"2\" Margin=\"2\"/>\n</Grid>" },
@@ -223,25 +229,19 @@ namespace ch17_그리드
 
             try
             {
-                string fullXaml = xamlCode;
-                if (!xamlCode.Contains("xmlns="))
+                string fullXaml = xamlCode.Trim();
+
+                if (!fullXaml.Contains("xmlns="))
                 {
-                    // Grid 컨트롤에 네임스페이스 추가
-                    var trimmed = xamlCode.TrimStart();
-                    if (trimmed.StartsWith("<Grid"))
+                    // 루트 태그가 무엇이든 프레젠테이션 네임스페이스를 붙여 줍니다.
+                    Match root = Regex.Match(fullXaml, @"^<([A-Za-z_][\w.]*)");
+                    if (root.Success)
                     {
-                        fullXaml = xamlCode.Replace("<Grid",
-                            "<Grid xmlns='http://schemas.microsoft.com/winfx/2006/xaml/presentation'");
-                    }
-                    else if (trimmed.StartsWith("<StackPanel"))
-                    {
-                        fullXaml = xamlCode.Replace("<StackPanel",
-                            "<StackPanel xmlns='http://schemas.microsoft.com/winfx/2006/xaml/presentation'");
-                    }
-                    else
-                    {
-                        // 컨테이너로 감싸기
-                        fullXaml = $"<Grid xmlns='http://schemas.microsoft.com/winfx/2006/xaml/presentation'>{xamlCode}</Grid>";
+                        string name = root.Groups[1].Value;
+                        fullXaml = "<" + name
+                            + " xmlns='http://schemas.microsoft.com/winfx/2006/xaml/presentation'"
+                            + " xmlns:x='http://schemas.microsoft.com/winfx/2006/xaml'"
+                            + fullXaml.Substring(name.Length + 1);
                     }
                 }
 

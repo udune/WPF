@@ -2,6 +2,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Markup;
 using System.Windows.Media;
+using System.Text.RegularExpressions;
 
 namespace ch2_Label
 {
@@ -60,11 +61,20 @@ namespace ch2_Label
             try
             {
                 // XAML 네임스페이스 추가
-                string fullXaml = xamlCode;
-                if (!xamlCode.Contains("xmlns="))
+                string fullXaml = xamlCode.Trim();
+
+                if (!fullXaml.Contains("xmlns="))
                 {
-                    fullXaml = xamlCode.Replace("<Label",
-                        "<Label xmlns='http://schemas.microsoft.com/winfx/2006/xaml/presentation'");
+                    // 루트 태그가 무엇이든 프레젠테이션 네임스페이스를 붙여 줍니다.
+                    Match root = Regex.Match(fullXaml, @"^<([A-Za-z_][\w.]*)");
+                    if (root.Success)
+                    {
+                        string name = root.Groups[1].Value;
+                        fullXaml = "<" + name
+                            + " xmlns='http://schemas.microsoft.com/winfx/2006/xaml/presentation'"
+                            + " xmlns:x='http://schemas.microsoft.com/winfx/2006/xaml'"
+                            + fullXaml.Substring(name.Length + 1);
+                    }
                 }
 
                 var element = XamlReader.Parse(fullXaml) as UIElement;

@@ -62,6 +62,10 @@ namespace ch29_화면이동_프레임
         // 각 연습의 정답
         private readonly Dictionary<string, string> _answers = new()
         {
+            { "2_3", "<DockPanel Height=\"160\">\n    <Border DockPanel.Dock=\"Top\" Background=\"#3F51B5\" Height=\"30\">\n        <TextBlock Text=\"내비게이션\" Foreground=\"White\" Margin=\"8,6\"/>\n    </Border>\n    <Frame BorderBrush=\"Gray\" BorderThickness=\"1\" NavigationUIVisibility=\"Hidden\"/>\n</DockPanel>" },
+            { "3_3", "<DockPanel Height=\"140\">\n    <StackPanel DockPanel.Dock=\"Top\" Orientation=\"Horizontal\" Margin=\"6\">\n        <Button Content=\"뒤로\" Width=\"70\" Margin=\"0,0,6,0\"/>\n        <Button Content=\"앞으로\" Width=\"70\"/>\n    </StackPanel>\n    <TextBlock Text=\"페이지 본문\" Margin=\"8\"/>\n</DockPanel>" },
+            { "4_3", "private void Forward_Click(object sender, RoutedEventArgs e)\n{\n    if (NavigationService.CanGoForward)\n    {\n        NavigationService.GoForward();\n    }\n}" },
+            { "5_3", "private void ClearHistory_Click(object sender, RoutedEventArgs e)\n{\n    while (NavigationService.CanGoBack)\n    {\n        NavigationService.RemoveBackEntry();\n    }\n}" },
             { "2_1", "<Frame Height=\"120\" BorderBrush=\"Gray\" BorderThickness=\"1\"/>" },
             { "2_2", "<Frame Height=\"120\" BorderBrush=\"Gray\" BorderThickness=\"1\" NavigationUIVisibility=\"Hidden\"/>" },
             { "3_1", "<StackPanel Margin=\"10\">\n    <TextBlock Text=\"첫 번째 페이지\" FontSize=\"18\" FontWeight=\"Bold\"/>\n    <TextBlock Text=\"Page 는 Frame 안에 표시되는 화면 단위입니다.\" Margin=\"0,6,0,0\"/>\n</StackPanel>" },
@@ -75,6 +79,8 @@ namespace ch29_화면이동_프레임
         // 코드 비교 검증용 필수 키워드
         private readonly Dictionary<string, string[]> _requiredKeywords = new()
         {
+            { "4_3", new[] { "CanGoForward", "GoForward" } },
+            { "5_3", new[] { "while", "CanGoBack", "RemoveBackEntry" } },
             { "4_1", new[] { "NavigationService", "Navigate", "new Page2" } },
             { "4_2", new[] { "CanGoBack", "GoBack" } },
             { "5_1", new[] { "new Page2(", "Navigate" } },

@@ -286,6 +286,10 @@ namespace ch28_영어단어맞추기
         // 각 연습의 정답
         private readonly Dictionary<string, string> _answers = new()
         {
+            { "2_3", "public string Progress\n{\n    get { return _correct + \" / \" + _total; }\n}\n\nprivate void UpdateProgress()\n{\n    OnPropertyChanged(\"Progress\");\n}" },
+            { "3_3", "<ItemsControl>\n    <ItemsControl.ItemsPanel>\n        <ItemsPanelTemplate>\n            <UniformGrid Rows=\"2\" Columns=\"2\"/>\n        </ItemsPanelTemplate>\n    </ItemsControl.ItemsPanel>\n</ItemsControl>" },
+            { "4_3", "private void UseChance()\n{\n    chances = chances - 1;\n    if (chances <= 0)\n    {\n        GameOver();\n    }\n}" },
+            { "5_3", "private void ResetInput()\n{\n    answerBox.Text = \"\";\n    answerBox.Focus();\n}" },
             { "2_1", "private int _score;\npublic int Score\n{\n    get { return _score; }\n    set\n    {\n        _score = value;\n        OnPropertyChanged(\"Score\");\n    }\n}" },
             { "2_2", "public event PropertyChangedEventHandler? PropertyChanged;\n\nprotected void OnPropertyChanged(string name)\n{\n    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));\n}" },
             { "3_1", "<ItemsControl>\n    <ItemsControl.ItemsPanel>\n        <ItemsPanelTemplate>\n            <WrapPanel/>\n        </ItemsPanelTemplate>\n    </ItemsControl.ItemsPanel>\n</ItemsControl>" },
@@ -299,6 +303,9 @@ namespace ch28_영어단어맞추기
         // 코드 비교 검증용 필수 키워드
         private readonly Dictionary<string, string[]> _requiredKeywords = new()
         {
+            { "2_3", new[] { "OnPropertyChanged", "Progress" } },
+            { "4_3", new[] { "chances", "if (chances <= 0)", "GameOver" } },
+            { "5_3", new[] { "answerBox.Text", "Focus()" } },
             { "2_1", new[] { "_score = value", "OnPropertyChanged" } },
             { "2_2", new[] { "PropertyChanged?.Invoke", "PropertyChangedEventArgs" } },
             { "4_1", new[] { "ToLower", "==", "Score" } },

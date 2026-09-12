@@ -343,7 +343,28 @@
                         </StackPanel>
                     </GroupBox>
 
-                </StackPanel>
+                
+                <!-- 직접 해보기 2_3 -->
+                <Expander Style="{StaticResource PracticeExpanderStyle}">
+                    <StackPanel Margin="10">
+                        <TextBlock Text="과제: 두 그룹으로 나뉜 라디오버튼을 가로로 배치하세요. 크기 그룹과 색 그룹입니다." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
+                        <TextBox x:Name="txtPractice2_3"
+                                 Style="{StaticResource PracticeInputStyle}"
+                                 Text="&lt;StackPanel Orientation=&quot;Horizontal&quot;&gt;&#10;    &#10;&lt;/StackPanel&gt;"/>
+                        <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
+                            <Button Content="실행" Style="{StaticResource RunButtonStyle}" Click="BtnRun_Click" Tag="2_3"/>
+                            <Button Content="힌트" Style="{StaticResource HintButtonStyle}" Click="BtnHint_Click" Tag="2_3"/>
+                            <Button Content="정답 보기" Style="{StaticResource AnswerButtonStyle}" Click="BtnAnswer_Click" Tag="2_3"/>
+                        </StackPanel>
+                        <TextBlock x:Name="txtHint2_3"
+                                   Text="힌트: GroupName 이 같은 것끼리 하나의 선택 그룹이 됩니다."
+                                   Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                        <Border x:Name="resultBorder2_3" Background="White" Margin="0,8,0,0" Padding="10" Visibility="Collapsed">
+                            <StackPanel x:Name="resultPanel2_3"/>
+                        </Border>
+                    </StackPanel>
+                </Expander>
+</StackPanel>
             </ScrollViewer>
         </TabItem>
 

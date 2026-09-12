@@ -2,6 +2,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Markup;
 using System.Windows.Media;
+using System.Text.RegularExpressions;
 
 namespace ch16_독패널
 {
@@ -18,6 +19,10 @@ namespace ch16_독패널
         // 각 연습의 정답
         private readonly Dictionary<string, string> _answers = new()
         {
+            { "1_3", "<DockPanel Height=\"140\">\n    <Border DockPanel.Dock=\"Top\" Background=\"#2196F3\" Height=\"30\">\n        <TextBlock Text=\"제목\" Foreground=\"White\" Margin=\"8,6\"/>\n    </Border>\n    <Border DockPanel.Dock=\"Bottom\" Background=\"#EEEEEE\" Height=\"24\">\n        <TextBlock Text=\"준비\" Margin=\"8,3\"/>\n    </Border>\n</DockPanel>" },
+            { "2_3", "<DockPanel Height=\"120\" LastChildFill=\"False\">\n    <Button DockPanel.Dock=\"Left\" Content=\"왼쪽\"/>\n    <Button Content=\"나머지\"/>\n</DockPanel>" },
+            { "3_3", "<DockPanel Height=\"140\">\n    <Border DockPanel.Dock=\"Left\" Background=\"#37474F\" Width=\"90\">\n        <TextBlock Text=\"메뉴\" Foreground=\"White\" Margin=\"8\"/>\n    </Border>\n    <Border Background=\"White\">\n        <TextBlock Text=\"본문 영역\" Margin=\"8\"/>\n    </Border>\n</DockPanel>" },
+            { "4_3", "<DockPanel Height=\"140\">\n    <Border DockPanel.Dock=\"Top\" Background=\"#FFCDD2\" Height=\"30\"/>\n    <Border DockPanel.Dock=\"Bottom\" Background=\"#C8E6C9\" Height=\"30\"/>\n    <Border DockPanel.Dock=\"Left\" Background=\"#BBDEFB\" Width=\"70\"/>\n    <Border Background=\"#FFF9C4\"/>\n</DockPanel>" },
             // 탭 1: 기본 사용법
             { "1_1", "<DockPanel Height=\"120\">\n    <Button DockPanel.Dock=\"Top\">Top</Button>\n    <Button DockPanel.Dock=\"Left\">Left</Button>\n    <Border Background=\"LightYellow\">\n        <TextBlock Text=\"Center\"/>\n    </Border>\n</DockPanel>" },
             { "1_2", "<DockPanel Height=\"120\">\n    <Button DockPanel.Dock=\"Top\">Top 1</Button>\n    <Button DockPanel.Dock=\"Top\">Top 2</Button>\n    <Border Background=\"LightYellow\">\n        <TextBlock Text=\"Center\"/>\n    </Border>\n</DockPanel>" },
@@ -136,26 +141,19 @@ namespace ch16_독패널
 
             try
             {
-                string fullXaml = xamlCode;
+                string fullXaml = xamlCode.Trim();
 
-                // XAML 네임스페이스 추가
-                if (!xamlCode.Contains("xmlns="))
+                if (!fullXaml.Contains("xmlns="))
                 {
-                    string trimmed = xamlCode.TrimStart();
-                    if (trimmed.StartsWith("<DockPanel"))
+                    // 루트 태그가 무엇이든 프레젠테이션 네임스페이스를 붙여 줍니다.
+                    Match root = Regex.Match(fullXaml, @"^<([A-Za-z_][\w.]*)");
+                    if (root.Success)
                     {
-                        fullXaml = xamlCode.Replace("<DockPanel",
-                            "<DockPanel xmlns='http://schemas.microsoft.com/winfx/2006/xaml/presentation'");
-                    }
-                    else if (trimmed.StartsWith("<StackPanel"))
-                    {
-                        fullXaml = xamlCode.Replace("<StackPanel",
-                            "<StackPanel xmlns='http://schemas.microsoft.com/winfx/2006/xaml/presentation'");
-                    }
-                    else if (trimmed.StartsWith("<Grid"))
-                    {
-                        fullXaml = xamlCode.Replace("<Grid",
-                            "<Grid xmlns='http://schemas.microsoft.com/winfx/2006/xaml/presentation'");
+                        string name = root.Groups[1].Value;
+                        fullXaml = "<" + name
+                            + " xmlns='http://schemas.microsoft.com/winfx/2006/xaml/presentation'"
+                            + " xmlns:x='http://schemas.microsoft.com/winfx/2006/xaml'"
+                            + fullXaml.Substring(name.Length + 1);
                     }
                 }
 

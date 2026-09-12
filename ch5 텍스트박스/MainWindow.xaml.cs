@@ -3,6 +3,7 @@ using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Markup;
 using System.Windows.Media;
+using System.Text.RegularExpressions;
 
 namespace ch5_텍스트박스
 {
@@ -123,24 +124,19 @@ namespace ch5_텍스트박스
 
             try
             {
-                string fullXaml = xamlCode;
-                if (!xamlCode.Contains("xmlns="))
+                string fullXaml = xamlCode.Trim();
+
+                if (!fullXaml.Contains("xmlns="))
                 {
-                    // 여러 루트 요소가 있을 수 있으므로 StackPanel로 감싸기
-                    string trimmedCode = xamlCode.TrimStart();
-                    if (!trimmedCode.StartsWith("<StackPanel") &&
-                        !trimmedCode.StartsWith("<Grid") &&
-                        !trimmedCode.StartsWith("<Border") &&
-                        !trimmedCode.StartsWith("<Canvas") &&
-                        !trimmedCode.StartsWith("<DockPanel") &&
-                        !trimmedCode.StartsWith("<WrapPanel"))
+                    // 루트 태그가 무엇이든 프레젠테이션 네임스페이스를 붙여 줍니다.
+                    Match root = Regex.Match(fullXaml, @"^<([A-Za-z_][\w.]*)");
+                    if (root.Success)
                     {
-                        fullXaml = $"<StackPanel xmlns='http://schemas.microsoft.com/winfx/2006/xaml/presentation'>{xamlCode}</StackPanel>";
-                    }
-                    else
-                    {
-                        fullXaml = xamlCode.Replace("<TextBox",
-                            "<TextBox xmlns='http://schemas.microsoft.com/winfx/2006/xaml/presentation'");
+                        string name = root.Groups[1].Value;
+                        fullXaml = "<" + name
+                            + " xmlns='http://schemas.microsoft.com/winfx/2006/xaml/presentation'"
+                            + " xmlns:x='http://schemas.microsoft.com/winfx/2006/xaml'"
+                            + fullXaml.Substring(name.Length + 1);
                     }
                 }
 

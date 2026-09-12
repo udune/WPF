@@ -2,6 +2,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Markup;
 using System.Windows.Media;
+using System.Text.RegularExpressions;
 
 namespace ch12_슬라이더
 {
@@ -134,26 +135,19 @@ namespace ch12_슬라이더
 
             try
             {
-                string fullXaml = xamlCode;
+                string fullXaml = xamlCode.Trim();
 
-                // XAML 네임스페이스 추가
-                if (!xamlCode.Contains("xmlns="))
+                if (!fullXaml.Contains("xmlns="))
                 {
-                    string trimmed = xamlCode.TrimStart();
-                    if (trimmed.StartsWith("<Slider"))
+                    // 루트 태그가 무엇이든 프레젠테이션 네임스페이스를 붙여 줍니다.
+                    Match root = Regex.Match(fullXaml, @"^<([A-Za-z_][\w.]*)");
+                    if (root.Success)
                     {
-                        fullXaml = xamlCode.Replace("<Slider",
-                            "<Slider xmlns='http://schemas.microsoft.com/winfx/2006/xaml/presentation'");
-                    }
-                    else if (trimmed.StartsWith("<StackPanel"))
-                    {
-                        fullXaml = xamlCode.Replace("<StackPanel",
-                            "<StackPanel xmlns='http://schemas.microsoft.com/winfx/2006/xaml/presentation'");
-                    }
-                    else if (trimmed.StartsWith("<Grid"))
-                    {
-                        fullXaml = xamlCode.Replace("<Grid",
-                            "<Grid xmlns='http://schemas.microsoft.com/winfx/2006/xaml/presentation'");
+                        string name = root.Groups[1].Value;
+                        fullXaml = "<" + name
+                            + " xmlns='http://schemas.microsoft.com/winfx/2006/xaml/presentation'"
+                            + " xmlns:x='http://schemas.microsoft.com/winfx/2006/xaml'"
+                            + fullXaml.Substring(name.Length + 1);
                     }
                 }
 

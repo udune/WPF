@@ -133,6 +133,11 @@ namespace ch26_데이터바인딩2
         // 각 연습의 정답
         private readonly Dictionary<string, string> _answers = new()
         {
+            { "1_3", "<TextBlock Text=\"{Binding Name, StringFormat='이름: {0}'}\"/>" },
+            { "2_3", "private void Swap_Click(object sender, RoutedEventArgs e)\n{\n    panel.DataContext = new Person { Name = \"임꺽정\" };\n}" },
+            { "3_3", "public string Name\n{\n    get { return _name; }\n    set\n    {\n        if (_name == value) return;\n        _name = value;\n        OnPropertyChanged(\"Name\");\n    }\n}" },
+            { "4_3", "<TextBlock Text=\"{Binding Address.Street}\"/>" },
+            { "5_3", "<StackPanel Orientation=\"Horizontal\">\n    <TextBlock Text=\"{Binding Name}\" FontWeight=\"Bold\"/>\n    <TextBlock Text=\" · \" Margin=\"4,0\"/>\n    <TextBlock Text=\"{Binding Address.City}\"/>\n</StackPanel>" },
             { "1_1", "<StackPanel>\n    <TextBlock Text=\"{Binding Name}\" FontSize=\"16\"/>\n</StackPanel>" },
             { "1_2", "public MainWindow()\n{\n    InitializeComponent();\n    this.DataContext = this;\n}" },
             { "2_1", "<StackPanel>\n    <TextBlock Text=\"{Binding Name}\"/>\n    <TextBlock Text=\"{Binding Age}\"/>\n</StackPanel>" },
@@ -148,6 +153,8 @@ namespace ch26_데이터바인딩2
         // 코드 비교 검증용 필수 키워드
         private readonly Dictionary<string, string[]> _requiredKeywords = new()
         {
+            { "2_3", new[] { "panel.DataContext", "new Person" } },
+            { "3_3", new[] { "if (_name == value)", "return", "OnPropertyChanged" } },
             { "1_2", new[] { "DataContext", "this" } },
             { "3_1", new[] { "PropertyChangedEventHandler", "PropertyChanged", "OnPropertyChanged", "PropertyChangedEventArgs" } },
             { "3_2", new[] { "_name = value", "OnPropertyChanged" } },

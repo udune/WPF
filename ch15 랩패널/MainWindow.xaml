@@ -173,7 +173,28 @@
                         </StackPanel>
                     </GroupBox>
 
-                </StackPanel>
+                
+                <!-- 직접 해보기 1_3 -->
+                <Expander Style="{StaticResource PracticeExpanderStyle}">
+                    <StackPanel Margin="10">
+                        <TextBlock Text="과제: WrapPanel 에 버튼 6개를 넣어 줄바꿈되는 모습을 확인하세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
+                        <TextBox x:Name="txtPractice1_3"
+                                 Style="{StaticResource PracticeInputStyle}"
+                                 Text="&lt;WrapPanel Width=&quot;220&quot;&gt;&#10;    &#10;&lt;/WrapPanel&gt;"/>
+                        <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
+                            <Button Content="실행" Style="{StaticResource RunButtonStyle}" Click="BtnRun_Click" Tag="1_3"/>
+                            <Button Content="힌트" Style="{StaticResource HintButtonStyle}" Click="BtnHint_Click" Tag="1_3"/>
+                            <Button Content="정답 보기" Style="{StaticResource AnswerButtonStyle}" Click="BtnAnswer_Click" Tag="1_3"/>
+                        </StackPanel>
+                        <TextBlock x:Name="txtHint1_3"
+                                   Text="힌트: 폭을 좁게 주면 자식이 자동으로 다음 줄로 넘어갑니다."
+                                   Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                        <Border x:Name="resultBorder1_3" Background="White" Margin="0,8,0,0" Padding="10" Visibility="Collapsed">
+                            <StackPanel x:Name="resultPanel1_3"/>
+                        </Border>
+                    </StackPanel>
+                </Expander>
+</StackPanel>
             </ScrollViewer>
         </TabItem>
 
@@ -384,7 +405,28 @@
                         </StackPanel>
                     </Expander>
 
-                </StackPanel>
+                
+                <!-- 직접 해보기 3_3 -->
+                <Expander Style="{StaticResource PracticeExpanderStyle}">
+                    <StackPanel Margin="10">
+                        <TextBlock Text="과제: 세로로 흐르는 WrapPanel 을 만드세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
+                        <TextBox x:Name="txtPractice3_3"
+                                 Style="{StaticResource PracticeInputStyle}"
+                                 Text="&lt;WrapPanel Height=&quot;120&quot;&gt;&#10;    &lt;Button Content=&quot;가&quot; Margin=&quot;3&quot;/&gt;&#10;    &lt;Button Content=&quot;나&quot; Margin=&quot;3&quot;/&gt;&#10;    &lt;Button Content=&quot;다&quot; Margin=&quot;3&quot;/&gt;&#10;&lt;/WrapPanel&gt;"/>
+                        <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
+                            <Button Content="실행" Style="{StaticResource RunButtonStyle}" Click="BtnRun_Click" Tag="3_3"/>
+                            <Button Content="힌트" Style="{StaticResource HintButtonStyle}" Click="BtnHint_Click" Tag="3_3"/>
+                            <Button Content="정답 보기" Style="{StaticResource AnswerButtonStyle}" Click="BtnAnswer_Click" Tag="3_3"/>
+                        </StackPanel>
+                        <TextBlock x:Name="txtHint3_3"
+                                   Text="힌트: Orientation=&quot;Vertical&quot; 을 주면 위에서 아래로 채우고 열을 바꿉니다."
+                                   Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                        <Border x:Name="resultBorder3_3" Background="White" Margin="0,8,0,0" Padding="10" Visibility="Collapsed">
+                            <StackPanel x:Name="resultPanel3_3"/>
+                        </Border>
+                    </StackPanel>
+                </Expander>
+</StackPanel>
             </ScrollViewer>
         </TabItem>
 
@@ -480,7 +522,28 @@
                         </StackPanel>
                     </Expander>
 
-                </StackPanel>
+                
+                <!-- 직접 해보기 4_3 -->
+                <Expander Style="{StaticResource PracticeExpanderStyle}">
+                    <StackPanel Margin="10">
+                        <TextBlock Text="과제: WrapPanel 에 배경색과 안쪽 여백을 주고 테두리로 감싸세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
+                        <TextBox x:Name="txtPractice4_3"
+                                 Style="{StaticResource PracticeInputStyle}"
+                                 Text="&lt;Border&gt;&#10;    &lt;WrapPanel&gt;&#10;        &lt;Button Content=&quot;항목&quot; Margin=&quot;3&quot;/&gt;&#10;    &lt;/WrapPanel&gt;&#10;&lt;/Border&gt;"/>
+                        <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
+                            <Button Content="실행" Style="{StaticResource RunButtonStyle}" Click="BtnRun_Click" Tag="4_3"/>
+                            <Button Content="힌트" Style="{StaticResource HintButtonStyle}" Click="BtnHint_Click" Tag="4_3"/>
+                            <Button Content="정답 보기" Style="{StaticResource AnswerButtonStyle}" Click="BtnAnswer_Click" Tag="4_3"/>
+                        </StackPanel>
+                        <TextBlock x:Name="txtHint4_3"
+                                   Text="힌트: Border 에 BorderBrush/BorderThickness, WrapPanel 에 Background 를 줍니다."
+                                   Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                        <Border x:Name="resultBorder4_3" Background="White" Margin="0,8,0,0" Padding="10" Visibility="Collapsed">
+                            <StackPanel x:Name="resultPanel4_3"/>
+                        </Border>
+                    </StackPanel>
+                </Expander>
+</StackPanel>
             </ScrollViewer>
         </TabItem>
 

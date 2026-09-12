@@ -190,6 +190,27 @@
                             </Border>
                         </StackPanel>
                     </Expander>
+
+<!-- 직접 해보기 1_3 -->
+<Expander Style="{StaticResource PracticeExpanderStyle}">
+    <StackPanel Margin="10">
+        <TextBlock Text="과제: TextBlock 에 &quot;새로 고침&quot; 항목 하나짜리 ContextMenu 를 붙이세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
+        <TextBox x:Name="txtPractice1_3"
+                 Style="{StaticResource PracticeInputStyle}"
+                 Text="&lt;TextBlock Text=&quot;오른쪽 클릭&quot; Padding=&quot;30&quot; Background=&quot;#EEEEEE&quot;&gt;&#10;    &#10;&lt;/TextBlock&gt;"/>
+        <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
+            <Button Content="실행" Style="{StaticResource RunButtonStyle}" Click="BtnRun_Click" Tag="1_3"/>
+            <Button Content="힌트" Style="{StaticResource HintButtonStyle}" Click="BtnHint_Click" Tag="1_3"/>
+            <Button Content="정답 보기" Style="{StaticResource AnswerButtonStyle}" Click="BtnAnswer_Click" Tag="1_3"/>
+        </StackPanel>
+        <TextBlock x:Name="txtHint1_3"
+                   Text="힌트: &lt;TextBlock.ContextMenu&gt; 안에 ContextMenu 를 넣습니다."
+                   Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+        <Border x:Name="resultBorder1_3" Background="White" Margin="0,8,0,0" Padding="10" Visibility="Collapsed">
+            <StackPanel x:Name="resultPanel1_3"/>
+        </Border>
+    </StackPanel>
+</Expander>
 </StackPanel>
                 </ScrollViewer>
             </TabItem>
@@ -343,6 +364,27 @@
                             </Border>
                         </StackPanel>
                     </Expander>
+
+<!-- 직접 해보기 2_3 -->
+<Expander Style="{StaticResource PracticeExpanderStyle}">
+    <StackPanel Margin="10">
+        <TextBlock Text="과제: ContextMenu 항목에 아이콘과 구분선을 함께 넣으세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
+        <TextBox x:Name="txtPractice2_3"
+                 Style="{StaticResource PracticeInputStyle}"
+                 Text="&lt;Button Content=&quot;오른쪽 클릭&quot; Padding=&quot;20,10&quot;&gt;&#10;    &lt;Button.ContextMenu&gt;&#10;        &lt;ContextMenu&gt;&#10;            &#10;        &lt;/ContextMenu&gt;&#10;    &lt;/Button.ContextMenu&gt;&#10;&lt;/Button&gt;"/>
+        <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
+            <Button Content="실행" Style="{StaticResource RunButtonStyle}" Click="BtnRun_Click" Tag="2_3"/>
+            <Button Content="힌트" Style="{StaticResource HintButtonStyle}" Click="BtnHint_Click" Tag="2_3"/>
+            <Button Content="정답 보기" Style="{StaticResource AnswerButtonStyle}" Click="BtnAnswer_Click" Tag="2_3"/>
+        </StackPanel>
+        <TextBlock x:Name="txtHint2_3"
+                   Text="힌트: MenuItem.Icon 에 도형을 넣고 항목 사이에 Separator 를 둡니다."
+                   Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+        <Border x:Name="resultBorder2_3" Background="White" Margin="0,8,0,0" Padding="10" Visibility="Collapsed">
+            <StackPanel x:Name="resultPanel2_3"/>
+        </Border>
+    </StackPanel>
+</Expander>
 </StackPanel>
                 </ScrollViewer>
             </TabItem>
@@ -495,6 +537,27 @@
                             </Border>
                         </StackPanel>
                     </Expander>
+
+<!-- 직접 해보기 3_3 -->
+<Expander Style="{StaticResource PracticeExpanderStyle}">
+    <StackPanel Margin="10">
+        <TextBlock Text="과제: Image 자리를 대신할 Border 에 확대/축소 ContextMenu 를 붙이세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
+        <TextBox x:Name="txtPractice3_3"
+                 Style="{StaticResource PracticeInputStyle}"
+                 Text="&lt;Border Width=&quot;160&quot; Height=&quot;90&quot; Background=&quot;#CFD8DC&quot;&gt;&#10;    &#10;&lt;/Border&gt;"/>
+        <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
+            <Button Content="실행" Style="{StaticResource RunButtonStyle}" Click="BtnRun_Click" Tag="3_3"/>
+            <Button Content="힌트" Style="{StaticResource HintButtonStyle}" Click="BtnHint_Click" Tag="3_3"/>
+            <Button Content="정답 보기" Style="{StaticResource AnswerButtonStyle}" Click="BtnAnswer_Click" Tag="3_3"/>
+        </StackPanel>
+        <TextBlock x:Name="txtHint3_3"
+                   Text="힌트: Border.ContextMenu 에 MenuItem 두 개를 넣습니다."
+                   Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+        <Border x:Name="resultBorder3_3" Background="White" Margin="0,8,0,0" Padding="10" Visibility="Collapsed">
+            <StackPanel x:Name="resultPanel3_3"/>
+        </Border>
+    </StackPanel>
+</Expander>
 </StackPanel>
                 </ScrollViewer>
             </TabItem>
@@ -618,6 +681,25 @@
                             <TextBlock x:Name="txtResult4_2" Margin="0,8,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
                         </StackPanel>
                     </Expander>
+
+<!-- 직접 해보기 4_3 -->
+<Expander Style="{StaticResource PracticeExpanderStyle}">
+    <StackPanel Margin="10">
+        <TextBlock Text="과제: ContextMenu 항목을 눌렀을 때 어떤 항목인지 메시지로 알리는 핸들러를 작성하세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
+        <TextBox x:Name="txtPractice4_3"
+                 Style="{StaticResource PracticeInputStyle}"
+                 Text="private void Menu_Click(object sender, RoutedEventArgs e)&#10;{&#10;    &#10;}"/>
+        <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
+            <Button Content="확인" Style="{StaticResource RunButtonStyle}" Click="BtnCheck_Click" Tag="4_3"/>
+            <Button Content="힌트" Style="{StaticResource HintButtonStyle}" Click="BtnHint_Click" Tag="4_3"/>
+            <Button Content="정답 보기" Style="{StaticResource AnswerButtonStyle}" Click="BtnAnswer_Click" Tag="4_3"/>
+        </StackPanel>
+        <TextBlock x:Name="txtHint4_3"
+                   Text="힌트: sender 를 MenuItem 으로 변환해 Header 를 읽습니다."
+                   Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+        <TextBlock x:Name="txtResult4_3" Margin="0,8,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+    </StackPanel>
+</Expander>
 </StackPanel>
                 </ScrollViewer>
             </TabItem>
@@ -773,6 +855,27 @@
                             <TextBlock x:Name="txtResult5_2" Margin="0,8,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
                         </StackPanel>
                     </Expander>
+
+<!-- 직접 해보기 5_3 -->
+<Expander Style="{StaticResource PracticeExpanderStyle}">
+    <StackPanel Margin="10">
+        <TextBlock Text="과제: 휴지통 스타일 ContextMenu 를 만드세요. 복원 / 구분선 / 완전 삭제 순입니다." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
+        <TextBox x:Name="txtPractice5_3"
+                 Style="{StaticResource PracticeInputStyle}"
+                 Text="&lt;Border Background=&quot;#ECEFF1&quot; Padding=&quot;24&quot;&gt;&#10;    &lt;TextBlock Text=&quot;삭제된 파일&quot;/&gt;&#10;    &#10;&lt;/Border&gt;"/>
+        <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
+            <Button Content="실행" Style="{StaticResource RunButtonStyle}" Click="BtnRun_Click" Tag="5_3"/>
+            <Button Content="힌트" Style="{StaticResource HintButtonStyle}" Click="BtnHint_Click" Tag="5_3"/>
+            <Button Content="정답 보기" Style="{StaticResource AnswerButtonStyle}" Click="BtnAnswer_Click" Tag="5_3"/>
+        </StackPanel>
+        <TextBlock x:Name="txtHint5_3"
+                   Text="힌트: 항목 사이에 Separator 를 넣어 위험한 명령을 분리합니다."
+                   Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+        <Border x:Name="resultBorder5_3" Background="White" Margin="0,8,0,0" Padding="10" Visibility="Collapsed">
+            <StackPanel x:Name="resultPanel5_3"/>
+        </Border>
+    </StackPanel>
+</Expander>
 </StackPanel>
                 </ScrollViewer>
             </TabItem>

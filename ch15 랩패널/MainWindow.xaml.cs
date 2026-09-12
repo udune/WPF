@@ -2,6 +2,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Markup;
 using System.Windows.Media;
+using System.Text.RegularExpressions;
 
 namespace ch15_랩패널
 {
@@ -12,6 +13,9 @@ namespace ch15_랩패널
         // 각 연습의 정답
         private readonly Dictionary<string, string> _answers = new()
         {
+            { "1_3", "<WrapPanel Width=\"220\">\n    <Button Content=\"1\" Width=\"60\" Margin=\"3\"/>\n    <Button Content=\"2\" Width=\"60\" Margin=\"3\"/>\n    <Button Content=\"3\" Width=\"60\" Margin=\"3\"/>\n    <Button Content=\"4\" Width=\"60\" Margin=\"3\"/>\n    <Button Content=\"5\" Width=\"60\" Margin=\"3\"/>\n    <Button Content=\"6\" Width=\"60\" Margin=\"3\"/>\n</WrapPanel>" },
+            { "3_3", "<WrapPanel Height=\"120\" Orientation=\"Vertical\">\n    <Button Content=\"가\" Margin=\"3\"/>\n    <Button Content=\"나\" Margin=\"3\"/>\n    <Button Content=\"다\" Margin=\"3\"/>\n</WrapPanel>" },
+            { "4_3", "<Border BorderBrush=\"#BBBBBB\" BorderThickness=\"1\">\n    <WrapPanel Background=\"#F5F5F5\">\n        <Button Content=\"항목\" Margin=\"3\"/>\n        <Button Content=\"항목\" Margin=\"3\"/>\n    </WrapPanel>\n</Border>" },
             // 탭 1: 기본 사용법
             { "1_1", "<WrapPanel>\n    <Button Content=\"버튼 1\"/>\n    <Button Content=\"버튼 2\"/>\n    <Button Content=\"버튼 3\"/>\n</WrapPanel>" },
             { "1_2", "<WrapPanel Orientation=\"Vertical\" Height=\"100\">\n    <Button Content=\"A\"/>\n    <Button Content=\"B\"/>\n    <Button Content=\"C\"/>\n</WrapPanel>" },
@@ -131,26 +135,19 @@ namespace ch15_랩패널
 
             try
             {
-                string fullXaml = xamlCode;
+                string fullXaml = xamlCode.Trim();
 
-                // XAML 네임스페이스 추가
-                if (!xamlCode.Contains("xmlns="))
+                if (!fullXaml.Contains("xmlns="))
                 {
-                    string trimmed = xamlCode.TrimStart();
-                    if (trimmed.StartsWith("<WrapPanel"))
+                    // 루트 태그가 무엇이든 프레젠테이션 네임스페이스를 붙여 줍니다.
+                    Match root = Regex.Match(fullXaml, @"^<([A-Za-z_][\w.]*)");
+                    if (root.Success)
                     {
-                        fullXaml = xamlCode.Replace("<WrapPanel",
-                            "<WrapPanel xmlns='http://schemas.microsoft.com/winfx/2006/xaml/presentation'");
-                    }
-                    else if (trimmed.StartsWith("<StackPanel"))
-                    {
-                        fullXaml = xamlCode.Replace("<StackPanel",
-                            "<StackPanel xmlns='http://schemas.microsoft.com/winfx/2006/xaml/presentation'");
-                    }
-                    else if (trimmed.StartsWith("<Grid"))
-                    {
-                        fullXaml = xamlCode.Replace("<Grid",
-                            "<Grid xmlns='http://schemas.microsoft.com/winfx/2006/xaml/presentation'");
+                        string name = root.Groups[1].Value;
+                        fullXaml = "<" + name
+                            + " xmlns='http://schemas.microsoft.com/winfx/2006/xaml/presentation'"
+                            + " xmlns:x='http://schemas.microsoft.com/winfx/2006/xaml'"
+                            + fullXaml.Substring(name.Length + 1);
                     }
                 }
 

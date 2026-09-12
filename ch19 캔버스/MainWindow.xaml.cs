@@ -7,6 +7,7 @@ using System.Windows.Input;
 using System.Windows.Markup;
 using System.Windows.Media;
 using System.Windows.Shapes;
+using System.Text.RegularExpressions;
 
 namespace ch19_캔버스
 {
@@ -19,6 +20,10 @@ namespace ch19_캔버스
         // 각 연습의 정답
         private readonly Dictionary<string, string> _answers = new()
         {
+            { "1_3", "<Canvas Height=\"140\" Background=\"#FAFAFA\">\n    <Rectangle Canvas.Left=\"20\" Canvas.Top=\"20\" Width=\"80\" Height=\"50\" Fill=\"SteelBlue\"/>\n</Canvas>" },
+            { "2_3", "<Canvas Height=\"140\" Background=\"#FAFAFA\">\n    <Ellipse Canvas.Right=\"15\" Canvas.Bottom=\"15\" Width=\"50\" Height=\"50\" Fill=\"Tomato\"/>\n</Canvas>" },
+            { "3_3", "<Canvas Height=\"140\" Background=\"#FAFAFA\">\n    <Rectangle Canvas.Left=\"20\" Canvas.Top=\"20\" Width=\"80\" Height=\"60\" Fill=\"Red\" Panel.ZIndex=\"1\"/>\n    <Rectangle Canvas.Left=\"50\" Canvas.Top=\"40\" Width=\"80\" Height=\"60\" Fill=\"Blue\" Panel.ZIndex=\"2\"/>\n    <Rectangle Canvas.Left=\"80\" Canvas.Top=\"30\" Width=\"80\" Height=\"60\" Fill=\"Green\" Panel.ZIndex=\"3\"/>\n</Canvas>" },
+            { "5_3", "<Canvas Height=\"140\" Background=\"#FAFAFA\">\n    <Rectangle Canvas.Left=\"30\" Canvas.Bottom=\"0\" Width=\"40\" Height=\"60\" Fill=\"#42A5F5\"/>\n    <Rectangle Canvas.Left=\"90\" Canvas.Bottom=\"0\" Width=\"40\" Height=\"100\" Fill=\"#66BB6A\"/>\n    <Rectangle Canvas.Left=\"150\" Canvas.Bottom=\"0\" Width=\"40\" Height=\"80\" Fill=\"#FFA726\"/>\n</Canvas>" },
             // 탭 1: 기본 사용법
             { "1_1", "<Canvas Height=\"120\" Background=\"#EEEEEE\">\n    <Rectangle Fill=\"Orange\" Width=\"100\" Height=\"60\" Canvas.Left=\"50\" Canvas.Top=\"30\"/>\n</Canvas>" },
             { "1_2", "<Canvas Height=\"120\" Background=\"#FFF8E1\">\n    <Ellipse Fill=\"LightBlue\" Width=\"80\" Height=\"80\" Canvas.Left=\"100\" Canvas.Top=\"20\"/>\n    <TextBlock Text=\"원 위에 텍스트\" Canvas.Left=\"110\" Canvas.Top=\"50\"/>\n</Canvas>" },
@@ -62,24 +67,19 @@ namespace ch19_캔버스
 
             try
             {
-                string fullXaml = xamlCode;
+                string fullXaml = xamlCode.Trim();
 
-                // 네임스페이스가 없으면 추가
-                if (!xamlCode.Contains("xmlns="))
+                if (!fullXaml.Contains("xmlns="))
                 {
-                    // Canvas를 포함한 컨테이너 처리
-                    if (xamlCode.TrimStart().StartsWith("<Canvas"))
+                    // 루트 태그가 무엇이든 프레젠테이션 네임스페이스를 붙여 줍니다.
+                    Match root = Regex.Match(fullXaml, @"^<([A-Za-z_][\w.]*)");
+                    if (root.Success)
                     {
-                        fullXaml = xamlCode.Replace("<Canvas",
-                            "<Canvas xmlns='http://schemas.microsoft.com/winfx/2006/xaml/presentation'");
-                    }
-                    else
-                    {
-                        // 기타 컨트롤
-                        fullXaml = $@"<Canvas xmlns='http://schemas.microsoft.com/winfx/2006/xaml/presentation'
-                                              Height='120' Background='#FAFAFA'>
-                            {xamlCode}
-                        </Canvas>";
+                        string name = root.Groups[1].Value;
+                        fullXaml = "<" + name
+                            + " xmlns='http://schemas.microsoft.com/winfx/2006/xaml/presentation'"
+                            + " xmlns:x='http://schemas.microsoft.com/winfx/2006/xaml'"
+                            + fullXaml.Substring(name.Length + 1);
                     }
                 }
 

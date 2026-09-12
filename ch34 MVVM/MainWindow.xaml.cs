@@ -21,6 +21,11 @@ namespace ch34_MVVM
         // 각 연습의 정답
         private readonly Dictionary<string, string> _answers = new()
         {
+            { "1_3", "// View 와 ViewModel 의 연결\n// DataContext 에 ViewModel 을 넣고 View 는 Binding 으로만 접근한다\n// 따라서 View 의 code-behind 에는 화면 로직이 남지 않는다" },
+            { "2_3", "public class PersonModel\n{\n    public string Name { get; set; } = \"\";\n    public int Age { get; set; }\n    public string Display { get { return Name + \" (\" + Age + \")\"; } }\n}" },
+            { "3_3", "private PersonModel? _selected;\npublic PersonModel? Selected\n{\n    get { return _selected; }\n    set\n    {\n        _selected = value;\n        OnPropertyChanged(\"Selected\");\n    }\n}" },
+            { "4_3", "public void RaiseCanExecuteChanged()\n{\n    CanExecuteChanged?.Invoke(this, EventArgs.Empty);\n}" },
+            { "5_3", "<ListView ItemsSource=\"{Binding People}\" SelectedItem=\"{Binding Selected, Mode=TwoWay}\" Height=\"110\"/>" },
             { "1_1", "// MVVM 역할 정리\n// Model: 순수한 데이터와 업무 규칙\n// View: 화면을 그리는 XAML\n// ViewModel: Model 을 View 가 쓰기 좋은 형태로 노출하고 Command 를 제공" },
             { "1_2", "public MainWindow()\n{\n    InitializeComponent();\n    this.DataContext = new PersonViewModel();\n}" },
             { "2_1", "public class PersonModel\n{\n    public string Name { get; set; } = \"\";\n    public int Age { get; set; }\n}" },
@@ -36,6 +41,10 @@ namespace ch34_MVVM
         // 코드 비교 검증용 필수 키워드
         private readonly Dictionary<string, string[]> _requiredKeywords = new()
         {
+            { "1_3", new[] { "DataContext", "Binding" } },
+            { "2_3", new[] { "get", "Display", "Name" } },
+            { "3_3", new[] { "_selected = value", "OnPropertyChanged" } },
+            { "4_3", new[] { "CanExecuteChanged?.Invoke", "EventArgs.Empty" } },
             { "1_1", new[] { "Model", "View", "ViewModel" } },
             { "1_2", new[] { "DataContext", "new PersonViewModel" } },
             { "2_1", new[] { "public string Name", "public int Age" } },

@@ -265,7 +265,28 @@
                             </Border>
                         </StackPanel>
                     </Expander>
-                </StackPanel>
+                
+                <!-- 직접 해보기 2_3 -->
+                <Expander Style="{StaticResource PracticeExpanderStyle}">
+                    <StackPanel Margin="10">
+                        <TextBlock Text="과제: 버튼을 오른쪽 아래에 붙이세요. 크기는 120x40 입니다." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
+                        <TextBox x:Name="txtPractice2_3"
+                                 Style="{StaticResource PracticeInputStyle}"
+                                 Text="&lt;Button Content=&quot;확인&quot; Width=&quot;120&quot; Height=&quot;40&quot;/&gt;"/>
+                        <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
+                            <Button Content="실행" Style="{StaticResource RunButtonStyle}" Click="BtnRun_Click" Tag="2_3"/>
+                            <Button Content="힌트" Style="{StaticResource HintButtonStyle}" Click="BtnHint_Click" Tag="2_3"/>
+                            <Button Content="정답 보기" Style="{StaticResource AnswerButtonStyle}" Click="BtnAnswer_Click" Tag="2_3"/>
+                        </StackPanel>
+                        <TextBlock x:Name="txtHint2_3"
+                                   Text="힌트: HorizontalAlignment 와 VerticalAlignment 를 함께 지정합니다."
+                                   Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                        <Border x:Name="resultBorder2_3" Background="White" Margin="0,8,0,0" Padding="10" Visibility="Collapsed">
+                            <StackPanel x:Name="resultPanel2_3"/>
+                        </Border>
+                    </StackPanel>
+                </Expander>
+</StackPanel>
             </ScrollViewer>
         </TabItem>
 
@@ -358,7 +379,28 @@
                     <Expander Style="{StaticResource CodeExpanderStyle}">
                         <TextBox Style="{StaticResource CodeTextBoxStyle}" Text="&lt;Button Content=&quot;둥근 버튼&quot; Width=&quot;120&quot;&gt;&#10;    &lt;Button.Resources&gt;&#10;        &lt;Style TargetType=&quot;Border&quot;&gt;&#10;            &lt;Setter Property=&quot;CornerRadius&quot; Value=&quot;10&quot;/&gt;&#10;        &lt;/Style&gt;&#10;    &lt;/Button.Resources&gt;&#10;&lt;/Button&gt;"/>
                     </Expander>
-                </StackPanel>
+                
+                <!-- 직접 해보기 3_3 -->
+                <Expander Style="{StaticResource PracticeExpanderStyle}">
+                    <StackPanel Margin="10">
+                        <TextBlock Text="과제: 버튼 글자를 Consolas 14pt 기울임꼴로 만드세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
+                        <TextBox x:Name="txtPractice3_3"
+                                 Style="{StaticResource PracticeInputStyle}"
+                                 Text="&lt;Button Content=&quot;Console&quot; Width=&quot;140&quot; Height=&quot;34&quot;/&gt;"/>
+                        <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
+                            <Button Content="실행" Style="{StaticResource RunButtonStyle}" Click="BtnRun_Click" Tag="3_3"/>
+                            <Button Content="힌트" Style="{StaticResource HintButtonStyle}" Click="BtnHint_Click" Tag="3_3"/>
+                            <Button Content="정답 보기" Style="{StaticResource AnswerButtonStyle}" Click="BtnAnswer_Click" Tag="3_3"/>
+                        </StackPanel>
+                        <TextBlock x:Name="txtHint3_3"
+                                   Text="힌트: FontFamily, FontSize, FontStyle 세 속성을 씁니다."
+                                   Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                        <Border x:Name="resultBorder3_3" Background="White" Margin="0,8,0,0" Padding="10" Visibility="Collapsed">
+                            <StackPanel x:Name="resultPanel3_3"/>
+                        </Border>
+                    </StackPanel>
+                </Expander>
+</StackPanel>
             </ScrollViewer>
         </TabItem>
 
@@ -446,7 +488,28 @@
                     <Expander Style="{StaticResource CodeExpanderStyle}">
                         <TextBox Style="{StaticResource CodeTextBoxStyle}" Text="&lt;StackPanel Orientation=&quot;Horizontal&quot; Background=&quot;#F5F5F5&quot;&gt;&#10;    &lt;Button Content=&quot;Margin 0&quot; Margin=&quot;0&quot;/&gt;&#10;    &lt;Button Content=&quot;Margin 10&quot; Margin=&quot;10&quot;/&gt;&#10;    &lt;Button Content=&quot;Margin 20&quot; Margin=&quot;20&quot;/&gt;&#10;&lt;/StackPanel&gt;"/>
                     </Expander>
-                </StackPanel>
+                
+                <!-- 직접 해보기 4_3 -->
+                <Expander Style="{StaticResource PracticeExpanderStyle}">
+                    <StackPanel Margin="10">
+                        <TextBlock Text="과제: 버튼에 2px 짙은 파랑 테두리를 두르고 안쪽 여백을 12,6 으로 주세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
+                        <TextBox x:Name="txtPractice4_3"
+                                 Style="{StaticResource PracticeInputStyle}"
+                                 Text="&lt;Button Content=&quot;테두리&quot; Width=&quot;140&quot;/&gt;"/>
+                        <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
+                            <Button Content="실행" Style="{StaticResource RunButtonStyle}" Click="BtnRun_Click" Tag="4_3"/>
+                            <Button Content="힌트" Style="{StaticResource HintButtonStyle}" Click="BtnHint_Click" Tag="4_3"/>
+                            <Button Content="정답 보기" Style="{StaticResource AnswerButtonStyle}" Click="BtnAnswer_Click" Tag="4_3"/>
+                        </StackPanel>
+                        <TextBlock x:Name="txtHint4_3"
+                                   Text="힌트: BorderBrush, BorderThickness, Padding 을 지정합니다."
+                                   Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                        <Border x:Name="resultBorder4_3" Background="White" Margin="0,8,0,0" Padding="10" Visibility="Collapsed">
+                            <StackPanel x:Name="resultPanel4_3"/>
+                        </Border>
+                    </StackPanel>
+                </Expander>
+</StackPanel>
             </ScrollViewer>
         </TabItem>
 

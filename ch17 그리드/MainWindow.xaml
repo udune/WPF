@@ -178,7 +178,28 @@
                         </StackPanel>
                     </Expander>
 
-                </StackPanel>
+                
+                <!-- 직접 해보기 1_3 -->
+                <Expander Style="{StaticResource PracticeExpanderStyle}">
+                    <StackPanel Margin="10">
+                        <TextBlock Text="과제: 2행 2열 Grid 를 만들고 각 칸에 TextBlock 을 하나씩 넣으세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
+                        <TextBox x:Name="txtPractice1_3"
+                                 Style="{StaticResource PracticeInputStyle}"
+                                 Text="&lt;Grid Height=&quot;120&quot;&gt;&#10;    &#10;&lt;/Grid&gt;"/>
+                        <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
+                            <Button Content="실행" Style="{StaticResource RunButtonStyle}" Click="BtnRun_Click" Tag="1_3"/>
+                            <Button Content="힌트" Style="{StaticResource HintButtonStyle}" Click="BtnHint_Click" Tag="1_3"/>
+                            <Button Content="정답 보기" Style="{StaticResource AnswerButtonStyle}" Click="BtnAnswer_Click" Tag="1_3"/>
+                        </StackPanel>
+                        <TextBlock x:Name="txtHint1_3"
+                                   Text="힌트: RowDefinitions/ColumnDefinitions 를 정의하고 Grid.Row / Grid.Column 을 지정합니다."
+                                   Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                        <Border x:Name="resultBorder1_3" Background="White" Margin="0,8,0,0" Padding="10" Visibility="Collapsed">
+                            <StackPanel x:Name="resultPanel1_3"/>
+                        </Border>
+                    </StackPanel>
+                </Expander>
+</StackPanel>
             </ScrollViewer>
         </TabItem>
 
@@ -340,7 +361,28 @@
                         </StackPanel>
                     </Expander>
 
-                </StackPanel>
+                
+                <!-- 직접 해보기 2_3 -->
+                <Expander Style="{StaticResource PracticeExpanderStyle}">
+                    <StackPanel Margin="10">
+                        <TextBlock Text="과제: 왼쪽 열은 내용 크기(Auto), 오른쪽 열은 남는 공간 전부(*)를 쓰게 하세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
+                        <TextBox x:Name="txtPractice2_3"
+                                 Style="{StaticResource PracticeInputStyle}"
+                                 Text="&lt;Grid Height=&quot;60&quot;&gt;&#10;    &lt;Grid.ColumnDefinitions&gt;&#10;        &#10;    &lt;/Grid.ColumnDefinitions&gt;&#10;    &lt;TextBlock Grid.Column=&quot;0&quot; Text=&quot;이름:&quot; VerticalAlignment=&quot;Center&quot;/&gt;&#10;    &lt;TextBox Grid.Column=&quot;1&quot;/&gt;&#10;&lt;/Grid&gt;"/>
+                        <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
+                            <Button Content="실행" Style="{StaticResource RunButtonStyle}" Click="BtnRun_Click" Tag="2_3"/>
+                            <Button Content="힌트" Style="{StaticResource HintButtonStyle}" Click="BtnHint_Click" Tag="2_3"/>
+                            <Button Content="정답 보기" Style="{StaticResource AnswerButtonStyle}" Click="BtnAnswer_Click" Tag="2_3"/>
+                        </StackPanel>
+                        <TextBlock x:Name="txtHint2_3"
+                                   Text="힌트: Width=&quot;Auto&quot; 와 Width=&quot;*&quot; 를 씁니다."
+                                   Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                        <Border x:Name="resultBorder2_3" Background="White" Margin="0,8,0,0" Padding="10" Visibility="Collapsed">
+                            <StackPanel x:Name="resultPanel2_3"/>
+                        </Border>
+                    </StackPanel>
+                </Expander>
+</StackPanel>
             </ScrollViewer>
         </TabItem>
 
@@ -479,7 +521,28 @@
                         </StackPanel>
                     </Expander>
 
-                </StackPanel>
+                
+                <!-- 직접 해보기 3_3 -->
+                <Expander Style="{StaticResource PracticeExpanderStyle}">
+                    <StackPanel Margin="10">
+                        <TextBlock Text="과제: 첫 행이 두 열을 모두 차지하는 제목 줄이 되게 하세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
+                        <TextBox x:Name="txtPractice3_3"
+                                 Style="{StaticResource PracticeInputStyle}"
+                                 Text="&lt;Grid Height=&quot;120&quot;&gt;&#10;    &lt;Grid.RowDefinitions&gt;&#10;        &lt;RowDefinition Height=&quot;30&quot;/&gt;&#10;        &lt;RowDefinition/&gt;&#10;    &lt;/Grid.RowDefinitions&gt;&#10;    &lt;Grid.ColumnDefinitions&gt;&#10;        &lt;ColumnDefinition/&gt;&#10;        &lt;ColumnDefinition/&gt;&#10;    &lt;/Grid.ColumnDefinitions&gt;&#10;    &lt;TextBlock Text=&quot;제목&quot; Background=&quot;#E0E0E0&quot;/&gt;&#10;&lt;/Grid&gt;"/>
+                        <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
+                            <Button Content="실행" Style="{StaticResource RunButtonStyle}" Click="BtnRun_Click" Tag="3_3"/>
+                            <Button Content="힌트" Style="{StaticResource HintButtonStyle}" Click="BtnHint_Click" Tag="3_3"/>
+                            <Button Content="정답 보기" Style="{StaticResource AnswerButtonStyle}" Click="BtnAnswer_Click" Tag="3_3"/>
+                        </StackPanel>
+                        <TextBlock x:Name="txtHint3_3"
+                                   Text="힌트: Grid.ColumnSpan=&quot;2&quot; 를 지정합니다."
+                                   Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                        <Border x:Name="resultBorder3_3" Background="White" Margin="0,8,0,0" Padding="10" Visibility="Collapsed">
+                            <StackPanel x:Name="resultPanel3_3"/>
+                        </Border>
+                    </StackPanel>
+                </Expander>
+</StackPanel>
             </ScrollViewer>
         </TabItem>
 
@@ -590,7 +653,49 @@
                         </StackPanel>
                     </Expander>
 
-                </StackPanel>
+                
+                <!-- 직접 해보기 4_2 -->
+                <Expander Style="{StaticResource PracticeExpanderStyle}">
+                    <StackPanel Margin="10">
+                        <TextBlock Text="과제: 두 열 사이에 좌우로 끌 수 있는 GridSplitter 를 넣으세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
+                        <TextBox x:Name="txtPractice4_2"
+                                 Style="{StaticResource PracticeInputStyle}"
+                                 Text="&lt;Grid Height=&quot;120&quot;&gt;&#10;    &lt;Grid.ColumnDefinitions&gt;&#10;        &lt;ColumnDefinition Width=&quot;*&quot;/&gt;&#10;        &lt;ColumnDefinition Width=&quot;5&quot;/&gt;&#10;        &lt;ColumnDefinition Width=&quot;*&quot;/&gt;&#10;    &lt;/Grid.ColumnDefinitions&gt;&#10;    &lt;Border Grid.Column=&quot;0&quot; Background=&quot;#BBDEFB&quot;/&gt;&#10;    &#10;    &lt;Border Grid.Column=&quot;2&quot; Background=&quot;#C8E6C9&quot;/&gt;&#10;&lt;/Grid&gt;"/>
+                        <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
+                            <Button Content="실행" Style="{StaticResource RunButtonStyle}" Click="BtnRun_Click" Tag="4_2"/>
+                            <Button Content="힌트" Style="{StaticResource HintButtonStyle}" Click="BtnHint_Click" Tag="4_2"/>
+                            <Button Content="정답 보기" Style="{StaticResource AnswerButtonStyle}" Click="BtnAnswer_Click" Tag="4_2"/>
+                        </StackPanel>
+                        <TextBlock x:Name="txtHint4_2"
+                                   Text="힌트: GridSplitter 를 가운데 열에 놓고 HorizontalAlignment=&quot;Stretch&quot; 를 줍니다."
+                                   Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                        <Border x:Name="resultBorder4_2" Background="White" Margin="0,8,0,0" Padding="10" Visibility="Collapsed">
+                            <StackPanel x:Name="resultPanel4_2"/>
+                        </Border>
+                    </StackPanel>
+                </Expander>
+
+                <!-- 직접 해보기 4_3 -->
+                <Expander Style="{StaticResource PracticeExpanderStyle}">
+                    <StackPanel Margin="10">
+                        <TextBlock Text="과제: 위아래로 끌 수 있는 가로 GridSplitter 를 넣으세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
+                        <TextBox x:Name="txtPractice4_3"
+                                 Style="{StaticResource PracticeInputStyle}"
+                                 Text="&lt;Grid Height=&quot;140&quot;&gt;&#10;    &lt;Grid.RowDefinitions&gt;&#10;        &lt;RowDefinition Height=&quot;*&quot;/&gt;&#10;        &lt;RowDefinition Height=&quot;5&quot;/&gt;&#10;        &lt;RowDefinition Height=&quot;*&quot;/&gt;&#10;    &lt;/Grid.RowDefinitions&gt;&#10;    &lt;Border Grid.Row=&quot;0&quot; Background=&quot;#FFE0B2&quot;/&gt;&#10;    &#10;    &lt;Border Grid.Row=&quot;2&quot; Background=&quot;#D1C4E9&quot;/&gt;&#10;&lt;/Grid&gt;"/>
+                        <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
+                            <Button Content="실행" Style="{StaticResource RunButtonStyle}" Click="BtnRun_Click" Tag="4_3"/>
+                            <Button Content="힌트" Style="{StaticResource HintButtonStyle}" Click="BtnHint_Click" Tag="4_3"/>
+                            <Button Content="정답 보기" Style="{StaticResource AnswerButtonStyle}" Click="BtnAnswer_Click" Tag="4_3"/>
+                        </StackPanel>
+                        <TextBlock x:Name="txtHint4_3"
+                                   Text="힌트: 가로 스플리터는 Height 를 주고 HorizontalAlignment=&quot;Stretch&quot; 로 늘립니다."
+                                   Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                        <Border x:Name="resultBorder4_3" Background="White" Margin="0,8,0,0" Padding="10" Visibility="Collapsed">
+                            <StackPanel x:Name="resultPanel4_3"/>
+                        </Border>
+                    </StackPanel>
+                </Expander>
+</StackPanel>
             </ScrollViewer>
         </TabItem>
 

@@ -164,7 +164,28 @@
                         <TextBox Style="{StaticResource CodeTextBoxStyle}" Text="&lt;DockPanel Height=&quot;100&quot;&gt;&#10;    &lt;!-- DockPanel.Dock 미지정 → 기본값 Left --&gt;&#10;    &lt;Button&gt;Dock 미지정 (Left)&lt;/Button&gt;&#10;    &lt;Button&gt;Dock 미지정 (Left)&lt;/Button&gt;&#10;    &lt;Border&gt;&#10;        &lt;TextBlock Text=&quot;마지막 자식 (Fill)&quot;/&gt;&#10;    &lt;/Border&gt;&#10;&lt;/DockPanel&gt;"/>
                     </Expander>
 
-                </StackPanel>
+                
+                <!-- 직접 해보기 1_3 -->
+                <Expander Style="{StaticResource PracticeExpanderStyle}">
+                    <StackPanel Margin="10">
+                        <TextBlock Text="과제: DockPanel 로 위쪽 제목 줄과 아래쪽 상태 줄을 만드세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
+                        <TextBox x:Name="txtPractice1_3"
+                                 Style="{StaticResource PracticeInputStyle}"
+                                 Text="&lt;DockPanel Height=&quot;140&quot;&gt;&#10;    &#10;&lt;/DockPanel&gt;"/>
+                        <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
+                            <Button Content="실행" Style="{StaticResource RunButtonStyle}" Click="BtnRun_Click" Tag="1_3"/>
+                            <Button Content="힌트" Style="{StaticResource HintButtonStyle}" Click="BtnHint_Click" Tag="1_3"/>
+                            <Button Content="정답 보기" Style="{StaticResource AnswerButtonStyle}" Click="BtnAnswer_Click" Tag="1_3"/>
+                        </StackPanel>
+                        <TextBlock x:Name="txtHint1_3"
+                                   Text="힌트: DockPanel.Dock=&quot;Top&quot; 과 &quot;Bottom&quot; 을 씁니다."
+                                   Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                        <Border x:Name="resultBorder1_3" Background="White" Margin="0,8,0,0" Padding="10" Visibility="Collapsed">
+                            <StackPanel x:Name="resultPanel1_3"/>
+                        </Border>
+                    </StackPanel>
+                </Expander>
+</StackPanel>
             </ScrollViewer>
         </TabItem>
 
@@ -268,7 +289,28 @@
                         </StackPanel>
                     </Expander>
 
-                </StackPanel>
+                
+                <!-- 직접 해보기 2_3 -->
+                <Expander Style="{StaticResource PracticeExpanderStyle}">
+                    <StackPanel Margin="10">
+                        <TextBlock Text="과제: 마지막 자식이 남은 공간을 채우지 않도록 설정하세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
+                        <TextBox x:Name="txtPractice2_3"
+                                 Style="{StaticResource PracticeInputStyle}"
+                                 Text="&lt;DockPanel Height=&quot;120&quot;&gt;&#10;    &lt;Button DockPanel.Dock=&quot;Left&quot; Content=&quot;왼쪽&quot;/&gt;&#10;    &lt;Button Content=&quot;나머지&quot;/&gt;&#10;&lt;/DockPanel&gt;"/>
+                        <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
+                            <Button Content="실행" Style="{StaticResource RunButtonStyle}" Click="BtnRun_Click" Tag="2_3"/>
+                            <Button Content="힌트" Style="{StaticResource HintButtonStyle}" Click="BtnHint_Click" Tag="2_3"/>
+                            <Button Content="정답 보기" Style="{StaticResource AnswerButtonStyle}" Click="BtnAnswer_Click" Tag="2_3"/>
+                        </StackPanel>
+                        <TextBlock x:Name="txtHint2_3"
+                                   Text="힌트: LastChildFill=&quot;False&quot; 를 DockPanel 에 지정합니다."
+                                   Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                        <Border x:Name="resultBorder2_3" Background="White" Margin="0,8,0,0" Padding="10" Visibility="Collapsed">
+                            <StackPanel x:Name="resultPanel2_3"/>
+                        </Border>
+                    </StackPanel>
+                </Expander>
+</StackPanel>
             </ScrollViewer>
         </TabItem>
 
@@ -411,7 +453,28 @@
                         <TextBox Style="{StaticResource CodeTextBoxStyle}" Text="&lt;DockPanel&gt;&#10;    &lt;Border DockPanel.Dock=&quot;Left&quot; Width=&quot;100&quot;&gt;&#10;        &lt;StackPanel&gt;&#10;            &lt;TextBlock Text=&quot;왼쪽 패널&quot;/&gt;&#10;        &lt;/StackPanel&gt;&#10;    &lt;/Border&gt;&#10;    &lt;Border DockPanel.Dock=&quot;Right&quot; Width=&quot;100&quot;&gt;&#10;        &lt;StackPanel&gt;&#10;            &lt;TextBlock Text=&quot;오른쪽 패널&quot;/&gt;&#10;        &lt;/StackPanel&gt;&#10;    &lt;/Border&gt;&#10;    &lt;Border&gt;&#10;        &lt;TextBlock Text=&quot;중앙 콘텐츠&quot;/&gt;&#10;    &lt;/Border&gt;&#10;&lt;/DockPanel&gt;"/>
                     </Expander>
 
-                </StackPanel>
+                
+                <!-- 직접 해보기 3_3 -->
+                <Expander Style="{StaticResource PracticeExpanderStyle}">
+                    <StackPanel Margin="10">
+                        <TextBlock Text="과제: 왼쪽 메뉴와 오른쪽 본문으로 나뉜 레이아웃을 만드세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
+                        <TextBox x:Name="txtPractice3_3"
+                                 Style="{StaticResource PracticeInputStyle}"
+                                 Text="&lt;DockPanel Height=&quot;140&quot;&gt;&#10;    &#10;&lt;/DockPanel&gt;"/>
+                        <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
+                            <Button Content="실행" Style="{StaticResource RunButtonStyle}" Click="BtnRun_Click" Tag="3_3"/>
+                            <Button Content="힌트" Style="{StaticResource HintButtonStyle}" Click="BtnHint_Click" Tag="3_3"/>
+                            <Button Content="정답 보기" Style="{StaticResource AnswerButtonStyle}" Click="BtnAnswer_Click" Tag="3_3"/>
+                        </StackPanel>
+                        <TextBlock x:Name="txtHint3_3"
+                                   Text="힌트: 왼쪽을 Dock=&quot;Left&quot; 로 고정하면 나머지 자식이 본문이 됩니다."
+                                   Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                        <Border x:Name="resultBorder3_3" Background="White" Margin="0,8,0,0" Padding="10" Visibility="Collapsed">
+                            <StackPanel x:Name="resultPanel3_3"/>
+                        </Border>
+                    </StackPanel>
+                </Expander>
+</StackPanel>
             </ScrollViewer>
         </TabItem>
 
@@ -522,7 +585,28 @@
                         <TextBox Style="{StaticResource CodeTextBoxStyle}" Text="&lt;DockPanel&gt;&#10;    &lt;Border DockPanel.Dock=&quot;Top&quot; Height=&quot;40&quot;&gt;Top&lt;/Border&gt;&#10;    &lt;Border DockPanel.Dock=&quot;Left&quot; Width=&quot;120&quot;&gt;Left&lt;/Border&gt;&#10;    &lt;Border DockPanel.Dock=&quot;Right&quot; Width=&quot;80&quot;&gt;Right&lt;/Border&gt;&#10;    &lt;Border&gt;Center (자동 크기)&lt;/Border&gt;&#10;&lt;/DockPanel&gt;&#10;&#10;&lt;!-- Top/Bottom은 Height, Left/Right는 Width를 지정 --&gt;"/>
                     </Expander>
 
-                </StackPanel>
+                
+                <!-- 직접 해보기 4_3 -->
+                <Expander Style="{StaticResource PracticeExpanderStyle}">
+                    <StackPanel Margin="10">
+                        <TextBlock Text="과제: DockPanel 의 각 영역에 서로 다른 배경색을 주어 구역을 구분하세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
+                        <TextBox x:Name="txtPractice4_3"
+                                 Style="{StaticResource PracticeInputStyle}"
+                                 Text="&lt;DockPanel Height=&quot;140&quot;&gt;&#10;    &#10;&lt;/DockPanel&gt;"/>
+                        <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
+                            <Button Content="실행" Style="{StaticResource RunButtonStyle}" Click="BtnRun_Click" Tag="4_3"/>
+                            <Button Content="힌트" Style="{StaticResource HintButtonStyle}" Click="BtnHint_Click" Tag="4_3"/>
+                            <Button Content="정답 보기" Style="{StaticResource AnswerButtonStyle}" Click="BtnAnswer_Click" Tag="4_3"/>
+                        </StackPanel>
+                        <TextBlock x:Name="txtHint4_3"
+                                   Text="힌트: 각 자식 Border 에 Background 를 다르게 지정합니다."
+                                   Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                        <Border x:Name="resultBorder4_3" Background="White" Margin="0,8,0,0" Padding="10" Visibility="Collapsed">
+                            <StackPanel x:Name="resultPanel4_3"/>
+                        </Border>
+                    </StackPanel>
+                </Expander>
+</StackPanel>
             </ScrollViewer>
         </TabItem>
 

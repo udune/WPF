@@ -6,6 +6,7 @@ using System.Windows.Controls;
 using System.Windows.Markup;
 using System.Windows.Media;
 using System.Windows.Threading;
+using System.Text.RegularExpressions;
 
 namespace ch21_스테이터스바
 {
@@ -17,6 +18,11 @@ namespace ch21_스테이터스바
         // 각 연습의 정답
         private readonly Dictionary<string, string> _answers = new()
         {
+            { "1_3", "<StatusBar>\n    <StatusBarItem Content=\"report.txt\"/>\n    <Separator/>\n    <StatusBarItem Content=\"UTF-8\"/>\n</StatusBar>" },
+            { "2_3", "<StatusBar Height=\"28\" Background=\"#E3F2FD\">\n    <StatusBarItem Content=\"준비\"/>\n</StatusBar>" },
+            { "3_3", "<StatusBar>\n    <StatusBarItem>\n        <StackPanel Orientation=\"Horizontal\">\n            <ProgressBar Width=\"120\" Height=\"12\" Value=\"45\"/>\n            <TextBlock Text=\"45%\" Margin=\"6,0,0,0\"/>\n        </StackPanel>\n    </StatusBarItem>\n</StatusBar>" },
+            { "4_3", "private void ShowTime_Click(object sender, RoutedEventArgs e)\n{\n    statusText.Content = DateTime.Now.ToString(\"HH:mm:ss\");\n}" },
+            { "5_3", "<StatusBar>\n    <StatusBarItem Content=\"줄 12, 열 34\"/>\n    <Separator/>\n    <StatusBarItem Content=\"UTF-8\"/>\n    <Separator/>\n    <StatusBarItem Content=\"저장됨\"/>\n</StatusBar>" },
             // 탭 1: 기본 사용법
             { "1_1", "<StatusBar>\n    <StatusBarItem Content=\"상태: 준비됨\"/>\n</StatusBar>" },
             { "1_2", "<StatusBar>\n    <StatusBarItem Content=\"파일명\"/>\n    <Separator/>\n    <StatusBarItem Content=\"100%\"/>\n    <Separator/>\n    <StatusBarItem Content=\"저장됨\"/>\n</StatusBar>" },
@@ -41,6 +47,7 @@ namespace ch21_스테이터스바
         // 코드 비교 검증용 필수 키워드
         private readonly Dictionary<string, string[]> _requiredKeywords = new()
         {
+            { "4_3", new[] { "statusText.Content", "DateTime.Now" } },
             { "4_1", new[] { ".Content", "작업 완료" } },
             { "4_2", new[] { "Brushes.Red", ".Fill", ".Text", "오류 발생" } },
         };
@@ -58,14 +65,19 @@ namespace ch21_스테이터스바
 
             try
             {
-                string fullXaml = xamlCode;
-                if (!xamlCode.Contains("xmlns="))
+                string fullXaml = xamlCode.Trim();
+
+                if (!fullXaml.Contains("xmlns="))
                 {
-                    // StatusBar 및 관련 컨트롤에 네임스페이스 추가
-                    if (xamlCode.TrimStart().StartsWith("<StatusBar"))
+                    // 루트 태그가 무엇이든 프레젠테이션 네임스페이스를 붙여 줍니다.
+                    Match root = Regex.Match(fullXaml, @"^<([A-Za-z_][\w.]*)");
+                    if (root.Success)
                     {
-                        fullXaml = xamlCode.Replace("<StatusBar",
-                            "<StatusBar xmlns='http://schemas.microsoft.com/winfx/2006/xaml/presentation'");
+                        string name = root.Groups[1].Value;
+                        fullXaml = "<" + name
+                            + " xmlns='http://schemas.microsoft.com/winfx/2006/xaml/presentation'"
+                            + " xmlns:x='http://schemas.microsoft.com/winfx/2006/xaml'"
+                            + fullXaml.Substring(name.Length + 1);
                     }
                 }
 
