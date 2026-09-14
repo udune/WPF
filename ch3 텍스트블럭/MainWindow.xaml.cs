@@ -15,6 +15,14 @@ namespace ch3_텍스트블럭
         // 각 연습의 정답
         private readonly Dictionary<string, string> _answers = new()
         {
+            { "1_5", "<TextBlock TextWrapping=\"Wrap\">\n    검색은 <Hyperlink NavigateUri=\"https://google.co.kr\">구글 바로가기</Hyperlink>를 이용하세요.\n</TextBlock>" },
+            { "1_6", "<TextBlock Text=\"마우스를 올려보세요\" ToolTip=\"이것은 TextBlock의 ToolTip입니다\"/>" },
+            { "2_4", "<TextBlock FontSize=\"14\">\n    상태: <InlineUIContainer>\n        <Ellipse Width=\"12\" Height=\"12\" Fill=\"LimeGreen\"/>\n    </InlineUIContainer> 온라인\n</TextBlock>" },
+            { "2_5", "<TextBlock FontSize=\"16\" TextWrapping=\"Wrap\">\n    <Bold>WPF</Bold>의 <Italic>TextBlock</Italic>은\n    <Span Foreground=\"CornflowerBlue\" FontSize=\"20\">다양한</Span> 인라인 요소를\n    <Underline>자유롭게</Underline> 조합할 수 있습니다.<LineBreak/>\n    <Span Foreground=\"Gray\" FontSize=\"12\">— WPF 튜토리얼 中</Span>\n</TextBlock>" },
+            { "3_4", "<StackPanel>\n    <TextBlock TextWrapping=\"Wrap\" Width=\"200\" Background=\"#FFF9C4\"\n               Text=\"기본 줄 간격입니다. 문장이 길어지면 자동으로 줄이 바뀝니다.\"/>\n    <TextBlock TextWrapping=\"Wrap\" Width=\"200\" LineHeight=\"40\" Margin=\"0,8,0,0\" Background=\"#C8E6C9\"\n               Text=\"줄 간격 40입니다. 문장이 길어지면 자동으로 줄이 바뀝니다.\"/>\n</StackPanel>" },
+            { "4_5", "<StackPanel>\n    <TextBlock Text=\"밑줄\" TextDecorations=\"Underline\"/>\n    <TextBlock Text=\"취소선\" TextDecorations=\"Strikethrough\"/>\n    <TextBlock Text=\"윗줄\" TextDecorations=\"OverLine\"/>\n</StackPanel>" },
+            { "5_4", "<StackPanel>\n    <TextBlock Text=\"Padding 0\" Background=\"#FFCDD2\" Padding=\"0\"/>\n    <TextBlock Text=\"Padding 10\" Background=\"#C8E6C9\" Padding=\"10\"/>\n    <TextBlock Text=\"Padding 20\" Background=\"#BBDEFB\" Padding=\"20\"/>\n</StackPanel>" },
+            { "5_5", "private void BtnRedStyle_Click(object sender, RoutedEventArgs e)\n{\n    tbStyleDemo.Background = Brushes.Tomato;\n    tbStyleDemo.Foreground = Brushes.White;\n    tbStyleDemo.FontWeight = FontWeights.Bold;\n    tbStyleDemo.Text = \"빨간 스타일 적용됨\";\n}" },
             // 탭 1: 기본 사용법
             { "1_1", "<TextBlock>환영합니다</TextBlock>" },
             { "1_2", "<TextBlock Text=\"WPF 학습중\"/>" },
@@ -46,6 +54,7 @@ namespace ch3_텍스트블럭
         // 코드 비교 검증용 필수 키워드
         private readonly Dictionary<string, string[]> _requiredKeywords = new()
         {
+            { "5_5", new[] { "Background", "Foreground", "FontWeight" } },
             { "1_3", new[] { "_count++", "tbCounter.Text", "클릭 횟수" } },
             { "5_3", new[] { "Brushes.Green", "Brushes.White", "FontWeights.Bold" } },
         };

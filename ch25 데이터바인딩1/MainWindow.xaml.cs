@@ -47,6 +47,10 @@ namespace ch25_데이터바인딩1
         // 각 연습의 정답
         private readonly Dictionary<string, string> _answers = new()
         {
+            { "1_4", "<StackPanel>\n    <CheckBox x:Name=\"enableCheckBox\" Content=\"버튼 활성화\" IsChecked=\"True\"/>\n    <Button Content=\"실행\" Margin=\"0,8,0,0\"\n            IsEnabled=\"{Binding ElementName=enableCheckBox, Path=IsChecked}\"/>\n</StackPanel>" },
+            { "2_4", "<StackPanel>\n    <TextBox x:Name=\"oneTimeSource\" Text=\"처음 값\"/>\n    <TextBlock Margin=\"0,8,0,0\"\n               Text=\"{Binding ElementName=oneTimeSource, Path=Text, Mode=OneTime}\"/>\n</StackPanel>" },
+            { "3_4", "private void UpdateExplicit_Click(object sender, RoutedEventArgs e)\n{\n    var binding = explicitTextBox.GetBindingExpression(TextBox.TextProperty);\n    binding?.UpdateSource();\n}" },
+            { "4_4", "<TextBlock Text=\"{Binding NonExistent, FallbackValue=기본값}\"/>" },
             { "1_3", "<StackPanel>\n    <CheckBox x:Name=\"chk\" Content=\"동의\"/>\n    <TextBlock Text=\"{Binding ElementName=chk, Path=IsChecked}\" Margin=\"0,6,0,0\"/>\n</StackPanel>" },
             { "2_3", "<StackPanel>\n    <CheckBox x:Name=\"agree\" Content=\"약관에 동의합니다\"/>\n    <Button Content=\"다음\" Width=\"120\" HorizontalAlignment=\"Left\" Margin=\"0,6,0,0\" IsEnabled=\"{Binding ElementName=agree, Path=IsChecked}\"/>\n</StackPanel>" },
             { "3_3", "<StackPanel>\n    <Slider x:Name=\"s6\" Minimum=\"0\" Maximum=\"100\" Width=\"220\"/>\n    <TextBox Width=\"220\" Text=\"{Binding ElementName=s6, Path=Value, UpdateSourceTrigger=PropertyChanged}\"/>\n</StackPanel>" },
@@ -67,6 +71,7 @@ namespace ch25_데이터바인딩1
         // 코드 비교 검증용 필수 키워드
         private readonly Dictionary<string, string[]> _requiredKeywords = new()
         {
+            { "3_4", new[] { "GetBindingExpression", "UpdateSource" } },
             { "5_2", new[] { "new Binding", "Source", "SetBinding", "TextProperty" } },
         };
 

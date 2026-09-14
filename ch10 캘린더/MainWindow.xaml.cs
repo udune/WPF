@@ -12,6 +12,9 @@ namespace ch10_캘린더
         // 각 연습의 정답
         private readonly Dictionary<string, string> _answers = new()
         {
+            { "1_4", "<Calendar DisplayDate=\"2026-03-01\"/>" },
+            { "3_4", "private void CalPick_SelectedDatesChanged(object sender, SelectionChangedEventArgs e)\n{\n    if (calPick.SelectedDate.HasValue)\n    {\n        tbPick.Text = \"선택: \" + calPick.SelectedDate.Value.ToString(\"yyyy-MM-dd\");\n    }\n}" },
+            { "5_4", "private void SelectToday_Click(object sender, RoutedEventArgs e)\n{\n    calCode.SelectedDate = DateTime.Today;\n}\n\nprivate void ClearSelection_Click(object sender, RoutedEventArgs e)\n{\n    calCode.SelectedDate = null;\n}" },
             { "2_3", "<Calendar>\n    <Calendar.BlackoutDates>\n        <CalendarDateRange Start=\"2020-01-01\" End=\"2024-12-31\"/>\n    </Calendar.BlackoutDates>\n</Calendar>" },
             { "3_3", "<Calendar SelectionMode=\"MultipleRange\"/>" },
             { "4_2", "<StackPanel>\n    <Calendar x:Name=\"cal\"/>\n    <TextBlock Text=\"{Binding ElementName=cal, Path=SelectedDate, StringFormat='선택: {0:yyyy-MM-dd}'}\" Margin=\"0,8,0,0\"/>\n</StackPanel>" },
@@ -41,6 +44,8 @@ namespace ch10_캘린더
         // 코드 비교 검증용 필수 키워드
         private readonly Dictionary<string, string[]> _requiredKeywords = new()
         {
+            { "3_4", new[] { "SelectedDate", "tbPick.Text", "ToString" } },
+            { "5_4", new[] { "SelectedDate", "DateTime.Today", "null" } },
             { "4_3", new[] { "SelectedDate", "DateTime.Today" } },
             { "2_2", new[] { "BlackoutDates", "AddDatesInPast" } },
             { "3_2", new[] { "SelectedDate", "HasValue", "Value" } },

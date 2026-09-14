@@ -14,6 +14,12 @@ namespace ch7_이미지
         // 각 연습의 정답
         private readonly Dictionary<string, string> _answers = new()
         {
+            { "1_4", "<StackPanel Orientation=\"Horizontal\">\n    <Image Source=\"https://via.placeholder.com/100\" Width=\"50\" Height=\"50\" Margin=\"4\"/>\n    <Image Source=\"https://via.placeholder.com/100\" Width=\"80\" Height=\"80\" Margin=\"4\"/>\n    <Image Source=\"https://via.placeholder.com/100\" Width=\"120\" Height=\"120\" Margin=\"4\"/>\n</StackPanel>" },
+            { "1_5", "<Button Padding=\"8\" HorizontalAlignment=\"Left\">\n    <StackPanel Orientation=\"Horizontal\">\n        <Image Source=\"https://via.placeholder.com/24\" Width=\"24\" Height=\"24\" Margin=\"0,0,6,0\"/>\n        <TextBlock Text=\"이미지 버튼\" VerticalAlignment=\"Center\"/>\n    </StackPanel>\n</Button>" },
+            { "3_4", "<Border BorderBrush=\"Gray\" BorderThickness=\"1\" Width=\"200\" Height=\"100\">\n    <Image Source=\"https://via.placeholder.com/150\" Stretch=\"UniformToFill\"/>\n</Border>" },
+            { "3_5", "<Border BorderBrush=\"Gray\" BorderThickness=\"1\" Width=\"200\" Height=\"120\">\n    <Image Source=\"https://via.placeholder.com/60\" Stretch=\"Uniform\" StretchDirection=\"DownOnly\"/>\n</Border>" },
+            { "4_4", "<Image Source=\"https://via.placeholder.com/100\" Width=\"100\" Height=\"100\">\n    <Image.Effect>\n        <DropShadowEffect Color=\"Black\" Direction=\"315\" ShadowDepth=\"5\"\n                          Opacity=\"0.5\" BlurRadius=\"10\"/>\n    </Image.Effect>\n</Image>" },
+            { "5_4", "private void BtnImgVisible_Click(object sender, RoutedEventArgs e)\n{\n    imgVisibility.Visibility = Visibility.Visible;\n}\n\nprivate void BtnImgHidden_Click(object sender, RoutedEventArgs e)\n{\n    imgVisibility.Visibility = Visibility.Hidden;\n}\n\nprivate void BtnImgCollapsed_Click(object sender, RoutedEventArgs e)\n{\n    imgVisibility.Visibility = Visibility.Collapsed;\n}" },
             { "1_3", "private void Load_Click(object sender, RoutedEventArgs e)\n{\n    img.Source = new BitmapImage(new Uri(\"1.png\", UriKind.Relative));\n}" },
             { "2_3", "<Image Width=\"120\" Height=\"90\" HorizontalAlignment=\"Right\" VerticalAlignment=\"Top\"/>" },
             { "4_3", "<Border BorderBrush=\"Gray\" BorderThickness=\"2\" Padding=\"4\">\n    <Image Width=\"120\" Height=\"90\" Opacity=\"0.5\"/>\n</Border>" },
@@ -43,6 +49,7 @@ namespace ch7_이미지
         // 코드 비교 검증용 필수 키워드
         private readonly Dictionary<string, string[]> _requiredKeywords = new()
         {
+            { "5_4", new[] { "Visibility.Visible", "Visibility.Hidden", "Visibility.Collapsed" } },
             { "1_3", new[] { "BitmapImage", "new Uri", "Source" } },
             { "5_1", new[] { "Width", "Height", "150" } },
             { "5_2", new[] { "BitmapImage", "Uri", ".Source" } },

@@ -12,6 +12,16 @@ namespace ch5_텍스트박스
         // 각 연습의 정답
         private readonly Dictionary<string, string> _answers = new()
         {
+            { "1_5", "<TextBox Width=\"200\" MaxLength=\"10\"/>" },
+            { "1_6", "<StackPanel>\n    <TextBox Text=\"읽기 전용\" IsReadOnly=\"True\" Margin=\"0,4\"/>\n    <TextBox Text=\"비활성화\" IsEnabled=\"False\" Margin=\"0,4\"/>\n</StackPanel>" },
+            { "1_7", "<TextBox Height=\"60\" Width=\"240\" AcceptsReturn=\"True\" AcceptsTab=\"True\" TextWrapping=\"Wrap\"/>" },
+            { "2_4", "<StackPanel>\n    <TextBox Text=\"200x30\" Width=\"200\" Height=\"30\" Margin=\"0,4\" HorizontalAlignment=\"Left\"/>\n    <TextBox Text=\"250x40\" Width=\"250\" Height=\"40\" Margin=\"0,4\" HorizontalAlignment=\"Left\"/>\n    <TextBox Text=\"300x50\" Width=\"300\" Height=\"50\" Margin=\"0,4\" HorizontalAlignment=\"Left\"/>\n</StackPanel>" },
+            { "3_4", "<StackPanel>\n    <TextBox Text=\"Arial\" FontFamily=\"Arial\" Margin=\"0,4\"/>\n    <TextBox Text=\"Consolas\" FontFamily=\"Consolas\" Margin=\"0,4\"/>\n    <TextBox Text=\"맑은 고딕\" FontFamily=\"맑은 고딕\" Margin=\"0,4\"/>\n</StackPanel>" },
+            { "3_5", "<StackPanel>\n    <TextBox Text=\"밑줄 텍스트\" TextDecorations=\"Underline\" Margin=\"0,4\"/>\n    <TextBox Text=\"취소선 텍스트\" TextDecorations=\"Strikethrough\" Margin=\"0,4\"/>\n</StackPanel>" },
+            { "4_4", "<StackPanel>\n    <TextBox Text=\"Padding 0\" Padding=\"0\" Margin=\"0,4\"/>\n    <TextBox Text=\"Padding 10\" Padding=\"10\" Margin=\"0,4\"/>\n    <TextBox Text=\"Padding 20\" Padding=\"20\" Margin=\"0,4\"/>\n</StackPanel>" },
+            { "4_5", "<StackPanel>\n    <TextBox Text=\"빨간 커서\" CaretBrush=\"Red\" Margin=\"0,4\"/>\n    <TextBox Text=\"초록 선택 (드래그해 보세요)\" SelectionBrush=\"Green\" Margin=\"0,4\"/>\n</StackPanel>" },
+            { "5_4", "private void TxtKeyDown_KeyDown(object sender, KeyEventArgs e)\n{\n    if (e.Key == Key.Enter)\n    {\n        txtKeyResult.Text = $\"입력 확정: {txtKeyDown.Text}\";\n    }\n}" },
+            { "5_5", "private void BtnClear_Click(object sender, RoutedEventArgs e)\n{\n    txtDynamic.Clear();\n}\n\nprivate void BtnUpperCase_Click(object sender, RoutedEventArgs e)\n{\n    txtDynamic.Text = txtDynamic.Text.ToUpper();\n}" },
             // 탭 1: 기본 사용법
             { "1_1", "<TextBox Text=\"안녕하세요\"/>" },
             { "1_2", "<TextBox Text=\"여러 줄 입력\" TextWrapping=\"Wrap\" AcceptsReturn=\"True\"/>" },
@@ -42,6 +52,8 @@ namespace ch5_텍스트박스
         // 코드 비교 검증용 필수 키워드
         private readonly Dictionary<string, string[]> _requiredKeywords = new()
         {
+            { "5_4", new[] { "e.Key", "Key.Enter", "txtKeyResult.Text" } },
+            { "5_5", new[] { "Clear()", "ToUpper()" } },
             { "5_1", new[] { ".Text.Length", "txtCount.Text" } },
             { "5_2", new[] { "Brushes.LightYellow", "Background" } },
             { "5_3", new[] { "Key.Enter", "if", "e.Key" } },

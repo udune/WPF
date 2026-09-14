@@ -286,6 +286,7 @@ namespace ch28_영어단어맞추기
         // 각 연습의 정답
         private readonly Dictionary<string, string> _answers = new()
         {
+            { "5_4", "private T? FindVisualChild<T>(DependencyObject parent) where T : DependencyObject\n{\n    for (int i = 0; i < VisualTreeHelper.GetChildrenCount(parent); i++)\n    {\n        var child = VisualTreeHelper.GetChild(parent, i);\n        if (child is T typedChild)\n            return typedChild;\n\n        var result = FindVisualChild<T>(child);\n        if (result != null)\n            return result;\n    }\n    return null;\n}" },
             { "2_3", "public string Progress\n{\n    get { return _correct + \" / \" + _total; }\n}\n\nprivate void UpdateProgress()\n{\n    OnPropertyChanged(\"Progress\");\n}" },
             { "3_3", "<ItemsControl>\n    <ItemsControl.ItemsPanel>\n        <ItemsPanelTemplate>\n            <UniformGrid Rows=\"2\" Columns=\"2\"/>\n        </ItemsPanelTemplate>\n    </ItemsControl.ItemsPanel>\n</ItemsControl>" },
             { "4_3", "private void UseChance()\n{\n    chances = chances - 1;\n    if (chances <= 0)\n    {\n        GameOver();\n    }\n}" },
@@ -303,6 +304,7 @@ namespace ch28_영어단어맞추기
         // 코드 비교 검증용 필수 키워드
         private readonly Dictionary<string, string[]> _requiredKeywords = new()
         {
+            { "5_4", new[] { "VisualTreeHelper.GetChildrenCount", "VisualTreeHelper.GetChild", "FindVisualChild" } },
             { "2_3", new[] { "OnPropertyChanged", "Progress" } },
             { "4_3", new[] { "chances", "if (chances <= 0)", "GameOver" } },
             { "5_3", new[] { "answerBox.Text", "Focus()" } },

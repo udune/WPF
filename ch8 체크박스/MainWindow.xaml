@@ -11,7 +11,7 @@
         <Style x:Key="CodeExpanderStyle" TargetType="Expander">
             <Setter Property="Header" Value="코드 보기"/>
             <Setter Property="Margin" Value="0,0,0,12"/>
-            <Setter Property="IsExpanded" Value="False"/>
+            <Setter Property="IsExpanded" Value="True"/>
         </Style>
         <Style x:Key="CodeTextBoxStyle" TargetType="TextBox">
             <Setter Property="IsReadOnly" Value="True"/>
@@ -76,68 +76,6 @@
                     <Expander Style="{StaticResource CodeExpanderStyle}">
                         <TextBox Style="{StaticResource CodeTextBoxStyle}" Text="&lt;CheckBox&gt;체크박스&lt;/CheckBox&gt;"/>
                     </Expander>
-
-                    <GroupBox Header="Content 속성으로 지정" Margin="0,0,0,8">
-                        <CheckBox Content="체크박스"/>
-                    </GroupBox>
-                    <Expander Style="{StaticResource CodeExpanderStyle}">
-                        <TextBox Style="{StaticResource CodeTextBoxStyle}" Text="&lt;CheckBox Content=&quot;체크박스&quot;/&gt;"/>
-                    </Expander>
-
-                    <GroupBox Header="복합 콘텐츠 (이미지 + 텍스트)" Margin="0,0,0,8">
-                        <CheckBox VerticalContentAlignment="Center">
-                            <StackPanel Orientation="Horizontal">
-                                <Ellipse Width="16" Height="16" Fill="CornflowerBlue" Margin="0,0,6,0"/>
-                                <TextBlock Text="아이콘 체크박스" VerticalAlignment="Center"/>
-                            </StackPanel>
-                        </CheckBox>
-                    </GroupBox>
-                    <Expander Style="{StaticResource CodeExpanderStyle}">
-                        <TextBox Style="{StaticResource CodeTextBoxStyle}" Text="&lt;CheckBox VerticalContentAlignment=&quot;Center&quot;&gt;&#10;    &lt;StackPanel Orientation=&quot;Horizontal&quot;&gt;&#10;        &lt;Ellipse Width=&quot;16&quot; Height=&quot;16&quot; Fill=&quot;CornflowerBlue&quot; Margin=&quot;0,0,6,0&quot;/&gt;&#10;        &lt;TextBlock Text=&quot;아이콘 체크박스&quot; VerticalAlignment=&quot;Center&quot;/&gt;&#10;    &lt;/StackPanel&gt;&#10;&lt;/CheckBox&gt;"/>
-                    </Expander>
-
-                    <TextBlock Text="2. IsChecked (체크 상태)" FontSize="18" FontWeight="Bold" Margin="0,10,0,10"/>
-
-                    <GroupBox Header="기본값(False), True, IsThreeState" Margin="0,0,0,8">
-                        <StackPanel>
-                            <CheckBox Content="체크 안 됨 (기본값)" Margin="0,0,0,4"/>
-                            <CheckBox Content="체크됨" IsChecked="True" Margin="0,0,0,4"/>
-                            <CheckBox Content="세 가지 상태 (True/False/Null)" IsThreeState="True" IsChecked="{x:Null}"/>
-                        </StackPanel>
-                    </GroupBox>
-                    <Expander Style="{StaticResource CodeExpanderStyle}">
-                        <TextBox Style="{StaticResource CodeTextBoxStyle}" Text="&lt;CheckBox Content=&quot;체크 안 됨&quot;/&gt;  &lt;!-- IsChecked=False (기본값) --&gt;&#10;&lt;CheckBox Content=&quot;체크됨&quot; IsChecked=&quot;True&quot;/&gt;&#10;&#10;&lt;!-- IsThreeState=True → True / False / Null(불확정) 세 상태 --&gt;&#10;&lt;CheckBox Content=&quot;세 가지 상태&quot;&#10;          IsThreeState=&quot;True&quot;&#10;          IsChecked=&quot;{x:Null}&quot;/&gt;"/>
-                    </Expander>
-
-                    <TextBlock Text="3. IsEnabled" FontSize="18" FontWeight="Bold" Margin="0,10,0,10"/>
-
-                    <GroupBox Header="활성/비활성 상태" Margin="0,0,0,8">
-                        <StackPanel>
-                            <CheckBox Content="활성 체크박스" Margin="0,0,0,4"/>
-                            <CheckBox Content="비활성 체크박스 (체크 안 됨)" IsEnabled="False" Margin="0,0,0,4"/>
-                            <CheckBox Content="비활성 체크박스 (체크됨)" IsEnabled="False" IsChecked="True"/>
-                        </StackPanel>
-                    </GroupBox>
-                    <Expander Style="{StaticResource CodeExpanderStyle}">
-                        <TextBox Style="{StaticResource CodeTextBoxStyle}" Text="&lt;CheckBox Content=&quot;활성 체크박스&quot;/&gt;&#10;&lt;CheckBox Content=&quot;비활성 (체크 안 됨)&quot; IsEnabled=&quot;False&quot;/&gt;&#10;&lt;CheckBox Content=&quot;비활성 (체크됨)&quot; IsEnabled=&quot;False&quot; IsChecked=&quot;True&quot;/&gt;"/>
-                    </Expander>
-
-                    <TextBlock Text="4. ClickMode" FontSize="18" FontWeight="Bold" Margin="0,10,0,10"/>
-
-                    <GroupBox Header="클릭 동작 방식" Margin="0,0,0,8">
-                        <StackPanel>
-                            <CheckBox Content="Release (기본값 - 마우스 떼면 체크)" ClickMode="Release" Margin="0,0,0,4"/>
-                            <CheckBox Content="Press (누르는 순간 체크)" ClickMode="Press" Margin="0,0,0,4"/>
-                            <CheckBox Content="Hover (마우스 올리면 체크)" ClickMode="Hover"/>
-                        </StackPanel>
-                    </GroupBox>
-                    <Expander Style="{StaticResource CodeExpanderStyle}">
-                        <TextBox Style="{StaticResource CodeTextBoxStyle}" Text="&lt;CheckBox Content=&quot;Release&quot; ClickMode=&quot;Release&quot;/&gt;&#10;&lt;CheckBox Content=&quot;Press&quot; ClickMode=&quot;Press&quot;/&gt;&#10;&lt;CheckBox Content=&quot;Hover&quot; ClickMode=&quot;Hover&quot;/&gt;"/>
-                    </Expander>
-
-                    <!-- 직접 해보기 -->
-                    <TextBlock Text="직접 해보기" FontSize="18" FontWeight="Bold" Margin="0,20,0,10" Foreground="#1976D2"/>
-
                     <Expander Style="{StaticResource PracticeExpanderStyle}">
                         <StackPanel Margin="10">
                             <TextBlock Text="과제: Content를 '약관에 동의합니다'로 설정한 CheckBox를 만들어보세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
@@ -158,6 +96,12 @@
                         </StackPanel>
                     </Expander>
 
+                    <GroupBox Header="Content 속성으로 지정" Margin="0,0,0,8">
+                        <CheckBox Content="체크박스"/>
+                    </GroupBox>
+                    <Expander Style="{StaticResource CodeExpanderStyle}">
+                        <TextBox Style="{StaticResource CodeTextBoxStyle}" Text="&lt;CheckBox Content=&quot;체크박스&quot;/&gt;"/>
+                    </Expander>
                     <Expander Style="{StaticResource PracticeExpanderStyle}">
                         <StackPanel Margin="10">
                             <TextBlock Text="과제: IsChecked를 True로 설정하여 기본으로 체크된 CheckBox를 만들어보세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
@@ -178,6 +122,17 @@
                         </StackPanel>
                     </Expander>
 
+                    <GroupBox Header="복합 콘텐츠 (이미지 + 텍스트)" Margin="0,0,0,8">
+                        <CheckBox VerticalContentAlignment="Center">
+                            <StackPanel Orientation="Horizontal">
+                                <Ellipse Width="16" Height="16" Fill="CornflowerBlue" Margin="0,0,6,0"/>
+                                <TextBlock Text="아이콘 체크박스" VerticalAlignment="Center"/>
+                            </StackPanel>
+                        </CheckBox>
+                    </GroupBox>
+                    <Expander Style="{StaticResource CodeExpanderStyle}">
+                        <TextBox Style="{StaticResource CodeTextBoxStyle}" Text="&lt;CheckBox VerticalContentAlignment=&quot;Center&quot;&gt;&#10;    &lt;StackPanel Orientation=&quot;Horizontal&quot;&gt;&#10;        &lt;Ellipse Width=&quot;16&quot; Height=&quot;16&quot; Fill=&quot;CornflowerBlue&quot; Margin=&quot;0,0,6,0&quot;/&gt;&#10;        &lt;TextBlock Text=&quot;아이콘 체크박스&quot; VerticalAlignment=&quot;Center&quot;/&gt;&#10;    &lt;/StackPanel&gt;&#10;&lt;/CheckBox&gt;"/>
+                    </Expander>
                     <Expander Style="{StaticResource PracticeExpanderStyle}">
                         <StackPanel Margin="10">
                             <TextBlock Text="과제: IsThreeState를 True로 설정하여 세 가지 상태를 가진 CheckBox를 만들어보세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
@@ -197,6 +152,109 @@
                             </Border>
                         </StackPanel>
                     </Expander>
+
+                    <TextBlock Text="2. IsChecked (체크 상태)" FontSize="18" FontWeight="Bold" Margin="0,10,0,10"/>
+
+                    <GroupBox Header="기본값(False), True, IsThreeState" Margin="0,0,0,8">
+                        <StackPanel>
+                            <CheckBox Content="체크 안 됨 (기본값)" Margin="0,0,0,4"/>
+                            <CheckBox Content="체크됨" IsChecked="True" Margin="0,0,0,4"/>
+                            <CheckBox Content="세 가지 상태 (True/False/Null)" IsThreeState="True" IsChecked="{x:Null}"/>
+                        </StackPanel>
+                    </GroupBox>
+                    <Expander Style="{StaticResource CodeExpanderStyle}">
+                        <TextBox Style="{StaticResource CodeTextBoxStyle}" Text="&lt;CheckBox Content=&quot;체크 안 됨&quot;/&gt;  &lt;!-- IsChecked=False (기본값) --&gt;&#10;&lt;CheckBox Content=&quot;체크됨&quot; IsChecked=&quot;True&quot;/&gt;&#10;&#10;&lt;!-- IsThreeState=True → True / False / Null(불확정) 세 상태 --&gt;&#10;&lt;CheckBox Content=&quot;세 가지 상태&quot;&#10;          IsThreeState=&quot;True&quot;&#10;          IsChecked=&quot;{x:Null}&quot;/&gt;"/>
+                    </Expander>
+                    <!-- 직접 해보기 1_4 -->
+                    <Expander Style="{StaticResource PracticeExpanderStyle}">
+                        <StackPanel Margin="10">
+                            <TextBlock Text="과제: 체크 안 됨 / 체크됨 / 세 가지 상태(불확정) 체크박스를 각각 만드세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
+                            <TextBox x:Name="txtPractice1_4"
+                                     Style="{StaticResource PracticeInputStyle}"
+                                     Text="&lt;StackPanel&gt;&#10;    &#10;&lt;/StackPanel&gt;"/>
+                            <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
+                                <Button Content="실행" Style="{StaticResource RunButtonStyle}" Click="BtnRun_Click" Tag="1_4"/>
+                                <Button Content="힌트" Style="{StaticResource HintButtonStyle}" Click="BtnHint_Click" Tag="1_4"/>
+                                <Button Content="정답 보기" Style="{StaticResource AnswerButtonStyle}" Click="BtnAnswer_Click" Tag="1_4"/>
+                            </StackPanel>
+                            <TextBlock x:Name="txtHint1_4"
+                                       Text="힌트: IsThreeState=&quot;True&quot; 와 IsChecked=&quot;{x:Null}&quot; 을 함께 쓰면 불확정 상태가 됩니다."
+                                       Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                            <Border x:Name="resultBorder1_4" Background="White" Margin="0,8,0,0" Padding="10" Visibility="Collapsed">
+                                <StackPanel x:Name="resultPanel1_4"/>
+                            </Border>
+                        </StackPanel>
+                    </Expander>
+
+                    <TextBlock Text="3. IsEnabled" FontSize="18" FontWeight="Bold" Margin="0,10,0,10"/>
+
+                    <GroupBox Header="활성/비활성 상태" Margin="0,0,0,8">
+                        <StackPanel>
+                            <CheckBox Content="활성 체크박스" Margin="0,0,0,4"/>
+                            <CheckBox Content="비활성 체크박스 (체크 안 됨)" IsEnabled="False" Margin="0,0,0,4"/>
+                            <CheckBox Content="비활성 체크박스 (체크됨)" IsEnabled="False" IsChecked="True"/>
+                        </StackPanel>
+                    </GroupBox>
+                    <Expander Style="{StaticResource CodeExpanderStyle}">
+                        <TextBox Style="{StaticResource CodeTextBoxStyle}" Text="&lt;CheckBox Content=&quot;활성 체크박스&quot;/&gt;&#10;&lt;CheckBox Content=&quot;비활성 (체크 안 됨)&quot; IsEnabled=&quot;False&quot;/&gt;&#10;&lt;CheckBox Content=&quot;비활성 (체크됨)&quot; IsEnabled=&quot;False&quot; IsChecked=&quot;True&quot;/&gt;"/>
+                    </Expander>
+                    <!-- 직접 해보기 1_5 -->
+                    <Expander Style="{StaticResource PracticeExpanderStyle}">
+                        <StackPanel Margin="10">
+                            <TextBlock Text="과제: 활성 / 비활성(체크 안 됨) / 비활성(체크됨) 체크박스 세 개를 만드세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
+                            <TextBox x:Name="txtPractice1_5"
+                                     Style="{StaticResource PracticeInputStyle}"
+                                     Text="&lt;StackPanel&gt;&#10;    &#10;&lt;/StackPanel&gt;"/>
+                            <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
+                                <Button Content="실행" Style="{StaticResource RunButtonStyle}" Click="BtnRun_Click" Tag="1_5"/>
+                                <Button Content="힌트" Style="{StaticResource HintButtonStyle}" Click="BtnHint_Click" Tag="1_5"/>
+                                <Button Content="정답 보기" Style="{StaticResource AnswerButtonStyle}" Click="BtnAnswer_Click" Tag="1_5"/>
+                            </StackPanel>
+                            <TextBlock x:Name="txtHint1_5"
+                                       Text="힌트: IsEnabled 와 IsChecked 는 서로 다른 속성이라 함께 쓸 수 있습니다."
+                                       Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                            <Border x:Name="resultBorder1_5" Background="White" Margin="0,8,0,0" Padding="10" Visibility="Collapsed">
+                                <StackPanel x:Name="resultPanel1_5"/>
+                            </Border>
+                        </StackPanel>
+                    </Expander>
+
+                    <TextBlock Text="4. ClickMode" FontSize="18" FontWeight="Bold" Margin="0,10,0,10"/>
+
+                    <GroupBox Header="클릭 동작 방식" Margin="0,0,0,8">
+                        <StackPanel>
+                            <CheckBox Content="Release (기본값 - 마우스 떼면 체크)" ClickMode="Release" Margin="0,0,0,4"/>
+                            <CheckBox Content="Press (누르는 순간 체크)" ClickMode="Press" Margin="0,0,0,4"/>
+                            <CheckBox Content="Hover (마우스 올리면 체크)" ClickMode="Hover"/>
+                        </StackPanel>
+                    </GroupBox>
+                    <Expander Style="{StaticResource CodeExpanderStyle}">
+                        <TextBox Style="{StaticResource CodeTextBoxStyle}" Text="&lt;CheckBox Content=&quot;Release&quot; ClickMode=&quot;Release&quot;/&gt;&#10;&lt;CheckBox Content=&quot;Press&quot; ClickMode=&quot;Press&quot;/&gt;&#10;&lt;CheckBox Content=&quot;Hover&quot; ClickMode=&quot;Hover&quot;/&gt;"/>
+                    </Expander>
+                    <!-- 직접 해보기 1_6 -->
+                    <Expander Style="{StaticResource PracticeExpanderStyle}">
+                        <StackPanel Margin="10">
+                            <TextBlock Text="과제: ClickMode를 Release / Press / Hover로 각각 지정한 체크박스를 만드세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
+                            <TextBox x:Name="txtPractice1_6"
+                                     Style="{StaticResource PracticeInputStyle}"
+                                     Text="&lt;StackPanel&gt;&#10;    &#10;&lt;/StackPanel&gt;"/>
+                            <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
+                                <Button Content="실행" Style="{StaticResource RunButtonStyle}" Click="BtnRun_Click" Tag="1_6"/>
+                                <Button Content="힌트" Style="{StaticResource HintButtonStyle}" Click="BtnHint_Click" Tag="1_6"/>
+                                <Button Content="정답 보기" Style="{StaticResource AnswerButtonStyle}" Click="BtnAnswer_Click" Tag="1_6"/>
+                            </StackPanel>
+                            <TextBlock x:Name="txtHint1_6"
+                                       Text="힌트: Hover 는 마우스를 올리기만 해도 상태가 바뀝니다. 직접 눌러 차이를 확인해 보세요."
+                                       Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                            <Border x:Name="resultBorder1_6" Background="White" Margin="0,8,0,0" Padding="10" Visibility="Collapsed">
+                                <StackPanel x:Name="resultPanel1_6"/>
+                            </Border>
+                        </StackPanel>
+                    </Expander>
+
+                    <!-- 직접 해보기 -->
+                    <TextBlock Text="직접 해보기" FontSize="18" FontWeight="Bold" Margin="0,20,0,10" Foreground="#1976D2"/>
+
                 </StackPanel>
             </ScrollViewer>
         </TabItem>
@@ -213,44 +271,6 @@
                     <Expander Style="{StaticResource CodeExpanderStyle}">
                         <TextBox Style="{StaticResource CodeTextBoxStyle}" Text="&lt;CheckBox Content=&quot;Left&quot; HorizontalAlignment=&quot;Left&quot;/&gt;&#10;&lt;CheckBox Content=&quot;Center&quot; HorizontalAlignment=&quot;Center&quot;/&gt;&#10;&lt;CheckBox Content=&quot;Right&quot; HorizontalAlignment=&quot;Right&quot;/&gt;&#10;&lt;CheckBox Content=&quot;Stretch&quot; HorizontalAlignment=&quot;Stretch&quot;/&gt;"/>
                     </Expander>
-
-                    <TextBlock Text="HorizontalContentAlignment (내부 텍스트 정렬)" FontSize="18" FontWeight="Bold" Margin="0,20,0,10"/>
-                    <CheckBox Content="Left" HorizontalContentAlignment="Left" Margin="0,2" Background="#F5F5F5"/>
-                    <CheckBox Content="Center" HorizontalContentAlignment="Center" Margin="0,2" Background="#F5F5F5"/>
-                    <CheckBox Content="Right" HorizontalContentAlignment="Right" Margin="0,2" Background="#F5F5F5"/>
-                    <Expander Style="{StaticResource CodeExpanderStyle}">
-                        <TextBox Style="{StaticResource CodeTextBoxStyle}" Text="&lt;CheckBox Content=&quot;Left&quot; HorizontalContentAlignment=&quot;Left&quot;/&gt;&#10;&lt;CheckBox Content=&quot;Center&quot; HorizontalContentAlignment=&quot;Center&quot;/&gt;&#10;&lt;CheckBox Content=&quot;Right&quot; HorizontalContentAlignment=&quot;Right&quot;/&gt;"/>
-                    </Expander>
-
-                    <TextBlock Text="VerticalContentAlignment (수직 콘텐츠 정렬)" FontSize="18" FontWeight="Bold" Margin="0,20,0,10"/>
-                    <Grid Height="120" Background="#F5F5F5" Margin="0,0,0,8">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition/>
-                            <ColumnDefinition/>
-                            <ColumnDefinition/>
-                        </Grid.ColumnDefinitions>
-                        <CheckBox Content="Top" VerticalContentAlignment="Top" Height="100" Margin="4" Grid.Column="0"/>
-                        <CheckBox Content="Center" VerticalContentAlignment="Center" Height="100" Margin="4" Grid.Column="1"/>
-                        <CheckBox Content="Bottom" VerticalContentAlignment="Bottom" Height="100" Margin="4" Grid.Column="2"/>
-                    </Grid>
-                    <Expander Style="{StaticResource CodeExpanderStyle}">
-                        <TextBox Style="{StaticResource CodeTextBoxStyle}" Text="&lt;CheckBox Content=&quot;Top&quot; VerticalContentAlignment=&quot;Top&quot; Height=&quot;100&quot;/&gt;&#10;&lt;CheckBox Content=&quot;Center&quot; VerticalContentAlignment=&quot;Center&quot; Height=&quot;100&quot;/&gt;&#10;&lt;CheckBox Content=&quot;Bottom&quot; VerticalContentAlignment=&quot;Bottom&quot; Height=&quot;100&quot;/&gt;"/>
-                    </Expander>
-
-                    <TextBlock Text="FlowDirection (체크박스 방향)" FontSize="18" FontWeight="Bold" Margin="0,20,0,10"/>
-                    <GroupBox Header="체크 마크 위치 변경" Margin="0,0,0,8">
-                        <StackPanel>
-                            <CheckBox Content="LeftToRight (기본값)" FlowDirection="LeftToRight" Margin="0,0,0,4"/>
-                            <CheckBox Content="RightToLeft (체크 마크가 오른쪽)" FlowDirection="RightToLeft"/>
-                        </StackPanel>
-                    </GroupBox>
-                    <Expander Style="{StaticResource CodeExpanderStyle}">
-                        <TextBox Style="{StaticResource CodeTextBoxStyle}" Text="&lt;CheckBox Content=&quot;LeftToRight&quot; FlowDirection=&quot;LeftToRight&quot;/&gt;&#10;&lt;CheckBox Content=&quot;RightToLeft&quot; FlowDirection=&quot;RightToLeft&quot;/&gt;"/>
-                    </Expander>
-
-                    <!-- 직접 해보기 -->
-                    <TextBlock Text="직접 해보기" FontSize="18" FontWeight="Bold" Margin="0,20,0,10" Foreground="#1976D2"/>
-
                     <Expander Style="{StaticResource PracticeExpanderStyle}">
                         <StackPanel Margin="10">
                             <TextBlock Text="과제: HorizontalAlignment를 Center로 설정한 CheckBox를 만들어보세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
@@ -271,6 +291,13 @@
                         </StackPanel>
                     </Expander>
 
+                    <TextBlock Text="HorizontalContentAlignment (내부 텍스트 정렬)" FontSize="18" FontWeight="Bold" Margin="0,20,0,10"/>
+                    <CheckBox Content="Left" HorizontalContentAlignment="Left" Margin="0,2" Background="#F5F5F5"/>
+                    <CheckBox Content="Center" HorizontalContentAlignment="Center" Margin="0,2" Background="#F5F5F5"/>
+                    <CheckBox Content="Right" HorizontalContentAlignment="Right" Margin="0,2" Background="#F5F5F5"/>
+                    <Expander Style="{StaticResource CodeExpanderStyle}">
+                        <TextBox Style="{StaticResource CodeTextBoxStyle}" Text="&lt;CheckBox Content=&quot;Left&quot; HorizontalContentAlignment=&quot;Left&quot;/&gt;&#10;&lt;CheckBox Content=&quot;Center&quot; HorizontalContentAlignment=&quot;Center&quot;/&gt;&#10;&lt;CheckBox Content=&quot;Right&quot; HorizontalContentAlignment=&quot;Right&quot;/&gt;"/>
+                    </Expander>
                     <Expander Style="{StaticResource PracticeExpanderStyle}">
                         <StackPanel Margin="10">
                             <TextBlock Text="과제: FlowDirection을 RightToLeft로 설정하여 체크 마크가 오른쪽에 오는 CheckBox를 만들어보세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
@@ -290,27 +317,77 @@
                             </Border>
                         </StackPanel>
                     </Expander>
-                
-                <!-- 직접 해보기 2_3 -->
-                <Expander Style="{StaticResource PracticeExpanderStyle}">
-                    <StackPanel Margin="10">
-                        <TextBlock Text="과제: CheckBox 3개를 세로로 쌓고 전체를 가운데 정렬하세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
-                        <TextBox x:Name="txtPractice2_3"
-                                 Style="{StaticResource PracticeInputStyle}"
-                                 Text="&lt;StackPanel&gt;&#10;    &#10;&lt;/StackPanel&gt;"/>
-                        <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
-                            <Button Content="실행" Style="{StaticResource RunButtonStyle}" Click="BtnRun_Click" Tag="2_3"/>
-                            <Button Content="힌트" Style="{StaticResource HintButtonStyle}" Click="BtnHint_Click" Tag="2_3"/>
-                            <Button Content="정답 보기" Style="{StaticResource AnswerButtonStyle}" Click="BtnAnswer_Click" Tag="2_3"/>
+
+                    <TextBlock Text="VerticalContentAlignment (수직 콘텐츠 정렬)" FontSize="18" FontWeight="Bold" Margin="0,20,0,10"/>
+                    <Grid Height="120" Background="#F5F5F5" Margin="0,0,0,8">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <CheckBox Content="Top" VerticalContentAlignment="Top" Height="100" Margin="4" Grid.Column="0"/>
+                        <CheckBox Content="Center" VerticalContentAlignment="Center" Height="100" Margin="4" Grid.Column="1"/>
+                        <CheckBox Content="Bottom" VerticalContentAlignment="Bottom" Height="100" Margin="4" Grid.Column="2"/>
+                    </Grid>
+                    <Expander Style="{StaticResource CodeExpanderStyle}">
+                        <TextBox Style="{StaticResource CodeTextBoxStyle}" Text="&lt;CheckBox Content=&quot;Top&quot; VerticalContentAlignment=&quot;Top&quot; Height=&quot;100&quot;/&gt;&#10;&lt;CheckBox Content=&quot;Center&quot; VerticalContentAlignment=&quot;Center&quot; Height=&quot;100&quot;/&gt;&#10;&lt;CheckBox Content=&quot;Bottom&quot; VerticalContentAlignment=&quot;Bottom&quot; Height=&quot;100&quot;/&gt;"/>
+                    </Expander>
+                    <!-- 직접 해보기 2_3 -->
+                    <Expander Style="{StaticResource PracticeExpanderStyle}">
+                        <StackPanel Margin="10">
+                            <TextBlock Text="과제: CheckBox 3개를 세로로 쌓고 전체를 가운데 정렬하세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
+                            <TextBox x:Name="txtPractice2_3"
+                                     Style="{StaticResource PracticeInputStyle}"
+                                     Text="&lt;StackPanel&gt;&#10;    &#10;&lt;/StackPanel&gt;"/>
+                            <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
+                                <Button Content="실행" Style="{StaticResource RunButtonStyle}" Click="BtnRun_Click" Tag="2_3"/>
+                                <Button Content="힌트" Style="{StaticResource HintButtonStyle}" Click="BtnHint_Click" Tag="2_3"/>
+                                <Button Content="정답 보기" Style="{StaticResource AnswerButtonStyle}" Click="BtnAnswer_Click" Tag="2_3"/>
+                            </StackPanel>
+                            <TextBlock x:Name="txtHint2_3"
+                                       Text="힌트: StackPanel 에 HorizontalAlignment=&quot;Center&quot; 를 주면 자식이 가운데로 모입니다."
+                                       Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                            <Border x:Name="resultBorder2_3" Background="White" Margin="0,8,0,0" Padding="10" Visibility="Collapsed">
+                                <StackPanel x:Name="resultPanel2_3"/>
+                            </Border>
                         </StackPanel>
-                        <TextBlock x:Name="txtHint2_3"
-                                   Text="힌트: StackPanel 에 HorizontalAlignment=&quot;Center&quot; 를 주면 자식이 가운데로 모입니다."
-                                   Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
-                        <Border x:Name="resultBorder2_3" Background="White" Margin="0,8,0,0" Padding="10" Visibility="Collapsed">
-                            <StackPanel x:Name="resultPanel2_3"/>
-                        </Border>
-                    </StackPanel>
-                </Expander>
+                    </Expander>
+
+                    <TextBlock Text="FlowDirection (체크박스 방향)" FontSize="18" FontWeight="Bold" Margin="0,20,0,10"/>
+                    <GroupBox Header="체크 마크 위치 변경" Margin="0,0,0,8">
+                        <StackPanel>
+                            <CheckBox Content="LeftToRight (기본값)" FlowDirection="LeftToRight" Margin="0,0,0,4"/>
+                            <CheckBox Content="RightToLeft (체크 마크가 오른쪽)" FlowDirection="RightToLeft"/>
+                        </StackPanel>
+                    </GroupBox>
+                    <Expander Style="{StaticResource CodeExpanderStyle}">
+                        <TextBox Style="{StaticResource CodeTextBoxStyle}" Text="&lt;CheckBox Content=&quot;LeftToRight&quot; FlowDirection=&quot;LeftToRight&quot;/&gt;&#10;&lt;CheckBox Content=&quot;RightToLeft&quot; FlowDirection=&quot;RightToLeft&quot;/&gt;"/>
+                    </Expander>
+                    <!-- 직접 해보기 2_4 -->
+                    <Expander Style="{StaticResource PracticeExpanderStyle}">
+                        <StackPanel Margin="10">
+                            <TextBlock Text="과제: FlowDirection을 RightToLeft로 주어 체크 표시가 오른쪽에 오게 하세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
+                            <TextBox x:Name="txtPractice2_4"
+                                     Style="{StaticResource PracticeInputStyle}"
+                                     Text="&lt;StackPanel&gt;&#10;    &lt;CheckBox Content=&quot;LeftToRight&quot; FlowDirection=&quot;LeftToRight&quot; Margin=&quot;0,4&quot;/&gt;&#10;    &#10;&lt;/StackPanel&gt;"/>
+                            <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
+                                <Button Content="실행" Style="{StaticResource RunButtonStyle}" Click="BtnRun_Click" Tag="2_4"/>
+                                <Button Content="힌트" Style="{StaticResource HintButtonStyle}" Click="BtnHint_Click" Tag="2_4"/>
+                                <Button Content="정답 보기" Style="{StaticResource AnswerButtonStyle}" Click="BtnAnswer_Click" Tag="2_4"/>
+                            </StackPanel>
+                            <TextBlock x:Name="txtHint2_4"
+                                       Text="힌트: FlowDirection=&quot;RightToLeft&quot; 를 주면 글자와 체크 상자의 좌우가 뒤바뀝니다."
+                                       Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                            <Border x:Name="resultBorder2_4" Background="White" Margin="0,8,0,0" Padding="10" Visibility="Collapsed">
+                                <StackPanel x:Name="resultPanel2_4"/>
+                            </Border>
+                        </StackPanel>
+                    </Expander>
+
+                    <!-- 직접 해보기 -->
+                    <TextBlock Text="직접 해보기" FontSize="18" FontWeight="Bold" Margin="0,20,0,10" Foreground="#1976D2"/>
+
+                
 </StackPanel>
             </ScrollViewer>
         </TabItem>
@@ -327,37 +404,6 @@
                     <Expander Style="{StaticResource CodeExpanderStyle}">
                         <TextBox Style="{StaticResource CodeTextBoxStyle}" Text="&lt;CheckBox Content=&quot;12px&quot; FontSize=&quot;12&quot;/&gt;&#10;&lt;CheckBox Content=&quot;16px&quot; FontSize=&quot;16&quot;/&gt;&#10;&lt;CheckBox Content=&quot;20px&quot; FontSize=&quot;20&quot;/&gt;&#10;&lt;CheckBox Content=&quot;28px&quot; FontSize=&quot;28&quot;/&gt;"/>
                     </Expander>
-
-                    <TextBlock Text="FontWeight" FontSize="18" FontWeight="Bold" Margin="0,20,0,10"/>
-                    <CheckBox Content="Thin" FontWeight="Thin" FontSize="14" Margin="0,2"/>
-                    <CheckBox Content="Light" FontWeight="Light" FontSize="14" Margin="0,2"/>
-                    <CheckBox Content="Normal" FontWeight="Normal" FontSize="14" Margin="0,2"/>
-                    <CheckBox Content="Bold" FontWeight="Bold" FontSize="14" Margin="0,2"/>
-                    <CheckBox Content="ExtraBold" FontWeight="ExtraBold" FontSize="14" Margin="0,2"/>
-                    <Expander Style="{StaticResource CodeExpanderStyle}">
-                        <TextBox Style="{StaticResource CodeTextBoxStyle}" Text="&lt;CheckBox Content=&quot;Thin&quot; FontWeight=&quot;Thin&quot;/&gt;&#10;&lt;CheckBox Content=&quot;Light&quot; FontWeight=&quot;Light&quot;/&gt;&#10;&lt;CheckBox Content=&quot;Normal&quot; FontWeight=&quot;Normal&quot;/&gt;&#10;&lt;CheckBox Content=&quot;Bold&quot; FontWeight=&quot;Bold&quot;/&gt;&#10;&lt;CheckBox Content=&quot;ExtraBold&quot; FontWeight=&quot;ExtraBold&quot;/&gt;"/>
-                    </Expander>
-
-                    <TextBlock Text="FontStyle" FontSize="18" FontWeight="Bold" Margin="0,20,0,10"/>
-                    <CheckBox Content="Normal" FontStyle="Normal" FontSize="14" Margin="0,2"/>
-                    <CheckBox Content="Italic" FontStyle="Italic" FontSize="14" Margin="0,2"/>
-                    <CheckBox Content="Oblique" FontStyle="Oblique" FontSize="14" Margin="0,2"/>
-                    <Expander Style="{StaticResource CodeExpanderStyle}">
-                        <TextBox Style="{StaticResource CodeTextBoxStyle}" Text="&lt;CheckBox Content=&quot;Normal&quot; FontStyle=&quot;Normal&quot;/&gt;&#10;&lt;CheckBox Content=&quot;Italic&quot; FontStyle=&quot;Italic&quot;/&gt;&#10;&lt;CheckBox Content=&quot;Oblique&quot; FontStyle=&quot;Oblique&quot;/&gt;"/>
-                    </Expander>
-
-                    <TextBlock Text="FontFamily" FontSize="18" FontWeight="Bold" Margin="0,20,0,10"/>
-                    <CheckBox Content="Arial - Hello 안녕하세요" FontFamily="Arial" FontSize="14" Margin="0,2"/>
-                    <CheckBox Content="Times New Roman - Hello 안녕하세요" FontFamily="Times New Roman" FontSize="14" Margin="0,2"/>
-                    <CheckBox Content="Consolas - Hello 안녕하세요" FontFamily="Consolas" FontSize="14" Margin="0,2"/>
-                    <CheckBox Content="맑은 고딕 - Hello 안녕하세요" FontFamily="맑은 고딕" FontSize="14" Margin="0,2"/>
-                    <Expander Style="{StaticResource CodeExpanderStyle}">
-                        <TextBox Style="{StaticResource CodeTextBoxStyle}" Text="&lt;CheckBox Content=&quot;Arial&quot; FontFamily=&quot;Arial&quot;/&gt;&#10;&lt;CheckBox Content=&quot;Times New Roman&quot; FontFamily=&quot;Times New Roman&quot;/&gt;&#10;&lt;CheckBox Content=&quot;Consolas&quot; FontFamily=&quot;Consolas&quot;/&gt;&#10;&lt;CheckBox Content=&quot;맑은 고딕&quot; FontFamily=&quot;맑은 고딕&quot;/&gt;"/>
-                    </Expander>
-
-                    <!-- 직접 해보기 -->
-                    <TextBlock Text="직접 해보기" FontSize="18" FontWeight="Bold" Margin="0,20,0,10" Foreground="#1976D2"/>
-
                     <Expander Style="{StaticResource PracticeExpanderStyle}">
                         <StackPanel Margin="10">
                             <TextBlock Text="과제: FontSize를 18로 설정한 CheckBox를 만들어보세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
@@ -378,6 +424,15 @@
                         </StackPanel>
                     </Expander>
 
+                    <TextBlock Text="FontWeight" FontSize="18" FontWeight="Bold" Margin="0,20,0,10"/>
+                    <CheckBox Content="Thin" FontWeight="Thin" FontSize="14" Margin="0,2"/>
+                    <CheckBox Content="Light" FontWeight="Light" FontSize="14" Margin="0,2"/>
+                    <CheckBox Content="Normal" FontWeight="Normal" FontSize="14" Margin="0,2"/>
+                    <CheckBox Content="Bold" FontWeight="Bold" FontSize="14" Margin="0,2"/>
+                    <CheckBox Content="ExtraBold" FontWeight="ExtraBold" FontSize="14" Margin="0,2"/>
+                    <Expander Style="{StaticResource CodeExpanderStyle}">
+                        <TextBox Style="{StaticResource CodeTextBoxStyle}" Text="&lt;CheckBox Content=&quot;Thin&quot; FontWeight=&quot;Thin&quot;/&gt;&#10;&lt;CheckBox Content=&quot;Light&quot; FontWeight=&quot;Light&quot;/&gt;&#10;&lt;CheckBox Content=&quot;Normal&quot; FontWeight=&quot;Normal&quot;/&gt;&#10;&lt;CheckBox Content=&quot;Bold&quot; FontWeight=&quot;Bold&quot;/&gt;&#10;&lt;CheckBox Content=&quot;ExtraBold&quot; FontWeight=&quot;ExtraBold&quot;/&gt;"/>
+                    </Expander>
                     <Expander Style="{StaticResource PracticeExpanderStyle}">
                         <StackPanel Margin="10">
                             <TextBlock Text="과제: FontWeight를 Bold로, FontStyle을 Italic으로 설정한 CheckBox를 만들어보세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
@@ -397,27 +452,68 @@
                             </Border>
                         </StackPanel>
                     </Expander>
-                
-                <!-- 직접 해보기 3_3 -->
-                <Expander Style="{StaticResource PracticeExpanderStyle}">
-                    <StackPanel Margin="10">
-                        <TextBlock Text="과제: CheckBox 글자를 16pt 굵게, 밑줄까지 넣으세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
-                        <TextBox x:Name="txtPractice3_3"
-                                 Style="{StaticResource PracticeInputStyle}"
-                                 Text="&lt;CheckBox Content=&quot;동의합니다&quot;/&gt;"/>
-                        <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
-                            <Button Content="실행" Style="{StaticResource RunButtonStyle}" Click="BtnRun_Click" Tag="3_3"/>
-                            <Button Content="힌트" Style="{StaticResource HintButtonStyle}" Click="BtnHint_Click" Tag="3_3"/>
-                            <Button Content="정답 보기" Style="{StaticResource AnswerButtonStyle}" Click="BtnAnswer_Click" Tag="3_3"/>
+
+                    <TextBlock Text="FontStyle" FontSize="18" FontWeight="Bold" Margin="0,20,0,10"/>
+                    <CheckBox Content="Normal" FontStyle="Normal" FontSize="14" Margin="0,2"/>
+                    <CheckBox Content="Italic" FontStyle="Italic" FontSize="14" Margin="0,2"/>
+                    <CheckBox Content="Oblique" FontStyle="Oblique" FontSize="14" Margin="0,2"/>
+                    <Expander Style="{StaticResource CodeExpanderStyle}">
+                        <TextBox Style="{StaticResource CodeTextBoxStyle}" Text="&lt;CheckBox Content=&quot;Normal&quot; FontStyle=&quot;Normal&quot;/&gt;&#10;&lt;CheckBox Content=&quot;Italic&quot; FontStyle=&quot;Italic&quot;/&gt;&#10;&lt;CheckBox Content=&quot;Oblique&quot; FontStyle=&quot;Oblique&quot;/&gt;"/>
+                    </Expander>
+                    <!-- 직접 해보기 3_3 -->
+                    <Expander Style="{StaticResource PracticeExpanderStyle}">
+                        <StackPanel Margin="10">
+                            <TextBlock Text="과제: CheckBox 글자를 16pt 굵게, 밑줄까지 넣으세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
+                            <TextBox x:Name="txtPractice3_3"
+                                     Style="{StaticResource PracticeInputStyle}"
+                                     Text="&lt;CheckBox Content=&quot;동의합니다&quot;/&gt;"/>
+                            <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
+                                <Button Content="실행" Style="{StaticResource RunButtonStyle}" Click="BtnRun_Click" Tag="3_3"/>
+                                <Button Content="힌트" Style="{StaticResource HintButtonStyle}" Click="BtnHint_Click" Tag="3_3"/>
+                                <Button Content="정답 보기" Style="{StaticResource AnswerButtonStyle}" Click="BtnAnswer_Click" Tag="3_3"/>
+                            </StackPanel>
+                            <TextBlock x:Name="txtHint3_3"
+                                       Text="힌트: 밑줄은 TextBlock 을 Content 로 넣어 TextDecorations 를 지정합니다."
+                                       Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                            <Border x:Name="resultBorder3_3" Background="White" Margin="0,8,0,0" Padding="10" Visibility="Collapsed">
+                                <StackPanel x:Name="resultPanel3_3"/>
+                            </Border>
                         </StackPanel>
-                        <TextBlock x:Name="txtHint3_3"
-                                   Text="힌트: 밑줄은 TextBlock 을 Content 로 넣어 TextDecorations 를 지정합니다."
-                                   Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
-                        <Border x:Name="resultBorder3_3" Background="White" Margin="0,8,0,0" Padding="10" Visibility="Collapsed">
-                            <StackPanel x:Name="resultPanel3_3"/>
-                        </Border>
-                    </StackPanel>
-                </Expander>
+                    </Expander>
+
+                    <TextBlock Text="FontFamily" FontSize="18" FontWeight="Bold" Margin="0,20,0,10"/>
+                    <CheckBox Content="Arial - Hello 안녕하세요" FontFamily="Arial" FontSize="14" Margin="0,2"/>
+                    <CheckBox Content="Times New Roman - Hello 안녕하세요" FontFamily="Times New Roman" FontSize="14" Margin="0,2"/>
+                    <CheckBox Content="Consolas - Hello 안녕하세요" FontFamily="Consolas" FontSize="14" Margin="0,2"/>
+                    <CheckBox Content="맑은 고딕 - Hello 안녕하세요" FontFamily="맑은 고딕" FontSize="14" Margin="0,2"/>
+                    <Expander Style="{StaticResource CodeExpanderStyle}">
+                        <TextBox Style="{StaticResource CodeTextBoxStyle}" Text="&lt;CheckBox Content=&quot;Arial&quot; FontFamily=&quot;Arial&quot;/&gt;&#10;&lt;CheckBox Content=&quot;Times New Roman&quot; FontFamily=&quot;Times New Roman&quot;/&gt;&#10;&lt;CheckBox Content=&quot;Consolas&quot; FontFamily=&quot;Consolas&quot;/&gt;&#10;&lt;CheckBox Content=&quot;맑은 고딕&quot; FontFamily=&quot;맑은 고딕&quot;/&gt;"/>
+                    </Expander>
+                    <!-- 직접 해보기 3_4 -->
+                    <Expander Style="{StaticResource PracticeExpanderStyle}">
+                        <StackPanel Margin="10">
+                            <TextBlock Text="과제: 서로 다른 글꼴을 쓰는 체크박스 세 개를 만드세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
+                            <TextBox x:Name="txtPractice3_4"
+                                     Style="{StaticResource PracticeInputStyle}"
+                                     Text="&lt;StackPanel&gt;&#10;    &#10;&lt;/StackPanel&gt;"/>
+                            <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
+                                <Button Content="실행" Style="{StaticResource RunButtonStyle}" Click="BtnRun_Click" Tag="3_4"/>
+                                <Button Content="힌트" Style="{StaticResource HintButtonStyle}" Click="BtnHint_Click" Tag="3_4"/>
+                                <Button Content="정답 보기" Style="{StaticResource AnswerButtonStyle}" Click="BtnAnswer_Click" Tag="3_4"/>
+                            </StackPanel>
+                            <TextBlock x:Name="txtHint3_4"
+                                       Text="힌트: FontFamily 에 Arial, Consolas, 맑은 고딕 등을 지정합니다."
+                                       Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                            <Border x:Name="resultBorder3_4" Background="White" Margin="0,8,0,0" Padding="10" Visibility="Collapsed">
+                                <StackPanel x:Name="resultPanel3_4"/>
+                            </Border>
+                        </StackPanel>
+                    </Expander>
+
+                    <!-- 직접 해보기 -->
+                    <TextBlock Text="직접 해보기" FontSize="18" FontWeight="Bold" Margin="0,20,0,10" Foreground="#1976D2"/>
+
+                
 </StackPanel>
             </ScrollViewer>
         </TabItem>
@@ -433,38 +529,6 @@
                     <Expander Style="{StaticResource CodeExpanderStyle}">
                         <TextBox Style="{StaticResource CodeTextBoxStyle}" Text="&lt;CheckBox Content=&quot;Salmon + White&quot; Background=&quot;Salmon&quot; Foreground=&quot;White&quot;/&gt;&#10;&lt;CheckBox Content=&quot;SteelBlue + Yellow&quot; Background=&quot;SteelBlue&quot; Foreground=&quot;Yellow&quot;/&gt;&#10;&lt;CheckBox Content=&quot;DarkGreen + LightGreen&quot; Background=&quot;DarkGreen&quot; Foreground=&quot;LightGreen&quot;/&gt;"/>
                     </Expander>
-
-                    <TextBlock Text="BorderBrush / BorderThickness" FontSize="18" FontWeight="Bold" Margin="0,20,0,10"/>
-                    <CheckBox Content="테두리 1px" BorderBrush="Gray" BorderThickness="1" Padding="6" Margin="0,4"/>
-                    <CheckBox Content="테두리 3px" BorderBrush="CornflowerBlue" BorderThickness="3" Padding="6" Margin="0,4"/>
-                    <CheckBox Content="각 변 다른 두께 (좌2 상4 우2 하4)" BorderBrush="Tomato" BorderThickness="2,4,2,4" Padding="6" Margin="0,4"/>
-                    <Expander Style="{StaticResource CodeExpanderStyle}">
-                        <TextBox Style="{StaticResource CodeTextBoxStyle}" Text="&lt;CheckBox Content=&quot;테두리 1px&quot; BorderBrush=&quot;Gray&quot; BorderThickness=&quot;1&quot;/&gt;&#10;&lt;CheckBox Content=&quot;테두리 3px&quot; BorderBrush=&quot;CornflowerBlue&quot; BorderThickness=&quot;3&quot;/&gt;&#10;&lt;CheckBox Content=&quot;각 변 다른 두께&quot; BorderBrush=&quot;Tomato&quot; BorderThickness=&quot;2,4,2,4&quot;/&gt;"/>
-                    </Expander>
-
-                    <TextBlock Text="Opacity (투명도)" FontSize="18" FontWeight="Bold" Margin="0,20,0,10"/>
-                    <CheckBox Content="100%" IsChecked="True" Opacity="1.0" FontSize="14" Margin="0,2"/>
-                    <CheckBox Content="75%" IsChecked="True" Opacity="0.75" FontSize="14" Margin="0,2"/>
-                    <CheckBox Content="50%" IsChecked="True" Opacity="0.5" FontSize="14" Margin="0,2"/>
-                    <CheckBox Content="25%" IsChecked="True" Opacity="0.25" FontSize="14" Margin="0,2"/>
-                    <Expander Style="{StaticResource CodeExpanderStyle}">
-                        <TextBox Style="{StaticResource CodeTextBoxStyle}" Text="&lt;CheckBox Content=&quot;100%&quot; Opacity=&quot;1.0&quot;/&gt;&#10;&lt;CheckBox Content=&quot;75%&quot; Opacity=&quot;0.75&quot;/&gt;&#10;&lt;CheckBox Content=&quot;50%&quot; Opacity=&quot;0.5&quot;/&gt;&#10;&lt;CheckBox Content=&quot;25%&quot; Opacity=&quot;0.25&quot;/&gt;"/>
-                    </Expander>
-
-                    <TextBlock Text="Padding / Margin" FontSize="18" FontWeight="Bold" Margin="0,20,0,10"/>
-                    <TextBlock Text="Padding (내부 여백)" FontSize="14" Margin="0,0,0,4"/>
-                    <StackPanel Orientation="Horizontal">
-                        <CheckBox Content="Padding 0" Background="#FFCDD2" Padding="0" Margin="4"/>
-                        <CheckBox Content="Padding 10" Background="#C8E6C9" Padding="10" Margin="4"/>
-                        <CheckBox Content="Padding 20" Background="#BBDEFB" Padding="20" Margin="4"/>
-                    </StackPanel>
-                    <Expander Style="{StaticResource CodeExpanderStyle}">
-                        <TextBox Style="{StaticResource CodeTextBoxStyle}" Text="&lt;CheckBox Content=&quot;Padding 0&quot; Padding=&quot;0&quot;/&gt;&#10;&lt;CheckBox Content=&quot;Padding 10&quot; Padding=&quot;10&quot;/&gt;&#10;&lt;CheckBox Content=&quot;Padding 20&quot; Padding=&quot;20&quot;/&gt;"/>
-                    </Expander>
-
-                    <!-- 직접 해보기 -->
-                    <TextBlock Text="직접 해보기" FontSize="18" FontWeight="Bold" Margin="0,20,0,10" Foreground="#1976D2"/>
-
                     <Expander Style="{StaticResource PracticeExpanderStyle}">
                         <StackPanel Margin="10">
                             <TextBlock Text="과제: Background를 LightGreen, Foreground를 DarkGreen으로 설정한 CheckBox를 만들어보세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
@@ -485,6 +549,13 @@
                         </StackPanel>
                     </Expander>
 
+                    <TextBlock Text="BorderBrush / BorderThickness" FontSize="18" FontWeight="Bold" Margin="0,20,0,10"/>
+                    <CheckBox Content="테두리 1px" BorderBrush="Gray" BorderThickness="1" Padding="6" Margin="0,4"/>
+                    <CheckBox Content="테두리 3px" BorderBrush="CornflowerBlue" BorderThickness="3" Padding="6" Margin="0,4"/>
+                    <CheckBox Content="각 변 다른 두께 (좌2 상4 우2 하4)" BorderBrush="Tomato" BorderThickness="2,4,2,4" Padding="6" Margin="0,4"/>
+                    <Expander Style="{StaticResource CodeExpanderStyle}">
+                        <TextBox Style="{StaticResource CodeTextBoxStyle}" Text="&lt;CheckBox Content=&quot;테두리 1px&quot; BorderBrush=&quot;Gray&quot; BorderThickness=&quot;1&quot;/&gt;&#10;&lt;CheckBox Content=&quot;테두리 3px&quot; BorderBrush=&quot;CornflowerBlue&quot; BorderThickness=&quot;3&quot;/&gt;&#10;&lt;CheckBox Content=&quot;각 변 다른 두께&quot; BorderBrush=&quot;Tomato&quot; BorderThickness=&quot;2,4,2,4&quot;/&gt;"/>
+                    </Expander>
                     <Expander Style="{StaticResource PracticeExpanderStyle}">
                         <StackPanel Margin="10">
                             <TextBlock Text="과제: Opacity를 0.5로 설정하여 반투명한 CheckBox를 만들어보세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
@@ -504,27 +575,71 @@
                             </Border>
                         </StackPanel>
                     </Expander>
-                
-                <!-- 직접 해보기 4_3 -->
-                <Expander Style="{StaticResource PracticeExpanderStyle}">
-                    <StackPanel Margin="10">
-                        <TextBlock Text="과제: CheckBox 의 글자색을 흰색, 배경을 짙은 회색으로 만들고 여백을 주세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
-                        <TextBox x:Name="txtPractice4_3"
-                                 Style="{StaticResource PracticeInputStyle}"
-                                 Text="&lt;CheckBox Content=&quot;다크 모드&quot;/&gt;"/>
-                        <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
-                            <Button Content="실행" Style="{StaticResource RunButtonStyle}" Click="BtnRun_Click" Tag="4_3"/>
-                            <Button Content="힌트" Style="{StaticResource HintButtonStyle}" Click="BtnHint_Click" Tag="4_3"/>
-                            <Button Content="정답 보기" Style="{StaticResource AnswerButtonStyle}" Click="BtnAnswer_Click" Tag="4_3"/>
+
+                    <TextBlock Text="Opacity (투명도)" FontSize="18" FontWeight="Bold" Margin="0,20,0,10"/>
+                    <CheckBox Content="100%" IsChecked="True" Opacity="1.0" FontSize="14" Margin="0,2"/>
+                    <CheckBox Content="75%" IsChecked="True" Opacity="0.75" FontSize="14" Margin="0,2"/>
+                    <CheckBox Content="50%" IsChecked="True" Opacity="0.5" FontSize="14" Margin="0,2"/>
+                    <CheckBox Content="25%" IsChecked="True" Opacity="0.25" FontSize="14" Margin="0,2"/>
+                    <Expander Style="{StaticResource CodeExpanderStyle}">
+                        <TextBox Style="{StaticResource CodeTextBoxStyle}" Text="&lt;CheckBox Content=&quot;100%&quot; Opacity=&quot;1.0&quot;/&gt;&#10;&lt;CheckBox Content=&quot;75%&quot; Opacity=&quot;0.75&quot;/&gt;&#10;&lt;CheckBox Content=&quot;50%&quot; Opacity=&quot;0.5&quot;/&gt;&#10;&lt;CheckBox Content=&quot;25%&quot; Opacity=&quot;0.25&quot;/&gt;"/>
+                    </Expander>
+                    <!-- 직접 해보기 4_3 -->
+                    <Expander Style="{StaticResource PracticeExpanderStyle}">
+                        <StackPanel Margin="10">
+                            <TextBlock Text="과제: CheckBox 의 글자색을 흰색, 배경을 짙은 회색으로 만들고 여백을 주세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
+                            <TextBox x:Name="txtPractice4_3"
+                                     Style="{StaticResource PracticeInputStyle}"
+                                     Text="&lt;CheckBox Content=&quot;다크 모드&quot;/&gt;"/>
+                            <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
+                                <Button Content="실행" Style="{StaticResource RunButtonStyle}" Click="BtnRun_Click" Tag="4_3"/>
+                                <Button Content="힌트" Style="{StaticResource HintButtonStyle}" Click="BtnHint_Click" Tag="4_3"/>
+                                <Button Content="정답 보기" Style="{StaticResource AnswerButtonStyle}" Click="BtnAnswer_Click" Tag="4_3"/>
+                            </StackPanel>
+                            <TextBlock x:Name="txtHint4_3"
+                                       Text="힌트: Foreground, Background, Padding 을 함께 지정합니다."
+                                       Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                            <Border x:Name="resultBorder4_3" Background="White" Margin="0,8,0,0" Padding="10" Visibility="Collapsed">
+                                <StackPanel x:Name="resultPanel4_3"/>
+                            </Border>
                         </StackPanel>
-                        <TextBlock x:Name="txtHint4_3"
-                                   Text="힌트: Foreground, Background, Padding 을 함께 지정합니다."
-                                   Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
-                        <Border x:Name="resultBorder4_3" Background="White" Margin="0,8,0,0" Padding="10" Visibility="Collapsed">
-                            <StackPanel x:Name="resultPanel4_3"/>
-                        </Border>
+                    </Expander>
+
+                    <TextBlock Text="Padding / Margin" FontSize="18" FontWeight="Bold" Margin="0,20,0,10"/>
+                    <TextBlock Text="Padding (내부 여백)" FontSize="14" Margin="0,0,0,4"/>
+                    <StackPanel Orientation="Horizontal">
+                        <CheckBox Content="Padding 0" Background="#FFCDD2" Padding="0" Margin="4"/>
+                        <CheckBox Content="Padding 10" Background="#C8E6C9" Padding="10" Margin="4"/>
+                        <CheckBox Content="Padding 20" Background="#BBDEFB" Padding="20" Margin="4"/>
                     </StackPanel>
-                </Expander>
+                    <Expander Style="{StaticResource CodeExpanderStyle}">
+                        <TextBox Style="{StaticResource CodeTextBoxStyle}" Text="&lt;CheckBox Content=&quot;Padding 0&quot; Padding=&quot;0&quot;/&gt;&#10;&lt;CheckBox Content=&quot;Padding 10&quot; Padding=&quot;10&quot;/&gt;&#10;&lt;CheckBox Content=&quot;Padding 20&quot; Padding=&quot;20&quot;/&gt;"/>
+                    </Expander>
+                    <!-- 직접 해보기 4_4 -->
+                    <Expander Style="{StaticResource PracticeExpanderStyle}">
+                        <StackPanel Margin="10">
+                            <TextBlock Text="과제: Padding을 0 / 10 / 20으로 다르게 준 체크박스 세 개를 만드세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
+                            <TextBox x:Name="txtPractice4_4"
+                                     Style="{StaticResource PracticeInputStyle}"
+                                     Text="&lt;StackPanel&gt;&#10;    &#10;&lt;/StackPanel&gt;"/>
+                            <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
+                                <Button Content="실행" Style="{StaticResource RunButtonStyle}" Click="BtnRun_Click" Tag="4_4"/>
+                                <Button Content="힌트" Style="{StaticResource HintButtonStyle}" Click="BtnHint_Click" Tag="4_4"/>
+                                <Button Content="정답 보기" Style="{StaticResource AnswerButtonStyle}" Click="BtnAnswer_Click" Tag="4_4"/>
+                            </StackPanel>
+                            <TextBlock x:Name="txtHint4_4"
+                                       Text="힌트: 체크 상자와 글자 사이가 Padding 만큼 벌어집니다."
+                                       Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                            <Border x:Name="resultBorder4_4" Background="White" Margin="0,8,0,0" Padding="10" Visibility="Collapsed">
+                                <StackPanel x:Name="resultPanel4_4"/>
+                            </Border>
+                        </StackPanel>
+                    </Expander>
+
+                    <!-- 직접 해보기 -->
+                    <TextBlock Text="직접 해보기" FontSize="18" FontWeight="Bold" Margin="0,20,0,10" Foreground="#1976D2"/>
+
+                
 </StackPanel>
             </ScrollViewer>
         </TabItem>
@@ -545,56 +660,6 @@
                     <Expander Style="{StaticResource CodeExpanderStyle}">
                         <TextBox Style="{StaticResource CodeTextBoxStyle}" Text="&lt;!-- XAML --&gt;&#10;&lt;CheckBox x:Name=&quot;chkBasic&quot; Content=&quot;동의합니다&quot;&#10;          Checked=&quot;ChkBasic_Checked&quot;&#10;          Unchecked=&quot;ChkBasic_Unchecked&quot;/&gt;&#10;&lt;TextBlock x:Name=&quot;txtBasicStatus&quot; Text=&quot;체크 상태: 해제됨&quot;/&gt;&#10;&#10;// C# 코드 비하인드&#10;private void ChkBasic_Checked(object sender, RoutedEventArgs e)&#10;{&#10;    txtBasicStatus.Text = &quot;체크 상태: 체크됨 ✔&quot;;&#10;}&#10;&#10;private void ChkBasic_Unchecked(object sender, RoutedEventArgs e)&#10;{&#10;    txtBasicStatus.Text = &quot;체크 상태: 해제됨&quot;;&#10;}"/>
                     </Expander>
-
-                    <TextBlock Text="IsThreeState + Indeterminate 이벤트" FontSize="18" FontWeight="Bold" Margin="0,10,0,10"/>
-
-                    <GroupBox Header="세 가지 상태 (체크/해제/불확정) 감지" Margin="0,0,0,8">
-                        <StackPanel>
-                            <CheckBox x:Name="chkThree" Content="세 가지 상태" FontSize="14" IsThreeState="True"
-                                      Checked="ChkThree_Checked" Unchecked="ChkThree_Unchecked"
-                                      Indeterminate="ChkThree_Indeterminate" Margin="0,0,0,4"/>
-                            <TextBlock x:Name="txtThreeStatus" Text="상태: 해제됨 (False)" FontSize="14"/>
-                        </StackPanel>
-                    </GroupBox>
-                    <Expander Style="{StaticResource CodeExpanderStyle}">
-                        <TextBox Style="{StaticResource CodeTextBoxStyle}" Text="&lt;!-- XAML --&gt;&#10;&lt;CheckBox x:Name=&quot;chkThree&quot; Content=&quot;세 가지 상태&quot;&#10;          IsThreeState=&quot;True&quot;&#10;          Checked=&quot;ChkThree_Checked&quot;&#10;          Unchecked=&quot;ChkThree_Unchecked&quot;&#10;          Indeterminate=&quot;ChkThree_Indeterminate&quot;/&gt;&#10;&lt;TextBlock x:Name=&quot;txtThreeStatus&quot;/&gt;&#10;&#10;// C# 코드 비하인드&#10;private void ChkThree_Checked(object sender, RoutedEventArgs e)&#10;    =&gt; txtThreeStatus.Text = &quot;상태: 체크됨 (True)&quot;;&#10;private void ChkThree_Unchecked(object sender, RoutedEventArgs e)&#10;    =&gt; txtThreeStatus.Text = &quot;상태: 해제됨 (False)&quot;;&#10;private void ChkThree_Indeterminate(object sender, RoutedEventArgs e)&#10;    =&gt; txtThreeStatus.Text = &quot;상태: 불확정 (Null)&quot;;"/>
-                    </Expander>
-
-                    <TextBlock Text="여러 체크박스 조합" FontSize="18" FontWeight="Bold" Margin="0,10,0,10"/>
-
-                    <GroupBox Header="선택한 과일 목록 표시" Margin="0,0,0,8">
-                        <StackPanel>
-                            <CheckBox x:Name="chkApple" Content="사과" FontSize="14" Checked="ChkFruit_Changed" Unchecked="ChkFruit_Changed" Margin="0,0,0,2"/>
-                            <CheckBox x:Name="chkBanana" Content="바나나" FontSize="14" Checked="ChkFruit_Changed" Unchecked="ChkFruit_Changed" Margin="0,0,0,2"/>
-                            <CheckBox x:Name="chkGrape" Content="포도" FontSize="14" Checked="ChkFruit_Changed" Unchecked="ChkFruit_Changed" Margin="0,0,0,2"/>
-                            <CheckBox x:Name="chkOrange" Content="오렌지" FontSize="14" Checked="ChkFruit_Changed" Unchecked="ChkFruit_Changed" Margin="0,0,0,4"/>
-                            <TextBlock x:Name="txtFruitResult" Text="선택된 과일: (없음)" FontSize="14"/>
-                        </StackPanel>
-                    </GroupBox>
-                    <Expander Style="{StaticResource CodeExpanderStyle}">
-                        <TextBox Style="{StaticResource CodeTextBoxStyle}" Text="&lt;!-- XAML --&gt;&#10;&lt;CheckBox x:Name=&quot;chkApple&quot; Content=&quot;사과&quot; Checked=&quot;ChkFruit_Changed&quot; Unchecked=&quot;ChkFruit_Changed&quot;/&gt;&#10;&lt;CheckBox x:Name=&quot;chkBanana&quot; Content=&quot;바나나&quot; Checked=&quot;ChkFruit_Changed&quot; Unchecked=&quot;ChkFruit_Changed&quot;/&gt;&#10;&lt;CheckBox x:Name=&quot;chkGrape&quot; Content=&quot;포도&quot; Checked=&quot;ChkFruit_Changed&quot; Unchecked=&quot;ChkFruit_Changed&quot;/&gt;&#10;&lt;CheckBox x:Name=&quot;chkOrange&quot; Content=&quot;오렌지&quot; Checked=&quot;ChkFruit_Changed&quot; Unchecked=&quot;ChkFruit_Changed&quot;/&gt;&#10;&lt;TextBlock x:Name=&quot;txtFruitResult&quot;/&gt;&#10;&#10;// C# 코드 비하인드&#10;private void ChkFruit_Changed(object sender, RoutedEventArgs e)&#10;{&#10;    var fruits = new List&lt;string&gt;();&#10;    if (chkApple.IsChecked == true) fruits.Add(&quot;사과&quot;);&#10;    if (chkBanana.IsChecked == true) fruits.Add(&quot;바나나&quot;);&#10;    if (chkGrape.IsChecked == true) fruits.Add(&quot;포도&quot;);&#10;    if (chkOrange.IsChecked == true) fruits.Add(&quot;오렌지&quot;);&#10;&#10;    txtFruitResult.Text = fruits.Count &gt; 0&#10;        ? $&quot;선택된 과일: {string.Join(&quot;, &quot;, fruits)}&quot;&#10;        : &quot;선택된 과일: (없음)&quot;;&#10;}"/>
-                    </Expander>
-
-                    <TextBlock Text="전체 선택 / 해제" FontSize="18" FontWeight="Bold" Margin="0,10,0,10"/>
-
-                    <GroupBox Header="전체 선택 체크박스로 하위 항목 제어" Margin="0,0,0,8">
-                        <StackPanel>
-                            <CheckBox x:Name="chkSelectAll" Content="전체 선택" FontSize="14" FontWeight="Bold"
-                                      Checked="ChkSelectAll_Checked" Unchecked="ChkSelectAll_Unchecked" Margin="0,0,0,4"/>
-                            <StackPanel Margin="20,0,0,0">
-                                <CheckBox x:Name="chkItem1" Content="항목 1" FontSize="14" Margin="0,0,0,2"/>
-                                <CheckBox x:Name="chkItem2" Content="항목 2" FontSize="14" Margin="0,0,0,2"/>
-                                <CheckBox x:Name="chkItem3" Content="항목 3" FontSize="14"/>
-                            </StackPanel>
-                        </StackPanel>
-                    </GroupBox>
-                    <Expander Style="{StaticResource CodeExpanderStyle}">
-                        <TextBox Style="{StaticResource CodeTextBoxStyle}" Text="&lt;!-- XAML --&gt;&#10;&lt;CheckBox x:Name=&quot;chkSelectAll&quot; Content=&quot;전체 선택&quot;&#10;          Checked=&quot;ChkSelectAll_Checked&quot;&#10;          Unchecked=&quot;ChkSelectAll_Unchecked&quot;/&gt;&#10;&lt;StackPanel Margin=&quot;20,0,0,0&quot;&gt;&#10;    &lt;CheckBox x:Name=&quot;chkItem1&quot; Content=&quot;항목 1&quot;/&gt;&#10;    &lt;CheckBox x:Name=&quot;chkItem2&quot; Content=&quot;항목 2&quot;/&gt;&#10;    &lt;CheckBox x:Name=&quot;chkItem3&quot; Content=&quot;항목 3&quot;/&gt;&#10;&lt;/StackPanel&gt;&#10;&#10;// C# 코드 비하인드&#10;private void ChkSelectAll_Checked(object sender, RoutedEventArgs e)&#10;{&#10;    chkItem1.IsChecked = true;&#10;    chkItem2.IsChecked = true;&#10;    chkItem3.IsChecked = true;&#10;}&#10;&#10;private void ChkSelectAll_Unchecked(object sender, RoutedEventArgs e)&#10;{&#10;    chkItem1.IsChecked = false;&#10;    chkItem2.IsChecked = false;&#10;    chkItem3.IsChecked = false;&#10;}"/>
-                    </Expander>
-
-                    <!-- 직접 해보기 -->
-                    <TextBlock Text="직접 해보기 (코드 비교)" FontSize="18" FontWeight="Bold" Margin="0,20,0,10" Foreground="#1976D2"/>
-
                     <Expander Style="{StaticResource PracticeExpanderStyle}">
                         <StackPanel Margin="10">
                             <TextBlock Text="과제: Checked 이벤트 핸들러에서 txtStatus.Text를 '체크됨'으로 변경하는 코드를 작성하세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
@@ -614,6 +679,19 @@
                         </StackPanel>
                     </Expander>
 
+                    <TextBlock Text="IsThreeState + Indeterminate 이벤트" FontSize="18" FontWeight="Bold" Margin="0,10,0,10"/>
+
+                    <GroupBox Header="세 가지 상태 (체크/해제/불확정) 감지" Margin="0,0,0,8">
+                        <StackPanel>
+                            <CheckBox x:Name="chkThree" Content="세 가지 상태" FontSize="14" IsThreeState="True"
+                                      Checked="ChkThree_Checked" Unchecked="ChkThree_Unchecked"
+                                      Indeterminate="ChkThree_Indeterminate" Margin="0,0,0,4"/>
+                            <TextBlock x:Name="txtThreeStatus" Text="상태: 해제됨 (False)" FontSize="14"/>
+                        </StackPanel>
+                    </GroupBox>
+                    <Expander Style="{StaticResource CodeExpanderStyle}">
+                        <TextBox Style="{StaticResource CodeTextBoxStyle}" Text="&lt;!-- XAML --&gt;&#10;&lt;CheckBox x:Name=&quot;chkThree&quot; Content=&quot;세 가지 상태&quot;&#10;          IsThreeState=&quot;True&quot;&#10;          Checked=&quot;ChkThree_Checked&quot;&#10;          Unchecked=&quot;ChkThree_Unchecked&quot;&#10;          Indeterminate=&quot;ChkThree_Indeterminate&quot;/&gt;&#10;&lt;TextBlock x:Name=&quot;txtThreeStatus&quot;/&gt;&#10;&#10;// C# 코드 비하인드&#10;private void ChkThree_Checked(object sender, RoutedEventArgs e)&#10;    =&gt; txtThreeStatus.Text = &quot;상태: 체크됨 (True)&quot;;&#10;private void ChkThree_Unchecked(object sender, RoutedEventArgs e)&#10;    =&gt; txtThreeStatus.Text = &quot;상태: 해제됨 (False)&quot;;&#10;private void ChkThree_Indeterminate(object sender, RoutedEventArgs e)&#10;    =&gt; txtThreeStatus.Text = &quot;상태: 불확정 (Null)&quot;;"/>
+                    </Expander>
                     <Expander Style="{StaticResource PracticeExpanderStyle}">
                         <StackPanel Margin="10">
                             <TextBlock Text="과제: IsChecked 속성을 확인하여 체크 여부에 따라 다른 메시지를 표시하는 if문 코드를 작성하세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
@@ -633,6 +711,20 @@
                         </StackPanel>
                     </Expander>
 
+                    <TextBlock Text="여러 체크박스 조합" FontSize="18" FontWeight="Bold" Margin="0,10,0,10"/>
+
+                    <GroupBox Header="선택한 과일 목록 표시" Margin="0,0,0,8">
+                        <StackPanel>
+                            <CheckBox x:Name="chkApple" Content="사과" FontSize="14" Checked="ChkFruit_Changed" Unchecked="ChkFruit_Changed" Margin="0,0,0,2"/>
+                            <CheckBox x:Name="chkBanana" Content="바나나" FontSize="14" Checked="ChkFruit_Changed" Unchecked="ChkFruit_Changed" Margin="0,0,0,2"/>
+                            <CheckBox x:Name="chkGrape" Content="포도" FontSize="14" Checked="ChkFruit_Changed" Unchecked="ChkFruit_Changed" Margin="0,0,0,2"/>
+                            <CheckBox x:Name="chkOrange" Content="오렌지" FontSize="14" Checked="ChkFruit_Changed" Unchecked="ChkFruit_Changed" Margin="0,0,0,4"/>
+                            <TextBlock x:Name="txtFruitResult" Text="선택된 과일: (없음)" FontSize="14"/>
+                        </StackPanel>
+                    </GroupBox>
+                    <Expander Style="{StaticResource CodeExpanderStyle}">
+                        <TextBox Style="{StaticResource CodeTextBoxStyle}" Text="&lt;!-- XAML --&gt;&#10;&lt;CheckBox x:Name=&quot;chkApple&quot; Content=&quot;사과&quot; Checked=&quot;ChkFruit_Changed&quot; Unchecked=&quot;ChkFruit_Changed&quot;/&gt;&#10;&lt;CheckBox x:Name=&quot;chkBanana&quot; Content=&quot;바나나&quot; Checked=&quot;ChkFruit_Changed&quot; Unchecked=&quot;ChkFruit_Changed&quot;/&gt;&#10;&lt;CheckBox x:Name=&quot;chkGrape&quot; Content=&quot;포도&quot; Checked=&quot;ChkFruit_Changed&quot; Unchecked=&quot;ChkFruit_Changed&quot;/&gt;&#10;&lt;CheckBox x:Name=&quot;chkOrange&quot; Content=&quot;오렌지&quot; Checked=&quot;ChkFruit_Changed&quot; Unchecked=&quot;ChkFruit_Changed&quot;/&gt;&#10;&lt;TextBlock x:Name=&quot;txtFruitResult&quot;/&gt;&#10;&#10;// C# 코드 비하인드&#10;private void ChkFruit_Changed(object sender, RoutedEventArgs e)&#10;{&#10;    var fruits = new List&lt;string&gt;();&#10;    if (chkApple.IsChecked == true) fruits.Add(&quot;사과&quot;);&#10;    if (chkBanana.IsChecked == true) fruits.Add(&quot;바나나&quot;);&#10;    if (chkGrape.IsChecked == true) fruits.Add(&quot;포도&quot;);&#10;    if (chkOrange.IsChecked == true) fruits.Add(&quot;오렌지&quot;);&#10;&#10;    txtFruitResult.Text = fruits.Count &gt; 0&#10;        ? $&quot;선택된 과일: {string.Join(&quot;, &quot;, fruits)}&quot;&#10;        : &quot;선택된 과일: (없음)&quot;;&#10;}"/>
+                    </Expander>
                     <Expander Style="{StaticResource PracticeExpanderStyle}">
                         <StackPanel Margin="10">
                             <TextBlock Text="과제: 전체 선택 체크박스의 Checked 이벤트에서 3개의 하위 체크박스를 모두 체크하는 코드를 작성하세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
@@ -651,6 +743,47 @@
                             <TextBlock x:Name="txtResult5_3" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
                         </StackPanel>
                     </Expander>
+
+                    <TextBlock Text="전체 선택 / 해제" FontSize="18" FontWeight="Bold" Margin="0,10,0,10"/>
+
+                    <GroupBox Header="전체 선택 체크박스로 하위 항목 제어" Margin="0,0,0,8">
+                        <StackPanel>
+                            <CheckBox x:Name="chkSelectAll" Content="전체 선택" FontSize="14" FontWeight="Bold"
+                                      Checked="ChkSelectAll_Checked" Unchecked="ChkSelectAll_Unchecked" Margin="0,0,0,4"/>
+                            <StackPanel Margin="20,0,0,0">
+                                <CheckBox x:Name="chkItem1" Content="항목 1" FontSize="14" Margin="0,0,0,2"/>
+                                <CheckBox x:Name="chkItem2" Content="항목 2" FontSize="14" Margin="0,0,0,2"/>
+                                <CheckBox x:Name="chkItem3" Content="항목 3" FontSize="14"/>
+                            </StackPanel>
+                        </StackPanel>
+                    </GroupBox>
+                    <Expander Style="{StaticResource CodeExpanderStyle}">
+                        <TextBox Style="{StaticResource CodeTextBoxStyle}" Text="&lt;!-- XAML --&gt;&#10;&lt;CheckBox x:Name=&quot;chkSelectAll&quot; Content=&quot;전체 선택&quot;&#10;          Checked=&quot;ChkSelectAll_Checked&quot;&#10;          Unchecked=&quot;ChkSelectAll_Unchecked&quot;/&gt;&#10;&lt;StackPanel Margin=&quot;20,0,0,0&quot;&gt;&#10;    &lt;CheckBox x:Name=&quot;chkItem1&quot; Content=&quot;항목 1&quot;/&gt;&#10;    &lt;CheckBox x:Name=&quot;chkItem2&quot; Content=&quot;항목 2&quot;/&gt;&#10;    &lt;CheckBox x:Name=&quot;chkItem3&quot; Content=&quot;항목 3&quot;/&gt;&#10;&lt;/StackPanel&gt;&#10;&#10;// C# 코드 비하인드&#10;private void ChkSelectAll_Checked(object sender, RoutedEventArgs e)&#10;{&#10;    chkItem1.IsChecked = true;&#10;    chkItem2.IsChecked = true;&#10;    chkItem3.IsChecked = true;&#10;}&#10;&#10;private void ChkSelectAll_Unchecked(object sender, RoutedEventArgs e)&#10;{&#10;    chkItem1.IsChecked = false;&#10;    chkItem2.IsChecked = false;&#10;    chkItem3.IsChecked = false;&#10;}"/>
+                    </Expander>
+                    <!-- 직접 해보기 5_4 -->
+                    <Expander Style="{StaticResource PracticeExpanderStyle}">
+                        <StackPanel Margin="10">
+                            <TextBlock Text="과제: '전체 선택'을 켜면 하위 항목 세 개가 모두 켜지도록 핸들러를 완성하세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
+                            <TextBox x:Name="txtPractice5_4"
+                                     Style="{StaticResource PracticeInputStyle}"
+                                     Height="120" AcceptsReturn="True"
+                                     Text="private void ChkSelectAll_Checked(object sender, RoutedEventArgs e)&#10;{&#10;    &#10;}&#10;&#10;private void ChkSelectAll_Unchecked(object sender, RoutedEventArgs e)&#10;{&#10;    &#10;}"/>
+                            <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
+                                <Button Content="확인" Style="{StaticResource RunButtonStyle}" Click="BtnCheck_Click" Tag="5_4"/>
+                                <Button Content="힌트" Style="{StaticResource HintButtonStyle}" Click="BtnHint_Click" Tag="5_4"/>
+                                <Button Content="정답 보기" Style="{StaticResource AnswerButtonStyle}" Click="BtnAnswer_Click" Tag="5_4"/>
+                            </StackPanel>
+                            <TextBlock x:Name="txtHint5_4"
+                                       Text="힌트: 각 항목의 IsChecked 에 true / false 를 직접 넣습니다."
+                                       Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                            <TextBlock x:Name="txtResult5_4" Margin="0,8,0,0" FontWeight="Bold"
+                                       Visibility="Collapsed" TextWrapping="Wrap"/>
+                        </StackPanel>
+                    </Expander>
+
+                    <!-- 직접 해보기 -->
+                    <TextBlock Text="직접 해보기 (코드 비교)" FontSize="18" FontWeight="Bold" Margin="0,20,0,10" Foreground="#1976D2"/>
+
                 </StackPanel>
             </ScrollViewer>
         </TabItem>

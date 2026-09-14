@@ -122,6 +122,10 @@ namespace ch23_메뉴
         // 각 연습의 정답
         private readonly Dictionary<string, string> _answers = new()
         {
+            { "1_4", "private void ShowMessage_Click(object sender, RoutedEventArgs e)\n{\n    MessageBox.Show(\"메뉴가 클릭되었습니다!\", \"알림\");\n}" },
+            { "2_4", "<Menu>\n    <MenuItem Header=\"편집\">\n        <MenuItem Header=\"실행 취소\" IsEnabled=\"False\"/>\n        <Separator/>\n        <MenuItem Header=\"복사\"/>\n        <MenuItem Header=\"붙여넣기\" IsEnabled=\"False\"/>\n    </MenuItem>\n</Menu>" },
+            { "3_4", "private void SortOption_Checked(object sender, RoutedEventArgs e)\n{\n    var item = sender as MenuItem;\n    sortByName.IsChecked = (item == sortByName);\n    sortByDate.IsChecked = (item == sortByDate);\n    sortBySize.IsChecked = (item == sortBySize);\n}" },
+            { "4_4", "private void DarkTheme_Click(object sender, RoutedEventArgs e)\n{\n    themedMenu.Background = new SolidColorBrush(Color.FromRgb(45, 45, 48));\n    themedMenu.Foreground = Brushes.White;\n}" },
             { "1_3", "<Menu>\n    <MenuItem Header=\"보기\">\n        <MenuItem Header=\"확대\"/>\n        <MenuItem Header=\"축소\"/>\n    </MenuItem>\n</Menu>" },
             { "2_3", "<Menu>\n    <MenuItem Header=\"삽입\">\n        <MenuItem Header=\"표\">\n            <MenuItem Header=\"행 추가\"/>\n            <MenuItem Header=\"열 추가\"/>\n        </MenuItem>\n    </MenuItem>\n</Menu>" },
             { "3_3", "<Menu>\n    <MenuItem Header=\"편집\">\n        <MenuItem Header=\"붙여넣기\" InputGestureText=\"Ctrl+V\">\n            <MenuItem.Icon>\n                <Ellipse Width=\"12\" Height=\"12\" Fill=\"Green\"/>\n            </MenuItem.Icon>\n        </MenuItem>\n    </MenuItem>\n</Menu>" },
@@ -142,6 +146,9 @@ namespace ch23_메뉴
         // 코드 비교 검증용 필수 키워드
         private readonly Dictionary<string, string[]> _requiredKeywords = new()
         {
+            { "1_4", new[] { "MessageBox.Show" } },
+            { "3_4", new[] { "IsChecked", "sortByName", "sortByDate", "sortBySize" } },
+            { "4_4", new[] { "themedMenu.Background", "SolidColorBrush", "Foreground" } },
             { "5_2", new[] { "MessageBox.Show", "저장되었습니다" } },
         };
 

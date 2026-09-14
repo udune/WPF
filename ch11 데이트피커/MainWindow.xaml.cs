@@ -12,6 +12,10 @@ namespace ch11_데이트피커
         // 각 연습의 정답
         private readonly Dictionary<string, string> _answers = new()
         {
+            { "1_4", "<DatePicker DisplayDate=\"2026-03-01\"/>" },
+            { "2_4", "<DatePicker FirstDayOfWeek=\"Monday\"/>" },
+            { "3_4", "<DatePicker IsTodayHighlighted=\"False\"/>" },
+            { "5_4", "private void SelectToday_Click(object sender, RoutedEventArgs e)\n{\n    dpCode.SelectedDate = DateTime.Today;\n}\n\nprivate void ClearDate_Click(object sender, RoutedEventArgs e)\n{\n    dpCode.SelectedDate = null;\n}" },
             { "2_3", "<DatePicker DisplayDateStart=\"2025-01-01\" DisplayDateEnd=\"2025-12-31\"/>" },
             { "3_3", "<DatePicker SelectedDateFormat=\"Long\"/>" },
             { "4_2", "<StackPanel>\n    <DatePicker x:Name=\"dp\" Width=\"180\" HorizontalAlignment=\"Left\"/>\n    <TextBlock Text=\"{Binding ElementName=dp, Path=SelectedDate, StringFormat='예약일: {0:yyyy-MM-dd}'}\" Margin=\"0,8,0,0\"/>\n</StackPanel>" },
@@ -41,6 +45,7 @@ namespace ch11_데이트피커
         // 코드 비교 검증용 필수 키워드
         private readonly Dictionary<string, string[]> _requiredKeywords = new()
         {
+            { "5_4", new[] { "SelectedDate", "DateTime.Today", "null" } },
             { "4_3", new[] { "SelectedDate", "AddDays(7)" } },
             { "2_2", new[] { "BlackoutDates", "AddDatesInPast" } },
             { "3_1", new[] { "SelectedDate", "HasValue", "Value" } },

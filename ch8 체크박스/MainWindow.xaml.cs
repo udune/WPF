@@ -14,6 +14,13 @@ namespace ch8_체크박스
         // 각 연습의 정답
         private readonly Dictionary<string, string> _answers = new()
         {
+            { "1_4", "<StackPanel>\n    <CheckBox Content=\"체크 안 됨\" Margin=\"0,4\"/>\n    <CheckBox Content=\"체크됨\" IsChecked=\"True\" Margin=\"0,4\"/>\n    <CheckBox Content=\"세 가지 상태\" IsThreeState=\"True\" IsChecked=\"{x:Null}\" Margin=\"0,4\"/>\n</StackPanel>" },
+            { "1_5", "<StackPanel>\n    <CheckBox Content=\"활성 체크박스\" Margin=\"0,4\"/>\n    <CheckBox Content=\"비활성 (체크 안 됨)\" IsEnabled=\"False\" Margin=\"0,4\"/>\n    <CheckBox Content=\"비활성 (체크됨)\" IsEnabled=\"False\" IsChecked=\"True\" Margin=\"0,4\"/>\n</StackPanel>" },
+            { "1_6", "<StackPanel>\n    <CheckBox Content=\"Release\" ClickMode=\"Release\" Margin=\"0,4\"/>\n    <CheckBox Content=\"Press\" ClickMode=\"Press\" Margin=\"0,4\"/>\n    <CheckBox Content=\"Hover\" ClickMode=\"Hover\" Margin=\"0,4\"/>\n</StackPanel>" },
+            { "2_4", "<StackPanel>\n    <CheckBox Content=\"LeftToRight\" FlowDirection=\"LeftToRight\" Margin=\"0,4\"/>\n    <CheckBox Content=\"RightToLeft\" FlowDirection=\"RightToLeft\" Margin=\"0,4\"/>\n</StackPanel>" },
+            { "3_4", "<StackPanel>\n    <CheckBox Content=\"Arial\" FontFamily=\"Arial\" Margin=\"0,4\"/>\n    <CheckBox Content=\"Consolas\" FontFamily=\"Consolas\" Margin=\"0,4\"/>\n    <CheckBox Content=\"맑은 고딕\" FontFamily=\"맑은 고딕\" Margin=\"0,4\"/>\n</StackPanel>" },
+            { "4_4", "<StackPanel>\n    <CheckBox Content=\"Padding 0\" Padding=\"0\" Margin=\"0,4\"/>\n    <CheckBox Content=\"Padding 10\" Padding=\"10\" Margin=\"0,4\"/>\n    <CheckBox Content=\"Padding 20\" Padding=\"20\" Margin=\"0,4\"/>\n</StackPanel>" },
+            { "5_4", "private void ChkSelectAll_Checked(object sender, RoutedEventArgs e)\n{\n    chkItem1.IsChecked = true;\n    chkItem2.IsChecked = true;\n    chkItem3.IsChecked = true;\n}\n\nprivate void ChkSelectAll_Unchecked(object sender, RoutedEventArgs e)\n{\n    chkItem1.IsChecked = false;\n    chkItem2.IsChecked = false;\n    chkItem3.IsChecked = false;\n}" },
             { "2_3", "<StackPanel HorizontalAlignment=\"Center\">\n    <CheckBox Content=\"사과\"/>\n    <CheckBox Content=\"바나나\"/>\n    <CheckBox Content=\"포도\"/>\n</StackPanel>" },
             { "3_3", "<CheckBox FontSize=\"16\" FontWeight=\"Bold\">\n    <TextBlock Text=\"동의합니다\" TextDecorations=\"Underline\"/>\n</CheckBox>" },
             { "4_3", "<CheckBox Content=\"다크 모드\" Foreground=\"White\" Background=\"#333333\" Padding=\"8,4\"/>" },
@@ -43,6 +50,7 @@ namespace ch8_체크박스
         // 코드 비교 검증용 필수 키워드
         private readonly Dictionary<string, string[]> _requiredKeywords = new()
         {
+            { "5_4", new[] { "chkItem1.IsChecked", "true", "false" } },
             { "5_1", new[] { "txtStatus", ".Text", "체크됨" } },
             { "5_2", new[] { "IsChecked", "== true", "if", "else" } },
             { "5_3", new[] { "IsChecked", "= true", "chkItem1", "chkItem2", "chkItem3" } }

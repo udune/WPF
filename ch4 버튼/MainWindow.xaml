@@ -11,7 +11,7 @@
         <Style x:Key="CodeExpanderStyle" TargetType="Expander">
             <Setter Property="Header" Value="코드 보기"/>
             <Setter Property="Margin" Value="0,0,0,5"/>
-            <Setter Property="IsExpanded" Value="False"/>
+            <Setter Property="IsExpanded" Value="True"/>
         </Style>
         <Style x:Key="CodeTextBoxStyle" TargetType="TextBox">
             <Setter Property="IsReadOnly" Value="True"/>
@@ -123,15 +123,6 @@
                     <Expander Style="{StaticResource CodeExpanderStyle}">
                         <TextBox Style="{StaticResource CodeTextBoxStyle}" Text="&lt;Button HorizontalAlignment=&quot;Left&quot; Padding=&quot;12,6&quot;&gt;&#10;    &lt;StackPanel Orientation=&quot;Horizontal&quot;&gt;&#10;        &lt;Ellipse Width=&quot;16&quot; Height=&quot;16&quot; Fill=&quot;CornflowerBlue&quot; Margin=&quot;0,0,8,0&quot;/&gt;&#10;        &lt;TextBlock Text=&quot;아이콘 버튼&quot; VerticalAlignment=&quot;Center&quot;/&gt;&#10;    &lt;/StackPanel&gt;&#10;&lt;/Button&gt;"/>
                     </Expander>
-
-                    <TextBlock Text="2. ToolTip" FontSize="18" FontWeight="Bold" Margin="0,10,0,10"/>
-
-                    <GroupBox Header="마우스를 올리면 툴팁 표시" Margin="0,0,0,8">
-                        <Button Content="마우스를 올려보세요" ToolTip="이것은 Button의 ToolTip입니다" HorizontalAlignment="Left" Padding="12,6"/>
-                    </GroupBox>
-                    <Expander Style="{StaticResource CodeExpanderStyle}">
-                        <TextBox Style="{StaticResource CodeTextBoxStyle}" Text="&lt;Button Content=&quot;마우스를 올려보세요&quot; ToolTip=&quot;이것은 Button의 ToolTip입니다&quot;/&gt;"/>
-                    </Expander>
                     <Expander Style="{StaticResource PracticeExpanderStyle}">
                         <StackPanel Margin="10">
                             <TextBlock Text="과제: '도움말' 버튼에 '도움말을 표시합니다'라는 ToolTip을 추가하세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
@@ -148,28 +139,13 @@
                         </StackPanel>
                     </Expander>
 
-                    <TextBlock Text="3. IsDefault / IsCancel" FontSize="18" FontWeight="Bold" Margin="0,10,0,10"/>
+                    <TextBlock Text="2. ToolTip" FontSize="18" FontWeight="Bold" Margin="0,10,0,10"/>
 
-                    <GroupBox Header="IsDefault=True → Enter 키로 실행, IsCancel=True → Esc 키로 실행" Margin="0,0,0,8">
-                        <StackPanel Orientation="Horizontal">
-                            <Button Content="확인 (Enter)" IsDefault="True" Padding="12,6" Margin="0,0,8,0"/>
-                            <Button Content="취소 (Esc)" IsCancel="True" Padding="12,6"/>
-                        </StackPanel>
+                    <GroupBox Header="마우스를 올리면 툴팁 표시" Margin="0,0,0,8">
+                        <Button Content="마우스를 올려보세요" ToolTip="이것은 Button의 ToolTip입니다" HorizontalAlignment="Left" Padding="12,6"/>
                     </GroupBox>
                     <Expander Style="{StaticResource CodeExpanderStyle}">
-                        <TextBox Style="{StaticResource CodeTextBoxStyle}" Text="&lt;Button Content=&quot;확인 (Enter)&quot; IsDefault=&quot;True&quot;/&gt;&#10;&lt;Button Content=&quot;취소 (Esc)&quot; IsCancel=&quot;True&quot;/&gt;"/>
-                    </Expander>
-
-                    <TextBlock Text="4. IsEnabled" FontSize="18" FontWeight="Bold" Margin="0,10,0,10"/>
-
-                    <GroupBox Header="비활성화된 버튼" Margin="0,0,0,8">
-                        <StackPanel Orientation="Horizontal">
-                            <Button Content="활성 버튼" Padding="12,6" Margin="0,0,8,0"/>
-                            <Button Content="비활성 버튼" IsEnabled="False" Padding="12,6"/>
-                        </StackPanel>
-                    </GroupBox>
-                    <Expander Style="{StaticResource CodeExpanderStyle}">
-                        <TextBox Style="{StaticResource CodeTextBoxStyle}" Text="&lt;Button Content=&quot;활성 버튼&quot;/&gt;&#10;&lt;Button Content=&quot;비활성 버튼&quot; IsEnabled=&quot;False&quot;/&gt;"/>
+                        <TextBox Style="{StaticResource CodeTextBoxStyle}" Text="&lt;Button Content=&quot;마우스를 올려보세요&quot; ToolTip=&quot;이것은 Button의 ToolTip입니다&quot;/&gt;"/>
                     </Expander>
                     <Expander Style="{StaticResource PracticeExpanderStyle}">
                         <StackPanel Margin="10">
@@ -183,6 +159,70 @@
                             <TextBlock x:Name="txtHint1_4" Text="힌트: IsEnabled=&quot;False&quot;를 추가하세요." Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed"/>
                             <Border x:Name="resultBorder1_4" Background="White" Margin="0,8,0,0" Padding="10" Visibility="Collapsed">
                                 <StackPanel x:Name="resultPanel1_4"/>
+                            </Border>
+                        </StackPanel>
+                    </Expander>
+
+                    <TextBlock Text="3. IsDefault / IsCancel" FontSize="18" FontWeight="Bold" Margin="0,10,0,10"/>
+
+                    <GroupBox Header="IsDefault=True → Enter 키로 실행, IsCancel=True → Esc 키로 실행" Margin="0,0,0,8">
+                        <StackPanel Orientation="Horizontal">
+                            <Button Content="확인 (Enter)" IsDefault="True" Padding="12,6" Margin="0,0,8,0"/>
+                            <Button Content="취소 (Esc)" IsCancel="True" Padding="12,6"/>
+                        </StackPanel>
+                    </GroupBox>
+                    <Expander Style="{StaticResource CodeExpanderStyle}">
+                        <TextBox Style="{StaticResource CodeTextBoxStyle}" Text="&lt;Button Content=&quot;확인 (Enter)&quot; IsDefault=&quot;True&quot;/&gt;&#10;&lt;Button Content=&quot;취소 (Esc)&quot; IsCancel=&quot;True&quot;/&gt;"/>
+                    </Expander>
+                    <!-- 직접 해보기 1_5 -->
+                    <Expander Style="{StaticResource PracticeExpanderStyle}">
+                        <StackPanel Margin="10">
+                            <TextBlock Text="과제: Enter 키로 눌리는 '확인' 버튼과 Esc 키로 눌리는 '취소' 버튼을 만드세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
+                            <TextBox x:Name="txtPractice1_5"
+                                     Style="{StaticResource PracticeInputStyle}"
+                                     Text="&lt;StackPanel Orientation=&quot;Horizontal&quot;&gt;&#10;    &#10;&lt;/StackPanel&gt;"/>
+                            <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
+                                <Button Content="실행" Style="{StaticResource RunButtonStyle}" Click="BtnRun_Click" Tag="1_5"/>
+                                <Button Content="힌트" Style="{StaticResource HintButtonStyle}" Click="BtnHint_Click" Tag="1_5"/>
+                                <Button Content="정답 보기" Style="{StaticResource AnswerButtonStyle}" Click="BtnAnswer_Click" Tag="1_5"/>
+                            </StackPanel>
+                            <TextBlock x:Name="txtHint1_5"
+                                       Text="힌트: IsDefault=&quot;True&quot; 는 Enter, IsCancel=&quot;True&quot; 는 Esc 에 반응합니다."
+                                       Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                            <Border x:Name="resultBorder1_5" Background="White" Margin="0,8,0,0" Padding="10" Visibility="Collapsed">
+                                <StackPanel x:Name="resultPanel1_5"/>
+                            </Border>
+                        </StackPanel>
+                    </Expander>
+
+                    <TextBlock Text="4. IsEnabled" FontSize="18" FontWeight="Bold" Margin="0,10,0,10"/>
+
+                    <GroupBox Header="비활성화된 버튼" Margin="0,0,0,8">
+                        <StackPanel Orientation="Horizontal">
+                            <Button Content="활성 버튼" Padding="12,6" Margin="0,0,8,0"/>
+                            <Button Content="비활성 버튼" IsEnabled="False" Padding="12,6"/>
+                        </StackPanel>
+                    </GroupBox>
+                    <Expander Style="{StaticResource CodeExpanderStyle}">
+                        <TextBox Style="{StaticResource CodeTextBoxStyle}" Text="&lt;Button Content=&quot;활성 버튼&quot;/&gt;&#10;&lt;Button Content=&quot;비활성 버튼&quot; IsEnabled=&quot;False&quot;/&gt;"/>
+                    </Expander>
+                    <!-- 직접 해보기 1_6 -->
+                    <Expander Style="{StaticResource PracticeExpanderStyle}">
+                        <StackPanel Margin="10">
+                            <TextBlock Text="과제: 활성 버튼과 비활성 버튼을 나란히 놓아 차이를 확인하세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
+                            <TextBox x:Name="txtPractice1_6"
+                                     Style="{StaticResource PracticeInputStyle}"
+                                     Text="&lt;StackPanel Orientation=&quot;Horizontal&quot;&gt;&#10;    &#10;&lt;/StackPanel&gt;"/>
+                            <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
+                                <Button Content="실행" Style="{StaticResource RunButtonStyle}" Click="BtnRun_Click" Tag="1_6"/>
+                                <Button Content="힌트" Style="{StaticResource HintButtonStyle}" Click="BtnHint_Click" Tag="1_6"/>
+                                <Button Content="정답 보기" Style="{StaticResource AnswerButtonStyle}" Click="BtnAnswer_Click" Tag="1_6"/>
+                            </StackPanel>
+                            <TextBlock x:Name="txtHint1_6"
+                                       Text="힌트: IsEnabled=&quot;False&quot; 를 주면 눌리지 않고 흐리게 보입니다."
+                                       Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                            <Border x:Name="resultBorder1_6" Background="White" Margin="0,8,0,0" Padding="10" Visibility="Collapsed">
+                                <StackPanel x:Name="resultPanel1_6"/>
                             </Border>
                         </StackPanel>
                     </Expander>
@@ -225,31 +265,6 @@
                     <Expander Style="{StaticResource CodeExpanderStyle}">
                         <TextBox Style="{StaticResource CodeTextBoxStyle}" Text="&lt;Button Content=&quot;Left&quot; HorizontalContentAlignment=&quot;Left&quot;/&gt;&#10;&lt;Button Content=&quot;Center&quot; HorizontalContentAlignment=&quot;Center&quot;/&gt;&#10;&lt;Button Content=&quot;Right&quot; HorizontalContentAlignment=&quot;Right&quot;/&gt;"/>
                     </Expander>
-
-                    <TextBlock Text="VerticalAlignment (수직 위치)" FontSize="18" FontWeight="Bold" Margin="0,20,0,10"/>
-                    <Grid Height="120" Background="#F5F5F5" Margin="0,0,0,8">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition/>
-                            <ColumnDefinition/>
-                            <ColumnDefinition/>
-                        </Grid.ColumnDefinitions>
-                        <Button Content="Top" VerticalAlignment="Top" Padding="12,6" Margin="4" Grid.Column="0"/>
-                        <Button Content="Center" VerticalAlignment="Center" Padding="12,6" Margin="4" Grid.Column="1"/>
-                        <Button Content="Bottom" VerticalAlignment="Bottom" Padding="12,6" Margin="4" Grid.Column="2"/>
-                    </Grid>
-                    <Expander Style="{StaticResource CodeExpanderStyle}">
-                        <TextBox Style="{StaticResource CodeTextBoxStyle}" Text="&lt;Grid Height=&quot;120&quot; Background=&quot;#F5F5F5&quot;&gt;&#10;    &lt;Grid.ColumnDefinitions&gt;&#10;        &lt;ColumnDefinition/&gt;&#10;        &lt;ColumnDefinition/&gt;&#10;        &lt;ColumnDefinition/&gt;&#10;    &lt;/Grid.ColumnDefinitions&gt;&#10;    &lt;Button Content=&quot;Top&quot; VerticalAlignment=&quot;Top&quot; Grid.Column=&quot;0&quot;/&gt;&#10;    &lt;Button Content=&quot;Center&quot; VerticalAlignment=&quot;Center&quot; Grid.Column=&quot;1&quot;/&gt;&#10;    &lt;Button Content=&quot;Bottom&quot; VerticalAlignment=&quot;Bottom&quot; Grid.Column=&quot;2&quot;/&gt;&#10;&lt;/Grid&gt;"/>
-                    </Expander>
-
-                    <TextBlock Text="Width / Height 고정 크기" FontSize="18" FontWeight="Bold" Margin="0,20,0,10"/>
-                    <StackPanel Orientation="Horizontal">
-                        <Button Content="100x30" Width="100" Height="30" Margin="4"/>
-                        <Button Content="150x40" Width="150" Height="40" Margin="4"/>
-                        <Button Content="200x50" Width="200" Height="50" Margin="4"/>
-                    </StackPanel>
-                    <Expander Style="{StaticResource CodeExpanderStyle}">
-                        <TextBox Style="{StaticResource CodeTextBoxStyle}" Text="&lt;Button Content=&quot;100x30&quot; Width=&quot;100&quot; Height=&quot;30&quot;/&gt;&#10;&lt;Button Content=&quot;150x40&quot; Width=&quot;150&quot; Height=&quot;40&quot;/&gt;&#10;&lt;Button Content=&quot;200x50&quot; Width=&quot;200&quot; Height=&quot;50&quot;/&gt;"/>
-                    </Expander>
                     <Expander Style="{StaticResource PracticeExpanderStyle}">
                         <StackPanel Margin="10">
                             <TextBlock Text="과제: '큰 버튼'이라는 텍스트를 가진 Width=180, Height=60 크기의 버튼을 만드세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
@@ -265,27 +280,72 @@
                             </Border>
                         </StackPanel>
                     </Expander>
-                
-                <!-- 직접 해보기 2_3 -->
-                <Expander Style="{StaticResource PracticeExpanderStyle}">
-                    <StackPanel Margin="10">
-                        <TextBlock Text="과제: 버튼을 오른쪽 아래에 붙이세요. 크기는 120x40 입니다." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
-                        <TextBox x:Name="txtPractice2_3"
-                                 Style="{StaticResource PracticeInputStyle}"
-                                 Text="&lt;Button Content=&quot;확인&quot; Width=&quot;120&quot; Height=&quot;40&quot;/&gt;"/>
-                        <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
-                            <Button Content="실행" Style="{StaticResource RunButtonStyle}" Click="BtnRun_Click" Tag="2_3"/>
-                            <Button Content="힌트" Style="{StaticResource HintButtonStyle}" Click="BtnHint_Click" Tag="2_3"/>
-                            <Button Content="정답 보기" Style="{StaticResource AnswerButtonStyle}" Click="BtnAnswer_Click" Tag="2_3"/>
+
+                    <TextBlock Text="VerticalAlignment (수직 위치)" FontSize="18" FontWeight="Bold" Margin="0,20,0,10"/>
+                    <Grid Height="120" Background="#F5F5F5" Margin="0,0,0,8">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <Button Content="Top" VerticalAlignment="Top" Padding="12,6" Margin="4" Grid.Column="0"/>
+                        <Button Content="Center" VerticalAlignment="Center" Padding="12,6" Margin="4" Grid.Column="1"/>
+                        <Button Content="Bottom" VerticalAlignment="Bottom" Padding="12,6" Margin="4" Grid.Column="2"/>
+                    </Grid>
+                    <Expander Style="{StaticResource CodeExpanderStyle}">
+                        <TextBox Style="{StaticResource CodeTextBoxStyle}" Text="&lt;Grid Height=&quot;120&quot; Background=&quot;#F5F5F5&quot;&gt;&#10;    &lt;Grid.ColumnDefinitions&gt;&#10;        &lt;ColumnDefinition/&gt;&#10;        &lt;ColumnDefinition/&gt;&#10;        &lt;ColumnDefinition/&gt;&#10;    &lt;/Grid.ColumnDefinitions&gt;&#10;    &lt;Button Content=&quot;Top&quot; VerticalAlignment=&quot;Top&quot; Grid.Column=&quot;0&quot;/&gt;&#10;    &lt;Button Content=&quot;Center&quot; VerticalAlignment=&quot;Center&quot; Grid.Column=&quot;1&quot;/&gt;&#10;    &lt;Button Content=&quot;Bottom&quot; VerticalAlignment=&quot;Bottom&quot; Grid.Column=&quot;2&quot;/&gt;&#10;&lt;/Grid&gt;"/>
+                    </Expander>
+                    <!-- 직접 해보기 2_3 -->
+                    <Expander Style="{StaticResource PracticeExpanderStyle}">
+                        <StackPanel Margin="10">
+                            <TextBlock Text="과제: 버튼을 오른쪽 아래에 붙이세요. 크기는 120x40 입니다." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
+                            <TextBox x:Name="txtPractice2_3"
+                                     Style="{StaticResource PracticeInputStyle}"
+                                     Text="&lt;Button Content=&quot;확인&quot; Width=&quot;120&quot; Height=&quot;40&quot;/&gt;"/>
+                            <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
+                                <Button Content="실행" Style="{StaticResource RunButtonStyle}" Click="BtnRun_Click" Tag="2_3"/>
+                                <Button Content="힌트" Style="{StaticResource HintButtonStyle}" Click="BtnHint_Click" Tag="2_3"/>
+                                <Button Content="정답 보기" Style="{StaticResource AnswerButtonStyle}" Click="BtnAnswer_Click" Tag="2_3"/>
+                            </StackPanel>
+                            <TextBlock x:Name="txtHint2_3"
+                                       Text="힌트: HorizontalAlignment 와 VerticalAlignment 를 함께 지정합니다."
+                                       Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                            <Border x:Name="resultBorder2_3" Background="White" Margin="0,8,0,0" Padding="10" Visibility="Collapsed">
+                                <StackPanel x:Name="resultPanel2_3"/>
+                            </Border>
                         </StackPanel>
-                        <TextBlock x:Name="txtHint2_3"
-                                   Text="힌트: HorizontalAlignment 와 VerticalAlignment 를 함께 지정합니다."
-                                   Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
-                        <Border x:Name="resultBorder2_3" Background="White" Margin="0,8,0,0" Padding="10" Visibility="Collapsed">
-                            <StackPanel x:Name="resultPanel2_3"/>
-                        </Border>
+                    </Expander>
+
+                    <TextBlock Text="Width / Height 고정 크기" FontSize="18" FontWeight="Bold" Margin="0,20,0,10"/>
+                    <StackPanel Orientation="Horizontal">
+                        <Button Content="100x30" Width="100" Height="30" Margin="4"/>
+                        <Button Content="150x40" Width="150" Height="40" Margin="4"/>
+                        <Button Content="200x50" Width="200" Height="50" Margin="4"/>
                     </StackPanel>
-                </Expander>
+                    <Expander Style="{StaticResource CodeExpanderStyle}">
+                        <TextBox Style="{StaticResource CodeTextBoxStyle}" Text="&lt;Button Content=&quot;100x30&quot; Width=&quot;100&quot; Height=&quot;30&quot;/&gt;&#10;&lt;Button Content=&quot;150x40&quot; Width=&quot;150&quot; Height=&quot;40&quot;/&gt;&#10;&lt;Button Content=&quot;200x50&quot; Width=&quot;200&quot; Height=&quot;50&quot;/&gt;"/>
+                    </Expander>
+                    <!-- 직접 해보기 2_4 -->
+                    <Expander Style="{StaticResource PracticeExpanderStyle}">
+                        <StackPanel Margin="10">
+                            <TextBlock Text="과제: 크기가 각각 100x30, 150x40, 200x50인 버튼 세 개를 세로로 놓으세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
+                            <TextBox x:Name="txtPractice2_4"
+                                     Style="{StaticResource PracticeInputStyle}"
+                                     Text="&lt;StackPanel&gt;&#10;    &#10;&lt;/StackPanel&gt;"/>
+                            <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
+                                <Button Content="실행" Style="{StaticResource RunButtonStyle}" Click="BtnRun_Click" Tag="2_4"/>
+                                <Button Content="힌트" Style="{StaticResource HintButtonStyle}" Click="BtnHint_Click" Tag="2_4"/>
+                                <Button Content="정답 보기" Style="{StaticResource AnswerButtonStyle}" Click="BtnAnswer_Click" Tag="2_4"/>
+                            </StackPanel>
+                            <TextBlock x:Name="txtHint2_4"
+                                       Text="힌트: Width 와 Height 를 직접 지정합니다."
+                                       Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                            <Border x:Name="resultBorder2_4" Background="White" Margin="0,8,0,0" Padding="10" Visibility="Collapsed">
+                                <StackPanel x:Name="resultPanel2_4"/>
+                            </Border>
+                        </StackPanel>
+                    </Expander>
+                
 </StackPanel>
             </ScrollViewer>
         </TabItem>
@@ -356,6 +416,26 @@
                     <Expander Style="{StaticResource CodeExpanderStyle}">
                         <TextBox Style="{StaticResource CodeTextBoxStyle}" Text="&lt;Button Content=&quot;Normal&quot; FontStyle=&quot;Normal&quot;/&gt;&#10;&lt;Button Content=&quot;Italic&quot; FontStyle=&quot;Italic&quot;/&gt;&#10;&lt;Button Content=&quot;Oblique&quot; FontStyle=&quot;Oblique&quot;/&gt;"/>
                     </Expander>
+                    <!-- 직접 해보기 3_3 -->
+                    <Expander Style="{StaticResource PracticeExpanderStyle}">
+                        <StackPanel Margin="10">
+                            <TextBlock Text="과제: 버튼 글자를 Consolas 14pt 기울임꼴로 만드세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
+                            <TextBox x:Name="txtPractice3_3"
+                                     Style="{StaticResource PracticeInputStyle}"
+                                     Text="&lt;Button Content=&quot;Console&quot; Width=&quot;140&quot; Height=&quot;34&quot;/&gt;"/>
+                            <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
+                                <Button Content="실행" Style="{StaticResource RunButtonStyle}" Click="BtnRun_Click" Tag="3_3"/>
+                                <Button Content="힌트" Style="{StaticResource HintButtonStyle}" Click="BtnHint_Click" Tag="3_3"/>
+                                <Button Content="정답 보기" Style="{StaticResource AnswerButtonStyle}" Click="BtnAnswer_Click" Tag="3_3"/>
+                            </StackPanel>
+                            <TextBlock x:Name="txtHint3_3"
+                                       Text="힌트: FontFamily, FontSize, FontStyle 세 속성을 씁니다."
+                                       Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                            <Border x:Name="resultBorder3_3" Background="White" Margin="0,8,0,0" Padding="10" Visibility="Collapsed">
+                                <StackPanel x:Name="resultPanel3_3"/>
+                            </Border>
+                        </StackPanel>
+                    </Expander>
 
                     <TextBlock Text="FontFamily" FontSize="18" FontWeight="Bold" Margin="0,20,0,10"/>
                     <Button Content="Arial - Hello 안녕하세요" FontFamily="Arial" FontSize="14" Padding="8,4" Margin="0,2" HorizontalAlignment="Left"/>
@@ -364,6 +444,26 @@
                     <Button Content="맑은 고딕 - Hello 안녕하세요" FontFamily="맑은 고딕" FontSize="14" Padding="8,4" Margin="0,2" HorizontalAlignment="Left"/>
                     <Expander Style="{StaticResource CodeExpanderStyle}">
                         <TextBox Style="{StaticResource CodeTextBoxStyle}" Text="&lt;Button Content=&quot;Arial&quot; FontFamily=&quot;Arial&quot;/&gt;&#10;&lt;Button Content=&quot;Times New Roman&quot; FontFamily=&quot;Times New Roman&quot;/&gt;&#10;&lt;Button Content=&quot;Consolas&quot; FontFamily=&quot;Consolas&quot;/&gt;&#10;&lt;Button Content=&quot;맑은 고딕&quot; FontFamily=&quot;맑은 고딕&quot;/&gt;"/>
+                    </Expander>
+                    <!-- 직접 해보기 3_4 -->
+                    <Expander Style="{StaticResource PracticeExpanderStyle}">
+                        <StackPanel Margin="10">
+                            <TextBlock Text="과제: 서로 다른 글꼴을 쓰는 버튼 세 개를 만드세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
+                            <TextBox x:Name="txtPractice3_4"
+                                     Style="{StaticResource PracticeInputStyle}"
+                                     Text="&lt;StackPanel&gt;&#10;    &#10;&lt;/StackPanel&gt;"/>
+                            <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
+                                <Button Content="실행" Style="{StaticResource RunButtonStyle}" Click="BtnRun_Click" Tag="3_4"/>
+                                <Button Content="힌트" Style="{StaticResource HintButtonStyle}" Click="BtnHint_Click" Tag="3_4"/>
+                                <Button Content="정답 보기" Style="{StaticResource AnswerButtonStyle}" Click="BtnAnswer_Click" Tag="3_4"/>
+                            </StackPanel>
+                            <TextBlock x:Name="txtHint3_4"
+                                       Text="힌트: FontFamily 에 Arial, Consolas, 맑은 고딕 등을 지정합니다."
+                                       Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                            <Border x:Name="resultBorder3_4" Background="White" Margin="0,8,0,0" Padding="10" Visibility="Collapsed">
+                                <StackPanel x:Name="resultPanel3_4"/>
+                            </Border>
+                        </StackPanel>
                     </Expander>
 
                     <TextBlock Text="CornerRadius (둥근 모서리)" FontSize="18" FontWeight="Bold" Margin="0,20,0,10"/>
@@ -379,27 +479,27 @@
                     <Expander Style="{StaticResource CodeExpanderStyle}">
                         <TextBox Style="{StaticResource CodeTextBoxStyle}" Text="&lt;Button Content=&quot;둥근 버튼&quot; Width=&quot;120&quot;&gt;&#10;    &lt;Button.Resources&gt;&#10;        &lt;Style TargetType=&quot;Border&quot;&gt;&#10;            &lt;Setter Property=&quot;CornerRadius&quot; Value=&quot;10&quot;/&gt;&#10;        &lt;/Style&gt;&#10;    &lt;/Button.Resources&gt;&#10;&lt;/Button&gt;"/>
                     </Expander>
-                
-                <!-- 직접 해보기 3_3 -->
-                <Expander Style="{StaticResource PracticeExpanderStyle}">
-                    <StackPanel Margin="10">
-                        <TextBlock Text="과제: 버튼 글자를 Consolas 14pt 기울임꼴로 만드세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
-                        <TextBox x:Name="txtPractice3_3"
-                                 Style="{StaticResource PracticeInputStyle}"
-                                 Text="&lt;Button Content=&quot;Console&quot; Width=&quot;140&quot; Height=&quot;34&quot;/&gt;"/>
-                        <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
-                            <Button Content="실행" Style="{StaticResource RunButtonStyle}" Click="BtnRun_Click" Tag="3_3"/>
-                            <Button Content="힌트" Style="{StaticResource HintButtonStyle}" Click="BtnHint_Click" Tag="3_3"/>
-                            <Button Content="정답 보기" Style="{StaticResource AnswerButtonStyle}" Click="BtnAnswer_Click" Tag="3_3"/>
+                    <!-- 직접 해보기 3_5 -->
+                    <Expander Style="{StaticResource PracticeExpanderStyle}">
+                        <StackPanel Margin="10">
+                            <TextBlock Text="과제: Button.Resources로 Border 스타일을 덮어써서 모서리가 둥근 버튼을 만드세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
+                            <TextBox x:Name="txtPractice3_5"
+                                     Style="{StaticResource PracticeInputStyle}"
+                                     Text="&lt;Button Content=&quot;둥근 버튼&quot; Width=&quot;120&quot; Height=&quot;36&quot;&gt;&#10;    &#10;&lt;/Button&gt;"/>
+                            <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
+                                <Button Content="실행" Style="{StaticResource RunButtonStyle}" Click="BtnRun_Click" Tag="3_5"/>
+                                <Button Content="힌트" Style="{StaticResource HintButtonStyle}" Click="BtnHint_Click" Tag="3_5"/>
+                                <Button Content="정답 보기" Style="{StaticResource AnswerButtonStyle}" Click="BtnAnswer_Click" Tag="3_5"/>
+                            </StackPanel>
+                            <TextBlock x:Name="txtHint3_5"
+                                       Text="힌트: Button 내부는 Border 로 그려집니다. TargetType=&quot;Border&quot; 스타일에서 CornerRadius 를 설정합니다."
+                                       Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                            <Border x:Name="resultBorder3_5" Background="White" Margin="0,8,0,0" Padding="10" Visibility="Collapsed">
+                                <StackPanel x:Name="resultPanel3_5"/>
+                            </Border>
                         </StackPanel>
-                        <TextBlock x:Name="txtHint3_3"
-                                   Text="힌트: FontFamily, FontSize, FontStyle 세 속성을 씁니다."
-                                   Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
-                        <Border x:Name="resultBorder3_3" Background="White" Margin="0,8,0,0" Padding="10" Visibility="Collapsed">
-                            <StackPanel x:Name="resultPanel3_3"/>
-                        </Border>
-                    </StackPanel>
-                </Expander>
+                    </Expander>
+                
 </StackPanel>
             </ScrollViewer>
         </TabItem>
@@ -440,29 +540,6 @@
                     <Expander Style="{StaticResource CodeExpanderStyle}">
                         <TextBox Style="{StaticResource CodeTextBoxStyle}" Text="&lt;Button Content=&quot;테두리 1px&quot; BorderBrush=&quot;Gray&quot; BorderThickness=&quot;1&quot;/&gt;&#10;&lt;Button Content=&quot;테두리 3px&quot; BorderBrush=&quot;CornflowerBlue&quot; BorderThickness=&quot;3&quot;/&gt;&#10;&lt;Button Content=&quot;각 변 다른 두께&quot; BorderBrush=&quot;Tomato&quot; BorderThickness=&quot;2,4,2,4&quot;/&gt;"/>
                     </Expander>
-
-                    <TextBlock Text="Opacity (투명도)" FontSize="18" FontWeight="Bold" Margin="0,20,0,10"/>
-                    <StackPanel Orientation="Horizontal">
-                        <Button Content="100%" Background="CornflowerBlue" Foreground="White" Opacity="1.0" FontSize="14" Padding="12,6" Margin="4"/>
-                        <Button Content="75%" Background="CornflowerBlue" Foreground="White" Opacity="0.75" FontSize="14" Padding="12,6" Margin="4"/>
-                        <Button Content="50%" Background="CornflowerBlue" Foreground="White" Opacity="0.5" FontSize="14" Padding="12,6" Margin="4"/>
-                        <Button Content="25%" Background="CornflowerBlue" Foreground="White" Opacity="0.25" FontSize="14" Padding="12,6" Margin="4"/>
-                    </StackPanel>
-                    <Expander Style="{StaticResource CodeExpanderStyle}">
-                        <TextBox Style="{StaticResource CodeTextBoxStyle}" Text="&lt;Button Content=&quot;100%&quot; Background=&quot;CornflowerBlue&quot; Opacity=&quot;1.0&quot;/&gt;&#10;&lt;Button Content=&quot;75%&quot; Background=&quot;CornflowerBlue&quot; Opacity=&quot;0.75&quot;/&gt;&#10;&lt;Button Content=&quot;50%&quot; Background=&quot;CornflowerBlue&quot; Opacity=&quot;0.5&quot;/&gt;&#10;&lt;Button Content=&quot;25%&quot; Background=&quot;CornflowerBlue&quot; Opacity=&quot;0.25&quot;/&gt;"/>
-                    </Expander>
-
-                    <TextBlock Text="Padding / Margin" FontSize="18" FontWeight="Bold" Margin="0,20,0,10"/>
-                    <TextBlock Text="Padding (내부 여백)" FontSize="14" Margin="0,0,0,4"/>
-                    <StackPanel Orientation="Horizontal">
-                        <Button Content="Padding 0" Background="#FFCDD2" Padding="0" Margin="4"/>
-                        <Button Content="Padding 10" Background="#C8E6C9" Padding="10" Margin="4"/>
-                        <Button Content="Padding 20" Background="#BBDEFB" Padding="20" Margin="4"/>
-                        <Button Content="Padding 10,20" Background="#FFF9C4" Padding="10,20" Margin="4"/>
-                    </StackPanel>
-                    <Expander Style="{StaticResource CodeExpanderStyle}">
-                        <TextBox Style="{StaticResource CodeTextBoxStyle}" Text="&lt;Button Content=&quot;Padding 0&quot; Padding=&quot;0&quot;/&gt;&#10;&lt;Button Content=&quot;Padding 10&quot; Padding=&quot;10&quot;/&gt;&#10;&lt;Button Content=&quot;Padding 20&quot; Padding=&quot;20&quot;/&gt;&#10;&lt;Button Content=&quot;Padding 10,20&quot; Padding=&quot;10,20&quot;/&gt;"/>
-                    </Expander>
                     <Expander Style="{StaticResource PracticeExpanderStyle}">
                         <StackPanel Margin="10">
                             <TextBlock Text="과제: '넓은 버튼'에 Padding 20, LightBlue 배경을 적용하세요." FontWeight="Bold" Margin="0,0,0,8"/>
@@ -479,6 +556,69 @@
                         </StackPanel>
                     </Expander>
 
+                    <TextBlock Text="Opacity (투명도)" FontSize="18" FontWeight="Bold" Margin="0,20,0,10"/>
+                    <StackPanel Orientation="Horizontal">
+                        <Button Content="100%" Background="CornflowerBlue" Foreground="White" Opacity="1.0" FontSize="14" Padding="12,6" Margin="4"/>
+                        <Button Content="75%" Background="CornflowerBlue" Foreground="White" Opacity="0.75" FontSize="14" Padding="12,6" Margin="4"/>
+                        <Button Content="50%" Background="CornflowerBlue" Foreground="White" Opacity="0.5" FontSize="14" Padding="12,6" Margin="4"/>
+                        <Button Content="25%" Background="CornflowerBlue" Foreground="White" Opacity="0.25" FontSize="14" Padding="12,6" Margin="4"/>
+                    </StackPanel>
+                    <Expander Style="{StaticResource CodeExpanderStyle}">
+                        <TextBox Style="{StaticResource CodeTextBoxStyle}" Text="&lt;Button Content=&quot;100%&quot; Background=&quot;CornflowerBlue&quot; Opacity=&quot;1.0&quot;/&gt;&#10;&lt;Button Content=&quot;75%&quot; Background=&quot;CornflowerBlue&quot; Opacity=&quot;0.75&quot;/&gt;&#10;&lt;Button Content=&quot;50%&quot; Background=&quot;CornflowerBlue&quot; Opacity=&quot;0.5&quot;/&gt;&#10;&lt;Button Content=&quot;25%&quot; Background=&quot;CornflowerBlue&quot; Opacity=&quot;0.25&quot;/&gt;"/>
+                    </Expander>
+                    <!-- 직접 해보기 4_3 -->
+                    <Expander Style="{StaticResource PracticeExpanderStyle}">
+                        <StackPanel Margin="10">
+                            <TextBlock Text="과제: 버튼에 2px 짙은 파랑 테두리를 두르고 안쪽 여백을 12,6 으로 주세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
+                            <TextBox x:Name="txtPractice4_3"
+                                     Style="{StaticResource PracticeInputStyle}"
+                                     Text="&lt;Button Content=&quot;테두리&quot; Width=&quot;140&quot;/&gt;"/>
+                            <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
+                                <Button Content="실행" Style="{StaticResource RunButtonStyle}" Click="BtnRun_Click" Tag="4_3"/>
+                                <Button Content="힌트" Style="{StaticResource HintButtonStyle}" Click="BtnHint_Click" Tag="4_3"/>
+                                <Button Content="정답 보기" Style="{StaticResource AnswerButtonStyle}" Click="BtnAnswer_Click" Tag="4_3"/>
+                            </StackPanel>
+                            <TextBlock x:Name="txtHint4_3"
+                                       Text="힌트: BorderBrush, BorderThickness, Padding 을 지정합니다."
+                                       Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                            <Border x:Name="resultBorder4_3" Background="White" Margin="0,8,0,0" Padding="10" Visibility="Collapsed">
+                                <StackPanel x:Name="resultPanel4_3"/>
+                            </Border>
+                        </StackPanel>
+                    </Expander>
+
+                    <TextBlock Text="Padding / Margin" FontSize="18" FontWeight="Bold" Margin="0,20,0,10"/>
+                    <TextBlock Text="Padding (내부 여백)" FontSize="14" Margin="0,0,0,4"/>
+                    <StackPanel Orientation="Horizontal">
+                        <Button Content="Padding 0" Background="#FFCDD2" Padding="0" Margin="4"/>
+                        <Button Content="Padding 10" Background="#C8E6C9" Padding="10" Margin="4"/>
+                        <Button Content="Padding 20" Background="#BBDEFB" Padding="20" Margin="4"/>
+                        <Button Content="Padding 10,20" Background="#FFF9C4" Padding="10,20" Margin="4"/>
+                    </StackPanel>
+                    <Expander Style="{StaticResource CodeExpanderStyle}">
+                        <TextBox Style="{StaticResource CodeTextBoxStyle}" Text="&lt;Button Content=&quot;Padding 0&quot; Padding=&quot;0&quot;/&gt;&#10;&lt;Button Content=&quot;Padding 10&quot; Padding=&quot;10&quot;/&gt;&#10;&lt;Button Content=&quot;Padding 20&quot; Padding=&quot;20&quot;/&gt;&#10;&lt;Button Content=&quot;Padding 10,20&quot; Padding=&quot;10,20&quot;/&gt;"/>
+                    </Expander>
+                    <!-- 직접 해보기 4_4 -->
+                    <Expander Style="{StaticResource PracticeExpanderStyle}">
+                        <StackPanel Margin="10">
+                            <TextBlock Text="과제: Padding을 0 / 10 / 20으로 다르게 준 버튼 세 개를 만드세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
+                            <TextBox x:Name="txtPractice4_4"
+                                     Style="{StaticResource PracticeInputStyle}"
+                                     Text="&lt;StackPanel&gt;&#10;    &#10;&lt;/StackPanel&gt;"/>
+                            <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
+                                <Button Content="실행" Style="{StaticResource RunButtonStyle}" Click="BtnRun_Click" Tag="4_4"/>
+                                <Button Content="힌트" Style="{StaticResource HintButtonStyle}" Click="BtnHint_Click" Tag="4_4"/>
+                                <Button Content="정답 보기" Style="{StaticResource AnswerButtonStyle}" Click="BtnAnswer_Click" Tag="4_4"/>
+                            </StackPanel>
+                            <TextBlock x:Name="txtHint4_4"
+                                       Text="힌트: Padding 은 글자와 버튼 테두리 사이의 안쪽 여백입니다."
+                                       Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                            <Border x:Name="resultBorder4_4" Background="White" Margin="0,8,0,0" Padding="10" Visibility="Collapsed">
+                                <StackPanel x:Name="resultPanel4_4"/>
+                            </Border>
+                        </StackPanel>
+                    </Expander>
+
                     <TextBlock Text="Margin (외부 여백)" FontSize="14" Margin="0,10,0,4"/>
                     <StackPanel Orientation="Horizontal" Background="#F5F5F5">
                         <Button Content="Margin 0" Background="#FFCDD2" Margin="0"/>
@@ -488,27 +628,27 @@
                     <Expander Style="{StaticResource CodeExpanderStyle}">
                         <TextBox Style="{StaticResource CodeTextBoxStyle}" Text="&lt;StackPanel Orientation=&quot;Horizontal&quot; Background=&quot;#F5F5F5&quot;&gt;&#10;    &lt;Button Content=&quot;Margin 0&quot; Margin=&quot;0&quot;/&gt;&#10;    &lt;Button Content=&quot;Margin 10&quot; Margin=&quot;10&quot;/&gt;&#10;    &lt;Button Content=&quot;Margin 20&quot; Margin=&quot;20&quot;/&gt;&#10;&lt;/StackPanel&gt;"/>
                     </Expander>
-                
-                <!-- 직접 해보기 4_3 -->
-                <Expander Style="{StaticResource PracticeExpanderStyle}">
-                    <StackPanel Margin="10">
-                        <TextBlock Text="과제: 버튼에 2px 짙은 파랑 테두리를 두르고 안쪽 여백을 12,6 으로 주세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
-                        <TextBox x:Name="txtPractice4_3"
-                                 Style="{StaticResource PracticeInputStyle}"
-                                 Text="&lt;Button Content=&quot;테두리&quot; Width=&quot;140&quot;/&gt;"/>
-                        <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
-                            <Button Content="실행" Style="{StaticResource RunButtonStyle}" Click="BtnRun_Click" Tag="4_3"/>
-                            <Button Content="힌트" Style="{StaticResource HintButtonStyle}" Click="BtnHint_Click" Tag="4_3"/>
-                            <Button Content="정답 보기" Style="{StaticResource AnswerButtonStyle}" Click="BtnAnswer_Click" Tag="4_3"/>
+                    <!-- 직접 해보기 4_5 -->
+                    <Expander Style="{StaticResource PracticeExpanderStyle}">
+                        <StackPanel Margin="10">
+                            <TextBlock Text="과제: Margin을 0 / 10 / 20으로 다르게 준 버튼 세 개를 가로로 놓으세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
+                            <TextBox x:Name="txtPractice4_5"
+                                     Style="{StaticResource PracticeInputStyle}"
+                                     Text="&lt;StackPanel Orientation=&quot;Horizontal&quot; Background=&quot;#F5F5F5&quot;&gt;&#10;    &#10;&lt;/StackPanel&gt;"/>
+                            <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
+                                <Button Content="실행" Style="{StaticResource RunButtonStyle}" Click="BtnRun_Click" Tag="4_5"/>
+                                <Button Content="힌트" Style="{StaticResource HintButtonStyle}" Click="BtnHint_Click" Tag="4_5"/>
+                                <Button Content="정답 보기" Style="{StaticResource AnswerButtonStyle}" Click="BtnAnswer_Click" Tag="4_5"/>
+                            </StackPanel>
+                            <TextBlock x:Name="txtHint4_5"
+                                       Text="힌트: Margin 은 바깥 여백이라 버튼끼리 벌어집니다. Padding 과 헷갈리지 마세요."
+                                       Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                            <Border x:Name="resultBorder4_5" Background="White" Margin="0,8,0,0" Padding="10" Visibility="Collapsed">
+                                <StackPanel x:Name="resultPanel4_5"/>
+                            </Border>
                         </StackPanel>
-                        <TextBlock x:Name="txtHint4_3"
-                                   Text="힌트: BorderBrush, BorderThickness, Padding 을 지정합니다."
-                                   Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
-                        <Border x:Name="resultBorder4_3" Background="White" Margin="0,8,0,0" Padding="10" Visibility="Collapsed">
-                            <StackPanel x:Name="resultPanel4_3"/>
-                        </Border>
-                    </StackPanel>
-                </Expander>
+                    </Expander>
+                
 </StackPanel>
             </ScrollViewer>
         </TabItem>
@@ -553,6 +693,19 @@
                     <Expander Style="{StaticResource CodeExpanderStyle}">
                         <TextBox Style="{StaticResource CodeTextBoxStyle}" Text="&lt;!-- XAML --&gt;&#10;&lt;TextBlock x:Name=&quot;txtDoubleClick&quot; Text=&quot;더블클릭 결과 표시&quot;/&gt;&#10;&lt;Button Content=&quot;더블클릭하세요&quot; MouseDoubleClick=&quot;BtnDouble_MouseDoubleClick&quot;/&gt;&#10;&#10;// C# 코드 비하인드&#10;private void BtnDouble_MouseDoubleClick(object sender, MouseButtonEventArgs e)&#10;{&#10;    txtDoubleClick.Background = Brushes.Salmon;&#10;    txtDoubleClick.Foreground = Brushes.White;&#10;    txtDoubleClick.Text = &quot;더블클릭 감지!&quot;;&#10;}"/>
                     </Expander>
+                    <Expander Style="{StaticResource PracticeExpanderStyle}">
+                        <StackPanel Margin="10">
+                            <TextBlock Text="과제: 마우스가 진입하면 btnTarget의 Background를 Yellow로, Foreground를 Blue로 변경하는 MouseEnter 이벤트 핸들러를 작성하세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
+                            <TextBox x:Name="txtPractice5_2" Style="{StaticResource PracticeInputStyle}" Height="120" AcceptsReturn="True" Text="private void Btn_MouseEnter(object sender, MouseEventArgs e)&#x0a;{&#x0a;    btnTarget.Background = &#x0a;    btnTarget.Foreground = &#x0a;}"/>
+                            <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
+                                <Button Content="확인" Style="{StaticResource RunButtonStyle}" Click="BtnCheck_Click" Tag="5_2"/>
+                                <Button Content="힌트" Style="{StaticResource HintButtonStyle}" Click="BtnHint_Click" Tag="5_2"/>
+                                <Button Content="정답 보기" Style="{StaticResource AnswerButtonStyle}" Click="BtnAnswer_Click" Tag="5_2"/>
+                            </StackPanel>
+                            <TextBlock x:Name="txtHint5_2" Text="힌트: Brushes.Yellow와 Brushes.Blue를 사용하세요." Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                            <TextBlock x:Name="txtResult5_2" Margin="0,8,0,0" FontWeight="Bold" Visibility="Collapsed"/>
+                        </StackPanel>
+                    </Expander>
 
                     <TextBlock Text="MouseEnter / MouseLeave 이벤트" FontSize="18" FontWeight="Bold" Margin="0,10,0,10"/>
 
@@ -566,15 +719,15 @@
                     </Expander>
                     <Expander Style="{StaticResource PracticeExpanderStyle}">
                         <StackPanel Margin="10">
-                            <TextBlock Text="과제: 마우스가 진입하면 btnTarget의 Background를 Yellow로, Foreground를 Blue로 변경하는 MouseEnter 이벤트 핸들러를 작성하세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
-                            <TextBox x:Name="txtPractice5_2" Style="{StaticResource PracticeInputStyle}" Height="120" AcceptsReturn="True" Text="private void Btn_MouseEnter(object sender, MouseEventArgs e)&#x0a;{&#x0a;    btnTarget.Background = &#x0a;    btnTarget.Foreground = &#x0a;}"/>
+                            <TextBlock Text="과제: 버튼 클릭 시 btnTarget의 Background를 Green, Foreground를 White, FontWeight를 Bold로 변경하고 Content를 '스타일 적용됨'으로 설정하는 이벤트 핸들러를 작성하세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
+                            <TextBox x:Name="txtPractice5_3" Style="{StaticResource PracticeInputStyle}" Height="150" AcceptsReturn="True" Text="private void BtnApplyStyle_Click(object sender, RoutedEventArgs e)&#x0a;{&#x0a;    btnTarget.Background = &#x0a;    btnTarget.Foreground = &#x0a;    btnTarget.FontWeight = &#x0a;    btnTarget.Content = &#x0a;}"/>
                             <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
-                                <Button Content="확인" Style="{StaticResource RunButtonStyle}" Click="BtnCheck_Click" Tag="5_2"/>
-                                <Button Content="힌트" Style="{StaticResource HintButtonStyle}" Click="BtnHint_Click" Tag="5_2"/>
-                                <Button Content="정답 보기" Style="{StaticResource AnswerButtonStyle}" Click="BtnAnswer_Click" Tag="5_2"/>
+                                <Button Content="확인" Style="{StaticResource RunButtonStyle}" Click="BtnCheck_Click" Tag="5_3"/>
+                                <Button Content="힌트" Style="{StaticResource HintButtonStyle}" Click="BtnHint_Click" Tag="5_3"/>
+                                <Button Content="정답 보기" Style="{StaticResource AnswerButtonStyle}" Click="BtnAnswer_Click" Tag="5_3"/>
                             </StackPanel>
-                            <TextBlock x:Name="txtHint5_2" Text="힌트: Brushes.Yellow와 Brushes.Blue를 사용하세요." Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
-                            <TextBlock x:Name="txtResult5_2" Margin="0,8,0,0" FontWeight="Bold" Visibility="Collapsed"/>
+                            <TextBlock x:Name="txtHint5_3" Text="힌트: Brushes.Green, Brushes.White, FontWeights.Bold를 사용하세요." Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                            <TextBlock x:Name="txtResult5_3" Margin="0,8,0,0" FontWeight="Bold" Visibility="Collapsed"/>
                         </StackPanel>
                     </Expander>
 
@@ -595,15 +748,15 @@
                     </Expander>
                     <Expander Style="{StaticResource PracticeExpanderStyle}">
                         <StackPanel Margin="10">
-                            <TextBlock Text="과제: 버튼 클릭 시 btnTarget의 Background를 Green, Foreground를 White, FontWeight를 Bold로 변경하고 Content를 '스타일 적용됨'으로 설정하는 이벤트 핸들러를 작성하세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
-                            <TextBox x:Name="txtPractice5_3" Style="{StaticResource PracticeInputStyle}" Height="150" AcceptsReturn="True" Text="private void BtnApplyStyle_Click(object sender, RoutedEventArgs e)&#x0a;{&#x0a;    btnTarget.Background = &#x0a;    btnTarget.Foreground = &#x0a;    btnTarget.FontWeight = &#x0a;    btnTarget.Content = &#x0a;}"/>
+                            <TextBlock Text="과제: 토글 버튼을 만드세요. btnTarget이 보이면 Collapsed로 숨기고, 숨겨져 있으면 Visible로 보이게 하는 이벤트 핸들러를 작성하세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
+                            <TextBox x:Name="txtPractice5_4" Style="{StaticResource PracticeInputStyle}" Height="180" AcceptsReturn="True" Text="private void BtnToggle_Click(object sender, RoutedEventArgs e)&#x0a;{&#x0a;    if (btnTarget.Visibility == Visibility.Visible)&#x0a;    {&#x0a;        &#x0a;    }&#x0a;    else&#x0a;    {&#x0a;        &#x0a;    }&#x0a;}"/>
                             <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
-                                <Button Content="확인" Style="{StaticResource RunButtonStyle}" Click="BtnCheck_Click" Tag="5_3"/>
-                                <Button Content="힌트" Style="{StaticResource HintButtonStyle}" Click="BtnHint_Click" Tag="5_3"/>
-                                <Button Content="정답 보기" Style="{StaticResource AnswerButtonStyle}" Click="BtnAnswer_Click" Tag="5_3"/>
+                                <Button Content="확인" Style="{StaticResource RunButtonStyle}" Click="BtnCheck_Click" Tag="5_4"/>
+                                <Button Content="힌트" Style="{StaticResource HintButtonStyle}" Click="BtnHint_Click" Tag="5_4"/>
+                                <Button Content="정답 보기" Style="{StaticResource AnswerButtonStyle}" Click="BtnAnswer_Click" Tag="5_4"/>
                             </StackPanel>
-                            <TextBlock x:Name="txtHint5_3" Text="힌트: Brushes.Green, Brushes.White, FontWeights.Bold를 사용하세요." Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
-                            <TextBlock x:Name="txtResult5_3" Margin="0,8,0,0" FontWeight="Bold" Visibility="Collapsed"/>
+                            <TextBlock x:Name="txtHint5_4" Text="힌트: if문 안에서 Visibility.Collapsed, else문 안에서 Visibility.Visible을 할당하세요." Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                            <TextBlock x:Name="txtResult5_4" Margin="0,8,0,0" FontWeight="Bold" Visibility="Collapsed"/>
                         </StackPanel>
                     </Expander>
 
@@ -622,17 +775,24 @@
                     <Expander Style="{StaticResource CodeExpanderStyle}">
                         <TextBox Style="{StaticResource CodeTextBoxStyle}" Text="&lt;!-- XAML --&gt;&#10;&lt;Button x:Name=&quot;btnVisibility&quot; Content=&quot;보이거나 숨길 수 있습니다&quot;/&gt;&#10;&lt;Button Content=&quot;Visible&quot; Click=&quot;BtnVisible_Click&quot;/&gt;&#10;&lt;Button Content=&quot;Hidden&quot; Click=&quot;BtnHidden_Click&quot;/&gt;&#10;&lt;Button Content=&quot;Collapsed&quot; Click=&quot;BtnCollapsed_Click&quot;/&gt;&#10;&#10;// C# 코드 비하인드&#10;// Visible: 보임&#10;// Hidden: 숨김 (공간 유지)&#10;// Collapsed: 숨김 (공간도 제거)&#10;private void BtnVisible_Click(object sender, RoutedEventArgs e)&#10;{&#10;    btnVisibility.Visibility = Visibility.Visible;&#10;}&#10;&#10;private void BtnHidden_Click(object sender, RoutedEventArgs e)&#10;{&#10;    btnVisibility.Visibility = Visibility.Hidden;&#10;}&#10;&#10;private void BtnCollapsed_Click(object sender, RoutedEventArgs e)&#10;{&#10;    btnVisibility.Visibility = Visibility.Collapsed;&#10;}"/>
                     </Expander>
+                    <!-- 직접 해보기 5_5 -->
                     <Expander Style="{StaticResource PracticeExpanderStyle}">
                         <StackPanel Margin="10">
-                            <TextBlock Text="과제: 토글 버튼을 만드세요. btnTarget이 보이면 Collapsed로 숨기고, 숨겨져 있으면 Visible로 보이게 하는 이벤트 핸들러를 작성하세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
-                            <TextBox x:Name="txtPractice5_4" Style="{StaticResource PracticeInputStyle}" Height="180" AcceptsReturn="True" Text="private void BtnToggle_Click(object sender, RoutedEventArgs e)&#x0a;{&#x0a;    if (btnTarget.Visibility == Visibility.Visible)&#x0a;    {&#x0a;        &#x0a;    }&#x0a;    else&#x0a;    {&#x0a;        &#x0a;    }&#x0a;}"/>
+                            <TextBlock Text="과제: 버튼 세 개로 btnVisibility를 Visible / Hidden / Collapsed로 바꾸는 핸들러를 완성하세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
+                            <TextBox x:Name="txtPractice5_5"
+                                     Style="{StaticResource PracticeInputStyle}"
+                                     Height="120" AcceptsReturn="True"
+                                     Text="private void BtnVisible_Click(object sender, RoutedEventArgs e)&#10;{&#10;    &#10;}&#10;&#10;private void BtnHidden_Click(object sender, RoutedEventArgs e)&#10;{&#10;    &#10;}&#10;&#10;private void BtnCollapsed_Click(object sender, RoutedEventArgs e)&#10;{&#10;    &#10;}"/>
                             <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
-                                <Button Content="확인" Style="{StaticResource RunButtonStyle}" Click="BtnCheck_Click" Tag="5_4"/>
-                                <Button Content="힌트" Style="{StaticResource HintButtonStyle}" Click="BtnHint_Click" Tag="5_4"/>
-                                <Button Content="정답 보기" Style="{StaticResource AnswerButtonStyle}" Click="BtnAnswer_Click" Tag="5_4"/>
+                                <Button Content="확인" Style="{StaticResource RunButtonStyle}" Click="BtnCheck_Click" Tag="5_5"/>
+                                <Button Content="힌트" Style="{StaticResource HintButtonStyle}" Click="BtnHint_Click" Tag="5_5"/>
+                                <Button Content="정답 보기" Style="{StaticResource AnswerButtonStyle}" Click="BtnAnswer_Click" Tag="5_5"/>
                             </StackPanel>
-                            <TextBlock x:Name="txtHint5_4" Text="힌트: if문 안에서 Visibility.Collapsed, else문 안에서 Visibility.Visible을 할당하세요." Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
-                            <TextBlock x:Name="txtResult5_4" Margin="0,8,0,0" FontWeight="Bold" Visibility="Collapsed"/>
+                            <TextBlock x:Name="txtHint5_5"
+                                       Text="힌트: Hidden 은 자리를 남기고 숨기고, Collapsed 는 자리까지 없앱니다."
+                                       Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                            <TextBlock x:Name="txtResult5_5" Margin="0,8,0,0" FontWeight="Bold"
+                                       Visibility="Collapsed" TextWrapping="Wrap"/>
                         </StackPanel>
                     </Expander>
                 </StackPanel>

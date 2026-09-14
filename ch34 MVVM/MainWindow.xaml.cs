@@ -21,6 +21,11 @@ namespace ch34_MVVM
         // 각 연습의 정답
         private readonly Dictionary<string, string> _answers = new()
         {
+            { "2_4", "public class PersonModel : INotifyPropertyChanged\n{\n    public event PropertyChangedEventHandler? PropertyChanged;\n\n    private void OnPropertyChanged(string name)\n    {\n        PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));\n    }\n\n    private string name = string.Empty;\n    public string Name\n    {\n        get => name;\n        set { name = value; OnPropertyChanged(\"Name\"); }\n    }\n}" },
+            { "3_4", "private void Message(string? txt)\n{\n    MessageBox.Show(txt);\n}\n\nprivate bool CheckMessage(string? txt)\n{\n    return !string.IsNullOrEmpty(txt);\n}" },
+            { "3_5", "public class PersonViewModel\n{\n    public PersonCommand PersonCommand { get; set; }\n    public List<PersonModel> PersonList { get; set; }\n\n    public PersonViewModel()\n    {\n        PersonList = new List<PersonModel>\n        {\n            new PersonModel { Name = \"홍길동\", Age = 100 },\n            new PersonModel { Name = \"임꺽정\", Age = 90 }\n        };\n\n        PersonCommand = new PersonCommand(Message, CheckMessage);\n    }\n\n    private void Message(string? txt) => MessageBox.Show(txt);\n    private bool CheckMessage(string? txt) => txt?.Length > 0;\n}" },
+            { "4_4", "public void Execute(object? parameter)\n{\n    execute.Invoke(parameter as string);\n}" },
+            { "4_5", "public class RelayCommand : ICommand\n{\n    private readonly Action<object?> _execute;\n    private readonly Predicate<object?>? _canExecute;\n\n    public RelayCommand(Action<object?> execute, Predicate<object?>? canExecute = null)\n    {\n        _execute = execute;\n        _canExecute = canExecute;\n    }\n\n    public event EventHandler? CanExecuteChanged\n    {\n        add => CommandManager.RequerySuggested += value;\n        remove => CommandManager.RequerySuggested -= value;\n    }\n\n    public bool CanExecute(object? parameter)\n        => _canExecute == null || _canExecute(parameter);\n\n    public void Execute(object? parameter) => _execute(parameter);\n}" },
             { "1_3", "// View 와 ViewModel 의 연결\n// DataContext 에 ViewModel 을 넣고 View 는 Binding 으로만 접근한다\n// 따라서 View 의 code-behind 에는 화면 로직이 남지 않는다" },
             { "2_3", "public class PersonModel\n{\n    public string Name { get; set; } = \"\";\n    public int Age { get; set; }\n    public string Display { get { return Name + \" (\" + Age + \")\"; } }\n}" },
             { "3_3", "private PersonModel? _selected;\npublic PersonModel? Selected\n{\n    get { return _selected; }\n    set\n    {\n        _selected = value;\n        OnPropertyChanged(\"Selected\");\n    }\n}" },
@@ -41,6 +46,11 @@ namespace ch34_MVVM
         // 코드 비교 검증용 필수 키워드
         private readonly Dictionary<string, string[]> _requiredKeywords = new()
         {
+            { "2_4", new[] { "get", "set", "OnPropertyChanged" } },
+            { "3_4", new[] { "MessageBox.Show", "return" } },
+            { "3_5", new[] { "PersonList", "new PersonModel", "new PersonCommand" } },
+            { "4_4", new[] { "execute", "parameter as string" } },
+            { "4_5", new[] { "CanExecuteChanged", "CommandManager.RequerySuggested", "CanExecute" } },
             { "1_3", new[] { "DataContext", "Binding" } },
             { "2_3", new[] { "get", "Display", "Name" } },
             { "3_3", new[] { "_selected = value", "OnPropertyChanged" } },

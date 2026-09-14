@@ -12,6 +12,14 @@ namespace ch4_버튼
         // 각 연습의 정답
         private readonly Dictionary<string, string> _answers = new()
         {
+            { "1_5", "<StackPanel Orientation=\"Horizontal\">\n    <Button Content=\"확인 (Enter)\" IsDefault=\"True\" Margin=\"0,0,8,0\" Padding=\"10,4\"/>\n    <Button Content=\"취소 (Esc)\" IsCancel=\"True\" Padding=\"10,4\"/>\n</StackPanel>" },
+            { "1_6", "<StackPanel Orientation=\"Horizontal\">\n    <Button Content=\"활성 버튼\" Margin=\"0,0,8,0\" Padding=\"10,4\"/>\n    <Button Content=\"비활성 버튼\" IsEnabled=\"False\" Padding=\"10,4\"/>\n</StackPanel>" },
+            { "2_4", "<StackPanel>\n    <Button Content=\"100x30\" Width=\"100\" Height=\"30\" Margin=\"0,4\"/>\n    <Button Content=\"150x40\" Width=\"150\" Height=\"40\" Margin=\"0,4\"/>\n    <Button Content=\"200x50\" Width=\"200\" Height=\"50\" Margin=\"0,4\"/>\n</StackPanel>" },
+            { "3_4", "<StackPanel>\n    <Button Content=\"Arial\" FontFamily=\"Arial\" Margin=\"0,4\"/>\n    <Button Content=\"Consolas\" FontFamily=\"Consolas\" Margin=\"0,4\"/>\n    <Button Content=\"맑은 고딕\" FontFamily=\"맑은 고딕\" Margin=\"0,4\"/>\n</StackPanel>" },
+            { "3_5", "<Button Content=\"둥근 버튼\" Width=\"120\" Height=\"36\">\n    <Button.Resources>\n        <Style TargetType=\"Border\">\n            <Setter Property=\"CornerRadius\" Value=\"10\"/>\n        </Style>\n    </Button.Resources>\n</Button>" },
+            { "4_4", "<StackPanel>\n    <Button Content=\"Padding 0\" Padding=\"0\" HorizontalAlignment=\"Left\" Margin=\"0,4\"/>\n    <Button Content=\"Padding 10\" Padding=\"10\" HorizontalAlignment=\"Left\" Margin=\"0,4\"/>\n    <Button Content=\"Padding 20\" Padding=\"20\" HorizontalAlignment=\"Left\" Margin=\"0,4\"/>\n</StackPanel>" },
+            { "4_5", "<StackPanel Orientation=\"Horizontal\" Background=\"#F5F5F5\">\n    <Button Content=\"Margin 0\" Margin=\"0\"/>\n    <Button Content=\"Margin 10\" Margin=\"10\"/>\n    <Button Content=\"Margin 20\" Margin=\"20\"/>\n</StackPanel>" },
+            { "5_5", "private void BtnVisible_Click(object sender, RoutedEventArgs e)\n{\n    btnVisibility.Visibility = Visibility.Visible;\n}\n\nprivate void BtnHidden_Click(object sender, RoutedEventArgs e)\n{\n    btnVisibility.Visibility = Visibility.Hidden;\n}\n\nprivate void BtnCollapsed_Click(object sender, RoutedEventArgs e)\n{\n    btnVisibility.Visibility = Visibility.Collapsed;\n}" },
             { "2_3", "<Button Content=\"확인\" Width=\"120\" Height=\"40\" HorizontalAlignment=\"Right\" VerticalAlignment=\"Bottom\"/>" },
             { "3_3", "<Button Content=\"Console\" Width=\"140\" Height=\"34\" FontFamily=\"Consolas\" FontSize=\"14\" FontStyle=\"Italic\"/>" },
             { "4_3", "<Button Content=\"테두리\" Width=\"140\" BorderBrush=\"DarkBlue\" BorderThickness=\"2\" Padding=\"12,6\"/>" },
@@ -39,6 +47,7 @@ namespace ch4_버튼
         // 코드 비교 검증용 필수 키워드
         private readonly Dictionary<string, string[]> _requiredKeywords = new()
         {
+            { "5_5", new[] { "Visibility.Visible", "Visibility.Hidden", "Visibility.Collapsed" } },
             { "5_1", new[] { "_count++", "lblStatus.Content", "클릭" } },
             { "5_2", new[] { "Brushes.Yellow", "Brushes.Blue", "btnTarget.Background", "btnTarget.Foreground" } },
             { "5_3", new[] { "Brushes.Green", "Brushes.White", "FontWeights.Bold", "btnTarget.Content", "스타일 적용됨" } },

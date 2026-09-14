@@ -11,7 +11,7 @@
         <Style x:Key="CodeExpanderStyle" TargetType="Expander">
             <Setter Property="Header" Value="코드 보기"/>
             <Setter Property="Margin" Value="0,0,0,12"/>
-            <Setter Property="IsExpanded" Value="False"/>
+            <Setter Property="IsExpanded" Value="True"/>
         </Style>
         <Style x:Key="CodeTextBoxStyle" TargetType="TextBox">
             <Setter Property="IsReadOnly" Value="True"/>
@@ -85,6 +85,26 @@
                         <Expander Style="{StaticResource CodeExpanderStyle}">
                             <TextBox Style="{StaticResource CodeTextBoxStyle}" Text="&lt;Menu&gt;&#10;    &lt;MenuItem Header=&quot;파일&quot;/&gt;&#10;    &lt;MenuItem Header=&quot;편집&quot;/&gt;&#10;    &lt;MenuItem Header=&quot;보기&quot;/&gt;&#10;    &lt;MenuItem Header=&quot;도움말&quot;/&gt;&#10;&lt;/Menu&gt;"/>
                         </Expander>
+                        <!-- 직접 해보기 1_1 -->
+                        <Expander Style="{StaticResource PracticeExpanderStyle}">
+                            <StackPanel Margin="10">
+                                <TextBlock Text="과제: Menu 를 만들고 &quot;파일&quot;, &quot;편집&quot; 두 개의 최상위 MenuItem 을 넣으세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
+                                <TextBox x:Name="txtPractice1_1"
+                                         Style="{StaticResource PracticeInputStyle}"
+                                         Text="&lt;Menu&gt;&#10;    &#10;&lt;/Menu&gt;"/>
+                                <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
+                                    <Button Content="실행" Style="{StaticResource RunButtonStyle}" Click="BtnRun_Click" Tag="1_1"/>
+                                    <Button Content="힌트" Style="{StaticResource HintButtonStyle}" Click="BtnHint_Click" Tag="1_1"/>
+                                    <Button Content="정답 보기" Style="{StaticResource AnswerButtonStyle}" Click="BtnAnswer_Click" Tag="1_1"/>
+                                </StackPanel>
+                                <TextBlock x:Name="txtHint1_1"
+                                           Text="힌트: Menu 안에 &lt;MenuItem Header=&quot;...&quot;/&gt; 를 나열합니다. Content 가 아니라 Header 입니다."
+                                           Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                                <Border x:Name="resultBorder1_1" Background="White" Margin="0,8,0,0" Padding="10" Visibility="Collapsed">
+                                    <StackPanel x:Name="resultPanel1_1"/>
+                                </Border>
+                            </StackPanel>
+                        </Expander>
 
                         <!-- DockPanel과 함께 사용 -->
                         <GroupBox Header="DockPanel과 함께 사용" Margin="0,0,0,10">
@@ -99,6 +119,26 @@
                         </GroupBox>
                         <Expander Style="{StaticResource CodeExpanderStyle}">
                             <TextBox Style="{StaticResource CodeTextBoxStyle}" Text="&lt;DockPanel LastChildFill=&quot;True&quot;&gt;&#10;    &lt;Menu DockPanel.Dock=&quot;Top&quot; Background=&quot;#F0F0F0&quot;&gt;&#10;        &lt;MenuItem Header=&quot;File&quot;/&gt;&#10;        &lt;MenuItem Header=&quot;Edit&quot;/&gt;&#10;        &lt;MenuItem Header=&quot;View&quot;/&gt;&#10;    &lt;/Menu&gt;&#10;    &lt;TextBlock Text=&quot;메뉴 아래 콘텐츠 영역&quot;/&gt;&#10;&lt;/DockPanel&gt;"/>
+                        </Expander>
+                        <!-- 직접 해보기 1_2 -->
+                        <Expander Style="{StaticResource PracticeExpanderStyle}">
+                            <StackPanel Margin="10">
+                                <TextBlock Text="과제: &quot;파일&quot; 메뉴 아래에 &quot;새로 만들기&quot;, &quot;열기&quot;, &quot;종료&quot; 하위 항목을 넣으세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
+                                <TextBox x:Name="txtPractice1_2"
+                                         Style="{StaticResource PracticeInputStyle}"
+                                         Text="&lt;Menu&gt;&#10;    &lt;MenuItem Header=&quot;파일&quot;&gt;&#10;        &#10;    &lt;/MenuItem&gt;&#10;&lt;/Menu&gt;"/>
+                                <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
+                                    <Button Content="실행" Style="{StaticResource RunButtonStyle}" Click="BtnRun_Click" Tag="1_2"/>
+                                    <Button Content="힌트" Style="{StaticResource HintButtonStyle}" Click="BtnHint_Click" Tag="1_2"/>
+                                    <Button Content="정답 보기" Style="{StaticResource AnswerButtonStyle}" Click="BtnAnswer_Click" Tag="1_2"/>
+                                </StackPanel>
+                                <TextBlock x:Name="txtHint1_2"
+                                           Text="힌트: MenuItem 을 여는 태그로 바꾸고 그 안에 자식 MenuItem 을 넣습니다."
+                                           Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                                <Border x:Name="resultBorder1_2" Background="White" Margin="0,8,0,0" Padding="10" Visibility="Collapsed">
+                                    <StackPanel x:Name="resultPanel1_2"/>
+                                </Border>
+                            </StackPanel>
                         </Expander>
 
                         <!-- 접근 키 (Access Key) -->
@@ -116,7 +156,27 @@
                         <Expander Style="{StaticResource CodeExpanderStyle}">
                             <TextBox Style="{StaticResource CodeTextBoxStyle}" Text="&lt;Menu&gt;&#10;    &lt;MenuItem Header=&quot;_File&quot;/&gt;   &lt;!-- Alt+F --&gt;&#10;    &lt;MenuItem Header=&quot;_Edit&quot;/&gt;   &lt;!-- Alt+E --&gt;&#10;    &lt;MenuItem Header=&quot;_View&quot;/&gt;   &lt;!-- Alt+V --&gt;&#10;    &lt;MenuItem Header=&quot;_Help&quot;/&gt;   &lt;!-- Alt+H --&gt;&#10;&lt;/Menu&gt;"/>
                         </Expander>
-
+                        <!-- 직접 해보기 1_3 -->
+                        <Expander Style="{StaticResource PracticeExpanderStyle}">
+                            <StackPanel Margin="10">
+                                <TextBlock Text="과제: Menu 에 &quot;보기&quot; 항목을 추가하고 그 아래 &quot;확대&quot;, &quot;축소&quot;를 넣으세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
+                                <TextBox x:Name="txtPractice1_3"
+                                         Style="{StaticResource PracticeInputStyle}"
+                                         Text="&lt;Menu&gt;&#10;    &#10;&lt;/Menu&gt;"/>
+                                <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
+                                    <Button Content="실행" Style="{StaticResource RunButtonStyle}" Click="BtnRun_Click" Tag="1_3"/>
+                                    <Button Content="힌트" Style="{StaticResource HintButtonStyle}" Click="BtnHint_Click" Tag="1_3"/>
+                                    <Button Content="정답 보기" Style="{StaticResource AnswerButtonStyle}" Click="BtnAnswer_Click" Tag="1_3"/>
+                                </StackPanel>
+                                <TextBlock x:Name="txtHint1_3"
+                                           Text="힌트: 최상위 MenuItem 안에 자식 MenuItem 을 중첩합니다."
+                                           Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                                <Border x:Name="resultBorder1_3" Background="White" Margin="0,8,0,0" Padding="10" Visibility="Collapsed">
+                                    <StackPanel x:Name="resultPanel1_3"/>
+                                </Border>
+                            </StackPanel>
+                        </Expander>
+                        
                         <!-- 클릭 이벤트 -->
                         <GroupBox Header="클릭 이벤트 처리" Margin="0,0,0,10">
                             <StackPanel Margin="10">
@@ -132,69 +192,28 @@
                         <Expander Style="{StaticResource CodeExpanderStyle}">
                             <TextBox Style="{StaticResource CodeTextBoxStyle}" Text="&lt;MenuItem Header=&quot;메시지 표시&quot; Click=&quot;ShowMessage_Click&quot;/&gt;&#10;&#10;// C# 코드&#10;private void ShowMessage_Click(object sender, RoutedEventArgs e)&#10;{&#10;    MessageBox.Show(&quot;메뉴가 클릭되었습니다!&quot;, &quot;알림&quot;);&#10;}"/>
                         </Expander>
+                        <!-- 직접 해보기 1_4 -->
+                        <Expander Style="{StaticResource PracticeExpanderStyle}">
+                            <StackPanel Margin="10">
+                                <TextBlock Text="과제: '메시지 표시' 메뉴를 누르면 알림 상자를 띄우는 핸들러를 완성하세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
+                                <TextBox x:Name="txtPractice1_4"
+                                         Style="{StaticResource PracticeInputStyle}"
+                                         Height="120" AcceptsReturn="True"
+                                         Text="private void ShowMessage_Click(object sender, RoutedEventArgs e)&#10;{&#10;    &#10;}"/>
+                                <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
+                                    <Button Content="확인" Style="{StaticResource RunButtonStyle}" Click="BtnCheck_Click" Tag="1_4"/>
+                                    <Button Content="힌트" Style="{StaticResource HintButtonStyle}" Click="BtnHint_Click" Tag="1_4"/>
+                                    <Button Content="정답 보기" Style="{StaticResource AnswerButtonStyle}" Click="BtnAnswer_Click" Tag="1_4"/>
+                                </StackPanel>
+                                <TextBlock x:Name="txtHint1_4"
+                                           Text="힌트: MessageBox.Show(&quot;본문&quot;, &quot;제목&quot;) 형태로 호출합니다."
+                                           Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                                <TextBlock x:Name="txtResult1_4" Margin="0,8,0,0" FontWeight="Bold"
+                                           Visibility="Collapsed" TextWrapping="Wrap"/>
+                            </StackPanel>
+                        </Expander>
                     
-                    <!-- 직접 해보기 1_1 -->
-                    <Expander Style="{StaticResource PracticeExpanderStyle}">
-                        <StackPanel Margin="10">
-                            <TextBlock Text="과제: Menu 를 만들고 &quot;파일&quot;, &quot;편집&quot; 두 개의 최상위 MenuItem 을 넣으세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
-                            <TextBox x:Name="txtPractice1_1"
-                                     Style="{StaticResource PracticeInputStyle}"
-                                     Text="&lt;Menu&gt;&#10;    &#10;&lt;/Menu&gt;"/>
-                            <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
-                                <Button Content="실행" Style="{StaticResource RunButtonStyle}" Click="BtnRun_Click" Tag="1_1"/>
-                                <Button Content="힌트" Style="{StaticResource HintButtonStyle}" Click="BtnHint_Click" Tag="1_1"/>
-                                <Button Content="정답 보기" Style="{StaticResource AnswerButtonStyle}" Click="BtnAnswer_Click" Tag="1_1"/>
-                            </StackPanel>
-                            <TextBlock x:Name="txtHint1_1"
-                                       Text="힌트: Menu 안에 &lt;MenuItem Header=&quot;...&quot;/&gt; 를 나열합니다. Content 가 아니라 Header 입니다."
-                                       Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
-                            <Border x:Name="resultBorder1_1" Background="White" Margin="0,8,0,0" Padding="10" Visibility="Collapsed">
-                                <StackPanel x:Name="resultPanel1_1"/>
-                            </Border>
-                        </StackPanel>
-                    </Expander>
 
-                    <!-- 직접 해보기 1_2 -->
-                    <Expander Style="{StaticResource PracticeExpanderStyle}">
-                        <StackPanel Margin="10">
-                            <TextBlock Text="과제: &quot;파일&quot; 메뉴 아래에 &quot;새로 만들기&quot;, &quot;열기&quot;, &quot;종료&quot; 하위 항목을 넣으세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
-                            <TextBox x:Name="txtPractice1_2"
-                                     Style="{StaticResource PracticeInputStyle}"
-                                     Text="&lt;Menu&gt;&#10;    &lt;MenuItem Header=&quot;파일&quot;&gt;&#10;        &#10;    &lt;/MenuItem&gt;&#10;&lt;/Menu&gt;"/>
-                            <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
-                                <Button Content="실행" Style="{StaticResource RunButtonStyle}" Click="BtnRun_Click" Tag="1_2"/>
-                                <Button Content="힌트" Style="{StaticResource HintButtonStyle}" Click="BtnHint_Click" Tag="1_2"/>
-                                <Button Content="정답 보기" Style="{StaticResource AnswerButtonStyle}" Click="BtnAnswer_Click" Tag="1_2"/>
-                            </StackPanel>
-                            <TextBlock x:Name="txtHint1_2"
-                                       Text="힌트: MenuItem 을 여는 태그로 바꾸고 그 안에 자식 MenuItem 을 넣습니다."
-                                       Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
-                            <Border x:Name="resultBorder1_2" Background="White" Margin="0,8,0,0" Padding="10" Visibility="Collapsed">
-                                <StackPanel x:Name="resultPanel1_2"/>
-                            </Border>
-                        </StackPanel>
-                    </Expander>
-
-<!-- 직접 해보기 1_3 -->
-<Expander Style="{StaticResource PracticeExpanderStyle}">
-    <StackPanel Margin="10">
-        <TextBlock Text="과제: Menu 에 &quot;보기&quot; 항목을 추가하고 그 아래 &quot;확대&quot;, &quot;축소&quot;를 넣으세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
-        <TextBox x:Name="txtPractice1_3"
-                 Style="{StaticResource PracticeInputStyle}"
-                 Text="&lt;Menu&gt;&#10;    &#10;&lt;/Menu&gt;"/>
-        <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
-            <Button Content="실행" Style="{StaticResource RunButtonStyle}" Click="BtnRun_Click" Tag="1_3"/>
-            <Button Content="힌트" Style="{StaticResource HintButtonStyle}" Click="BtnHint_Click" Tag="1_3"/>
-            <Button Content="정답 보기" Style="{StaticResource AnswerButtonStyle}" Click="BtnAnswer_Click" Tag="1_3"/>
-        </StackPanel>
-        <TextBlock x:Name="txtHint1_3"
-                   Text="힌트: 최상위 MenuItem 안에 자식 MenuItem 을 중첩합니다."
-                   Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
-        <Border x:Name="resultBorder1_3" Background="White" Margin="0,8,0,0" Padding="10" Visibility="Collapsed">
-            <StackPanel x:Name="resultPanel1_3"/>
-        </Border>
-    </StackPanel>
-</Expander>
 </StackPanel>
                 </ScrollViewer>
             </TabItem>
@@ -223,6 +242,26 @@
                         <Expander Style="{StaticResource CodeExpanderStyle}">
                             <TextBox Style="{StaticResource CodeTextBoxStyle}" Text="&lt;MenuItem Header=&quot;파일&quot;&gt;&#10;    &lt;MenuItem Header=&quot;새로 만들기&quot;/&gt;&#10;    &lt;MenuItem Header=&quot;열기&quot;/&gt;&#10;    &lt;MenuItem Header=&quot;저장&quot;/&gt;&#10;    &lt;MenuItem Header=&quot;다른 이름으로 저장&quot;/&gt;&#10;    &lt;MenuItem Header=&quot;종료&quot;/&gt;&#10;&lt;/MenuItem&gt;"/>
                         </Expander>
+                        <!-- 직접 해보기 2_1 -->
+                        <Expander Style="{StaticResource PracticeExpanderStyle}">
+                            <StackPanel Margin="10">
+                                <TextBlock Text="과제: &quot;편집&quot; 메뉴 안에 &quot;찾기&quot; 항목을 만들고, 그 아래 다시 &quot;현재 문서&quot;, &quot;전체 문서&quot;를 넣어 3단 구조를 만드세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
+                                <TextBox x:Name="txtPractice2_1"
+                                         Style="{StaticResource PracticeInputStyle}"
+                                         Text="&lt;Menu&gt;&#10;    &lt;MenuItem Header=&quot;편집&quot;&gt;&#10;        &#10;    &lt;/MenuItem&gt;&#10;&lt;/Menu&gt;"/>
+                                <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
+                                    <Button Content="실행" Style="{StaticResource RunButtonStyle}" Click="BtnRun_Click" Tag="2_1"/>
+                                    <Button Content="힌트" Style="{StaticResource HintButtonStyle}" Click="BtnHint_Click" Tag="2_1"/>
+                                    <Button Content="정답 보기" Style="{StaticResource AnswerButtonStyle}" Click="BtnAnswer_Click" Tag="2_1"/>
+                                </StackPanel>
+                                <TextBlock x:Name="txtHint2_1"
+                                           Text="힌트: MenuItem 은 몇 단계든 중첩할 수 있습니다."
+                                           Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                                <Border x:Name="resultBorder2_1" Background="White" Margin="0,8,0,0" Padding="10" Visibility="Collapsed">
+                                    <StackPanel x:Name="resultPanel2_1"/>
+                                </Border>
+                            </StackPanel>
+                        </Expander>
 
                         <!-- 다단계 서브메뉴 -->
                         <GroupBox Header="다단계 서브메뉴" Margin="0,0,0,10">
@@ -247,6 +286,26 @@
                         <Expander Style="{StaticResource CodeExpanderStyle}">
                             <TextBox Style="{StaticResource CodeTextBoxStyle}" Text="&lt;MenuItem Header=&quot;새로 만들기&quot;&gt;&#10;    &lt;MenuItem Header=&quot;프로젝트&quot;&gt;&#10;        &lt;MenuItem Header=&quot;WPF 앱&quot;/&gt;&#10;        &lt;MenuItem Header=&quot;콘솔 앱&quot;/&gt;&#10;        &lt;MenuItem Header=&quot;클래스 라이브러리&quot;/&gt;&#10;    &lt;/MenuItem&gt;&#10;    &lt;MenuItem Header=&quot;파일&quot;&gt;&#10;        &lt;MenuItem Header=&quot;클래스&quot;/&gt;&#10;        &lt;MenuItem Header=&quot;인터페이스&quot;/&gt;&#10;    &lt;/MenuItem&gt;&#10;&lt;/MenuItem&gt;"/>
                         </Expander>
+                        <!-- 직접 해보기 2_2 -->
+                        <Expander Style="{StaticResource PracticeExpanderStyle}">
+                            <StackPanel Margin="10">
+                                <TextBlock Text="과제: &quot;파일&quot; 메뉴에서 &quot;저장&quot;과 &quot;종료&quot; 사이를 Separator 로 구분하세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
+                                <TextBox x:Name="txtPractice2_2"
+                                         Style="{StaticResource PracticeInputStyle}"
+                                         Text="&lt;Menu&gt;&#10;    &lt;MenuItem Header=&quot;파일&quot;&gt;&#10;        &lt;MenuItem Header=&quot;저장&quot;/&gt;&#10;        &#10;        &lt;MenuItem Header=&quot;종료&quot;/&gt;&#10;    &lt;/MenuItem&gt;&#10;&lt;/Menu&gt;"/>
+                                <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
+                                    <Button Content="실행" Style="{StaticResource RunButtonStyle}" Click="BtnRun_Click" Tag="2_2"/>
+                                    <Button Content="힌트" Style="{StaticResource HintButtonStyle}" Click="BtnHint_Click" Tag="2_2"/>
+                                    <Button Content="정답 보기" Style="{StaticResource AnswerButtonStyle}" Click="BtnAnswer_Click" Tag="2_2"/>
+                                </StackPanel>
+                                <TextBlock x:Name="txtHint2_2"
+                                           Text="힌트: 메뉴 항목 사이에 &lt;Separator/&gt; 를 넣으면 구분선이 생깁니다."
+                                           Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                                <Border x:Name="resultBorder2_2" Background="White" Margin="0,8,0,0" Padding="10" Visibility="Collapsed">
+                                    <StackPanel x:Name="resultPanel2_2"/>
+                                </Border>
+                            </StackPanel>
+                        </Expander>
 
                         <!-- Separator -->
                         <GroupBox Header="Separator (구분선)" Margin="0,0,0,10">
@@ -269,7 +328,27 @@
                         <Expander Style="{StaticResource CodeExpanderStyle}">
                             <TextBox Style="{StaticResource CodeTextBoxStyle}" Text="&lt;MenuItem Header=&quot;편집&quot;&gt;&#10;    &lt;MenuItem Header=&quot;실행 취소&quot;/&gt;&#10;    &lt;MenuItem Header=&quot;다시 실행&quot;/&gt;&#10;    &lt;Separator/&gt;&#10;    &lt;MenuItem Header=&quot;잘라내기&quot;/&gt;&#10;    &lt;MenuItem Header=&quot;복사&quot;/&gt;&#10;    &lt;MenuItem Header=&quot;붙여넣기&quot;/&gt;&#10;    &lt;Separator/&gt;&#10;    &lt;MenuItem Header=&quot;모두 선택&quot;/&gt;&#10;&lt;/MenuItem&gt;"/>
                         </Expander>
-
+                        <!-- 직접 해보기 2_3 -->
+                        <Expander Style="{StaticResource PracticeExpanderStyle}">
+                            <StackPanel Margin="10">
+                                <TextBlock Text="과제: &quot;삽입&quot; 메뉴 아래 &quot;표&quot; 항목을 만들고 그 아래 다시 &quot;행 추가&quot;, &quot;열 추가&quot;를 넣으세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
+                                <TextBox x:Name="txtPractice2_3"
+                                         Style="{StaticResource PracticeInputStyle}"
+                                         Text="&lt;Menu&gt;&#10;    &lt;MenuItem Header=&quot;삽입&quot;&gt;&#10;        &#10;    &lt;/MenuItem&gt;&#10;&lt;/Menu&gt;"/>
+                                <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
+                                    <Button Content="실행" Style="{StaticResource RunButtonStyle}" Click="BtnRun_Click" Tag="2_3"/>
+                                    <Button Content="힌트" Style="{StaticResource HintButtonStyle}" Click="BtnHint_Click" Tag="2_3"/>
+                                    <Button Content="정답 보기" Style="{StaticResource AnswerButtonStyle}" Click="BtnAnswer_Click" Tag="2_3"/>
+                                </StackPanel>
+                                <TextBlock x:Name="txtHint2_3"
+                                           Text="힌트: 3단 중첩입니다. MenuItem 안에 MenuItem 안에 MenuItem."
+                                           Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                                <Border x:Name="resultBorder2_3" Background="White" Margin="0,8,0,0" Padding="10" Visibility="Collapsed">
+                                    <StackPanel x:Name="resultPanel2_3"/>
+                                </Border>
+                            </StackPanel>
+                        </Expander>
+                        
                         <!-- IsEnabled -->
                         <GroupBox Header="IsEnabled (활성화/비활성화)" Margin="0,0,0,10">
                             <StackPanel Margin="10">
@@ -289,69 +368,28 @@
                         <Expander Style="{StaticResource CodeExpanderStyle}">
                             <TextBox Style="{StaticResource CodeTextBoxStyle}" Text="&lt;MenuItem Header=&quot;실행 취소&quot; IsEnabled=&quot;False&quot;/&gt;&#10;&lt;MenuItem Header=&quot;다시 실행&quot; IsEnabled=&quot;False&quot;/&gt;&#10;&lt;Separator/&gt;&#10;&lt;MenuItem Header=&quot;잘라내기&quot;/&gt;&#10;&lt;MenuItem Header=&quot;복사&quot;/&gt;&#10;&lt;MenuItem Header=&quot;붙여넣기&quot; IsEnabled=&quot;False&quot;/&gt;"/>
                         </Expander>
+                        <!-- 직접 해보기 2_4 -->
+                        <Expander Style="{StaticResource PracticeExpanderStyle}">
+                            <StackPanel Margin="10">
+                                <TextBlock Text="과제: '편집' 메뉴를 만들고 '실행 취소'와 '붙여넣기'는 비활성 상태로 두세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
+                                <TextBox x:Name="txtPractice2_4"
+                                         Style="{StaticResource PracticeInputStyle}"
+                                         Text="&lt;Menu&gt;&#10;    &lt;MenuItem Header=&quot;편집&quot;&gt;&#10;        &#10;    &lt;/MenuItem&gt;&#10;&lt;/Menu&gt;"/>
+                                <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
+                                    <Button Content="실행" Style="{StaticResource RunButtonStyle}" Click="BtnRun_Click" Tag="2_4"/>
+                                    <Button Content="힌트" Style="{StaticResource HintButtonStyle}" Click="BtnHint_Click" Tag="2_4"/>
+                                    <Button Content="정답 보기" Style="{StaticResource AnswerButtonStyle}" Click="BtnAnswer_Click" Tag="2_4"/>
+                                </StackPanel>
+                                <TextBlock x:Name="txtHint2_4"
+                                           Text="힌트: 쓸 수 없는 항목에는 IsEnabled=&quot;False&quot; 를 줍니다. 묶음 사이는 &lt;Separator/&gt; 로 나눕니다."
+                                           Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                                <Border x:Name="resultBorder2_4" Background="White" Margin="0,8,0,0" Padding="10" Visibility="Collapsed">
+                                    <StackPanel x:Name="resultPanel2_4"/>
+                                </Border>
+                            </StackPanel>
+                        </Expander>
                     
-                    <!-- 직접 해보기 2_1 -->
-                    <Expander Style="{StaticResource PracticeExpanderStyle}">
-                        <StackPanel Margin="10">
-                            <TextBlock Text="과제: &quot;편집&quot; 메뉴 안에 &quot;찾기&quot; 항목을 만들고, 그 아래 다시 &quot;현재 문서&quot;, &quot;전체 문서&quot;를 넣어 3단 구조를 만드세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
-                            <TextBox x:Name="txtPractice2_1"
-                                     Style="{StaticResource PracticeInputStyle}"
-                                     Text="&lt;Menu&gt;&#10;    &lt;MenuItem Header=&quot;편집&quot;&gt;&#10;        &#10;    &lt;/MenuItem&gt;&#10;&lt;/Menu&gt;"/>
-                            <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
-                                <Button Content="실행" Style="{StaticResource RunButtonStyle}" Click="BtnRun_Click" Tag="2_1"/>
-                                <Button Content="힌트" Style="{StaticResource HintButtonStyle}" Click="BtnHint_Click" Tag="2_1"/>
-                                <Button Content="정답 보기" Style="{StaticResource AnswerButtonStyle}" Click="BtnAnswer_Click" Tag="2_1"/>
-                            </StackPanel>
-                            <TextBlock x:Name="txtHint2_1"
-                                       Text="힌트: MenuItem 은 몇 단계든 중첩할 수 있습니다."
-                                       Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
-                            <Border x:Name="resultBorder2_1" Background="White" Margin="0,8,0,0" Padding="10" Visibility="Collapsed">
-                                <StackPanel x:Name="resultPanel2_1"/>
-                            </Border>
-                        </StackPanel>
-                    </Expander>
 
-                    <!-- 직접 해보기 2_2 -->
-                    <Expander Style="{StaticResource PracticeExpanderStyle}">
-                        <StackPanel Margin="10">
-                            <TextBlock Text="과제: &quot;파일&quot; 메뉴에서 &quot;저장&quot;과 &quot;종료&quot; 사이를 Separator 로 구분하세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
-                            <TextBox x:Name="txtPractice2_2"
-                                     Style="{StaticResource PracticeInputStyle}"
-                                     Text="&lt;Menu&gt;&#10;    &lt;MenuItem Header=&quot;파일&quot;&gt;&#10;        &lt;MenuItem Header=&quot;저장&quot;/&gt;&#10;        &#10;        &lt;MenuItem Header=&quot;종료&quot;/&gt;&#10;    &lt;/MenuItem&gt;&#10;&lt;/Menu&gt;"/>
-                            <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
-                                <Button Content="실행" Style="{StaticResource RunButtonStyle}" Click="BtnRun_Click" Tag="2_2"/>
-                                <Button Content="힌트" Style="{StaticResource HintButtonStyle}" Click="BtnHint_Click" Tag="2_2"/>
-                                <Button Content="정답 보기" Style="{StaticResource AnswerButtonStyle}" Click="BtnAnswer_Click" Tag="2_2"/>
-                            </StackPanel>
-                            <TextBlock x:Name="txtHint2_2"
-                                       Text="힌트: 메뉴 항목 사이에 &lt;Separator/&gt; 를 넣으면 구분선이 생깁니다."
-                                       Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
-                            <Border x:Name="resultBorder2_2" Background="White" Margin="0,8,0,0" Padding="10" Visibility="Collapsed">
-                                <StackPanel x:Name="resultPanel2_2"/>
-                            </Border>
-                        </StackPanel>
-                    </Expander>
-
-<!-- 직접 해보기 2_3 -->
-<Expander Style="{StaticResource PracticeExpanderStyle}">
-    <StackPanel Margin="10">
-        <TextBlock Text="과제: &quot;삽입&quot; 메뉴 아래 &quot;표&quot; 항목을 만들고 그 아래 다시 &quot;행 추가&quot;, &quot;열 추가&quot;를 넣으세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
-        <TextBox x:Name="txtPractice2_3"
-                 Style="{StaticResource PracticeInputStyle}"
-                 Text="&lt;Menu&gt;&#10;    &lt;MenuItem Header=&quot;삽입&quot;&gt;&#10;        &#10;    &lt;/MenuItem&gt;&#10;&lt;/Menu&gt;"/>
-        <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
-            <Button Content="실행" Style="{StaticResource RunButtonStyle}" Click="BtnRun_Click" Tag="2_3"/>
-            <Button Content="힌트" Style="{StaticResource HintButtonStyle}" Click="BtnHint_Click" Tag="2_3"/>
-            <Button Content="정답 보기" Style="{StaticResource AnswerButtonStyle}" Click="BtnAnswer_Click" Tag="2_3"/>
-        </StackPanel>
-        <TextBlock x:Name="txtHint2_3"
-                   Text="힌트: 3단 중첩입니다. MenuItem 안에 MenuItem 안에 MenuItem."
-                   Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
-        <Border x:Name="resultBorder2_3" Background="White" Margin="0,8,0,0" Padding="10" Visibility="Collapsed">
-            <StackPanel x:Name="resultPanel2_3"/>
-        </Border>
-    </StackPanel>
-</Expander>
 </StackPanel>
                 </ScrollViewer>
             </TabItem>
@@ -390,6 +428,26 @@
                         <Expander Style="{StaticResource CodeExpanderStyle}">
                             <TextBox Style="{StaticResource CodeTextBoxStyle}" Text="&lt;MenuItem Header=&quot;새로 만들기&quot;&gt;&#10;    &lt;MenuItem.Icon&gt;&#10;        &lt;Rectangle Width=&quot;14&quot; Height=&quot;14&quot; Fill=&quot;LightBlue&quot; Stroke=&quot;DarkBlue&quot;/&gt;&#10;    &lt;/MenuItem.Icon&gt;&#10;&lt;/MenuItem&gt;&#10;&lt;MenuItem Header=&quot;열기&quot;&gt;&#10;    &lt;MenuItem.Icon&gt;&#10;        &lt;Ellipse Width=&quot;14&quot; Height=&quot;14&quot; Fill=&quot;Yellow&quot; Stroke=&quot;Orange&quot;/&gt;&#10;    &lt;/MenuItem.Icon&gt;&#10;&lt;/MenuItem&gt;"/>
                         </Expander>
+                        <!-- 직접 해보기 3_1 -->
+                        <Expander Style="{StaticResource PracticeExpanderStyle}">
+                            <StackPanel Margin="10">
+                                <TextBlock Text="과제: &quot;저장&quot; 메뉴 항목에 파란 사각형 아이콘을 붙이세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
+                                <TextBox x:Name="txtPractice3_1"
+                                         Style="{StaticResource PracticeInputStyle}"
+                                         Text="&lt;Menu&gt;&#10;    &lt;MenuItem Header=&quot;파일&quot;&gt;&#10;        &lt;MenuItem Header=&quot;저장&quot;&gt;&#10;            &#10;        &lt;/MenuItem&gt;&#10;    &lt;/MenuItem&gt;&#10;&lt;/Menu&gt;"/>
+                                <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
+                                    <Button Content="실행" Style="{StaticResource RunButtonStyle}" Click="BtnRun_Click" Tag="3_1"/>
+                                    <Button Content="힌트" Style="{StaticResource HintButtonStyle}" Click="BtnHint_Click" Tag="3_1"/>
+                                    <Button Content="정답 보기" Style="{StaticResource AnswerButtonStyle}" Click="BtnAnswer_Click" Tag="3_1"/>
+                                </StackPanel>
+                                <TextBlock x:Name="txtHint3_1"
+                                           Text="힌트: &lt;MenuItem.Icon&gt; 안에 Rectangle 같은 도형을 넣습니다."
+                                           Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                                <Border x:Name="resultBorder3_1" Background="White" Margin="0,8,0,0" Padding="10" Visibility="Collapsed">
+                                    <StackPanel x:Name="resultPanel3_1"/>
+                                </Border>
+                            </StackPanel>
+                        </Expander>
 
                         <!-- InputGestureText -->
                         <GroupBox Header="InputGestureText (단축키 표시)" Margin="0,0,0,10">
@@ -412,6 +470,26 @@
                         <Expander Style="{StaticResource CodeExpanderStyle}">
                             <TextBox Style="{StaticResource CodeTextBoxStyle}" Text="&lt;MenuItem Header=&quot;실행 취소&quot; InputGestureText=&quot;Ctrl+Z&quot;/&gt;&#10;&lt;MenuItem Header=&quot;다시 실행&quot; InputGestureText=&quot;Ctrl+Y&quot;/&gt;&#10;&lt;Separator/&gt;&#10;&lt;MenuItem Header=&quot;잘라내기&quot; InputGestureText=&quot;Ctrl+X&quot;/&gt;&#10;&lt;MenuItem Header=&quot;복사&quot; InputGestureText=&quot;Ctrl+C&quot;/&gt;&#10;&lt;MenuItem Header=&quot;붙여넣기&quot; InputGestureText=&quot;Ctrl+V&quot;/&gt;"/>
                         </Expander>
+                        <!-- 직접 해보기 3_2 -->
+                        <Expander Style="{StaticResource PracticeExpanderStyle}">
+                            <StackPanel Margin="10">
+                                <TextBlock Text="과제: &quot;복사&quot; 항목 오른쪽에 단축키 표시 &quot;Ctrl+C&quot; 가 나타나게 하세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
+                                <TextBox x:Name="txtPractice3_2"
+                                         Style="{StaticResource PracticeInputStyle}"
+                                         Text="&lt;Menu&gt;&#10;    &lt;MenuItem Header=&quot;편집&quot;&gt;&#10;        &lt;MenuItem Header=&quot;복사&quot;/&gt;&#10;    &lt;/MenuItem&gt;&#10;&lt;/Menu&gt;"/>
+                                <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
+                                    <Button Content="실행" Style="{StaticResource RunButtonStyle}" Click="BtnRun_Click" Tag="3_2"/>
+                                    <Button Content="힌트" Style="{StaticResource HintButtonStyle}" Click="BtnHint_Click" Tag="3_2"/>
+                                    <Button Content="정답 보기" Style="{StaticResource AnswerButtonStyle}" Click="BtnAnswer_Click" Tag="3_2"/>
+                                </StackPanel>
+                                <TextBlock x:Name="txtHint3_2"
+                                           Text="힌트: InputGestureText 속성에 단축키 문자열을 넣습니다."
+                                           Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                                <Border x:Name="resultBorder3_2" Background="White" Margin="0,8,0,0" Padding="10" Visibility="Collapsed">
+                                    <StackPanel x:Name="resultPanel3_2"/>
+                                </Border>
+                            </StackPanel>
+                        </Expander>
 
                         <!-- IsCheckable -->
                         <GroupBox Header="IsCheckable (체크 가능 메뉴)" Margin="0,0,0,10">
@@ -431,7 +509,27 @@
                         <Expander Style="{StaticResource CodeExpanderStyle}">
                             <TextBox Style="{StaticResource CodeTextBoxStyle}" Text="&lt;MenuItem Header=&quot;도구 모음&quot; IsCheckable=&quot;True&quot; IsChecked=&quot;True&quot;/&gt;&#10;&lt;MenuItem Header=&quot;상태 표시줄&quot; IsCheckable=&quot;True&quot; IsChecked=&quot;True&quot;/&gt;&#10;&lt;MenuItem Header=&quot;탐색기&quot; IsCheckable=&quot;True&quot;/&gt;&#10;&lt;Separator/&gt;&#10;&lt;MenuItem Header=&quot;전체 화면&quot; IsCheckable=&quot;True&quot; InputGestureText=&quot;F11&quot;/&gt;"/>
                         </Expander>
-
+                        <!-- 직접 해보기 3_3 -->
+                        <Expander Style="{StaticResource PracticeExpanderStyle}">
+                            <StackPanel Margin="10">
+                                <TextBlock Text="과제: &quot;붙여넣기&quot; 항목에 초록 원 아이콘과 Ctrl+V 단축키 표시를 함께 넣으세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
+                                <TextBox x:Name="txtPractice3_3"
+                                         Style="{StaticResource PracticeInputStyle}"
+                                         Text="&lt;Menu&gt;&#10;    &lt;MenuItem Header=&quot;편집&quot;&gt;&#10;        &lt;MenuItem Header=&quot;붙여넣기&quot;&gt;&#10;            &#10;        &lt;/MenuItem&gt;&#10;    &lt;/MenuItem&gt;&#10;&lt;/Menu&gt;"/>
+                                <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
+                                    <Button Content="실행" Style="{StaticResource RunButtonStyle}" Click="BtnRun_Click" Tag="3_3"/>
+                                    <Button Content="힌트" Style="{StaticResource HintButtonStyle}" Click="BtnHint_Click" Tag="3_3"/>
+                                    <Button Content="정답 보기" Style="{StaticResource AnswerButtonStyle}" Click="BtnAnswer_Click" Tag="3_3"/>
+                                </StackPanel>
+                                <TextBlock x:Name="txtHint3_3"
+                                           Text="힌트: MenuItem.Icon 과 InputGestureText 를 같이 씁니다."
+                                           Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                                <Border x:Name="resultBorder3_3" Background="White" Margin="0,8,0,0" Padding="10" Visibility="Collapsed">
+                                    <StackPanel x:Name="resultPanel3_3"/>
+                                </Border>
+                            </StackPanel>
+                        </Expander>
+                        
                         <!-- 라디오 버튼 스타일 -->
                         <GroupBox Header="라디오 버튼 스타일 (상호 배타적 선택)" Margin="0,0,0,10">
                             <StackPanel Margin="10">
@@ -449,69 +547,28 @@
                         <Expander Style="{StaticResource CodeExpanderStyle}">
                             <TextBox Style="{StaticResource CodeTextBoxStyle}" Text="&lt;MenuItem x:Name=&quot;sortByName&quot; Header=&quot;이름순&quot; IsCheckable=&quot;True&quot; IsChecked=&quot;True&quot; Checked=&quot;SortOption_Checked&quot;/&gt;&#10;&lt;MenuItem x:Name=&quot;sortByDate&quot; Header=&quot;날짜순&quot; IsCheckable=&quot;True&quot; Checked=&quot;SortOption_Checked&quot;/&gt;&#10;&lt;MenuItem x:Name=&quot;sortBySize&quot; Header=&quot;크기순&quot; IsCheckable=&quot;True&quot; Checked=&quot;SortOption_Checked&quot;/&gt;&#10;&#10;// C# - 라디오 버튼처럼 동작&#10;private void SortOption_Checked(object sender, RoutedEventArgs e)&#10;{&#10;    var item = sender as MenuItem;&#10;    sortByName.IsChecked = (item == sortByName);&#10;    sortByDate.IsChecked = (item == sortByDate);&#10;    sortBySize.IsChecked = (item == sortBySize);&#10;    sortStatusText.Text = $&quot;현재 정렬: {item?.Header}&quot;;&#10;}"/>
                         </Expander>
+                        <!-- 직접 해보기 3_4 -->
+                        <Expander Style="{StaticResource PracticeExpanderStyle}">
+                            <StackPanel Margin="10">
+                                <TextBlock Text="과제: 정렬 메뉴 3개 중 방금 눌린 항목만 체크되도록 핸들러를 완성하세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
+                                <TextBox x:Name="txtPractice3_4"
+                                         Style="{StaticResource PracticeInputStyle}"
+                                         Height="120" AcceptsReturn="True"
+                                         Text="private void SortOption_Checked(object sender, RoutedEventArgs e)&#10;{&#10;    var item = sender as MenuItem;&#10;    &#10;}"/>
+                                <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
+                                    <Button Content="확인" Style="{StaticResource RunButtonStyle}" Click="BtnCheck_Click" Tag="3_4"/>
+                                    <Button Content="힌트" Style="{StaticResource HintButtonStyle}" Click="BtnHint_Click" Tag="3_4"/>
+                                    <Button Content="정답 보기" Style="{StaticResource AnswerButtonStyle}" Click="BtnAnswer_Click" Tag="3_4"/>
+                                </StackPanel>
+                                <TextBlock x:Name="txtHint3_4"
+                                           Text="힌트: 각 항목의 IsChecked 에 (item == 그 항목) 결과를 그대로 넣으면 하나만 남습니다."
+                                           Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                                <TextBlock x:Name="txtResult3_4" Margin="0,8,0,0" FontWeight="Bold"
+                                           Visibility="Collapsed" TextWrapping="Wrap"/>
+                            </StackPanel>
+                        </Expander>
                     
-                    <!-- 직접 해보기 3_1 -->
-                    <Expander Style="{StaticResource PracticeExpanderStyle}">
-                        <StackPanel Margin="10">
-                            <TextBlock Text="과제: &quot;저장&quot; 메뉴 항목에 파란 사각형 아이콘을 붙이세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
-                            <TextBox x:Name="txtPractice3_1"
-                                     Style="{StaticResource PracticeInputStyle}"
-                                     Text="&lt;Menu&gt;&#10;    &lt;MenuItem Header=&quot;파일&quot;&gt;&#10;        &lt;MenuItem Header=&quot;저장&quot;&gt;&#10;            &#10;        &lt;/MenuItem&gt;&#10;    &lt;/MenuItem&gt;&#10;&lt;/Menu&gt;"/>
-                            <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
-                                <Button Content="실행" Style="{StaticResource RunButtonStyle}" Click="BtnRun_Click" Tag="3_1"/>
-                                <Button Content="힌트" Style="{StaticResource HintButtonStyle}" Click="BtnHint_Click" Tag="3_1"/>
-                                <Button Content="정답 보기" Style="{StaticResource AnswerButtonStyle}" Click="BtnAnswer_Click" Tag="3_1"/>
-                            </StackPanel>
-                            <TextBlock x:Name="txtHint3_1"
-                                       Text="힌트: &lt;MenuItem.Icon&gt; 안에 Rectangle 같은 도형을 넣습니다."
-                                       Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
-                            <Border x:Name="resultBorder3_1" Background="White" Margin="0,8,0,0" Padding="10" Visibility="Collapsed">
-                                <StackPanel x:Name="resultPanel3_1"/>
-                            </Border>
-                        </StackPanel>
-                    </Expander>
 
-                    <!-- 직접 해보기 3_2 -->
-                    <Expander Style="{StaticResource PracticeExpanderStyle}">
-                        <StackPanel Margin="10">
-                            <TextBlock Text="과제: &quot;복사&quot; 항목 오른쪽에 단축키 표시 &quot;Ctrl+C&quot; 가 나타나게 하세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
-                            <TextBox x:Name="txtPractice3_2"
-                                     Style="{StaticResource PracticeInputStyle}"
-                                     Text="&lt;Menu&gt;&#10;    &lt;MenuItem Header=&quot;편집&quot;&gt;&#10;        &lt;MenuItem Header=&quot;복사&quot;/&gt;&#10;    &lt;/MenuItem&gt;&#10;&lt;/Menu&gt;"/>
-                            <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
-                                <Button Content="실행" Style="{StaticResource RunButtonStyle}" Click="BtnRun_Click" Tag="3_2"/>
-                                <Button Content="힌트" Style="{StaticResource HintButtonStyle}" Click="BtnHint_Click" Tag="3_2"/>
-                                <Button Content="정답 보기" Style="{StaticResource AnswerButtonStyle}" Click="BtnAnswer_Click" Tag="3_2"/>
-                            </StackPanel>
-                            <TextBlock x:Name="txtHint3_2"
-                                       Text="힌트: InputGestureText 속성에 단축키 문자열을 넣습니다."
-                                       Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
-                            <Border x:Name="resultBorder3_2" Background="White" Margin="0,8,0,0" Padding="10" Visibility="Collapsed">
-                                <StackPanel x:Name="resultPanel3_2"/>
-                            </Border>
-                        </StackPanel>
-                    </Expander>
-
-<!-- 직접 해보기 3_3 -->
-<Expander Style="{StaticResource PracticeExpanderStyle}">
-    <StackPanel Margin="10">
-        <TextBlock Text="과제: &quot;붙여넣기&quot; 항목에 초록 원 아이콘과 Ctrl+V 단축키 표시를 함께 넣으세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
-        <TextBox x:Name="txtPractice3_3"
-                 Style="{StaticResource PracticeInputStyle}"
-                 Text="&lt;Menu&gt;&#10;    &lt;MenuItem Header=&quot;편집&quot;&gt;&#10;        &lt;MenuItem Header=&quot;붙여넣기&quot;&gt;&#10;            &#10;        &lt;/MenuItem&gt;&#10;    &lt;/MenuItem&gt;&#10;&lt;/Menu&gt;"/>
-        <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
-            <Button Content="실행" Style="{StaticResource RunButtonStyle}" Click="BtnRun_Click" Tag="3_3"/>
-            <Button Content="힌트" Style="{StaticResource HintButtonStyle}" Click="BtnHint_Click" Tag="3_3"/>
-            <Button Content="정답 보기" Style="{StaticResource AnswerButtonStyle}" Click="BtnAnswer_Click" Tag="3_3"/>
-        </StackPanel>
-        <TextBlock x:Name="txtHint3_3"
-                   Text="힌트: MenuItem.Icon 과 InputGestureText 를 같이 씁니다."
-                   Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
-        <Border x:Name="resultBorder3_3" Background="White" Margin="0,8,0,0" Padding="10" Visibility="Collapsed">
-            <StackPanel x:Name="resultPanel3_3"/>
-        </Border>
-    </StackPanel>
-</Expander>
 </StackPanel>
                 </ScrollViewer>
             </TabItem>
@@ -541,6 +598,26 @@
                         <Expander Style="{StaticResource CodeExpanderStyle}">
                             <TextBox Style="{StaticResource CodeTextBoxStyle}" Text="&lt;Menu Background=&quot;LightSteelBlue&quot;&gt;&#10;    &lt;MenuItem Header=&quot;파일&quot; Background=&quot;LightCyan&quot;&gt;&#10;        &lt;MenuItem Header=&quot;새로 만들기&quot;/&gt;&#10;        &lt;MenuItem Header=&quot;열기&quot;/&gt;&#10;    &lt;/MenuItem&gt;&#10;    &lt;MenuItem Header=&quot;편집&quot; Background=&quot;LightPink&quot;&gt;&#10;        &lt;MenuItem Header=&quot;복사&quot;/&gt;&#10;        &lt;MenuItem Header=&quot;붙여넣기&quot;/&gt;&#10;    &lt;/MenuItem&gt;&#10;&lt;/Menu&gt;"/>
                         </Expander>
+                        <!-- 직접 해보기 4_1 -->
+                        <Expander Style="{StaticResource PracticeExpanderStyle}">
+                            <StackPanel Margin="10">
+                                <TextBlock Text="과제: Menu 의 배경을 어두운 회색(#333333), 글자색을 흰색으로 바꾸세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
+                                <TextBox x:Name="txtPractice4_1"
+                                         Style="{StaticResource PracticeInputStyle}"
+                                         Text="&lt;Menu&gt;&#10;    &lt;MenuItem Header=&quot;파일&quot; Foreground=&quot;White&quot;/&gt;&#10;&lt;/Menu&gt;"/>
+                                <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
+                                    <Button Content="실행" Style="{StaticResource RunButtonStyle}" Click="BtnRun_Click" Tag="4_1"/>
+                                    <Button Content="힌트" Style="{StaticResource HintButtonStyle}" Click="BtnHint_Click" Tag="4_1"/>
+                                    <Button Content="정답 보기" Style="{StaticResource AnswerButtonStyle}" Click="BtnAnswer_Click" Tag="4_1"/>
+                                </StackPanel>
+                                <TextBlock x:Name="txtHint4_1"
+                                           Text="힌트: Menu 에 Background 를, MenuItem 에 Foreground 를 지정합니다."
+                                           Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                                <Border x:Name="resultBorder4_1" Background="White" Margin="0,8,0,0" Padding="10" Visibility="Collapsed">
+                                    <StackPanel x:Name="resultPanel4_1"/>
+                                </Border>
+                            </StackPanel>
+                        </Expander>
 
                         <!-- 글꼴 스타일 -->
                         <GroupBox Header="글꼴 스타일" Margin="0,0,0,10">
@@ -560,6 +637,26 @@
                         </GroupBox>
                         <Expander Style="{StaticResource CodeExpanderStyle}">
                             <TextBox Style="{StaticResource CodeTextBoxStyle}" Text="&lt;Menu FontFamily=&quot;맑은 고딕&quot; FontSize=&quot;14&quot;&gt;&#10;    &lt;MenuItem Header=&quot;파일&quot; FontWeight=&quot;Bold&quot;&gt;&#10;        &lt;MenuItem Header=&quot;새로 만들기&quot; FontStyle=&quot;Italic&quot;/&gt;&#10;        &lt;MenuItem Header=&quot;열기&quot;/&gt;&#10;    &lt;/MenuItem&gt;&#10;    &lt;MenuItem Header=&quot;편집&quot;&gt;&#10;        &lt;MenuItem Header=&quot;복사&quot; Foreground=&quot;Blue&quot;/&gt;&#10;        &lt;MenuItem Header=&quot;붙여넣기&quot; Foreground=&quot;Green&quot;/&gt;&#10;    &lt;/MenuItem&gt;&#10;&lt;/Menu&gt;"/>
+                        </Expander>
+                        <!-- 직접 해보기 4_2 -->
+                        <Expander Style="{StaticResource PracticeExpanderStyle}">
+                            <StackPanel Margin="10">
+                                <TextBlock Text="과제: 체크할 수 있는 &quot;자동 줄바꿈&quot; 메뉴 항목을 만들고, 기본으로 체크된 상태가 되게 하세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
+                                <TextBox x:Name="txtPractice4_2"
+                                         Style="{StaticResource PracticeInputStyle}"
+                                         Text="&lt;Menu&gt;&#10;    &lt;MenuItem Header=&quot;보기&quot;&gt;&#10;        &#10;    &lt;/MenuItem&gt;&#10;&lt;/Menu&gt;"/>
+                                <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
+                                    <Button Content="실행" Style="{StaticResource RunButtonStyle}" Click="BtnRun_Click" Tag="4_2"/>
+                                    <Button Content="힌트" Style="{StaticResource HintButtonStyle}" Click="BtnHint_Click" Tag="4_2"/>
+                                    <Button Content="정답 보기" Style="{StaticResource AnswerButtonStyle}" Click="BtnAnswer_Click" Tag="4_2"/>
+                                </StackPanel>
+                                <TextBlock x:Name="txtHint4_2"
+                                           Text="힌트: IsCheckable=&quot;True&quot; 와 IsChecked=&quot;True&quot; 를 함께 씁니다."
+                                           Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                                <Border x:Name="resultBorder4_2" Background="White" Margin="0,8,0,0" Padding="10" Visibility="Collapsed">
+                                    <StackPanel x:Name="resultPanel4_2"/>
+                                </Border>
+                            </StackPanel>
                         </Expander>
 
                         <!-- 세로 메뉴 -->
@@ -582,7 +679,27 @@
                         <Expander Style="{StaticResource CodeExpanderStyle}">
                             <TextBox Style="{StaticResource CodeTextBoxStyle}" Text="&lt;Menu Width=&quot;150&quot; HorizontalAlignment=&quot;Left&quot;&gt;&#10;    &lt;Menu.ItemsPanel&gt;&#10;        &lt;ItemsPanelTemplate&gt;&#10;            &lt;StackPanel Orientation=&quot;Vertical&quot;/&gt;&#10;        &lt;/ItemsPanelTemplate&gt;&#10;    &lt;/Menu.ItemsPanel&gt;&#10;    &lt;MenuItem Header=&quot;홈&quot;/&gt;&#10;    &lt;MenuItem Header=&quot;프로필&quot;/&gt;&#10;    &lt;MenuItem Header=&quot;설정&quot;/&gt;&#10;    &lt;MenuItem Header=&quot;로그아웃&quot;/&gt;&#10;&lt;/Menu&gt;"/>
                         </Expander>
-
+                        <!-- 직접 해보기 4_3 -->
+                        <Expander Style="{StaticResource PracticeExpanderStyle}">
+                            <StackPanel Margin="10">
+                                <TextBlock Text="과제: 비활성 상태로 표시되는 메뉴 항목을 만드세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
+                                <TextBox x:Name="txtPractice4_3"
+                                         Style="{StaticResource PracticeInputStyle}"
+                                         Text="&lt;Menu&gt;&#10;    &lt;MenuItem Header=&quot;편집&quot;&gt;&#10;        &lt;MenuItem Header=&quot;실행 취소&quot;/&gt;&#10;    &lt;/MenuItem&gt;&#10;&lt;/Menu&gt;"/>
+                                <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
+                                    <Button Content="실행" Style="{StaticResource RunButtonStyle}" Click="BtnRun_Click" Tag="4_3"/>
+                                    <Button Content="힌트" Style="{StaticResource HintButtonStyle}" Click="BtnHint_Click" Tag="4_3"/>
+                                    <Button Content="정답 보기" Style="{StaticResource AnswerButtonStyle}" Click="BtnAnswer_Click" Tag="4_3"/>
+                                </StackPanel>
+                                <TextBlock x:Name="txtHint4_3"
+                                           Text="힌트: IsEnabled=&quot;False&quot; 를 주면 회색으로 흐려집니다."
+                                           Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                                <Border x:Name="resultBorder4_3" Background="White" Margin="0,8,0,0" Padding="10" Visibility="Collapsed">
+                                    <StackPanel x:Name="resultPanel4_3"/>
+                                </Border>
+                            </StackPanel>
+                        </Expander>
+                        
                         <!-- 동적 스타일 변경 -->
                         <GroupBox Header="동적 스타일 변경" Margin="0,0,0,10">
                             <StackPanel Margin="10">
@@ -608,69 +725,28 @@
                         <Expander Style="{StaticResource CodeExpanderStyle}">
                             <TextBox Style="{StaticResource CodeTextBoxStyle}" Text="&lt;Menu x:Name=&quot;themedMenu&quot; Background=&quot;#F0F0F0&quot;&gt;...&lt;/Menu&gt;&#10;&#10;// C# 코드&#10;private void DarkTheme_Click(object sender, RoutedEventArgs e)&#10;{&#10;    themedMenu.Background = new SolidColorBrush(Color.FromRgb(45, 45, 48));&#10;    themedMenu.Foreground = Brushes.White;&#10;}&#10;&#10;private void BlueTheme_Click(object sender, RoutedEventArgs e)&#10;{&#10;    themedMenu.Background = new SolidColorBrush(Color.FromRgb(0, 122, 204));&#10;    themedMenu.Foreground = Brushes.White;&#10;}"/>
                         </Expander>
+                        <!-- 직접 해보기 4_4 -->
+                        <Expander Style="{StaticResource PracticeExpanderStyle}">
+                            <StackPanel Margin="10">
+                                <TextBlock Text="과제: 버튼을 누르면 themedMenu를 어두운 배경 + 흰 글자로 바꾸는 핸들러를 완성하세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
+                                <TextBox x:Name="txtPractice4_4"
+                                         Style="{StaticResource PracticeInputStyle}"
+                                         Height="120" AcceptsReturn="True"
+                                         Text="private void DarkTheme_Click(object sender, RoutedEventArgs e)&#10;{&#10;    &#10;}"/>
+                                <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
+                                    <Button Content="확인" Style="{StaticResource RunButtonStyle}" Click="BtnCheck_Click" Tag="4_4"/>
+                                    <Button Content="힌트" Style="{StaticResource HintButtonStyle}" Click="BtnHint_Click" Tag="4_4"/>
+                                    <Button Content="정답 보기" Style="{StaticResource AnswerButtonStyle}" Click="BtnAnswer_Click" Tag="4_4"/>
+                                </StackPanel>
+                                <TextBlock x:Name="txtHint4_4"
+                                           Text="힌트: 색을 직접 만들려면 new SolidColorBrush(Color.FromRgb(45, 45, 48)) 를 씁니다."
+                                           Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                                <TextBlock x:Name="txtResult4_4" Margin="0,8,0,0" FontWeight="Bold"
+                                           Visibility="Collapsed" TextWrapping="Wrap"/>
+                            </StackPanel>
+                        </Expander>
                     
-                    <!-- 직접 해보기 4_1 -->
-                    <Expander Style="{StaticResource PracticeExpanderStyle}">
-                        <StackPanel Margin="10">
-                            <TextBlock Text="과제: Menu 의 배경을 어두운 회색(#333333), 글자색을 흰색으로 바꾸세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
-                            <TextBox x:Name="txtPractice4_1"
-                                     Style="{StaticResource PracticeInputStyle}"
-                                     Text="&lt;Menu&gt;&#10;    &lt;MenuItem Header=&quot;파일&quot; Foreground=&quot;White&quot;/&gt;&#10;&lt;/Menu&gt;"/>
-                            <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
-                                <Button Content="실행" Style="{StaticResource RunButtonStyle}" Click="BtnRun_Click" Tag="4_1"/>
-                                <Button Content="힌트" Style="{StaticResource HintButtonStyle}" Click="BtnHint_Click" Tag="4_1"/>
-                                <Button Content="정답 보기" Style="{StaticResource AnswerButtonStyle}" Click="BtnAnswer_Click" Tag="4_1"/>
-                            </StackPanel>
-                            <TextBlock x:Name="txtHint4_1"
-                                       Text="힌트: Menu 에 Background 를, MenuItem 에 Foreground 를 지정합니다."
-                                       Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
-                            <Border x:Name="resultBorder4_1" Background="White" Margin="0,8,0,0" Padding="10" Visibility="Collapsed">
-                                <StackPanel x:Name="resultPanel4_1"/>
-                            </Border>
-                        </StackPanel>
-                    </Expander>
 
-                    <!-- 직접 해보기 4_2 -->
-                    <Expander Style="{StaticResource PracticeExpanderStyle}">
-                        <StackPanel Margin="10">
-                            <TextBlock Text="과제: 체크할 수 있는 &quot;자동 줄바꿈&quot; 메뉴 항목을 만들고, 기본으로 체크된 상태가 되게 하세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
-                            <TextBox x:Name="txtPractice4_2"
-                                     Style="{StaticResource PracticeInputStyle}"
-                                     Text="&lt;Menu&gt;&#10;    &lt;MenuItem Header=&quot;보기&quot;&gt;&#10;        &#10;    &lt;/MenuItem&gt;&#10;&lt;/Menu&gt;"/>
-                            <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
-                                <Button Content="실행" Style="{StaticResource RunButtonStyle}" Click="BtnRun_Click" Tag="4_2"/>
-                                <Button Content="힌트" Style="{StaticResource HintButtonStyle}" Click="BtnHint_Click" Tag="4_2"/>
-                                <Button Content="정답 보기" Style="{StaticResource AnswerButtonStyle}" Click="BtnAnswer_Click" Tag="4_2"/>
-                            </StackPanel>
-                            <TextBlock x:Name="txtHint4_2"
-                                       Text="힌트: IsCheckable=&quot;True&quot; 와 IsChecked=&quot;True&quot; 를 함께 씁니다."
-                                       Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
-                            <Border x:Name="resultBorder4_2" Background="White" Margin="0,8,0,0" Padding="10" Visibility="Collapsed">
-                                <StackPanel x:Name="resultPanel4_2"/>
-                            </Border>
-                        </StackPanel>
-                    </Expander>
-
-<!-- 직접 해보기 4_3 -->
-<Expander Style="{StaticResource PracticeExpanderStyle}">
-    <StackPanel Margin="10">
-        <TextBlock Text="과제: 비활성 상태로 표시되는 메뉴 항목을 만드세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
-        <TextBox x:Name="txtPractice4_3"
-                 Style="{StaticResource PracticeInputStyle}"
-                 Text="&lt;Menu&gt;&#10;    &lt;MenuItem Header=&quot;편집&quot;&gt;&#10;        &lt;MenuItem Header=&quot;실행 취소&quot;/&gt;&#10;    &lt;/MenuItem&gt;&#10;&lt;/Menu&gt;"/>
-        <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
-            <Button Content="실행" Style="{StaticResource RunButtonStyle}" Click="BtnRun_Click" Tag="4_3"/>
-            <Button Content="힌트" Style="{StaticResource HintButtonStyle}" Click="BtnHint_Click" Tag="4_3"/>
-            <Button Content="정답 보기" Style="{StaticResource AnswerButtonStyle}" Click="BtnAnswer_Click" Tag="4_3"/>
-        </StackPanel>
-        <TextBlock x:Name="txtHint4_3"
-                   Text="힌트: IsEnabled=&quot;False&quot; 를 주면 회색으로 흐려집니다."
-                   Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
-        <Border x:Name="resultBorder4_3" Background="White" Margin="0,8,0,0" Padding="10" Visibility="Collapsed">
-            <StackPanel x:Name="resultPanel4_3"/>
-        </Border>
-    </StackPanel>
-</Expander>
 </StackPanel>
                 </ScrollViewer>
             </TabItem>
@@ -746,6 +822,26 @@
                         <Expander Style="{StaticResource CodeExpanderStyle}">
                             <TextBox Style="{StaticResource CodeTextBoxStyle}" Text="&lt;DockPanel&gt;&#10;    &lt;Menu DockPanel.Dock=&quot;Top&quot;&gt;&#10;        &lt;MenuItem Header=&quot;_파일&quot;&gt;&#10;            &lt;MenuItem Header=&quot;_새로 만들기&quot; InputGestureText=&quot;Ctrl+N&quot;&gt;&#10;                &lt;MenuItem.Icon&gt;&#10;                    &lt;Rectangle Width=&quot;14&quot; Height=&quot;14&quot; Fill=&quot;LightBlue&quot;/&gt;&#10;                &lt;/MenuItem.Icon&gt;&#10;            &lt;/MenuItem&gt;&#10;            &lt;MenuItem Header=&quot;_열기&quot; InputGestureText=&quot;Ctrl+O&quot;/&gt;&#10;            &lt;Separator/&gt;&#10;            &lt;MenuItem Header=&quot;_저장&quot; InputGestureText=&quot;Ctrl+S&quot;/&gt;&#10;        &lt;/MenuItem&gt;&#10;        &lt;MenuItem Header=&quot;_편집&quot;&gt;...&lt;/MenuItem&gt;&#10;        &lt;MenuItem Header=&quot;_보기&quot;&gt;...&lt;/MenuItem&gt;&#10;    &lt;/Menu&gt;&#10;    &lt;TextBox AcceptsReturn=&quot;True&quot;/&gt;&#10;&lt;/DockPanel&gt;"/>
                         </Expander>
+                        <!-- 직접 해보기 5_1 -->
+                        <Expander Style="{StaticResource PracticeExpanderStyle}">
+                            <StackPanel Margin="10">
+                                <TextBlock Text="과제: 메모장 스타일 메뉴바를 만드세요. 파일(새로 만들기/열기/구분선/종료)과 도움말(정보) 두 메뉴가 필요합니다." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
+                                <TextBox x:Name="txtPractice5_1"
+                                         Style="{StaticResource PracticeInputStyle}"
+                                         Text="&lt;Menu&gt;&#10;    &#10;&lt;/Menu&gt;"/>
+                                <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
+                                    <Button Content="실행" Style="{StaticResource RunButtonStyle}" Click="BtnRun_Click" Tag="5_1"/>
+                                    <Button Content="힌트" Style="{StaticResource HintButtonStyle}" Click="BtnHint_Click" Tag="5_1"/>
+                                    <Button Content="정답 보기" Style="{StaticResource AnswerButtonStyle}" Click="BtnAnswer_Click" Tag="5_1"/>
+                                </StackPanel>
+                                <TextBlock x:Name="txtHint5_1"
+                                           Text="힌트: 최상위 MenuItem 2개를 만들고, 파일 메뉴 안에 Separator 를 넣습니다."
+                                           Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                                <Border x:Name="resultBorder5_1" Background="White" Margin="0,8,0,0" Padding="10" Visibility="Collapsed">
+                                    <StackPanel x:Name="resultPanel5_1"/>
+                                </Border>
+                            </StackPanel>
+                        </Expander>
 
                         <!-- 이미지 뷰어 메뉴 -->
                         <GroupBox Header="이미지 뷰어 메뉴" Margin="0,0,0,10">
@@ -792,6 +888,24 @@
                         <Expander Style="{StaticResource CodeExpanderStyle}">
                             <TextBox Style="{StaticResource CodeTextBoxStyle}" Text="&lt;MenuItem Header=&quot;이미지&quot;&gt;&#10;    &lt;MenuItem Header=&quot;회전&quot;&gt;&#10;        &lt;MenuItem Header=&quot;시계 방향 90°&quot;/&gt;&#10;        &lt;MenuItem Header=&quot;반시계 방향 90°&quot;/&gt;&#10;        &lt;MenuItem Header=&quot;180°&quot;/&gt;&#10;    &lt;/MenuItem&gt;&#10;    &lt;MenuItem Header=&quot;뒤집기&quot;&gt;&#10;        &lt;MenuItem Header=&quot;수평 뒤집기&quot;/&gt;&#10;        &lt;MenuItem Header=&quot;수직 뒤집기&quot;/&gt;&#10;    &lt;/MenuItem&gt;&#10;    &lt;Separator/&gt;&#10;    &lt;MenuItem Header=&quot;크기 조정&quot;/&gt;&#10;&lt;/MenuItem&gt;"/>
                         </Expander>
+                        <!-- 직접 해보기 5_2 -->
+                        <Expander Style="{StaticResource PracticeExpanderStyle}">
+                            <StackPanel Margin="10">
+                                <TextBlock Text="과제: 메뉴 항목을 클릭하면 &quot;저장되었습니다&quot; 메시지 박스를 띄우는 핸들러를 작성하세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
+                                <TextBox x:Name="txtPractice5_2"
+                                         Style="{StaticResource PracticeInputStyle}"
+                                         Text="private void Save_Click(object sender, RoutedEventArgs e)&#10;{&#10;    &#10;}"/>
+                                <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
+                                    <Button Content="확인" Style="{StaticResource RunButtonStyle}" Click="BtnCheck_Click" Tag="5_2"/>
+                                    <Button Content="힌트" Style="{StaticResource HintButtonStyle}" Click="BtnHint_Click" Tag="5_2"/>
+                                    <Button Content="정답 보기" Style="{StaticResource AnswerButtonStyle}" Click="BtnAnswer_Click" Tag="5_2"/>
+                                </StackPanel>
+                                <TextBlock x:Name="txtHint5_2"
+                                           Text="힌트: MessageBox.Show 에 표시할 문자열을 넘깁니다."
+                                           Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                                <TextBlock x:Name="txtResult5_2" Margin="0,8,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                            </StackPanel>
+                        </Expander>
 
                         <!-- 설정 메뉴 -->
                         <GroupBox Header="설정/옵션 메뉴" Margin="0,0,0,10">
@@ -823,67 +937,28 @@
                         <Expander Style="{StaticResource CodeExpanderStyle}">
                             <TextBox Style="{StaticResource CodeTextBoxStyle}" Text="&lt;MenuItem Header=&quot;테마&quot;&gt;&#10;    &lt;MenuItem x:Name=&quot;themeLight&quot; Header=&quot;라이트 모드&quot; IsCheckable=&quot;True&quot; IsChecked=&quot;True&quot; Checked=&quot;ThemeOption_Checked&quot;/&gt;&#10;    &lt;MenuItem x:Name=&quot;themeDark&quot; Header=&quot;다크 모드&quot; IsCheckable=&quot;True&quot; Checked=&quot;ThemeOption_Checked&quot;/&gt;&#10;    &lt;MenuItem x:Name=&quot;themeSystem&quot; Header=&quot;시스템 설정&quot; IsCheckable=&quot;True&quot; Checked=&quot;ThemeOption_Checked&quot;/&gt;&#10;&lt;/MenuItem&gt;&#10;&#10;// C# - 라디오 버튼처럼 동작&#10;private void ThemeOption_Checked(object sender, RoutedEventArgs e)&#10;{&#10;    var item = sender as MenuItem;&#10;    themeLight.IsChecked = (item == themeLight);&#10;    themeDark.IsChecked = (item == themeDark);&#10;    themeSystem.IsChecked = (item == themeSystem);&#10;}"/>
                         </Expander>
-                    
-                    <!-- 직접 해보기 5_1 -->
-                    <Expander Style="{StaticResource PracticeExpanderStyle}">
-                        <StackPanel Margin="10">
-                            <TextBlock Text="과제: 메모장 스타일 메뉴바를 만드세요. 파일(새로 만들기/열기/구분선/종료)과 도움말(정보) 두 메뉴가 필요합니다." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
-                            <TextBox x:Name="txtPractice5_1"
-                                     Style="{StaticResource PracticeInputStyle}"
-                                     Text="&lt;Menu&gt;&#10;    &#10;&lt;/Menu&gt;"/>
-                            <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
-                                <Button Content="실행" Style="{StaticResource RunButtonStyle}" Click="BtnRun_Click" Tag="5_1"/>
-                                <Button Content="힌트" Style="{StaticResource HintButtonStyle}" Click="BtnHint_Click" Tag="5_1"/>
-                                <Button Content="정답 보기" Style="{StaticResource AnswerButtonStyle}" Click="BtnAnswer_Click" Tag="5_1"/>
+                        <!-- 직접 해보기 5_3 -->
+                        <Expander Style="{StaticResource PracticeExpanderStyle}">
+                            <StackPanel Margin="10">
+                                <TextBlock Text="과제: 세 항목 중 하나만 선택되는 보기 모드 메뉴를 만드세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
+                                <TextBox x:Name="txtPractice5_3"
+                                         Style="{StaticResource PracticeInputStyle}"
+                                         Text="&lt;Menu&gt;&#10;    &lt;MenuItem Header=&quot;보기&quot;&gt;&#10;        &#10;    &lt;/MenuItem&gt;&#10;&lt;/Menu&gt;"/>
+                                <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
+                                    <Button Content="실행" Style="{StaticResource RunButtonStyle}" Click="BtnRun_Click" Tag="5_3"/>
+                                    <Button Content="힌트" Style="{StaticResource HintButtonStyle}" Click="BtnHint_Click" Tag="5_3"/>
+                                    <Button Content="정답 보기" Style="{StaticResource AnswerButtonStyle}" Click="BtnAnswer_Click" Tag="5_3"/>
+                                </StackPanel>
+                                <TextBlock x:Name="txtHint5_3"
+                                           Text="힌트: IsCheckable 을 켜고 하나만 IsChecked 로 둡니다."
+                                           Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                                <Border x:Name="resultBorder5_3" Background="White" Margin="0,8,0,0" Padding="10" Visibility="Collapsed">
+                                    <StackPanel x:Name="resultPanel5_3"/>
+                                </Border>
                             </StackPanel>
-                            <TextBlock x:Name="txtHint5_1"
-                                       Text="힌트: 최상위 MenuItem 2개를 만들고, 파일 메뉴 안에 Separator 를 넣습니다."
-                                       Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
-                            <Border x:Name="resultBorder5_1" Background="White" Margin="0,8,0,0" Padding="10" Visibility="Collapsed">
-                                <StackPanel x:Name="resultPanel5_1"/>
-                            </Border>
-                        </StackPanel>
-                    </Expander>
+                        </Expander>
+                                            
 
-                    <!-- 직접 해보기 5_2 -->
-                    <Expander Style="{StaticResource PracticeExpanderStyle}">
-                        <StackPanel Margin="10">
-                            <TextBlock Text="과제: 메뉴 항목을 클릭하면 &quot;저장되었습니다&quot; 메시지 박스를 띄우는 핸들러를 작성하세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
-                            <TextBox x:Name="txtPractice5_2"
-                                     Style="{StaticResource PracticeInputStyle}"
-                                     Text="private void Save_Click(object sender, RoutedEventArgs e)&#10;{&#10;    &#10;}"/>
-                            <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
-                                <Button Content="확인" Style="{StaticResource RunButtonStyle}" Click="BtnCheck_Click" Tag="5_2"/>
-                                <Button Content="힌트" Style="{StaticResource HintButtonStyle}" Click="BtnHint_Click" Tag="5_2"/>
-                                <Button Content="정답 보기" Style="{StaticResource AnswerButtonStyle}" Click="BtnAnswer_Click" Tag="5_2"/>
-                            </StackPanel>
-                            <TextBlock x:Name="txtHint5_2"
-                                       Text="힌트: MessageBox.Show 에 표시할 문자열을 넘깁니다."
-                                       Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
-                            <TextBlock x:Name="txtResult5_2" Margin="0,8,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
-                        </StackPanel>
-                    </Expander>
-
-<!-- 직접 해보기 5_3 -->
-<Expander Style="{StaticResource PracticeExpanderStyle}">
-    <StackPanel Margin="10">
-        <TextBlock Text="과제: 세 항목 중 하나만 선택되는 보기 모드 메뉴를 만드세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
-        <TextBox x:Name="txtPractice5_3"
-                 Style="{StaticResource PracticeInputStyle}"
-                 Text="&lt;Menu&gt;&#10;    &lt;MenuItem Header=&quot;보기&quot;&gt;&#10;        &#10;    &lt;/MenuItem&gt;&#10;&lt;/Menu&gt;"/>
-        <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
-            <Button Content="실행" Style="{StaticResource RunButtonStyle}" Click="BtnRun_Click" Tag="5_3"/>
-            <Button Content="힌트" Style="{StaticResource HintButtonStyle}" Click="BtnHint_Click" Tag="5_3"/>
-            <Button Content="정답 보기" Style="{StaticResource AnswerButtonStyle}" Click="BtnAnswer_Click" Tag="5_3"/>
-        </StackPanel>
-        <TextBlock x:Name="txtHint5_3"
-                   Text="힌트: IsCheckable 을 켜고 하나만 IsChecked 로 둡니다."
-                   Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
-        <Border x:Name="resultBorder5_3" Background="White" Margin="0,8,0,0" Padding="10" Visibility="Collapsed">
-            <StackPanel x:Name="resultPanel5_3"/>
-        </Border>
-    </StackPanel>
-</Expander>
 </StackPanel>
                 </ScrollViewer>
             </TabItem>

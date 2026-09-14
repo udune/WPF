@@ -11,7 +11,7 @@
         <Style x:Key="CodeExpanderStyle" TargetType="Expander">
             <Setter Property="Header" Value="코드 보기"/>
             <Setter Property="Margin" Value="0,0,0,12"/>
-            <Setter Property="IsExpanded" Value="False"/>
+            <Setter Property="IsExpanded" Value="True"/>
         </Style>
         <Style x:Key="CodeTextBoxStyle" TargetType="TextBox">
             <Setter Property="IsReadOnly" Value="True"/>
@@ -639,6 +639,26 @@
                     <Expander Style="{StaticResource CodeExpanderStyle}">
                         <TextBox Style="{StaticResource CodeTextBoxStyle}" Text="&lt;Expander Header=&quot;1단계&quot;&gt;&#10;    &lt;StackPanel&gt;&#10;        &lt;TextBlock Text=&quot;1단계 콘텐츠&quot;/&gt;&#10;        &lt;Expander Header=&quot;2단계&quot;&gt;&#10;            &lt;Expander Header=&quot;3단계&quot;&gt;&#10;                &lt;TextBlock Text=&quot;최하위&quot;/&gt;&#10;            &lt;/Expander&gt;&#10;        &lt;/Expander&gt;&#10;    &lt;/StackPanel&gt;&#10;&lt;/Expander&gt;"/>
                     </Expander>
+                    <!-- 직접 해보기 5_3 -->
+                    <Expander Style="{StaticResource PracticeExpanderStyle}">
+                        <StackPanel Margin="10">
+                            <TextBlock Text="과제: Expander 의 펼침 상태를 CheckBox 와 연동하세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
+                            <TextBox x:Name="txtPractice5_3"
+                                     Style="{StaticResource PracticeInputStyle}"
+                                     Text="&lt;StackPanel&gt;&#10;    &lt;CheckBox x:Name=&quot;chk&quot; Content=&quot;펼치기&quot;/&gt;&#10;    &lt;Expander Header=&quot;내용&quot;&gt;&#10;        &lt;TextBlock Text=&quot;본문&quot; Margin=&quot;8&quot;/&gt;&#10;    &lt;/Expander&gt;&#10;&lt;/StackPanel&gt;"/>
+                            <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
+                                <Button Content="실행" Style="{StaticResource RunButtonStyle}" Click="BtnRun_Click" Tag="5_3"/>
+                                <Button Content="힌트" Style="{StaticResource HintButtonStyle}" Click="BtnHint_Click" Tag="5_3"/>
+                                <Button Content="정답 보기" Style="{StaticResource AnswerButtonStyle}" Click="BtnAnswer_Click" Tag="5_3"/>
+                            </StackPanel>
+                            <TextBlock x:Name="txtHint5_3"
+                                       Text="힌트: IsExpanded 를 CheckBox 의 IsChecked 에 바인딩합니다."
+                                       Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                            <Border x:Name="resultBorder5_3" Background="White" Margin="0,8,0,0" Padding="10" Visibility="Collapsed">
+                                <StackPanel x:Name="resultPanel5_3"/>
+                            </Border>
+                        </StackPanel>
+                    </Expander>
 
                     <!-- 동적 변경 -->
                     <GroupBox Header="코드비하인드로 Header 동적 변경" Margin="0,0,0,8">
@@ -654,26 +674,6 @@
                     </GroupBox>
 
                 
-                <!-- 직접 해보기 5_3 -->
-                <Expander Style="{StaticResource PracticeExpanderStyle}">
-                    <StackPanel Margin="10">
-                        <TextBlock Text="과제: Expander 의 펼침 상태를 CheckBox 와 연동하세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
-                        <TextBox x:Name="txtPractice5_3"
-                                 Style="{StaticResource PracticeInputStyle}"
-                                 Text="&lt;StackPanel&gt;&#10;    &lt;CheckBox x:Name=&quot;chk&quot; Content=&quot;펼치기&quot;/&gt;&#10;    &lt;Expander Header=&quot;내용&quot;&gt;&#10;        &lt;TextBlock Text=&quot;본문&quot; Margin=&quot;8&quot;/&gt;&#10;    &lt;/Expander&gt;&#10;&lt;/StackPanel&gt;"/>
-                        <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
-                            <Button Content="실행" Style="{StaticResource RunButtonStyle}" Click="BtnRun_Click" Tag="5_3"/>
-                            <Button Content="힌트" Style="{StaticResource HintButtonStyle}" Click="BtnHint_Click" Tag="5_3"/>
-                            <Button Content="정답 보기" Style="{StaticResource AnswerButtonStyle}" Click="BtnAnswer_Click" Tag="5_3"/>
-                        </StackPanel>
-                        <TextBlock x:Name="txtHint5_3"
-                                   Text="힌트: IsExpanded 를 CheckBox 의 IsChecked 에 바인딩합니다."
-                                   Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
-                        <Border x:Name="resultBorder5_3" Background="White" Margin="0,8,0,0" Padding="10" Visibility="Collapsed">
-                            <StackPanel x:Name="resultPanel5_3"/>
-                        </Border>
-                    </StackPanel>
-                </Expander>
 </StackPanel>
             </ScrollViewer>
         </TabItem>

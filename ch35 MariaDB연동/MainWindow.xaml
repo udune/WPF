@@ -11,7 +11,7 @@
         <Style x:Key="CodeExpanderStyle" TargetType="Expander">
             <Setter Property="Header" Value="코드 보기"/>
             <Setter Property="Margin" Value="0,0,0,12"/>
-            <Setter Property="IsExpanded" Value="False"/>
+            <Setter Property="IsExpanded" Value="True"/>
         </Style>
         <Style x:Key="CodeTextBoxStyle" TargetType="TextBox">
             <Setter Property="IsReadOnly" Value="True"/>
@@ -86,6 +86,24 @@
                         <TextBox Style="{StaticResource CodeTextBoxStyle}"
                                  Text="// NuGet 패키지 관리자 콘솔&#10;Install-Package MySqlConnector&#10;&#10;// 또는 .csproj 파일에 추가&#10;&lt;ItemGroup&gt;&#10;    &lt;PackageReference Include=&quot;MySqlConnector&quot; Version=&quot;2.4.0&quot; /&gt;&#10;&lt;/ItemGroup&gt;&#10;&#10;// 또는 dotnet CLI&#10;dotnet add package MySqlConnector"/>
                     </Expander>
+                    <!-- 직접 해보기 1_1 -->
+                    <Expander Style="{StaticResource PracticeExpanderStyle}">
+                        <StackPanel Margin="10">
+                            <TextBlock Text="과제: MariaDB 연결 문자열을 만드세요. 서버, 포트, 데이터베이스, 사용자, 비밀번호가 필요합니다." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
+                            <TextBox x:Name="txtPractice1_1"
+                                     Style="{StaticResource PracticeInputStyle}"
+                                     Text="private const string ConnectionString = &#10;"/>
+                            <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
+                                <Button Content="확인" Style="{StaticResource RunButtonStyle}" Click="BtnCheck_Click" Tag="1_1"/>
+                                <Button Content="힌트" Style="{StaticResource HintButtonStyle}" Click="BtnHint_Click" Tag="1_1"/>
+                                <Button Content="정답 보기" Style="{StaticResource AnswerButtonStyle}" Click="BtnAnswer_Click" Tag="1_1"/>
+                            </StackPanel>
+                            <TextBlock x:Name="txtHint1_1"
+                                       Text="힌트: &quot;Server=...;Port=3306;Database=...;Uid=...;Pwd=...;&quot; 형식입니다."
+                                       Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                            <TextBlock x:Name="txtResult1_1" Margin="0,8,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                        </StackPanel>
+                    </Expander>
 
                     <GroupBox Header="2. 연결 문자열 (Connection String)" Margin="0,0,0,15" Padding="10">
                         <StackPanel>
@@ -121,6 +139,24 @@
                         <TextBox Style="{StaticResource CodeTextBoxStyle}"
                                  Text="using MySqlConnector;&#10;&#10;// 연결 문자열&#10;string connectionString = &#10;    &quot;Server=localhost;Uid=root;Database=study;port=3306;pwd=1234&quot;;&#10;&#10;// MySqlConnection 객체 생성&#10;MySqlConnection connection = new MySqlConnection(connectionString);&#10;&#10;// 추가 옵션&#10;// CharSet=utf8mb4        : 문자 인코딩&#10;// SslMode=None           : SSL 연결 모드&#10;// ConnectionTimeout=30   : 연결 타임아웃 (초)&#10;// Pooling=true           : 연결 풀링 (기본 활성화)"/>
                     </Expander>
+                    <!-- 직접 해보기 1_2 -->
+                    <Expander Style="{StaticResource PracticeExpanderStyle}">
+                        <StackPanel Margin="10">
+                            <TextBlock Text="과제: 연결을 열고 성공 여부를 확인하는 코드를 작성하세요. 다 쓰면 자동으로 닫혀야 합니다." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
+                            <TextBox x:Name="txtPractice1_2"
+                                     Style="{StaticResource PracticeInputStyle}"
+                                     Text="private void Connect_Click(object sender, RoutedEventArgs e)&#10;{&#10;    &#10;}"/>
+                            <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
+                                <Button Content="확인" Style="{StaticResource RunButtonStyle}" Click="BtnCheck_Click" Tag="1_2"/>
+                                <Button Content="힌트" Style="{StaticResource HintButtonStyle}" Click="BtnHint_Click" Tag="1_2"/>
+                                <Button Content="정답 보기" Style="{StaticResource AnswerButtonStyle}" Click="BtnAnswer_Click" Tag="1_2"/>
+                            </StackPanel>
+                            <TextBlock x:Name="txtHint1_2"
+                                       Text="힌트: using 문을 쓰면 블록을 벗어날 때 Dispose 가 자동 호출됩니다."
+                                       Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                            <TextBlock x:Name="txtResult1_2" Margin="0,8,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                        </StackPanel>
+                    </Expander>
 
                     <GroupBox Header="3. 테이블 생성 (사전 준비)" Margin="0,0,0,15" Padding="10">
                         <StackPanel>
@@ -139,7 +175,25 @@
                         <TextBox Style="{StaticResource CodeTextBoxStyle}"
                                  Text="-- MariaDB/MySQL에서 실행&#10;&#10;-- 데이터베이스 생성&#10;CREATE DATABASE IF NOT EXISTS study;&#10;USE study;&#10;&#10;-- 테이블 생성&#10;CREATE TABLE person (&#10;    ID INT AUTO_INCREMENT PRIMARY KEY,&#10;    Name VARCHAR(100) NOT NULL,&#10;    Age INT,&#10;    Address VARCHAR(200)&#10;);&#10;&#10;-- 테스트 데이터 삽입&#10;INSERT INTO person (Name, Age, Address) VALUES&#10;('홍길동', 30, '서울시 강남구'),&#10;('김철수', 25, '부산시 해운대구'),&#10;('이영희', 28, '대구시 수성구');"/>
                     </Expander>
-
+                    <!-- 직접 해보기 1_3 -->
+                    <Expander Style="{StaticResource PracticeExpanderStyle}">
+                        <StackPanel Margin="10">
+                            <TextBlock Text="과제: 연결 문자열에 문자셋을 지정해 한글이 깨지지 않게 하세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
+                            <TextBox x:Name="txtPractice1_3"
+                                     Style="{StaticResource PracticeInputStyle}"
+                                     Text="private const string ConnectionString =&#10;    &quot;Server=localhost;Port=3306;Database=testdb;Uid=root;Pwd=1234;&quot;;"/>
+                            <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
+                                <Button Content="확인" Style="{StaticResource RunButtonStyle}" Click="BtnCheck_Click" Tag="1_3"/>
+                                <Button Content="힌트" Style="{StaticResource HintButtonStyle}" Click="BtnHint_Click" Tag="1_3"/>
+                                <Button Content="정답 보기" Style="{StaticResource AnswerButtonStyle}" Click="BtnAnswer_Click" Tag="1_3"/>
+                            </StackPanel>
+                            <TextBlock x:Name="txtHint1_3"
+                                       Text="힌트: CharSet=utf8mb4 를 덧붙입니다."
+                                       Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                            <TextBlock x:Name="txtResult1_3" Margin="0,8,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                        </StackPanel>
+                    </Expander>
+                    
                     <GroupBox Header="4. 연결 문자열 보안 관리" Margin="0,0,0,15" Padding="10">
                         <StackPanel>
                             <TextBlock Text="실무에서는 연결 문자열을 안전하게 관리해야 합니다:" Margin="0,0,0,10"/>
@@ -157,63 +211,28 @@
                         <TextBox Style="{StaticResource CodeTextBoxStyle}"
                                  Text="// appsettings.json&#10;{&#10;    &quot;ConnectionStrings&quot;: {&#10;        &quot;MariaDB&quot;: &quot;Server=localhost;Uid=appuser;Database=study;pwd=****&quot;&#10;    }&#10;}&#10;&#10;// 환경 변수 사용&#10;string connectionString = Environment.GetEnvironmentVariable(&quot;MARIADB_CONNECTION&quot;);&#10;&#10;// User Secrets (개발 환경)&#10;// dotnet user-secrets set &quot;ConnectionStrings:MariaDB&quot; &quot;Server=...&quot;"/>
                     </Expander>
+                    <!-- 직접 해보기 1_4 -->
+                    <Expander Style="{StaticResource PracticeExpanderStyle}">
+                        <StackPanel Margin="10">
+                            <TextBlock Text="과제: 비밀번호를 코드에 박지 않고 환경 변수에서 연결 문자열을 읽어 오도록 바꾸세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
+                            <TextBox x:Name="txtPractice1_4"
+                                     Style="{StaticResource PracticeInputStyle}"
+                                     Height="120" AcceptsReturn="True"
+                                     Text="// 이렇게 쓰면 비밀번호가 소스에 남습니다&#10;// string connectionString = &quot;Server=localhost;Uid=root;Pwd=1234;Database=study&quot;;&#10;&#10;"/>
+                            <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
+                                <Button Content="확인" Style="{StaticResource RunButtonStyle}" Click="BtnCheck_Click" Tag="1_4"/>
+                                <Button Content="힌트" Style="{StaticResource HintButtonStyle}" Click="BtnHint_Click" Tag="1_4"/>
+                                <Button Content="정답 보기" Style="{StaticResource AnswerButtonStyle}" Click="BtnAnswer_Click" Tag="1_4"/>
+                            </StackPanel>
+                            <TextBlock x:Name="txtHint1_4"
+                                       Text="힌트: Environment.GetEnvironmentVariable(&quot;MARIADB_CONNECTION&quot;) 으로 읽어 옵니다."
+                                       Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                            <TextBlock x:Name="txtResult1_4" Margin="0,8,0,0" FontWeight="Bold"
+                                       Visibility="Collapsed" TextWrapping="Wrap"/>
+                        </StackPanel>
+                    </Expander>
                 
-                <!-- 직접 해보기 1_1 -->
-                <Expander Style="{StaticResource PracticeExpanderStyle}">
-                    <StackPanel Margin="10">
-                        <TextBlock Text="과제: MariaDB 연결 문자열을 만드세요. 서버, 포트, 데이터베이스, 사용자, 비밀번호가 필요합니다." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
-                        <TextBox x:Name="txtPractice1_1"
-                                 Style="{StaticResource PracticeInputStyle}"
-                                 Text="private const string ConnectionString = &#10;"/>
-                        <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
-                            <Button Content="확인" Style="{StaticResource RunButtonStyle}" Click="BtnCheck_Click" Tag="1_1"/>
-                            <Button Content="힌트" Style="{StaticResource HintButtonStyle}" Click="BtnHint_Click" Tag="1_1"/>
-                            <Button Content="정답 보기" Style="{StaticResource AnswerButtonStyle}" Click="BtnAnswer_Click" Tag="1_1"/>
-                        </StackPanel>
-                        <TextBlock x:Name="txtHint1_1"
-                                   Text="힌트: &quot;Server=...;Port=3306;Database=...;Uid=...;Pwd=...;&quot; 형식입니다."
-                                   Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
-                        <TextBlock x:Name="txtResult1_1" Margin="0,8,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
-                    </StackPanel>
-                </Expander>
 
-                <!-- 직접 해보기 1_2 -->
-                <Expander Style="{StaticResource PracticeExpanderStyle}">
-                    <StackPanel Margin="10">
-                        <TextBlock Text="과제: 연결을 열고 성공 여부를 확인하는 코드를 작성하세요. 다 쓰면 자동으로 닫혀야 합니다." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
-                        <TextBox x:Name="txtPractice1_2"
-                                 Style="{StaticResource PracticeInputStyle}"
-                                 Text="private void Connect_Click(object sender, RoutedEventArgs e)&#10;{&#10;    &#10;}"/>
-                        <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
-                            <Button Content="확인" Style="{StaticResource RunButtonStyle}" Click="BtnCheck_Click" Tag="1_2"/>
-                            <Button Content="힌트" Style="{StaticResource HintButtonStyle}" Click="BtnHint_Click" Tag="1_2"/>
-                            <Button Content="정답 보기" Style="{StaticResource AnswerButtonStyle}" Click="BtnAnswer_Click" Tag="1_2"/>
-                        </StackPanel>
-                        <TextBlock x:Name="txtHint1_2"
-                                   Text="힌트: using 문을 쓰면 블록을 벗어날 때 Dispose 가 자동 호출됩니다."
-                                   Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
-                        <TextBlock x:Name="txtResult1_2" Margin="0,8,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
-                    </StackPanel>
-                </Expander>
-
-<!-- 직접 해보기 1_3 -->
-<Expander Style="{StaticResource PracticeExpanderStyle}">
-    <StackPanel Margin="10">
-        <TextBlock Text="과제: 연결 문자열에 문자셋을 지정해 한글이 깨지지 않게 하세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
-        <TextBox x:Name="txtPractice1_3"
-                 Style="{StaticResource PracticeInputStyle}"
-                 Text="private const string ConnectionString =&#10;    &quot;Server=localhost;Port=3306;Database=testdb;Uid=root;Pwd=1234;&quot;;"/>
-        <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
-            <Button Content="확인" Style="{StaticResource RunButtonStyle}" Click="BtnCheck_Click" Tag="1_3"/>
-            <Button Content="힌트" Style="{StaticResource HintButtonStyle}" Click="BtnHint_Click" Tag="1_3"/>
-            <Button Content="정답 보기" Style="{StaticResource AnswerButtonStyle}" Click="BtnAnswer_Click" Tag="1_3"/>
-        </StackPanel>
-        <TextBlock x:Name="txtHint1_3"
-                   Text="힌트: CharSet=utf8mb4 를 덧붙입니다."
-                   Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
-        <TextBlock x:Name="txtResult1_3" Margin="0,8,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
-    </StackPanel>
-</Expander>
 </StackPanel>
             </ScrollViewer>
         </TabItem>
@@ -245,6 +264,24 @@
                         <TextBox Style="{StaticResource CodeTextBoxStyle}"
                                  Text="private void LoadData()&#10;{&#10;    // 1. DataTable 생성&#10;    DataTable dataTable = new DataTable();&#10;    &#10;    // 2. MySqlCommand 생성&#10;    MySqlCommand command = new MySqlCommand(&#10;        &quot;SELECT * FROM person&quot;, connection);&#10;    &#10;    // 3. 연결 열기&#10;    connection.Open();&#10;    &#10;    // 4. 데이터 읽기&#10;    MySqlDataReader dataReader = command.ExecuteReader();&#10;    &#10;    // 5. DataTable에 로드&#10;    dataTable.Load(dataReader);&#10;    &#10;    // 6. 연결 닫기&#10;    connection.Close();&#10;    &#10;    // 7. DataGrid에 바인딩&#10;    Grid.ItemsSource = dataTable.DefaultView;&#10;}"/>
                     </Expander>
+                    <!-- 직접 해보기 2_1 -->
+                    <Expander Style="{StaticResource PracticeExpanderStyle}">
+                        <StackPanel Margin="10">
+                            <TextBlock Text="과제: 회원 목록을 조회하는 SELECT 쿼리 문자열을 작성하세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
+                            <TextBox x:Name="txtPractice2_1"
+                                     Style="{StaticResource PracticeInputStyle}"
+                                     Text="string sql = &#10;"/>
+                            <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
+                                <Button Content="확인" Style="{StaticResource RunButtonStyle}" Click="BtnCheck_Click" Tag="2_1"/>
+                                <Button Content="힌트" Style="{StaticResource HintButtonStyle}" Click="BtnHint_Click" Tag="2_1"/>
+                                <Button Content="정답 보기" Style="{StaticResource AnswerButtonStyle}" Click="BtnAnswer_Click" Tag="2_1"/>
+                            </StackPanel>
+                            <TextBlock x:Name="txtHint2_1"
+                                       Text="힌트: SELECT 컬럼목록 FROM 테이블 형식입니다."
+                                       Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                            <TextBlock x:Name="txtResult2_1" Margin="0,8,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                        </StackPanel>
+                    </Expander>
 
                     <GroupBox Header="2. MySqlDataReader 사용법" Margin="0,0,0,15" Padding="10">
                         <StackPanel>
@@ -262,6 +299,24 @@
                         <TextBox Style="{StaticResource CodeTextBoxStyle}"
                                  Text="// DataReader로 직접 읽기&#10;while (dataReader.Read())&#10;{&#10;    int id = dataReader.GetInt32(&quot;ID&quot;);&#10;    string name = dataReader.GetString(&quot;Name&quot;);&#10;    int age = dataReader.GetInt32(&quot;Age&quot;);&#10;    string address = dataReader.GetString(&quot;Address&quot;);&#10;    &#10;    Console.WriteLine($&quot;{id}: {name}, {age}, {address}&quot;);&#10;}&#10;&#10;// null 체크&#10;if (!dataReader.IsDBNull(1))&#10;{&#10;    string name = dataReader.GetString(1);&#10;}&#10;&#10;// 인덱스로 접근&#10;int id = dataReader.GetInt32(0);  // 첫 번째 컬럼"/>
                     </Expander>
+                    <!-- 직접 해보기 2_2 -->
+                    <Expander Style="{StaticResource PracticeExpanderStyle}">
+                        <StackPanel Margin="10">
+                            <TextBlock Text="과제: ExecuteReader 로 결과를 한 행씩 읽는 코드를 작성하세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
+                            <TextBox x:Name="txtPractice2_2"
+                                     Style="{StaticResource PracticeInputStyle}"
+                                     Text="using (var cmd = new MySqlCommand(sql, conn))&#10;{&#10;    &#10;}"/>
+                            <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
+                                <Button Content="확인" Style="{StaticResource RunButtonStyle}" Click="BtnCheck_Click" Tag="2_2"/>
+                                <Button Content="힌트" Style="{StaticResource HintButtonStyle}" Click="BtnHint_Click" Tag="2_2"/>
+                                <Button Content="정답 보기" Style="{StaticResource AnswerButtonStyle}" Click="BtnAnswer_Click" Tag="2_2"/>
+                            </StackPanel>
+                            <TextBlock x:Name="txtHint2_2"
+                                       Text="힌트: reader.Read() 가 true 인 동안 반복하며 reader[&quot;컬럼&quot;] 으로 값을 꺼냅니다."
+                                       Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                            <TextBlock x:Name="txtResult2_2" Margin="0,8,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                        </StackPanel>
+                    </Expander>
 
                     <GroupBox Header="3. 조건부 조회 (WHERE)" Margin="0,0,0,15" Padding="10">
                         <StackPanel>
@@ -272,7 +327,25 @@
                         <TextBox Style="{StaticResource CodeTextBoxStyle}"
                                  Text="// 조건부 조회 (매개변수화)&#10;MySqlCommand command = new MySqlCommand(&#10;    &quot;SELECT * FROM person WHERE Age &gt; @minAge&quot;, connection);&#10;command.Parameters.AddWithValue(&quot;@minAge&quot;, 25);&#10;&#10;// 여러 조건&#10;MySqlCommand command = new MySqlCommand(&#10;    &quot;SELECT * FROM person WHERE Age &gt; @minAge AND Name LIKE @name&quot;, &#10;    connection);&#10;command.Parameters.AddWithValue(&quot;@minAge&quot;, 25);&#10;command.Parameters.AddWithValue(&quot;@name&quot;, &quot;%홍%&quot;);&#10;&#10;// 정렬&#10;&quot;SELECT * FROM person ORDER BY Age DESC&quot;&#10;&#10;// 제한&#10;&quot;SELECT * FROM person LIMIT 10&quot;"/>
                     </Expander>
-
+                    <!-- 직접 해보기 2_3 -->
+                    <Expander Style="{StaticResource PracticeExpanderStyle}">
+                        <StackPanel Margin="10">
+                            <TextBlock Text="과제: 회원 수를 한 값으로 가져오는 코드를 작성하세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
+                            <TextBox x:Name="txtPractice2_3"
+                                     Style="{StaticResource PracticeInputStyle}"
+                                     Text="private int CountMembers(MySqlConnection conn)&#10;{&#10;    &#10;}"/>
+                            <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
+                                <Button Content="확인" Style="{StaticResource RunButtonStyle}" Click="BtnCheck_Click" Tag="2_3"/>
+                                <Button Content="힌트" Style="{StaticResource HintButtonStyle}" Click="BtnHint_Click" Tag="2_3"/>
+                                <Button Content="정답 보기" Style="{StaticResource AnswerButtonStyle}" Click="BtnAnswer_Click" Tag="2_3"/>
+                            </StackPanel>
+                            <TextBlock x:Name="txtHint2_3"
+                                       Text="힌트: 값이 하나뿐일 때는 ExecuteScalar 가 간편합니다."
+                                       Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                            <TextBlock x:Name="txtResult2_3" Margin="0,8,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                        </StackPanel>
+                    </Expander>
+                    
                     <GroupBox Header="4. using 문 패턴 (권장)" Margin="0,0,0,15" Padding="10">
                         <StackPanel>
                             <TextBlock Text="리소스 자동 해제를 위해 using 문을 사용합니다:" Margin="0,0,0,10"/>
@@ -282,63 +355,28 @@
                         <TextBox Style="{StaticResource CodeTextBoxStyle}"
                                  Text="private void LoadData()&#10;{&#10;    DataTable dataTable = new DataTable();&#10;    &#10;    using (var connection = new MySqlConnection(connectionString))&#10;    using (var command = new MySqlCommand(&quot;SELECT * FROM person&quot;, connection))&#10;    {&#10;        connection.Open();&#10;        &#10;        using (var reader = command.ExecuteReader())&#10;        {&#10;            dataTable.Load(reader);&#10;        }&#10;    } // 자동으로 connection.Close() 호출&#10;    &#10;    Grid.ItemsSource = dataTable.DefaultView;&#10;}"/>
                     </Expander>
+                    <!-- 직접 해보기 2_4 -->
+                    <Expander Style="{StaticResource PracticeExpanderStyle}">
+                        <StackPanel Margin="10">
+                            <TextBlock Text="과제: using 문으로 연결과 명령, 리더를 모두 자동 정리하는 조회 메서드를 완성하세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
+                            <TextBox x:Name="txtPractice2_4"
+                                     Style="{StaticResource PracticeInputStyle}"
+                                     Height="120" AcceptsReturn="True"
+                                     Text="private void LoadData()&#10;{&#10;    DataTable dataTable = new DataTable();&#10;&#10;    &#10;&#10;    Grid.ItemsSource = dataTable.DefaultView;&#10;}"/>
+                            <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
+                                <Button Content="확인" Style="{StaticResource RunButtonStyle}" Click="BtnCheck_Click" Tag="2_4"/>
+                                <Button Content="힌트" Style="{StaticResource HintButtonStyle}" Click="BtnHint_Click" Tag="2_4"/>
+                                <Button Content="정답 보기" Style="{StaticResource AnswerButtonStyle}" Click="BtnAnswer_Click" Tag="2_4"/>
+                            </StackPanel>
+                            <TextBlock x:Name="txtHint2_4"
+                                       Text="힌트: using (var connection = ...) 블록을 벗어나면 Close() 가 자동으로 불립니다."
+                                       Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                            <TextBlock x:Name="txtResult2_4" Margin="0,8,0,0" FontWeight="Bold"
+                                       Visibility="Collapsed" TextWrapping="Wrap"/>
+                        </StackPanel>
+                    </Expander>
                 
-                <!-- 직접 해보기 2_1 -->
-                <Expander Style="{StaticResource PracticeExpanderStyle}">
-                    <StackPanel Margin="10">
-                        <TextBlock Text="과제: 회원 목록을 조회하는 SELECT 쿼리 문자열을 작성하세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
-                        <TextBox x:Name="txtPractice2_1"
-                                 Style="{StaticResource PracticeInputStyle}"
-                                 Text="string sql = &#10;"/>
-                        <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
-                            <Button Content="확인" Style="{StaticResource RunButtonStyle}" Click="BtnCheck_Click" Tag="2_1"/>
-                            <Button Content="힌트" Style="{StaticResource HintButtonStyle}" Click="BtnHint_Click" Tag="2_1"/>
-                            <Button Content="정답 보기" Style="{StaticResource AnswerButtonStyle}" Click="BtnAnswer_Click" Tag="2_1"/>
-                        </StackPanel>
-                        <TextBlock x:Name="txtHint2_1"
-                                   Text="힌트: SELECT 컬럼목록 FROM 테이블 형식입니다."
-                                   Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
-                        <TextBlock x:Name="txtResult2_1" Margin="0,8,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
-                    </StackPanel>
-                </Expander>
 
-                <!-- 직접 해보기 2_2 -->
-                <Expander Style="{StaticResource PracticeExpanderStyle}">
-                    <StackPanel Margin="10">
-                        <TextBlock Text="과제: ExecuteReader 로 결과를 한 행씩 읽는 코드를 작성하세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
-                        <TextBox x:Name="txtPractice2_2"
-                                 Style="{StaticResource PracticeInputStyle}"
-                                 Text="using (var cmd = new MySqlCommand(sql, conn))&#10;{&#10;    &#10;}"/>
-                        <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
-                            <Button Content="확인" Style="{StaticResource RunButtonStyle}" Click="BtnCheck_Click" Tag="2_2"/>
-                            <Button Content="힌트" Style="{StaticResource HintButtonStyle}" Click="BtnHint_Click" Tag="2_2"/>
-                            <Button Content="정답 보기" Style="{StaticResource AnswerButtonStyle}" Click="BtnAnswer_Click" Tag="2_2"/>
-                        </StackPanel>
-                        <TextBlock x:Name="txtHint2_2"
-                                   Text="힌트: reader.Read() 가 true 인 동안 반복하며 reader[&quot;컬럼&quot;] 으로 값을 꺼냅니다."
-                                   Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
-                        <TextBlock x:Name="txtResult2_2" Margin="0,8,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
-                    </StackPanel>
-                </Expander>
-
-<!-- 직접 해보기 2_3 -->
-<Expander Style="{StaticResource PracticeExpanderStyle}">
-    <StackPanel Margin="10">
-        <TextBlock Text="과제: 회원 수를 한 값으로 가져오는 코드를 작성하세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
-        <TextBox x:Name="txtPractice2_3"
-                 Style="{StaticResource PracticeInputStyle}"
-                 Text="private int CountMembers(MySqlConnection conn)&#10;{&#10;    &#10;}"/>
-        <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
-            <Button Content="확인" Style="{StaticResource RunButtonStyle}" Click="BtnCheck_Click" Tag="2_3"/>
-            <Button Content="힌트" Style="{StaticResource HintButtonStyle}" Click="BtnHint_Click" Tag="2_3"/>
-            <Button Content="정답 보기" Style="{StaticResource AnswerButtonStyle}" Click="BtnAnswer_Click" Tag="2_3"/>
-        </StackPanel>
-        <TextBlock x:Name="txtHint2_3"
-                   Text="힌트: 값이 하나뿐일 때는 ExecuteScalar 가 간편합니다."
-                   Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
-        <TextBlock x:Name="txtResult2_3" Margin="0,8,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
-    </StackPanel>
-</Expander>
 </StackPanel>
             </ScrollViewer>
         </TabItem>
@@ -381,6 +419,24 @@
                         <TextBox Style="{StaticResource CodeTextBoxStyle}"
                                  Text="// ❌ 위험한 코드 (SQL Injection 취약)&#10;string sql = $&quot;INSERT INTO person(Name) VALUES ('{TxtName.Text}')&quot;;&#10;&#10;// 공격 예: TxtName.Text = &quot;'; DROP TABLE person; --&quot;&#10;// 결과: person 테이블 삭제!&#10;&#10;// ✓ 안전한 코드 (매개변수화)&#10;MySqlCommand command = new MySqlCommand(&#10;    &quot;INSERT INTO person(Name, Age, Address) VALUES (@name, @age, @address)&quot;,&#10;    connection);&#10;&#10;command.Parameters.AddWithValue(&quot;@name&quot;, TxtName.Text);&#10;command.Parameters.AddWithValue(&quot;@age&quot;, TxtAge.Text);&#10;command.Parameters.AddWithValue(&quot;@address&quot;, TxtAddress.Text);"/>
                     </Expander>
+                    <!-- 직접 해보기 3_1 -->
+                    <Expander Style="{StaticResource PracticeExpanderStyle}">
+                        <StackPanel Margin="10">
+                            <TextBlock Text="과제: 이름과 나이를 넣는 INSERT 문을 파라미터 방식으로 작성하세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
+                            <TextBox x:Name="txtPractice3_1"
+                                     Style="{StaticResource PracticeInputStyle}"
+                                     Text="string sql = &quot;INSERT INTO member (name, age) VALUES (@name, @age)&quot;;&#10;using (var cmd = new MySqlCommand(sql, conn))&#10;{&#10;    &#10;}"/>
+                            <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
+                                <Button Content="확인" Style="{StaticResource RunButtonStyle}" Click="BtnCheck_Click" Tag="3_1"/>
+                                <Button Content="힌트" Style="{StaticResource HintButtonStyle}" Click="BtnHint_Click" Tag="3_1"/>
+                                <Button Content="정답 보기" Style="{StaticResource AnswerButtonStyle}" Click="BtnAnswer_Click" Tag="3_1"/>
+                            </StackPanel>
+                            <TextBlock x:Name="txtHint3_1"
+                                       Text="힌트: SQL 문자열을 직접 이어 붙이지 말고 Parameters.AddWithValue 를 쓰세요."
+                                       Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                            <TextBlock x:Name="txtResult3_1" Margin="0,8,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                        </StackPanel>
+                    </Expander>
 
                     <GroupBox Header="2. INSERT 구현 예제" Margin="0,0,0,15" Padding="10">
                         <StackPanel>
@@ -390,6 +446,24 @@
                     <Expander Style="{StaticResource CodeExpanderStyle}">
                         <TextBox Style="{StaticResource CodeTextBoxStyle}"
                                  Text="private void BtnInsert_OnClick(object sender, RoutedEventArgs e)&#10;{&#10;    // 1. 입력 검증&#10;    if (string.IsNullOrWhiteSpace(TxtName.Text))&#10;    {&#10;        MessageBox.Show(&quot;이름을 입력하여 주세요.&quot;);&#10;        return;&#10;    }&#10;    &#10;    try&#10;    {&#10;        // 2. 매개변수화된 쿼리&#10;        MySqlCommand command = new MySqlCommand(&#10;            &quot;INSERT INTO person(Name, Age, Address) &quot; +&#10;            &quot;VALUES (@name, @age, @address)&quot;, connection);&#10;        &#10;        command.Parameters.AddWithValue(&quot;@name&quot;, TxtName.Text);&#10;        command.Parameters.AddWithValue(&quot;@age&quot;, TxtAge.Text);&#10;        command.Parameters.AddWithValue(&quot;@address&quot;, TxtAddress.Text);&#10;        &#10;        // 3. 실행&#10;        connection.Open();&#10;        int rows = command.ExecuteNonQuery();&#10;        &#10;        MessageBox.Show($&quot;{rows}개 행이 삽입되었습니다.&quot;);&#10;    }&#10;    catch (Exception ex)&#10;    {&#10;        MessageBox.Show($&quot;오류: {ex.Message}&quot;);&#10;    }&#10;    finally&#10;    {&#10;        connection.Close();&#10;        LoadData(); // 새로고침&#10;    }&#10;}"/>
+                    </Expander>
+                    <!-- 직접 해보기 3_2 -->
+                    <Expander Style="{StaticResource PracticeExpanderStyle}">
+                        <StackPanel Margin="10">
+                            <TextBlock Text="과제: 삽입된 행 수를 확인해 결과 메시지를 표시하는 코드를 작성하세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
+                            <TextBox x:Name="txtPractice3_2"
+                                     Style="{StaticResource PracticeInputStyle}"
+                                     Text="int affected = cmd.ExecuteNonQuery();&#10;"/>
+                            <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
+                                <Button Content="확인" Style="{StaticResource RunButtonStyle}" Click="BtnCheck_Click" Tag="3_2"/>
+                                <Button Content="힌트" Style="{StaticResource HintButtonStyle}" Click="BtnHint_Click" Tag="3_2"/>
+                                <Button Content="정답 보기" Style="{StaticResource AnswerButtonStyle}" Click="BtnAnswer_Click" Tag="3_2"/>
+                            </StackPanel>
+                            <TextBlock x:Name="txtHint3_2"
+                                       Text="힌트: ExecuteNonQuery 는 영향받은 행 수를 돌려줍니다."
+                                       Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                            <TextBlock x:Name="txtResult3_2" Margin="0,8,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                        </StackPanel>
                     </Expander>
 
                     <GroupBox Header="3. ExecuteNonQuery 반환값" Margin="0,0,0,15" Padding="10">
@@ -409,7 +483,25 @@
                         <TextBox Style="{StaticResource CodeTextBoxStyle}"
                                  Text="int rowsAffected = command.ExecuteNonQuery();&#10;&#10;if (rowsAffected &gt; 0)&#10;{&#10;    MessageBox.Show($&quot;{rowsAffected}개 행이 삽입되었습니다.&quot;);&#10;}&#10;else&#10;{&#10;    MessageBox.Show(&quot;삽입 실패&quot;);&#10;}&#10;&#10;// 삽입 후 자동 생성된 ID 가져오기&#10;command.CommandText = &quot;SELECT LAST_INSERT_ID()&quot;;&#10;int newId = Convert.ToInt32(command.ExecuteScalar());"/>
                     </Expander>
-
+                    <!-- 직접 해보기 3_3 -->
+                    <Expander Style="{StaticResource PracticeExpanderStyle}">
+                        <StackPanel Margin="10">
+                            <TextBlock Text="과제: 이름으로 검색하는 SELECT 문을 파라미터 방식으로 작성하세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
+                            <TextBox x:Name="txtPractice3_3"
+                                     Style="{StaticResource PracticeInputStyle}"
+                                     Text="string sql = &#10;"/>
+                            <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
+                                <Button Content="확인" Style="{StaticResource RunButtonStyle}" Click="BtnCheck_Click" Tag="3_3"/>
+                                <Button Content="힌트" Style="{StaticResource HintButtonStyle}" Click="BtnHint_Click" Tag="3_3"/>
+                                <Button Content="정답 보기" Style="{StaticResource AnswerButtonStyle}" Click="BtnAnswer_Click" Tag="3_3"/>
+                            </StackPanel>
+                            <TextBlock x:Name="txtHint3_3"
+                                       Text="힌트: LIKE 를 쓰더라도 값은 파라미터로 넘겨야 합니다."
+                                       Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                            <TextBlock x:Name="txtResult3_3" Margin="0,8,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                        </StackPanel>
+                    </Expander>
+                    
                     <GroupBox Header="4. 명시적 타입 지정" Margin="0,0,0,15" Padding="10">
                         <StackPanel>
                             <TextBlock Text="더 안전한 매개변수 추가 방법:" Margin="0,0,0,10"/>
@@ -419,63 +511,28 @@
                         <TextBox Style="{StaticResource CodeTextBoxStyle}"
                                  Text="// AddWithValue (간편하지만 타입 추론)&#10;command.Parameters.AddWithValue(&quot;@name&quot;, TxtName.Text);&#10;&#10;// 명시적 타입 지정 (권장)&#10;command.Parameters.Add(&quot;@name&quot;, MySqlDbType.VarChar, 100).Value = TxtName.Text;&#10;command.Parameters.Add(&quot;@age&quot;, MySqlDbType.Int32).Value = int.Parse(TxtAge.Text);&#10;&#10;// MySqlDbType 종류&#10;// VarChar: 가변 길이 문자열&#10;// Int32: 정수&#10;// DateTime: 날짜/시간&#10;// Decimal: 고정 소수점&#10;// Bit: 불린&#10;// Blob: 이진 데이터"/>
                     </Expander>
+                    <!-- 직접 해보기 3_4 -->
+                    <Expander Style="{StaticResource PracticeExpanderStyle}">
+                        <StackPanel Margin="10">
+                            <TextBlock Text="과제: AddWithValue 대신 타입을 명시해 파라미터를 추가하도록 바꾸세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
+                            <TextBox x:Name="txtPractice3_4"
+                                     Style="{StaticResource PracticeInputStyle}"
+                                     Height="120" AcceptsReturn="True"
+                                     Text="// AddWithValue 는 타입을 추론합니다&#10;// command.Parameters.AddWithValue(&quot;@name&quot;, TxtName.Text);&#10;&#10;"/>
+                            <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
+                                <Button Content="확인" Style="{StaticResource RunButtonStyle}" Click="BtnCheck_Click" Tag="3_4"/>
+                                <Button Content="힌트" Style="{StaticResource HintButtonStyle}" Click="BtnHint_Click" Tag="3_4"/>
+                                <Button Content="정답 보기" Style="{StaticResource AnswerButtonStyle}" Click="BtnAnswer_Click" Tag="3_4"/>
+                            </StackPanel>
+                            <TextBlock x:Name="txtHint3_4"
+                                       Text="힌트: Parameters.Add(&quot;@name&quot;, MySqlDbType.VarChar, 100).Value = ... 형태로 씁니다."
+                                       Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                            <TextBlock x:Name="txtResult3_4" Margin="0,8,0,0" FontWeight="Bold"
+                                       Visibility="Collapsed" TextWrapping="Wrap"/>
+                        </StackPanel>
+                    </Expander>
                 
-                <!-- 직접 해보기 3_1 -->
-                <Expander Style="{StaticResource PracticeExpanderStyle}">
-                    <StackPanel Margin="10">
-                        <TextBlock Text="과제: 이름과 나이를 넣는 INSERT 문을 파라미터 방식으로 작성하세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
-                        <TextBox x:Name="txtPractice3_1"
-                                 Style="{StaticResource PracticeInputStyle}"
-                                 Text="string sql = &quot;INSERT INTO member (name, age) VALUES (@name, @age)&quot;;&#10;using (var cmd = new MySqlCommand(sql, conn))&#10;{&#10;    &#10;}"/>
-                        <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
-                            <Button Content="확인" Style="{StaticResource RunButtonStyle}" Click="BtnCheck_Click" Tag="3_1"/>
-                            <Button Content="힌트" Style="{StaticResource HintButtonStyle}" Click="BtnHint_Click" Tag="3_1"/>
-                            <Button Content="정답 보기" Style="{StaticResource AnswerButtonStyle}" Click="BtnAnswer_Click" Tag="3_1"/>
-                        </StackPanel>
-                        <TextBlock x:Name="txtHint3_1"
-                                   Text="힌트: SQL 문자열을 직접 이어 붙이지 말고 Parameters.AddWithValue 를 쓰세요."
-                                   Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
-                        <TextBlock x:Name="txtResult3_1" Margin="0,8,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
-                    </StackPanel>
-                </Expander>
 
-                <!-- 직접 해보기 3_2 -->
-                <Expander Style="{StaticResource PracticeExpanderStyle}">
-                    <StackPanel Margin="10">
-                        <TextBlock Text="과제: 삽입된 행 수를 확인해 결과 메시지를 표시하는 코드를 작성하세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
-                        <TextBox x:Name="txtPractice3_2"
-                                 Style="{StaticResource PracticeInputStyle}"
-                                 Text="int affected = cmd.ExecuteNonQuery();&#10;"/>
-                        <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
-                            <Button Content="확인" Style="{StaticResource RunButtonStyle}" Click="BtnCheck_Click" Tag="3_2"/>
-                            <Button Content="힌트" Style="{StaticResource HintButtonStyle}" Click="BtnHint_Click" Tag="3_2"/>
-                            <Button Content="정답 보기" Style="{StaticResource AnswerButtonStyle}" Click="BtnAnswer_Click" Tag="3_2"/>
-                        </StackPanel>
-                        <TextBlock x:Name="txtHint3_2"
-                                   Text="힌트: ExecuteNonQuery 는 영향받은 행 수를 돌려줍니다."
-                                   Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
-                        <TextBlock x:Name="txtResult3_2" Margin="0,8,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
-                    </StackPanel>
-                </Expander>
-
-<!-- 직접 해보기 3_3 -->
-<Expander Style="{StaticResource PracticeExpanderStyle}">
-    <StackPanel Margin="10">
-        <TextBlock Text="과제: 이름으로 검색하는 SELECT 문을 파라미터 방식으로 작성하세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
-        <TextBox x:Name="txtPractice3_3"
-                 Style="{StaticResource PracticeInputStyle}"
-                 Text="string sql = &#10;"/>
-        <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
-            <Button Content="확인" Style="{StaticResource RunButtonStyle}" Click="BtnCheck_Click" Tag="3_3"/>
-            <Button Content="힌트" Style="{StaticResource HintButtonStyle}" Click="BtnHint_Click" Tag="3_3"/>
-            <Button Content="정답 보기" Style="{StaticResource AnswerButtonStyle}" Click="BtnAnswer_Click" Tag="3_3"/>
-        </StackPanel>
-        <TextBlock x:Name="txtHint3_3"
-                   Text="힌트: LIKE 를 쓰더라도 값은 파라미터로 넘겨야 합니다."
-                   Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
-        <TextBlock x:Name="txtResult3_3" Margin="0,8,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
-    </StackPanel>
-</Expander>
 </StackPanel>
             </ScrollViewer>
         </TabItem>
@@ -499,6 +556,24 @@
                         <TextBox Style="{StaticResource CodeTextBoxStyle}"
                                  Text="private void BtnUpdate_OnClick(object sender, RoutedEventArgs e)&#10;{&#10;    try&#10;    {&#10;        // 매개변수화된 UPDATE 쿼리&#10;        MySqlCommand command = new MySqlCommand(&#10;            &quot;UPDATE person SET Name=@name, Age=@age, Address=@address &quot; +&#10;            &quot;WHERE ID=@id&quot;, connection);&#10;        &#10;        command.Parameters.AddWithValue(&quot;@name&quot;, TxtName.Text);&#10;        command.Parameters.AddWithValue(&quot;@age&quot;, TxtAge.Text);&#10;        command.Parameters.AddWithValue(&quot;@address&quot;, TxtAddress.Text);&#10;        command.Parameters.AddWithValue(&quot;@id&quot;, TxtId.Text);&#10;        &#10;        connection.Open();&#10;        int rows = command.ExecuteNonQuery();&#10;        &#10;        if (rows &gt; 0)&#10;            MessageBox.Show(&quot;수정되었습니다.&quot;);&#10;        else&#10;            MessageBox.Show(&quot;해당 ID가 존재하지 않습니다.&quot;);&#10;    }&#10;    catch (Exception ex)&#10;    {&#10;        MessageBox.Show($&quot;오류: {ex.Message}&quot;);&#10;    }&#10;    finally&#10;    {&#10;        connection.Close();&#10;        LoadData();&#10;    }&#10;}"/>
                     </Expander>
+                    <!-- 직접 해보기 4_1 -->
+                    <Expander Style="{StaticResource PracticeExpanderStyle}">
+                        <StackPanel Margin="10">
+                            <TextBlock Text="과제: id 로 회원의 나이를 수정하는 UPDATE 문을 파라미터 방식으로 작성하세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
+                            <TextBox x:Name="txtPractice4_1"
+                                     Style="{StaticResource PracticeInputStyle}"
+                                     Text="string sql = &#10;"/>
+                            <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
+                                <Button Content="확인" Style="{StaticResource RunButtonStyle}" Click="BtnCheck_Click" Tag="4_1"/>
+                                <Button Content="힌트" Style="{StaticResource HintButtonStyle}" Click="BtnHint_Click" Tag="4_1"/>
+                                <Button Content="정답 보기" Style="{StaticResource AnswerButtonStyle}" Click="BtnAnswer_Click" Tag="4_1"/>
+                            </StackPanel>
+                            <TextBlock x:Name="txtHint4_1"
+                                       Text="힌트: UPDATE 테이블 SET 컬럼=@값 WHERE 조건 형식입니다."
+                                       Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                            <TextBlock x:Name="txtResult4_1" Margin="0,8,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                        </StackPanel>
+                    </Expander>
 
                     <GroupBox Header="2. DELETE (삭제)" Margin="0,0,0,15" Padding="10">
                         <StackPanel>
@@ -515,6 +590,24 @@
                         <TextBox Style="{StaticResource CodeTextBoxStyle}"
                                  Text="private void BtnDelete_OnClick(object sender, RoutedEventArgs e)&#10;{&#10;    // 삭제 확인&#10;    var result = MessageBox.Show(&#10;        $&quot;ID {TxtId.Text}의 데이터를 삭제하시겠습니까?&quot;,&#10;        &quot;삭제 확인&quot;,&#10;        MessageBoxButton.YesNo,&#10;        MessageBoxImage.Question);&#10;    &#10;    if (result != MessageBoxResult.Yes) return;&#10;    &#10;    try&#10;    {&#10;        // 매개변수화된 DELETE 쿼리&#10;        MySqlCommand command = new MySqlCommand(&#10;            &quot;DELETE FROM person WHERE ID=@id&quot;, connection);&#10;        command.Parameters.AddWithValue(&quot;@id&quot;, TxtId.Text);&#10;        &#10;        connection.Open();&#10;        int rows = command.ExecuteNonQuery();&#10;        &#10;        if (rows &gt; 0)&#10;            MessageBox.Show(&quot;삭제되었습니다.&quot;);&#10;        else&#10;            MessageBox.Show(&quot;해당 ID가 존재하지 않습니다.&quot;);&#10;    }&#10;    catch (Exception ex)&#10;    {&#10;        MessageBox.Show($&quot;오류: {ex.Message}&quot;);&#10;    }&#10;    finally&#10;    {&#10;        connection.Close();&#10;        LoadData();&#10;    }&#10;}"/>
                     </Expander>
+                    <!-- 직접 해보기 4_2 -->
+                    <Expander Style="{StaticResource PracticeExpanderStyle}">
+                        <StackPanel Margin="10">
+                            <TextBlock Text="과제: id 로 회원을 삭제하는 DELETE 문을 작성하세요. WHERE 절을 빠뜨리면 안 됩니다." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
+                            <TextBox x:Name="txtPractice4_2"
+                                     Style="{StaticResource PracticeInputStyle}"
+                                     Text="string sql = &#10;"/>
+                            <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
+                                <Button Content="확인" Style="{StaticResource RunButtonStyle}" Click="BtnCheck_Click" Tag="4_2"/>
+                                <Button Content="힌트" Style="{StaticResource HintButtonStyle}" Click="BtnHint_Click" Tag="4_2"/>
+                                <Button Content="정답 보기" Style="{StaticResource AnswerButtonStyle}" Click="BtnAnswer_Click" Tag="4_2"/>
+                            </StackPanel>
+                            <TextBlock x:Name="txtHint4_2"
+                                       Text="힌트: WHERE 없는 DELETE 는 테이블 전체를 지웁니다. 반드시 조건을 넣으세요."
+                                       Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                            <TextBlock x:Name="txtResult4_2" Margin="0,8,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                        </StackPanel>
+                    </Expander>
 
                     <GroupBox Header="3. 트랜잭션 사용" Margin="0,0,0,15" Padding="10">
                         <StackPanel>
@@ -525,7 +618,25 @@
                         <TextBox Style="{StaticResource CodeTextBoxStyle}"
                                  Text="connection.Open();&#10;using (var transaction = connection.BeginTransaction())&#10;{&#10;    try&#10;    {&#10;        // 첫 번째 작업&#10;        var cmd1 = new MySqlCommand(&#10;            &quot;UPDATE accounts SET balance = balance - @amount WHERE id = @from&quot;,&#10;            connection, transaction);&#10;        cmd1.Parameters.AddWithValue(&quot;@amount&quot;, 1000);&#10;        cmd1.Parameters.AddWithValue(&quot;@from&quot;, 1);&#10;        cmd1.ExecuteNonQuery();&#10;        &#10;        // 두 번째 작업&#10;        var cmd2 = new MySqlCommand(&#10;            &quot;UPDATE accounts SET balance = balance + @amount WHERE id = @to&quot;,&#10;            connection, transaction);&#10;        cmd2.Parameters.AddWithValue(&quot;@amount&quot;, 1000);&#10;        cmd2.Parameters.AddWithValue(&quot;@to&quot;, 2);&#10;        cmd2.ExecuteNonQuery();&#10;        &#10;        // 모두 성공하면 커밋&#10;        transaction.Commit();&#10;    }&#10;    catch&#10;    {&#10;        // 실패하면 롤백&#10;        transaction.Rollback();&#10;        throw;&#10;    }&#10;}"/>
                     </Expander>
-
+                    <!-- 직접 해보기 4_3 -->
+                    <Expander Style="{StaticResource PracticeExpanderStyle}">
+                        <StackPanel Margin="10">
+                            <TextBlock Text="과제: 여러 건을 한 묶음으로 처리하도록 트랜잭션을 쓰는 코드를 작성하세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
+                            <TextBox x:Name="txtPractice4_3"
+                                     Style="{StaticResource PracticeInputStyle}"
+                                     Text="private void RunBatch(MySqlConnection conn)&#10;{&#10;    &#10;}"/>
+                            <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
+                                <Button Content="확인" Style="{StaticResource RunButtonStyle}" Click="BtnCheck_Click" Tag="4_3"/>
+                                <Button Content="힌트" Style="{StaticResource HintButtonStyle}" Click="BtnHint_Click" Tag="4_3"/>
+                                <Button Content="정답 보기" Style="{StaticResource AnswerButtonStyle}" Click="BtnAnswer_Click" Tag="4_3"/>
+                            </StackPanel>
+                            <TextBlock x:Name="txtHint4_3"
+                                       Text="힌트: BeginTransaction 후 성공하면 Commit, 실패하면 Rollback 합니다."
+                                       Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                            <TextBlock x:Name="txtResult4_3" Margin="0,8,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                        </StackPanel>
+                    </Expander>
+                    
                     <GroupBox Header="4. 소프트 삭제 (Soft Delete)" Margin="0,0,0,15" Padding="10">
                         <StackPanel>
                             <TextBlock Text="실제 삭제 대신 삭제 표시만 하는 방법 (복구 가능):" Margin="0,0,0,10"/>
@@ -535,63 +646,28 @@
                         <TextBox Style="{StaticResource CodeTextBoxStyle}"
                                  Text="-- 테이블에 삭제 관련 컬럼 추가&#10;ALTER TABLE person ADD COLUMN IsDeleted BIT DEFAULT 0;&#10;ALTER TABLE person ADD COLUMN DeletedAt DATETIME NULL;&#10;&#10;-- 소프트 삭제 (UPDATE로 처리)&#10;UPDATE person &#10;SET IsDeleted = 1, DeletedAt = NOW() &#10;WHERE ID = @id;&#10;&#10;-- 조회 시 삭제되지 않은 것만&#10;SELECT * FROM person WHERE IsDeleted = 0;&#10;&#10;-- 장점:&#10;-- - 복구 가능&#10;-- - 감사 추적 (언제 삭제됐는지)&#10;-- - 참조 무결성 유지"/>
                     </Expander>
+                    <!-- 직접 해보기 4_4 -->
+                    <Expander Style="{StaticResource PracticeExpanderStyle}">
+                        <StackPanel Margin="10">
+                            <TextBlock Text="과제: 행을 지우지 않고 삭제 표시만 남기는 소프트 삭제 SQL을 작성하세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
+                            <TextBox x:Name="txtPractice4_4"
+                                     Style="{StaticResource PracticeInputStyle}"
+                                     Height="120" AcceptsReturn="True"
+                                     Text="-- 실제 DELETE 대신 삭제 표시만 남깁니다&#10;&#10;"/>
+                            <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
+                                <Button Content="확인" Style="{StaticResource RunButtonStyle}" Click="BtnCheck_Click" Tag="4_4"/>
+                                <Button Content="힌트" Style="{StaticResource HintButtonStyle}" Click="BtnHint_Click" Tag="4_4"/>
+                                <Button Content="정답 보기" Style="{StaticResource AnswerButtonStyle}" Click="BtnAnswer_Click" Tag="4_4"/>
+                            </StackPanel>
+                            <TextBlock x:Name="txtHint4_4"
+                                       Text="힌트: UPDATE 로 IsDeleted 를 1 로, DeletedAt 을 NOW() 로 바꾸고, 조회는 IsDeleted = 0 만 봅니다."
+                                       Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                            <TextBlock x:Name="txtResult4_4" Margin="0,8,0,0" FontWeight="Bold"
+                                       Visibility="Collapsed" TextWrapping="Wrap"/>
+                        </StackPanel>
+                    </Expander>
                 
-                <!-- 직접 해보기 4_1 -->
-                <Expander Style="{StaticResource PracticeExpanderStyle}">
-                    <StackPanel Margin="10">
-                        <TextBlock Text="과제: id 로 회원의 나이를 수정하는 UPDATE 문을 파라미터 방식으로 작성하세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
-                        <TextBox x:Name="txtPractice4_1"
-                                 Style="{StaticResource PracticeInputStyle}"
-                                 Text="string sql = &#10;"/>
-                        <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
-                            <Button Content="확인" Style="{StaticResource RunButtonStyle}" Click="BtnCheck_Click" Tag="4_1"/>
-                            <Button Content="힌트" Style="{StaticResource HintButtonStyle}" Click="BtnHint_Click" Tag="4_1"/>
-                            <Button Content="정답 보기" Style="{StaticResource AnswerButtonStyle}" Click="BtnAnswer_Click" Tag="4_1"/>
-                        </StackPanel>
-                        <TextBlock x:Name="txtHint4_1"
-                                   Text="힌트: UPDATE 테이블 SET 컬럼=@값 WHERE 조건 형식입니다."
-                                   Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
-                        <TextBlock x:Name="txtResult4_1" Margin="0,8,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
-                    </StackPanel>
-                </Expander>
 
-                <!-- 직접 해보기 4_2 -->
-                <Expander Style="{StaticResource PracticeExpanderStyle}">
-                    <StackPanel Margin="10">
-                        <TextBlock Text="과제: id 로 회원을 삭제하는 DELETE 문을 작성하세요. WHERE 절을 빠뜨리면 안 됩니다." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
-                        <TextBox x:Name="txtPractice4_2"
-                                 Style="{StaticResource PracticeInputStyle}"
-                                 Text="string sql = &#10;"/>
-                        <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
-                            <Button Content="확인" Style="{StaticResource RunButtonStyle}" Click="BtnCheck_Click" Tag="4_2"/>
-                            <Button Content="힌트" Style="{StaticResource HintButtonStyle}" Click="BtnHint_Click" Tag="4_2"/>
-                            <Button Content="정답 보기" Style="{StaticResource AnswerButtonStyle}" Click="BtnAnswer_Click" Tag="4_2"/>
-                        </StackPanel>
-                        <TextBlock x:Name="txtHint4_2"
-                                   Text="힌트: WHERE 없는 DELETE 는 테이블 전체를 지웁니다. 반드시 조건을 넣으세요."
-                                   Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
-                        <TextBlock x:Name="txtResult4_2" Margin="0,8,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
-                    </StackPanel>
-                </Expander>
-
-<!-- 직접 해보기 4_3 -->
-<Expander Style="{StaticResource PracticeExpanderStyle}">
-    <StackPanel Margin="10">
-        <TextBlock Text="과제: 여러 건을 한 묶음으로 처리하도록 트랜잭션을 쓰는 코드를 작성하세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
-        <TextBox x:Name="txtPractice4_3"
-                 Style="{StaticResource PracticeInputStyle}"
-                 Text="private void RunBatch(MySqlConnection conn)&#10;{&#10;    &#10;}"/>
-        <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
-            <Button Content="확인" Style="{StaticResource RunButtonStyle}" Click="BtnCheck_Click" Tag="4_3"/>
-            <Button Content="힌트" Style="{StaticResource HintButtonStyle}" Click="BtnHint_Click" Tag="4_3"/>
-            <Button Content="정답 보기" Style="{StaticResource AnswerButtonStyle}" Click="BtnAnswer_Click" Tag="4_3"/>
-        </StackPanel>
-        <TextBlock x:Name="txtHint4_3"
-                   Text="힌트: BeginTransaction 후 성공하면 Commit, 실패하면 Rollback 합니다."
-                   Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
-        <TextBlock x:Name="txtResult4_3" Margin="0,8,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
-    </StackPanel>
-</Expander>
 </StackPanel>
             </ScrollViewer>
         </TabItem>
@@ -636,6 +712,24 @@
                         <TextBox Style="{StaticResource CodeTextBoxStyle}"
                                  Text="&lt;Grid&gt;&#10;    &lt;Grid.ColumnDefinitions&gt;&#10;        &lt;ColumnDefinition Width=&quot;*&quot;/&gt;&#10;        &lt;ColumnDefinition Width=&quot;*&quot;/&gt;&#10;    &lt;/Grid.ColumnDefinitions&gt;&#10;    &#10;    &lt;!-- DataGrid --&gt;&#10;    &lt;DataGrid Name=&quot;Grid&quot; Grid.Column=&quot;0&quot;/&gt;&#10;    &#10;    &lt;!-- 입력 폼 --&gt;&#10;    &lt;Grid Grid.Column=&quot;1&quot;&gt;&#10;        &lt;Label&gt;아이디&lt;/Label&gt;&#10;        &lt;TextBox Name=&quot;TxtId&quot; &#10;                 Text=&quot;{Binding ElementName=Grid, Path=SelectedItem.ID}&quot;/&gt;&#10;        &#10;        &lt;Label&gt;이름&lt;/Label&gt;&#10;        &lt;TextBox Name=&quot;TxtName&quot; &#10;                 Text=&quot;{Binding ElementName=Grid, Path=SelectedItem.Name}&quot;/&gt;&#10;        &#10;        &lt;Button Name=&quot;BtnInsert&quot; Click=&quot;BtnInsert_OnClick&quot;&gt;삽입&lt;/Button&gt;&#10;        &lt;Button Name=&quot;BtnUpdate&quot; Click=&quot;BtnUpdate_OnClick&quot;&gt;수정&lt;/Button&gt;&#10;        &lt;Button Name=&quot;BtnDelete&quot; Click=&quot;BtnDelete_OnClick&quot;&gt;삭제&lt;/Button&gt;&#10;        &lt;Button Name=&quot;BtnClear&quot; Click=&quot;BtnClear_OnClick&quot;&gt;클리어&lt;/Button&gt;&#10;    &lt;/Grid&gt;&#10;&lt;/Grid&gt;"/>
                     </Expander>
+                    <!-- 직접 해보기 5_1 -->
+                    <Expander Style="{StaticResource PracticeExpanderStyle}">
+                        <StackPanel Margin="10">
+                            <TextBlock Text="과제: 연결과 명령을 모두 using 으로 감싸 자원이 확실히 해제되게 작성하세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
+                            <TextBox x:Name="txtPractice5_1"
+                                     Style="{StaticResource PracticeInputStyle}"
+                                     Text="private void Run()&#10;{&#10;    &#10;}"/>
+                            <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
+                                <Button Content="확인" Style="{StaticResource RunButtonStyle}" Click="BtnCheck_Click" Tag="5_1"/>
+                                <Button Content="힌트" Style="{StaticResource HintButtonStyle}" Click="BtnHint_Click" Tag="5_1"/>
+                                <Button Content="정답 보기" Style="{StaticResource AnswerButtonStyle}" Click="BtnAnswer_Click" Tag="5_1"/>
+                            </StackPanel>
+                            <TextBlock x:Name="txtHint5_1"
+                                       Text="힌트: using 을 중첩해서 쓰면 안쪽부터 차례로 해제됩니다."
+                                       Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                            <TextBlock x:Name="txtResult5_1" Margin="0,8,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                        </StackPanel>
+                    </Expander>
 
                     <GroupBox Header="비동기 패턴 (권장)" Margin="0,0,0,15" Padding="10">
                         <StackPanel>
@@ -653,6 +747,24 @@
                     <Expander Style="{StaticResource CodeExpanderStyle}">
                         <TextBox Style="{StaticResource CodeTextBoxStyle}"
                                  Text="private async Task LoadDataAsync()&#10;{&#10;    DataTable dataTable = new DataTable();&#10;    &#10;    using (var connection = new MySqlConnection(connectionString))&#10;    using (var command = new MySqlCommand(&quot;SELECT * FROM person&quot;, connection))&#10;    {&#10;        await connection.OpenAsync();&#10;        &#10;        using (var reader = await command.ExecuteReaderAsync())&#10;        {&#10;            dataTable.Load(reader);&#10;        }&#10;    }&#10;    &#10;    Grid.ItemsSource = dataTable.DefaultView;&#10;}&#10;&#10;// 호출&#10;private async void Window_Loaded(object sender, RoutedEventArgs e)&#10;{&#10;    await LoadDataAsync();&#10;}"/>
+                    </Expander>
+                    <!-- 직접 해보기 5_2 -->
+                    <Expander Style="{StaticResource PracticeExpanderStyle}">
+                        <StackPanel Margin="10">
+                            <TextBlock Text="과제: 데이터베이스 작업을 try/catch 로 감싸 오류를 화면에 알리는 코드를 작성하세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
+                            <TextBox x:Name="txtPractice5_2"
+                                     Style="{StaticResource PracticeInputStyle}"
+                                     Text="private void Safe()&#10;{&#10;    &#10;}"/>
+                            <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
+                                <Button Content="확인" Style="{StaticResource RunButtonStyle}" Click="BtnCheck_Click" Tag="5_2"/>
+                                <Button Content="힌트" Style="{StaticResource HintButtonStyle}" Click="BtnHint_Click" Tag="5_2"/>
+                                <Button Content="정답 보기" Style="{StaticResource AnswerButtonStyle}" Click="BtnAnswer_Click" Tag="5_2"/>
+                            </StackPanel>
+                            <TextBlock x:Name="txtHint5_2"
+                                       Text="힌트: catch (Exception ex) 에서 ex.Message 를 보여 줍니다."
+                                       Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                            <TextBlock x:Name="txtResult5_2" Margin="0,8,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                        </StackPanel>
                     </Expander>
 
                     <GroupBox Header="모범 사례 체크리스트" Margin="0,0,0,15" Padding="10">
@@ -675,63 +787,26 @@
                         <TextBox Style="{StaticResource CodeTextBoxStyle}"
                                  Text="// 완전한 패턴 예제&#10;private async Task InsertAsync()&#10;{&#10;    // 1. 입력 검증&#10;    if (string.IsNullOrWhiteSpace(TxtName.Text))&#10;    {&#10;        MessageBox.Show(&quot;이름을 입력하세요.&quot;);&#10;        return;&#10;    }&#10;    &#10;    // 2. using + 비동기 + 매개변수화&#10;    using (var conn = new MySqlConnection(connectionString))&#10;    using (var cmd = new MySqlCommand(&#10;        &quot;INSERT INTO person(Name, Age, Address) VALUES (@n, @a, @addr)&quot;, conn))&#10;    {&#10;        cmd.Parameters.AddWithValue(&quot;@n&quot;, TxtName.Text);&#10;        cmd.Parameters.AddWithValue(&quot;@a&quot;, int.Parse(TxtAge.Text));&#10;        cmd.Parameters.AddWithValue(&quot;@addr&quot;, TxtAddress.Text);&#10;        &#10;        try&#10;        {&#10;            await conn.OpenAsync();&#10;            await cmd.ExecuteNonQueryAsync();&#10;            MessageBox.Show(&quot;삽입 완료&quot;);&#10;        }&#10;        catch (MySqlException ex)&#10;        {&#10;            MessageBox.Show($&quot;DB 오류: {ex.Message}&quot;);&#10;        }&#10;    }&#10;    &#10;    await LoadDataAsync();&#10;}"/>
                     </Expander>
-                
-                <!-- 직접 해보기 5_1 -->
-                <Expander Style="{StaticResource PracticeExpanderStyle}">
-                    <StackPanel Margin="10">
-                        <TextBlock Text="과제: 연결과 명령을 모두 using 으로 감싸 자원이 확실히 해제되게 작성하세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
-                        <TextBox x:Name="txtPractice5_1"
-                                 Style="{StaticResource PracticeInputStyle}"
-                                 Text="private void Run()&#10;{&#10;    &#10;}"/>
-                        <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
-                            <Button Content="확인" Style="{StaticResource RunButtonStyle}" Click="BtnCheck_Click" Tag="5_1"/>
-                            <Button Content="힌트" Style="{StaticResource HintButtonStyle}" Click="BtnHint_Click" Tag="5_1"/>
-                            <Button Content="정답 보기" Style="{StaticResource AnswerButtonStyle}" Click="BtnAnswer_Click" Tag="5_1"/>
+                    <!-- 직접 해보기 5_3 -->
+                    <Expander Style="{StaticResource PracticeExpanderStyle}">
+                        <StackPanel Margin="10">
+                            <TextBlock Text="과제: 조회 결과를 ListView(list)에 채우는 코드를 작성하세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
+                            <TextBox x:Name="txtPractice5_3"
+                                     Style="{StaticResource PracticeInputStyle}"
+                                     Text="private void Fill(MySqlDataReader reader)&#10;{&#10;    &#10;}"/>
+                            <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
+                                <Button Content="확인" Style="{StaticResource RunButtonStyle}" Click="BtnCheck_Click" Tag="5_3"/>
+                                <Button Content="힌트" Style="{StaticResource HintButtonStyle}" Click="BtnHint_Click" Tag="5_3"/>
+                                <Button Content="정답 보기" Style="{StaticResource AnswerButtonStyle}" Click="BtnAnswer_Click" Tag="5_3"/>
+                            </StackPanel>
+                            <TextBlock x:Name="txtHint5_3"
+                                       Text="힌트: 리스트에 담아 한 번에 ItemsSource 로 넘깁니다."
+                                       Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                            <TextBlock x:Name="txtResult5_3" Margin="0,8,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
                         </StackPanel>
-                        <TextBlock x:Name="txtHint5_1"
-                                   Text="힌트: using 을 중첩해서 쓰면 안쪽부터 차례로 해제됩니다."
-                                   Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
-                        <TextBlock x:Name="txtResult5_1" Margin="0,8,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
-                    </StackPanel>
-                </Expander>
+                    </Expander>
+                                    
 
-                <!-- 직접 해보기 5_2 -->
-                <Expander Style="{StaticResource PracticeExpanderStyle}">
-                    <StackPanel Margin="10">
-                        <TextBlock Text="과제: 데이터베이스 작업을 try/catch 로 감싸 오류를 화면에 알리는 코드를 작성하세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
-                        <TextBox x:Name="txtPractice5_2"
-                                 Style="{StaticResource PracticeInputStyle}"
-                                 Text="private void Safe()&#10;{&#10;    &#10;}"/>
-                        <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
-                            <Button Content="확인" Style="{StaticResource RunButtonStyle}" Click="BtnCheck_Click" Tag="5_2"/>
-                            <Button Content="힌트" Style="{StaticResource HintButtonStyle}" Click="BtnHint_Click" Tag="5_2"/>
-                            <Button Content="정답 보기" Style="{StaticResource AnswerButtonStyle}" Click="BtnAnswer_Click" Tag="5_2"/>
-                        </StackPanel>
-                        <TextBlock x:Name="txtHint5_2"
-                                   Text="힌트: catch (Exception ex) 에서 ex.Message 를 보여 줍니다."
-                                   Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
-                        <TextBlock x:Name="txtResult5_2" Margin="0,8,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
-                    </StackPanel>
-                </Expander>
-
-<!-- 직접 해보기 5_3 -->
-<Expander Style="{StaticResource PracticeExpanderStyle}">
-    <StackPanel Margin="10">
-        <TextBlock Text="과제: 조회 결과를 ListView(list)에 채우는 코드를 작성하세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
-        <TextBox x:Name="txtPractice5_3"
-                 Style="{StaticResource PracticeInputStyle}"
-                 Text="private void Fill(MySqlDataReader reader)&#10;{&#10;    &#10;}"/>
-        <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
-            <Button Content="확인" Style="{StaticResource RunButtonStyle}" Click="BtnCheck_Click" Tag="5_3"/>
-            <Button Content="힌트" Style="{StaticResource HintButtonStyle}" Click="BtnHint_Click" Tag="5_3"/>
-            <Button Content="정답 보기" Style="{StaticResource AnswerButtonStyle}" Click="BtnAnswer_Click" Tag="5_3"/>
-        </StackPanel>
-        <TextBlock x:Name="txtHint5_3"
-                   Text="힌트: 리스트에 담아 한 번에 ItemsSource 로 넘깁니다."
-                   Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
-        <TextBlock x:Name="txtResult5_3" Margin="0,8,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
-    </StackPanel>
-</Expander>
 </StackPanel>
             </ScrollViewer>
         </TabItem>
