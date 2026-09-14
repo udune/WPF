@@ -14,6 +14,9 @@ namespace ch20_프로그레스바
         // 각 연습의 정답
         private readonly Dictionary<string, string> _answers = new()
         {
+            { "3_4", "private void StatusSlider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)\n{\n    double value = statusSlider.Value;\n    statusProgressBar.Value = value;\n\n    if (value < 30)\n        statusProgressBar.Foreground = Brushes.Red;\n    else if (value < 70)\n        statusProgressBar.Foreground = Brushes.Orange;\n    else\n        statusProgressBar.Foreground = Brushes.Green;\n}" },
+            { "4_4", "private void ValueSlider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)\n{\n    dynamicValueBar.Value = valueSlider.Value;\n    dynamicValueText.Text = $\"{valueSlider.Value:0}%\";\n}" },
+            { "5_4", "<Grid>\n    <ProgressBar Height=\"35\" Value=\"48\" Foreground=\"#673AB7\" Background=\"#E0E0E0\"/>\n    <TextBlock Text=\"3 / 6 파일 완료 (48%)\" HorizontalAlignment=\"Center\"\n               VerticalAlignment=\"Center\" FontWeight=\"Bold\"/>\n</Grid>" },
             { "1_3", "<ProgressBar Height=\"22\" Width=\"260\" Minimum=\"0\" Maximum=\"200\" Value=\"150\"/>" },
             { "2_3", "<ProgressBar Height=\"22\" Width=\"260\" IsIndeterminate=\"True\"/>" },
             { "3_3", "<ProgressBar Height=\"22\" Width=\"260\" Value=\"60\" Foreground=\"Orange\" Background=\"#EEEEEE\"/>" },
@@ -43,6 +46,8 @@ namespace ch20_프로그레스바
         // 코드 비교 검증용 필수 키워드
         private readonly Dictionary<string, string[]> _requiredKeywords = new()
         {
+            { "3_4", new[] { "Foreground", "Brushes.Red", "Brushes.Orange", "Brushes.Green" } },
+            { "4_4", new[] { "dynamicValueBar.Value", "dynamicValueText.Text", "%" } },
             { "2_2", new[] { "progressBar", "IsIndeterminate", "true" } },
             { "4_2", new[] { "progressBar.Value", "75", "percentText.Text", "75%" } },
             { "5_1", new[] { "DispatcherTimer", "Interval", "TimeSpan.FromMilliseconds", "200" } },

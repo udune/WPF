@@ -12,7 +12,7 @@
         <Style x:Key="CodeExpanderStyle" TargetType="Expander">
             <Setter Property="Header" Value="코드 보기"/>
             <Setter Property="Margin" Value="0,0,0,12"/>
-            <Setter Property="IsExpanded" Value="False"/>
+            <Setter Property="IsExpanded" Value="True"/>
         </Style>
         <Style x:Key="CodeTextBoxStyle" TargetType="TextBox">
             <Setter Property="IsReadOnly" Value="True"/>
@@ -77,54 +77,6 @@
                     <Expander Style="{StaticResource CodeExpanderStyle}">
                         <TextBox Style="{StaticResource CodeTextBoxStyle}" Text="&lt;TextBlock&gt;안녕하세요&lt;/TextBlock&gt;"/>
                     </Expander>
-
-                    <GroupBox Header="Text 속성으로 지정" Margin="0,0,0,8">
-                        <TextBlock Text="안녕하세요"/>
-                    </GroupBox>
-                    <Expander Style="{StaticResource CodeExpanderStyle}">
-                        <TextBox Style="{StaticResource CodeTextBoxStyle}" Text="&lt;TextBlock Text=&quot;안녕하세요&quot;/&gt;"/>
-                    </Expander>
-
-                    <GroupBox Header="코드 비하인드에서 동적 설정" Margin="0,0,0,8">
-                        <TextBlock x:Name="tbDynamic" Text="초기 텍스트" FontSize="14"/>
-                    </GroupBox>
-                    <Button Content="텍스트 변경" Click="BtnChangeText_Click" Width="120" HorizontalAlignment="Left" Margin="0,0,0,4"/>
-                    <Expander Style="{StaticResource CodeExpanderStyle}">
-                        <TextBox Style="{StaticResource CodeTextBoxStyle}" Text="&lt;!-- XAML --&gt;&#10;&lt;TextBlock x:Name=&quot;tbDynamic&quot; Text=&quot;초기 텍스트&quot; FontSize=&quot;14&quot;/&gt;&#10;&lt;Button Content=&quot;텍스트 변경&quot; Click=&quot;BtnChangeText_Click&quot;/&gt;&#10;&#10;// C# 코드 비하인드&#10;private int _clickCount;&#10;private void BtnChangeText_Click(object sender, RoutedEventArgs e)&#10;{&#10;    _clickCount++;&#10;    tbDynamic.Text = $&quot;코드에서 변경된 텍스트 (클릭 {_clickCount}회)&quot;;&#10;}"/>
-                    </Expander>
-
-                    <TextBlock Text="2. 줄바꿈과 링크" FontSize="18" FontWeight="Bold" Margin="0,10,0,10"/>
-
-                    <GroupBox Header="LineBreak으로 줄바꿈" Margin="0,0,0,8">
-                        <TextBlock FontSize="14">
-                            첫 번째 줄<LineBreak/>두 번째 줄<LineBreak/>세 번째 줄
-                        </TextBlock>
-                    </GroupBox>
-                    <Expander Style="{StaticResource CodeExpanderStyle}">
-                        <TextBox Style="{StaticResource CodeTextBoxStyle}" Text="&lt;TextBlock&gt;&#10;    첫 번째 줄&lt;LineBreak/&gt;두 번째 줄&lt;LineBreak/&gt;세 번째 줄&#10;&lt;/TextBlock&gt;"/>
-                    </Expander>
-
-                    <GroupBox Header="Hyperlink (클릭 시 브라우저 열기)" Margin="0,0,0,8">
-                        <TextBlock FontSize="14">
-                            검색은 <Hyperlink RequestNavigate="Hyperlink_RequestNavigate"
-                                             NavigateUri="https://google.co.kr"
-                                             Cursor="Hand">구글 바로가기</Hyperlink>를 이용하세요.
-                        </TextBlock>
-                    </GroupBox>
-                    <Expander Style="{StaticResource CodeExpanderStyle}">
-                        <TextBox Style="{StaticResource CodeTextBoxStyle}" Text="&lt;!-- XAML --&gt;&#10;&lt;TextBlock&gt;&#10;    검색은 &lt;Hyperlink RequestNavigate=&quot;Hyperlink_RequestNavigate&quot;&#10;                     NavigateUri=&quot;https://google.co.kr&quot;&#10;                     Cursor=&quot;Hand&quot;&gt;구글 바로가기&lt;/Hyperlink&gt;를 이용하세요.&#10;&lt;/TextBlock&gt;&#10;&#10;// C# 코드 비하인드&#10;private void Hyperlink_RequestNavigate(object sender, RequestNavigateEventArgs e)&#10;{&#10;    Process.Start(new ProcessStartInfo(e.Uri.AbsoluteUri) { UseShellExecute = true });&#10;}"/>
-                    </Expander>
-
-                    <GroupBox Header="ToolTip 표시" Margin="0,0,0,8">
-                        <TextBlock Text="마우스를 올려보세요" FontSize="14" ToolTip="이것은 TextBlock의 ToolTip입니다"/>
-                    </GroupBox>
-                    <Expander Style="{StaticResource CodeExpanderStyle}">
-                        <TextBox Style="{StaticResource CodeTextBoxStyle}" Text="&lt;TextBlock Text=&quot;마우스를 올려보세요&quot; ToolTip=&quot;이것은 TextBlock의 ToolTip입니다&quot;/&gt;"/>
-                    </Expander>
-
-                    <!-- 직접 해보기 -->
-                    <TextBlock Text="직접 해보기" FontSize="18" FontWeight="Bold" Margin="0,20,0,10" Foreground="#1976D2"/>
-
                     <Expander Style="{StaticResource PracticeExpanderStyle}">
                         <StackPanel Margin="10">
                             <TextBlock Text="과제 1: 태그 사이에 '환영합니다'라는 텍스트를 가진 TextBlock을 만드세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
@@ -145,6 +97,12 @@
                         </StackPanel>
                     </Expander>
 
+                    <GroupBox Header="Text 속성으로 지정" Margin="0,0,0,8">
+                        <TextBlock Text="안녕하세요"/>
+                    </GroupBox>
+                    <Expander Style="{StaticResource CodeExpanderStyle}">
+                        <TextBox Style="{StaticResource CodeTextBoxStyle}" Text="&lt;TextBlock Text=&quot;안녕하세요&quot;/&gt;"/>
+                    </Expander>
                     <Expander Style="{StaticResource PracticeExpanderStyle}">
                         <StackPanel Margin="10">
                             <TextBlock Text="과제 2: Text 속성을 사용하여 'WPF 학습중'이라는 텍스트를 표시하세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
@@ -165,6 +123,13 @@
                         </StackPanel>
                     </Expander>
 
+                    <GroupBox Header="코드 비하인드에서 동적 설정" Margin="0,0,0,8">
+                        <TextBlock x:Name="tbDynamic" Text="초기 텍스트" FontSize="14"/>
+                    </GroupBox>
+                    <Button Content="텍스트 변경" Click="BtnChangeText_Click" Width="120" HorizontalAlignment="Left" Margin="0,0,0,4"/>
+                    <Expander Style="{StaticResource CodeExpanderStyle}">
+                        <TextBox Style="{StaticResource CodeTextBoxStyle}" Text="&lt;!-- XAML --&gt;&#10;&lt;TextBlock x:Name=&quot;tbDynamic&quot; Text=&quot;초기 텍스트&quot; FontSize=&quot;14&quot;/&gt;&#10;&lt;Button Content=&quot;텍스트 변경&quot; Click=&quot;BtnChangeText_Click&quot;/&gt;&#10;&#10;// C# 코드 비하인드&#10;private int _clickCount;&#10;private void BtnChangeText_Click(object sender, RoutedEventArgs e)&#10;{&#10;    _clickCount++;&#10;    tbDynamic.Text = $&quot;코드에서 변경된 텍스트 (클릭 {_clickCount}회)&quot;;&#10;}"/>
+                    </Expander>
                     <Expander Style="{StaticResource PracticeExpanderStyle}">
                         <StackPanel Margin="10">
                             <TextBlock Text="과제 3: 클릭 횟수를 세어 TextBlock에 표시하는 이벤트 핸들러를 작성하세요. (tbCounter.Text에 횟수 표시)" FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
@@ -185,6 +150,16 @@
                         </StackPanel>
                     </Expander>
 
+                    <TextBlock Text="2. 줄바꿈과 링크" FontSize="18" FontWeight="Bold" Margin="0,10,0,10"/>
+
+                    <GroupBox Header="LineBreak으로 줄바꿈" Margin="0,0,0,8">
+                        <TextBlock FontSize="14">
+                            첫 번째 줄<LineBreak/>두 번째 줄<LineBreak/>세 번째 줄
+                        </TextBlock>
+                    </GroupBox>
+                    <Expander Style="{StaticResource CodeExpanderStyle}">
+                        <TextBox Style="{StaticResource CodeTextBoxStyle}" Text="&lt;TextBlock&gt;&#10;    첫 번째 줄&lt;LineBreak/&gt;두 번째 줄&lt;LineBreak/&gt;세 번째 줄&#10;&lt;/TextBlock&gt;"/>
+                    </Expander>
                     <Expander Style="{StaticResource PracticeExpanderStyle}">
                         <StackPanel Margin="10">
                             <TextBlock Text="과제 4: LineBreak를 사용하여 '첫째줄', '둘째줄', '셋째줄'을 각각 다른 줄에 표시하세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
@@ -205,6 +180,68 @@
                             </Border>
                         </StackPanel>
                     </Expander>
+
+                    <GroupBox Header="Hyperlink (클릭 시 브라우저 열기)" Margin="0,0,0,8">
+                        <TextBlock FontSize="14">
+                            검색은 <Hyperlink RequestNavigate="Hyperlink_RequestNavigate"
+                                             NavigateUri="https://google.co.kr"
+                                             Cursor="Hand">구글 바로가기</Hyperlink>를 이용하세요.
+                        </TextBlock>
+                    </GroupBox>
+                    <Expander Style="{StaticResource CodeExpanderStyle}">
+                        <TextBox Style="{StaticResource CodeTextBoxStyle}" Text="&lt;!-- XAML --&gt;&#10;&lt;TextBlock&gt;&#10;    검색은 &lt;Hyperlink RequestNavigate=&quot;Hyperlink_RequestNavigate&quot;&#10;                     NavigateUri=&quot;https://google.co.kr&quot;&#10;                     Cursor=&quot;Hand&quot;&gt;구글 바로가기&lt;/Hyperlink&gt;를 이용하세요.&#10;&lt;/TextBlock&gt;&#10;&#10;// C# 코드 비하인드&#10;private void Hyperlink_RequestNavigate(object sender, RequestNavigateEventArgs e)&#10;{&#10;    Process.Start(new ProcessStartInfo(e.Uri.AbsoluteUri) { UseShellExecute = true });&#10;}"/>
+                    </Expander>
+                    <!-- 직접 해보기 1_5 -->
+                    <Expander Style="{StaticResource PracticeExpanderStyle}">
+                        <StackPanel Margin="10">
+                            <TextBlock Text="과제: 문장 가운데에 구글로 가는 Hyperlink를 넣으세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
+                            <TextBox x:Name="txtPractice1_5"
+                                     Style="{StaticResource PracticeInputStyle}"
+                                     Text="&lt;TextBlock TextWrapping=&quot;Wrap&quot;&gt;&#10;    검색은 여기를 이용하세요.&#10;&lt;/TextBlock&gt;"/>
+                            <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
+                                <Button Content="실행" Style="{StaticResource RunButtonStyle}" Click="BtnRun_Click" Tag="1_5"/>
+                                <Button Content="힌트" Style="{StaticResource HintButtonStyle}" Click="BtnHint_Click" Tag="1_5"/>
+                                <Button Content="정답 보기" Style="{StaticResource AnswerButtonStyle}" Click="BtnAnswer_Click" Tag="1_5"/>
+                            </StackPanel>
+                            <TextBlock x:Name="txtHint1_5"
+                                       Text="힌트: &lt;Hyperlink NavigateUri=&quot;https://google.co.kr&quot;&gt;보일 글자&lt;/Hyperlink&gt; 를 문장 안에 끼워 넣습니다."
+                                       Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                            <Border x:Name="resultBorder1_5" Background="White" Margin="0,8,0,0" Padding="10" Visibility="Collapsed">
+                                <StackPanel x:Name="resultPanel1_5"/>
+                            </Border>
+                        </StackPanel>
+                    </Expander>
+
+                    <GroupBox Header="ToolTip 표시" Margin="0,0,0,8">
+                        <TextBlock Text="마우스를 올려보세요" FontSize="14" ToolTip="이것은 TextBlock의 ToolTip입니다"/>
+                    </GroupBox>
+                    <Expander Style="{StaticResource CodeExpanderStyle}">
+                        <TextBox Style="{StaticResource CodeTextBoxStyle}" Text="&lt;TextBlock Text=&quot;마우스를 올려보세요&quot; ToolTip=&quot;이것은 TextBlock의 ToolTip입니다&quot;/&gt;"/>
+                    </Expander>
+                    <!-- 직접 해보기 1_6 -->
+                    <Expander Style="{StaticResource PracticeExpanderStyle}">
+                        <StackPanel Margin="10">
+                            <TextBlock Text="과제: 마우스를 올리면 설명이 뜨는 TextBlock을 만드세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
+                            <TextBox x:Name="txtPractice1_6"
+                                     Style="{StaticResource PracticeInputStyle}"
+                                     Text="&lt;TextBlock Text=&quot;마우스를 올려보세요&quot;/&gt;"/>
+                            <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
+                                <Button Content="실행" Style="{StaticResource RunButtonStyle}" Click="BtnRun_Click" Tag="1_6"/>
+                                <Button Content="힌트" Style="{StaticResource HintButtonStyle}" Click="BtnHint_Click" Tag="1_6"/>
+                                <Button Content="정답 보기" Style="{StaticResource AnswerButtonStyle}" Click="BtnAnswer_Click" Tag="1_6"/>
+                            </StackPanel>
+                            <TextBlock x:Name="txtHint1_6"
+                                       Text="힌트: ToolTip 속성에 설명 문구를 넣습니다."
+                                       Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                            <Border x:Name="resultBorder1_6" Background="White" Margin="0,8,0,0" Padding="10" Visibility="Collapsed">
+                                <StackPanel x:Name="resultPanel1_6"/>
+                            </Border>
+                        </StackPanel>
+                    </Expander>
+
+                    <!-- 직접 해보기 -->
+                    <TextBlock Text="직접 해보기" FontSize="18" FontWeight="Bold" Margin="0,20,0,10" Foreground="#1976D2"/>
+
                 </StackPanel>
             </ScrollViewer>
         </TabItem>
@@ -222,62 +259,6 @@
                     <Expander Style="{StaticResource CodeExpanderStyle}">
                         <TextBox Style="{StaticResource CodeTextBoxStyle}" Text="&lt;TextBlock FontSize=&quot;16&quot;&gt;&#10;    &lt;Bold&gt;굵은 텍스트&lt;/Bold&gt;, &lt;Italic&gt;기울임 텍스트&lt;/Italic&gt;, &lt;Underline&gt;밑줄 텍스트&lt;/Underline&gt;&#10;&lt;/TextBlock&gt;"/>
                     </Expander>
-
-                    <TextBlock Text="Run 요소" FontSize="18" FontWeight="Bold" Margin="0,10,0,10"/>
-                    <GroupBox Header="Run으로 개별 텍스트 스타일 지정" Margin="0,0,0,8">
-                        <TextBlock FontSize="16">
-                            <Run Text="빨간색" Foreground="Red"/>
-                            <Run Text=" + "/>
-                            <Run Text="파란색 굵게" Foreground="Blue" FontWeight="Bold"/>
-                            <Run Text=" + "/>
-                            <Run Text="초록색 기울임" Foreground="Green" FontStyle="Italic"/>
-                        </TextBlock>
-                    </GroupBox>
-                    <Expander Style="{StaticResource CodeExpanderStyle}">
-                        <TextBox Style="{StaticResource CodeTextBoxStyle}" Text="&lt;TextBlock FontSize=&quot;16&quot;&gt;&#10;    &lt;Run Text=&quot;빨간색&quot; Foreground=&quot;Red&quot;/&gt;&#10;    &lt;Run Text=&quot; + &quot;/&gt;&#10;    &lt;Run Text=&quot;파란색 굵게&quot; Foreground=&quot;Blue&quot; FontWeight=&quot;Bold&quot;/&gt;&#10;    &lt;Run Text=&quot; + &quot;/&gt;&#10;    &lt;Run Text=&quot;초록색 기울임&quot; Foreground=&quot;Green&quot; FontStyle=&quot;Italic&quot;/&gt;&#10;&lt;/TextBlock&gt;"/>
-                    </Expander>
-
-                    <TextBlock Text="Span 요소" FontSize="18" FontWeight="Bold" Margin="0,10,0,10"/>
-                    <GroupBox Header="Span으로 구간별 스타일 적용" Margin="0,0,0,8">
-                        <TextBlock FontSize="16" TextWrapping="Wrap">
-                            일반 텍스트 <Span Foreground="Tomato" FontWeight="Bold">강조된 구간</Span> 다시 일반 <Span Background="Yellow" FontStyle="Italic">하이라이트 구간</Span> 끝
-                        </TextBlock>
-                    </GroupBox>
-                    <Expander Style="{StaticResource CodeExpanderStyle}">
-                        <TextBox Style="{StaticResource CodeTextBoxStyle}" Text="&lt;TextBlock FontSize=&quot;16&quot; TextWrapping=&quot;Wrap&quot;&gt;&#10;    일반 텍스트 &lt;Span Foreground=&quot;Tomato&quot; FontWeight=&quot;Bold&quot;&gt;강조된 구간&lt;/Span&gt;&#10;    다시 일반 &lt;Span Background=&quot;Yellow&quot; FontStyle=&quot;Italic&quot;&gt;하이라이트 구간&lt;/Span&gt; 끝&#10;&lt;/TextBlock&gt;"/>
-                    </Expander>
-
-                    <TextBlock Text="InlineUIContainer" FontSize="18" FontWeight="Bold" Margin="0,10,0,10"/>
-                    <GroupBox Header="텍스트 안에 컨트롤 삽입" Margin="0,0,0,8">
-                        <TextBlock FontSize="14" VerticalAlignment="Center">
-                            상태: <InlineUIContainer>
-                                <Ellipse Width="12" Height="12" Fill="LimeGreen"/>
-                            </InlineUIContainer> 온라인
-                            <InlineUIContainer>
-                                <Button Content="클릭" Padding="4,0" FontSize="11"/>
-                            </InlineUIContainer> 버튼도 가능
-                        </TextBlock>
-                    </GroupBox>
-                    <Expander Style="{StaticResource CodeExpanderStyle}">
-                        <TextBox Style="{StaticResource CodeTextBoxStyle}" Text="&lt;TextBlock FontSize=&quot;14&quot;&gt;&#10;    상태: &lt;InlineUIContainer&gt;&#10;        &lt;Ellipse Width=&quot;12&quot; Height=&quot;12&quot; Fill=&quot;LimeGreen&quot;/&gt;&#10;    &lt;/InlineUIContainer&gt; 온라인&#10;    &lt;InlineUIContainer&gt;&#10;        &lt;Button Content=&quot;클릭&quot; Padding=&quot;4,0&quot; FontSize=&quot;11&quot;/&gt;&#10;    &lt;/InlineUIContainer&gt; 버튼도 가능&#10;&lt;/TextBlock&gt;"/>
-                    </Expander>
-
-                    <TextBlock Text="복합 인라인 조합" FontSize="18" FontWeight="Bold" Margin="0,10,0,10"/>
-                    <GroupBox Header="여러 인라인 요소 혼합 사용" Margin="0,0,0,8">
-                        <TextBlock FontSize="16" TextWrapping="Wrap">
-                            <Bold>WPF</Bold>의 <Italic>TextBlock</Italic>은
-                            <Span Foreground="CornflowerBlue" FontSize="20">다양한</Span> 인라인 요소를
-                            <Underline>자유롭게</Underline> 조합할 수 있습니다.<LineBreak/>
-                            <Span Foreground="Gray" FontSize="12">— WPF 튜토리얼 中</Span>
-                        </TextBlock>
-                    </GroupBox>
-                    <Expander Style="{StaticResource CodeExpanderStyle}">
-                        <TextBox Style="{StaticResource CodeTextBoxStyle}" Text="&lt;TextBlock FontSize=&quot;16&quot; TextWrapping=&quot;Wrap&quot;&gt;&#10;    &lt;Bold&gt;WPF&lt;/Bold&gt;의 &lt;Italic&gt;TextBlock&lt;/Italic&gt;은&#10;    &lt;Span Foreground=&quot;CornflowerBlue&quot; FontSize=&quot;20&quot;&gt;다양한&lt;/Span&gt; 인라인 요소를&#10;    &lt;Underline&gt;자유롭게&lt;/Underline&gt; 조합할 수 있습니다.&lt;LineBreak/&gt;&#10;    &lt;Span Foreground=&quot;Gray&quot; FontSize=&quot;12&quot;&gt;— WPF 튜토리얼 中&lt;/Span&gt;&#10;&lt;/TextBlock&gt;"/>
-                    </Expander>
-
-                    <!-- 직접 해보기 -->
-                    <TextBlock Text="직접 해보기" FontSize="18" FontWeight="Bold" Margin="0,20,0,10" Foreground="#1976D2"/>
-
                     <Expander Style="{StaticResource PracticeExpanderStyle}">
                         <StackPanel Margin="10">
                             <TextBlock Text="과제 1: Bold와 Italic을 사용하여 '굵게'와 '기울임'이라는 텍스트를 만드세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
@@ -299,6 +280,19 @@
                         </StackPanel>
                     </Expander>
 
+                    <TextBlock Text="Run 요소" FontSize="18" FontWeight="Bold" Margin="0,10,0,10"/>
+                    <GroupBox Header="Run으로 개별 텍스트 스타일 지정" Margin="0,0,0,8">
+                        <TextBlock FontSize="16">
+                            <Run Text="빨간색" Foreground="Red"/>
+                            <Run Text=" + "/>
+                            <Run Text="파란색 굵게" Foreground="Blue" FontWeight="Bold"/>
+                            <Run Text=" + "/>
+                            <Run Text="초록색 기울임" Foreground="Green" FontStyle="Italic"/>
+                        </TextBlock>
+                    </GroupBox>
+                    <Expander Style="{StaticResource CodeExpanderStyle}">
+                        <TextBox Style="{StaticResource CodeTextBoxStyle}" Text="&lt;TextBlock FontSize=&quot;16&quot;&gt;&#10;    &lt;Run Text=&quot;빨간색&quot; Foreground=&quot;Red&quot;/&gt;&#10;    &lt;Run Text=&quot; + &quot;/&gt;&#10;    &lt;Run Text=&quot;파란색 굵게&quot; Foreground=&quot;Blue&quot; FontWeight=&quot;Bold&quot;/&gt;&#10;    &lt;Run Text=&quot; + &quot;/&gt;&#10;    &lt;Run Text=&quot;초록색 기울임&quot; Foreground=&quot;Green&quot; FontStyle=&quot;Italic&quot;/&gt;&#10;&lt;/TextBlock&gt;"/>
+                    </Expander>
                     <Expander Style="{StaticResource PracticeExpanderStyle}">
                         <StackPanel Margin="10">
                             <TextBlock Text="과제 2: Run 요소로 '빨강'(Red), '파랑'(Blue) 텍스트를 각각의 색상으로 표시하세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
@@ -320,6 +314,15 @@
                         </StackPanel>
                     </Expander>
 
+                    <TextBlock Text="Span 요소" FontSize="18" FontWeight="Bold" Margin="0,10,0,10"/>
+                    <GroupBox Header="Span으로 구간별 스타일 적용" Margin="0,0,0,8">
+                        <TextBlock FontSize="16" TextWrapping="Wrap">
+                            일반 텍스트 <Span Foreground="Tomato" FontWeight="Bold">강조된 구간</Span> 다시 일반 <Span Background="Yellow" FontStyle="Italic">하이라이트 구간</Span> 끝
+                        </TextBlock>
+                    </GroupBox>
+                    <Expander Style="{StaticResource CodeExpanderStyle}">
+                        <TextBox Style="{StaticResource CodeTextBoxStyle}" Text="&lt;TextBlock FontSize=&quot;16&quot; TextWrapping=&quot;Wrap&quot;&gt;&#10;    일반 텍스트 &lt;Span Foreground=&quot;Tomato&quot; FontWeight=&quot;Bold&quot;&gt;강조된 구간&lt;/Span&gt;&#10;    다시 일반 &lt;Span Background=&quot;Yellow&quot; FontStyle=&quot;Italic&quot;&gt;하이라이트 구간&lt;/Span&gt; 끝&#10;&lt;/TextBlock&gt;"/>
+                    </Expander>
                     <Expander Style="{StaticResource PracticeExpanderStyle}">
                         <StackPanel Margin="10">
                             <TextBlock Text="과제 3: Span을 사용하여 노란색(Yellow) 배경에 Bold 스타일의 '강조' 텍스트를 만드세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
@@ -340,6 +343,78 @@
                             </Border>
                         </StackPanel>
                     </Expander>
+
+                    <TextBlock Text="InlineUIContainer" FontSize="18" FontWeight="Bold" Margin="0,10,0,10"/>
+                    <GroupBox Header="텍스트 안에 컨트롤 삽입" Margin="0,0,0,8">
+                        <TextBlock FontSize="14" VerticalAlignment="Center">
+                            상태: <InlineUIContainer>
+                                <Ellipse Width="12" Height="12" Fill="LimeGreen"/>
+                            </InlineUIContainer> 온라인
+                            <InlineUIContainer>
+                                <Button Content="클릭" Padding="4,0" FontSize="11"/>
+                            </InlineUIContainer> 버튼도 가능
+                        </TextBlock>
+                    </GroupBox>
+                    <Expander Style="{StaticResource CodeExpanderStyle}">
+                        <TextBox Style="{StaticResource CodeTextBoxStyle}" Text="&lt;TextBlock FontSize=&quot;14&quot;&gt;&#10;    상태: &lt;InlineUIContainer&gt;&#10;        &lt;Ellipse Width=&quot;12&quot; Height=&quot;12&quot; Fill=&quot;LimeGreen&quot;/&gt;&#10;    &lt;/InlineUIContainer&gt; 온라인&#10;    &lt;InlineUIContainer&gt;&#10;        &lt;Button Content=&quot;클릭&quot; Padding=&quot;4,0&quot; FontSize=&quot;11&quot;/&gt;&#10;    &lt;/InlineUIContainer&gt; 버튼도 가능&#10;&lt;/TextBlock&gt;"/>
+                    </Expander>
+                    <!-- 직접 해보기 2_4 -->
+                    <Expander Style="{StaticResource PracticeExpanderStyle}">
+                        <StackPanel Margin="10">
+                            <TextBlock Text="과제: InlineUIContainer로 문장 안에 초록색 원을 끼워 넣으세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
+                            <TextBox x:Name="txtPractice2_4"
+                                     Style="{StaticResource PracticeInputStyle}"
+                                     Text="&lt;TextBlock FontSize=&quot;14&quot;&gt;&#10;    상태:  온라인&#10;&lt;/TextBlock&gt;"/>
+                            <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
+                                <Button Content="실행" Style="{StaticResource RunButtonStyle}" Click="BtnRun_Click" Tag="2_4"/>
+                                <Button Content="힌트" Style="{StaticResource HintButtonStyle}" Click="BtnHint_Click" Tag="2_4"/>
+                                <Button Content="정답 보기" Style="{StaticResource AnswerButtonStyle}" Click="BtnAnswer_Click" Tag="2_4"/>
+                            </StackPanel>
+                            <TextBlock x:Name="txtHint2_4"
+                                       Text="힌트: &lt;InlineUIContainer&gt;&lt;Ellipse .../&gt;&lt;/InlineUIContainer&gt; 로 컨트롤을 글 흐름에 넣습니다."
+                                       Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                            <Border x:Name="resultBorder2_4" Background="White" Margin="0,8,0,0" Padding="10" Visibility="Collapsed">
+                                <StackPanel x:Name="resultPanel2_4"/>
+                            </Border>
+                        </StackPanel>
+                    </Expander>
+
+                    <TextBlock Text="복합 인라인 조합" FontSize="18" FontWeight="Bold" Margin="0,10,0,10"/>
+                    <GroupBox Header="여러 인라인 요소 혼합 사용" Margin="0,0,0,8">
+                        <TextBlock FontSize="16" TextWrapping="Wrap">
+                            <Bold>WPF</Bold>의 <Italic>TextBlock</Italic>은
+                            <Span Foreground="CornflowerBlue" FontSize="20">다양한</Span> 인라인 요소를
+                            <Underline>자유롭게</Underline> 조합할 수 있습니다.<LineBreak/>
+                            <Span Foreground="Gray" FontSize="12">— WPF 튜토리얼 中</Span>
+                        </TextBlock>
+                    </GroupBox>
+                    <Expander Style="{StaticResource CodeExpanderStyle}">
+                        <TextBox Style="{StaticResource CodeTextBoxStyle}" Text="&lt;TextBlock FontSize=&quot;16&quot; TextWrapping=&quot;Wrap&quot;&gt;&#10;    &lt;Bold&gt;WPF&lt;/Bold&gt;의 &lt;Italic&gt;TextBlock&lt;/Italic&gt;은&#10;    &lt;Span Foreground=&quot;CornflowerBlue&quot; FontSize=&quot;20&quot;&gt;다양한&lt;/Span&gt; 인라인 요소를&#10;    &lt;Underline&gt;자유롭게&lt;/Underline&gt; 조합할 수 있습니다.&lt;LineBreak/&gt;&#10;    &lt;Span Foreground=&quot;Gray&quot; FontSize=&quot;12&quot;&gt;— WPF 튜토리얼 中&lt;/Span&gt;&#10;&lt;/TextBlock&gt;"/>
+                    </Expander>
+                    <!-- 직접 해보기 2_5 -->
+                    <Expander Style="{StaticResource PracticeExpanderStyle}">
+                        <StackPanel Margin="10">
+                            <TextBlock Text="과제: Bold·Italic·Underline·Span·LineBreak를 모두 써서 한 문단을 꾸미세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
+                            <TextBox x:Name="txtPractice2_5"
+                                     Style="{StaticResource PracticeInputStyle}"
+                                     Text="&lt;TextBlock FontSize=&quot;16&quot; TextWrapping=&quot;Wrap&quot;&gt;&#10;    &#10;&lt;/TextBlock&gt;"/>
+                            <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
+                                <Button Content="실행" Style="{StaticResource RunButtonStyle}" Click="BtnRun_Click" Tag="2_5"/>
+                                <Button Content="힌트" Style="{StaticResource HintButtonStyle}" Click="BtnHint_Click" Tag="2_5"/>
+                                <Button Content="정답 보기" Style="{StaticResource AnswerButtonStyle}" Click="BtnAnswer_Click" Tag="2_5"/>
+                            </StackPanel>
+                            <TextBlock x:Name="txtHint2_5"
+                                       Text="힌트: 각 인라인 요소는 태그처럼 문장 안에 바로 씁니다. 줄바꿈은 &lt;LineBreak/&gt; 입니다."
+                                       Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                            <Border x:Name="resultBorder2_5" Background="White" Margin="0,8,0,0" Padding="10" Visibility="Collapsed">
+                                <StackPanel x:Name="resultPanel2_5"/>
+                            </Border>
+                        </StackPanel>
+                    </Expander>
+
+                    <!-- 직접 해보기 -->
+                    <TextBlock Text="직접 해보기" FontSize="18" FontWeight="Bold" Margin="0,20,0,10" Foreground="#1976D2"/>
+
                 </StackPanel>
             </ScrollViewer>
         </TabItem>
@@ -367,55 +442,6 @@
                     <Expander Style="{StaticResource CodeExpanderStyle}">
                         <TextBox Style="{StaticResource CodeTextBoxStyle}" Text="&lt;TextBlock TextWrapping=&quot;NoWrap&quot;&gt;긴 텍스트...&lt;/TextBlock&gt;&#10;&lt;TextBlock TextWrapping=&quot;Wrap&quot;&gt;긴 텍스트...&lt;/TextBlock&gt;&#10;&lt;TextBlock TextWrapping=&quot;WrapWithOverflow&quot;&gt;공백없는긴텍스트...&lt;/TextBlock&gt;"/>
                     </Expander>
-
-                    <TextBlock Text="TextTrimming (말줄임)" FontSize="18" FontWeight="Bold" Margin="0,10,0,10"/>
-                    <GroupBox Header="None (기본값)" Margin="0,0,0,4">
-                        <TextBlock FontSize="14" TextTrimming="None" Background="#E3F2FD" Padding="4">
-                            이 텍스트는 말줄임 처리가 없어 잘릴 수 있습니다.
-                        </TextBlock>
-                    </GroupBox>
-                    <GroupBox Header="CharacterEllipsis (글자 단위 ...)" Margin="0,0,0,4">
-                        <TextBlock FontSize="14" TextTrimming="CharacterEllipsis" Background="#E8F5E9" Padding="4">
-                            이 텍스트는 글자 단위로 말줄임 처리되어 ... 으로 표시됩니다.
-                        </TextBlock>
-                    </GroupBox>
-                    <GroupBox Header="WordEllipsis (단어 단위 ...)" Margin="0,0,0,8">
-                        <TextBlock FontSize="14" TextTrimming="WordEllipsis" Background="#FFF3E0" Padding="4">
-                            이 텍스트는 단어 단위로 말줄임 처리되어 ... 으로 표시됩니다.
-                        </TextBlock>
-                    </GroupBox>
-                    <Expander Style="{StaticResource CodeExpanderStyle}">
-                        <TextBox Style="{StaticResource CodeTextBoxStyle}" Text="&lt;TextBlock TextTrimming=&quot;None&quot;&gt;텍스트...&lt;/TextBlock&gt;&#10;&lt;TextBlock TextTrimming=&quot;CharacterEllipsis&quot;&gt;텍스트...&lt;/TextBlock&gt;&#10;&lt;TextBlock TextTrimming=&quot;WordEllipsis&quot;&gt;텍스트...&lt;/TextBlock&gt;"/>
-                    </Expander>
-
-                    <TextBlock Text="TextAlignment (텍스트 정렬)" FontSize="18" FontWeight="Bold" Margin="0,10,0,10"/>
-                    <TextBlock FontSize="14" TextAlignment="Left" Background="#E3F2FD" Padding="4" Margin="0,2">Left 정렬</TextBlock>
-                    <TextBlock FontSize="14" TextAlignment="Center" Background="#E8F5E9" Padding="4" Margin="0,2">Center 정렬</TextBlock>
-                    <TextBlock FontSize="14" TextAlignment="Right" Background="#FFF3E0" Padding="4" Margin="0,2">Right 정렬</TextBlock>
-                    <TextBlock FontSize="14" TextAlignment="Justify" Background="#FCE4EC" Padding="4" Margin="0,2" TextWrapping="Wrap">Justify 정렬 — 긴 텍스트에서 양쪽 정렬이 적용됩니다. 단어 사이 간격을 조절하여 좌우 끝을 맞춥니다.</TextBlock>
-                    <Expander Style="{StaticResource CodeExpanderStyle}">
-                        <TextBox Style="{StaticResource CodeTextBoxStyle}" Text="&lt;TextBlock TextAlignment=&quot;Left&quot;&gt;Left 정렬&lt;/TextBlock&gt;&#10;&lt;TextBlock TextAlignment=&quot;Center&quot;&gt;Center 정렬&lt;/TextBlock&gt;&#10;&lt;TextBlock TextAlignment=&quot;Right&quot;&gt;Right 정렬&lt;/TextBlock&gt;&#10;&lt;TextBlock TextAlignment=&quot;Justify&quot; TextWrapping=&quot;Wrap&quot;&gt;Justify 정렬...&lt;/TextBlock&gt;"/>
-                    </Expander>
-
-                    <TextBlock Text="LineHeight (줄 간격)" FontSize="18" FontWeight="Bold" Margin="0,10,0,10"/>
-                    <StackPanel Orientation="Horizontal">
-                        <GroupBox Header="기본" Width="240" Margin="0,0,8,8">
-                            <TextBlock FontSize="14" TextWrapping="Wrap">첫 번째 줄입니다. 두 번째 줄입니다. 세 번째 줄입니다.</TextBlock>
-                        </GroupBox>
-                        <GroupBox Header="LineHeight=30" Width="240" Margin="0,0,8,8">
-                            <TextBlock FontSize="14" TextWrapping="Wrap" LineHeight="30">첫 번째 줄입니다. 두 번째 줄입니다. 세 번째 줄입니다.</TextBlock>
-                        </GroupBox>
-                        <GroupBox Header="LineHeight=40" Width="240" Margin="0,0,0,8">
-                            <TextBlock FontSize="14" TextWrapping="Wrap" LineHeight="40">첫 번째 줄입니다. 두 번째 줄입니다. 세 번째 줄입니다.</TextBlock>
-                        </GroupBox>
-                    </StackPanel>
-                    <Expander Style="{StaticResource CodeExpanderStyle}">
-                        <TextBox Style="{StaticResource CodeTextBoxStyle}" Text="&lt;TextBlock TextWrapping=&quot;Wrap&quot;&gt;기본 줄 간격&lt;/TextBlock&gt;&#10;&lt;TextBlock TextWrapping=&quot;Wrap&quot; LineHeight=&quot;30&quot;&gt;줄 간격 30&lt;/TextBlock&gt;&#10;&lt;TextBlock TextWrapping=&quot;Wrap&quot; LineHeight=&quot;40&quot;&gt;줄 간격 40&lt;/TextBlock&gt;"/>
-                    </Expander>
-
-                    <!-- 직접 해보기 -->
-                    <TextBlock Text="직접 해보기" FontSize="18" FontWeight="Bold" Margin="0,20,0,10" Foreground="#1976D2"/>
-
                     <Expander Style="{StaticResource PracticeExpanderStyle}">
                         <StackPanel Margin="10">
                             <TextBlock Text="과제 1: TextWrapping='Wrap'을 적용한 TextBlock에 긴 텍스트를 넣으세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
@@ -437,6 +463,25 @@
                         </StackPanel>
                     </Expander>
 
+                    <TextBlock Text="TextTrimming (말줄임)" FontSize="18" FontWeight="Bold" Margin="0,10,0,10"/>
+                    <GroupBox Header="None (기본값)" Margin="0,0,0,4">
+                        <TextBlock FontSize="14" TextTrimming="None" Background="#E3F2FD" Padding="4">
+                            이 텍스트는 말줄임 처리가 없어 잘릴 수 있습니다.
+                        </TextBlock>
+                    </GroupBox>
+                    <GroupBox Header="CharacterEllipsis (글자 단위 ...)" Margin="0,0,0,4">
+                        <TextBlock FontSize="14" TextTrimming="CharacterEllipsis" Background="#E8F5E9" Padding="4">
+                            이 텍스트는 글자 단위로 말줄임 처리되어 ... 으로 표시됩니다.
+                        </TextBlock>
+                    </GroupBox>
+                    <GroupBox Header="WordEllipsis (단어 단위 ...)" Margin="0,0,0,8">
+                        <TextBlock FontSize="14" TextTrimming="WordEllipsis" Background="#FFF3E0" Padding="4">
+                            이 텍스트는 단어 단위로 말줄임 처리되어 ... 으로 표시됩니다.
+                        </TextBlock>
+                    </GroupBox>
+                    <Expander Style="{StaticResource CodeExpanderStyle}">
+                        <TextBox Style="{StaticResource CodeTextBoxStyle}" Text="&lt;TextBlock TextTrimming=&quot;None&quot;&gt;텍스트...&lt;/TextBlock&gt;&#10;&lt;TextBlock TextTrimming=&quot;CharacterEllipsis&quot;&gt;텍스트...&lt;/TextBlock&gt;&#10;&lt;TextBlock TextTrimming=&quot;WordEllipsis&quot;&gt;텍스트...&lt;/TextBlock&gt;"/>
+                    </Expander>
                     <Expander Style="{StaticResource PracticeExpanderStyle}">
                         <StackPanel Margin="10">
                             <TextBlock Text="과제 2: TextTrimming='CharacterEllipsis'를 사용하여 말줄임(...) 처리를 하세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
@@ -458,6 +503,14 @@
                         </StackPanel>
                     </Expander>
 
+                    <TextBlock Text="TextAlignment (텍스트 정렬)" FontSize="18" FontWeight="Bold" Margin="0,10,0,10"/>
+                    <TextBlock FontSize="14" TextAlignment="Left" Background="#E3F2FD" Padding="4" Margin="0,2">Left 정렬</TextBlock>
+                    <TextBlock FontSize="14" TextAlignment="Center" Background="#E8F5E9" Padding="4" Margin="0,2">Center 정렬</TextBlock>
+                    <TextBlock FontSize="14" TextAlignment="Right" Background="#FFF3E0" Padding="4" Margin="0,2">Right 정렬</TextBlock>
+                    <TextBlock FontSize="14" TextAlignment="Justify" Background="#FCE4EC" Padding="4" Margin="0,2" TextWrapping="Wrap">Justify 정렬 — 긴 텍스트에서 양쪽 정렬이 적용됩니다. 단어 사이 간격을 조절하여 좌우 끝을 맞춥니다.</TextBlock>
+                    <Expander Style="{StaticResource CodeExpanderStyle}">
+                        <TextBox Style="{StaticResource CodeTextBoxStyle}" Text="&lt;TextBlock TextAlignment=&quot;Left&quot;&gt;Left 정렬&lt;/TextBlock&gt;&#10;&lt;TextBlock TextAlignment=&quot;Center&quot;&gt;Center 정렬&lt;/TextBlock&gt;&#10;&lt;TextBlock TextAlignment=&quot;Right&quot;&gt;Right 정렬&lt;/TextBlock&gt;&#10;&lt;TextBlock TextAlignment=&quot;Justify&quot; TextWrapping=&quot;Wrap&quot;&gt;Justify 정렬...&lt;/TextBlock&gt;"/>
+                    </Expander>
                     <Expander Style="{StaticResource PracticeExpanderStyle}">
                         <StackPanel Margin="10">
                             <TextBlock Text="과제 3: TextAlignment='Center'를 사용하여 텍스트를 가운데 정렬하세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
@@ -477,6 +530,46 @@
                             </Border>
                         </StackPanel>
                     </Expander>
+
+                    <TextBlock Text="LineHeight (줄 간격)" FontSize="18" FontWeight="Bold" Margin="0,10,0,10"/>
+                    <StackPanel Orientation="Horizontal">
+                        <GroupBox Header="기본" Width="240" Margin="0,0,8,8">
+                            <TextBlock FontSize="14" TextWrapping="Wrap">첫 번째 줄입니다. 두 번째 줄입니다. 세 번째 줄입니다.</TextBlock>
+                        </GroupBox>
+                        <GroupBox Header="LineHeight=30" Width="240" Margin="0,0,8,8">
+                            <TextBlock FontSize="14" TextWrapping="Wrap" LineHeight="30">첫 번째 줄입니다. 두 번째 줄입니다. 세 번째 줄입니다.</TextBlock>
+                        </GroupBox>
+                        <GroupBox Header="LineHeight=40" Width="240" Margin="0,0,0,8">
+                            <TextBlock FontSize="14" TextWrapping="Wrap" LineHeight="40">첫 번째 줄입니다. 두 번째 줄입니다. 세 번째 줄입니다.</TextBlock>
+                        </GroupBox>
+                    </StackPanel>
+                    <Expander Style="{StaticResource CodeExpanderStyle}">
+                        <TextBox Style="{StaticResource CodeTextBoxStyle}" Text="&lt;TextBlock TextWrapping=&quot;Wrap&quot;&gt;기본 줄 간격&lt;/TextBlock&gt;&#10;&lt;TextBlock TextWrapping=&quot;Wrap&quot; LineHeight=&quot;30&quot;&gt;줄 간격 30&lt;/TextBlock&gt;&#10;&lt;TextBlock TextWrapping=&quot;Wrap&quot; LineHeight=&quot;40&quot;&gt;줄 간격 40&lt;/TextBlock&gt;"/>
+                    </Expander>
+                    <!-- 직접 해보기 3_4 -->
+                    <Expander Style="{StaticResource PracticeExpanderStyle}">
+                        <StackPanel Margin="10">
+                            <TextBlock Text="과제: 같은 문장을 줄 간격 기본값과 40으로 각각 만들어 차이를 확인하세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
+                            <TextBox x:Name="txtPractice3_4"
+                                     Style="{StaticResource PracticeInputStyle}"
+                                     Text="&lt;StackPanel&gt;&#10;    &#10;&lt;/StackPanel&gt;"/>
+                            <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
+                                <Button Content="실행" Style="{StaticResource RunButtonStyle}" Click="BtnRun_Click" Tag="3_4"/>
+                                <Button Content="힌트" Style="{StaticResource HintButtonStyle}" Click="BtnHint_Click" Tag="3_4"/>
+                                <Button Content="정답 보기" Style="{StaticResource AnswerButtonStyle}" Click="BtnAnswer_Click" Tag="3_4"/>
+                            </StackPanel>
+                            <TextBlock x:Name="txtHint3_4"
+                                       Text="힌트: LineHeight 속성에 숫자를 주면 줄 사이가 벌어집니다."
+                                       Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                            <Border x:Name="resultBorder3_4" Background="White" Margin="0,8,0,0" Padding="10" Visibility="Collapsed">
+                                <StackPanel x:Name="resultPanel3_4"/>
+                            </Border>
+                        </StackPanel>
+                    </Expander>
+
+                    <!-- 직접 해보기 -->
+                    <TextBlock Text="직접 해보기" FontSize="18" FontWeight="Bold" Margin="0,20,0,10" Foreground="#1976D2"/>
+
                 </StackPanel>
             </ScrollViewer>
         </TabItem>
@@ -495,50 +588,6 @@
                     <Expander Style="{StaticResource CodeExpanderStyle}">
                         <TextBox Style="{StaticResource CodeTextBoxStyle}" Text="&lt;TextBlock FontSize=&quot;12&quot;&gt;12px&lt;/TextBlock&gt;&#10;&lt;TextBlock FontSize=&quot;18&quot;&gt;18px&lt;/TextBlock&gt;&#10;&lt;TextBlock FontSize=&quot;24&quot;&gt;24px&lt;/TextBlock&gt;&#10;&lt;TextBlock FontSize=&quot;36&quot;&gt;36px&lt;/TextBlock&gt;"/>
                     </Expander>
-
-                    <TextBlock Text="FontWeight" FontSize="18" FontWeight="Bold" Margin="0,20,0,10"/>
-                    <StackPanel Orientation="Horizontal">
-                        <TextBlock FontWeight="Thin" FontSize="16" Margin="4">Thin</TextBlock>
-                        <TextBlock FontWeight="Light" FontSize="16" Margin="4">Light</TextBlock>
-                        <TextBlock FontWeight="Normal" FontSize="16" Margin="4">Normal</TextBlock>
-                        <TextBlock FontWeight="Bold" FontSize="16" Margin="4">Bold</TextBlock>
-                        <TextBlock FontWeight="ExtraBold" FontSize="16" Margin="4">ExtraBold</TextBlock>
-                    </StackPanel>
-                    <Expander Style="{StaticResource CodeExpanderStyle}">
-                        <TextBox Style="{StaticResource CodeTextBoxStyle}" Text="&lt;TextBlock FontWeight=&quot;Thin&quot;&gt;Thin&lt;/TextBlock&gt;&#10;&lt;TextBlock FontWeight=&quot;Light&quot;&gt;Light&lt;/TextBlock&gt;&#10;&lt;TextBlock FontWeight=&quot;Normal&quot;&gt;Normal&lt;/TextBlock&gt;&#10;&lt;TextBlock FontWeight=&quot;Bold&quot;&gt;Bold&lt;/TextBlock&gt;&#10;&lt;TextBlock FontWeight=&quot;ExtraBold&quot;&gt;ExtraBold&lt;/TextBlock&gt;"/>
-                    </Expander>
-
-                    <TextBlock Text="FontStyle" FontSize="18" FontWeight="Bold" Margin="0,20,0,10"/>
-                    <StackPanel Orientation="Horizontal">
-                        <TextBlock FontStyle="Normal" FontSize="16" Margin="4">Normal</TextBlock>
-                        <TextBlock FontStyle="Italic" FontSize="16" Margin="4">Italic</TextBlock>
-                        <TextBlock FontStyle="Oblique" FontSize="16" Margin="4">Oblique</TextBlock>
-                    </StackPanel>
-                    <Expander Style="{StaticResource CodeExpanderStyle}">
-                        <TextBox Style="{StaticResource CodeTextBoxStyle}" Text="&lt;TextBlock FontStyle=&quot;Normal&quot;&gt;Normal&lt;/TextBlock&gt;&#10;&lt;TextBlock FontStyle=&quot;Italic&quot;&gt;Italic&lt;/TextBlock&gt;&#10;&lt;TextBlock FontStyle=&quot;Oblique&quot;&gt;Oblique&lt;/TextBlock&gt;"/>
-                    </Expander>
-
-                    <TextBlock Text="FontFamily" FontSize="18" FontWeight="Bold" Margin="0,20,0,10"/>
-                    <TextBlock FontFamily="Arial" FontSize="16" Margin="0,2">Arial — Hello 안녕하세요</TextBlock>
-                    <TextBlock FontFamily="Times New Roman" FontSize="16" Margin="0,2">Times New Roman — Hello 안녕하세요</TextBlock>
-                    <TextBlock FontFamily="Consolas" FontSize="16" Margin="0,2">Consolas — Hello 안녕하세요</TextBlock>
-                    <TextBlock FontFamily="맑은 고딕" FontSize="16" Margin="0,2">맑은 고딕 — Hello 안녕하세요</TextBlock>
-                    <Expander Style="{StaticResource CodeExpanderStyle}">
-                        <TextBox Style="{StaticResource CodeTextBoxStyle}" Text="&lt;TextBlock FontFamily=&quot;Arial&quot;&gt;Arial — Hello 안녕하세요&lt;/TextBlock&gt;&#10;&lt;TextBlock FontFamily=&quot;Times New Roman&quot;&gt;Times New Roman — Hello 안녕하세요&lt;/TextBlock&gt;&#10;&lt;TextBlock FontFamily=&quot;Consolas&quot;&gt;Consolas — Hello 안녕하세요&lt;/TextBlock&gt;&#10;&lt;TextBlock FontFamily=&quot;맑은 고딕&quot;&gt;맑은 고딕 — Hello 안녕하세요&lt;/TextBlock&gt;"/>
-                    </Expander>
-
-                    <TextBlock Text="TextDecorations" FontSize="18" FontWeight="Bold" Margin="0,20,0,10"/>
-                    <TextBlock FontSize="16" TextDecorations="Underline" Margin="0,2">Underline — 밑줄</TextBlock>
-                    <TextBlock FontSize="16" TextDecorations="Strikethrough" Margin="0,2">Strikethrough — 취소선</TextBlock>
-                    <TextBlock FontSize="16" TextDecorations="OverLine" Margin="0,2">OverLine — 윗줄</TextBlock>
-                    <TextBlock FontSize="16" TextDecorations="Baseline" Margin="0,2">Baseline — 기준선</TextBlock>
-                    <Expander Style="{StaticResource CodeExpanderStyle}">
-                        <TextBox Style="{StaticResource CodeTextBoxStyle}" Text="&lt;TextBlock TextDecorations=&quot;Underline&quot;&gt;밑줄&lt;/TextBlock&gt;&#10;&lt;TextBlock TextDecorations=&quot;Strikethrough&quot;&gt;취소선&lt;/TextBlock&gt;&#10;&lt;TextBlock TextDecorations=&quot;OverLine&quot;&gt;윗줄&lt;/TextBlock&gt;&#10;&lt;TextBlock TextDecorations=&quot;Baseline&quot;&gt;기준선&lt;/TextBlock&gt;"/>
-                    </Expander>
-
-                    <!-- 직접 해보기 -->
-                    <TextBlock Text="직접 해보기" FontSize="18" FontWeight="Bold" Margin="0,20,0,10" Foreground="#1976D2"/>
-
                     <Expander Style="{StaticResource PracticeExpanderStyle}">
                         <StackPanel Margin="10">
                             <TextBlock Text="과제 1: FontSize='24'인 TextBlock을 만드세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
@@ -559,6 +608,17 @@
                         </StackPanel>
                     </Expander>
 
+                    <TextBlock Text="FontWeight" FontSize="18" FontWeight="Bold" Margin="0,20,0,10"/>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock FontWeight="Thin" FontSize="16" Margin="4">Thin</TextBlock>
+                        <TextBlock FontWeight="Light" FontSize="16" Margin="4">Light</TextBlock>
+                        <TextBlock FontWeight="Normal" FontSize="16" Margin="4">Normal</TextBlock>
+                        <TextBlock FontWeight="Bold" FontSize="16" Margin="4">Bold</TextBlock>
+                        <TextBlock FontWeight="ExtraBold" FontSize="16" Margin="4">ExtraBold</TextBlock>
+                    </StackPanel>
+                    <Expander Style="{StaticResource CodeExpanderStyle}">
+                        <TextBox Style="{StaticResource CodeTextBoxStyle}" Text="&lt;TextBlock FontWeight=&quot;Thin&quot;&gt;Thin&lt;/TextBlock&gt;&#10;&lt;TextBlock FontWeight=&quot;Light&quot;&gt;Light&lt;/TextBlock&gt;&#10;&lt;TextBlock FontWeight=&quot;Normal&quot;&gt;Normal&lt;/TextBlock&gt;&#10;&lt;TextBlock FontWeight=&quot;Bold&quot;&gt;Bold&lt;/TextBlock&gt;&#10;&lt;TextBlock FontWeight=&quot;ExtraBold&quot;&gt;ExtraBold&lt;/TextBlock&gt;"/>
+                    </Expander>
                     <Expander Style="{StaticResource PracticeExpanderStyle}">
                         <StackPanel Margin="10">
                             <TextBlock Text="과제 2: FontWeight='Bold'인 TextBlock을 만드세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
@@ -579,6 +639,15 @@
                         </StackPanel>
                     </Expander>
 
+                    <TextBlock Text="FontStyle" FontSize="18" FontWeight="Bold" Margin="0,20,0,10"/>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock FontStyle="Normal" FontSize="16" Margin="4">Normal</TextBlock>
+                        <TextBlock FontStyle="Italic" FontSize="16" Margin="4">Italic</TextBlock>
+                        <TextBlock FontStyle="Oblique" FontSize="16" Margin="4">Oblique</TextBlock>
+                    </StackPanel>
+                    <Expander Style="{StaticResource CodeExpanderStyle}">
+                        <TextBox Style="{StaticResource CodeTextBoxStyle}" Text="&lt;TextBlock FontStyle=&quot;Normal&quot;&gt;Normal&lt;/TextBlock&gt;&#10;&lt;TextBlock FontStyle=&quot;Italic&quot;&gt;Italic&lt;/TextBlock&gt;&#10;&lt;TextBlock FontStyle=&quot;Oblique&quot;&gt;Oblique&lt;/TextBlock&gt;"/>
+                    </Expander>
                     <Expander Style="{StaticResource PracticeExpanderStyle}">
                         <StackPanel Margin="10">
                             <TextBlock Text="과제 3: FontFamily='Consolas'인 TextBlock을 만드세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
@@ -599,6 +668,14 @@
                         </StackPanel>
                     </Expander>
 
+                    <TextBlock Text="FontFamily" FontSize="18" FontWeight="Bold" Margin="0,20,0,10"/>
+                    <TextBlock FontFamily="Arial" FontSize="16" Margin="0,2">Arial — Hello 안녕하세요</TextBlock>
+                    <TextBlock FontFamily="Times New Roman" FontSize="16" Margin="0,2">Times New Roman — Hello 안녕하세요</TextBlock>
+                    <TextBlock FontFamily="Consolas" FontSize="16" Margin="0,2">Consolas — Hello 안녕하세요</TextBlock>
+                    <TextBlock FontFamily="맑은 고딕" FontSize="16" Margin="0,2">맑은 고딕 — Hello 안녕하세요</TextBlock>
+                    <Expander Style="{StaticResource CodeExpanderStyle}">
+                        <TextBox Style="{StaticResource CodeTextBoxStyle}" Text="&lt;TextBlock FontFamily=&quot;Arial&quot;&gt;Arial — Hello 안녕하세요&lt;/TextBlock&gt;&#10;&lt;TextBlock FontFamily=&quot;Times New Roman&quot;&gt;Times New Roman — Hello 안녕하세요&lt;/TextBlock&gt;&#10;&lt;TextBlock FontFamily=&quot;Consolas&quot;&gt;Consolas — Hello 안녕하세요&lt;/TextBlock&gt;&#10;&lt;TextBlock FontFamily=&quot;맑은 고딕&quot;&gt;맑은 고딕 — Hello 안녕하세요&lt;/TextBlock&gt;"/>
+                    </Expander>
                     <Expander Style="{StaticResource PracticeExpanderStyle}">
                         <StackPanel Margin="10">
                             <TextBlock Text="과제 4: TextDecorations='Underline'을 사용하여 밑줄 있는 텍스트를 만드세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
@@ -618,6 +695,39 @@
                             </Border>
                         </StackPanel>
                     </Expander>
+
+                    <TextBlock Text="TextDecorations" FontSize="18" FontWeight="Bold" Margin="0,20,0,10"/>
+                    <TextBlock FontSize="16" TextDecorations="Underline" Margin="0,2">Underline — 밑줄</TextBlock>
+                    <TextBlock FontSize="16" TextDecorations="Strikethrough" Margin="0,2">Strikethrough — 취소선</TextBlock>
+                    <TextBlock FontSize="16" TextDecorations="OverLine" Margin="0,2">OverLine — 윗줄</TextBlock>
+                    <TextBlock FontSize="16" TextDecorations="Baseline" Margin="0,2">Baseline — 기준선</TextBlock>
+                    <Expander Style="{StaticResource CodeExpanderStyle}">
+                        <TextBox Style="{StaticResource CodeTextBoxStyle}" Text="&lt;TextBlock TextDecorations=&quot;Underline&quot;&gt;밑줄&lt;/TextBlock&gt;&#10;&lt;TextBlock TextDecorations=&quot;Strikethrough&quot;&gt;취소선&lt;/TextBlock&gt;&#10;&lt;TextBlock TextDecorations=&quot;OverLine&quot;&gt;윗줄&lt;/TextBlock&gt;&#10;&lt;TextBlock TextDecorations=&quot;Baseline&quot;&gt;기준선&lt;/TextBlock&gt;"/>
+                    </Expander>
+                    <!-- 직접 해보기 4_5 -->
+                    <Expander Style="{StaticResource PracticeExpanderStyle}">
+                        <StackPanel Margin="10">
+                            <TextBlock Text="과제: 밑줄·취소선·윗줄이 각각 적용된 TextBlock 세 개를 만드세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
+                            <TextBox x:Name="txtPractice4_5"
+                                     Style="{StaticResource PracticeInputStyle}"
+                                     Text="&lt;StackPanel&gt;&#10;    &#10;&lt;/StackPanel&gt;"/>
+                            <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
+                                <Button Content="실행" Style="{StaticResource RunButtonStyle}" Click="BtnRun_Click" Tag="4_5"/>
+                                <Button Content="힌트" Style="{StaticResource HintButtonStyle}" Click="BtnHint_Click" Tag="4_5"/>
+                                <Button Content="정답 보기" Style="{StaticResource AnswerButtonStyle}" Click="BtnAnswer_Click" Tag="4_5"/>
+                            </StackPanel>
+                            <TextBlock x:Name="txtHint4_5"
+                                       Text="힌트: TextDecorations 에 Underline / Strikethrough / OverLine 을 지정합니다."
+                                       Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                            <Border x:Name="resultBorder4_5" Background="White" Margin="0,8,0,0" Padding="10" Visibility="Collapsed">
+                                <StackPanel x:Name="resultPanel4_5"/>
+                            </Border>
+                        </StackPanel>
+                    </Expander>
+
+                    <!-- 직접 해보기 -->
+                    <TextBlock Text="직접 해보기" FontSize="18" FontWeight="Bold" Margin="0,20,0,10" Foreground="#1976D2"/>
+
                 </StackPanel>
             </ScrollViewer>
         </TabItem>
@@ -633,57 +743,6 @@
                     <Expander Style="{StaticResource CodeExpanderStyle}">
                         <TextBox Style="{StaticResource CodeTextBoxStyle}" Text="&lt;TextBlock Text=&quot;Salmon 배경&quot; Background=&quot;Salmon&quot; Foreground=&quot;White&quot; Padding=&quot;8&quot;/&gt;&#10;&lt;TextBlock Text=&quot;SteelBlue 배경&quot; Background=&quot;SteelBlue&quot; Foreground=&quot;Yellow&quot; Padding=&quot;8&quot;/&gt;&#10;&lt;TextBlock Text=&quot;DarkGreen 배경&quot; Background=&quot;DarkGreen&quot; Foreground=&quot;LightGreen&quot; Padding=&quot;8&quot;/&gt;"/>
                     </Expander>
-
-                    <TextBlock Text="Span으로 부분 색상 지정" FontSize="18" FontWeight="Bold" Margin="0,10,0,10"/>
-                    <GroupBox Header="한 줄 안에서 여러 색상" Margin="0,0,0,8">
-                        <TextBlock FontSize="16" Padding="4">
-                            <Span Foreground="Red">빨강</Span> <Span Foreground="Orange">주황</Span> <Span Foreground="Gold">노랑</Span> <Span Foreground="Green">초록</Span> <Span Foreground="Blue">파랑</Span> <Span Foreground="Indigo">남색</Span> <Span Foreground="Violet">보라</Span>
-                        </TextBlock>
-                    </GroupBox>
-                    <Expander Style="{StaticResource CodeExpanderStyle}">
-                        <TextBox Style="{StaticResource CodeTextBoxStyle}" Text="&lt;TextBlock FontSize=&quot;16&quot;&gt;&#10;    &lt;Span Foreground=&quot;Red&quot;&gt;빨강&lt;/Span&gt;&#10;    &lt;Span Foreground=&quot;Orange&quot;&gt;주황&lt;/Span&gt;&#10;    &lt;Span Foreground=&quot;Gold&quot;&gt;노랑&lt;/Span&gt;&#10;    &lt;Span Foreground=&quot;Green&quot;&gt;초록&lt;/Span&gt;&#10;    &lt;Span Foreground=&quot;Blue&quot;&gt;파랑&lt;/Span&gt;&#10;    &lt;Span Foreground=&quot;Indigo&quot;&gt;남색&lt;/Span&gt;&#10;    &lt;Span Foreground=&quot;Violet&quot;&gt;보라&lt;/Span&gt;&#10;&lt;/TextBlock&gt;"/>
-                    </Expander>
-
-                    <TextBlock Text="Opacity (투명도)" FontSize="18" FontWeight="Bold" Margin="0,10,0,10"/>
-                    <StackPanel Orientation="Horizontal">
-                        <TextBlock Text="100%" Background="CornflowerBlue" Foreground="White" Opacity="1.0" FontSize="16" Padding="8" Margin="4"/>
-                        <TextBlock Text="75%" Background="CornflowerBlue" Foreground="White" Opacity="0.75" FontSize="16" Padding="8" Margin="4"/>
-                        <TextBlock Text="50%" Background="CornflowerBlue" Foreground="White" Opacity="0.5" FontSize="16" Padding="8" Margin="4"/>
-                        <TextBlock Text="25%" Background="CornflowerBlue" Foreground="White" Opacity="0.25" FontSize="16" Padding="8" Margin="4"/>
-                    </StackPanel>
-                    <Expander Style="{StaticResource CodeExpanderStyle}">
-                        <TextBox Style="{StaticResource CodeTextBoxStyle}" Text="&lt;TextBlock Text=&quot;100%&quot; Background=&quot;CornflowerBlue&quot; Foreground=&quot;White&quot; Opacity=&quot;1.0&quot;/&gt;&#10;&lt;TextBlock Text=&quot;75%&quot; Background=&quot;CornflowerBlue&quot; Foreground=&quot;White&quot; Opacity=&quot;0.75&quot;/&gt;&#10;&lt;TextBlock Text=&quot;50%&quot; Background=&quot;CornflowerBlue&quot; Foreground=&quot;White&quot; Opacity=&quot;0.5&quot;/&gt;&#10;&lt;TextBlock Text=&quot;25%&quot; Background=&quot;CornflowerBlue&quot; Foreground=&quot;White&quot; Opacity=&quot;0.25&quot;/&gt;"/>
-                    </Expander>
-
-                    <TextBlock Text="Padding (내부 여백)" FontSize="18" FontWeight="Bold" Margin="0,10,0,10"/>
-                    <StackPanel Orientation="Horizontal">
-                        <TextBlock Text="Padding 0" Background="#FFCDD2" Padding="0" Margin="4"/>
-                        <TextBlock Text="Padding 10" Background="#C8E6C9" Padding="10" Margin="4"/>
-                        <TextBlock Text="Padding 20" Background="#BBDEFB" Padding="20" Margin="4"/>
-                        <TextBlock Text="Padding 10,20" Background="#FFF9C4" Padding="10,20" Margin="4"/>
-                    </StackPanel>
-                    <Expander Style="{StaticResource CodeExpanderStyle}">
-                        <TextBox Style="{StaticResource CodeTextBoxStyle}" Text="&lt;TextBlock Text=&quot;Padding 0&quot; Background=&quot;#FFCDD2&quot; Padding=&quot;0&quot;/&gt;&#10;&lt;TextBlock Text=&quot;Padding 10&quot; Background=&quot;#C8E6C9&quot; Padding=&quot;10&quot;/&gt;&#10;&lt;TextBlock Text=&quot;Padding 20&quot; Background=&quot;#BBDEFB&quot; Padding=&quot;20&quot;/&gt;&#10;&lt;TextBlock Text=&quot;Padding 10,20&quot; Background=&quot;#FFF9C4&quot; Padding=&quot;10,20&quot;/&gt;"/>
-                    </Expander>
-
-                    <TextBlock Text="코드 비하인드에서 스타일 변경" FontSize="18" FontWeight="Bold" Margin="0,10,0,10"/>
-                    <GroupBox Header="동적 스타일 변경" Margin="0,0,0,8">
-                        <StackPanel>
-                            <TextBlock x:Name="tbStyleDemo" Text="스타일이 변경됩니다" FontSize="20" Padding="8" Margin="0,0,0,8"/>
-                            <StackPanel Orientation="Horizontal">
-                                <Button Content="빨간 스타일" Click="BtnRedStyle_Click" Margin="4" Padding="8,4"/>
-                                <Button Content="파란 스타일" Click="BtnBlueStyle_Click" Margin="4" Padding="8,4"/>
-                                <Button Content="초기화" Click="BtnResetStyle_Click" Margin="4" Padding="8,4"/>
-                            </StackPanel>
-                        </StackPanel>
-                    </GroupBox>
-                    <Expander Style="{StaticResource CodeExpanderStyle}">
-                        <TextBox Style="{StaticResource CodeTextBoxStyle}" Text="&lt;!-- XAML --&gt;&#10;&lt;TextBlock x:Name=&quot;tbStyleDemo&quot; Text=&quot;스타일이 변경됩니다&quot; FontSize=&quot;20&quot;/&gt;&#10;&lt;Button Content=&quot;빨간 스타일&quot; Click=&quot;BtnRedStyle_Click&quot;/&gt;&#10;&lt;Button Content=&quot;파란 스타일&quot; Click=&quot;BtnBlueStyle_Click&quot;/&gt;&#10;&lt;Button Content=&quot;초기화&quot; Click=&quot;BtnResetStyle_Click&quot;/&gt;&#10;&#10;// C# 코드 비하인드&#10;private void BtnRedStyle_Click(object sender, RoutedEventArgs e)&#10;{&#10;    tbStyleDemo.Background = Brushes.Tomato;&#10;    tbStyleDemo.Foreground = Brushes.White;&#10;    tbStyleDemo.FontWeight = FontWeights.Bold;&#10;    tbStyleDemo.Text = &quot;빨간 스타일 적용됨&quot;;&#10;}&#10;&#10;private void BtnBlueStyle_Click(object sender, RoutedEventArgs e)&#10;{&#10;    tbStyleDemo.Background = Brushes.SteelBlue;&#10;    tbStyleDemo.Foreground = Brushes.White;&#10;    tbStyleDemo.FontStyle = FontStyles.Italic;&#10;    tbStyleDemo.Text = &quot;파란 스타일 적용됨&quot;;&#10;}&#10;&#10;private void BtnResetStyle_Click(object sender, RoutedEventArgs e)&#10;{&#10;    tbStyleDemo.Background = Brushes.Transparent;&#10;    tbStyleDemo.Foreground = Brushes.Black;&#10;    tbStyleDemo.FontWeight = FontWeights.Normal;&#10;    tbStyleDemo.FontStyle = FontStyles.Normal;&#10;    tbStyleDemo.Text = &quot;스타일이 변경됩니다&quot;;&#10;}"/>
-                    </Expander>
-
-                    <!-- 직접 해보기 -->
-                    <TextBlock Text="직접 해보기" FontSize="18" FontWeight="Bold" Margin="0,20,0,10" Foreground="#1976D2"/>
-
                     <Expander Style="{StaticResource PracticeExpanderStyle}">
                         <StackPanel Margin="10">
                             <TextBlock Text="과제 1: Background='LightBlue'와 Foreground='DarkBlue'인 TextBlock을 만드세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
@@ -704,6 +763,15 @@
                         </StackPanel>
                     </Expander>
 
+                    <TextBlock Text="Span으로 부분 색상 지정" FontSize="18" FontWeight="Bold" Margin="0,10,0,10"/>
+                    <GroupBox Header="한 줄 안에서 여러 색상" Margin="0,0,0,8">
+                        <TextBlock FontSize="16" Padding="4">
+                            <Span Foreground="Red">빨강</Span> <Span Foreground="Orange">주황</Span> <Span Foreground="Gold">노랑</Span> <Span Foreground="Green">초록</Span> <Span Foreground="Blue">파랑</Span> <Span Foreground="Indigo">남색</Span> <Span Foreground="Violet">보라</Span>
+                        </TextBlock>
+                    </GroupBox>
+                    <Expander Style="{StaticResource CodeExpanderStyle}">
+                        <TextBox Style="{StaticResource CodeTextBoxStyle}" Text="&lt;TextBlock FontSize=&quot;16&quot;&gt;&#10;    &lt;Span Foreground=&quot;Red&quot;&gt;빨강&lt;/Span&gt;&#10;    &lt;Span Foreground=&quot;Orange&quot;&gt;주황&lt;/Span&gt;&#10;    &lt;Span Foreground=&quot;Gold&quot;&gt;노랑&lt;/Span&gt;&#10;    &lt;Span Foreground=&quot;Green&quot;&gt;초록&lt;/Span&gt;&#10;    &lt;Span Foreground=&quot;Blue&quot;&gt;파랑&lt;/Span&gt;&#10;    &lt;Span Foreground=&quot;Indigo&quot;&gt;남색&lt;/Span&gt;&#10;    &lt;Span Foreground=&quot;Violet&quot;&gt;보라&lt;/Span&gt;&#10;&lt;/TextBlock&gt;"/>
+                    </Expander>
                     <Expander Style="{StaticResource PracticeExpanderStyle}">
                         <StackPanel Margin="10">
                             <TextBlock Text="과제 2: Opacity='0.5'인 반투명 TextBlock을 만드세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
@@ -724,6 +792,16 @@
                         </StackPanel>
                     </Expander>
 
+                    <TextBlock Text="Opacity (투명도)" FontSize="18" FontWeight="Bold" Margin="0,10,0,10"/>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="100%" Background="CornflowerBlue" Foreground="White" Opacity="1.0" FontSize="16" Padding="8" Margin="4"/>
+                        <TextBlock Text="75%" Background="CornflowerBlue" Foreground="White" Opacity="0.75" FontSize="16" Padding="8" Margin="4"/>
+                        <TextBlock Text="50%" Background="CornflowerBlue" Foreground="White" Opacity="0.5" FontSize="16" Padding="8" Margin="4"/>
+                        <TextBlock Text="25%" Background="CornflowerBlue" Foreground="White" Opacity="0.25" FontSize="16" Padding="8" Margin="4"/>
+                    </StackPanel>
+                    <Expander Style="{StaticResource CodeExpanderStyle}">
+                        <TextBox Style="{StaticResource CodeTextBoxStyle}" Text="&lt;TextBlock Text=&quot;100%&quot; Background=&quot;CornflowerBlue&quot; Foreground=&quot;White&quot; Opacity=&quot;1.0&quot;/&gt;&#10;&lt;TextBlock Text=&quot;75%&quot; Background=&quot;CornflowerBlue&quot; Foreground=&quot;White&quot; Opacity=&quot;0.75&quot;/&gt;&#10;&lt;TextBlock Text=&quot;50%&quot; Background=&quot;CornflowerBlue&quot; Foreground=&quot;White&quot; Opacity=&quot;0.5&quot;/&gt;&#10;&lt;TextBlock Text=&quot;25%&quot; Background=&quot;CornflowerBlue&quot; Foreground=&quot;White&quot; Opacity=&quot;0.25&quot;/&gt;"/>
+                    </Expander>
                     <Expander Style="{StaticResource PracticeExpanderStyle}">
                         <StackPanel Margin="10">
                             <TextBlock Text="과제 3: TextBlock의 스타일을 변경하는 이벤트 핸들러를 작성하세요. (tbTarget에 적용)" FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
@@ -743,6 +821,76 @@
                                        Margin="0,8,0,0" FontWeight="Bold" Visibility="Collapsed"/>
                         </StackPanel>
                     </Expander>
+
+                    <TextBlock Text="Padding (내부 여백)" FontSize="18" FontWeight="Bold" Margin="0,10,0,10"/>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="Padding 0" Background="#FFCDD2" Padding="0" Margin="4"/>
+                        <TextBlock Text="Padding 10" Background="#C8E6C9" Padding="10" Margin="4"/>
+                        <TextBlock Text="Padding 20" Background="#BBDEFB" Padding="20" Margin="4"/>
+                        <TextBlock Text="Padding 10,20" Background="#FFF9C4" Padding="10,20" Margin="4"/>
+                    </StackPanel>
+                    <Expander Style="{StaticResource CodeExpanderStyle}">
+                        <TextBox Style="{StaticResource CodeTextBoxStyle}" Text="&lt;TextBlock Text=&quot;Padding 0&quot; Background=&quot;#FFCDD2&quot; Padding=&quot;0&quot;/&gt;&#10;&lt;TextBlock Text=&quot;Padding 10&quot; Background=&quot;#C8E6C9&quot; Padding=&quot;10&quot;/&gt;&#10;&lt;TextBlock Text=&quot;Padding 20&quot; Background=&quot;#BBDEFB&quot; Padding=&quot;20&quot;/&gt;&#10;&lt;TextBlock Text=&quot;Padding 10,20&quot; Background=&quot;#FFF9C4&quot; Padding=&quot;10,20&quot;/&gt;"/>
+                    </Expander>
+                    <!-- 직접 해보기 5_4 -->
+                    <Expander Style="{StaticResource PracticeExpanderStyle}">
+                        <StackPanel Margin="10">
+                            <TextBlock Text="과제: 배경색을 준 TextBlock 세 개에 Padding을 0 / 10 / 20으로 다르게 주세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
+                            <TextBox x:Name="txtPractice5_4"
+                                     Style="{StaticResource PracticeInputStyle}"
+                                     Text="&lt;StackPanel&gt;&#10;    &#10;&lt;/StackPanel&gt;"/>
+                            <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
+                                <Button Content="실행" Style="{StaticResource RunButtonStyle}" Click="BtnRun_Click" Tag="5_4"/>
+                                <Button Content="힌트" Style="{StaticResource HintButtonStyle}" Click="BtnHint_Click" Tag="5_4"/>
+                                <Button Content="정답 보기" Style="{StaticResource AnswerButtonStyle}" Click="BtnAnswer_Click" Tag="5_4"/>
+                            </StackPanel>
+                            <TextBlock x:Name="txtHint5_4"
+                                       Text="힌트: Padding 은 글자와 테두리 사이의 안쪽 여백입니다. 배경색을 줘야 차이가 보입니다."
+                                       Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                            <Border x:Name="resultBorder5_4" Background="White" Margin="0,8,0,0" Padding="10" Visibility="Collapsed">
+                                <StackPanel x:Name="resultPanel5_4"/>
+                            </Border>
+                        </StackPanel>
+                    </Expander>
+
+                    <TextBlock Text="코드 비하인드에서 스타일 변경" FontSize="18" FontWeight="Bold" Margin="0,10,0,10"/>
+                    <GroupBox Header="동적 스타일 변경" Margin="0,0,0,8">
+                        <StackPanel>
+                            <TextBlock x:Name="tbStyleDemo" Text="스타일이 변경됩니다" FontSize="20" Padding="8" Margin="0,0,0,8"/>
+                            <StackPanel Orientation="Horizontal">
+                                <Button Content="빨간 스타일" Click="BtnRedStyle_Click" Margin="4" Padding="8,4"/>
+                                <Button Content="파란 스타일" Click="BtnBlueStyle_Click" Margin="4" Padding="8,4"/>
+                                <Button Content="초기화" Click="BtnResetStyle_Click" Margin="4" Padding="8,4"/>
+                            </StackPanel>
+                        </StackPanel>
+                    </GroupBox>
+                    <Expander Style="{StaticResource CodeExpanderStyle}">
+                        <TextBox Style="{StaticResource CodeTextBoxStyle}" Text="&lt;!-- XAML --&gt;&#10;&lt;TextBlock x:Name=&quot;tbStyleDemo&quot; Text=&quot;스타일이 변경됩니다&quot; FontSize=&quot;20&quot;/&gt;&#10;&lt;Button Content=&quot;빨간 스타일&quot; Click=&quot;BtnRedStyle_Click&quot;/&gt;&#10;&lt;Button Content=&quot;파란 스타일&quot; Click=&quot;BtnBlueStyle_Click&quot;/&gt;&#10;&lt;Button Content=&quot;초기화&quot; Click=&quot;BtnResetStyle_Click&quot;/&gt;&#10;&#10;// C# 코드 비하인드&#10;private void BtnRedStyle_Click(object sender, RoutedEventArgs e)&#10;{&#10;    tbStyleDemo.Background = Brushes.Tomato;&#10;    tbStyleDemo.Foreground = Brushes.White;&#10;    tbStyleDemo.FontWeight = FontWeights.Bold;&#10;    tbStyleDemo.Text = &quot;빨간 스타일 적용됨&quot;;&#10;}&#10;&#10;private void BtnBlueStyle_Click(object sender, RoutedEventArgs e)&#10;{&#10;    tbStyleDemo.Background = Brushes.SteelBlue;&#10;    tbStyleDemo.Foreground = Brushes.White;&#10;    tbStyleDemo.FontStyle = FontStyles.Italic;&#10;    tbStyleDemo.Text = &quot;파란 스타일 적용됨&quot;;&#10;}&#10;&#10;private void BtnResetStyle_Click(object sender, RoutedEventArgs e)&#10;{&#10;    tbStyleDemo.Background = Brushes.Transparent;&#10;    tbStyleDemo.Foreground = Brushes.Black;&#10;    tbStyleDemo.FontWeight = FontWeights.Normal;&#10;    tbStyleDemo.FontStyle = FontStyles.Normal;&#10;    tbStyleDemo.Text = &quot;스타일이 변경됩니다&quot;;&#10;}"/>
+                    </Expander>
+                    <!-- 직접 해보기 5_5 -->
+                    <Expander Style="{StaticResource PracticeExpanderStyle}">
+                        <StackPanel Margin="10">
+                            <TextBlock Text="과제: 버튼을 누르면 tbStyleDemo를 빨간 배경 + 흰 글자 + 굵게 바꾸는 핸들러를 완성하세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
+                            <TextBox x:Name="txtPractice5_5"
+                                     Style="{StaticResource PracticeInputStyle}"
+                                     Height="120" AcceptsReturn="True"
+                                     Text="private void BtnRedStyle_Click(object sender, RoutedEventArgs e)&#10;{&#10;    &#10;}"/>
+                            <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
+                                <Button Content="확인" Style="{StaticResource RunButtonStyle}" Click="BtnCheck_Click" Tag="5_5"/>
+                                <Button Content="힌트" Style="{StaticResource HintButtonStyle}" Click="BtnHint_Click" Tag="5_5"/>
+                                <Button Content="정답 보기" Style="{StaticResource AnswerButtonStyle}" Click="BtnAnswer_Click" Tag="5_5"/>
+                            </StackPanel>
+                            <TextBlock x:Name="txtHint5_5"
+                                       Text="힌트: 글자 굵기는 FontWeights.Bold, 색은 Brushes.Tomato / Brushes.White 를 씁니다."
+                                       Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                            <TextBlock x:Name="txtResult5_5" Margin="0,8,0,0" FontWeight="Bold"
+                                       Visibility="Collapsed" TextWrapping="Wrap"/>
+                        </StackPanel>
+                    </Expander>
+
+                    <!-- 직접 해보기 -->
+                    <TextBlock Text="직접 해보기" FontSize="18" FontWeight="Bold" Margin="0,20,0,10" Foreground="#1976D2"/>
+
                 </StackPanel>
             </ScrollViewer>
         </TabItem>

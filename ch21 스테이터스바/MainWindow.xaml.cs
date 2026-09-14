@@ -18,6 +18,9 @@ namespace ch21_스테이터스바
         // 각 연습의 정답
         private readonly Dictionary<string, string> _answers = new()
         {
+            { "3_4", "<StatusBar>\n    <StatusBarItem Content=\"확대/축소:\"/>\n    <StatusBarItem>\n        <Slider Width=\"100\" Minimum=\"50\" Maximum=\"200\" Value=\"100\"/>\n    </StatusBarItem>\n    <StatusBarItem>\n        <TextBlock Text=\"100%\"/>\n    </StatusBarItem>\n</StatusBar>" },
+            { "4_4", "private void Connect_Click(object sender, RoutedEventArgs e)\n{\n    connectionIndicator.Fill = Brushes.Green;\n    connectionText.Text = \"연결됨\";\n}" },
+            { "5_4", "<StatusBar Background=\"#2D2D30\">\n    <StatusBarItem>\n        <StackPanel Orientation=\"Horizontal\">\n            <Ellipse Width=\"8\" Height=\"8\" Fill=\"LimeGreen\" Margin=\"0,0,6,0\"/>\n            <TextBlock Text=\"온라인\" Foreground=\"White\"/>\n        </StackPanel>\n    </StatusBarItem>\n    <Separator/>\n    <StatusBarItem>\n        <TextBlock Text=\"↓ 2.5 MB/s\" Foreground=\"LightGreen\"/>\n    </StatusBarItem>\n</StatusBar>" },
             { "1_3", "<StatusBar>\n    <StatusBarItem Content=\"report.txt\"/>\n    <Separator/>\n    <StatusBarItem Content=\"UTF-8\"/>\n</StatusBar>" },
             { "2_3", "<StatusBar Height=\"28\" Background=\"#E3F2FD\">\n    <StatusBarItem Content=\"준비\"/>\n</StatusBar>" },
             { "3_3", "<StatusBar>\n    <StatusBarItem>\n        <StackPanel Orientation=\"Horizontal\">\n            <ProgressBar Width=\"120\" Height=\"12\" Value=\"45\"/>\n            <TextBlock Text=\"45%\" Margin=\"6,0,0,0\"/>\n        </StackPanel>\n    </StatusBarItem>\n</StatusBar>" },
@@ -47,6 +50,7 @@ namespace ch21_스테이터스바
         // 코드 비교 검증용 필수 키워드
         private readonly Dictionary<string, string[]> _requiredKeywords = new()
         {
+            { "4_4", new[] { "connectionIndicator.Fill", "Brushes.Green", "connectionText.Text" } },
             { "4_3", new[] { "statusText.Content", "DateTime.Now" } },
             { "4_1", new[] { ".Content", "작업 완료" } },
             { "4_2", new[] { "Brushes.Red", ".Fill", ".Text", "오류 발생" } },

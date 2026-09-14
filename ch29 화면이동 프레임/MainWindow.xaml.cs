@@ -62,6 +62,8 @@ namespace ch29_화면이동_프레임
         // 각 연습의 정답
         private readonly Dictionary<string, string> _answers = new()
         {
+            { "4_4", "public MainWindow()\n{\n    InitializeComponent();\n\n    mainFrame.Navigated += MainFrame_Navigated;\n    mainFrame.Navigating += MainFrame_Navigating;\n}" },
+            { "5_4", "protected override void OnNavigatingFrom(NavigatingCancelEventArgs e)\n{\n    base.OnNavigatingFrom(e);\n\n    if (hasUnsavedChanges)\n    {\n        var result = MessageBox.Show(\"저장하지 않은 변경사항이 있습니다. 계속하시겠습니까?\",\n                                     \"확인\", MessageBoxButton.YesNo);\n        if (result == MessageBoxResult.No)\n        {\n            e.Cancel = true;\n        }\n    }\n}" },
             { "2_3", "<DockPanel Height=\"160\">\n    <Border DockPanel.Dock=\"Top\" Background=\"#3F51B5\" Height=\"30\">\n        <TextBlock Text=\"내비게이션\" Foreground=\"White\" Margin=\"8,6\"/>\n    </Border>\n    <Frame BorderBrush=\"Gray\" BorderThickness=\"1\" NavigationUIVisibility=\"Hidden\"/>\n</DockPanel>" },
             { "3_3", "<DockPanel Height=\"140\">\n    <StackPanel DockPanel.Dock=\"Top\" Orientation=\"Horizontal\" Margin=\"6\">\n        <Button Content=\"뒤로\" Width=\"70\" Margin=\"0,0,6,0\"/>\n        <Button Content=\"앞으로\" Width=\"70\"/>\n    </StackPanel>\n    <TextBlock Text=\"페이지 본문\" Margin=\"8\"/>\n</DockPanel>" },
             { "4_3", "private void Forward_Click(object sender, RoutedEventArgs e)\n{\n    if (NavigationService.CanGoForward)\n    {\n        NavigationService.GoForward();\n    }\n}" },
@@ -79,6 +81,8 @@ namespace ch29_화면이동_프레임
         // 코드 비교 검증용 필수 키워드
         private readonly Dictionary<string, string[]> _requiredKeywords = new()
         {
+            { "4_4", new[] { "Navigated", "Navigating", "+=" } },
+            { "5_4", new[] { "MessageBox.Show", "MessageBoxResult.No", "e.Cancel" } },
             { "4_3", new[] { "CanGoForward", "GoForward" } },
             { "5_3", new[] { "while", "CanGoBack", "RemoveBackEntry" } },
             { "4_1", new[] { "NavigationService", "Navigate", "new Page2" } },

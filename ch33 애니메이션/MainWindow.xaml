@@ -11,7 +11,7 @@
         <Style x:Key="CodeExpanderStyle" TargetType="Expander">
             <Setter Property="Header" Value="코드 보기"/>
             <Setter Property="Margin" Value="0,0,0,12"/>
-            <Setter Property="IsExpanded" Value="False"/>
+            <Setter Property="IsExpanded" Value="True"/>
         </Style>
         <Style x:Key="CodeTextBoxStyle" TargetType="TextBox">
             <Setter Property="IsReadOnly" Value="True"/>
@@ -91,6 +91,26 @@
                         <TextBox Style="{StaticResource CodeTextBoxStyle}"
                                  Text="&lt;Border Background=&quot;LightBlue&quot;&gt;&#10;    &lt;Border.Triggers&gt;&#10;        &lt;EventTrigger RoutedEvent=&quot;Loaded&quot;&gt;&#10;            &lt;BeginStoryboard&gt;&#10;                &lt;Storyboard&gt;&#10;                    &lt;DoubleAnimation &#10;                        Storyboard.TargetProperty=&quot;Opacity&quot; &#10;                        From=&quot;0&quot; &#10;                        To=&quot;1&quot; &#10;                        Duration=&quot;0:0:2&quot;/&gt;&#10;                &lt;/Storyboard&gt;&#10;            &lt;/BeginStoryboard&gt;&#10;        &lt;/EventTrigger&gt;&#10;    &lt;/Border.Triggers&gt;&#10;&lt;/Border&gt;"/>
                     </Expander>
+                    <!-- 직접 해보기 1_1 -->
+                    <Expander Style="{StaticResource PracticeExpanderStyle}">
+                        <StackPanel Margin="10">
+                            <TextBlock Text="과제: 마우스를 올리면 너비가 100 에서 250 으로 늘어나는 사각형을 만드세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
+                            <TextBox x:Name="txtPractice1_1"
+                                     Style="{StaticResource PracticeInputStyle}"
+                                     Text="&lt;Rectangle Width=&quot;100&quot; Height=&quot;40&quot; Fill=&quot;SteelBlue&quot; HorizontalAlignment=&quot;Left&quot;&gt;&#10;    &#10;&lt;/Rectangle&gt;"/>
+                            <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
+                                <Button Content="실행" Style="{StaticResource RunButtonStyle}" Click="BtnRun_Click" Tag="1_1"/>
+                                <Button Content="힌트" Style="{StaticResource HintButtonStyle}" Click="BtnHint_Click" Tag="1_1"/>
+                                <Button Content="정답 보기" Style="{StaticResource AnswerButtonStyle}" Click="BtnAnswer_Click" Tag="1_1"/>
+                            </StackPanel>
+                            <TextBlock x:Name="txtHint1_1"
+                                       Text="힌트: &lt;Rectangle.Triggers&gt;&lt;EventTrigger RoutedEvent=&quot;MouseEnter&quot;&gt; 안에 DoubleAnimation 을 넣습니다."
+                                       Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                            <Border x:Name="resultBorder1_1" Background="White" Margin="0,8,0,0" Padding="10" Visibility="Collapsed">
+                                <StackPanel x:Name="resultPanel1_1"/>
+                            </Border>
+                        </StackPanel>
+                    </Expander>
 
                     <GroupBox Header="2. Width 애니메이션" Margin="0,0,0,15" Padding="10">
                         <StackPanel>
@@ -119,6 +139,26 @@
                     <Expander Style="{StaticResource CodeExpanderStyle}">
                         <TextBox Style="{StaticResource CodeTextBoxStyle}"
                                  Text="&lt;Border Width=&quot;100&quot; Height=&quot;50&quot;&gt;&#10;    &lt;Border.Triggers&gt;&#10;        &lt;!-- 마우스 진입 시 확장 --&gt;&#10;        &lt;EventTrigger RoutedEvent=&quot;MouseEnter&quot;&gt;&#10;            &lt;BeginStoryboard&gt;&#10;                &lt;Storyboard&gt;&#10;                    &lt;DoubleAnimation &#10;                        Storyboard.TargetProperty=&quot;Width&quot; &#10;                        To=&quot;300&quot; Duration=&quot;0:0:0.5&quot;/&gt;&#10;                &lt;/Storyboard&gt;&#10;            &lt;/BeginStoryboard&gt;&#10;        &lt;/EventTrigger&gt;&#10;        &#10;        &lt;!-- 마우스 이탈 시 축소 --&gt;&#10;        &lt;EventTrigger RoutedEvent=&quot;MouseLeave&quot;&gt;&#10;            &lt;BeginStoryboard&gt;&#10;                &lt;Storyboard&gt;&#10;                    &lt;DoubleAnimation &#10;                        Storyboard.TargetProperty=&quot;Width&quot; &#10;                        To=&quot;100&quot; Duration=&quot;0:0:0.5&quot;/&gt;&#10;                &lt;/Storyboard&gt;&#10;            &lt;/BeginStoryboard&gt;&#10;        &lt;/EventTrigger&gt;&#10;    &lt;/Border.Triggers&gt;&#10;&lt;/Border&gt;"/>
+                    </Expander>
+                    <!-- 직접 해보기 1_2 -->
+                    <Expander Style="{StaticResource PracticeExpanderStyle}">
+                        <StackPanel Margin="10">
+                            <TextBlock Text="과제: 투명도가 1 에서 0.2 로 변하는 애니메이션을 From/To/Duration 으로 지정하세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
+                            <TextBox x:Name="txtPractice1_2"
+                                     Style="{StaticResource PracticeInputStyle}"
+                                     Text="&lt;Rectangle Width=&quot;120&quot; Height=&quot;40&quot; Fill=&quot;Tomato&quot; HorizontalAlignment=&quot;Left&quot;&gt;&#10;    &lt;Rectangle.Triggers&gt;&#10;        &lt;EventTrigger RoutedEvent=&quot;MouseEnter&quot;&gt;&#10;            &lt;BeginStoryboard&gt;&#10;                &lt;Storyboard&gt;&#10;                    &#10;                &lt;/Storyboard&gt;&#10;            &lt;/BeginStoryboard&gt;&#10;        &lt;/EventTrigger&gt;&#10;    &lt;/Rectangle.Triggers&gt;&#10;&lt;/Rectangle&gt;"/>
+                            <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
+                                <Button Content="실행" Style="{StaticResource RunButtonStyle}" Click="BtnRun_Click" Tag="1_2"/>
+                                <Button Content="힌트" Style="{StaticResource HintButtonStyle}" Click="BtnHint_Click" Tag="1_2"/>
+                                <Button Content="정답 보기" Style="{StaticResource AnswerButtonStyle}" Click="BtnAnswer_Click" Tag="1_2"/>
+                            </StackPanel>
+                            <TextBlock x:Name="txtHint1_2"
+                                       Text="힌트: Storyboard.TargetProperty=&quot;Opacity&quot; 에 From 과 To 를 지정합니다."
+                                       Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                            <Border x:Name="resultBorder1_2" Background="White" Margin="0,8,0,0" Padding="10" Visibility="Collapsed">
+                                <StackPanel x:Name="resultPanel1_2"/>
+                            </Border>
+                        </StackPanel>
                     </Expander>
 
                     <GroupBox Header="3. Duration 형식" Margin="0,0,0,15" Padding="10">
@@ -152,69 +192,28 @@
                         <TextBox Style="{StaticResource CodeTextBoxStyle}"
                                  Text="&lt;!-- Duration 예제 --&gt;&#10;Duration=&quot;0:0:1&quot;     &lt;!-- 1초 --&gt;&#10;Duration=&quot;0:0:0.5&quot;   &lt;!-- 0.5초 (500ms) --&gt;&#10;Duration=&quot;0:0:2.5&quot;   &lt;!-- 2.5초 --&gt;&#10;Duration=&quot;0:1:0&quot;     &lt;!-- 1분 --&gt;&#10;&#10;&lt;!-- From/To/By 예제 --&gt;&#10;&lt;DoubleAnimation From=&quot;0&quot; To=&quot;100&quot;/&gt;  &lt;!-- 0에서 100으로 --&gt;&#10;&lt;DoubleAnimation To=&quot;100&quot;/&gt;          &lt;!-- 현재값에서 100으로 --&gt;&#10;&lt;DoubleAnimation From=&quot;0&quot;/&gt;          &lt;!-- 0에서 원래값으로 --&gt;&#10;&lt;DoubleAnimation By=&quot;50&quot;/&gt;           &lt;!-- 현재값에서 +50 --&gt;"/>
                     </Expander>
-                
-                <!-- 직접 해보기 1_1 -->
-                <Expander Style="{StaticResource PracticeExpanderStyle}">
-                    <StackPanel Margin="10">
-                        <TextBlock Text="과제: 마우스를 올리면 너비가 100 에서 250 으로 늘어나는 사각형을 만드세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
-                        <TextBox x:Name="txtPractice1_1"
-                                 Style="{StaticResource PracticeInputStyle}"
-                                 Text="&lt;Rectangle Width=&quot;100&quot; Height=&quot;40&quot; Fill=&quot;SteelBlue&quot; HorizontalAlignment=&quot;Left&quot;&gt;&#10;    &#10;&lt;/Rectangle&gt;"/>
-                        <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
-                            <Button Content="실행" Style="{StaticResource RunButtonStyle}" Click="BtnRun_Click" Tag="1_1"/>
-                            <Button Content="힌트" Style="{StaticResource HintButtonStyle}" Click="BtnHint_Click" Tag="1_1"/>
-                            <Button Content="정답 보기" Style="{StaticResource AnswerButtonStyle}" Click="BtnAnswer_Click" Tag="1_1"/>
+                    <!-- 직접 해보기 1_3 -->
+                    <Expander Style="{StaticResource PracticeExpanderStyle}">
+                        <StackPanel Margin="10">
+                            <TextBlock Text="과제: 마우스를 올리면 높이가 늘어나는 사각형을 만드세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
+                            <TextBox x:Name="txtPractice1_3"
+                                     Style="{StaticResource PracticeInputStyle}"
+                                     Text="&lt;Rectangle Width=&quot;120&quot; Height=&quot;30&quot; Fill=&quot;#8E24AA&quot; HorizontalAlignment=&quot;Left&quot;&gt;&#10;    &#10;&lt;/Rectangle&gt;"/>
+                            <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
+                                <Button Content="실행" Style="{StaticResource RunButtonStyle}" Click="BtnRun_Click" Tag="1_3"/>
+                                <Button Content="힌트" Style="{StaticResource HintButtonStyle}" Click="BtnHint_Click" Tag="1_3"/>
+                                <Button Content="정답 보기" Style="{StaticResource AnswerButtonStyle}" Click="BtnAnswer_Click" Tag="1_3"/>
+                            </StackPanel>
+                            <TextBlock x:Name="txtHint1_3"
+                                       Text="힌트: Storyboard.TargetProperty 를 Height 로 지정합니다."
+                                       Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                            <Border x:Name="resultBorder1_3" Background="White" Margin="0,8,0,0" Padding="10" Visibility="Collapsed">
+                                <StackPanel x:Name="resultPanel1_3"/>
+                            </Border>
                         </StackPanel>
-                        <TextBlock x:Name="txtHint1_1"
-                                   Text="힌트: &lt;Rectangle.Triggers&gt;&lt;EventTrigger RoutedEvent=&quot;MouseEnter&quot;&gt; 안에 DoubleAnimation 을 넣습니다."
-                                   Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
-                        <Border x:Name="resultBorder1_1" Background="White" Margin="0,8,0,0" Padding="10" Visibility="Collapsed">
-                            <StackPanel x:Name="resultPanel1_1"/>
-                        </Border>
-                    </StackPanel>
-                </Expander>
+                    </Expander>
+                                    
 
-                <!-- 직접 해보기 1_2 -->
-                <Expander Style="{StaticResource PracticeExpanderStyle}">
-                    <StackPanel Margin="10">
-                        <TextBlock Text="과제: 투명도가 1 에서 0.2 로 변하는 애니메이션을 From/To/Duration 으로 지정하세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
-                        <TextBox x:Name="txtPractice1_2"
-                                 Style="{StaticResource PracticeInputStyle}"
-                                 Text="&lt;Rectangle Width=&quot;120&quot; Height=&quot;40&quot; Fill=&quot;Tomato&quot; HorizontalAlignment=&quot;Left&quot;&gt;&#10;    &lt;Rectangle.Triggers&gt;&#10;        &lt;EventTrigger RoutedEvent=&quot;MouseEnter&quot;&gt;&#10;            &lt;BeginStoryboard&gt;&#10;                &lt;Storyboard&gt;&#10;                    &#10;                &lt;/Storyboard&gt;&#10;            &lt;/BeginStoryboard&gt;&#10;        &lt;/EventTrigger&gt;&#10;    &lt;/Rectangle.Triggers&gt;&#10;&lt;/Rectangle&gt;"/>
-                        <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
-                            <Button Content="실행" Style="{StaticResource RunButtonStyle}" Click="BtnRun_Click" Tag="1_2"/>
-                            <Button Content="힌트" Style="{StaticResource HintButtonStyle}" Click="BtnHint_Click" Tag="1_2"/>
-                            <Button Content="정답 보기" Style="{StaticResource AnswerButtonStyle}" Click="BtnAnswer_Click" Tag="1_2"/>
-                        </StackPanel>
-                        <TextBlock x:Name="txtHint1_2"
-                                   Text="힌트: Storyboard.TargetProperty=&quot;Opacity&quot; 에 From 과 To 를 지정합니다."
-                                   Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
-                        <Border x:Name="resultBorder1_2" Background="White" Margin="0,8,0,0" Padding="10" Visibility="Collapsed">
-                            <StackPanel x:Name="resultPanel1_2"/>
-                        </Border>
-                    </StackPanel>
-                </Expander>
-
-<!-- 직접 해보기 1_3 -->
-<Expander Style="{StaticResource PracticeExpanderStyle}">
-    <StackPanel Margin="10">
-        <TextBlock Text="과제: 마우스를 올리면 높이가 늘어나는 사각형을 만드세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
-        <TextBox x:Name="txtPractice1_3"
-                 Style="{StaticResource PracticeInputStyle}"
-                 Text="&lt;Rectangle Width=&quot;120&quot; Height=&quot;30&quot; Fill=&quot;#8E24AA&quot; HorizontalAlignment=&quot;Left&quot;&gt;&#10;    &#10;&lt;/Rectangle&gt;"/>
-        <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
-            <Button Content="실행" Style="{StaticResource RunButtonStyle}" Click="BtnRun_Click" Tag="1_3"/>
-            <Button Content="힌트" Style="{StaticResource HintButtonStyle}" Click="BtnHint_Click" Tag="1_3"/>
-            <Button Content="정답 보기" Style="{StaticResource AnswerButtonStyle}" Click="BtnAnswer_Click" Tag="1_3"/>
-        </StackPanel>
-        <TextBlock x:Name="txtHint1_3"
-                   Text="힌트: Storyboard.TargetProperty 를 Height 로 지정합니다."
-                   Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
-        <Border x:Name="resultBorder1_3" Background="White" Margin="0,8,0,0" Padding="10" Visibility="Collapsed">
-            <StackPanel x:Name="resultPanel1_3"/>
-        </Border>
-    </StackPanel>
-</Expander>
 </StackPanel>
             </ScrollViewer>
         </TabItem>
@@ -248,6 +247,26 @@
                         <TextBox Style="{StaticResource CodeTextBoxStyle}"
                                  Text="&lt;Storyboard&gt;&#10;    &lt;!-- 세 애니메이션이 동시에 실행 --&gt;&#10;    &lt;DoubleAnimation Storyboard.TargetProperty=&quot;Width&quot; &#10;                     To=&quot;250&quot; Duration=&quot;0:0:0.5&quot; AutoReverse=&quot;True&quot;/&gt;&#10;    &lt;DoubleAnimation Storyboard.TargetProperty=&quot;Height&quot; &#10;                     To=&quot;80&quot; Duration=&quot;0:0:0.5&quot; AutoReverse=&quot;True&quot;/&gt;&#10;    &lt;DoubleAnimation Storyboard.TargetProperty=&quot;Opacity&quot; &#10;                     To=&quot;0.5&quot; Duration=&quot;0:0:0.5&quot; AutoReverse=&quot;True&quot;/&gt;&#10;&lt;/Storyboard&gt;&#10;&#10;&lt;!-- AutoReverse=&quot;True&quot;: 애니메이션 후 원래 값으로 되돌아감 --&gt;"/>
                     </Expander>
+                    <!-- 직접 해보기 2_1 -->
+                    <Expander Style="{StaticResource PracticeExpanderStyle}">
+                        <StackPanel Margin="10">
+                            <TextBlock Text="과제: Storyboard 안에 애니메이션 두 개(너비와 높이)를 함께 넣어 동시에 실행되게 하세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
+                            <TextBox x:Name="txtPractice2_1"
+                                     Style="{StaticResource PracticeInputStyle}"
+                                     Text="&lt;Rectangle Width=&quot;80&quot; Height=&quot;40&quot; Fill=&quot;MediumPurple&quot; HorizontalAlignment=&quot;Left&quot;&gt;&#10;    &lt;Rectangle.Triggers&gt;&#10;        &lt;EventTrigger RoutedEvent=&quot;MouseEnter&quot;&gt;&#10;            &lt;BeginStoryboard&gt;&#10;                &lt;Storyboard&gt;&#10;                    &#10;                &lt;/Storyboard&gt;&#10;            &lt;/BeginStoryboard&gt;&#10;        &lt;/EventTrigger&gt;&#10;    &lt;/Rectangle.Triggers&gt;&#10;&lt;/Rectangle&gt;"/>
+                            <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
+                                <Button Content="실행" Style="{StaticResource RunButtonStyle}" Click="BtnRun_Click" Tag="2_1"/>
+                                <Button Content="힌트" Style="{StaticResource HintButtonStyle}" Click="BtnHint_Click" Tag="2_1"/>
+                                <Button Content="정답 보기" Style="{StaticResource AnswerButtonStyle}" Click="BtnAnswer_Click" Tag="2_1"/>
+                            </StackPanel>
+                            <TextBlock x:Name="txtHint2_1"
+                                       Text="힌트: Storyboard 안에 DoubleAnimation 을 두 개 나란히 넣으면 동시에 재생됩니다."
+                                       Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                            <Border x:Name="resultBorder2_1" Background="White" Margin="0,8,0,0" Padding="10" Visibility="Collapsed">
+                                <StackPanel x:Name="resultPanel2_1"/>
+                            </Border>
+                        </StackPanel>
+                    </Expander>
 
                     <GroupBox Header="2. 순차 실행 (BeginTime)" Margin="0,0,0,15" Padding="10">
                         <StackPanel>
@@ -271,6 +290,26 @@
                         <TextBox Style="{StaticResource CodeTextBoxStyle}"
                                  Text="&lt;Storyboard&gt;&#10;    &lt;!-- 즉시 시작 --&gt;&#10;    &lt;DoubleAnimation Storyboard.TargetProperty=&quot;Width&quot; &#10;                     To=&quot;250&quot; Duration=&quot;0:0:0.3&quot;/&gt;&#10;    &#10;    &lt;!-- 0.3초 후 시작 --&gt;&#10;    &lt;DoubleAnimation Storyboard.TargetProperty=&quot;Height&quot; &#10;                     To=&quot;80&quot; Duration=&quot;0:0:0.3&quot; &#10;                     BeginTime=&quot;0:0:0.3&quot;/&gt;&#10;    &#10;    &lt;!-- 0.6초 후 시작 --&gt;&#10;    &lt;DoubleAnimation Storyboard.TargetProperty=&quot;Opacity&quot; &#10;                     To=&quot;0.3&quot; Duration=&quot;0:0:0.3&quot; &#10;                     BeginTime=&quot;0:0:0.6&quot;/&gt;&#10;&lt;/Storyboard&gt;"/>
                     </Expander>
+                    <!-- 직접 해보기 2_2 -->
+                    <Expander Style="{StaticResource PracticeExpanderStyle}">
+                        <StackPanel Margin="10">
+                            <TextBlock Text="과제: 애니메이션이 끝나면 원래대로 돌아오도록 AutoReverse 를 켜세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
+                            <TextBox x:Name="txtPractice2_2"
+                                     Style="{StaticResource PracticeInputStyle}"
+                                     Text="&lt;Rectangle Width=&quot;100&quot; Height=&quot;40&quot; Fill=&quot;Teal&quot; HorizontalAlignment=&quot;Left&quot;&gt;&#10;    &lt;Rectangle.Triggers&gt;&#10;        &lt;EventTrigger RoutedEvent=&quot;MouseEnter&quot;&gt;&#10;            &lt;BeginStoryboard&gt;&#10;                &lt;Storyboard&gt;&#10;                    &lt;DoubleAnimation Storyboard.TargetProperty=&quot;Width&quot; To=&quot;220&quot; Duration=&quot;0:0:0.4&quot;/&gt;&#10;                &lt;/Storyboard&gt;&#10;            &lt;/BeginStoryboard&gt;&#10;        &lt;/EventTrigger&gt;&#10;    &lt;/Rectangle.Triggers&gt;&#10;&lt;/Rectangle&gt;"/>
+                            <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
+                                <Button Content="실행" Style="{StaticResource RunButtonStyle}" Click="BtnRun_Click" Tag="2_2"/>
+                                <Button Content="힌트" Style="{StaticResource HintButtonStyle}" Click="BtnHint_Click" Tag="2_2"/>
+                                <Button Content="정답 보기" Style="{StaticResource AnswerButtonStyle}" Click="BtnAnswer_Click" Tag="2_2"/>
+                            </StackPanel>
+                            <TextBlock x:Name="txtHint2_2"
+                                       Text="힌트: DoubleAnimation 에 AutoReverse=&quot;True&quot; 를 추가합니다."
+                                       Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                            <Border x:Name="resultBorder2_2" Background="White" Margin="0,8,0,0" Padding="10" Visibility="Collapsed">
+                                <StackPanel x:Name="resultPanel2_2"/>
+                            </Border>
+                        </StackPanel>
+                    </Expander>
 
                     <GroupBox Header="3. 무한 반복 (RepeatBehavior)" Margin="0,0,0,15" Padding="10">
                         <StackPanel>
@@ -293,7 +332,27 @@
                         <TextBox Style="{StaticResource CodeTextBoxStyle}"
                                  Text="&lt;!-- RepeatBehavior 옵션 --&gt;&#10;&#10;&lt;!-- 무한 반복 --&gt;&#10;&lt;Storyboard RepeatBehavior=&quot;Forever&quot;&gt;&#10;    &lt;DoubleAnimation .../&gt;&#10;&lt;/Storyboard&gt;&#10;&#10;&lt;!-- 3번 반복 --&gt;&#10;&lt;Storyboard RepeatBehavior=&quot;3x&quot;&gt;&#10;    &lt;DoubleAnimation .../&gt;&#10;&lt;/Storyboard&gt;&#10;&#10;&lt;!-- 10초 동안 반복 --&gt;&#10;&lt;Storyboard RepeatBehavior=&quot;0:0:10&quot;&gt;&#10;    &lt;DoubleAnimation .../&gt;&#10;&lt;/Storyboard&gt;"/>
                     </Expander>
-
+                    <!-- 직접 해보기 2_3 -->
+                    <Expander Style="{StaticResource PracticeExpanderStyle}">
+                        <StackPanel Margin="10">
+                            <TextBlock Text="과제: 시작을 0.5초 미뤄서 애니메이션이 늦게 출발하게 하세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
+                            <TextBox x:Name="txtPractice2_3"
+                                     Style="{StaticResource PracticeInputStyle}"
+                                     Text="&lt;Rectangle Width=&quot;100&quot; Height=&quot;40&quot; Fill=&quot;#00897B&quot; HorizontalAlignment=&quot;Left&quot;&gt;&#10;    &lt;Rectangle.Triggers&gt;&#10;        &lt;EventTrigger RoutedEvent=&quot;Loaded&quot;&gt;&#10;            &lt;BeginStoryboard&gt;&#10;                &lt;Storyboard&gt;&#10;                    &lt;DoubleAnimation Storyboard.TargetProperty=&quot;Width&quot; To=&quot;220&quot; Duration=&quot;0:0:0.6&quot;/&gt;&#10;                &lt;/Storyboard&gt;&#10;            &lt;/BeginStoryboard&gt;&#10;        &lt;/EventTrigger&gt;&#10;    &lt;/Rectangle.Triggers&gt;&#10;&lt;/Rectangle&gt;"/>
+                            <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
+                                <Button Content="실행" Style="{StaticResource RunButtonStyle}" Click="BtnRun_Click" Tag="2_3"/>
+                                <Button Content="힌트" Style="{StaticResource HintButtonStyle}" Click="BtnHint_Click" Tag="2_3"/>
+                                <Button Content="정답 보기" Style="{StaticResource AnswerButtonStyle}" Click="BtnAnswer_Click" Tag="2_3"/>
+                            </StackPanel>
+                            <TextBlock x:Name="txtHint2_3"
+                                       Text="힌트: BeginTime=&quot;0:0:0.5&quot; 를 애니메이션에 붙입니다."
+                                       Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                            <Border x:Name="resultBorder2_3" Background="White" Margin="0,8,0,0" Padding="10" Visibility="Collapsed">
+                                <StackPanel x:Name="resultPanel2_3"/>
+                            </Border>
+                        </StackPanel>
+                    </Expander>
+                    
                     <GroupBox Header="4. 대상 요소 지정 (TargetName)" Margin="0,0,0,15" Padding="10">
                         <StackPanel>
                             <TextBlock Text="버튼 클릭 시 다른 요소를 애니메이션합니다:" Margin="0,0,0,10"/>
@@ -319,69 +378,28 @@
                         <TextBox Style="{StaticResource CodeTextBoxStyle}"
                                  Text="&lt;!-- x:Name으로 대상 지정 --&gt;&#10;&lt;Border x:Name=&quot;targetBorder&quot; Width=&quot;80&quot;/&gt;&#10;&#10;&lt;Button Content=&quot;애니메이션 시작&quot;&gt;&#10;    &lt;Button.Triggers&gt;&#10;        &lt;EventTrigger RoutedEvent=&quot;Button.Click&quot;&gt;&#10;            &lt;BeginStoryboard&gt;&#10;                &lt;Storyboard&gt;&#10;                    &lt;!-- TargetName으로 다른 요소 지정 --&gt;&#10;                    &lt;DoubleAnimation &#10;                        Storyboard.TargetName=&quot;targetBorder&quot;&#10;                        Storyboard.TargetProperty=&quot;Width&quot; &#10;                        To=&quot;200&quot; Duration=&quot;0:0:0.5&quot;/&gt;&#10;                &lt;/Storyboard&gt;&#10;            &lt;/BeginStoryboard&gt;&#10;        &lt;/EventTrigger&gt;&#10;    &lt;/Button.Triggers&gt;&#10;&lt;/Button&gt;"/>
                     </Expander>
+                    <!-- 직접 해보기 2_4 -->
+                    <Expander Style="{StaticResource PracticeExpanderStyle}">
+                        <StackPanel Margin="10">
+                            <TextBlock Text="과제: 버튼을 누르면 옆의 Border 너비가 200으로 늘어나도록 TargetName을 지정하세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
+                            <TextBox x:Name="txtPractice2_4"
+                                     Style="{StaticResource PracticeInputStyle}"
+                                     Text="&lt;StackPanel&gt;&#10;    &lt;Border x:Name=&quot;targetBorder&quot; Width=&quot;80&quot; Height=&quot;40&quot; Background=&quot;SteelBlue&quot; HorizontalAlignment=&quot;Left&quot;/&gt;&#10;    &lt;Button Content=&quot;애니메이션 시작&quot; Width=&quot;140&quot; Margin=&quot;0,8,0,0&quot; HorizontalAlignment=&quot;Left&quot;&gt;&#10;        &#10;    &lt;/Button&gt;&#10;&lt;/StackPanel&gt;"/>
+                            <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
+                                <Button Content="실행" Style="{StaticResource RunButtonStyle}" Click="BtnRun_Click" Tag="2_4"/>
+                                <Button Content="힌트" Style="{StaticResource HintButtonStyle}" Click="BtnHint_Click" Tag="2_4"/>
+                                <Button Content="정답 보기" Style="{StaticResource AnswerButtonStyle}" Click="BtnAnswer_Click" Tag="2_4"/>
+                            </StackPanel>
+                            <TextBlock x:Name="txtHint2_4"
+                                       Text="힌트: Storyboard.TargetName 에 늘릴 요소의 x:Name 을, TargetProperty 에 &quot;Width&quot; 를 씁니다."
+                                       Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                            <Border x:Name="resultBorder2_4" Background="White" Margin="0,8,0,0" Padding="10" Visibility="Collapsed">
+                                <StackPanel x:Name="resultPanel2_4"/>
+                            </Border>
+                        </StackPanel>
+                    </Expander>
                 
-                <!-- 직접 해보기 2_1 -->
-                <Expander Style="{StaticResource PracticeExpanderStyle}">
-                    <StackPanel Margin="10">
-                        <TextBlock Text="과제: Storyboard 안에 애니메이션 두 개(너비와 높이)를 함께 넣어 동시에 실행되게 하세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
-                        <TextBox x:Name="txtPractice2_1"
-                                 Style="{StaticResource PracticeInputStyle}"
-                                 Text="&lt;Rectangle Width=&quot;80&quot; Height=&quot;40&quot; Fill=&quot;MediumPurple&quot; HorizontalAlignment=&quot;Left&quot;&gt;&#10;    &lt;Rectangle.Triggers&gt;&#10;        &lt;EventTrigger RoutedEvent=&quot;MouseEnter&quot;&gt;&#10;            &lt;BeginStoryboard&gt;&#10;                &lt;Storyboard&gt;&#10;                    &#10;                &lt;/Storyboard&gt;&#10;            &lt;/BeginStoryboard&gt;&#10;        &lt;/EventTrigger&gt;&#10;    &lt;/Rectangle.Triggers&gt;&#10;&lt;/Rectangle&gt;"/>
-                        <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
-                            <Button Content="실행" Style="{StaticResource RunButtonStyle}" Click="BtnRun_Click" Tag="2_1"/>
-                            <Button Content="힌트" Style="{StaticResource HintButtonStyle}" Click="BtnHint_Click" Tag="2_1"/>
-                            <Button Content="정답 보기" Style="{StaticResource AnswerButtonStyle}" Click="BtnAnswer_Click" Tag="2_1"/>
-                        </StackPanel>
-                        <TextBlock x:Name="txtHint2_1"
-                                   Text="힌트: Storyboard 안에 DoubleAnimation 을 두 개 나란히 넣으면 동시에 재생됩니다."
-                                   Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
-                        <Border x:Name="resultBorder2_1" Background="White" Margin="0,8,0,0" Padding="10" Visibility="Collapsed">
-                            <StackPanel x:Name="resultPanel2_1"/>
-                        </Border>
-                    </StackPanel>
-                </Expander>
 
-                <!-- 직접 해보기 2_2 -->
-                <Expander Style="{StaticResource PracticeExpanderStyle}">
-                    <StackPanel Margin="10">
-                        <TextBlock Text="과제: 애니메이션이 끝나면 원래대로 돌아오도록 AutoReverse 를 켜세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
-                        <TextBox x:Name="txtPractice2_2"
-                                 Style="{StaticResource PracticeInputStyle}"
-                                 Text="&lt;Rectangle Width=&quot;100&quot; Height=&quot;40&quot; Fill=&quot;Teal&quot; HorizontalAlignment=&quot;Left&quot;&gt;&#10;    &lt;Rectangle.Triggers&gt;&#10;        &lt;EventTrigger RoutedEvent=&quot;MouseEnter&quot;&gt;&#10;            &lt;BeginStoryboard&gt;&#10;                &lt;Storyboard&gt;&#10;                    &lt;DoubleAnimation Storyboard.TargetProperty=&quot;Width&quot; To=&quot;220&quot; Duration=&quot;0:0:0.4&quot;/&gt;&#10;                &lt;/Storyboard&gt;&#10;            &lt;/BeginStoryboard&gt;&#10;        &lt;/EventTrigger&gt;&#10;    &lt;/Rectangle.Triggers&gt;&#10;&lt;/Rectangle&gt;"/>
-                        <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
-                            <Button Content="실행" Style="{StaticResource RunButtonStyle}" Click="BtnRun_Click" Tag="2_2"/>
-                            <Button Content="힌트" Style="{StaticResource HintButtonStyle}" Click="BtnHint_Click" Tag="2_2"/>
-                            <Button Content="정답 보기" Style="{StaticResource AnswerButtonStyle}" Click="BtnAnswer_Click" Tag="2_2"/>
-                        </StackPanel>
-                        <TextBlock x:Name="txtHint2_2"
-                                   Text="힌트: DoubleAnimation 에 AutoReverse=&quot;True&quot; 를 추가합니다."
-                                   Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
-                        <Border x:Name="resultBorder2_2" Background="White" Margin="0,8,0,0" Padding="10" Visibility="Collapsed">
-                            <StackPanel x:Name="resultPanel2_2"/>
-                        </Border>
-                    </StackPanel>
-                </Expander>
-
-<!-- 직접 해보기 2_3 -->
-<Expander Style="{StaticResource PracticeExpanderStyle}">
-    <StackPanel Margin="10">
-        <TextBlock Text="과제: 시작을 0.5초 미뤄서 애니메이션이 늦게 출발하게 하세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
-        <TextBox x:Name="txtPractice2_3"
-                 Style="{StaticResource PracticeInputStyle}"
-                 Text="&lt;Rectangle Width=&quot;100&quot; Height=&quot;40&quot; Fill=&quot;#00897B&quot; HorizontalAlignment=&quot;Left&quot;&gt;&#10;    &lt;Rectangle.Triggers&gt;&#10;        &lt;EventTrigger RoutedEvent=&quot;Loaded&quot;&gt;&#10;            &lt;BeginStoryboard&gt;&#10;                &lt;Storyboard&gt;&#10;                    &lt;DoubleAnimation Storyboard.TargetProperty=&quot;Width&quot; To=&quot;220&quot; Duration=&quot;0:0:0.6&quot;/&gt;&#10;                &lt;/Storyboard&gt;&#10;            &lt;/BeginStoryboard&gt;&#10;        &lt;/EventTrigger&gt;&#10;    &lt;/Rectangle.Triggers&gt;&#10;&lt;/Rectangle&gt;"/>
-        <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
-            <Button Content="실행" Style="{StaticResource RunButtonStyle}" Click="BtnRun_Click" Tag="2_3"/>
-            <Button Content="힌트" Style="{StaticResource HintButtonStyle}" Click="BtnHint_Click" Tag="2_3"/>
-            <Button Content="정답 보기" Style="{StaticResource AnswerButtonStyle}" Click="BtnAnswer_Click" Tag="2_3"/>
-        </StackPanel>
-        <TextBlock x:Name="txtHint2_3"
-                   Text="힌트: BeginTime=&quot;0:0:0.5&quot; 를 애니메이션에 붙입니다."
-                   Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
-        <Border x:Name="resultBorder2_3" Background="White" Margin="0,8,0,0" Padding="10" Visibility="Collapsed">
-            <StackPanel x:Name="resultPanel2_3"/>
-        </Border>
-    </StackPanel>
-</Expander>
 </StackPanel>
             </ScrollViewer>
         </TabItem>
@@ -419,6 +437,26 @@
                         <TextBox Style="{StaticResource CodeTextBoxStyle}"
                                  Text="&lt;DoubleAnimation Storyboard.TargetProperty=&quot;(Canvas.Top)&quot; &#10;                 To=&quot;100&quot; Duration=&quot;0:0:1&quot;&gt;&#10;    &lt;DoubleAnimation.EasingFunction&gt;&#10;        &lt;BounceEase EasingMode=&quot;EaseOut&quot; Bounces=&quot;3&quot;/&gt;&#10;    &lt;/DoubleAnimation.EasingFunction&gt;&#10;&lt;/DoubleAnimation&gt;&#10;&#10;&lt;!-- BounceEase 속성 --&gt;&#10;&lt;!-- Bounces: 바운스 횟수 --&gt;&#10;&lt;!-- Bounciness: 탄성 강도 --&gt;"/>
                     </Expander>
+                    <!-- 직접 해보기 3_1 -->
+                    <Expander Style="{StaticResource PracticeExpanderStyle}">
+                        <StackPanel Margin="10">
+                            <TextBlock Text="과제: 튕기는 느낌이 나도록 BounceEase 이징 함수를 적용하세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
+                            <TextBox x:Name="txtPractice3_1"
+                                     Style="{StaticResource PracticeInputStyle}"
+                                     Text="&lt;Rectangle Width=&quot;100&quot; Height=&quot;40&quot; Fill=&quot;#3F51B5&quot; HorizontalAlignment=&quot;Left&quot;&gt;&#10;    &lt;Rectangle.Triggers&gt;&#10;        &lt;EventTrigger RoutedEvent=&quot;MouseEnter&quot;&gt;&#10;            &lt;BeginStoryboard&gt;&#10;                &lt;Storyboard&gt;&#10;                    &lt;DoubleAnimation Storyboard.TargetProperty=&quot;Width&quot; To=&quot;240&quot; Duration=&quot;0:0:0.8&quot;&gt;&#10;                        &#10;                    &lt;/DoubleAnimation&gt;&#10;                &lt;/Storyboard&gt;&#10;            &lt;/BeginStoryboard&gt;&#10;        &lt;/EventTrigger&gt;&#10;    &lt;/Rectangle.Triggers&gt;&#10;&lt;/Rectangle&gt;"/>
+                            <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
+                                <Button Content="실행" Style="{StaticResource RunButtonStyle}" Click="BtnRun_Click" Tag="3_1"/>
+                                <Button Content="힌트" Style="{StaticResource HintButtonStyle}" Click="BtnHint_Click" Tag="3_1"/>
+                                <Button Content="정답 보기" Style="{StaticResource AnswerButtonStyle}" Click="BtnAnswer_Click" Tag="3_1"/>
+                            </StackPanel>
+                            <TextBlock x:Name="txtHint3_1"
+                                       Text="힌트: &lt;DoubleAnimation.EasingFunction&gt;&lt;BounceEase Bounces=&quot;3&quot;/&gt;&lt;/DoubleAnimation.EasingFunction&gt;"
+                                       Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                            <Border x:Name="resultBorder3_1" Background="White" Margin="0,8,0,0" Padding="10" Visibility="Collapsed">
+                                <StackPanel x:Name="resultPanel3_1"/>
+                            </Border>
+                        </StackPanel>
+                    </Expander>
 
                     <GroupBox Header="2. ElasticEase (탄성 효과)" Margin="0,0,0,15" Padding="10">
                         <StackPanel>
@@ -443,6 +481,26 @@
                     <Expander Style="{StaticResource CodeExpanderStyle}">
                         <TextBox Style="{StaticResource CodeTextBoxStyle}"
                                  Text="&lt;DoubleAnimation Storyboard.TargetProperty=&quot;Width&quot; &#10;                 To=&quot;250&quot; Duration=&quot;0:0:1&quot;&gt;&#10;    &lt;DoubleAnimation.EasingFunction&gt;&#10;        &lt;ElasticEase EasingMode=&quot;EaseOut&quot; Oscillations=&quot;3&quot;/&gt;&#10;    &lt;/DoubleAnimation.EasingFunction&gt;&#10;&lt;/DoubleAnimation&gt;&#10;&#10;&lt;!-- ElasticEase 속성 --&gt;&#10;&lt;!-- Oscillations: 진동 횟수 --&gt;&#10;&lt;!-- Springiness: 탄성 강도 --&gt;"/>
+                    </Expander>
+                    <!-- 직접 해보기 3_2 -->
+                    <Expander Style="{StaticResource PracticeExpanderStyle}">
+                        <StackPanel Margin="10">
+                            <TextBlock Text="과제: ElasticEase 를 EaseOut 모드로 적용해 탄성 효과를 주세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
+                            <TextBox x:Name="txtPractice3_2"
+                                     Style="{StaticResource PracticeInputStyle}"
+                                     Text="&lt;Rectangle Width=&quot;100&quot; Height=&quot;40&quot; Fill=&quot;#009688&quot; HorizontalAlignment=&quot;Left&quot;&gt;&#10;    &lt;Rectangle.Triggers&gt;&#10;        &lt;EventTrigger RoutedEvent=&quot;MouseEnter&quot;&gt;&#10;            &lt;BeginStoryboard&gt;&#10;                &lt;Storyboard&gt;&#10;                    &lt;DoubleAnimation Storyboard.TargetProperty=&quot;Width&quot; To=&quot;240&quot; Duration=&quot;0:0:1&quot;&gt;&#10;                        &#10;                    &lt;/DoubleAnimation&gt;&#10;                &lt;/Storyboard&gt;&#10;            &lt;/BeginStoryboard&gt;&#10;        &lt;/EventTrigger&gt;&#10;    &lt;/Rectangle.Triggers&gt;&#10;&lt;/Rectangle&gt;"/>
+                            <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
+                                <Button Content="실행" Style="{StaticResource RunButtonStyle}" Click="BtnRun_Click" Tag="3_2"/>
+                                <Button Content="힌트" Style="{StaticResource HintButtonStyle}" Click="BtnHint_Click" Tag="3_2"/>
+                                <Button Content="정답 보기" Style="{StaticResource AnswerButtonStyle}" Click="BtnAnswer_Click" Tag="3_2"/>
+                            </StackPanel>
+                            <TextBlock x:Name="txtHint3_2"
+                                       Text="힌트: ElasticEase 에 Oscillations 와 EasingMode 를 지정합니다."
+                                       Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                            <Border x:Name="resultBorder3_2" Background="White" Margin="0,8,0,0" Padding="10" Visibility="Collapsed">
+                                <StackPanel x:Name="resultPanel3_2"/>
+                            </Border>
+                        </StackPanel>
                     </Expander>
 
                     <GroupBox Header="3. 주요 EasingFunction 종류" Margin="0,0,0,15" Padding="10">
@@ -479,69 +537,28 @@
                         <TextBox Style="{StaticResource CodeTextBoxStyle}"
                                  Text="&lt;!-- 다양한 이징 함수 예제 --&gt;&#10;&#10;&lt;!-- 부드러운 시작과 끝 --&gt;&#10;&lt;QuadraticEase EasingMode=&quot;EaseInOut&quot;/&gt;&#10;&#10;&lt;!-- 더 강한 가속 --&gt;&#10;&lt;CubicEase EasingMode=&quot;EaseIn&quot;/&gt;&#10;&#10;&lt;!-- 뒤로 당겼다 앞으로 --&gt;&#10;&lt;BackEase EasingMode=&quot;EaseOut&quot; Amplitude=&quot;0.5&quot;/&gt;&#10;&#10;&lt;!-- 바운스 효과 --&gt;&#10;&lt;BounceEase EasingMode=&quot;EaseOut&quot; Bounces=&quot;3&quot;/&gt;&#10;&#10;&lt;!-- 탄성 효과 --&gt;&#10;&lt;ElasticEase EasingMode=&quot;EaseOut&quot; Oscillations=&quot;3&quot;/&gt;"/>
                     </Expander>
-                
-                <!-- 직접 해보기 3_1 -->
-                <Expander Style="{StaticResource PracticeExpanderStyle}">
-                    <StackPanel Margin="10">
-                        <TextBlock Text="과제: 튕기는 느낌이 나도록 BounceEase 이징 함수를 적용하세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
-                        <TextBox x:Name="txtPractice3_1"
-                                 Style="{StaticResource PracticeInputStyle}"
-                                 Text="&lt;Rectangle Width=&quot;100&quot; Height=&quot;40&quot; Fill=&quot;#3F51B5&quot; HorizontalAlignment=&quot;Left&quot;&gt;&#10;    &lt;Rectangle.Triggers&gt;&#10;        &lt;EventTrigger RoutedEvent=&quot;MouseEnter&quot;&gt;&#10;            &lt;BeginStoryboard&gt;&#10;                &lt;Storyboard&gt;&#10;                    &lt;DoubleAnimation Storyboard.TargetProperty=&quot;Width&quot; To=&quot;240&quot; Duration=&quot;0:0:0.8&quot;&gt;&#10;                        &#10;                    &lt;/DoubleAnimation&gt;&#10;                &lt;/Storyboard&gt;&#10;            &lt;/BeginStoryboard&gt;&#10;        &lt;/EventTrigger&gt;&#10;    &lt;/Rectangle.Triggers&gt;&#10;&lt;/Rectangle&gt;"/>
-                        <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
-                            <Button Content="실행" Style="{StaticResource RunButtonStyle}" Click="BtnRun_Click" Tag="3_1"/>
-                            <Button Content="힌트" Style="{StaticResource HintButtonStyle}" Click="BtnHint_Click" Tag="3_1"/>
-                            <Button Content="정답 보기" Style="{StaticResource AnswerButtonStyle}" Click="BtnAnswer_Click" Tag="3_1"/>
+                    <!-- 직접 해보기 3_3 -->
+                    <Expander Style="{StaticResource PracticeExpanderStyle}">
+                        <StackPanel Margin="10">
+                            <TextBlock Text="과제: 가속했다가 감속하는 느낌이 나도록 EaseInOut 모드를 적용하세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
+                            <TextBox x:Name="txtPractice3_3"
+                                     Style="{StaticResource PracticeInputStyle}"
+                                     Text="&lt;Rectangle Width=&quot;100&quot; Height=&quot;40&quot; Fill=&quot;#5D4037&quot; HorizontalAlignment=&quot;Left&quot;&gt;&#10;    &lt;Rectangle.Triggers&gt;&#10;        &lt;EventTrigger RoutedEvent=&quot;MouseEnter&quot;&gt;&#10;            &lt;BeginStoryboard&gt;&#10;                &lt;Storyboard&gt;&#10;                    &lt;DoubleAnimation Storyboard.TargetProperty=&quot;Width&quot; To=&quot;240&quot; Duration=&quot;0:0:0.8&quot;&gt;&#10;                        &#10;                    &lt;/DoubleAnimation&gt;&#10;                &lt;/Storyboard&gt;&#10;            &lt;/BeginStoryboard&gt;&#10;        &lt;/EventTrigger&gt;&#10;    &lt;/Rectangle.Triggers&gt;&#10;&lt;/Rectangle&gt;"/>
+                            <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
+                                <Button Content="실행" Style="{StaticResource RunButtonStyle}" Click="BtnRun_Click" Tag="3_3"/>
+                                <Button Content="힌트" Style="{StaticResource HintButtonStyle}" Click="BtnHint_Click" Tag="3_3"/>
+                                <Button Content="정답 보기" Style="{StaticResource AnswerButtonStyle}" Click="BtnAnswer_Click" Tag="3_3"/>
+                            </StackPanel>
+                            <TextBlock x:Name="txtHint3_3"
+                                       Text="힌트: QuadraticEase 에 EasingMode=&quot;EaseInOut&quot; 을 줍니다."
+                                       Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                            <Border x:Name="resultBorder3_3" Background="White" Margin="0,8,0,0" Padding="10" Visibility="Collapsed">
+                                <StackPanel x:Name="resultPanel3_3"/>
+                            </Border>
                         </StackPanel>
-                        <TextBlock x:Name="txtHint3_1"
-                                   Text="힌트: &lt;DoubleAnimation.EasingFunction&gt;&lt;BounceEase Bounces=&quot;3&quot;/&gt;&lt;/DoubleAnimation.EasingFunction&gt;"
-                                   Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
-                        <Border x:Name="resultBorder3_1" Background="White" Margin="0,8,0,0" Padding="10" Visibility="Collapsed">
-                            <StackPanel x:Name="resultPanel3_1"/>
-                        </Border>
-                    </StackPanel>
-                </Expander>
+                    </Expander>
+                                    
 
-                <!-- 직접 해보기 3_2 -->
-                <Expander Style="{StaticResource PracticeExpanderStyle}">
-                    <StackPanel Margin="10">
-                        <TextBlock Text="과제: ElasticEase 를 EaseOut 모드로 적용해 탄성 효과를 주세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
-                        <TextBox x:Name="txtPractice3_2"
-                                 Style="{StaticResource PracticeInputStyle}"
-                                 Text="&lt;Rectangle Width=&quot;100&quot; Height=&quot;40&quot; Fill=&quot;#009688&quot; HorizontalAlignment=&quot;Left&quot;&gt;&#10;    &lt;Rectangle.Triggers&gt;&#10;        &lt;EventTrigger RoutedEvent=&quot;MouseEnter&quot;&gt;&#10;            &lt;BeginStoryboard&gt;&#10;                &lt;Storyboard&gt;&#10;                    &lt;DoubleAnimation Storyboard.TargetProperty=&quot;Width&quot; To=&quot;240&quot; Duration=&quot;0:0:1&quot;&gt;&#10;                        &#10;                    &lt;/DoubleAnimation&gt;&#10;                &lt;/Storyboard&gt;&#10;            &lt;/BeginStoryboard&gt;&#10;        &lt;/EventTrigger&gt;&#10;    &lt;/Rectangle.Triggers&gt;&#10;&lt;/Rectangle&gt;"/>
-                        <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
-                            <Button Content="실행" Style="{StaticResource RunButtonStyle}" Click="BtnRun_Click" Tag="3_2"/>
-                            <Button Content="힌트" Style="{StaticResource HintButtonStyle}" Click="BtnHint_Click" Tag="3_2"/>
-                            <Button Content="정답 보기" Style="{StaticResource AnswerButtonStyle}" Click="BtnAnswer_Click" Tag="3_2"/>
-                        </StackPanel>
-                        <TextBlock x:Name="txtHint3_2"
-                                   Text="힌트: ElasticEase 에 Oscillations 와 EasingMode 를 지정합니다."
-                                   Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
-                        <Border x:Name="resultBorder3_2" Background="White" Margin="0,8,0,0" Padding="10" Visibility="Collapsed">
-                            <StackPanel x:Name="resultPanel3_2"/>
-                        </Border>
-                    </StackPanel>
-                </Expander>
-
-<!-- 직접 해보기 3_3 -->
-<Expander Style="{StaticResource PracticeExpanderStyle}">
-    <StackPanel Margin="10">
-        <TextBlock Text="과제: 가속했다가 감속하는 느낌이 나도록 EaseInOut 모드를 적용하세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
-        <TextBox x:Name="txtPractice3_3"
-                 Style="{StaticResource PracticeInputStyle}"
-                 Text="&lt;Rectangle Width=&quot;100&quot; Height=&quot;40&quot; Fill=&quot;#5D4037&quot; HorizontalAlignment=&quot;Left&quot;&gt;&#10;    &lt;Rectangle.Triggers&gt;&#10;        &lt;EventTrigger RoutedEvent=&quot;MouseEnter&quot;&gt;&#10;            &lt;BeginStoryboard&gt;&#10;                &lt;Storyboard&gt;&#10;                    &lt;DoubleAnimation Storyboard.TargetProperty=&quot;Width&quot; To=&quot;240&quot; Duration=&quot;0:0:0.8&quot;&gt;&#10;                        &#10;                    &lt;/DoubleAnimation&gt;&#10;                &lt;/Storyboard&gt;&#10;            &lt;/BeginStoryboard&gt;&#10;        &lt;/EventTrigger&gt;&#10;    &lt;/Rectangle.Triggers&gt;&#10;&lt;/Rectangle&gt;"/>
-        <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
-            <Button Content="실행" Style="{StaticResource RunButtonStyle}" Click="BtnRun_Click" Tag="3_3"/>
-            <Button Content="힌트" Style="{StaticResource HintButtonStyle}" Click="BtnHint_Click" Tag="3_3"/>
-            <Button Content="정답 보기" Style="{StaticResource AnswerButtonStyle}" Click="BtnAnswer_Click" Tag="3_3"/>
-        </StackPanel>
-        <TextBlock x:Name="txtHint3_3"
-                   Text="힌트: QuadraticEase 에 EasingMode=&quot;EaseInOut&quot; 을 줍니다."
-                   Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
-        <Border x:Name="resultBorder3_3" Background="White" Margin="0,8,0,0" Padding="10" Visibility="Collapsed">
-            <StackPanel x:Name="resultPanel3_3"/>
-        </Border>
-    </StackPanel>
-</Expander>
 </StackPanel>
             </ScrollViewer>
         </TabItem>
@@ -576,6 +593,26 @@
                         <TextBox Style="{StaticResource CodeTextBoxStyle}"
                                  Text="&lt;Button Content=&quot;회전&quot; RenderTransformOrigin=&quot;0.5,0.5&quot;&gt;&#10;    &lt;!-- RenderTransformOrigin: 회전 중심점 (0.5,0.5 = 가운데) --&gt;&#10;    &#10;    &lt;Button.RenderTransform&gt;&#10;        &lt;RotateTransform x:Name=&quot;rotateTransform&quot; Angle=&quot;0&quot;/&gt;&#10;    &lt;/Button.RenderTransform&gt;&#10;    &#10;    &lt;Button.Triggers&gt;&#10;        &lt;EventTrigger RoutedEvent=&quot;Button.Click&quot;&gt;&#10;            &lt;BeginStoryboard&gt;&#10;                &lt;Storyboard&gt;&#10;                    &lt;DoubleAnimation &#10;                        Storyboard.TargetName=&quot;rotateTransform&quot;&#10;                        Storyboard.TargetProperty=&quot;Angle&quot; &#10;                        By=&quot;360&quot; Duration=&quot;0:0:1&quot;/&gt;&#10;                &lt;/Storyboard&gt;&#10;            &lt;/BeginStoryboard&gt;&#10;        &lt;/EventTrigger&gt;&#10;    &lt;/Button.Triggers&gt;&#10;&lt;/Button&gt;"/>
                     </Expander>
+                    <!-- 직접 해보기 4_1 -->
+                    <Expander Style="{StaticResource PracticeExpanderStyle}">
+                        <StackPanel Margin="10">
+                            <TextBlock Text="과제: 마우스를 올리면 사각형이 360도 회전하도록 RotateTransform 을 애니메이션하세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
+                            <TextBox x:Name="txtPractice4_1"
+                                     Style="{StaticResource PracticeInputStyle}"
+                                     Text="&lt;Rectangle Width=&quot;60&quot; Height=&quot;60&quot; Fill=&quot;#FF5722&quot; HorizontalAlignment=&quot;Left&quot; RenderTransformOrigin=&quot;0.5,0.5&quot;&gt;&#10;    &lt;Rectangle.RenderTransform&gt;&#10;        &lt;RotateTransform/&gt;&#10;    &lt;/Rectangle.RenderTransform&gt;&#10;    &#10;&lt;/Rectangle&gt;"/>
+                            <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
+                                <Button Content="실행" Style="{StaticResource RunButtonStyle}" Click="BtnRun_Click" Tag="4_1"/>
+                                <Button Content="힌트" Style="{StaticResource HintButtonStyle}" Click="BtnHint_Click" Tag="4_1"/>
+                                <Button Content="정답 보기" Style="{StaticResource AnswerButtonStyle}" Click="BtnAnswer_Click" Tag="4_1"/>
+                            </StackPanel>
+                            <TextBlock x:Name="txtHint4_1"
+                                       Text="힌트: Storyboard.TargetProperty=&quot;RenderTransform.Angle&quot; 로 지정합니다."
+                                       Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                            <Border x:Name="resultBorder4_1" Background="White" Margin="0,8,0,0" Padding="10" Visibility="Collapsed">
+                                <StackPanel x:Name="resultPanel4_1"/>
+                            </Border>
+                        </StackPanel>
+                    </Expander>
 
                     <GroupBox Header="2. 크기 애니메이션 (ScaleTransform)" Margin="0,0,0,15" Padding="10">
                         <StackPanel>
@@ -609,6 +646,26 @@
                         <TextBox Style="{StaticResource CodeTextBoxStyle}"
                                  Text="&lt;Button RenderTransformOrigin=&quot;0.5,0.5&quot;&gt;&#10;    &lt;Button.RenderTransform&gt;&#10;        &lt;ScaleTransform x:Name=&quot;scaleTransform&quot; ScaleX=&quot;1&quot; ScaleY=&quot;1&quot;/&gt;&#10;    &lt;/Button.RenderTransform&gt;&#10;    &#10;    &lt;Button.Triggers&gt;&#10;        &lt;EventTrigger RoutedEvent=&quot;MouseEnter&quot;&gt;&#10;            &lt;BeginStoryboard&gt;&#10;                &lt;Storyboard&gt;&#10;                    &lt;DoubleAnimation &#10;                        Storyboard.TargetName=&quot;scaleTransform&quot;&#10;                        Storyboard.TargetProperty=&quot;ScaleX&quot; &#10;                        To=&quot;1.3&quot; Duration=&quot;0:0:0.2&quot;/&gt;&#10;                    &lt;DoubleAnimation &#10;                        Storyboard.TargetName=&quot;scaleTransform&quot;&#10;                        Storyboard.TargetProperty=&quot;ScaleY&quot; &#10;                        To=&quot;1.3&quot; Duration=&quot;0:0:0.2&quot;/&gt;&#10;                &lt;/Storyboard&gt;&#10;            &lt;/BeginStoryboard&gt;&#10;        &lt;/EventTrigger&gt;&#10;    &lt;/Button.Triggers&gt;&#10;&lt;/Button&gt;"/>
                     </Expander>
+                    <!-- 직접 해보기 4_2 -->
+                    <Expander Style="{StaticResource PracticeExpanderStyle}">
+                        <StackPanel Margin="10">
+                            <TextBlock Text="과제: ScaleTransform 을 애니메이션해 가로 세로가 1.5배로 커지게 하세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
+                            <TextBox x:Name="txtPractice4_2"
+                                     Style="{StaticResource PracticeInputStyle}"
+                                     Text="&lt;Rectangle Width=&quot;60&quot; Height=&quot;60&quot; Fill=&quot;#795548&quot; HorizontalAlignment=&quot;Left&quot; RenderTransformOrigin=&quot;0.5,0.5&quot;&gt;&#10;    &lt;Rectangle.RenderTransform&gt;&#10;        &lt;ScaleTransform/&gt;&#10;    &lt;/Rectangle.RenderTransform&gt;&#10;    &#10;&lt;/Rectangle&gt;"/>
+                            <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
+                                <Button Content="실행" Style="{StaticResource RunButtonStyle}" Click="BtnRun_Click" Tag="4_2"/>
+                                <Button Content="힌트" Style="{StaticResource HintButtonStyle}" Click="BtnHint_Click" Tag="4_2"/>
+                                <Button Content="정답 보기" Style="{StaticResource AnswerButtonStyle}" Click="BtnAnswer_Click" Tag="4_2"/>
+                            </StackPanel>
+                            <TextBlock x:Name="txtHint4_2"
+                                       Text="힌트: RenderTransform.ScaleX 와 RenderTransform.ScaleY 를 각각 애니메이션합니다."
+                                       Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                            <Border x:Name="resultBorder4_2" Background="White" Margin="0,8,0,0" Padding="10" Visibility="Collapsed">
+                                <StackPanel x:Name="resultPanel4_2"/>
+                            </Border>
+                        </StackPanel>
+                    </Expander>
 
                     <GroupBox Header="3. 이동 애니메이션 (TranslateTransform)" Margin="0,0,0,15" Padding="10">
                         <StackPanel>
@@ -633,7 +690,27 @@
                         <TextBox Style="{StaticResource CodeTextBoxStyle}"
                                  Text="&lt;Button&gt;&#10;    &lt;Button.RenderTransform&gt;&#10;        &lt;TranslateTransform x:Name=&quot;translateTransform&quot; X=&quot;0&quot;/&gt;&#10;    &lt;/Button.RenderTransform&gt;&#10;    &#10;    &lt;Button.Triggers&gt;&#10;        &lt;EventTrigger RoutedEvent=&quot;Button.Click&quot;&gt;&#10;            &lt;BeginStoryboard&gt;&#10;                &lt;Storyboard&gt;&#10;                    &lt;DoubleAnimation &#10;                        Storyboard.TargetName=&quot;translateTransform&quot;&#10;                        Storyboard.TargetProperty=&quot;X&quot; &#10;                        To=&quot;200&quot; Duration=&quot;0:0:0.5&quot;/&gt;&#10;                &lt;/Storyboard&gt;&#10;            &lt;/BeginStoryboard&gt;&#10;        &lt;/EventTrigger&gt;&#10;    &lt;/Button.Triggers&gt;&#10;&lt;/Button&gt;"/>
                     </Expander>
-
+                    <!-- 직접 해보기 4_3 -->
+                    <Expander Style="{StaticResource PracticeExpanderStyle}">
+                        <StackPanel Margin="10">
+                            <TextBlock Text="과제: TranslateTransform 을 애니메이션해 사각형이 오른쪽으로 미끄러지게 하세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
+                            <TextBox x:Name="txtPractice4_3"
+                                     Style="{StaticResource PracticeInputStyle}"
+                                     Text="&lt;Rectangle Width=&quot;60&quot; Height=&quot;40&quot; Fill=&quot;#1E88E5&quot; HorizontalAlignment=&quot;Left&quot;&gt;&#10;    &lt;Rectangle.RenderTransform&gt;&#10;        &lt;TranslateTransform/&gt;&#10;    &lt;/Rectangle.RenderTransform&gt;&#10;    &#10;&lt;/Rectangle&gt;"/>
+                            <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
+                                <Button Content="실행" Style="{StaticResource RunButtonStyle}" Click="BtnRun_Click" Tag="4_3"/>
+                                <Button Content="힌트" Style="{StaticResource HintButtonStyle}" Click="BtnHint_Click" Tag="4_3"/>
+                                <Button Content="정답 보기" Style="{StaticResource AnswerButtonStyle}" Click="BtnAnswer_Click" Tag="4_3"/>
+                            </StackPanel>
+                            <TextBlock x:Name="txtHint4_3"
+                                       Text="힌트: RenderTransform.X 를 대상으로 지정합니다."
+                                       Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                            <Border x:Name="resultBorder4_3" Background="White" Margin="0,8,0,0" Padding="10" Visibility="Collapsed">
+                                <StackPanel x:Name="resultPanel4_3"/>
+                            </Border>
+                        </StackPanel>
+                    </Expander>
+                    
                     <GroupBox Header="4. Transform 종류 요약" Margin="0,0,0,15" Padding="10">
                         <StackPanel>
                             <TextBlock Text="WPF에서 사용 가능한 Transform들:" Margin="0,0,0,10"/>
@@ -665,69 +742,28 @@
                         <TextBox Style="{StaticResource CodeTextBoxStyle}"
                                  Text="&lt;!-- 여러 Transform 조합 (TransformGroup) --&gt;&#10;&lt;Button.RenderTransform&gt;&#10;    &lt;TransformGroup&gt;&#10;        &lt;RotateTransform x:Name=&quot;rotate&quot;/&gt;&#10;        &lt;ScaleTransform x:Name=&quot;scale&quot;/&gt;&#10;        &lt;TranslateTransform x:Name=&quot;translate&quot;/&gt;&#10;    &lt;/TransformGroup&gt;&#10;&lt;/Button.RenderTransform&gt;&#10;&#10;&lt;!-- 각각 애니메이션 --&gt;&#10;&lt;DoubleAnimation &#10;    Storyboard.TargetName=&quot;rotate&quot; &#10;    Storyboard.TargetProperty=&quot;Angle&quot; To=&quot;45&quot;/&gt;&#10;&lt;DoubleAnimation &#10;    Storyboard.TargetName=&quot;scale&quot; &#10;    Storyboard.TargetProperty=&quot;ScaleX&quot; To=&quot;1.5&quot;/&gt;"/>
                     </Expander>
+                    <!-- 직접 해보기 4_4 -->
+                    <Expander Style="{StaticResource PracticeExpanderStyle}">
+                        <StackPanel Margin="10">
+                            <TextBlock Text="과제: TransformGroup으로 회전과 확대를 함께 걸 수 있는 버튼을 만드세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
+                            <TextBox x:Name="txtPractice4_4"
+                                     Style="{StaticResource PracticeInputStyle}"
+                                     Text="&lt;Button Content=&quot;변형 대상&quot; Width=&quot;120&quot; Height=&quot;40&quot; RenderTransformOrigin=&quot;0.5,0.5&quot;&gt;&#10;    &lt;Button.RenderTransform&gt;&#10;        &#10;    &lt;/Button.RenderTransform&gt;&#10;&lt;/Button&gt;"/>
+                            <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
+                                <Button Content="실행" Style="{StaticResource RunButtonStyle}" Click="BtnRun_Click" Tag="4_4"/>
+                                <Button Content="힌트" Style="{StaticResource HintButtonStyle}" Click="BtnHint_Click" Tag="4_4"/>
+                                <Button Content="정답 보기" Style="{StaticResource AnswerButtonStyle}" Click="BtnAnswer_Click" Tag="4_4"/>
+                            </StackPanel>
+                            <TextBlock x:Name="txtHint4_4"
+                                       Text="힌트: TransformGroup 안에 RotateTransform 과 ScaleTransform 을 나란히 넣고 각각 x:Name 을 줍니다."
+                                       Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                            <Border x:Name="resultBorder4_4" Background="White" Margin="0,8,0,0" Padding="10" Visibility="Collapsed">
+                                <StackPanel x:Name="resultPanel4_4"/>
+                            </Border>
+                        </StackPanel>
+                    </Expander>
                 
-                <!-- 직접 해보기 4_1 -->
-                <Expander Style="{StaticResource PracticeExpanderStyle}">
-                    <StackPanel Margin="10">
-                        <TextBlock Text="과제: 마우스를 올리면 사각형이 360도 회전하도록 RotateTransform 을 애니메이션하세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
-                        <TextBox x:Name="txtPractice4_1"
-                                 Style="{StaticResource PracticeInputStyle}"
-                                 Text="&lt;Rectangle Width=&quot;60&quot; Height=&quot;60&quot; Fill=&quot;#FF5722&quot; HorizontalAlignment=&quot;Left&quot; RenderTransformOrigin=&quot;0.5,0.5&quot;&gt;&#10;    &lt;Rectangle.RenderTransform&gt;&#10;        &lt;RotateTransform/&gt;&#10;    &lt;/Rectangle.RenderTransform&gt;&#10;    &#10;&lt;/Rectangle&gt;"/>
-                        <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
-                            <Button Content="실행" Style="{StaticResource RunButtonStyle}" Click="BtnRun_Click" Tag="4_1"/>
-                            <Button Content="힌트" Style="{StaticResource HintButtonStyle}" Click="BtnHint_Click" Tag="4_1"/>
-                            <Button Content="정답 보기" Style="{StaticResource AnswerButtonStyle}" Click="BtnAnswer_Click" Tag="4_1"/>
-                        </StackPanel>
-                        <TextBlock x:Name="txtHint4_1"
-                                   Text="힌트: Storyboard.TargetProperty=&quot;RenderTransform.Angle&quot; 로 지정합니다."
-                                   Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
-                        <Border x:Name="resultBorder4_1" Background="White" Margin="0,8,0,0" Padding="10" Visibility="Collapsed">
-                            <StackPanel x:Name="resultPanel4_1"/>
-                        </Border>
-                    </StackPanel>
-                </Expander>
 
-                <!-- 직접 해보기 4_2 -->
-                <Expander Style="{StaticResource PracticeExpanderStyle}">
-                    <StackPanel Margin="10">
-                        <TextBlock Text="과제: ScaleTransform 을 애니메이션해 가로 세로가 1.5배로 커지게 하세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
-                        <TextBox x:Name="txtPractice4_2"
-                                 Style="{StaticResource PracticeInputStyle}"
-                                 Text="&lt;Rectangle Width=&quot;60&quot; Height=&quot;60&quot; Fill=&quot;#795548&quot; HorizontalAlignment=&quot;Left&quot; RenderTransformOrigin=&quot;0.5,0.5&quot;&gt;&#10;    &lt;Rectangle.RenderTransform&gt;&#10;        &lt;ScaleTransform/&gt;&#10;    &lt;/Rectangle.RenderTransform&gt;&#10;    &#10;&lt;/Rectangle&gt;"/>
-                        <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
-                            <Button Content="실행" Style="{StaticResource RunButtonStyle}" Click="BtnRun_Click" Tag="4_2"/>
-                            <Button Content="힌트" Style="{StaticResource HintButtonStyle}" Click="BtnHint_Click" Tag="4_2"/>
-                            <Button Content="정답 보기" Style="{StaticResource AnswerButtonStyle}" Click="BtnAnswer_Click" Tag="4_2"/>
-                        </StackPanel>
-                        <TextBlock x:Name="txtHint4_2"
-                                   Text="힌트: RenderTransform.ScaleX 와 RenderTransform.ScaleY 를 각각 애니메이션합니다."
-                                   Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
-                        <Border x:Name="resultBorder4_2" Background="White" Margin="0,8,0,0" Padding="10" Visibility="Collapsed">
-                            <StackPanel x:Name="resultPanel4_2"/>
-                        </Border>
-                    </StackPanel>
-                </Expander>
-
-<!-- 직접 해보기 4_3 -->
-<Expander Style="{StaticResource PracticeExpanderStyle}">
-    <StackPanel Margin="10">
-        <TextBlock Text="과제: TranslateTransform 을 애니메이션해 사각형이 오른쪽으로 미끄러지게 하세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
-        <TextBox x:Name="txtPractice4_3"
-                 Style="{StaticResource PracticeInputStyle}"
-                 Text="&lt;Rectangle Width=&quot;60&quot; Height=&quot;40&quot; Fill=&quot;#1E88E5&quot; HorizontalAlignment=&quot;Left&quot;&gt;&#10;    &lt;Rectangle.RenderTransform&gt;&#10;        &lt;TranslateTransform/&gt;&#10;    &lt;/Rectangle.RenderTransform&gt;&#10;    &#10;&lt;/Rectangle&gt;"/>
-        <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
-            <Button Content="실행" Style="{StaticResource RunButtonStyle}" Click="BtnRun_Click" Tag="4_3"/>
-            <Button Content="힌트" Style="{StaticResource HintButtonStyle}" Click="BtnHint_Click" Tag="4_3"/>
-            <Button Content="정답 보기" Style="{StaticResource AnswerButtonStyle}" Click="BtnAnswer_Click" Tag="4_3"/>
-        </StackPanel>
-        <TextBlock x:Name="txtHint4_3"
-                   Text="힌트: RenderTransform.X 를 대상으로 지정합니다."
-                   Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
-        <Border x:Name="resultBorder4_3" Background="White" Margin="0,8,0,0" Padding="10" Visibility="Collapsed">
-            <StackPanel x:Name="resultPanel4_3"/>
-        </Border>
-    </StackPanel>
-</Expander>
 </StackPanel>
             </ScrollViewer>
         </TabItem>
@@ -770,6 +806,26 @@
                         <TextBox Style="{StaticResource CodeTextBoxStyle}"
                                  Text="&lt;Border Width=&quot;200&quot; Height=&quot;60&quot;&gt;&#10;    &lt;!-- SolidColorBrush에 이름 지정 --&gt;&#10;    &lt;Border.Background&gt;&#10;        &lt;SolidColorBrush x:Name=&quot;bgBrush&quot; Color=&quot;SteelBlue&quot;/&gt;&#10;    &lt;/Border.Background&gt;&#10;    &#10;    &lt;Border.Triggers&gt;&#10;        &lt;EventTrigger RoutedEvent=&quot;MouseEnter&quot;&gt;&#10;            &lt;BeginStoryboard&gt;&#10;                &lt;Storyboard&gt;&#10;                    &lt;ColorAnimation &#10;                        Storyboard.TargetName=&quot;bgBrush&quot;&#10;                        Storyboard.TargetProperty=&quot;Color&quot; &#10;                        To=&quot;Coral&quot; Duration=&quot;0:0:0.5&quot;/&gt;&#10;                &lt;/Storyboard&gt;&#10;            &lt;/BeginStoryboard&gt;&#10;        &lt;/EventTrigger&gt;&#10;    &lt;/Border.Triggers&gt;&#10;&lt;/Border&gt;"/>
                     </Expander>
+                    <!-- 직접 해보기 5_1 -->
+                    <Expander Style="{StaticResource PracticeExpanderStyle}">
+                        <StackPanel Margin="10">
+                            <TextBlock Text="과제: 마우스를 올리면 채우기 색이 파랑에서 빨강으로 변하게 ColorAnimation 을 쓰세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
+                            <TextBox x:Name="txtPractice5_1"
+                                     Style="{StaticResource PracticeInputStyle}"
+                                     Text="&lt;Rectangle Width=&quot;140&quot; Height=&quot;50&quot; HorizontalAlignment=&quot;Left&quot;&gt;&#10;    &lt;Rectangle.Fill&gt;&#10;        &lt;SolidColorBrush Color=&quot;Blue&quot;/&gt;&#10;    &lt;/Rectangle.Fill&gt;&#10;    &#10;&lt;/Rectangle&gt;"/>
+                            <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
+                                <Button Content="실행" Style="{StaticResource RunButtonStyle}" Click="BtnRun_Click" Tag="5_1"/>
+                                <Button Content="힌트" Style="{StaticResource HintButtonStyle}" Click="BtnHint_Click" Tag="5_1"/>
+                                <Button Content="정답 보기" Style="{StaticResource AnswerButtonStyle}" Click="BtnAnswer_Click" Tag="5_1"/>
+                            </StackPanel>
+                            <TextBlock x:Name="txtHint5_1"
+                                       Text="힌트: Storyboard.TargetProperty=&quot;Fill.Color&quot; 에 ColorAnimation 을 겁니다."
+                                       Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                            <Border x:Name="resultBorder5_1" Background="White" Margin="0,8,0,0" Padding="10" Visibility="Collapsed">
+                                <StackPanel x:Name="resultPanel5_1"/>
+                            </Border>
+                        </StackPanel>
+                    </Expander>
 
                     <GroupBox Header="2. 무지개 색상 순환" Margin="0,0,0,15" Padding="10">
                         <StackPanel>
@@ -800,6 +856,26 @@
                         <TextBox Style="{StaticResource CodeTextBoxStyle}"
                                  Text="&lt;Storyboard RepeatBehavior=&quot;Forever&quot;&gt;&#10;    &lt;ColorAnimation To=&quot;Orange&quot; Duration=&quot;0:0:1&quot; BeginTime=&quot;0:0:0&quot;/&gt;&#10;    &lt;ColorAnimation To=&quot;Yellow&quot; Duration=&quot;0:0:1&quot; BeginTime=&quot;0:0:1&quot;/&gt;&#10;    &lt;ColorAnimation To=&quot;Green&quot; Duration=&quot;0:0:1&quot; BeginTime=&quot;0:0:2&quot;/&gt;&#10;    &lt;ColorAnimation To=&quot;Blue&quot; Duration=&quot;0:0:1&quot; BeginTime=&quot;0:0:3&quot;/&gt;&#10;    &lt;ColorAnimation To=&quot;Purple&quot; Duration=&quot;0:0:1&quot; BeginTime=&quot;0:0:4&quot;/&gt;&#10;    &lt;ColorAnimation To=&quot;Red&quot; Duration=&quot;0:0:1&quot; BeginTime=&quot;0:0:5&quot;/&gt;&#10;&lt;/Storyboard&gt;&#10;&#10;&lt;!-- BeginTime으로 순차 실행 --&gt;"/>
                     </Expander>
+                    <!-- 직접 해보기 5_2 -->
+                    <Expander Style="{StaticResource PracticeExpanderStyle}">
+                        <StackPanel Margin="10">
+                            <TextBlock Text="과제: 색 애니메이션이 무한 반복되도록 RepeatBehavior 를 지정하세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
+                            <TextBox x:Name="txtPractice5_2"
+                                     Style="{StaticResource PracticeInputStyle}"
+                                     Text="&lt;Rectangle Width=&quot;140&quot; Height=&quot;50&quot; HorizontalAlignment=&quot;Left&quot;&gt;&#10;    &lt;Rectangle.Fill&gt;&#10;        &lt;SolidColorBrush Color=&quot;Green&quot;/&gt;&#10;    &lt;/Rectangle.Fill&gt;&#10;    &lt;Rectangle.Triggers&gt;&#10;        &lt;EventTrigger RoutedEvent=&quot;Loaded&quot;&gt;&#10;            &lt;BeginStoryboard&gt;&#10;                &lt;Storyboard&gt;&#10;                    &lt;ColorAnimation Storyboard.TargetProperty=&quot;Fill.Color&quot; To=&quot;Yellow&quot; Duration=&quot;0:0:1&quot;/&gt;&#10;                &lt;/Storyboard&gt;&#10;            &lt;/BeginStoryboard&gt;&#10;        &lt;/EventTrigger&gt;&#10;    &lt;/Rectangle.Triggers&gt;&#10;&lt;/Rectangle&gt;"/>
+                            <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
+                                <Button Content="실행" Style="{StaticResource RunButtonStyle}" Click="BtnRun_Click" Tag="5_2"/>
+                                <Button Content="힌트" Style="{StaticResource HintButtonStyle}" Click="BtnHint_Click" Tag="5_2"/>
+                                <Button Content="정답 보기" Style="{StaticResource AnswerButtonStyle}" Click="BtnAnswer_Click" Tag="5_2"/>
+                            </StackPanel>
+                            <TextBlock x:Name="txtHint5_2"
+                                       Text="힌트: RepeatBehavior=&quot;Forever&quot; 와 AutoReverse=&quot;True&quot; 를 함께 쓰면 계속 오갑니다."
+                                       Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                            <Border x:Name="resultBorder5_2" Background="White" Margin="0,8,0,0" Padding="10" Visibility="Collapsed">
+                                <StackPanel x:Name="resultPanel5_2"/>
+                            </Border>
+                        </StackPanel>
+                    </Expander>
 
                     <GroupBox Header="3. 애니메이션 타입 요약" Margin="0,0,0,15" Padding="10">
                         <StackPanel>
@@ -820,7 +896,27 @@
                         <TextBox Style="{StaticResource CodeTextBoxStyle}"
                                  Text="&lt;!-- DoubleAnimation: 숫자 값 --&gt;&#10;&lt;DoubleAnimation Storyboard.TargetProperty=&quot;Opacity&quot;/&gt;&#10;&lt;DoubleAnimation Storyboard.TargetProperty=&quot;Width&quot;/&gt;&#10;&#10;&lt;!-- ColorAnimation: 색상 값 --&gt;&#10;&lt;ColorAnimation Storyboard.TargetProperty=&quot;Color&quot;/&gt;&#10;&#10;&lt;!-- ThicknessAnimation: Thickness 값 --&gt;&#10;&lt;ThicknessAnimation Storyboard.TargetProperty=&quot;Margin&quot; &#10;                    To=&quot;20,20,20,20&quot;/&gt;&#10;&#10;&lt;!-- PointAnimation: Point 값 --&gt;&#10;&lt;PointAnimation Storyboard.TargetProperty=&quot;Center&quot; &#10;                To=&quot;100,100&quot;/&gt;"/>
                     </Expander>
-
+                    <!-- 직접 해보기 5_3 -->
+                    <Expander Style="{StaticResource PracticeExpanderStyle}">
+                        <StackPanel Margin="10">
+                            <TextBlock Text="과제: 테두리 색이 변하는 애니메이션을 만드세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
+                            <TextBox x:Name="txtPractice5_3"
+                                     Style="{StaticResource PracticeInputStyle}"
+                                     Text="&lt;Border Width=&quot;160&quot; Height=&quot;50&quot; BorderThickness=&quot;3&quot;&gt;&#10;    &lt;Border.BorderBrush&gt;&#10;        &lt;SolidColorBrush Color=&quot;Gray&quot;/&gt;&#10;    &lt;/Border.BorderBrush&gt;&#10;    &#10;&lt;/Border&gt;"/>
+                            <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
+                                <Button Content="실행" Style="{StaticResource RunButtonStyle}" Click="BtnRun_Click" Tag="5_3"/>
+                                <Button Content="힌트" Style="{StaticResource HintButtonStyle}" Click="BtnHint_Click" Tag="5_3"/>
+                                <Button Content="정답 보기" Style="{StaticResource AnswerButtonStyle}" Click="BtnAnswer_Click" Tag="5_3"/>
+                            </StackPanel>
+                            <TextBlock x:Name="txtHint5_3"
+                                       Text="힌트: BorderBrush.Color 를 ColorAnimation 의 대상으로 지정합니다."
+                                       Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                            <Border x:Name="resultBorder5_3" Background="White" Margin="0,8,0,0" Padding="10" Visibility="Collapsed">
+                                <StackPanel x:Name="resultPanel5_3"/>
+                            </Border>
+                        </StackPanel>
+                    </Expander>
+                    
                     <GroupBox Header="4. 실전 활용 팁" Margin="0,0,0,15" Padding="10">
                         <StackPanel>
                             <TextBlock Text="애니메이션 사용 시 주의사항:" Margin="0,0,0,10"/>
@@ -838,69 +934,28 @@
                         <TextBox Style="{StaticResource CodeTextBoxStyle}"
                                  Text="&lt;!-- FillBehavior 예제 --&gt;&#10;&#10;&lt;!-- 애니메이션 완료 후 마지막 값 유지 (기본) --&gt;&#10;&lt;DoubleAnimation To=&quot;200&quot; Duration=&quot;0:0:1&quot; &#10;                 FillBehavior=&quot;HoldEnd&quot;/&gt;&#10;&#10;&lt;!-- 애니메이션 완료 후 원래 값으로 복원 --&gt;&#10;&lt;DoubleAnimation To=&quot;200&quot; Duration=&quot;0:0:1&quot; &#10;                 FillBehavior=&quot;Stop&quot;/&gt;&#10;&#10;&lt;!-- AutoReverse로 왕복 --&gt;&#10;&lt;DoubleAnimation To=&quot;200&quot; Duration=&quot;0:0:1&quot; &#10;                 AutoReverse=&quot;True&quot;/&gt;"/>
                     </Expander>
+                    <!-- 직접 해보기 5_4 -->
+                    <Expander Style="{StaticResource PracticeExpanderStyle}">
+                        <StackPanel Margin="10">
+                            <TextBlock Text="과제: 버튼을 누르면 사각형이 넓어졌다가 원래 크기로 되돌아오도록 AutoReverse를 쓰세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
+                            <TextBox x:Name="txtPractice5_4"
+                                     Style="{StaticResource PracticeInputStyle}"
+                                     Text="&lt;StackPanel&gt;&#10;    &lt;Rectangle x:Name=&quot;bar&quot; Width=&quot;80&quot; Height=&quot;30&quot; Fill=&quot;MediumSeaGreen&quot; HorizontalAlignment=&quot;Left&quot;/&gt;&#10;    &lt;Button Content=&quot;왕복 실행&quot; Width=&quot;120&quot; Margin=&quot;0,8,0,0&quot; HorizontalAlignment=&quot;Left&quot;&gt;&#10;        &#10;    &lt;/Button&gt;&#10;&lt;/StackPanel&gt;"/>
+                            <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
+                                <Button Content="실행" Style="{StaticResource RunButtonStyle}" Click="BtnRun_Click" Tag="5_4"/>
+                                <Button Content="힌트" Style="{StaticResource HintButtonStyle}" Click="BtnHint_Click" Tag="5_4"/>
+                                <Button Content="정답 보기" Style="{StaticResource AnswerButtonStyle}" Click="BtnAnswer_Click" Tag="5_4"/>
+                            </StackPanel>
+                            <TextBlock x:Name="txtHint5_4"
+                                       Text="힌트: DoubleAnimation 에 AutoReverse=&quot;True&quot; 를 주면 끝까지 갔다가 되돌아옵니다."
+                                       Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                            <Border x:Name="resultBorder5_4" Background="White" Margin="0,8,0,0" Padding="10" Visibility="Collapsed">
+                                <StackPanel x:Name="resultPanel5_4"/>
+                            </Border>
+                        </StackPanel>
+                    </Expander>
                 
-                <!-- 직접 해보기 5_1 -->
-                <Expander Style="{StaticResource PracticeExpanderStyle}">
-                    <StackPanel Margin="10">
-                        <TextBlock Text="과제: 마우스를 올리면 채우기 색이 파랑에서 빨강으로 변하게 ColorAnimation 을 쓰세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
-                        <TextBox x:Name="txtPractice5_1"
-                                 Style="{StaticResource PracticeInputStyle}"
-                                 Text="&lt;Rectangle Width=&quot;140&quot; Height=&quot;50&quot; HorizontalAlignment=&quot;Left&quot;&gt;&#10;    &lt;Rectangle.Fill&gt;&#10;        &lt;SolidColorBrush Color=&quot;Blue&quot;/&gt;&#10;    &lt;/Rectangle.Fill&gt;&#10;    &#10;&lt;/Rectangle&gt;"/>
-                        <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
-                            <Button Content="실행" Style="{StaticResource RunButtonStyle}" Click="BtnRun_Click" Tag="5_1"/>
-                            <Button Content="힌트" Style="{StaticResource HintButtonStyle}" Click="BtnHint_Click" Tag="5_1"/>
-                            <Button Content="정답 보기" Style="{StaticResource AnswerButtonStyle}" Click="BtnAnswer_Click" Tag="5_1"/>
-                        </StackPanel>
-                        <TextBlock x:Name="txtHint5_1"
-                                   Text="힌트: Storyboard.TargetProperty=&quot;Fill.Color&quot; 에 ColorAnimation 을 겁니다."
-                                   Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
-                        <Border x:Name="resultBorder5_1" Background="White" Margin="0,8,0,0" Padding="10" Visibility="Collapsed">
-                            <StackPanel x:Name="resultPanel5_1"/>
-                        </Border>
-                    </StackPanel>
-                </Expander>
 
-                <!-- 직접 해보기 5_2 -->
-                <Expander Style="{StaticResource PracticeExpanderStyle}">
-                    <StackPanel Margin="10">
-                        <TextBlock Text="과제: 색 애니메이션이 무한 반복되도록 RepeatBehavior 를 지정하세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
-                        <TextBox x:Name="txtPractice5_2"
-                                 Style="{StaticResource PracticeInputStyle}"
-                                 Text="&lt;Rectangle Width=&quot;140&quot; Height=&quot;50&quot; HorizontalAlignment=&quot;Left&quot;&gt;&#10;    &lt;Rectangle.Fill&gt;&#10;        &lt;SolidColorBrush Color=&quot;Green&quot;/&gt;&#10;    &lt;/Rectangle.Fill&gt;&#10;    &lt;Rectangle.Triggers&gt;&#10;        &lt;EventTrigger RoutedEvent=&quot;Loaded&quot;&gt;&#10;            &lt;BeginStoryboard&gt;&#10;                &lt;Storyboard&gt;&#10;                    &lt;ColorAnimation Storyboard.TargetProperty=&quot;Fill.Color&quot; To=&quot;Yellow&quot; Duration=&quot;0:0:1&quot;/&gt;&#10;                &lt;/Storyboard&gt;&#10;            &lt;/BeginStoryboard&gt;&#10;        &lt;/EventTrigger&gt;&#10;    &lt;/Rectangle.Triggers&gt;&#10;&lt;/Rectangle&gt;"/>
-                        <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
-                            <Button Content="실행" Style="{StaticResource RunButtonStyle}" Click="BtnRun_Click" Tag="5_2"/>
-                            <Button Content="힌트" Style="{StaticResource HintButtonStyle}" Click="BtnHint_Click" Tag="5_2"/>
-                            <Button Content="정답 보기" Style="{StaticResource AnswerButtonStyle}" Click="BtnAnswer_Click" Tag="5_2"/>
-                        </StackPanel>
-                        <TextBlock x:Name="txtHint5_2"
-                                   Text="힌트: RepeatBehavior=&quot;Forever&quot; 와 AutoReverse=&quot;True&quot; 를 함께 쓰면 계속 오갑니다."
-                                   Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
-                        <Border x:Name="resultBorder5_2" Background="White" Margin="0,8,0,0" Padding="10" Visibility="Collapsed">
-                            <StackPanel x:Name="resultPanel5_2"/>
-                        </Border>
-                    </StackPanel>
-                </Expander>
-
-<!-- 직접 해보기 5_3 -->
-<Expander Style="{StaticResource PracticeExpanderStyle}">
-    <StackPanel Margin="10">
-        <TextBlock Text="과제: 테두리 색이 변하는 애니메이션을 만드세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
-        <TextBox x:Name="txtPractice5_3"
-                 Style="{StaticResource PracticeInputStyle}"
-                 Text="&lt;Border Width=&quot;160&quot; Height=&quot;50&quot; BorderThickness=&quot;3&quot;&gt;&#10;    &lt;Border.BorderBrush&gt;&#10;        &lt;SolidColorBrush Color=&quot;Gray&quot;/&gt;&#10;    &lt;/Border.BorderBrush&gt;&#10;    &#10;&lt;/Border&gt;"/>
-        <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
-            <Button Content="실행" Style="{StaticResource RunButtonStyle}" Click="BtnRun_Click" Tag="5_3"/>
-            <Button Content="힌트" Style="{StaticResource HintButtonStyle}" Click="BtnHint_Click" Tag="5_3"/>
-            <Button Content="정답 보기" Style="{StaticResource AnswerButtonStyle}" Click="BtnAnswer_Click" Tag="5_3"/>
-        </StackPanel>
-        <TextBlock x:Name="txtHint5_3"
-                   Text="힌트: BorderBrush.Color 를 ColorAnimation 의 대상으로 지정합니다."
-                   Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
-        <Border x:Name="resultBorder5_3" Background="White" Margin="0,8,0,0" Padding="10" Visibility="Collapsed">
-            <StackPanel x:Name="resultPanel5_3"/>
-        </Border>
-    </StackPanel>
-</Expander>
 </StackPanel>
             </ScrollViewer>
         </TabItem>

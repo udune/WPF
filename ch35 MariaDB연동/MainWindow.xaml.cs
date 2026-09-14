@@ -34,6 +34,10 @@ public partial class MainWindow : Window
         // 각 연습의 정답
         private readonly Dictionary<string, string> _answers = new()
         {
+            { "1_4", "string? connectionString = Environment.GetEnvironmentVariable(\"MARIADB_CONNECTION\");\n\nif (string.IsNullOrEmpty(connectionString))\n{\n    MessageBox.Show(\"연결 문자열이 설정되지 않았습니다.\");\n    return;\n}" },
+            { "2_4", "private void LoadData()\n{\n    DataTable dataTable = new DataTable();\n\n    using (var connection = new MySqlConnection(connectionString))\n    using (var command = new MySqlCommand(\"SELECT * FROM person\", connection))\n    {\n        connection.Open();\n        using (var reader = command.ExecuteReader())\n        {\n            dataTable.Load(reader);\n        }\n    }\n\n    Grid.ItemsSource = dataTable.DefaultView;\n}" },
+            { "3_4", "command.Parameters.Add(\"@name\", MySqlDbType.VarChar, 100).Value = TxtName.Text;\ncommand.Parameters.Add(\"@age\", MySqlDbType.Int32).Value = int.Parse(TxtAge.Text);" },
+            { "4_4", "UPDATE person\nSET IsDeleted = 1, DeletedAt = NOW()\nWHERE ID = @id;\n\nSELECT * FROM person WHERE IsDeleted = 0;" },
             { "1_3", "private const string ConnectionString =\n    \"Server=localhost;Port=3306;Database=testdb;Uid=root;Pwd=1234;CharSet=utf8mb4;\";" },
             { "2_3", "private int CountMembers(MySqlConnection conn)\n{\n    using (var cmd = new MySqlCommand(\"SELECT COUNT(*) FROM member\", conn))\n    {\n        return Convert.ToInt32(cmd.ExecuteScalar());\n    }\n}" },
             { "3_3", "string sql = \"SELECT id, name FROM member WHERE name LIKE @keyword\";" },
@@ -54,6 +58,10 @@ public partial class MainWindow : Window
         // 코드 비교 검증용 필수 키워드
         private readonly Dictionary<string, string[]> _requiredKeywords = new()
         {
+            { "1_4", new[] { "Environment.GetEnvironmentVariable" } },
+            { "2_4", new[] { "using", "MySqlConnection", "ExecuteReader" } },
+            { "3_4", new[] { "Parameters.Add", "MySqlDbType" } },
+            { "4_4", new[] { "UPDATE", "IsDeleted", "WHERE" } },
             { "1_3", new[] { "CharSet", "utf8mb4" } },
             { "2_3", new[] { "ExecuteScalar", "COUNT(*)", "Convert.ToInt32" } },
             { "3_3", new[] { "SELECT", "WHERE", "LIKE", "@keyword" } },

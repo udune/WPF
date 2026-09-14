@@ -12,6 +12,14 @@ namespace ch6_패스워드박스
         // 각 연습의 정답
         private readonly Dictionary<string, string> _answers = new()
         {
+            { "1_4", "<StackPanel>\n    <PasswordBox Password=\"active\" Margin=\"0,4\"/>\n    <PasswordBox Password=\"disabled\" IsEnabled=\"False\" Margin=\"0,4\"/>\n</StackPanel>" },
+            { "1_5", "private void BtnShowLength_Click(object sender, RoutedEventArgs e)\n{\n    string pw = myPasswordBox.Password;\n    txtLength.Text = $\"입력한 길이: {pw.Length}자\";\n}" },
+            { "2_4", "<StackPanel>\n    <PasswordBox Password=\"1234\" Width=\"200\" Height=\"30\" Margin=\"0,4\" HorizontalAlignment=\"Left\"/>\n    <PasswordBox Password=\"1234\" Width=\"250\" Height=\"40\" Margin=\"0,4\" HorizontalAlignment=\"Left\"/>\n    <PasswordBox Password=\"1234\" Width=\"300\" Height=\"50\" Margin=\"0,4\" HorizontalAlignment=\"Left\"/>\n</StackPanel>" },
+            { "3_4", "<StackPanel>\n    <PasswordBox Password=\"abcdef\" FontFamily=\"Arial\" Margin=\"0,4\"/>\n    <PasswordBox Password=\"abcdef\" FontFamily=\"Consolas\" Margin=\"0,4\"/>\n    <PasswordBox Password=\"abcdef\" FontFamily=\"맑은 고딕\" Margin=\"0,4\"/>\n</StackPanel>" },
+            { "4_4", "<StackPanel>\n    <PasswordBox Password=\"1234\" Padding=\"0\" Margin=\"0,4\"/>\n    <PasswordBox Password=\"1234\" Padding=\"10\" Margin=\"0,4\"/>\n    <PasswordBox Password=\"1234\" Padding=\"20\" Margin=\"0,4\"/>\n</StackPanel>" },
+            { "4_5", "<StackPanel>\n    <PasswordBox Password=\"1234\" CaretBrush=\"Red\" Margin=\"0,4\"/>\n    <PasswordBox Password=\"1234\" SelectionBrush=\"Green\" Margin=\"0,4\"/>\n</StackPanel>" },
+            { "5_4", "private void PwdKeyDown_KeyDown(object sender, KeyEventArgs e)\n{\n    if (e.Key == Key.Enter)\n    {\n        txtPwdKeyResult.Text = $\"입력된 비밀번호: {pwdKeyDown.Password}\";\n    }\n}" },
+            { "5_5", "private void BtnCheckMatch_Click(object sender, RoutedEventArgs e)\n{\n    if (string.IsNullOrEmpty(pwdFirst.Password))\n        txtMatchResult.Text = \"비밀번호를 입력해주세요.\";\n    else if (pwdFirst.Password == pwdSecond.Password)\n        txtMatchResult.Text = \"비밀번호가 일치합니다!\";\n    else\n        txtMatchResult.Text = \"비밀번호가 일치하지 않습니다.\";\n}" },
             { "2_3", "<PasswordBox Width=\"220\" HorizontalAlignment=\"Center\"/>" },
             // 탭 1: 기본 사용법
             { "1_1", "<PasswordBox PasswordChar=\"*\"/>" },
@@ -41,6 +49,9 @@ namespace ch6_패스워드박스
         // 코드 비교 검증용 필수 키워드
         private readonly Dictionary<string, string[]> _requiredKeywords = new()
         {
+            { "1_5", new[] { ".Password", ".Length" } },
+            { "5_4", new[] { "e.Key", "Key.Enter", ".Password" } },
+            { "5_5", new[] { "pwdFirst.Password", "pwdSecond.Password", "==" } },
             { "5_1", new[] { ".Password", ".Length", "txtLength" } },
             { "5_2", new[] { "Length", "약함", "보통", "강함", "if", "else" } },
             { "5_3", new[] { "return", "==", "pwd1", "pwd2" } }

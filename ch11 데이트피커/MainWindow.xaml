@@ -11,7 +11,7 @@
         <Style x:Key="CodeExpanderStyle" TargetType="Expander">
             <Setter Property="Header" Value="코드 보기"/>
             <Setter Property="Margin" Value="0,0,0,12"/>
-            <Setter Property="IsExpanded" Value="False"/>
+            <Setter Property="IsExpanded" Value="True"/>
         </Style>
         <Style x:Key="CodeTextBoxStyle" TargetType="TextBox">
             <Setter Property="IsReadOnly" Value="True"/>
@@ -176,6 +176,26 @@
                     <Expander Style="{StaticResource CodeExpanderStyle}">
                         <TextBox Style="{StaticResource CodeTextBoxStyle}" Text="&lt;DatePicker DisplayDate=&quot;2025-12-01&quot;/&gt;&#10;&#10;&lt;!-- 달력이 열릴 때 2025년 12월을 표시 --&gt;"/>
                     </Expander>
+                    <!-- 직접 해보기 1_4 -->
+                    <Expander Style="{StaticResource PracticeExpanderStyle}">
+                        <StackPanel Margin="10">
+                            <TextBlock Text="과제: 달력 팝업을 열었을 때 2026년 3월이 보이도록 DisplayDate를 지정하세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
+                            <TextBox x:Name="txtPractice1_4"
+                                     Style="{StaticResource PracticeInputStyle}"
+                                     Text="&lt;DatePicker /&gt;"/>
+                            <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
+                                <Button Content="실행" Style="{StaticResource RunButtonStyle}" Click="BtnRun_Click" Tag="1_4"/>
+                                <Button Content="힌트" Style="{StaticResource HintButtonStyle}" Click="BtnHint_Click" Tag="1_4"/>
+                                <Button Content="정답 보기" Style="{StaticResource AnswerButtonStyle}" Click="BtnAnswer_Click" Tag="1_4"/>
+                            </StackPanel>
+                            <TextBlock x:Name="txtHint1_4"
+                                       Text="힌트: DatePicker 에도 Calendar 와 같은 DisplayDate 속성이 있습니다."
+                                       Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                            <Border x:Name="resultBorder1_4" Background="White" Margin="0,8,0,0" Padding="10" Visibility="Collapsed">
+                                <StackPanel x:Name="resultPanel1_4"/>
+                            </Border>
+                        </StackPanel>
+                    </Expander>
                 </StackPanel>
             </ScrollViewer>
         </TabItem>
@@ -223,19 +243,6 @@
                     <Expander Style="{StaticResource CodeExpanderStyle}">
                         <TextBox Style="{StaticResource CodeTextBoxStyle}" Text="&lt;DatePicker&gt;&#10;    &lt;DatePicker.BlackoutDates&gt;&#10;        &lt;CalendarDateRange Start=&quot;2025-02-01&quot; End=&quot;2025-02-05&quot;/&gt;&#10;        &lt;CalendarDateRange Start=&quot;2025-02-14&quot; End=&quot;2025-02-14&quot;/&gt;&#10;    &lt;/DatePicker.BlackoutDates&gt;&#10;&lt;/DatePicker&gt;"/>
                     </Expander>
-
-                    <TextBlock Text="3. 코드비하인드로 BlackoutDates 추가" FontSize="18" FontWeight="Bold" Margin="0,10,0,10"/>
-
-                    <GroupBox Header="버튼 클릭으로 오늘 이전 날짜를 비활성화" Margin="0,0,0,8">
-                        <StackPanel>
-                            <DatePicker x:Name="dpBlackoutCode" HorizontalAlignment="Left" Width="200"/>
-                            <Button Content="오늘 이전 날짜 비활성화" Click="BlackoutPastDates_Click" HorizontalAlignment="Left" Padding="12,6" Margin="0,8,0,0"/>
-                        </StackPanel>
-                    </GroupBox>
-                    <Expander Style="{StaticResource CodeExpanderStyle}">
-                        <TextBox Style="{StaticResource CodeTextBoxStyle}" Text="&lt;!-- XAML --&gt;&#10;&lt;DatePicker x:Name=&quot;dpBlackoutCode&quot;/&gt;&#10;&lt;Button Content=&quot;오늘 이전 날짜 비활성화&quot; Click=&quot;BlackoutPastDates_Click&quot;/&gt;&#10;&#10;// C# 코드비하인드&#10;private void BlackoutPastDates_Click(object sender, RoutedEventArgs e)&#10;{&#10;    dpBlackoutCode.BlackoutDates.AddDatesInPast();&#10;}"/>
-                    </Expander>
-
                     <!-- 직접 해보기 2_2 (코드 비교) -->
                     <Expander Style="{StaticResource PracticeExpanderStyle}">
                         <StackPanel>
@@ -249,6 +256,38 @@
                             </StackPanel>
                             <TextBlock x:Name="txtHint2_2" Text="힌트: BlackoutDates 컬렉션의 AddDatesInPast() 메서드를 사용합니다." Foreground="Blue" Margin="0,8,0,0" Visibility="Collapsed"/>
                             <TextBlock x:Name="txtResult2_2" Text="" Margin="0,8,0,0" Visibility="Collapsed"/>
+                        </StackPanel>
+                    </Expander>
+
+                    <TextBlock Text="3. 코드비하인드로 BlackoutDates 추가" FontSize="18" FontWeight="Bold" Margin="0,10,0,10"/>
+
+                    <GroupBox Header="버튼 클릭으로 오늘 이전 날짜를 비활성화" Margin="0,0,0,8">
+                        <StackPanel>
+                            <DatePicker x:Name="dpBlackoutCode" HorizontalAlignment="Left" Width="200"/>
+                            <Button Content="오늘 이전 날짜 비활성화" Click="BlackoutPastDates_Click" HorizontalAlignment="Left" Padding="12,6" Margin="0,8,0,0"/>
+                        </StackPanel>
+                    </GroupBox>
+                    <Expander Style="{StaticResource CodeExpanderStyle}">
+                        <TextBox Style="{StaticResource CodeTextBoxStyle}" Text="&lt;!-- XAML --&gt;&#10;&lt;DatePicker x:Name=&quot;dpBlackoutCode&quot;/&gt;&#10;&lt;Button Content=&quot;오늘 이전 날짜 비활성화&quot; Click=&quot;BlackoutPastDates_Click&quot;/&gt;&#10;&#10;// C# 코드비하인드&#10;private void BlackoutPastDates_Click(object sender, RoutedEventArgs e)&#10;{&#10;    dpBlackoutCode.BlackoutDates.AddDatesInPast();&#10;}"/>
+                    </Expander>
+                    <!-- 직접 해보기 2_3 -->
+                    <Expander Style="{StaticResource PracticeExpanderStyle}">
+                        <StackPanel Margin="10">
+                            <TextBlock Text="과제: 2025년 한 해만 고를 수 있도록 표시 범위를 제한하세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
+                            <TextBox x:Name="txtPractice2_3"
+                                     Style="{StaticResource PracticeInputStyle}"
+                                     Text="&lt;DatePicker/&gt;"/>
+                            <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
+                                <Button Content="실행" Style="{StaticResource RunButtonStyle}" Click="BtnRun_Click" Tag="2_3"/>
+                                <Button Content="힌트" Style="{StaticResource HintButtonStyle}" Click="BtnHint_Click" Tag="2_3"/>
+                                <Button Content="정답 보기" Style="{StaticResource AnswerButtonStyle}" Click="BtnAnswer_Click" Tag="2_3"/>
+                            </StackPanel>
+                            <TextBlock x:Name="txtHint2_3"
+                                       Text="힌트: DisplayDateStart 와 DisplayDateEnd 를 함께 지정합니다."
+                                       Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                            <Border x:Name="resultBorder2_3" Background="White" Margin="0,8,0,0" Padding="10" Visibility="Collapsed">
+                                <StackPanel x:Name="resultPanel2_3"/>
+                            </Border>
                         </StackPanel>
                     </Expander>
 
@@ -269,27 +308,27 @@
                     <Expander Style="{StaticResource CodeExpanderStyle}">
                         <TextBox Style="{StaticResource CodeTextBoxStyle}" Text="&lt;DatePicker FirstDayOfWeek=&quot;Sunday&quot;/&gt;  &lt;!-- 기본값 --&gt;&#10;&lt;DatePicker FirstDayOfWeek=&quot;Monday&quot;/&gt; &lt;!-- 월요일 시작 --&gt;"/>
                     </Expander>
-                
-                <!-- 직접 해보기 2_3 -->
-                <Expander Style="{StaticResource PracticeExpanderStyle}">
-                    <StackPanel Margin="10">
-                        <TextBlock Text="과제: 2025년 한 해만 고를 수 있도록 표시 범위를 제한하세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
-                        <TextBox x:Name="txtPractice2_3"
-                                 Style="{StaticResource PracticeInputStyle}"
-                                 Text="&lt;DatePicker/&gt;"/>
-                        <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
-                            <Button Content="실행" Style="{StaticResource RunButtonStyle}" Click="BtnRun_Click" Tag="2_3"/>
-                            <Button Content="힌트" Style="{StaticResource HintButtonStyle}" Click="BtnHint_Click" Tag="2_3"/>
-                            <Button Content="정답 보기" Style="{StaticResource AnswerButtonStyle}" Click="BtnAnswer_Click" Tag="2_3"/>
+                    <!-- 직접 해보기 2_4 -->
+                    <Expander Style="{StaticResource PracticeExpanderStyle}">
+                        <StackPanel Margin="10">
+                            <TextBlock Text="과제: 달력 팝업이 월요일부터 시작하도록 FirstDayOfWeek를 지정하세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
+                            <TextBox x:Name="txtPractice2_4"
+                                     Style="{StaticResource PracticeInputStyle}"
+                                     Text="&lt;DatePicker /&gt;"/>
+                            <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
+                                <Button Content="실행" Style="{StaticResource RunButtonStyle}" Click="BtnRun_Click" Tag="2_4"/>
+                                <Button Content="힌트" Style="{StaticResource HintButtonStyle}" Click="BtnHint_Click" Tag="2_4"/>
+                                <Button Content="정답 보기" Style="{StaticResource AnswerButtonStyle}" Click="BtnAnswer_Click" Tag="2_4"/>
+                            </StackPanel>
+                            <TextBlock x:Name="txtHint2_4"
+                                       Text="힌트: FirstDayOfWeek=&quot;Monday&quot; 를 추가합니다."
+                                       Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                            <Border x:Name="resultBorder2_4" Background="White" Margin="0,8,0,0" Padding="10" Visibility="Collapsed">
+                                <StackPanel x:Name="resultPanel2_4"/>
+                            </Border>
                         </StackPanel>
-                        <TextBlock x:Name="txtHint2_3"
-                                   Text="힌트: DisplayDateStart 와 DisplayDateEnd 를 함께 지정합니다."
-                                   Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
-                        <Border x:Name="resultBorder2_3" Background="White" Margin="0,8,0,0" Padding="10" Visibility="Collapsed">
-                            <StackPanel x:Name="resultPanel2_3"/>
-                        </Border>
-                    </StackPanel>
-                </Expander>
+                    </Expander>
+                
 </StackPanel>
             </ScrollViewer>
         </TabItem>
@@ -334,6 +373,22 @@
                     <Expander Style="{StaticResource CodeExpanderStyle}">
                         <TextBox Style="{StaticResource CodeTextBoxStyle}" Text="&lt;DatePicker Text=&quot;2025/06/15&quot;/&gt;&#10;&#10;&lt;!-- Text 속성으로 문자열 형태의 날짜를 지정 --&gt;&#10;&lt;!-- 사용자가 텍스트 박스에 직접 날짜를 입력할 수도 있음 --&gt;"/>
                     </Expander>
+                    <!-- 직접 해보기 3_2 -->
+                    <Expander Style="{StaticResource PracticeExpanderStyle}">
+                        <StackPanel>
+                            <TextBlock Text="문제: 오늘 날짜 강조 표시가 비활성화된 DatePicker를 만들어보세요." FontWeight="Bold" Margin="0,0,0,8"/>
+                            <TextBox x:Name="txtPractice3_2" Style="{StaticResource PracticeInputStyle}" Text=""/>
+                            <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
+                                <Button Style="{StaticResource RunButtonStyle}" Tag="3_2" Click="BtnRun_Click" Margin="0,0,8,0"/>
+                                <Button Style="{StaticResource HintButtonStyle}" Tag="3_2" Click="BtnHint_Click" Margin="0,0,8,0"/>
+                                <Button Style="{StaticResource AnswerButtonStyle}" Tag="3_2" Click="BtnAnswer_Click"/>
+                            </StackPanel>
+                            <TextBlock x:Name="txtHint3_2" Text="힌트: IsTodayHighlighted 속성을 False로 설정합니다." Foreground="Blue" Margin="0,8,0,0" Visibility="Collapsed"/>
+                            <Border x:Name="resultBorder3_2" BorderBrush="#4CAF50" BorderThickness="1" Padding="10" Margin="0,10,0,0" Visibility="Collapsed">
+                                <StackPanel x:Name="resultPanel3_2"/>
+                            </Border>
+                        </StackPanel>
+                    </Expander>
 
                     <TextBlock Text="3. IsDropDownOpen" FontSize="18" FontWeight="Bold" Margin="0,10,0,10"/>
 
@@ -348,6 +403,26 @@
                     </GroupBox>
                     <Expander Style="{StaticResource CodeExpanderStyle}">
                         <TextBox Style="{StaticResource CodeTextBoxStyle}" Text="&lt;!-- XAML --&gt;&#10;&lt;DatePicker x:Name=&quot;dpDropDown&quot;/&gt;&#10;&lt;Button Content=&quot;달력 열기&quot; Click=&quot;OpenDropDown_Click&quot;/&gt;&#10;&lt;Button Content=&quot;달력 닫기&quot; Click=&quot;CloseDropDown_Click&quot;/&gt;&#10;&#10;// C# 코드비하인드&#10;private void OpenDropDown_Click(object sender, RoutedEventArgs e)&#10;{&#10;    dpDropDown.IsDropDownOpen = true;&#10;}&#10;private void CloseDropDown_Click(object sender, RoutedEventArgs e)&#10;{&#10;    dpDropDown.IsDropDownOpen = false;&#10;}"/>
+                    </Expander>
+                    <!-- 직접 해보기 3_3 -->
+                    <Expander Style="{StaticResource PracticeExpanderStyle}">
+                        <StackPanel Margin="10">
+                            <TextBlock Text="과제: DatePicker 가 날짜를 긴 형식으로 보여 주게 하세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
+                            <TextBox x:Name="txtPractice3_3"
+                                     Style="{StaticResource PracticeInputStyle}"
+                                     Text="&lt;DatePicker/&gt;"/>
+                            <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
+                                <Button Content="실행" Style="{StaticResource RunButtonStyle}" Click="BtnRun_Click" Tag="3_3"/>
+                                <Button Content="힌트" Style="{StaticResource HintButtonStyle}" Click="BtnHint_Click" Tag="3_3"/>
+                                <Button Content="정답 보기" Style="{StaticResource AnswerButtonStyle}" Click="BtnAnswer_Click" Tag="3_3"/>
+                            </StackPanel>
+                            <TextBlock x:Name="txtHint3_3"
+                                       Text="힌트: SelectedDateFormat=&quot;Long&quot; 을 지정합니다."
+                                       Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                            <Border x:Name="resultBorder3_3" Background="White" Margin="0,8,0,0" Padding="10" Visibility="Collapsed">
+                                <StackPanel x:Name="resultPanel3_3"/>
+                            </Border>
+                        </StackPanel>
                     </Expander>
 
                     <TextBlock Text="4. IsTodayHighlighted" FontSize="18" FontWeight="Bold" Margin="0,10,0,10"/>
@@ -367,44 +442,28 @@
                     <Expander Style="{StaticResource CodeExpanderStyle}">
                         <TextBox Style="{StaticResource CodeTextBoxStyle}" Text="&lt;DatePicker IsTodayHighlighted=&quot;True&quot;/&gt;  &lt;!-- 기본값 --&gt;&#10;&lt;DatePicker IsTodayHighlighted=&quot;False&quot;/&gt; &lt;!-- 오늘 강조 비활성화 --&gt;"/>
                     </Expander>
-
-                    <!-- 직접 해보기 3_2 -->
+                    <!-- 직접 해보기 3_4 -->
                     <Expander Style="{StaticResource PracticeExpanderStyle}">
-                        <StackPanel>
-                            <TextBlock Text="문제: 오늘 날짜 강조 표시가 비활성화된 DatePicker를 만들어보세요." FontWeight="Bold" Margin="0,0,0,8"/>
-                            <TextBox x:Name="txtPractice3_2" Style="{StaticResource PracticeInputStyle}" Text=""/>
+                        <StackPanel Margin="10">
+                            <TextBlock Text="과제: 오늘 날짜 강조를 끈 DatePicker를 만드세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
+                            <TextBox x:Name="txtPractice3_4"
+                                     Style="{StaticResource PracticeInputStyle}"
+                                     Text="&lt;DatePicker /&gt;"/>
                             <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
-                                <Button Style="{StaticResource RunButtonStyle}" Tag="3_2" Click="BtnRun_Click" Margin="0,0,8,0"/>
-                                <Button Style="{StaticResource HintButtonStyle}" Tag="3_2" Click="BtnHint_Click" Margin="0,0,8,0"/>
-                                <Button Style="{StaticResource AnswerButtonStyle}" Tag="3_2" Click="BtnAnswer_Click"/>
+                                <Button Content="실행" Style="{StaticResource RunButtonStyle}" Click="BtnRun_Click" Tag="3_4"/>
+                                <Button Content="힌트" Style="{StaticResource HintButtonStyle}" Click="BtnHint_Click" Tag="3_4"/>
+                                <Button Content="정답 보기" Style="{StaticResource AnswerButtonStyle}" Click="BtnAnswer_Click" Tag="3_4"/>
                             </StackPanel>
-                            <TextBlock x:Name="txtHint3_2" Text="힌트: IsTodayHighlighted 속성을 False로 설정합니다." Foreground="Blue" Margin="0,8,0,0" Visibility="Collapsed"/>
-                            <Border x:Name="resultBorder3_2" BorderBrush="#4CAF50" BorderThickness="1" Padding="10" Margin="0,10,0,0" Visibility="Collapsed">
-                                <StackPanel x:Name="resultPanel3_2"/>
+                            <TextBlock x:Name="txtHint3_4"
+                                       Text="힌트: IsTodayHighlighted 기본값은 True 입니다. False 로 바꾸세요."
+                                       Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                            <Border x:Name="resultBorder3_4" Background="White" Margin="0,8,0,0" Padding="10" Visibility="Collapsed">
+                                <StackPanel x:Name="resultPanel3_4"/>
                             </Border>
                         </StackPanel>
                     </Expander>
+
                 
-                <!-- 직접 해보기 3_3 -->
-                <Expander Style="{StaticResource PracticeExpanderStyle}">
-                    <StackPanel Margin="10">
-                        <TextBlock Text="과제: DatePicker 가 날짜를 긴 형식으로 보여 주게 하세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
-                        <TextBox x:Name="txtPractice3_3"
-                                 Style="{StaticResource PracticeInputStyle}"
-                                 Text="&lt;DatePicker/&gt;"/>
-                        <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
-                            <Button Content="실행" Style="{StaticResource RunButtonStyle}" Click="BtnRun_Click" Tag="3_3"/>
-                            <Button Content="힌트" Style="{StaticResource HintButtonStyle}" Click="BtnHint_Click" Tag="3_3"/>
-                            <Button Content="정답 보기" Style="{StaticResource AnswerButtonStyle}" Click="BtnAnswer_Click" Tag="3_3"/>
-                        </StackPanel>
-                        <TextBlock x:Name="txtHint3_3"
-                                   Text="힌트: SelectedDateFormat=&quot;Long&quot; 을 지정합니다."
-                                   Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
-                        <Border x:Name="resultBorder3_3" Background="White" Margin="0,8,0,0" Padding="10" Visibility="Collapsed">
-                            <StackPanel x:Name="resultPanel3_3"/>
-                        </Border>
-                    </StackPanel>
-                </Expander>
 </StackPanel>
             </ScrollViewer>
         </TabItem>
@@ -462,6 +521,26 @@
                     <Expander Style="{StaticResource CodeExpanderStyle}">
                         <TextBox Style="{StaticResource CodeTextBoxStyle}" Text="&lt;DatePicker x:Name=&quot;dpBindDate&quot; SelectedDate=&quot;2025-06-15&quot;/&gt;&#10;&#10;&lt;!-- yyyy-MM-dd --&gt;&#10;&lt;TextBlock Text=&quot;{Binding ElementName=dpBindDate,&#10;                   Path=SelectedDate,&#10;                   StringFormat='{0:yyyy-MM-dd}'}&quot;/&gt;&#10;&#10;&lt;!-- 한국어 형식 --&gt;&#10;&lt;TextBlock Text=&quot;{Binding ElementName=dpBindDate,&#10;                   Path=SelectedDate,&#10;                   StringFormat='{0:yyyy년 M월 d일}'}&quot;/&gt;&#10;&#10;&lt;!-- 요일 포함 (ConverterCulture 필요) --&gt;&#10;&lt;TextBlock Text=&quot;{Binding ElementName=dpBindDate,&#10;                   Path=SelectedDate,&#10;                   StringFormat='{0:yyyy-MM-dd (ddd)}',&#10;                   ConverterCulture='ko-KR'}&quot;/&gt;"/>
                     </Expander>
+                    <!-- 직접 해보기 4_2 -->
+                    <Expander Style="{StaticResource PracticeExpanderStyle}">
+                        <StackPanel Margin="10">
+                            <TextBlock Text="과제: DatePicker 에서 고른 날짜를 아래 TextBlock 에 표시하세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
+                            <TextBox x:Name="txtPractice4_2"
+                                     Style="{StaticResource PracticeInputStyle}"
+                                     Text="&lt;StackPanel&gt;&#10;    &lt;DatePicker x:Name=&quot;dp&quot; Width=&quot;180&quot; HorizontalAlignment=&quot;Left&quot;/&gt;&#10;    &lt;TextBlock/&gt;&#10;&lt;/StackPanel&gt;"/>
+                            <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
+                                <Button Content="실행" Style="{StaticResource RunButtonStyle}" Click="BtnRun_Click" Tag="4_2"/>
+                                <Button Content="힌트" Style="{StaticResource HintButtonStyle}" Click="BtnHint_Click" Tag="4_2"/>
+                                <Button Content="정답 보기" Style="{StaticResource AnswerButtonStyle}" Click="BtnAnswer_Click" Tag="4_2"/>
+                            </StackPanel>
+                            <TextBlock x:Name="txtHint4_2"
+                                       Text="힌트: ElementName=dp, Path=SelectedDate 로 바인딩합니다."
+                                       Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                            <Border x:Name="resultBorder4_2" Background="White" Margin="0,8,0,0" Padding="10" Visibility="Collapsed">
+                                <StackPanel x:Name="resultPanel4_2"/>
+                            </Border>
+                        </StackPanel>
+                    </Expander>
 
                     <TextBlock Text="3. 두 DatePicker 동기화" FontSize="18" FontWeight="Bold" Margin="0,10,0,10"/>
 
@@ -480,46 +559,26 @@
                     <Expander Style="{StaticResource CodeExpanderStyle}">
                         <TextBox Style="{StaticResource CodeTextBoxStyle}" Text="&lt;DatePicker x:Name=&quot;dpStart&quot;/&gt;&#10;&#10;&lt;DatePicker DisplayDateStart=&quot;{Binding ElementName=dpStart, Path=SelectedDate}&quot;/&gt;&#10;&#10;&lt;!-- 시작일 이전 날짜는 종료일에서 선택 불가 --&gt;"/>
                     </Expander>
+                    <!-- 직접 해보기 4_3 -->
+                    <Expander Style="{StaticResource PracticeExpanderStyle}">
+                        <StackPanel Margin="10">
+                            <TextBlock Text="과제: 코드에서 DatePicker(dp)에 일주일 뒤 날짜를 넣으세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
+                            <TextBox x:Name="txtPractice4_3"
+                                     Style="{StaticResource PracticeInputStyle}"
+                                     Text="private void NextWeek_Click(object sender, RoutedEventArgs e)&#10;{&#10;    &#10;}"/>
+                            <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
+                                <Button Content="확인" Style="{StaticResource RunButtonStyle}" Click="BtnCheck_Click" Tag="4_3"/>
+                                <Button Content="힌트" Style="{StaticResource HintButtonStyle}" Click="BtnHint_Click" Tag="4_3"/>
+                                <Button Content="정답 보기" Style="{StaticResource AnswerButtonStyle}" Click="BtnAnswer_Click" Tag="4_3"/>
+                            </StackPanel>
+                            <TextBlock x:Name="txtHint4_3"
+                                       Text="힌트: DateTime.Today.AddDays(7) 을 SelectedDate 에 대입합니다."
+                                       Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                            <TextBlock x:Name="txtResult4_3" Margin="0,8,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                        </StackPanel>
+                    </Expander>
                 
-                <!-- 직접 해보기 4_2 -->
-                <Expander Style="{StaticResource PracticeExpanderStyle}">
-                    <StackPanel Margin="10">
-                        <TextBlock Text="과제: DatePicker 에서 고른 날짜를 아래 TextBlock 에 표시하세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
-                        <TextBox x:Name="txtPractice4_2"
-                                 Style="{StaticResource PracticeInputStyle}"
-                                 Text="&lt;StackPanel&gt;&#10;    &lt;DatePicker x:Name=&quot;dp&quot; Width=&quot;180&quot; HorizontalAlignment=&quot;Left&quot;/&gt;&#10;    &lt;TextBlock/&gt;&#10;&lt;/StackPanel&gt;"/>
-                        <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
-                            <Button Content="실행" Style="{StaticResource RunButtonStyle}" Click="BtnRun_Click" Tag="4_2"/>
-                            <Button Content="힌트" Style="{StaticResource HintButtonStyle}" Click="BtnHint_Click" Tag="4_2"/>
-                            <Button Content="정답 보기" Style="{StaticResource AnswerButtonStyle}" Click="BtnAnswer_Click" Tag="4_2"/>
-                        </StackPanel>
-                        <TextBlock x:Name="txtHint4_2"
-                                   Text="힌트: ElementName=dp, Path=SelectedDate 로 바인딩합니다."
-                                   Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
-                        <Border x:Name="resultBorder4_2" Background="White" Margin="0,8,0,0" Padding="10" Visibility="Collapsed">
-                            <StackPanel x:Name="resultPanel4_2"/>
-                        </Border>
-                    </StackPanel>
-                </Expander>
 
-                <!-- 직접 해보기 4_3 -->
-                <Expander Style="{StaticResource PracticeExpanderStyle}">
-                    <StackPanel Margin="10">
-                        <TextBlock Text="과제: 코드에서 DatePicker(dp)에 일주일 뒤 날짜를 넣으세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
-                        <TextBox x:Name="txtPractice4_3"
-                                 Style="{StaticResource PracticeInputStyle}"
-                                 Text="private void NextWeek_Click(object sender, RoutedEventArgs e)&#10;{&#10;    &#10;}"/>
-                        <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
-                            <Button Content="확인" Style="{StaticResource RunButtonStyle}" Click="BtnCheck_Click" Tag="4_3"/>
-                            <Button Content="힌트" Style="{StaticResource HintButtonStyle}" Click="BtnHint_Click" Tag="4_3"/>
-                            <Button Content="정답 보기" Style="{StaticResource AnswerButtonStyle}" Click="BtnAnswer_Click" Tag="4_3"/>
-                        </StackPanel>
-                        <TextBlock x:Name="txtHint4_3"
-                                   Text="힌트: DateTime.Today.AddDays(7) 을 SelectedDate 에 대입합니다."
-                                   Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
-                        <TextBlock x:Name="txtResult4_3" Margin="0,8,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
-                    </StackPanel>
-                </Expander>
 </StackPanel>
             </ScrollViewer>
         </TabItem>
@@ -539,19 +598,6 @@
                     <Expander Style="{StaticResource CodeExpanderStyle}">
                         <TextBox Style="{StaticResource CodeTextBoxStyle}" Text="&lt;DatePicker Width=&quot;250&quot; FontSize=&quot;16&quot;/&gt;&#10;&lt;DatePicker Width=&quot;300&quot; FontSize=&quot;18&quot; FontFamily=&quot;Georgia&quot;/&gt;"/>
                     </Expander>
-
-                    <TextBlock Text="2. Background, Foreground, BorderBrush" FontSize="18" FontWeight="Bold" Margin="0,10,0,10"/>
-
-                    <GroupBox Header="색상 변경" Margin="0,0,0,8">
-                        <StackPanel>
-                            <DatePicker Background="LightYellow" BorderBrush="DarkOrange" BorderThickness="2" Width="200" HorizontalAlignment="Left" Margin="0,0,0,8"/>
-                            <DatePicker Background="LightCyan" Foreground="DarkBlue" BorderBrush="SteelBlue" BorderThickness="2" Width="200" HorizontalAlignment="Left"/>
-                        </StackPanel>
-                    </GroupBox>
-                    <Expander Style="{StaticResource CodeExpanderStyle}">
-                        <TextBox Style="{StaticResource CodeTextBoxStyle}" Text="&lt;DatePicker Background=&quot;LightYellow&quot;&#10;            BorderBrush=&quot;DarkOrange&quot;&#10;            BorderThickness=&quot;2&quot;/&gt;&#10;&#10;&lt;DatePicker Background=&quot;LightCyan&quot;&#10;            Foreground=&quot;DarkBlue&quot;&#10;            BorderBrush=&quot;SteelBlue&quot;&#10;            BorderThickness=&quot;2&quot;/&gt;"/>
-                    </Expander>
-
                     <!-- 직접 해보기 5_1 -->
                     <Expander Style="{StaticResource PracticeExpanderStyle}">
                         <StackPanel>
@@ -565,6 +611,34 @@
                             <TextBlock x:Name="txtHint5_1" Text="힌트: Background와 BorderBrush 속성을 사용합니다." Foreground="Blue" Margin="0,8,0,0" Visibility="Collapsed"/>
                             <Border x:Name="resultBorder5_1" BorderBrush="#4CAF50" BorderThickness="1" Padding="10" Margin="0,10,0,0" Visibility="Collapsed">
                                 <StackPanel x:Name="resultPanel5_1"/>
+                            </Border>
+                        </StackPanel>
+                    </Expander>
+
+                    <TextBlock Text="2. Background, Foreground, BorderBrush" FontSize="18" FontWeight="Bold" Margin="0,10,0,10"/>
+
+                    <GroupBox Header="색상 변경" Margin="0,0,0,8">
+                        <StackPanel>
+                            <DatePicker Background="LightYellow" BorderBrush="DarkOrange" BorderThickness="2" Width="200" HorizontalAlignment="Left" Margin="0,0,0,8"/>
+                            <DatePicker Background="LightCyan" Foreground="DarkBlue" BorderBrush="SteelBlue" BorderThickness="2" Width="200" HorizontalAlignment="Left"/>
+                        </StackPanel>
+                    </GroupBox>
+                    <Expander Style="{StaticResource CodeExpanderStyle}">
+                        <TextBox Style="{StaticResource CodeTextBoxStyle}" Text="&lt;DatePicker Background=&quot;LightYellow&quot;&#10;            BorderBrush=&quot;DarkOrange&quot;&#10;            BorderThickness=&quot;2&quot;/&gt;&#10;&#10;&lt;DatePicker Background=&quot;LightCyan&quot;&#10;            Foreground=&quot;DarkBlue&quot;&#10;            BorderBrush=&quot;SteelBlue&quot;&#10;            BorderThickness=&quot;2&quot;/&gt;"/>
+                    </Expander>
+                    <!-- 직접 해보기 5_2 -->
+                    <Expander Style="{StaticResource PracticeExpanderStyle}">
+                        <StackPanel>
+                            <TextBlock Text="문제: 월요일부터 시작하는 달력을 가진 DatePicker를 만들어보세요." FontWeight="Bold" Margin="0,0,0,8"/>
+                            <TextBox x:Name="txtPractice5_2" Style="{StaticResource PracticeInputStyle}" Text=""/>
+                            <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
+                                <Button Style="{StaticResource RunButtonStyle}" Tag="5_2" Click="BtnRun_Click" Margin="0,0,8,0"/>
+                                <Button Style="{StaticResource HintButtonStyle}" Tag="5_2" Click="BtnHint_Click" Margin="0,0,8,0"/>
+                                <Button Style="{StaticResource AnswerButtonStyle}" Tag="5_2" Click="BtnAnswer_Click"/>
+                            </StackPanel>
+                            <TextBlock x:Name="txtHint5_2" Text="힌트: FirstDayOfWeek 속성을 Monday로 설정합니다." Foreground="Blue" Margin="0,8,0,0" Visibility="Collapsed"/>
+                            <Border x:Name="resultBorder5_2" BorderBrush="#4CAF50" BorderThickness="1" Padding="10" Margin="0,10,0,0" Visibility="Collapsed">
+                                <StackPanel x:Name="resultPanel5_2"/>
                             </Border>
                         </StackPanel>
                     </Expander>
@@ -587,21 +661,19 @@
                     <Expander Style="{StaticResource CodeExpanderStyle}">
                         <TextBox Style="{StaticResource CodeTextBoxStyle}" Text="&lt;DatePicker IsEnabled=&quot;False&quot; SelectedDate=&quot;2025-01-01&quot;/&gt;&#10;&#10;&lt;DatePicker Visibility=&quot;Hidden&quot;/&gt;&#10;&lt;DatePicker Visibility=&quot;Collapsed&quot;/&gt;"/>
                     </Expander>
-
-                    <!-- 직접 해보기 5_2 -->
+                    <!-- 직접 해보기 5_3 (코드 비교) -->
                     <Expander Style="{StaticResource PracticeExpanderStyle}">
                         <StackPanel>
-                            <TextBlock Text="문제: 월요일부터 시작하는 달력을 가진 DatePicker를 만들어보세요." FontWeight="Bold" Margin="0,0,0,8"/>
-                            <TextBox x:Name="txtPractice5_2" Style="{StaticResource PracticeInputStyle}" Text=""/>
+                            <TextBlock Text="문제: DatePicker에 오늘 날짜를 선택하는 C# 메서드를 작성하세요." FontWeight="Bold" Margin="0,0,0,8"/>
+                            <TextBlock Text="(myDatePicker라는 이름의 DatePicker가 있다고 가정)" Foreground="Gray" Margin="0,0,0,8"/>
+                            <TextBox x:Name="txtPractice5_3" Style="{StaticResource PracticeInputStyle}" Text="" MinHeight="80"/>
                             <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
-                                <Button Style="{StaticResource RunButtonStyle}" Tag="5_2" Click="BtnRun_Click" Margin="0,0,8,0"/>
-                                <Button Style="{StaticResource HintButtonStyle}" Tag="5_2" Click="BtnHint_Click" Margin="0,0,8,0"/>
-                                <Button Style="{StaticResource AnswerButtonStyle}" Tag="5_2" Click="BtnAnswer_Click"/>
+                                <Button Content="확인" Tag="5_3" Click="BtnCheck_Click" Padding="16,6" Background="#9C27B0" Foreground="White" BorderThickness="0" Margin="0,0,8,0"/>
+                                <Button Style="{StaticResource HintButtonStyle}" Tag="5_3" Click="BtnHint_Click" Margin="0,0,8,0"/>
+                                <Button Style="{StaticResource AnswerButtonStyle}" Tag="5_3" Click="BtnAnswer_Click"/>
                             </StackPanel>
-                            <TextBlock x:Name="txtHint5_2" Text="힌트: FirstDayOfWeek 속성을 Monday로 설정합니다." Foreground="Blue" Margin="0,8,0,0" Visibility="Collapsed"/>
-                            <Border x:Name="resultBorder5_2" BorderBrush="#4CAF50" BorderThickness="1" Padding="10" Margin="0,10,0,0" Visibility="Collapsed">
-                                <StackPanel x:Name="resultPanel5_2"/>
-                            </Border>
+                            <TextBlock x:Name="txtHint5_3" Text="힌트: SelectedDate 속성에 DateTime.Today를 할당합니다." Foreground="Blue" Margin="0,8,0,0" Visibility="Collapsed"/>
+                            <TextBlock x:Name="txtResult5_3" Text="" Margin="0,8,0,0" Visibility="Collapsed"/>
                         </StackPanel>
                     </Expander>
 
@@ -621,22 +693,27 @@
                     <Expander Style="{StaticResource CodeExpanderStyle}">
                         <TextBox Style="{StaticResource CodeTextBoxStyle}" Text="&lt;!-- XAML --&gt;&#10;&lt;DatePicker x:Name=&quot;dpCodeBehind&quot;/&gt;&#10;&lt;Button Content=&quot;오늘 선택&quot; Click=&quot;SelectToday_Click&quot;/&gt;&#10;&lt;Button Content=&quot;선택 해제&quot; Click=&quot;ClearDate_Click&quot;/&gt;&#10;&lt;Button Content=&quot;Long 형식 전환&quot; Click=&quot;ToggleFormat_Click&quot;/&gt;&#10;&lt;TextBlock x:Name=&quot;tbCodeBehindResult&quot;/&gt;&#10;&#10;// C# 코드비하인드&#10;private void SelectToday_Click(object sender, RoutedEventArgs e)&#10;{&#10;    dpCodeBehind.SelectedDate = DateTime.Today;&#10;    tbCodeBehindResult.Text = &quot;오늘 선택: &quot; + DateTime.Today.ToString(&quot;yyyy-MM-dd&quot;);&#10;}&#10;&#10;private void ClearDate_Click(object sender, RoutedEventArgs e)&#10;{&#10;    dpCodeBehind.SelectedDate = null;&#10;    tbCodeBehindResult.Text = &quot;선택이 해제되었습니다.&quot;;&#10;}&#10;&#10;private void ToggleFormat_Click(object sender, RoutedEventArgs e)&#10;{&#10;    if (dpCodeBehind.SelectedDateFormat == DatePickerFormat.Short)&#10;    {&#10;        dpCodeBehind.SelectedDateFormat = DatePickerFormat.Long;&#10;        tbCodeBehindResult.Text = &quot;Long 형식으로 변경&quot;;&#10;    }&#10;    else&#10;    {&#10;        dpCodeBehind.SelectedDateFormat = DatePickerFormat.Short;&#10;        tbCodeBehindResult.Text = &quot;Short 형식으로 변경&quot;;&#10;    }&#10;}"/>
                     </Expander>
-
-                    <!-- 직접 해보기 5_3 (코드 비교) -->
+                    <!-- 직접 해보기 5_4 -->
                     <Expander Style="{StaticResource PracticeExpanderStyle}">
-                        <StackPanel>
-                            <TextBlock Text="문제: DatePicker에 오늘 날짜를 선택하는 C# 메서드를 작성하세요." FontWeight="Bold" Margin="0,0,0,8"/>
-                            <TextBlock Text="(myDatePicker라는 이름의 DatePicker가 있다고 가정)" Foreground="Gray" Margin="0,0,0,8"/>
-                            <TextBox x:Name="txtPractice5_3" Style="{StaticResource PracticeInputStyle}" Text="" MinHeight="80"/>
+                        <StackPanel Margin="10">
+                            <TextBlock Text="과제: 버튼으로 오늘 날짜를 넣고, 다른 버튼으로 선택을 해제하는 두 핸들러를 완성하세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
+                            <TextBox x:Name="txtPractice5_4"
+                                     Style="{StaticResource PracticeInputStyle}"
+                                     Height="120" AcceptsReturn="True"
+                                     Text="private void SelectToday_Click(object sender, RoutedEventArgs e)&#10;{&#10;    &#10;}&#10;&#10;private void ClearDate_Click(object sender, RoutedEventArgs e)&#10;{&#10;    &#10;}"/>
                             <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
-                                <Button Content="확인" Tag="5_3" Click="BtnCheck_Click" Padding="16,6" Background="#9C27B0" Foreground="White" BorderThickness="0" Margin="0,0,8,0"/>
-                                <Button Style="{StaticResource HintButtonStyle}" Tag="5_3" Click="BtnHint_Click" Margin="0,0,8,0"/>
-                                <Button Style="{StaticResource AnswerButtonStyle}" Tag="5_3" Click="BtnAnswer_Click"/>
+                                <Button Content="확인" Style="{StaticResource RunButtonStyle}" Click="BtnCheck_Click" Tag="5_4"/>
+                                <Button Content="힌트" Style="{StaticResource HintButtonStyle}" Click="BtnHint_Click" Tag="5_4"/>
+                                <Button Content="정답 보기" Style="{StaticResource AnswerButtonStyle}" Click="BtnAnswer_Click" Tag="5_4"/>
                             </StackPanel>
-                            <TextBlock x:Name="txtHint5_3" Text="힌트: SelectedDate 속성에 DateTime.Today를 할당합니다." Foreground="Blue" Margin="0,8,0,0" Visibility="Collapsed"/>
-                            <TextBlock x:Name="txtResult5_3" Text="" Margin="0,8,0,0" Visibility="Collapsed"/>
+                            <TextBlock x:Name="txtHint5_4"
+                                       Text="힌트: DatePicker 도 SelectedDate 로 값을 넣고, null 로 지웁니다."
+                                       Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                            <TextBlock x:Name="txtResult5_4" Margin="0,8,0,0" FontWeight="Bold"
+                                       Visibility="Collapsed" TextWrapping="Wrap"/>
                         </StackPanel>
                     </Expander>
+
                 </StackPanel>
             </ScrollViewer>
         </TabItem>

@@ -11,7 +11,7 @@
         <Style x:Key="CodeExpanderStyle" TargetType="Expander">
             <Setter Property="Header" Value="코드 보기"/>
             <Setter Property="Margin" Value="0,0,0,12"/>
-            <Setter Property="IsExpanded" Value="False"/>
+            <Setter Property="IsExpanded" Value="True"/>
         </Style>
         <Style x:Key="CodeTextBoxStyle" TargetType="TextBox">
             <Setter Property="IsReadOnly" Value="True"/>
@@ -90,6 +90,26 @@
                         <Expander Style="{StaticResource CodeExpanderStyle}">
                             <TextBox Style="{StaticResource CodeTextBoxStyle}" Text="// 코드에서 ItemsSource 설정&#10;List&lt;string&gt; items = new List&lt;string&gt; { &quot;항목1&quot;, &quot;항목2&quot;, &quot;항목3&quot; };&#10;listBox.ItemsSource = items;&#10;&#10;// XAML에서 ItemsSource 바인딩&#10;&lt;ListBox ItemsSource=&quot;{Binding MyCollection}&quot;/&gt;"/>
                         </Expander>
+                        <!-- 직접 해보기 1_1 -->
+                        <Expander Style="{StaticResource PracticeExpanderStyle}">
+                            <StackPanel Margin="10">
+                                <TextBlock Text="과제: ListBox 에 문자열 항목 3개를 직접 넣어 보세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
+                                <TextBox x:Name="txtPractice1_1"
+                                         Style="{StaticResource PracticeInputStyle}"
+                                         Text="&lt;ListBox Width=&quot;200&quot; Height=&quot;90&quot;&gt;&#10;    &#10;&lt;/ListBox&gt;"/>
+                                <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
+                                    <Button Content="실행" Style="{StaticResource RunButtonStyle}" Click="BtnRun_Click" Tag="1_1"/>
+                                    <Button Content="힌트" Style="{StaticResource HintButtonStyle}" Click="BtnHint_Click" Tag="1_1"/>
+                                    <Button Content="정답 보기" Style="{StaticResource AnswerButtonStyle}" Click="BtnAnswer_Click" Tag="1_1"/>
+                                </StackPanel>
+                                <TextBlock x:Name="txtHint1_1"
+                                           Text="힌트: ListBoxItem 을 나열하거나 문자열을 그대로 넣어도 됩니다."
+                                           Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                                <Border x:Name="resultBorder1_1" Background="White" Margin="0,8,0,0" Padding="10" Visibility="Collapsed">
+                                    <StackPanel x:Name="resultPanel1_1"/>
+                                </Border>
+                            </StackPanel>
+                        </Expander>
 
                         <!-- 간단한 문자열 리스트 -->
                         <GroupBox Header="문자열 리스트 바인딩" Margin="0,0,0,10">
@@ -100,6 +120,24 @@
                         </GroupBox>
                         <Expander Style="{StaticResource CodeExpanderStyle}">
                             <TextBox Style="{StaticResource CodeTextBoxStyle}" Text="// C# 코드&#10;List&lt;string&gt; fruits = new List&lt;string&gt;&#10;{&#10;    &quot;사과&quot;, &quot;바나나&quot;, &quot;오렌지&quot;, &quot;포도&quot;, &quot;딸기&quot;&#10;};&#10;stringListBox.ItemsSource = fruits;&#10;&#10;// XAML&#10;&lt;ListBox x:Name=&quot;stringListBox&quot;/&gt;"/>
+                        </Expander>
+                        <!-- 직접 해보기 1_2 -->
+                        <Expander Style="{StaticResource PracticeExpanderStyle}">
+                            <StackPanel Margin="10">
+                                <TextBlock Text="과제: 코드에서 List&lt;string&gt; 을 만들어 ListBox(list)의 ItemsSource 로 지정하세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
+                                <TextBox x:Name="txtPractice1_2"
+                                         Style="{StaticResource PracticeInputStyle}"
+                                         Text="private void Load_Click(object sender, RoutedEventArgs e)&#10;{&#10;    &#10;}"/>
+                                <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
+                                    <Button Content="확인" Style="{StaticResource RunButtonStyle}" Click="BtnCheck_Click" Tag="1_2"/>
+                                    <Button Content="힌트" Style="{StaticResource HintButtonStyle}" Click="BtnHint_Click" Tag="1_2"/>
+                                    <Button Content="정답 보기" Style="{StaticResource AnswerButtonStyle}" Click="BtnAnswer_Click" Tag="1_2"/>
+                                </StackPanel>
+                                <TextBlock x:Name="txtHint1_2"
+                                           Text="힌트: new List&lt;string&gt; { ... } 를 만들고 list.ItemsSource 에 대입합니다."
+                                           Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                                <TextBlock x:Name="txtResult1_2" Margin="0,8,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                            </StackPanel>
                         </Expander>
 
                         <!-- 객체 리스트 -->
@@ -114,7 +152,27 @@
                         <Expander Style="{StaticResource CodeExpanderStyle}">
                             <TextBox Style="{StaticResource CodeTextBoxStyle}" Text="// Person 클래스&#10;public class Person&#10;{&#10;    public string 이름 { get; set; }&#10;    public int 나이 { get; set; }&#10;}&#10;&#10;// 바인딩&#10;List&lt;Person&gt; people = new List&lt;Person&gt;&#10;{&#10;    new Person { 이름 = &quot;홍길동&quot;, 나이 = 30 },&#10;    new Person { 이름 = &quot;김영희&quot;, 나이 = 25 }&#10;};&#10;personListBox.ItemsSource = people;&#10;&#10;// DisplayMemberPath로 표시할 속성 지정&#10;&lt;ListBox DisplayMemberPath=&quot;이름&quot;/&gt;"/>
                         </Expander>
-
+                        <!-- 직접 해보기 1_3 -->
+                        <Expander Style="{StaticResource PracticeExpanderStyle}">
+                            <StackPanel Margin="10">
+                                <TextBlock Text="과제: ListBox 에 항목을 넣고 세 번째 항목이 선택된 상태로 두세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
+                                <TextBox x:Name="txtPractice1_3"
+                                         Style="{StaticResource PracticeInputStyle}"
+                                         Text="&lt;ListBox Width=&quot;200&quot; Height=&quot;90&quot;&gt;&#10;    &lt;ListBoxItem Content=&quot;하나&quot;/&gt;&#10;    &lt;ListBoxItem Content=&quot;둘&quot;/&gt;&#10;    &lt;ListBoxItem Content=&quot;셋&quot;/&gt;&#10;&lt;/ListBox&gt;"/>
+                                <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
+                                    <Button Content="실행" Style="{StaticResource RunButtonStyle}" Click="BtnRun_Click" Tag="1_3"/>
+                                    <Button Content="힌트" Style="{StaticResource HintButtonStyle}" Click="BtnHint_Click" Tag="1_3"/>
+                                    <Button Content="정답 보기" Style="{StaticResource AnswerButtonStyle}" Click="BtnAnswer_Click" Tag="1_3"/>
+                                </StackPanel>
+                                <TextBlock x:Name="txtHint1_3"
+                                           Text="힌트: SelectedIndex 는 0부터 셉니다."
+                                           Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                                <Border x:Name="resultBorder1_3" Background="White" Margin="0,8,0,0" Padding="10" Visibility="Collapsed">
+                                    <StackPanel x:Name="resultPanel1_3"/>
+                                </Border>
+                            </StackPanel>
+                        </Expander>
+                        
                         <!-- SelectedItem 바인딩 -->
                         <GroupBox Header="SelectedItem / SelectedValue" Margin="0,0,0,10">
                             <Grid Margin="10">
@@ -139,67 +197,28 @@
                         <Expander Style="{StaticResource CodeExpanderStyle}">
                             <TextBox Style="{StaticResource CodeTextBoxStyle}" Text="&lt;ListBox x:Name=&quot;listBox&quot;&#10;         DisplayMemberPath=&quot;이름&quot;&#10;         SelectedValuePath=&quot;나이&quot;&#10;         SelectionChanged=&quot;ListBox_SelectionChanged&quot;/&gt;&#10;&#10;// SelectionChanged 이벤트&#10;private void ListBox_SelectionChanged(...)&#10;{&#10;    var person = listBox.SelectedItem as Person;&#10;    var age = listBox.SelectedValue;  // 나이 값&#10;}"/>
                         </Expander>
+                        <!-- 직접 해보기 1_4 -->
+                        <Expander Style="{StaticResource PracticeExpanderStyle}">
+                            <StackPanel Margin="10">
+                                <TextBlock Text="과제: ListBox에서 고른 항목의 Person과 SelectedValue(나이)를 각각 꺼내는 핸들러를 완성하세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
+                                <TextBox x:Name="txtPractice1_4"
+                                         Style="{StaticResource PracticeInputStyle}"
+                                         Height="120" AcceptsReturn="True"
+                                         Text="private void ListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)&#10;{&#10;    &#10;}"/>
+                                <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
+                                    <Button Content="확인" Style="{StaticResource RunButtonStyle}" Click="BtnCheck_Click" Tag="1_4"/>
+                                    <Button Content="힌트" Style="{StaticResource HintButtonStyle}" Click="BtnHint_Click" Tag="1_4"/>
+                                    <Button Content="정답 보기" Style="{StaticResource AnswerButtonStyle}" Click="BtnAnswer_Click" Tag="1_4"/>
+                                </StackPanel>
+                                <TextBlock x:Name="txtHint1_4"
+                                           Text="힌트: SelectedItem 은 객체 자체, SelectedValue 는 SelectedValuePath 가 가리키는 값입니다."
+                                           Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                                <TextBlock x:Name="txtResult1_4" Margin="0,8,0,0" FontWeight="Bold"
+                                           Visibility="Collapsed" TextWrapping="Wrap"/>
+                            </StackPanel>
+                        </Expander>
                     
-                    <!-- 직접 해보기 1_1 -->
-                    <Expander Style="{StaticResource PracticeExpanderStyle}">
-                        <StackPanel Margin="10">
-                            <TextBlock Text="과제: ListBox 에 문자열 항목 3개를 직접 넣어 보세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
-                            <TextBox x:Name="txtPractice1_1"
-                                     Style="{StaticResource PracticeInputStyle}"
-                                     Text="&lt;ListBox Width=&quot;200&quot; Height=&quot;90&quot;&gt;&#10;    &#10;&lt;/ListBox&gt;"/>
-                            <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
-                                <Button Content="실행" Style="{StaticResource RunButtonStyle}" Click="BtnRun_Click" Tag="1_1"/>
-                                <Button Content="힌트" Style="{StaticResource HintButtonStyle}" Click="BtnHint_Click" Tag="1_1"/>
-                                <Button Content="정답 보기" Style="{StaticResource AnswerButtonStyle}" Click="BtnAnswer_Click" Tag="1_1"/>
-                            </StackPanel>
-                            <TextBlock x:Name="txtHint1_1"
-                                       Text="힌트: ListBoxItem 을 나열하거나 문자열을 그대로 넣어도 됩니다."
-                                       Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
-                            <Border x:Name="resultBorder1_1" Background="White" Margin="0,8,0,0" Padding="10" Visibility="Collapsed">
-                                <StackPanel x:Name="resultPanel1_1"/>
-                            </Border>
-                        </StackPanel>
-                    </Expander>
 
-                    <!-- 직접 해보기 1_2 -->
-                    <Expander Style="{StaticResource PracticeExpanderStyle}">
-                        <StackPanel Margin="10">
-                            <TextBlock Text="과제: 코드에서 List&lt;string&gt; 을 만들어 ListBox(list)의 ItemsSource 로 지정하세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
-                            <TextBox x:Name="txtPractice1_2"
-                                     Style="{StaticResource PracticeInputStyle}"
-                                     Text="private void Load_Click(object sender, RoutedEventArgs e)&#10;{&#10;    &#10;}"/>
-                            <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
-                                <Button Content="확인" Style="{StaticResource RunButtonStyle}" Click="BtnCheck_Click" Tag="1_2"/>
-                                <Button Content="힌트" Style="{StaticResource HintButtonStyle}" Click="BtnHint_Click" Tag="1_2"/>
-                                <Button Content="정답 보기" Style="{StaticResource AnswerButtonStyle}" Click="BtnAnswer_Click" Tag="1_2"/>
-                            </StackPanel>
-                            <TextBlock x:Name="txtHint1_2"
-                                       Text="힌트: new List&lt;string&gt; { ... } 를 만들고 list.ItemsSource 에 대입합니다."
-                                       Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
-                            <TextBlock x:Name="txtResult1_2" Margin="0,8,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
-                        </StackPanel>
-                    </Expander>
-
-<!-- 직접 해보기 1_3 -->
-<Expander Style="{StaticResource PracticeExpanderStyle}">
-    <StackPanel Margin="10">
-        <TextBlock Text="과제: ListBox 에 항목을 넣고 세 번째 항목이 선택된 상태로 두세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
-        <TextBox x:Name="txtPractice1_3"
-                 Style="{StaticResource PracticeInputStyle}"
-                 Text="&lt;ListBox Width=&quot;200&quot; Height=&quot;90&quot;&gt;&#10;    &lt;ListBoxItem Content=&quot;하나&quot;/&gt;&#10;    &lt;ListBoxItem Content=&quot;둘&quot;/&gt;&#10;    &lt;ListBoxItem Content=&quot;셋&quot;/&gt;&#10;&lt;/ListBox&gt;"/>
-        <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
-            <Button Content="실행" Style="{StaticResource RunButtonStyle}" Click="BtnRun_Click" Tag="1_3"/>
-            <Button Content="힌트" Style="{StaticResource HintButtonStyle}" Click="BtnHint_Click" Tag="1_3"/>
-            <Button Content="정답 보기" Style="{StaticResource AnswerButtonStyle}" Click="BtnAnswer_Click" Tag="1_3"/>
-        </StackPanel>
-        <TextBlock x:Name="txtHint1_3"
-                   Text="힌트: SelectedIndex 는 0부터 셉니다."
-                   Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
-        <Border x:Name="resultBorder1_3" Background="White" Margin="0,8,0,0" Padding="10" Visibility="Collapsed">
-            <StackPanel x:Name="resultPanel1_3"/>
-        </Border>
-    </StackPanel>
-</Expander>
 </StackPanel>
                 </ScrollViewer>
             </TabItem>
@@ -230,6 +249,26 @@
                         <Expander Style="{StaticResource CodeExpanderStyle}">
                             <TextBox Style="{StaticResource CodeTextBoxStyle}" Text="&lt;ListBox ItemsSource=&quot;{Binding}&quot;&gt;&#10;    &lt;ListBox.ItemTemplate&gt;&#10;        &lt;DataTemplate&gt;&#10;            &lt;!-- 여기에 항목 UI 정의 --&gt;&#10;            &lt;TextBlock Text=&quot;{Binding 속성명}&quot;/&gt;&#10;        &lt;/DataTemplate&gt;&#10;    &lt;/ListBox.ItemTemplate&gt;&#10;&lt;/ListBox&gt;"/>
                         </Expander>
+                        <!-- 직접 해보기 2_1 -->
+                        <Expander Style="{StaticResource PracticeExpanderStyle}">
+                            <StackPanel Margin="10">
+                                <TextBlock Text="과제: ListBox 의 DataTemplate 을 만들어 각 항목을 굵은 글씨로 표시하세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
+                                <TextBox x:Name="txtPractice2_1"
+                                         Style="{StaticResource PracticeInputStyle}"
+                                         Text="&lt;ListBox Width=&quot;220&quot; Height=&quot;90&quot;&gt;&#10;    &#10;&lt;/ListBox&gt;"/>
+                                <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
+                                    <Button Content="실행" Style="{StaticResource RunButtonStyle}" Click="BtnRun_Click" Tag="2_1"/>
+                                    <Button Content="힌트" Style="{StaticResource HintButtonStyle}" Click="BtnHint_Click" Tag="2_1"/>
+                                    <Button Content="정답 보기" Style="{StaticResource AnswerButtonStyle}" Click="BtnAnswer_Click" Tag="2_1"/>
+                                </StackPanel>
+                                <TextBlock x:Name="txtHint2_1"
+                                           Text="힌트: &lt;ListBox.ItemTemplate&gt;&lt;DataTemplate&gt;...&lt;/DataTemplate&gt;&lt;/ListBox.ItemTemplate&gt; 구조입니다."
+                                           Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                                <Border x:Name="resultBorder2_1" Background="White" Margin="0,8,0,0" Padding="10" Visibility="Collapsed">
+                                    <StackPanel x:Name="resultPanel2_1"/>
+                                </Border>
+                            </StackPanel>
+                        </Expander>
 
                         <!-- 기본 DataTemplate -->
                         <GroupBox Header="기본 DataTemplate 예제" Margin="0,0,0,10">
@@ -251,6 +290,26 @@
                         </GroupBox>
                         <Expander Style="{StaticResource CodeExpanderStyle}">
                             <TextBox Style="{StaticResource CodeTextBoxStyle}" Text="&lt;ListBox.ItemTemplate&gt;&#10;    &lt;DataTemplate&gt;&#10;        &lt;StackPanel Orientation=&quot;Horizontal&quot;&gt;&#10;            &lt;TextBlock Text=&quot;{Binding 이름}&quot; FontWeight=&quot;Bold&quot; Width=&quot;80&quot;/&gt;&#10;            &lt;TextBlock Text=&quot;{Binding 나이, StringFormat={}{0}세}&quot;/&gt;&#10;            &lt;ProgressBar Value=&quot;{Binding 별점}&quot; Maximum=&quot;100&quot;/&gt;&#10;        &lt;/StackPanel&gt;&#10;    &lt;/DataTemplate&gt;&#10;&lt;/ListBox.ItemTemplate&gt;"/>
+                        </Expander>
+                        <!-- 직접 해보기 2_2 -->
+                        <Expander Style="{StaticResource PracticeExpanderStyle}">
+                            <StackPanel Margin="10">
+                                <TextBlock Text="과제: DataTemplate 안에 색 사각형과 이름을 가로로 나란히 배치하세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
+                                <TextBox x:Name="txtPractice2_2"
+                                         Style="{StaticResource PracticeInputStyle}"
+                                         Text="&lt;ListBox Width=&quot;220&quot; Height=&quot;90&quot;&gt;&#10;    &lt;ListBox.ItemTemplate&gt;&#10;        &lt;DataTemplate&gt;&#10;            &#10;        &lt;/DataTemplate&gt;&#10;    &lt;/ListBox.ItemTemplate&gt;&#10;&lt;/ListBox&gt;"/>
+                                <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
+                                    <Button Content="실행" Style="{StaticResource RunButtonStyle}" Click="BtnRun_Click" Tag="2_2"/>
+                                    <Button Content="힌트" Style="{StaticResource HintButtonStyle}" Click="BtnHint_Click" Tag="2_2"/>
+                                    <Button Content="정답 보기" Style="{StaticResource AnswerButtonStyle}" Click="BtnAnswer_Click" Tag="2_2"/>
+                                </StackPanel>
+                                <TextBlock x:Name="txtHint2_2"
+                                           Text="힌트: StackPanel Orientation=&quot;Horizontal&quot; 안에 Rectangle 과 TextBlock 을 넣습니다."
+                                           Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                                <Border x:Name="resultBorder2_2" Background="White" Margin="0,8,0,0" Padding="10" Visibility="Collapsed">
+                                    <StackPanel x:Name="resultPanel2_2"/>
+                                </Border>
+                            </StackPanel>
                         </Expander>
 
                         <!-- 카드 스타일 DataTemplate -->
@@ -291,69 +350,28 @@
                         <Expander Style="{StaticResource CodeExpanderStyle}">
                             <TextBox Style="{StaticResource CodeTextBoxStyle}" Text="&lt;!-- WrapPanel로 항목 배치 --&gt;&#10;&lt;ListBox.ItemsPanel&gt;&#10;    &lt;ItemsPanelTemplate&gt;&#10;        &lt;WrapPanel/&gt;&#10;    &lt;/ItemsPanelTemplate&gt;&#10;&lt;/ListBox.ItemsPanel&gt;&#10;&#10;&lt;!-- 카드 스타일 템플릿 --&gt;&#10;&lt;DataTemplate&gt;&#10;    &lt;Border CornerRadius=&quot;8&quot; Padding=&quot;15&quot;&gt;&#10;        &lt;Border.Effect&gt;&#10;            &lt;DropShadowEffect BlurRadius=&quot;5&quot;/&gt;&#10;        &lt;/Border.Effect&gt;&#10;        &lt;StackPanel&gt;&#10;            &lt;Ellipse Fill=&quot;SteelBlue&quot;/&gt;&#10;            &lt;TextBlock Text=&quot;{Binding 이름}&quot;/&gt;&#10;        &lt;/StackPanel&gt;&#10;    &lt;/Border&gt;&#10;&lt;/DataTemplate&gt;"/>
                         </Expander>
-                    
-                    <!-- 직접 해보기 2_1 -->
-                    <Expander Style="{StaticResource PracticeExpanderStyle}">
-                        <StackPanel Margin="10">
-                            <TextBlock Text="과제: ListBox 의 DataTemplate 을 만들어 각 항목을 굵은 글씨로 표시하세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
-                            <TextBox x:Name="txtPractice2_1"
-                                     Style="{StaticResource PracticeInputStyle}"
-                                     Text="&lt;ListBox Width=&quot;220&quot; Height=&quot;90&quot;&gt;&#10;    &#10;&lt;/ListBox&gt;"/>
-                            <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
-                                <Button Content="실행" Style="{StaticResource RunButtonStyle}" Click="BtnRun_Click" Tag="2_1"/>
-                                <Button Content="힌트" Style="{StaticResource HintButtonStyle}" Click="BtnHint_Click" Tag="2_1"/>
-                                <Button Content="정답 보기" Style="{StaticResource AnswerButtonStyle}" Click="BtnAnswer_Click" Tag="2_1"/>
+                        <!-- 직접 해보기 2_3 -->
+                        <Expander Style="{StaticResource PracticeExpanderStyle}">
+                            <StackPanel Margin="10">
+                                <TextBlock Text="과제: DataTemplate 안에서 두 값을 위아래로 배치하세요. 이름은 굵게, 설명은 작게입니다." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
+                                <TextBox x:Name="txtPractice2_3"
+                                         Style="{StaticResource PracticeInputStyle}"
+                                         Text="&lt;ListBox Width=&quot;240&quot; Height=&quot;110&quot;&gt;&#10;    &lt;ListBox.ItemTemplate&gt;&#10;        &lt;DataTemplate&gt;&#10;            &#10;        &lt;/DataTemplate&gt;&#10;    &lt;/ListBox.ItemTemplate&gt;&#10;&lt;/ListBox&gt;"/>
+                                <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
+                                    <Button Content="실행" Style="{StaticResource RunButtonStyle}" Click="BtnRun_Click" Tag="2_3"/>
+                                    <Button Content="힌트" Style="{StaticResource HintButtonStyle}" Click="BtnHint_Click" Tag="2_3"/>
+                                    <Button Content="정답 보기" Style="{StaticResource AnswerButtonStyle}" Click="BtnAnswer_Click" Tag="2_3"/>
+                                </StackPanel>
+                                <TextBlock x:Name="txtHint2_3"
+                                           Text="힌트: StackPanel 안에 TextBlock 두 개를 세로로 넣습니다."
+                                           Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                                <Border x:Name="resultBorder2_3" Background="White" Margin="0,8,0,0" Padding="10" Visibility="Collapsed">
+                                    <StackPanel x:Name="resultPanel2_3"/>
+                                </Border>
                             </StackPanel>
-                            <TextBlock x:Name="txtHint2_1"
-                                       Text="힌트: &lt;ListBox.ItemTemplate&gt;&lt;DataTemplate&gt;...&lt;/DataTemplate&gt;&lt;/ListBox.ItemTemplate&gt; 구조입니다."
-                                       Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
-                            <Border x:Name="resultBorder2_1" Background="White" Margin="0,8,0,0" Padding="10" Visibility="Collapsed">
-                                <StackPanel x:Name="resultPanel2_1"/>
-                            </Border>
-                        </StackPanel>
-                    </Expander>
+                        </Expander>
+                                            
 
-                    <!-- 직접 해보기 2_2 -->
-                    <Expander Style="{StaticResource PracticeExpanderStyle}">
-                        <StackPanel Margin="10">
-                            <TextBlock Text="과제: DataTemplate 안에 색 사각형과 이름을 가로로 나란히 배치하세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
-                            <TextBox x:Name="txtPractice2_2"
-                                     Style="{StaticResource PracticeInputStyle}"
-                                     Text="&lt;ListBox Width=&quot;220&quot; Height=&quot;90&quot;&gt;&#10;    &lt;ListBox.ItemTemplate&gt;&#10;        &lt;DataTemplate&gt;&#10;            &#10;        &lt;/DataTemplate&gt;&#10;    &lt;/ListBox.ItemTemplate&gt;&#10;&lt;/ListBox&gt;"/>
-                            <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
-                                <Button Content="실행" Style="{StaticResource RunButtonStyle}" Click="BtnRun_Click" Tag="2_2"/>
-                                <Button Content="힌트" Style="{StaticResource HintButtonStyle}" Click="BtnHint_Click" Tag="2_2"/>
-                                <Button Content="정답 보기" Style="{StaticResource AnswerButtonStyle}" Click="BtnAnswer_Click" Tag="2_2"/>
-                            </StackPanel>
-                            <TextBlock x:Name="txtHint2_2"
-                                       Text="힌트: StackPanel Orientation=&quot;Horizontal&quot; 안에 Rectangle 과 TextBlock 을 넣습니다."
-                                       Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
-                            <Border x:Name="resultBorder2_2" Background="White" Margin="0,8,0,0" Padding="10" Visibility="Collapsed">
-                                <StackPanel x:Name="resultPanel2_2"/>
-                            </Border>
-                        </StackPanel>
-                    </Expander>
-
-<!-- 직접 해보기 2_3 -->
-<Expander Style="{StaticResource PracticeExpanderStyle}">
-    <StackPanel Margin="10">
-        <TextBlock Text="과제: DataTemplate 안에서 두 값을 위아래로 배치하세요. 이름은 굵게, 설명은 작게입니다." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
-        <TextBox x:Name="txtPractice2_3"
-                 Style="{StaticResource PracticeInputStyle}"
-                 Text="&lt;ListBox Width=&quot;240&quot; Height=&quot;110&quot;&gt;&#10;    &lt;ListBox.ItemTemplate&gt;&#10;        &lt;DataTemplate&gt;&#10;            &#10;        &lt;/DataTemplate&gt;&#10;    &lt;/ListBox.ItemTemplate&gt;&#10;&lt;/ListBox&gt;"/>
-        <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
-            <Button Content="실행" Style="{StaticResource RunButtonStyle}" Click="BtnRun_Click" Tag="2_3"/>
-            <Button Content="힌트" Style="{StaticResource HintButtonStyle}" Click="BtnHint_Click" Tag="2_3"/>
-            <Button Content="정답 보기" Style="{StaticResource AnswerButtonStyle}" Click="BtnAnswer_Click" Tag="2_3"/>
-        </StackPanel>
-        <TextBlock x:Name="txtHint2_3"
-                   Text="힌트: StackPanel 안에 TextBlock 두 개를 세로로 넣습니다."
-                   Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
-        <Border x:Name="resultBorder2_3" Background="White" Margin="0,8,0,0" Padding="10" Visibility="Collapsed">
-            <StackPanel x:Name="resultPanel2_3"/>
-        </Border>
-    </StackPanel>
-</Expander>
 </StackPanel>
                 </ScrollViewer>
             </TabItem>
@@ -396,6 +414,26 @@
                         <Expander Style="{StaticResource CodeExpanderStyle}">
                             <TextBox Style="{StaticResource CodeTextBoxStyle}" Text="&lt;ListView ItemsSource=&quot;{Binding}&quot;&gt;&#10;    &lt;ListView.View&gt;&#10;        &lt;GridView&gt;&#10;            &lt;GridViewColumn Header=&quot;이름&quot; DisplayMemberBinding=&quot;{Binding 이름}&quot;/&gt;&#10;            &lt;GridViewColumn Header=&quot;나이&quot; DisplayMemberBinding=&quot;{Binding 나이}&quot;/&gt;&#10;        &lt;/GridView&gt;&#10;    &lt;/ListView.View&gt;&#10;&lt;/ListView&gt;"/>
                         </Expander>
+                        <!-- 직접 해보기 3_1 -->
+                        <Expander Style="{StaticResource PracticeExpanderStyle}">
+                            <StackPanel Margin="10">
+                                <TextBlock Text="과제: ListView 에 GridView 를 적용하고 &quot;이름&quot;, &quot;나이&quot; 두 열을 만드세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
+                                <TextBox x:Name="txtPractice3_1"
+                                         Style="{StaticResource PracticeInputStyle}"
+                                         Text="&lt;ListView Width=&quot;260&quot; Height=&quot;100&quot;&gt;&#10;    &#10;&lt;/ListView&gt;"/>
+                                <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
+                                    <Button Content="실행" Style="{StaticResource RunButtonStyle}" Click="BtnRun_Click" Tag="3_1"/>
+                                    <Button Content="힌트" Style="{StaticResource HintButtonStyle}" Click="BtnHint_Click" Tag="3_1"/>
+                                    <Button Content="정답 보기" Style="{StaticResource AnswerButtonStyle}" Click="BtnAnswer_Click" Tag="3_1"/>
+                                </StackPanel>
+                                <TextBlock x:Name="txtHint3_1"
+                                           Text="힌트: &lt;ListView.View&gt;&lt;GridView&gt;&lt;GridViewColumn Header=&quot;..&quot; DisplayMemberBinding=&quot;{Binding ..}&quot;/&gt;"
+                                           Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                                <Border x:Name="resultBorder3_1" Background="White" Margin="0,8,0,0" Padding="10" Visibility="Collapsed">
+                                    <StackPanel x:Name="resultPanel3_1"/>
+                                </Border>
+                            </StackPanel>
+                        </Expander>
 
                         <!-- 기본 GridView -->
                         <GroupBox Header="기본 GridView" Margin="0,0,0,10">
@@ -414,6 +452,26 @@
                         </GroupBox>
                         <Expander Style="{StaticResource CodeExpanderStyle}">
                             <TextBox Style="{StaticResource CodeTextBoxStyle}" Text="&lt;ListView.View&gt;&#10;    &lt;GridView&gt;&#10;        &lt;GridViewColumn Header=&quot;이름&quot; Width=&quot;100&quot; &#10;                        DisplayMemberBinding=&quot;{Binding 이름}&quot;/&gt;&#10;        &lt;GridViewColumn Header=&quot;나이&quot; Width=&quot;60&quot; &#10;                        DisplayMemberBinding=&quot;{Binding 나이}&quot;/&gt;&#10;    &lt;/GridView&gt;&#10;&lt;/ListView.View&gt;"/>
+                        </Expander>
+                        <!-- 직접 해보기 3_2 -->
+                        <Expander Style="{StaticResource PracticeExpanderStyle}">
+                            <StackPanel Margin="10">
+                                <TextBlock Text="과제: ListView 의 열 하나에 CellTemplate 을 써서 값을 파란 글씨로 표시하세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
+                                <TextBox x:Name="txtPractice3_2"
+                                         Style="{StaticResource PracticeInputStyle}"
+                                         Text="&lt;ListView Width=&quot;260&quot; Height=&quot;100&quot;&gt;&#10;    &lt;ListView.View&gt;&#10;        &lt;GridView&gt;&#10;            &lt;GridViewColumn Header=&quot;이름&quot; Width=&quot;200&quot;&gt;&#10;                &#10;            &lt;/GridViewColumn&gt;&#10;        &lt;/GridView&gt;&#10;    &lt;/ListView.View&gt;&#10;&lt;/ListView&gt;"/>
+                                <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
+                                    <Button Content="실행" Style="{StaticResource RunButtonStyle}" Click="BtnRun_Click" Tag="3_2"/>
+                                    <Button Content="힌트" Style="{StaticResource HintButtonStyle}" Click="BtnHint_Click" Tag="3_2"/>
+                                    <Button Content="정답 보기" Style="{StaticResource AnswerButtonStyle}" Click="BtnAnswer_Click" Tag="3_2"/>
+                                </StackPanel>
+                                <TextBlock x:Name="txtHint3_2"
+                                           Text="힌트: &lt;GridViewColumn.CellTemplate&gt;&lt;DataTemplate&gt;...&lt;/DataTemplate&gt;&lt;/GridViewColumn.CellTemplate&gt;"
+                                           Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                                <Border x:Name="resultBorder3_2" Background="White" Margin="0,8,0,0" Padding="10" Visibility="Collapsed">
+                                    <StackPanel x:Name="resultPanel3_2"/>
+                                </Border>
+                            </StackPanel>
                         </Expander>
 
                         <!-- CellTemplate -->
@@ -453,69 +511,28 @@
                         <Expander Style="{StaticResource CodeExpanderStyle}">
                             <TextBox Style="{StaticResource CodeTextBoxStyle}" Text="&lt;GridViewColumn Header=&quot;별점&quot; Width=&quot;150&quot;&gt;&#10;    &lt;GridViewColumn.CellTemplate&gt;&#10;        &lt;DataTemplate&gt;&#10;            &lt;StackPanel Orientation=&quot;Horizontal&quot;&gt;&#10;                &lt;ProgressBar Value=&quot;{Binding 별점}&quot; Maximum=&quot;100&quot;/&gt;&#10;                &lt;TextBlock Text=&quot;{Binding 별점, StringFormat={}{0}점}&quot;/&gt;&#10;            &lt;/StackPanel&gt;&#10;        &lt;/DataTemplate&gt;&#10;    &lt;/GridViewColumn.CellTemplate&gt;&#10;&lt;/GridViewColumn&gt;"/>
                         </Expander>
-                    
-                    <!-- 직접 해보기 3_1 -->
-                    <Expander Style="{StaticResource PracticeExpanderStyle}">
-                        <StackPanel Margin="10">
-                            <TextBlock Text="과제: ListView 에 GridView 를 적용하고 &quot;이름&quot;, &quot;나이&quot; 두 열을 만드세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
-                            <TextBox x:Name="txtPractice3_1"
-                                     Style="{StaticResource PracticeInputStyle}"
-                                     Text="&lt;ListView Width=&quot;260&quot; Height=&quot;100&quot;&gt;&#10;    &#10;&lt;/ListView&gt;"/>
-                            <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
-                                <Button Content="실행" Style="{StaticResource RunButtonStyle}" Click="BtnRun_Click" Tag="3_1"/>
-                                <Button Content="힌트" Style="{StaticResource HintButtonStyle}" Click="BtnHint_Click" Tag="3_1"/>
-                                <Button Content="정답 보기" Style="{StaticResource AnswerButtonStyle}" Click="BtnAnswer_Click" Tag="3_1"/>
+                        <!-- 직접 해보기 3_3 -->
+                        <Expander Style="{StaticResource PracticeExpanderStyle}">
+                            <StackPanel Margin="10">
+                                <TextBlock Text="과제: ListView 에 세 번째 열을 추가하고 열 너비를 각각 다르게 주세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
+                                <TextBox x:Name="txtPractice3_3"
+                                         Style="{StaticResource PracticeInputStyle}"
+                                         Text="&lt;ListView Width=&quot;320&quot; Height=&quot;110&quot;&gt;&#10;    &lt;ListView.View&gt;&#10;        &lt;GridView&gt;&#10;            &lt;GridViewColumn Header=&quot;이름&quot; Width=&quot;120&quot; DisplayMemberBinding=&quot;{Binding Name}&quot;/&gt;&#10;            &#10;        &lt;/GridView&gt;&#10;    &lt;/ListView.View&gt;&#10;&lt;/ListView&gt;"/>
+                                <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
+                                    <Button Content="실행" Style="{StaticResource RunButtonStyle}" Click="BtnRun_Click" Tag="3_3"/>
+                                    <Button Content="힌트" Style="{StaticResource HintButtonStyle}" Click="BtnHint_Click" Tag="3_3"/>
+                                    <Button Content="정답 보기" Style="{StaticResource AnswerButtonStyle}" Click="BtnAnswer_Click" Tag="3_3"/>
+                                </StackPanel>
+                                <TextBlock x:Name="txtHint3_3"
+                                           Text="힌트: GridViewColumn 을 더 넣고 Width 를 다르게 지정합니다."
+                                           Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                                <Border x:Name="resultBorder3_3" Background="White" Margin="0,8,0,0" Padding="10" Visibility="Collapsed">
+                                    <StackPanel x:Name="resultPanel3_3"/>
+                                </Border>
                             </StackPanel>
-                            <TextBlock x:Name="txtHint3_1"
-                                       Text="힌트: &lt;ListView.View&gt;&lt;GridView&gt;&lt;GridViewColumn Header=&quot;..&quot; DisplayMemberBinding=&quot;{Binding ..}&quot;/&gt;"
-                                       Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
-                            <Border x:Name="resultBorder3_1" Background="White" Margin="0,8,0,0" Padding="10" Visibility="Collapsed">
-                                <StackPanel x:Name="resultPanel3_1"/>
-                            </Border>
-                        </StackPanel>
-                    </Expander>
+                        </Expander>
+                                            
 
-                    <!-- 직접 해보기 3_2 -->
-                    <Expander Style="{StaticResource PracticeExpanderStyle}">
-                        <StackPanel Margin="10">
-                            <TextBlock Text="과제: ListView 의 열 하나에 CellTemplate 을 써서 값을 파란 글씨로 표시하세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
-                            <TextBox x:Name="txtPractice3_2"
-                                     Style="{StaticResource PracticeInputStyle}"
-                                     Text="&lt;ListView Width=&quot;260&quot; Height=&quot;100&quot;&gt;&#10;    &lt;ListView.View&gt;&#10;        &lt;GridView&gt;&#10;            &lt;GridViewColumn Header=&quot;이름&quot; Width=&quot;200&quot;&gt;&#10;                &#10;            &lt;/GridViewColumn&gt;&#10;        &lt;/GridView&gt;&#10;    &lt;/ListView.View&gt;&#10;&lt;/ListView&gt;"/>
-                            <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
-                                <Button Content="실행" Style="{StaticResource RunButtonStyle}" Click="BtnRun_Click" Tag="3_2"/>
-                                <Button Content="힌트" Style="{StaticResource HintButtonStyle}" Click="BtnHint_Click" Tag="3_2"/>
-                                <Button Content="정답 보기" Style="{StaticResource AnswerButtonStyle}" Click="BtnAnswer_Click" Tag="3_2"/>
-                            </StackPanel>
-                            <TextBlock x:Name="txtHint3_2"
-                                       Text="힌트: &lt;GridViewColumn.CellTemplate&gt;&lt;DataTemplate&gt;...&lt;/DataTemplate&gt;&lt;/GridViewColumn.CellTemplate&gt;"
-                                       Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
-                            <Border x:Name="resultBorder3_2" Background="White" Margin="0,8,0,0" Padding="10" Visibility="Collapsed">
-                                <StackPanel x:Name="resultPanel3_2"/>
-                            </Border>
-                        </StackPanel>
-                    </Expander>
-
-<!-- 직접 해보기 3_3 -->
-<Expander Style="{StaticResource PracticeExpanderStyle}">
-    <StackPanel Margin="10">
-        <TextBlock Text="과제: ListView 에 세 번째 열을 추가하고 열 너비를 각각 다르게 주세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
-        <TextBox x:Name="txtPractice3_3"
-                 Style="{StaticResource PracticeInputStyle}"
-                 Text="&lt;ListView Width=&quot;320&quot; Height=&quot;110&quot;&gt;&#10;    &lt;ListView.View&gt;&#10;        &lt;GridView&gt;&#10;            &lt;GridViewColumn Header=&quot;이름&quot; Width=&quot;120&quot; DisplayMemberBinding=&quot;{Binding Name}&quot;/&gt;&#10;            &#10;        &lt;/GridView&gt;&#10;    &lt;/ListView.View&gt;&#10;&lt;/ListView&gt;"/>
-        <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
-            <Button Content="실행" Style="{StaticResource RunButtonStyle}" Click="BtnRun_Click" Tag="3_3"/>
-            <Button Content="힌트" Style="{StaticResource HintButtonStyle}" Click="BtnHint_Click" Tag="3_3"/>
-            <Button Content="정답 보기" Style="{StaticResource AnswerButtonStyle}" Click="BtnAnswer_Click" Tag="3_3"/>
-        </StackPanel>
-        <TextBlock x:Name="txtHint3_3"
-                   Text="힌트: GridViewColumn 을 더 넣고 Width 를 다르게 지정합니다."
-                   Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
-        <Border x:Name="resultBorder3_3" Background="White" Margin="0,8,0,0" Padding="10" Visibility="Collapsed">
-            <StackPanel x:Name="resultPanel3_3"/>
-        </Border>
-    </StackPanel>
-</Expander>
 </StackPanel>
                 </ScrollViewer>
             </TabItem>
@@ -538,6 +555,26 @@
                         </GroupBox>
                         <Expander Style="{StaticResource CodeExpanderStyle}">
                             <TextBox Style="{StaticResource CodeTextBoxStyle}" Text="// 문자열 리스트&#10;comboBox.ItemsSource = new List&lt;string&gt; { &quot;옵션1&quot;, &quot;옵션2&quot; };&#10;&#10;// 객체 리스트&#10;comboBox.ItemsSource = personList;&#10;comboBox.DisplayMemberPath = &quot;이름&quot;;&#10;&#10;// XAML&#10;&lt;ComboBox ItemsSource=&quot;{Binding}&quot; DisplayMemberPath=&quot;이름&quot;/&gt;"/>
+                        </Expander>
+                        <!-- 직접 해보기 4_1 -->
+                        <Expander Style="{StaticResource PracticeExpanderStyle}">
+                            <StackPanel Margin="10">
+                                <TextBlock Text="과제: ComboBox 에 항목 3개를 넣고 두 번째 항목이 처음부터 선택되게 하세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
+                                <TextBox x:Name="txtPractice4_1"
+                                         Style="{StaticResource PracticeInputStyle}"
+                                         Text="&lt;ComboBox Width=&quot;160&quot;&gt;&#10;    &#10;&lt;/ComboBox&gt;"/>
+                                <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
+                                    <Button Content="실행" Style="{StaticResource RunButtonStyle}" Click="BtnRun_Click" Tag="4_1"/>
+                                    <Button Content="힌트" Style="{StaticResource HintButtonStyle}" Click="BtnHint_Click" Tag="4_1"/>
+                                    <Button Content="정답 보기" Style="{StaticResource AnswerButtonStyle}" Click="BtnAnswer_Click" Tag="4_1"/>
+                                </StackPanel>
+                                <TextBlock x:Name="txtHint4_1"
+                                           Text="힌트: SelectedIndex 는 0부터 시작합니다."
+                                           Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                                <Border x:Name="resultBorder4_1" Background="White" Margin="0,8,0,0" Padding="10" Visibility="Collapsed">
+                                    <StackPanel x:Name="resultPanel4_1"/>
+                                </Border>
+                            </StackPanel>
                         </Expander>
 
                         <!-- SelectedItem 바인딩 -->
@@ -564,6 +601,26 @@
                         <Expander Style="{StaticResource CodeExpanderStyle}">
                             <TextBox Style="{StaticResource CodeTextBoxStyle}" Text="&lt;ComboBox DisplayMemberPath=&quot;이름&quot;&#10;          SelectedValuePath=&quot;나이&quot;&#10;          SelectionChanged=&quot;ComboBox_SelectionChanged&quot;/&gt;&#10;&#10;private void ComboBox_SelectionChanged(...)&#10;{&#10;    var person = comboBox.SelectedItem as Person;&#10;    int age = (int)comboBox.SelectedValue;&#10;}"/>
                         </Expander>
+                        <!-- 직접 해보기 4_2 -->
+                        <Expander Style="{StaticResource PracticeExpanderStyle}">
+                            <StackPanel Margin="10">
+                                <TextBlock Text="과제: ComboBox 가 객체 목록을 받을 때 화면에는 Name 을, 값으로는 Id 를 쓰도록 지정하세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
+                                <TextBox x:Name="txtPractice4_2"
+                                         Style="{StaticResource PracticeInputStyle}"
+                                         Text="&lt;ComboBox Width=&quot;160&quot;/&gt;"/>
+                                <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
+                                    <Button Content="실행" Style="{StaticResource RunButtonStyle}" Click="BtnRun_Click" Tag="4_2"/>
+                                    <Button Content="힌트" Style="{StaticResource HintButtonStyle}" Click="BtnHint_Click" Tag="4_2"/>
+                                    <Button Content="정답 보기" Style="{StaticResource AnswerButtonStyle}" Click="BtnAnswer_Click" Tag="4_2"/>
+                                </StackPanel>
+                                <TextBlock x:Name="txtHint4_2"
+                                           Text="힌트: DisplayMemberPath 와 SelectedValuePath 를 함께 씁니다."
+                                           Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                                <Border x:Name="resultBorder4_2" Background="White" Margin="0,8,0,0" Padding="10" Visibility="Collapsed">
+                                    <StackPanel x:Name="resultPanel4_2"/>
+                                </Border>
+                            </StackPanel>
+                        </Expander>
 
                         <!-- ItemTemplate -->
                         <GroupBox Header="ComboBox ItemTemplate" Margin="0,0,0,10">
@@ -588,7 +645,27 @@
                         <Expander Style="{StaticResource CodeExpanderStyle}">
                             <TextBox Style="{StaticResource CodeTextBoxStyle}" Text="&lt;ComboBox.ItemTemplate&gt;&#10;    &lt;DataTemplate&gt;&#10;        &lt;StackPanel Orientation=&quot;Horizontal&quot;&gt;&#10;            &lt;Ellipse Width=&quot;20&quot; Height=&quot;20&quot; Fill=&quot;CornflowerBlue&quot;/&gt;&#10;            &lt;StackPanel&gt;&#10;                &lt;TextBlock Text=&quot;{Binding 이름}&quot; FontWeight=&quot;Bold&quot;/&gt;&#10;                &lt;TextBlock Text=&quot;{Binding 나이, StringFormat={}{0}세}&quot;/&gt;&#10;            &lt;/StackPanel&gt;&#10;        &lt;/StackPanel&gt;&#10;    &lt;/DataTemplate&gt;&#10;&lt;/ComboBox.ItemTemplate&gt;"/>
                         </Expander>
-
+                        <!-- 직접 해보기 4_3 -->
+                        <Expander Style="{StaticResource PracticeExpanderStyle}">
+                            <StackPanel Margin="10">
+                                <TextBlock Text="과제: ComboBox 를 직접 입력도 가능하게 만드세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
+                                <TextBox x:Name="txtPractice4_3"
+                                         Style="{StaticResource PracticeInputStyle}"
+                                         Text="&lt;ComboBox Width=&quot;180&quot;&gt;&#10;    &lt;ComboBoxItem Content=&quot;서울&quot;/&gt;&#10;    &lt;ComboBoxItem Content=&quot;부산&quot;/&gt;&#10;&lt;/ComboBox&gt;"/>
+                                <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
+                                    <Button Content="실행" Style="{StaticResource RunButtonStyle}" Click="BtnRun_Click" Tag="4_3"/>
+                                    <Button Content="힌트" Style="{StaticResource HintButtonStyle}" Click="BtnHint_Click" Tag="4_3"/>
+                                    <Button Content="정답 보기" Style="{StaticResource AnswerButtonStyle}" Click="BtnAnswer_Click" Tag="4_3"/>
+                                </StackPanel>
+                                <TextBlock x:Name="txtHint4_3"
+                                           Text="힌트: IsEditable=&quot;True&quot; 를 지정하면 사용자가 직접 칠 수 있습니다."
+                                           Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                                <Border x:Name="resultBorder4_3" Background="White" Margin="0,8,0,0" Padding="10" Visibility="Collapsed">
+                                    <StackPanel x:Name="resultPanel4_3"/>
+                                </Border>
+                            </StackPanel>
+                        </Expander>
+                        
                         <!-- 편집 가능한 ComboBox -->
                         <GroupBox Header="편집 가능한 ComboBox (IsEditable)" Margin="0,0,0,10">
                             <StackPanel Margin="10">
@@ -602,69 +679,28 @@
                         <Expander Style="{StaticResource CodeExpanderStyle}">
                             <TextBox Style="{StaticResource CodeTextBoxStyle}" Text="&lt;ComboBox IsEditable=&quot;True&quot; ItemsSource=&quot;{Binding}&quot;/&gt;&#10;&#10;// IsEditable=True: 사용자가 직접 텍스트 입력 가능&#10;// IsEditable=False: 목록에서만 선택 가능 (기본값)"/>
                         </Expander>
+                        <!-- 직접 해보기 4_4 -->
+                        <Expander Style="{StaticResource PracticeExpanderStyle}">
+                            <StackPanel Margin="10">
+                                <TextBlock Text="과제: 목록에 없는 값도 직접 입력할 수 있는 ComboBox를 만드세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
+                                <TextBox x:Name="txtPractice4_4"
+                                         Style="{StaticResource PracticeInputStyle}"
+                                         Text="&lt;ComboBox Width=&quot;180&quot;&gt;&#10;    &lt;ComboBoxItem Content=&quot;사과&quot;/&gt;&#10;    &lt;ComboBoxItem Content=&quot;바나나&quot;/&gt;&#10;&lt;/ComboBox&gt;"/>
+                                <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
+                                    <Button Content="실행" Style="{StaticResource RunButtonStyle}" Click="BtnRun_Click" Tag="4_4"/>
+                                    <Button Content="힌트" Style="{StaticResource HintButtonStyle}" Click="BtnHint_Click" Tag="4_4"/>
+                                    <Button Content="정답 보기" Style="{StaticResource AnswerButtonStyle}" Click="BtnAnswer_Click" Tag="4_4"/>
+                                </StackPanel>
+                                <TextBlock x:Name="txtHint4_4"
+                                           Text="힌트: IsEditable=&quot;True&quot; 를 주면 입력란이 생깁니다."
+                                           Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                                <Border x:Name="resultBorder4_4" Background="White" Margin="0,8,0,0" Padding="10" Visibility="Collapsed">
+                                    <StackPanel x:Name="resultPanel4_4"/>
+                                </Border>
+                            </StackPanel>
+                        </Expander>
                     
-                    <!-- 직접 해보기 4_1 -->
-                    <Expander Style="{StaticResource PracticeExpanderStyle}">
-                        <StackPanel Margin="10">
-                            <TextBlock Text="과제: ComboBox 에 항목 3개를 넣고 두 번째 항목이 처음부터 선택되게 하세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
-                            <TextBox x:Name="txtPractice4_1"
-                                     Style="{StaticResource PracticeInputStyle}"
-                                     Text="&lt;ComboBox Width=&quot;160&quot;&gt;&#10;    &#10;&lt;/ComboBox&gt;"/>
-                            <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
-                                <Button Content="실행" Style="{StaticResource RunButtonStyle}" Click="BtnRun_Click" Tag="4_1"/>
-                                <Button Content="힌트" Style="{StaticResource HintButtonStyle}" Click="BtnHint_Click" Tag="4_1"/>
-                                <Button Content="정답 보기" Style="{StaticResource AnswerButtonStyle}" Click="BtnAnswer_Click" Tag="4_1"/>
-                            </StackPanel>
-                            <TextBlock x:Name="txtHint4_1"
-                                       Text="힌트: SelectedIndex 는 0부터 시작합니다."
-                                       Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
-                            <Border x:Name="resultBorder4_1" Background="White" Margin="0,8,0,0" Padding="10" Visibility="Collapsed">
-                                <StackPanel x:Name="resultPanel4_1"/>
-                            </Border>
-                        </StackPanel>
-                    </Expander>
 
-                    <!-- 직접 해보기 4_2 -->
-                    <Expander Style="{StaticResource PracticeExpanderStyle}">
-                        <StackPanel Margin="10">
-                            <TextBlock Text="과제: ComboBox 가 객체 목록을 받을 때 화면에는 Name 을, 값으로는 Id 를 쓰도록 지정하세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
-                            <TextBox x:Name="txtPractice4_2"
-                                     Style="{StaticResource PracticeInputStyle}"
-                                     Text="&lt;ComboBox Width=&quot;160&quot;/&gt;"/>
-                            <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
-                                <Button Content="실행" Style="{StaticResource RunButtonStyle}" Click="BtnRun_Click" Tag="4_2"/>
-                                <Button Content="힌트" Style="{StaticResource HintButtonStyle}" Click="BtnHint_Click" Tag="4_2"/>
-                                <Button Content="정답 보기" Style="{StaticResource AnswerButtonStyle}" Click="BtnAnswer_Click" Tag="4_2"/>
-                            </StackPanel>
-                            <TextBlock x:Name="txtHint4_2"
-                                       Text="힌트: DisplayMemberPath 와 SelectedValuePath 를 함께 씁니다."
-                                       Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
-                            <Border x:Name="resultBorder4_2" Background="White" Margin="0,8,0,0" Padding="10" Visibility="Collapsed">
-                                <StackPanel x:Name="resultPanel4_2"/>
-                            </Border>
-                        </StackPanel>
-                    </Expander>
-
-<!-- 직접 해보기 4_3 -->
-<Expander Style="{StaticResource PracticeExpanderStyle}">
-    <StackPanel Margin="10">
-        <TextBlock Text="과제: ComboBox 를 직접 입력도 가능하게 만드세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
-        <TextBox x:Name="txtPractice4_3"
-                 Style="{StaticResource PracticeInputStyle}"
-                 Text="&lt;ComboBox Width=&quot;180&quot;&gt;&#10;    &lt;ComboBoxItem Content=&quot;서울&quot;/&gt;&#10;    &lt;ComboBoxItem Content=&quot;부산&quot;/&gt;&#10;&lt;/ComboBox&gt;"/>
-        <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
-            <Button Content="실행" Style="{StaticResource RunButtonStyle}" Click="BtnRun_Click" Tag="4_3"/>
-            <Button Content="힌트" Style="{StaticResource HintButtonStyle}" Click="BtnHint_Click" Tag="4_3"/>
-            <Button Content="정답 보기" Style="{StaticResource AnswerButtonStyle}" Click="BtnAnswer_Click" Tag="4_3"/>
-        </StackPanel>
-        <TextBlock x:Name="txtHint4_3"
-                   Text="힌트: IsEditable=&quot;True&quot; 를 지정하면 사용자가 직접 칠 수 있습니다."
-                   Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
-        <Border x:Name="resultBorder4_3" Background="White" Margin="0,8,0,0" Padding="10" Visibility="Collapsed">
-            <StackPanel x:Name="resultPanel4_3"/>
-        </Border>
-    </StackPanel>
-</Expander>
 </StackPanel>
                 </ScrollViewer>
             </TabItem>
@@ -707,6 +743,24 @@
                         <Expander Style="{StaticResource CodeExpanderStyle}">
                             <TextBox Style="{StaticResource CodeTextBoxStyle}" Text="using System.Collections.ObjectModel;&#10;&#10;// ObservableCollection 선언&#10;ObservableCollection&lt;Person&gt; people = new ObservableCollection&lt;Person&gt;();&#10;&#10;// 항목 추가 - UI 자동 업데이트&#10;people.Add(new Person { 이름 = &quot;홍길동&quot; });&#10;&#10;// 항목 삭제 - UI 자동 업데이트&#10;people.Remove(person);"/>
                         </Expander>
+                        <!-- 직접 해보기 5_1 -->
+                        <Expander Style="{StaticResource PracticeExpanderStyle}">
+                            <StackPanel Margin="10">
+                                <TextBlock Text="과제: ObservableCollection&lt;string&gt;(items)에 새 항목을 추가하는 핸들러를 작성하세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
+                                <TextBox x:Name="txtPractice5_1"
+                                         Style="{StaticResource PracticeInputStyle}"
+                                         Text="private void Add_Click(object sender, RoutedEventArgs e)&#10;{&#10;    &#10;}"/>
+                                <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
+                                    <Button Content="확인" Style="{StaticResource RunButtonStyle}" Click="BtnCheck_Click" Tag="5_1"/>
+                                    <Button Content="힌트" Style="{StaticResource HintButtonStyle}" Click="BtnHint_Click" Tag="5_1"/>
+                                    <Button Content="정답 보기" Style="{StaticResource AnswerButtonStyle}" Click="BtnAnswer_Click" Tag="5_1"/>
+                                </StackPanel>
+                                <TextBlock x:Name="txtHint5_1"
+                                           Text="힌트: ObservableCollection 은 Add 만 해도 화면이 자동으로 갱신됩니다."
+                                           Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                                <TextBlock x:Name="txtResult5_1" Margin="0,8,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                            </StackPanel>
+                        </Expander>
 
                         <!-- 동적 추가/삭제 데모 -->
                         <GroupBox Header="동적 추가/삭제 데모" Margin="0,0,0,10">
@@ -735,6 +789,24 @@
                         <Expander Style="{StaticResource CodeExpanderStyle}">
                             <TextBox Style="{StaticResource CodeTextBoxStyle}" Text="// ObservableCollection 선언&#10;ObservableCollection&lt;Person&gt; people = new();&#10;observableListBox.ItemsSource = people;&#10;&#10;// 추가&#10;private void AddPerson_Click(...)&#10;{&#10;    people.Add(new Person { 이름 = name, 나이 = age });&#10;    // UI가 자동으로 업데이트됨!&#10;}&#10;&#10;// 삭제&#10;private void RemovePerson_Click(...)&#10;{&#10;    people.Remove(selectedPerson);&#10;}&#10;&#10;// 전체 삭제&#10;people.Clear();"/>
                         </Expander>
+                        <!-- 직접 해보기 5_2 -->
+                        <Expander Style="{StaticResource PracticeExpanderStyle}">
+                            <StackPanel Margin="10">
+                                <TextBlock Text="과제: 선택된 항목을 ObservableCollection(items)에서 제거하는 핸들러를 작성하세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
+                                <TextBox x:Name="txtPractice5_2"
+                                         Style="{StaticResource PracticeInputStyle}"
+                                         Text="private void Remove_Click(object sender, RoutedEventArgs e)&#10;{&#10;    &#10;}"/>
+                                <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
+                                    <Button Content="확인" Style="{StaticResource RunButtonStyle}" Click="BtnCheck_Click" Tag="5_2"/>
+                                    <Button Content="힌트" Style="{StaticResource HintButtonStyle}" Click="BtnHint_Click" Tag="5_2"/>
+                                    <Button Content="정답 보기" Style="{StaticResource AnswerButtonStyle}" Click="BtnAnswer_Click" Tag="5_2"/>
+                                </StackPanel>
+                                <TextBlock x:Name="txtHint5_2"
+                                           Text="힌트: SelectedItem 이 null 이 아닐 때만 Remove 를 호출합니다."
+                                           Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                                <TextBlock x:Name="txtResult5_2" Margin="0,8,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                            </StackPanel>
+                        </Expander>
 
                         <!-- 컬렉션 변경 감지 -->
                         <GroupBox Header="CollectionChanged 이벤트" Margin="0,0,0,10">
@@ -752,63 +824,26 @@
                         <Expander Style="{StaticResource CodeExpanderStyle}">
                             <TextBox Style="{StaticResource CodeTextBoxStyle}" Text="// CollectionChanged 이벤트 구독&#10;people.CollectionChanged += (s, e) =&gt;&#10;{&#10;    switch (e.Action)&#10;    {&#10;        case NotifyCollectionChangedAction.Add:&#10;            Log(&quot;항목 추가됨&quot;);&#10;            break;&#10;        case NotifyCollectionChangedAction.Remove:&#10;            Log(&quot;항목 삭제됨&quot;);&#10;            break;&#10;        case NotifyCollectionChangedAction.Reset:&#10;            Log(&quot;컬렉션 초기화됨&quot;);&#10;            break;&#10;    }&#10;};"/>
                         </Expander>
-                    
-                    <!-- 직접 해보기 5_1 -->
-                    <Expander Style="{StaticResource PracticeExpanderStyle}">
-                        <StackPanel Margin="10">
-                            <TextBlock Text="과제: ObservableCollection&lt;string&gt;(items)에 새 항목을 추가하는 핸들러를 작성하세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
-                            <TextBox x:Name="txtPractice5_1"
-                                     Style="{StaticResource PracticeInputStyle}"
-                                     Text="private void Add_Click(object sender, RoutedEventArgs e)&#10;{&#10;    &#10;}"/>
-                            <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
-                                <Button Content="확인" Style="{StaticResource RunButtonStyle}" Click="BtnCheck_Click" Tag="5_1"/>
-                                <Button Content="힌트" Style="{StaticResource HintButtonStyle}" Click="BtnHint_Click" Tag="5_1"/>
-                                <Button Content="정답 보기" Style="{StaticResource AnswerButtonStyle}" Click="BtnAnswer_Click" Tag="5_1"/>
+                        <!-- 직접 해보기 5_3 -->
+                        <Expander Style="{StaticResource PracticeExpanderStyle}">
+                            <StackPanel Margin="10">
+                                <TextBlock Text="과제: ObservableCollection(items)을 통째로 비우는 핸들러를 작성하세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
+                                <TextBox x:Name="txtPractice5_3"
+                                         Style="{StaticResource PracticeInputStyle}"
+                                         Text="private void Clear_Click(object sender, RoutedEventArgs e)&#10;{&#10;    &#10;}"/>
+                                <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
+                                    <Button Content="확인" Style="{StaticResource RunButtonStyle}" Click="BtnCheck_Click" Tag="5_3"/>
+                                    <Button Content="힌트" Style="{StaticResource HintButtonStyle}" Click="BtnHint_Click" Tag="5_3"/>
+                                    <Button Content="정답 보기" Style="{StaticResource AnswerButtonStyle}" Click="BtnAnswer_Click" Tag="5_3"/>
+                                </StackPanel>
+                                <TextBlock x:Name="txtHint5_3"
+                                           Text="힌트: Clear() 하나면 화면 목록도 함께 비워집니다."
+                                           Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                                <TextBlock x:Name="txtResult5_3" Margin="0,8,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
                             </StackPanel>
-                            <TextBlock x:Name="txtHint5_1"
-                                       Text="힌트: ObservableCollection 은 Add 만 해도 화면이 자동으로 갱신됩니다."
-                                       Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
-                            <TextBlock x:Name="txtResult5_1" Margin="0,8,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
-                        </StackPanel>
-                    </Expander>
+                        </Expander>
+                                            
 
-                    <!-- 직접 해보기 5_2 -->
-                    <Expander Style="{StaticResource PracticeExpanderStyle}">
-                        <StackPanel Margin="10">
-                            <TextBlock Text="과제: 선택된 항목을 ObservableCollection(items)에서 제거하는 핸들러를 작성하세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
-                            <TextBox x:Name="txtPractice5_2"
-                                     Style="{StaticResource PracticeInputStyle}"
-                                     Text="private void Remove_Click(object sender, RoutedEventArgs e)&#10;{&#10;    &#10;}"/>
-                            <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
-                                <Button Content="확인" Style="{StaticResource RunButtonStyle}" Click="BtnCheck_Click" Tag="5_2"/>
-                                <Button Content="힌트" Style="{StaticResource HintButtonStyle}" Click="BtnHint_Click" Tag="5_2"/>
-                                <Button Content="정답 보기" Style="{StaticResource AnswerButtonStyle}" Click="BtnAnswer_Click" Tag="5_2"/>
-                            </StackPanel>
-                            <TextBlock x:Name="txtHint5_2"
-                                       Text="힌트: SelectedItem 이 null 이 아닐 때만 Remove 를 호출합니다."
-                                       Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
-                            <TextBlock x:Name="txtResult5_2" Margin="0,8,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
-                        </StackPanel>
-                    </Expander>
-
-<!-- 직접 해보기 5_3 -->
-<Expander Style="{StaticResource PracticeExpanderStyle}">
-    <StackPanel Margin="10">
-        <TextBlock Text="과제: ObservableCollection(items)을 통째로 비우는 핸들러를 작성하세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
-        <TextBox x:Name="txtPractice5_3"
-                 Style="{StaticResource PracticeInputStyle}"
-                 Text="private void Clear_Click(object sender, RoutedEventArgs e)&#10;{&#10;    &#10;}"/>
-        <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
-            <Button Content="확인" Style="{StaticResource RunButtonStyle}" Click="BtnCheck_Click" Tag="5_3"/>
-            <Button Content="힌트" Style="{StaticResource HintButtonStyle}" Click="BtnHint_Click" Tag="5_3"/>
-            <Button Content="정답 보기" Style="{StaticResource AnswerButtonStyle}" Click="BtnAnswer_Click" Tag="5_3"/>
-        </StackPanel>
-        <TextBlock x:Name="txtHint5_3"
-                   Text="힌트: Clear() 하나면 화면 목록도 함께 비워집니다."
-                   Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
-        <TextBlock x:Name="txtResult5_3" Margin="0,8,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
-    </StackPanel>
-</Expander>
 </StackPanel>
                 </ScrollViewer>
             </TabItem>

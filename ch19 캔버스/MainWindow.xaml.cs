@@ -20,6 +20,10 @@ namespace ch19_캔버스
         // 각 연습의 정답
         private readonly Dictionary<string, string> _answers = new()
         {
+            { "2_4", "<Canvas Height=\"100\" Background=\"#FFFDE7\">\n    <Button Content=\"위치 미지정\"/>\n    <Button Content=\"120,40\" Canvas.Left=\"120\" Canvas.Top=\"40\"/>\n</Canvas>" },
+            { "3_4", "private void BringRedToFront_Click(object sender, RoutedEventArgs e)\n{\n    Panel.SetZIndex(rectA, 1);\n    Panel.SetZIndex(rectB, 0);\n}" },
+            { "4_4", "<Path Stroke=\"Crimson\" StrokeThickness=\"2\" Fill=\"#FFEBEE\"\n      Data=\"M 0,50 L 25,0 L 50,50 L 25,100 Z\"/>" },
+            { "5_4", "<Canvas Width=\"150\" Height=\"100\" Background=\"#E8F5E9\" ClipToBounds=\"True\">\n    <Ellipse Fill=\"MediumSeaGreen\" Width=\"100\" Height=\"100\"\n             Canvas.Left=\"100\" Canvas.Top=\"40\"/>\n</Canvas>" },
             { "1_3", "<Canvas Height=\"140\" Background=\"#FAFAFA\">\n    <Rectangle Canvas.Left=\"20\" Canvas.Top=\"20\" Width=\"80\" Height=\"50\" Fill=\"SteelBlue\"/>\n</Canvas>" },
             { "2_3", "<Canvas Height=\"140\" Background=\"#FAFAFA\">\n    <Ellipse Canvas.Right=\"15\" Canvas.Bottom=\"15\" Width=\"50\" Height=\"50\" Fill=\"Tomato\"/>\n</Canvas>" },
             { "3_3", "<Canvas Height=\"140\" Background=\"#FAFAFA\">\n    <Rectangle Canvas.Left=\"20\" Canvas.Top=\"20\" Width=\"80\" Height=\"60\" Fill=\"Red\" Panel.ZIndex=\"1\"/>\n    <Rectangle Canvas.Left=\"50\" Canvas.Top=\"40\" Width=\"80\" Height=\"60\" Fill=\"Blue\" Panel.ZIndex=\"2\"/>\n    <Rectangle Canvas.Left=\"80\" Canvas.Top=\"30\" Width=\"80\" Height=\"60\" Fill=\"Green\" Panel.ZIndex=\"3\"/>\n</Canvas>" },
@@ -49,6 +53,7 @@ namespace ch19_캔버스
         // 코드 비교 검증용 필수 키워드
         private readonly Dictionary<string, string[]> _requiredKeywords = new()
         {
+            { "3_4", new[] { "Panel.SetZIndex", "rectA", "rectB" } },
             { "3_2", new[] { "Panel.SetZIndex", "element", "10" } },
             { "5_1", new[] { "Rectangle", "Width", "Height", "Fill", "Canvas.SetLeft", "Canvas.SetTop", "Children.Add" } },
             { "5_2", new[] { "UIElement", "sender", "CaptureMouse" } },

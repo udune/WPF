@@ -11,6 +11,10 @@ namespace ch9_라디오버튼
         // 각 연습의 정답
         private readonly Dictionary<string, string> _answers = new()
         {
+            { "1_4", "<RadioButton VerticalContentAlignment=\"Center\">\n    <StackPanel Orientation=\"Horizontal\">\n        <Ellipse Width=\"16\" Height=\"16\" Fill=\"Orange\"/>\n        <TextBlock Text=\"  오렌지\"/>\n    </StackPanel>\n</RadioButton>" },
+            { "2_4", "<StackPanel>\n    <RadioButton Content=\"LeftToRight\" Margin=\"0,4\"/>\n    <RadioButton Content=\"RightToLeft\" FlowDirection=\"RightToLeft\" Margin=\"0,4\"/>\n</StackPanel>" },
+            { "4_5", "<RadioButton Content=\"여백\" Padding=\"15\" Background=\"LightGray\" HorizontalAlignment=\"Left\"/>" },
+            { "5_4", "private void RbPreview_Checked(object sender, RoutedEventArgs e)\n{\n    if (rbPreviewRed.IsChecked == true)\n        brdPreview.Background = Brushes.Salmon;\n    else if (rbPreviewGreen.IsChecked == true)\n        brdPreview.Background = Brushes.SeaGreen;\n    else\n        brdPreview.Background = Brushes.SteelBlue;\n}" },
             { "2_3", "<StackPanel Orientation=\"Horizontal\">\n    <RadioButton Content=\"작게\" GroupName=\"size\" Margin=\"4\"/>\n    <RadioButton Content=\"크게\" GroupName=\"size\" Margin=\"4\"/>\n    <RadioButton Content=\"빨강\" GroupName=\"color\" Margin=\"4\"/>\n    <RadioButton Content=\"파랑\" GroupName=\"color\" Margin=\"4\"/>\n</StackPanel>" },
             // 탭 1: 기본 사용법
             { "1_1", "<RadioButton Content=\"좋아요\"/>" },
@@ -42,6 +46,7 @@ namespace ch9_라디오버튼
         // 코드 비교 검증용 필수 키워드
         private readonly Dictionary<string, string[]> _requiredKeywords = new()
         {
+            { "5_4", new[] { "IsChecked", "brdPreview.Background", "Brushes" } },
             { "5_1", new[] { "sender", "RadioButton", ".Content" } },
             { "5_2", new[] { "IsChecked", "true", "return" } },
             { "5_3", new[] { "IsChecked", "true" } },

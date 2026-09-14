@@ -189,6 +189,8 @@ namespace ch27_데이터바인딩3
         // 각 연습의 정답
         private readonly Dictionary<string, string> _answers = new()
         {
+            { "1_4", "private void ListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)\n{\n    var person = listBox.SelectedItem as Person;\n    var age = listBox.SelectedValue;\n}" },
+            { "4_4", "<ComboBox Width=\"180\" IsEditable=\"True\" Text=\"직접 입력해 보세요\">\n    <ComboBoxItem Content=\"사과\"/>\n    <ComboBoxItem Content=\"바나나\"/>\n</ComboBox>" },
             { "1_3", "<ListBox Width=\"200\" Height=\"90\" SelectedIndex=\"2\">\n    <ListBoxItem Content=\"하나\"/>\n    <ListBoxItem Content=\"둘\"/>\n    <ListBoxItem Content=\"셋\"/>\n</ListBox>" },
             { "2_3", "<ListBox Width=\"240\" Height=\"110\">\n    <ListBox.ItemTemplate>\n        <DataTemplate>\n            <StackPanel Margin=\"0,3,0,3\">\n                <TextBlock Text=\"{Binding Name}\" FontWeight=\"Bold\"/>\n                <TextBlock Text=\"{Binding Description}\" FontSize=\"11\" Foreground=\"Gray\"/>\n            </StackPanel>\n        </DataTemplate>\n    </ListBox.ItemTemplate>\n</ListBox>" },
             { "3_3", "<ListView Width=\"320\" Height=\"110\">\n    <ListView.View>\n        <GridView>\n            <GridViewColumn Header=\"이름\" Width=\"120\" DisplayMemberBinding=\"{Binding Name}\"/>\n            <GridViewColumn Header=\"나이\" Width=\"60\" DisplayMemberBinding=\"{Binding Age}\"/>\n            <GridViewColumn Header=\"도시\" Width=\"100\" DisplayMemberBinding=\"{Binding City}\"/>\n        </GridView>\n    </ListView.View>\n</ListView>" },
@@ -209,6 +211,7 @@ namespace ch27_데이터바인딩3
         // 코드 비교 검증용 필수 키워드
         private readonly Dictionary<string, string[]> _requiredKeywords = new()
         {
+            { "1_4", new[] { "SelectedItem", "SelectedValue" } },
             { "5_3", new[] { "items.Clear()" } },
             { "1_2", new[] { "List<string>", "ItemsSource" } },
             { "5_1", new[] { "items.Add" } },

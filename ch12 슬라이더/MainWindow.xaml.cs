@@ -11,6 +11,10 @@ namespace ch12_슬라이더
         // 각 연습의 정답
         private readonly Dictionary<string, string> _answers = new()
         {
+            { "1_4", "<Slider Value=\"60\" IsEnabled=\"False\"/>" },
+            { "2_4", "<Slider Width=\"150\" HorizontalAlignment=\"Right\"/>" },
+            { "5_4", "<Slider Width=\"200\" Minimum=\"0\" Maximum=\"100\" Value=\"50\"\n        TickFrequency=\"10\" TickPlacement=\"BottomRight\"\n        IsSnapToTickEnabled=\"True\"/>" },
+            { "5_5", "private void SldRGB_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)\n{\n    byte r = (byte)sldR.Value;\n    byte g = (byte)sldG.Value;\n    byte b = (byte)sldB.Value;\n    brushPreview.Color = Color.FromRgb(r, g, b);\n}" },
             // 탭 1: 기본 사용법
             { "1_1", "<Slider />" },
             { "1_2", "<Slider Minimum=\"0\" Maximum=\"200\" Value=\"100\"/>" },
@@ -42,6 +46,7 @@ namespace ch12_슬라이더
         // 코드 비교 검증용 필수 키워드
         private readonly Dictionary<string, string[]> _requiredKeywords = new()
         {
+            { "5_5", new[] { "Color.FromRgb", "sldR.Value", "(byte)" } },
             { "5_1", new[] { "e.NewValue", "Text" } },
             { "5_2", new[] { "ElementName", "Path", "Value" } },
             { "5_3", new[] { ".Value", "50" } },

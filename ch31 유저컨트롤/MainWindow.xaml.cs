@@ -52,6 +52,7 @@ namespace ch31_유저컨트롤
         // 각 연습의 정답
         private readonly Dictionary<string, string> _answers = new()
         {
+            { "5_4", "private int _maxLength = 100;\npublic int MaxLength\n{\n    get => _maxLength;\n    set\n    {\n        if (value > 0 && value <= 1000)\n        {\n            _maxLength = value;\n            OnPropertyChanged();\n        }\n    }\n}" },
             { "1_3", "<Border BorderBrush=\"#90A4AE\" BorderThickness=\"1\" Width=\"240\">\n    <DockPanel>\n        <Border DockPanel.Dock=\"Top\" Background=\"#90A4AE\">\n            <TextBlock Text=\"제목\" Foreground=\"White\" Margin=\"8,4\"/>\n        </Border>\n        <TextBlock Text=\"본문\" Margin=\"8\"/>\n    </DockPanel>\n</Border>" },
             { "2_3", "public static readonly DependencyProperty TitleProperty =\n    DependencyProperty.Register(\"Title\", typeof(string), typeof(MyControl),\n        new PropertyMetadata(\"제목 없음\"));" },
             { "3_3", "<StackPanel Width=\"240\">\n    <Border BorderBrush=\"#CCCCCC\" BorderThickness=\"1\" Padding=\"8\" Margin=\"0,0,0,6\"><TextBlock Text=\"항목 1\"/></Border>\n    <Border BorderBrush=\"#CCCCCC\" BorderThickness=\"1\" Padding=\"8\" Margin=\"0,0,0,6\"><TextBlock Text=\"항목 2\"/></Border>\n    <Border BorderBrush=\"#CCCCCC\" BorderThickness=\"1\" Padding=\"8\"><TextBlock Text=\"항목 3\"/></Border>\n</StackPanel>" },
@@ -72,6 +73,7 @@ namespace ch31_유저컨트롤
         // 코드 비교 검증용 필수 키워드
         private readonly Dictionary<string, string[]> _requiredKeywords = new()
         {
+            { "5_4", new[] { "get", "set", "_maxLength", "OnPropertyChanged" } },
             { "2_3", new[] { "PropertyMetadata", "Register" } },
             { "4_3", new[] { "get", "inputBox.Text", "set" } },
             { "5_3", new[] { "RegisterRoutedEvent", "RoutingStrategy", "RoutedEventHandler" } },

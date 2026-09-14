@@ -55,6 +55,7 @@ namespace ch30_탭컨트롤_모달_모달리스
         // 각 연습의 정답
         private readonly Dictionary<string, string> _answers = new()
         {
+            { "5_4", "private void Window_Closing(object sender, CancelEventArgs e)\n{\n    if (hasUnsavedChanges)\n    {\n        var result = MessageBox.Show(\"저장하지 않은 변경사항이 있습니다. 정말 닫으시겠습니까?\",\n                                     \"확인\", MessageBoxButton.YesNo, MessageBoxImage.Warning);\n        if (result == MessageBoxResult.No)\n        {\n            e.Cancel = true;\n        }\n    }\n}" },
             { "2_3", "<TabControl Height=\"120\" SelectedIndex=\"1\">\n    <TabItem Header=\"첫째\"/>\n    <TabItem Header=\"둘째\"/>\n    <TabItem Header=\"셋째\"/>\n</TabControl>" },
             { "3_3", "<TabControl Height=\"120\" TabStripPlacement=\"Bottom\">\n    <TabItem Header=\"가\" FontWeight=\"Bold\"/>\n    <TabItem Header=\"나\"/>\n</TabControl>" },
             { "4_3", "private void Center_Click(object sender, RoutedEventArgs e)\n{\n    Window1 window = new Window1();\n    window.Owner = this;\n    window.WindowStartupLocation = WindowStartupLocation.CenterOwner;\n    window.ShowDialog();\n}" },
@@ -72,6 +73,7 @@ namespace ch30_탭컨트롤_모달_모달리스
         // 코드 비교 검증용 필수 키워드
         private readonly Dictionary<string, string[]> _requiredKeywords = new()
         {
+            { "5_4", new[] { "MessageBox.Show", "MessageBoxResult.No", "e.Cancel" } },
             { "4_3", new[] { "Owner = this", "WindowStartupLocation", "ShowDialog" } },
             { "5_3", new[] { "DialogResult", "false" } },
             { "4_1", new[] { "new Window1", "ShowDialog" } },

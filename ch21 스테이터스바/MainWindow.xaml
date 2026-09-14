@@ -12,7 +12,7 @@
         <Style x:Key="CodeExpanderStyle" TargetType="Expander">
             <Setter Property="Header" Value="코드 보기"/>
             <Setter Property="Margin" Value="0,0,0,12"/>
-            <Setter Property="IsExpanded" Value="False"/>
+            <Setter Property="IsExpanded" Value="True"/>
         </Style>
         <Style x:Key="CodeTextBoxStyle" TargetType="TextBox">
             <Setter Property="IsReadOnly" Value="True"/>
@@ -92,41 +92,6 @@
                             </Expander>
                         </StackPanel>
                     </GroupBox>
-
-                    <!-- 예제 2: 여러 항목 -->
-                    <GroupBox Header="여러 StatusBarItem" Margin="0,0,0,15">
-                        <StackPanel>
-                            <StatusBar Height="25">
-                                <StatusBarItem Content="항목 1"/>
-                                <StatusBarItem Content="항목 2"/>
-                                <StatusBarItem Content="항목 3"/>
-                            </StatusBar>
-                            <Expander Style="{StaticResource CodeExpanderStyle}">
-                                <TextBox Style="{StaticResource CodeTextBoxStyle}"
-                                         Text="&lt;StatusBar&gt;&#10;    &lt;StatusBarItem Content=&quot;항목 1&quot;/&gt;&#10;    &lt;StatusBarItem Content=&quot;항목 2&quot;/&gt;&#10;    &lt;StatusBarItem Content=&quot;항목 3&quot;/&gt;&#10;&lt;/StatusBar&gt;"/>
-                            </Expander>
-                        </StackPanel>
-                    </GroupBox>
-
-                    <!-- 예제 3: Separator 사용 -->
-                    <GroupBox Header="Separator로 구분" Margin="0,0,0,15">
-                        <StackPanel>
-                            <StatusBar Height="25">
-                                <StatusBarItem Content="파일"/>
-                                <Separator/>
-                                <StatusBarItem Content="줄: 42"/>
-                                <Separator/>
-                                <StatusBarItem Content="열: 15"/>
-                                <Separator/>
-                                <StatusBarItem Content="UTF-8"/>
-                            </StatusBar>
-                            <Expander Style="{StaticResource CodeExpanderStyle}">
-                                <TextBox Style="{StaticResource CodeTextBoxStyle}"
-                                         Text="&lt;StatusBar&gt;&#10;    &lt;StatusBarItem Content=&quot;파일&quot;/&gt;&#10;    &lt;Separator/&gt;&#10;    &lt;StatusBarItem Content=&quot;줄: 42&quot;/&gt;&#10;    &lt;Separator/&gt;&#10;    &lt;StatusBarItem Content=&quot;열: 15&quot;/&gt;&#10;    &lt;Separator/&gt;&#10;    &lt;StatusBarItem Content=&quot;UTF-8&quot;/&gt;&#10;&lt;/StatusBar&gt;"/>
-                            </Expander>
-                        </StackPanel>
-                    </GroupBox>
-
                     <!-- 직접 해보기 1_1 -->
                     <Expander Style="{StaticResource PracticeExpanderStyle}">
                         <StackPanel Margin="10">
@@ -148,6 +113,20 @@
                         </StackPanel>
                     </Expander>
 
+                    <!-- 예제 2: 여러 항목 -->
+                    <GroupBox Header="여러 StatusBarItem" Margin="0,0,0,15">
+                        <StackPanel>
+                            <StatusBar Height="25">
+                                <StatusBarItem Content="항목 1"/>
+                                <StatusBarItem Content="항목 2"/>
+                                <StatusBarItem Content="항목 3"/>
+                            </StatusBar>
+                            <Expander Style="{StaticResource CodeExpanderStyle}">
+                                <TextBox Style="{StaticResource CodeTextBoxStyle}"
+                                         Text="&lt;StatusBar&gt;&#10;    &lt;StatusBarItem Content=&quot;항목 1&quot;/&gt;&#10;    &lt;StatusBarItem Content=&quot;항목 2&quot;/&gt;&#10;    &lt;StatusBarItem Content=&quot;항목 3&quot;/&gt;&#10;&lt;/StatusBar&gt;"/>
+                            </Expander>
+                        </StackPanel>
+                    </GroupBox>
                     <!-- 직접 해보기 1_2 -->
                     <Expander Style="{StaticResource PracticeExpanderStyle}">
                         <StackPanel Margin="10">
@@ -168,27 +147,47 @@
                             </Border>
                         </StackPanel>
                     </Expander>
-                
-                <!-- 직접 해보기 1_3 -->
-                <Expander Style="{StaticResource PracticeExpanderStyle}">
-                    <StackPanel Margin="10">
-                        <TextBlock Text="과제: StatusBar 에 항목 2개를 넣고 사이를 Separator 로 나누세요. 왼쪽은 파일명, 오른쪽은 인코딩입니다." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
-                        <TextBox x:Name="txtPractice1_3"
-                                 Style="{StaticResource PracticeInputStyle}"
-                                 Text="&lt;StatusBar&gt;&#10;    &#10;&lt;/StatusBar&gt;"/>
-                        <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
-                            <Button Content="실행" Style="{StaticResource RunButtonStyle}" Click="BtnRun_Click" Tag="1_3"/>
-                            <Button Content="힌트" Style="{StaticResource HintButtonStyle}" Click="BtnHint_Click" Tag="1_3"/>
-                            <Button Content="정답 보기" Style="{StaticResource AnswerButtonStyle}" Click="BtnAnswer_Click" Tag="1_3"/>
+
+                    <!-- 예제 3: Separator 사용 -->
+                    <GroupBox Header="Separator로 구분" Margin="0,0,0,15">
+                        <StackPanel>
+                            <StatusBar Height="25">
+                                <StatusBarItem Content="파일"/>
+                                <Separator/>
+                                <StatusBarItem Content="줄: 42"/>
+                                <Separator/>
+                                <StatusBarItem Content="열: 15"/>
+                                <Separator/>
+                                <StatusBarItem Content="UTF-8"/>
+                            </StatusBar>
+                            <Expander Style="{StaticResource CodeExpanderStyle}">
+                                <TextBox Style="{StaticResource CodeTextBoxStyle}"
+                                         Text="&lt;StatusBar&gt;&#10;    &lt;StatusBarItem Content=&quot;파일&quot;/&gt;&#10;    &lt;Separator/&gt;&#10;    &lt;StatusBarItem Content=&quot;줄: 42&quot;/&gt;&#10;    &lt;Separator/&gt;&#10;    &lt;StatusBarItem Content=&quot;열: 15&quot;/&gt;&#10;    &lt;Separator/&gt;&#10;    &lt;StatusBarItem Content=&quot;UTF-8&quot;/&gt;&#10;&lt;/StatusBar&gt;"/>
+                            </Expander>
                         </StackPanel>
-                        <TextBlock x:Name="txtHint1_3"
-                                   Text="힌트: StatusBarItem 사이에 &lt;Separator/&gt; 를 넣습니다."
-                                   Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
-                        <Border x:Name="resultBorder1_3" Background="White" Margin="0,8,0,0" Padding="10" Visibility="Collapsed">
-                            <StackPanel x:Name="resultPanel1_3"/>
-                        </Border>
-                    </StackPanel>
-                </Expander>
+                    </GroupBox>
+                    <!-- 직접 해보기 1_3 -->
+                    <Expander Style="{StaticResource PracticeExpanderStyle}">
+                        <StackPanel Margin="10">
+                            <TextBlock Text="과제: StatusBar 에 항목 2개를 넣고 사이를 Separator 로 나누세요. 왼쪽은 파일명, 오른쪽은 인코딩입니다." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
+                            <TextBox x:Name="txtPractice1_3"
+                                     Style="{StaticResource PracticeInputStyle}"
+                                     Text="&lt;StatusBar&gt;&#10;    &#10;&lt;/StatusBar&gt;"/>
+                            <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
+                                <Button Content="실행" Style="{StaticResource RunButtonStyle}" Click="BtnRun_Click" Tag="1_3"/>
+                                <Button Content="힌트" Style="{StaticResource HintButtonStyle}" Click="BtnHint_Click" Tag="1_3"/>
+                                <Button Content="정답 보기" Style="{StaticResource AnswerButtonStyle}" Click="BtnAnswer_Click" Tag="1_3"/>
+                            </StackPanel>
+                            <TextBlock x:Name="txtHint1_3"
+                                       Text="힌트: StatusBarItem 사이에 &lt;Separator/&gt; 를 넣습니다."
+                                       Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                            <Border x:Name="resultBorder1_3" Background="White" Margin="0,8,0,0" Padding="10" Visibility="Collapsed">
+                                <StackPanel x:Name="resultPanel1_3"/>
+                            </Border>
+                        </StackPanel>
+                    </Expander>
+
+                
 </StackPanel>
             </ScrollViewer>
         </TabItem>
@@ -230,48 +229,6 @@
                             </Expander>
                         </StackPanel>
                     </GroupBox>
-
-                    <!-- 예제 2: DockPanel 레이아웃 -->
-                    <GroupBox Header="DockPanel로 레이아웃" Margin="0,0,0,15">
-                        <StackPanel>
-                            <StatusBar Height="25">
-                                <StatusBar.ItemsPanel>
-                                    <ItemsPanelTemplate>
-                                        <DockPanel LastChildFill="True"/>
-                                    </ItemsPanelTemplate>
-                                </StatusBar.ItemsPanel>
-                                <StatusBarItem Content="왼쪽 고정" DockPanel.Dock="Left"/>
-                                <Separator DockPanel.Dock="Left"/>
-                                <StatusBarItem Content="오른쪽 고정" DockPanel.Dock="Right"/>
-                                <Separator DockPanel.Dock="Right"/>
-                                <StatusBarItem Content="중앙 (나머지 공간 채움)" HorizontalContentAlignment="Center"/>
-                            </StatusBar>
-                            <Expander Style="{StaticResource CodeExpanderStyle}">
-                                <TextBox Style="{StaticResource CodeTextBoxStyle}"
-                                         Text="&lt;StatusBar&gt;&#10;    &lt;StatusBar.ItemsPanel&gt;&#10;        &lt;ItemsPanelTemplate&gt;&#10;            &lt;DockPanel LastChildFill=&quot;True&quot;/&gt;&#10;        &lt;/ItemsPanelTemplate&gt;&#10;    &lt;/StatusBar.ItemsPanel&gt;&#10;    &lt;StatusBarItem Content=&quot;왼쪽&quot; DockPanel.Dock=&quot;Left&quot;/&gt;&#10;    &lt;Separator DockPanel.Dock=&quot;Left&quot;/&gt;&#10;    &lt;StatusBarItem Content=&quot;오른쪽&quot; DockPanel.Dock=&quot;Right&quot;/&gt;&#10;    &lt;StatusBarItem Content=&quot;중앙&quot;/&gt;&#10;&lt;/StatusBar&gt;"/>
-                            </Expander>
-                        </StackPanel>
-                    </GroupBox>
-
-                    <!-- 예제 3: 높이와 패딩 -->
-                    <GroupBox Header="높이와 패딩" Margin="0,0,0,15">
-                        <StackPanel>
-                            <TextBlock Text="Height=20" Margin="0,0,0,3"/>
-                            <StatusBar Height="20" Margin="0,0,0,10">
-                                <StatusBarItem Content="작은 상태바"/>
-                            </StatusBar>
-
-                            <TextBlock Text="Height=35, Padding 적용" Margin="0,0,0,3"/>
-                            <StatusBar Height="35">
-                                <StatusBarItem Content="큰 상태바" Padding="10,0"/>
-                            </StatusBar>
-                            <Expander Style="{StaticResource CodeExpanderStyle}">
-                                <TextBox Style="{StaticResource CodeTextBoxStyle}"
-                                         Text="&lt;StatusBar Height=&quot;20&quot;&gt;&#10;    &lt;StatusBarItem Content=&quot;작은 상태바&quot;/&gt;&#10;&lt;/StatusBar&gt;&#10;&#10;&lt;StatusBar Height=&quot;35&quot;&gt;&#10;    &lt;StatusBarItem Content=&quot;큰 상태바&quot; Padding=&quot;10,0&quot;/&gt;&#10;&lt;/StatusBar&gt;"/>
-                            </Expander>
-                        </StackPanel>
-                    </GroupBox>
-
                     <!-- 직접 해보기 2_1 -->
                     <Expander Style="{StaticResource PracticeExpanderStyle}">
                         <StackPanel Margin="10">
@@ -294,6 +251,27 @@
                         </StackPanel>
                     </Expander>
 
+                    <!-- 예제 2: DockPanel 레이아웃 -->
+                    <GroupBox Header="DockPanel로 레이아웃" Margin="0,0,0,15">
+                        <StackPanel>
+                            <StatusBar Height="25">
+                                <StatusBar.ItemsPanel>
+                                    <ItemsPanelTemplate>
+                                        <DockPanel LastChildFill="True"/>
+                                    </ItemsPanelTemplate>
+                                </StatusBar.ItemsPanel>
+                                <StatusBarItem Content="왼쪽 고정" DockPanel.Dock="Left"/>
+                                <Separator DockPanel.Dock="Left"/>
+                                <StatusBarItem Content="오른쪽 고정" DockPanel.Dock="Right"/>
+                                <Separator DockPanel.Dock="Right"/>
+                                <StatusBarItem Content="중앙 (나머지 공간 채움)" HorizontalContentAlignment="Center"/>
+                            </StatusBar>
+                            <Expander Style="{StaticResource CodeExpanderStyle}">
+                                <TextBox Style="{StaticResource CodeTextBoxStyle}"
+                                         Text="&lt;StatusBar&gt;&#10;    &lt;StatusBar.ItemsPanel&gt;&#10;        &lt;ItemsPanelTemplate&gt;&#10;            &lt;DockPanel LastChildFill=&quot;True&quot;/&gt;&#10;        &lt;/ItemsPanelTemplate&gt;&#10;    &lt;/StatusBar.ItemsPanel&gt;&#10;    &lt;StatusBarItem Content=&quot;왼쪽&quot; DockPanel.Dock=&quot;Left&quot;/&gt;&#10;    &lt;Separator DockPanel.Dock=&quot;Left&quot;/&gt;&#10;    &lt;StatusBarItem Content=&quot;오른쪽&quot; DockPanel.Dock=&quot;Right&quot;/&gt;&#10;    &lt;StatusBarItem Content=&quot;중앙&quot;/&gt;&#10;&lt;/StatusBar&gt;"/>
+                            </Expander>
+                        </StackPanel>
+                    </GroupBox>
                     <!-- 직접 해보기 2_2 -->
                     <Expander Style="{StaticResource PracticeExpanderStyle}">
                         <StackPanel Margin="10">
@@ -314,27 +292,47 @@
                             </Border>
                         </StackPanel>
                     </Expander>
-                
-                <!-- 직접 해보기 2_3 -->
-                <Expander Style="{StaticResource PracticeExpanderStyle}">
-                    <StackPanel Margin="10">
-                        <TextBlock Text="과제: StatusBar 의 높이를 28 로 고정하고 배경을 연한 파랑으로 바꾸세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
-                        <TextBox x:Name="txtPractice2_3"
-                                 Style="{StaticResource PracticeInputStyle}"
-                                 Text="&lt;StatusBar&gt;&#10;    &lt;StatusBarItem Content=&quot;준비&quot;/&gt;&#10;&lt;/StatusBar&gt;"/>
-                        <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
-                            <Button Content="실행" Style="{StaticResource RunButtonStyle}" Click="BtnRun_Click" Tag="2_3"/>
-                            <Button Content="힌트" Style="{StaticResource HintButtonStyle}" Click="BtnHint_Click" Tag="2_3"/>
-                            <Button Content="정답 보기" Style="{StaticResource AnswerButtonStyle}" Click="BtnAnswer_Click" Tag="2_3"/>
+
+                    <!-- 예제 3: 높이와 패딩 -->
+                    <GroupBox Header="높이와 패딩" Margin="0,0,0,15">
+                        <StackPanel>
+                            <TextBlock Text="Height=20" Margin="0,0,0,3"/>
+                            <StatusBar Height="20" Margin="0,0,0,10">
+                                <StatusBarItem Content="작은 상태바"/>
+                            </StatusBar>
+
+                            <TextBlock Text="Height=35, Padding 적용" Margin="0,0,0,3"/>
+                            <StatusBar Height="35">
+                                <StatusBarItem Content="큰 상태바" Padding="10,0"/>
+                            </StatusBar>
+                            <Expander Style="{StaticResource CodeExpanderStyle}">
+                                <TextBox Style="{StaticResource CodeTextBoxStyle}"
+                                         Text="&lt;StatusBar Height=&quot;20&quot;&gt;&#10;    &lt;StatusBarItem Content=&quot;작은 상태바&quot;/&gt;&#10;&lt;/StatusBar&gt;&#10;&#10;&lt;StatusBar Height=&quot;35&quot;&gt;&#10;    &lt;StatusBarItem Content=&quot;큰 상태바&quot; Padding=&quot;10,0&quot;/&gt;&#10;&lt;/StatusBar&gt;"/>
+                            </Expander>
                         </StackPanel>
-                        <TextBlock x:Name="txtHint2_3"
-                                   Text="힌트: Height 와 Background 를 StatusBar 에 지정합니다."
-                                   Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
-                        <Border x:Name="resultBorder2_3" Background="White" Margin="0,8,0,0" Padding="10" Visibility="Collapsed">
-                            <StackPanel x:Name="resultPanel2_3"/>
-                        </Border>
-                    </StackPanel>
-                </Expander>
+                    </GroupBox>
+                    <!-- 직접 해보기 2_3 -->
+                    <Expander Style="{StaticResource PracticeExpanderStyle}">
+                        <StackPanel Margin="10">
+                            <TextBlock Text="과제: StatusBar 의 높이를 28 로 고정하고 배경을 연한 파랑으로 바꾸세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
+                            <TextBox x:Name="txtPractice2_3"
+                                     Style="{StaticResource PracticeInputStyle}"
+                                     Text="&lt;StatusBar&gt;&#10;    &lt;StatusBarItem Content=&quot;준비&quot;/&gt;&#10;&lt;/StatusBar&gt;"/>
+                            <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
+                                <Button Content="실행" Style="{StaticResource RunButtonStyle}" Click="BtnRun_Click" Tag="2_3"/>
+                                <Button Content="힌트" Style="{StaticResource HintButtonStyle}" Click="BtnHint_Click" Tag="2_3"/>
+                                <Button Content="정답 보기" Style="{StaticResource AnswerButtonStyle}" Click="BtnAnswer_Click" Tag="2_3"/>
+                            </StackPanel>
+                            <TextBlock x:Name="txtHint2_3"
+                                       Text="힌트: Height 와 Background 를 StatusBar 에 지정합니다."
+                                       Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                            <Border x:Name="resultBorder2_3" Background="White" Margin="0,8,0,0" Padding="10" Visibility="Collapsed">
+                                <StackPanel x:Name="resultPanel2_3"/>
+                            </Border>
+                        </StackPanel>
+                    </Expander>
+
+                
 </StackPanel>
             </ScrollViewer>
         </TabItem>
@@ -361,6 +359,27 @@
                             </Expander>
                         </StackPanel>
                     </GroupBox>
+                    <!-- 직접 해보기 3_1 -->
+                    <Expander Style="{StaticResource PracticeExpanderStyle}">
+                        <StackPanel Margin="10">
+                            <TextBlock Text="과제: StatusBar에 ProgressBar(Width=100, Height=15, Value=50)와 '50%' 텍스트를 표시하세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
+                            <TextBox x:Name="txtPractice3_1"
+                                     Style="{StaticResource PracticeInputStyle}"
+                                     Height="100"
+                                     Text="&lt;StatusBar&gt;&#10;    &lt;StatusBarItem&gt;&#10;        &#10;    &lt;/StatusBarItem&gt;&#10;&lt;/StatusBar&gt;"/>
+                            <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
+                                <Button Content="실행" Style="{StaticResource RunButtonStyle}" Click="BtnRun_Click" Tag="3_1"/>
+                                <Button Content="힌트" Style="{StaticResource HintButtonStyle}" Click="BtnHint_Click" Tag="3_1"/>
+                                <Button Content="정답 보기" Style="{StaticResource AnswerButtonStyle}" Click="BtnAnswer_Click" Tag="3_1"/>
+                            </StackPanel>
+                            <TextBlock x:Name="txtHint3_1"
+                                       Text="힌트: StatusBarItem 안에 ProgressBar를 배치하고, 또 다른 StatusBarItem에 Content='50%'를 설정합니다."
+                                       Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                            <Border x:Name="resultBorder3_1" Background="White" Margin="0,8,0,0" Padding="10" Visibility="Collapsed">
+                                <StackPanel x:Name="resultPanel3_1"/>
+                            </Border>
+                        </StackPanel>
+                    </Expander>
 
                     <!-- 예제 2: 버튼과 컨트롤 -->
                     <GroupBox Header="버튼과 컨트롤" Margin="0,0,0,15">
@@ -388,6 +407,27 @@
                             </Expander>
                         </StackPanel>
                     </GroupBox>
+                    <!-- 직접 해보기 3_2 -->
+                    <Expander Style="{StaticResource PracticeExpanderStyle}">
+                        <StackPanel Margin="10">
+                            <TextBlock Text="과제: 초록색 Ellipse(10x10)와 '온라인' 텍스트를 StackPanel(Horizontal)로 묶어 상태 아이콘을 만드세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
+                            <TextBox x:Name="txtPractice3_2"
+                                     Style="{StaticResource PracticeInputStyle}"
+                                     Height="120"
+                                     Text="&lt;StatusBar&gt;&#10;    &lt;StatusBarItem&gt;&#10;        &lt;StackPanel Orientation=&quot;Horizontal&quot;&gt;&#10;            &#10;        &lt;/StackPanel&gt;&#10;    &lt;/StatusBarItem&gt;&#10;&lt;/StatusBar&gt;"/>
+                            <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
+                                <Button Content="실행" Style="{StaticResource RunButtonStyle}" Click="BtnRun_Click" Tag="3_2"/>
+                                <Button Content="힌트" Style="{StaticResource HintButtonStyle}" Click="BtnHint_Click" Tag="3_2"/>
+                                <Button Content="정답 보기" Style="{StaticResource AnswerButtonStyle}" Click="BtnAnswer_Click" Tag="3_2"/>
+                            </StackPanel>
+                            <TextBlock x:Name="txtHint3_2"
+                                       Text="힌트: Ellipse에 Width, Height, Fill 속성을 설정하고, TextBlock에 Text 속성을 설정합니다."
+                                       Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                            <Border x:Name="resultBorder3_2" Background="White" Margin="0,8,0,0" Padding="10" Visibility="Collapsed">
+                                <StackPanel x:Name="resultPanel3_2"/>
+                            </Border>
+                        </StackPanel>
+                    </Expander>
 
                     <!-- 예제 3: 이미지/아이콘 -->
                     <GroupBox Header="도형으로 아이콘 표현" Margin="0,0,0,15">
@@ -420,6 +460,26 @@
                             </Expander>
                         </StackPanel>
                     </GroupBox>
+                    <!-- 직접 해보기 3_3 -->
+                    <Expander Style="{StaticResource PracticeExpanderStyle}">
+                        <StackPanel Margin="10">
+                            <TextBlock Text="과제: StatusBar 안에 진행 막대와 퍼센트 글자를 나란히 넣으세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
+                            <TextBox x:Name="txtPractice3_3"
+                                     Style="{StaticResource PracticeInputStyle}"
+                                     Text="&lt;StatusBar&gt;&#10;    &#10;&lt;/StatusBar&gt;"/>
+                            <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
+                                <Button Content="실행" Style="{StaticResource RunButtonStyle}" Click="BtnRun_Click" Tag="3_3"/>
+                                <Button Content="힌트" Style="{StaticResource HintButtonStyle}" Click="BtnHint_Click" Tag="3_3"/>
+                                <Button Content="정답 보기" Style="{StaticResource AnswerButtonStyle}" Click="BtnAnswer_Click" Tag="3_3"/>
+                            </StackPanel>
+                            <TextBlock x:Name="txtHint3_3"
+                                       Text="힌트: StatusBarItem 안에 StackPanel 을 넣으면 여러 요소를 담을 수 있습니다."
+                                       Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                            <Border x:Name="resultBorder3_3" Background="White" Margin="0,8,0,0" Padding="10" Visibility="Collapsed">
+                                <StackPanel x:Name="resultPanel3_3"/>
+                            </Border>
+                        </StackPanel>
+                    </Expander>
 
                     <!-- 예제 4: Slider -->
                     <GroupBox Header="Slider (줌 컨트롤)" Margin="0,0,0,15">
@@ -440,71 +500,28 @@
                             </Expander>
                         </StackPanel>
                     </GroupBox>
-
-                    <!-- 직접 해보기 3_1 -->
+                    <!-- 직접 해보기 3_4 -->
                     <Expander Style="{StaticResource PracticeExpanderStyle}">
                         <StackPanel Margin="10">
-                            <TextBlock Text="과제: StatusBar에 ProgressBar(Width=100, Height=15, Value=50)와 '50%' 텍스트를 표시하세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
-                            <TextBox x:Name="txtPractice3_1"
+                            <TextBlock Text="과제: StatusBar 안에 '확대/축소:' 라벨과 50~200 범위의 Slider, 현재 배율 TextBlock을 넣으세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
+                            <TextBox x:Name="txtPractice3_4"
                                      Style="{StaticResource PracticeInputStyle}"
-                                     Height="100"
-                                     Text="&lt;StatusBar&gt;&#10;    &lt;StatusBarItem&gt;&#10;        &#10;    &lt;/StatusBarItem&gt;&#10;&lt;/StatusBar&gt;"/>
+                                     Text="&lt;StatusBar&gt;&#10;    &#10;&lt;/StatusBar&gt;"/>
                             <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
-                                <Button Content="실행" Style="{StaticResource RunButtonStyle}" Click="BtnRun_Click" Tag="3_1"/>
-                                <Button Content="힌트" Style="{StaticResource HintButtonStyle}" Click="BtnHint_Click" Tag="3_1"/>
-                                <Button Content="정답 보기" Style="{StaticResource AnswerButtonStyle}" Click="BtnAnswer_Click" Tag="3_1"/>
+                                <Button Content="실행" Style="{StaticResource RunButtonStyle}" Click="BtnRun_Click" Tag="3_4"/>
+                                <Button Content="힌트" Style="{StaticResource HintButtonStyle}" Click="BtnHint_Click" Tag="3_4"/>
+                                <Button Content="정답 보기" Style="{StaticResource AnswerButtonStyle}" Click="BtnAnswer_Click" Tag="3_4"/>
                             </StackPanel>
-                            <TextBlock x:Name="txtHint3_1"
-                                       Text="힌트: StatusBarItem 안에 ProgressBar를 배치하고, 또 다른 StatusBarItem에 Content='50%'를 설정합니다."
+                            <TextBlock x:Name="txtHint3_4"
+                                       Text="힌트: 각 항목을 StatusBarItem 으로 감싸고, 그 안에 Slider 나 TextBlock 을 넣습니다."
                                        Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
-                            <Border x:Name="resultBorder3_1" Background="White" Margin="0,8,0,0" Padding="10" Visibility="Collapsed">
-                                <StackPanel x:Name="resultPanel3_1"/>
+                            <Border x:Name="resultBorder3_4" Background="White" Margin="0,8,0,0" Padding="10" Visibility="Collapsed">
+                                <StackPanel x:Name="resultPanel3_4"/>
                             </Border>
                         </StackPanel>
                     </Expander>
 
-                    <!-- 직접 해보기 3_2 -->
-                    <Expander Style="{StaticResource PracticeExpanderStyle}">
-                        <StackPanel Margin="10">
-                            <TextBlock Text="과제: 초록색 Ellipse(10x10)와 '온라인' 텍스트를 StackPanel(Horizontal)로 묶어 상태 아이콘을 만드세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
-                            <TextBox x:Name="txtPractice3_2"
-                                     Style="{StaticResource PracticeInputStyle}"
-                                     Height="120"
-                                     Text="&lt;StatusBar&gt;&#10;    &lt;StatusBarItem&gt;&#10;        &lt;StackPanel Orientation=&quot;Horizontal&quot;&gt;&#10;            &#10;        &lt;/StackPanel&gt;&#10;    &lt;/StatusBarItem&gt;&#10;&lt;/StatusBar&gt;"/>
-                            <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
-                                <Button Content="실행" Style="{StaticResource RunButtonStyle}" Click="BtnRun_Click" Tag="3_2"/>
-                                <Button Content="힌트" Style="{StaticResource HintButtonStyle}" Click="BtnHint_Click" Tag="3_2"/>
-                                <Button Content="정답 보기" Style="{StaticResource AnswerButtonStyle}" Click="BtnAnswer_Click" Tag="3_2"/>
-                            </StackPanel>
-                            <TextBlock x:Name="txtHint3_2"
-                                       Text="힌트: Ellipse에 Width, Height, Fill 속성을 설정하고, TextBlock에 Text 속성을 설정합니다."
-                                       Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
-                            <Border x:Name="resultBorder3_2" Background="White" Margin="0,8,0,0" Padding="10" Visibility="Collapsed">
-                                <StackPanel x:Name="resultPanel3_2"/>
-                            </Border>
-                        </StackPanel>
-                    </Expander>
                 
-                <!-- 직접 해보기 3_3 -->
-                <Expander Style="{StaticResource PracticeExpanderStyle}">
-                    <StackPanel Margin="10">
-                        <TextBlock Text="과제: StatusBar 안에 진행 막대와 퍼센트 글자를 나란히 넣으세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
-                        <TextBox x:Name="txtPractice3_3"
-                                 Style="{StaticResource PracticeInputStyle}"
-                                 Text="&lt;StatusBar&gt;&#10;    &#10;&lt;/StatusBar&gt;"/>
-                        <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
-                            <Button Content="실행" Style="{StaticResource RunButtonStyle}" Click="BtnRun_Click" Tag="3_3"/>
-                            <Button Content="힌트" Style="{StaticResource HintButtonStyle}" Click="BtnHint_Click" Tag="3_3"/>
-                            <Button Content="정답 보기" Style="{StaticResource AnswerButtonStyle}" Click="BtnAnswer_Click" Tag="3_3"/>
-                        </StackPanel>
-                        <TextBlock x:Name="txtHint3_3"
-                                   Text="힌트: StatusBarItem 안에 StackPanel 을 넣으면 여러 요소를 담을 수 있습니다."
-                                   Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
-                        <Border x:Name="resultBorder3_3" Background="White" Margin="0,8,0,0" Padding="10" Visibility="Collapsed">
-                            <StackPanel x:Name="resultPanel3_3"/>
-                        </Border>
-                    </StackPanel>
-                </Expander>
 </StackPanel>
             </ScrollViewer>
         </TabItem>
@@ -533,6 +550,26 @@
                             </Expander>
                         </StackPanel>
                     </GroupBox>
+                    <!-- 직접 해보기 4_1 -->
+                    <Expander Style="{StaticResource PracticeExpanderStyle}">
+                        <StackPanel Margin="10">
+                            <TextBlock Text="과제: 버튼 클릭 시 StatusBarItem의 Content를 '작업 완료!'로 변경하는 이벤트 핸들러를 작성하세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
+                            <TextBox x:Name="txtPractice4_1"
+                                     Style="{StaticResource PracticeInputStyle}"
+                                     Height="100"
+                                     Text="private void BtnComplete_Click(object sender, RoutedEventArgs e)&#x0a;{&#x0a;    &#x0a;}"/>
+                            <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
+                                <Button Content="확인" Style="{StaticResource RunButtonStyle}" Click="BtnCheck_Click" Tag="4_1"/>
+                                <Button Content="힌트" Style="{StaticResource HintButtonStyle}" Click="BtnHint_Click" Tag="4_1"/>
+                                <Button Content="정답 보기" Style="{StaticResource AnswerButtonStyle}" Click="BtnAnswer_Click" Tag="4_1"/>
+                            </StackPanel>
+                            <TextBlock x:Name="txtHint4_1"
+                                       Text="힌트: statusBarItem.Content = &quot;작업 완료!&quot;; 형태로 Content 속성을 변경합니다."
+                                       Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                            <TextBlock x:Name="txtResult4_1"
+                                       Margin="0,8,0,0" FontWeight="Bold" Visibility="Collapsed"/>
+                        </StackPanel>
+                    </Expander>
 
                     <!-- 예제 2: ProgressBar 연동 -->
                     <GroupBox Header="Slider와 ProgressBar 연동" Margin="0,0,0,15">
@@ -554,6 +591,26 @@
                             </Expander>
                         </StackPanel>
                     </GroupBox>
+                    <!-- 직접 해보기 4_2 -->
+                    <Expander Style="{StaticResource PracticeExpanderStyle}">
+                        <StackPanel Margin="10">
+                            <TextBlock Text="과제: Ellipse의 Fill을 Brushes.Red로, TextBlock의 Text를 '오류 발생'으로 변경하는 코드를 작성하세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
+                            <TextBox x:Name="txtPractice4_2"
+                                     Style="{StaticResource PracticeInputStyle}"
+                                     Height="100"
+                                     Text="private void SetError_Click(object sender, RoutedEventArgs e)&#x0a;{&#x0a;    &#x0a;}"/>
+                            <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
+                                <Button Content="확인" Style="{StaticResource RunButtonStyle}" Click="BtnCheck_Click" Tag="4_2"/>
+                                <Button Content="힌트" Style="{StaticResource HintButtonStyle}" Click="BtnHint_Click" Tag="4_2"/>
+                                <Button Content="정답 보기" Style="{StaticResource AnswerButtonStyle}" Click="BtnAnswer_Click" Tag="4_2"/>
+                            </StackPanel>
+                            <TextBlock x:Name="txtHint4_2"
+                                       Text="힌트: ellipse.Fill = Brushes.Red; textBlock.Text = &quot;오류 발생&quot;;"
+                                       Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                            <TextBlock x:Name="txtResult4_2"
+                                       Margin="0,8,0,0" FontWeight="Bold" Visibility="Collapsed"/>
+                        </StackPanel>
+                    </Expander>
 
                     <!-- 예제 3: 시간 표시 -->
                     <GroupBox Header="실시간 시간 표시" Margin="0,0,0,15">
@@ -574,6 +631,24 @@
                             </Expander>
                         </StackPanel>
                     </GroupBox>
+                    <!-- 직접 해보기 4_3 -->
+                    <Expander Style="{StaticResource PracticeExpanderStyle}">
+                        <StackPanel Margin="10">
+                            <TextBlock Text="과제: 버튼을 누르면 상태 표시줄 항목(statusText)에 현재 시각을 표시하는 핸들러를 작성하세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
+                            <TextBox x:Name="txtPractice4_3"
+                                     Style="{StaticResource PracticeInputStyle}"
+                                     Text="private void ShowTime_Click(object sender, RoutedEventArgs e)&#10;{&#10;    &#10;}"/>
+                            <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
+                                <Button Content="확인" Style="{StaticResource RunButtonStyle}" Click="BtnCheck_Click" Tag="4_3"/>
+                                <Button Content="힌트" Style="{StaticResource HintButtonStyle}" Click="BtnHint_Click" Tag="4_3"/>
+                                <Button Content="정답 보기" Style="{StaticResource AnswerButtonStyle}" Click="BtnAnswer_Click" Tag="4_3"/>
+                            </StackPanel>
+                            <TextBlock x:Name="txtHint4_3"
+                                       Text="힌트: DateTime.Now.ToString(&quot;HH:mm:ss&quot;) 를 Content 에 넣습니다."
+                                       Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                            <TextBlock x:Name="txtResult4_3" Margin="0,8,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                        </StackPanel>
+                    </Expander>
 
                     <!-- 예제 4: 연결 상태 -->
                     <GroupBox Header="연결 상태 표시" Margin="0,0,0,15">
@@ -596,67 +671,28 @@
                             </Expander>
                         </StackPanel>
                     </GroupBox>
-
-                    <!-- 직접 해보기 4_1 -->
+                    <!-- 직접 해보기 4_4 -->
                     <Expander Style="{StaticResource PracticeExpanderStyle}">
                         <StackPanel Margin="10">
-                            <TextBlock Text="과제: 버튼 클릭 시 StatusBarItem의 Content를 '작업 완료!'로 변경하는 이벤트 핸들러를 작성하세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
-                            <TextBox x:Name="txtPractice4_1"
+                            <TextBlock Text="과제: 연결 버튼을 누르면 표시등(connectionIndicator)을 초록으로, 문구를 '연결됨'으로 바꾸세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
+                            <TextBox x:Name="txtPractice4_4"
                                      Style="{StaticResource PracticeInputStyle}"
-                                     Height="100"
-                                     Text="private void BtnComplete_Click(object sender, RoutedEventArgs e)&#x0a;{&#x0a;    &#x0a;}"/>
+                                     Height="120" AcceptsReturn="True"
+                                     Text="private void Connect_Click(object sender, RoutedEventArgs e)&#10;{&#10;    &#10;}"/>
                             <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
-                                <Button Content="확인" Style="{StaticResource RunButtonStyle}" Click="BtnCheck_Click" Tag="4_1"/>
-                                <Button Content="힌트" Style="{StaticResource HintButtonStyle}" Click="BtnHint_Click" Tag="4_1"/>
-                                <Button Content="정답 보기" Style="{StaticResource AnswerButtonStyle}" Click="BtnAnswer_Click" Tag="4_1"/>
+                                <Button Content="확인" Style="{StaticResource RunButtonStyle}" Click="BtnCheck_Click" Tag="4_4"/>
+                                <Button Content="힌트" Style="{StaticResource HintButtonStyle}" Click="BtnHint_Click" Tag="4_4"/>
+                                <Button Content="정답 보기" Style="{StaticResource AnswerButtonStyle}" Click="BtnAnswer_Click" Tag="4_4"/>
                             </StackPanel>
-                            <TextBlock x:Name="txtHint4_1"
-                                       Text="힌트: statusBarItem.Content = &quot;작업 완료!&quot;; 형태로 Content 속성을 변경합니다."
+                            <TextBlock x:Name="txtHint4_4"
+                                       Text="힌트: Ellipse 의 색은 Fill 입니다. Brushes.Green 을 넣습니다."
                                        Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
-                            <TextBlock x:Name="txtResult4_1"
-                                       Margin="0,8,0,0" FontWeight="Bold" Visibility="Collapsed"/>
+                            <TextBlock x:Name="txtResult4_4" Margin="0,8,0,0" FontWeight="Bold"
+                                       Visibility="Collapsed" TextWrapping="Wrap"/>
                         </StackPanel>
                     </Expander>
 
-                    <!-- 직접 해보기 4_2 -->
-                    <Expander Style="{StaticResource PracticeExpanderStyle}">
-                        <StackPanel Margin="10">
-                            <TextBlock Text="과제: Ellipse의 Fill을 Brushes.Red로, TextBlock의 Text를 '오류 발생'으로 변경하는 코드를 작성하세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
-                            <TextBox x:Name="txtPractice4_2"
-                                     Style="{StaticResource PracticeInputStyle}"
-                                     Height="100"
-                                     Text="private void SetError_Click(object sender, RoutedEventArgs e)&#x0a;{&#x0a;    &#x0a;}"/>
-                            <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
-                                <Button Content="확인" Style="{StaticResource RunButtonStyle}" Click="BtnCheck_Click" Tag="4_2"/>
-                                <Button Content="힌트" Style="{StaticResource HintButtonStyle}" Click="BtnHint_Click" Tag="4_2"/>
-                                <Button Content="정답 보기" Style="{StaticResource AnswerButtonStyle}" Click="BtnAnswer_Click" Tag="4_2"/>
-                            </StackPanel>
-                            <TextBlock x:Name="txtHint4_2"
-                                       Text="힌트: ellipse.Fill = Brushes.Red; textBlock.Text = &quot;오류 발생&quot;;"
-                                       Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
-                            <TextBlock x:Name="txtResult4_2"
-                                       Margin="0,8,0,0" FontWeight="Bold" Visibility="Collapsed"/>
-                        </StackPanel>
-                    </Expander>
                 
-                <!-- 직접 해보기 4_3 -->
-                <Expander Style="{StaticResource PracticeExpanderStyle}">
-                    <StackPanel Margin="10">
-                        <TextBlock Text="과제: 버튼을 누르면 상태 표시줄 항목(statusText)에 현재 시각을 표시하는 핸들러를 작성하세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
-                        <TextBox x:Name="txtPractice4_3"
-                                 Style="{StaticResource PracticeInputStyle}"
-                                 Text="private void ShowTime_Click(object sender, RoutedEventArgs e)&#10;{&#10;    &#10;}"/>
-                        <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
-                            <Button Content="확인" Style="{StaticResource RunButtonStyle}" Click="BtnCheck_Click" Tag="4_3"/>
-                            <Button Content="힌트" Style="{StaticResource HintButtonStyle}" Click="BtnHint_Click" Tag="4_3"/>
-                            <Button Content="정답 보기" Style="{StaticResource AnswerButtonStyle}" Click="BtnAnswer_Click" Tag="4_3"/>
-                        </StackPanel>
-                        <TextBlock x:Name="txtHint4_3"
-                                   Text="힌트: DateTime.Now.ToString(&quot;HH:mm:ss&quot;) 를 Content 에 넣습니다."
-                                   Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
-                        <TextBlock x:Name="txtResult4_3" Margin="0,8,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
-                    </StackPanel>
-                </Expander>
 </StackPanel>
             </ScrollViewer>
         </TabItem>
@@ -706,6 +742,27 @@
                             </Expander>
                         </StackPanel>
                     </GroupBox>
+                    <!-- 직접 해보기 5_1 -->
+                    <Expander Style="{StaticResource PracticeExpanderStyle}">
+                        <StackPanel Margin="10">
+                            <TextBlock Text="과제: 파일 브라우저 스타일 StatusBar를 만드세요. '10개 파일' | '2개 선택' | '500 KB' 형식으로 Separator로 구분합니다." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
+                            <TextBox x:Name="txtPractice5_1"
+                                     Style="{StaticResource PracticeInputStyle}"
+                                     Height="100"
+                                     Text="&lt;StatusBar&gt;&#10;    &#10;&lt;/StatusBar&gt;"/>
+                            <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
+                                <Button Content="실행" Style="{StaticResource RunButtonStyle}" Click="BtnRun_Click" Tag="5_1"/>
+                                <Button Content="힌트" Style="{StaticResource HintButtonStyle}" Click="BtnHint_Click" Tag="5_1"/>
+                                <Button Content="정답 보기" Style="{StaticResource AnswerButtonStyle}" Click="BtnAnswer_Click" Tag="5_1"/>
+                            </StackPanel>
+                            <TextBlock x:Name="txtHint5_1"
+                                       Text="힌트: StatusBarItem 세 개를 만들고, 각각 사이에 &lt;Separator/&gt;를 배치합니다."
+                                       Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                            <Border x:Name="resultBorder5_1" Background="White" Margin="0,8,0,0" Padding="10" Visibility="Collapsed">
+                                <StackPanel x:Name="resultPanel5_1"/>
+                            </Border>
+                        </StackPanel>
+                    </Expander>
 
                     <!-- 예제 2: 파일 브라우저 스타일 -->
                     <GroupBox Header="파일 브라우저 스타일" Margin="0,0,0,15">
@@ -723,6 +780,27 @@
                             </Expander>
                         </StackPanel>
                     </GroupBox>
+                    <!-- 직접 해보기 5_2 -->
+                    <Expander Style="{StaticResource PracticeExpanderStyle}">
+                        <StackPanel Margin="10">
+                            <TextBlock Text="과제: 어두운 배경(#333333)의 StatusBar에 파란색 Ellipse와 흰색 '동기화 중' 텍스트를 표시하세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
+                            <TextBox x:Name="txtPractice5_2"
+                                     Style="{StaticResource PracticeInputStyle}"
+                                     Height="120"
+                                     Text="&lt;StatusBar Background=&quot;#333333&quot;&gt;&#10;    &lt;StatusBarItem&gt;&#10;        &lt;StackPanel Orientation=&quot;Horizontal&quot;&gt;&#10;            &#10;        &lt;/StackPanel&gt;&#10;    &lt;/StatusBarItem&gt;&#10;&lt;/StatusBar&gt;"/>
+                            <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
+                                <Button Content="실행" Style="{StaticResource RunButtonStyle}" Click="BtnRun_Click" Tag="5_2"/>
+                                <Button Content="힌트" Style="{StaticResource HintButtonStyle}" Click="BtnHint_Click" Tag="5_2"/>
+                                <Button Content="정답 보기" Style="{StaticResource AnswerButtonStyle}" Click="BtnAnswer_Click" Tag="5_2"/>
+                            </StackPanel>
+                            <TextBlock x:Name="txtHint5_2"
+                                       Text="힌트: Ellipse에 Fill=&quot;Blue&quot;, TextBlock에 Foreground=&quot;White&quot;를 설정합니다."
+                                       Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                            <Border x:Name="resultBorder5_2" Background="White" Margin="0,8,0,0" Padding="10" Visibility="Collapsed">
+                                <StackPanel x:Name="resultPanel5_2"/>
+                            </Border>
+                        </StackPanel>
+                    </Expander>
 
                     <!-- 예제 3: 이미지 뷰어 스타일 -->
                     <GroupBox Header="이미지 뷰어 스타일" Margin="0,0,0,15">
@@ -753,6 +831,26 @@
                             </Expander>
                         </StackPanel>
                     </GroupBox>
+                    <!-- 직접 해보기 5_3 -->
+                    <Expander Style="{StaticResource PracticeExpanderStyle}">
+                        <StackPanel Margin="10">
+                            <TextBlock Text="과제: 편집기 하단 표시줄을 만드세요. 줄/열 정보, 구분선, 인코딩, 구분선, 저장 상태 순입니다." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
+                            <TextBox x:Name="txtPractice5_3"
+                                     Style="{StaticResource PracticeInputStyle}"
+                                     Text="&lt;StatusBar&gt;&#10;    &#10;&lt;/StatusBar&gt;"/>
+                            <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
+                                <Button Content="실행" Style="{StaticResource RunButtonStyle}" Click="BtnRun_Click" Tag="5_3"/>
+                                <Button Content="힌트" Style="{StaticResource HintButtonStyle}" Click="BtnHint_Click" Tag="5_3"/>
+                                <Button Content="정답 보기" Style="{StaticResource AnswerButtonStyle}" Click="BtnAnswer_Click" Tag="5_3"/>
+                            </StackPanel>
+                            <TextBlock x:Name="txtHint5_3"
+                                       Text="힌트: StatusBarItem 과 Separator 를 번갈아 배치합니다."
+                                       Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                            <Border x:Name="resultBorder5_3" Background="White" Margin="0,8,0,0" Padding="10" Visibility="Collapsed">
+                                <StackPanel x:Name="resultPanel5_3"/>
+                            </Border>
+                        </StackPanel>
+                    </Expander>
 
                     <!-- 예제 4: 네트워크 모니터 스타일 -->
                     <GroupBox Header="네트워크 모니터 스타일" Margin="0,0,0,15">
@@ -783,71 +881,28 @@
                             </Expander>
                         </StackPanel>
                     </GroupBox>
-
-                    <!-- 직접 해보기 5_1 -->
+                    <!-- 직접 해보기 5_4 -->
                     <Expander Style="{StaticResource PracticeExpanderStyle}">
                         <StackPanel Margin="10">
-                            <TextBlock Text="과제: 파일 브라우저 스타일 StatusBar를 만드세요. '10개 파일' | '2개 선택' | '500 KB' 형식으로 Separator로 구분합니다." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
-                            <TextBox x:Name="txtPractice5_1"
+                            <TextBlock Text="과제: 어두운 배경의 StatusBar에 초록 점 + '온라인' 문구, 구분선, 전송 속도를 표시하세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
+                            <TextBox x:Name="txtPractice5_4"
                                      Style="{StaticResource PracticeInputStyle}"
-                                     Height="100"
-                                     Text="&lt;StatusBar&gt;&#10;    &#10;&lt;/StatusBar&gt;"/>
+                                     Text="&lt;StatusBar Background=&quot;#2D2D30&quot;&gt;&#10;    &#10;&lt;/StatusBar&gt;"/>
                             <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
-                                <Button Content="실행" Style="{StaticResource RunButtonStyle}" Click="BtnRun_Click" Tag="5_1"/>
-                                <Button Content="힌트" Style="{StaticResource HintButtonStyle}" Click="BtnHint_Click" Tag="5_1"/>
-                                <Button Content="정답 보기" Style="{StaticResource AnswerButtonStyle}" Click="BtnAnswer_Click" Tag="5_1"/>
+                                <Button Content="실행" Style="{StaticResource RunButtonStyle}" Click="BtnRun_Click" Tag="5_4"/>
+                                <Button Content="힌트" Style="{StaticResource HintButtonStyle}" Click="BtnHint_Click" Tag="5_4"/>
+                                <Button Content="정답 보기" Style="{StaticResource AnswerButtonStyle}" Click="BtnAnswer_Click" Tag="5_4"/>
                             </StackPanel>
-                            <TextBlock x:Name="txtHint5_1"
-                                       Text="힌트: StatusBarItem 세 개를 만들고, 각각 사이에 &lt;Separator/&gt;를 배치합니다."
+                            <TextBlock x:Name="txtHint5_4"
+                                       Text="힌트: 점과 글자를 한 칸에 두려면 StatusBarItem 안에 가로 StackPanel 을 씁니다. 어두운 배경에는 Foreground 를 밝게 주세요."
                                        Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
-                            <Border x:Name="resultBorder5_1" Background="White" Margin="0,8,0,0" Padding="10" Visibility="Collapsed">
-                                <StackPanel x:Name="resultPanel5_1"/>
+                            <Border x:Name="resultBorder5_4" Background="White" Margin="0,8,0,0" Padding="10" Visibility="Collapsed">
+                                <StackPanel x:Name="resultPanel5_4"/>
                             </Border>
                         </StackPanel>
                     </Expander>
 
-                    <!-- 직접 해보기 5_2 -->
-                    <Expander Style="{StaticResource PracticeExpanderStyle}">
-                        <StackPanel Margin="10">
-                            <TextBlock Text="과제: 어두운 배경(#333333)의 StatusBar에 파란색 Ellipse와 흰색 '동기화 중' 텍스트를 표시하세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
-                            <TextBox x:Name="txtPractice5_2"
-                                     Style="{StaticResource PracticeInputStyle}"
-                                     Height="120"
-                                     Text="&lt;StatusBar Background=&quot;#333333&quot;&gt;&#10;    &lt;StatusBarItem&gt;&#10;        &lt;StackPanel Orientation=&quot;Horizontal&quot;&gt;&#10;            &#10;        &lt;/StackPanel&gt;&#10;    &lt;/StatusBarItem&gt;&#10;&lt;/StatusBar&gt;"/>
-                            <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
-                                <Button Content="실행" Style="{StaticResource RunButtonStyle}" Click="BtnRun_Click" Tag="5_2"/>
-                                <Button Content="힌트" Style="{StaticResource HintButtonStyle}" Click="BtnHint_Click" Tag="5_2"/>
-                                <Button Content="정답 보기" Style="{StaticResource AnswerButtonStyle}" Click="BtnAnswer_Click" Tag="5_2"/>
-                            </StackPanel>
-                            <TextBlock x:Name="txtHint5_2"
-                                       Text="힌트: Ellipse에 Fill=&quot;Blue&quot;, TextBlock에 Foreground=&quot;White&quot;를 설정합니다."
-                                       Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
-                            <Border x:Name="resultBorder5_2" Background="White" Margin="0,8,0,0" Padding="10" Visibility="Collapsed">
-                                <StackPanel x:Name="resultPanel5_2"/>
-                            </Border>
-                        </StackPanel>
-                    </Expander>
                 
-                <!-- 직접 해보기 5_3 -->
-                <Expander Style="{StaticResource PracticeExpanderStyle}">
-                    <StackPanel Margin="10">
-                        <TextBlock Text="과제: 편집기 하단 표시줄을 만드세요. 줄/열 정보, 구분선, 인코딩, 구분선, 저장 상태 순입니다." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
-                        <TextBox x:Name="txtPractice5_3"
-                                 Style="{StaticResource PracticeInputStyle}"
-                                 Text="&lt;StatusBar&gt;&#10;    &#10;&lt;/StatusBar&gt;"/>
-                        <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
-                            <Button Content="실행" Style="{StaticResource RunButtonStyle}" Click="BtnRun_Click" Tag="5_3"/>
-                            <Button Content="힌트" Style="{StaticResource HintButtonStyle}" Click="BtnHint_Click" Tag="5_3"/>
-                            <Button Content="정답 보기" Style="{StaticResource AnswerButtonStyle}" Click="BtnAnswer_Click" Tag="5_3"/>
-                        </StackPanel>
-                        <TextBlock x:Name="txtHint5_3"
-                                   Text="힌트: StatusBarItem 과 Separator 를 번갈아 배치합니다."
-                                   Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
-                        <Border x:Name="resultBorder5_3" Background="White" Margin="0,8,0,0" Padding="10" Visibility="Collapsed">
-                            <StackPanel x:Name="resultPanel5_3"/>
-                        </Border>
-                    </StackPanel>
-                </Expander>
 </StackPanel>
             </ScrollViewer>
         </TabItem>

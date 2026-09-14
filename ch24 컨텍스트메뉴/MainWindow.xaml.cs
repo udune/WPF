@@ -225,6 +225,10 @@ namespace ch24_컨텍스트메뉴
         // 각 연습의 정답
         private readonly Dictionary<string, string> _answers = new()
         {
+            { "1_4", "private void ShowMessage_Click(object sender, RoutedEventArgs e)\n{\n    MessageBox.Show(\"메뉴 항목이 클릭되었습니다!\", \"알림\");\n}" },
+            { "2_4", "<Button Content=\"마우스 오른쪽 클릭\" Padding=\"10\">\n    <Button.ContextMenu>\n        <ContextMenu>\n            <MenuItem Header=\"실행 취소\" IsEnabled=\"False\"/>\n            <Separator/>\n            <MenuItem Header=\"복사\"/>\n            <MenuItem Header=\"붙여넣기\" IsEnabled=\"False\"/>\n        </ContextMenu>\n    </Button.ContextMenu>\n</Button>" },
+            { "3_4", "<TextBox Text=\"오른쪽 클릭해 보세요\" Width=\"220\">\n    <TextBox.ContextMenu>\n        <ContextMenu>\n            <MenuItem Header=\"잘라내기\" Command=\"ApplicationCommands.Cut\"/>\n            <MenuItem Header=\"복사\" Command=\"ApplicationCommands.Copy\"/>\n            <MenuItem Header=\"붙여넣기\" Command=\"ApplicationCommands.Paste\"/>\n            <Separator/>\n            <MenuItem Header=\"모두 선택\" Command=\"ApplicationCommands.SelectAll\"/>\n        </ContextMenu>\n    </TextBox.ContextMenu>\n</TextBox>" },
+            { "4_4", "private void OpenContextMenu_Click(object sender, RoutedEventArgs e)\n{\n    programmaticButton.ContextMenu.PlacementTarget = programmaticButton;\n    programmaticButton.ContextMenu.IsOpen = true;\n}" },
             { "1_3", "<TextBlock Text=\"오른쪽 클릭\" Padding=\"30\" Background=\"#EEEEEE\">\n    <TextBlock.ContextMenu>\n        <ContextMenu>\n            <MenuItem Header=\"새로 고침\"/>\n        </ContextMenu>\n    </TextBlock.ContextMenu>\n</TextBlock>" },
             { "2_3", "<Button Content=\"오른쪽 클릭\" Padding=\"20,10\">\n    <Button.ContextMenu>\n        <ContextMenu>\n            <MenuItem Header=\"열기\">\n                <MenuItem.Icon>\n                    <Rectangle Width=\"12\" Height=\"12\" Fill=\"#2196F3\"/>\n                </MenuItem.Icon>\n            </MenuItem>\n            <Separator/>\n            <MenuItem Header=\"삭제\"/>\n        </ContextMenu>\n    </Button.ContextMenu>\n</Button>" },
             { "3_3", "<Border Width=\"160\" Height=\"90\" Background=\"#CFD8DC\">\n    <Border.ContextMenu>\n        <ContextMenu>\n            <MenuItem Header=\"확대\"/>\n            <MenuItem Header=\"축소\"/>\n        </ContextMenu>\n    </Border.ContextMenu>\n</Border>" },
@@ -245,6 +249,8 @@ namespace ch24_컨텍스트메뉴
         // 코드 비교 검증용 필수 키워드
         private readonly Dictionary<string, string[]> _requiredKeywords = new()
         {
+            { "1_4", new[] { "MessageBox.Show" } },
+            { "4_4", new[] { "ContextMenu", "PlacementTarget", "IsOpen" } },
             { "4_3", new[] { "as MenuItem", "Header", "MessageBox.Show" } },
             { "4_1", new[] { "new ContextMenu", "Items.Add", "MenuItem", "ContextMenu =" } },
             { "4_2", new[] { "Items.Clear", "Items.Add", "MenuItem" } },

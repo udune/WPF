@@ -48,6 +48,10 @@ namespace ch22_툴바
         // 각 연습의 정답
         private readonly Dictionary<string, string> _answers = new()
         {
+            { "1_4", "<ToolBarTray>\n    <ToolBar Header=\"편집\">\n        <Button Content=\"잘라내기\"/>\n        <Button Content=\"복사\"/>\n        <Button Content=\"붙여넣기\"/>\n    </ToolBar>\n</ToolBarTray>" },
+            { "2_4", "<ToolBar>\n    <TextBlock Text=\"볼륨:\" VerticalAlignment=\"Center\"/>\n    <Slider Width=\"100\" Minimum=\"0\" Maximum=\"100\" Value=\"50\"/>\n    <Separator/>\n    <ProgressBar Width=\"100\" Height=\"15\" Value=\"65\"/>\n</ToolBar>" },
+            { "4_4", "private void LockCheckBox_Checked(object sender, RoutedEventArgs e)\n{\n    toggleableTray.IsLocked = true;\n}\n\nprivate void LockCheckBox_Unchecked(object sender, RoutedEventArgs e)\n{\n    toggleableTray.IsLocked = false;\n}" },
+            { "5_4", "<ToolBar>\n    <RadioButton GroupName=\"Tool\" Content=\"선택\" IsChecked=\"True\"/>\n    <RadioButton GroupName=\"Tool\" Content=\"사각형\"/>\n    <RadioButton GroupName=\"Tool\" Content=\"원\"/>\n    <Separator/>\n    <TextBlock Text=\"색상:\" VerticalAlignment=\"Center\"/>\n    <ComboBox Width=\"80\" SelectedIndex=\"0\">\n        <ComboBoxItem Content=\"검정\"/>\n        <ComboBoxItem Content=\"빨강\"/>\n    </ComboBox>\n</ToolBar>" },
             { "1_3", "<ToolBarTray>\n    <ToolBar Header=\"편집\">\n        <Button Content=\"복사\"/>\n        <Button Content=\"붙여넣기\"/>\n    </ToolBar>\n</ToolBarTray>" },
             { "2_3", "<ToolBar>\n    <Button>\n        <Ellipse Width=\"14\" Height=\"14\" Fill=\"Crimson\"/>\n    </Button>\n    <Button>\n        <Rectangle Width=\"14\" Height=\"14\" Fill=\"SeaGreen\"/>\n    </Button>\n</ToolBar>" },
             { "3_3", "<ToolBar Width=\"180\">\n    <Button Content=\"하나\"/>\n    <Button Content=\"둘\"/>\n    <Button Content=\"셋\"/>\n    <Button Content=\"넷\"/>\n    <Button Content=\"다섯\"/>\n</ToolBar>" },
@@ -68,6 +72,7 @@ namespace ch22_툴바
         // 코드 비교 검증용 필수 키워드
         private readonly Dictionary<string, string[]> _requiredKeywords = new()
         {
+            { "4_4", new[] { "IsLocked", "true", "false" } },
             { "5_2", new[] { "IsLocked", "true" } },
         };
 
