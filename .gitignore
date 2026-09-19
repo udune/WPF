@@ -359,3 +359,7 @@ Temporary Items
 **/.claude/settings.local.json
 
 # 학습 진도 기록(.study/)은 의도적으로 추적합니다. ignore 규칙을 추가하지 마세요.
+
+# Claude Code 작업 문서 (로컬에만 두고 공유하지 않음)
+CLAUDE.md
+HelloWPF/WPF-튜토리얼-변환-명령서.md
