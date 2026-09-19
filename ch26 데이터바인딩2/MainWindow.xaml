@@ -105,7 +105,7 @@
                                 </StackPanel>
                                 <TextBlock x:Name="txtHint1_1"
                                            Text="힌트: DataContext 가 있으면 {Binding 속성이름} 만 쓰면 됩니다."
-                                           Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                                           Foreground="#2196F3" FontWeight="SemiBold" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
                                 <Border x:Name="resultBorder1_1" Background="White" Margin="0,8,0,0" Padding="10" Visibility="Collapsed">
                                     <StackPanel x:Name="resultPanel1_1"/>
                                 </Border>
@@ -142,7 +142,7 @@
                                 </StackPanel>
                                 <TextBlock x:Name="txtHint1_2"
                                            Text="힌트: this.DataContext = this; 한 줄이면 됩니다."
-                                           Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                                           Foreground="#2196F3" FontWeight="SemiBold" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
                                 <TextBlock x:Name="txtResult1_2" Margin="0,8,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
                             </StackPanel>
                         </Expander>
@@ -184,7 +184,7 @@
                                 </StackPanel>
                                 <TextBlock x:Name="txtHint1_3"
                                            Text="힌트: StringFormat 으로 앞말을 붙일 수 있습니다."
-                                           Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                                           Foreground="#2196F3" FontWeight="SemiBold" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
                                 <Border x:Name="resultBorder1_3" Background="White" Margin="0,8,0,0" Padding="10" Visibility="Collapsed">
                                     <StackPanel x:Name="resultPanel1_3"/>
                                 </Border>
@@ -236,7 +236,7 @@
                                 </StackPanel>
                                 <TextBlock x:Name="txtHint2_1"
                                            Text="힌트: 자식은 부모의 DataContext 를 그대로 물려받으므로 {Binding 속성명} 만 쓰면 됩니다."
-                                           Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                                           Foreground="#2196F3" FontWeight="SemiBold" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
                                 <Border x:Name="resultBorder2_1" Background="White" Margin="0,8,0,0" Padding="10" Visibility="Collapsed">
                                     <StackPanel x:Name="resultPanel2_1"/>
                                 </Border>
@@ -287,7 +287,7 @@
                                 </StackPanel>
                                 <TextBlock x:Name="txtHint2_2"
                                            Text="힌트: Border 에 DataContext 를 주면 그 안쪽 바인딩은 새 원본을 봅니다."
-                                           Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                                           Foreground="#2196F3" FontWeight="SemiBold" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
                                 <Border x:Name="resultBorder2_2" Background="White" Margin="0,8,0,0" Padding="10" Visibility="Collapsed">
                                     <StackPanel x:Name="resultPanel2_2"/>
                                 </Border>
@@ -329,7 +329,7 @@
                                 </StackPanel>
                                 <TextBlock x:Name="txtHint2_3"
                                            Text="힌트: panel.DataContext 에 새 객체를 대입하면 안쪽 바인딩이 모두 갱신됩니다."
-                                           Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                                           Foreground="#2196F3" FontWeight="SemiBold" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
                                 <TextBlock x:Name="txtResult2_3" Margin="0,8,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
                             </StackPanel>
                         </Expander>
@@ -383,7 +383,7 @@
                                 </StackPanel>
                                 <TextBlock x:Name="txtHint3_1"
                                            Text="힌트: PropertyChangedEventHandler 이벤트와 OnPropertyChanged 메서드를 만듭니다."
-                                           Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                                           Foreground="#2196F3" FontWeight="SemiBold" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
                                 <TextBlock x:Name="txtResult3_1" Margin="0,8,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
                             </StackPanel>
                         </Expander>
@@ -438,7 +438,7 @@
                                 </StackPanel>
                                 <TextBlock x:Name="txtHint3_2"
                                            Text="힌트: 필드에 값을 넣은 뒤 OnPropertyChanged(&quot;Name&quot;) 을 호출합니다."
-                                           Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                                           Foreground="#2196F3" FontWeight="SemiBold" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
                                 <TextBlock x:Name="txtResult3_2" Margin="0,8,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
                             </StackPanel>
                         </Expander>
@@ -491,7 +491,7 @@
                                 </StackPanel>
                                 <TextBlock x:Name="txtHint3_3"
                                            Text="힌트: 같은 값이면 그냥 돌아가고, 다를 때만 대입하고 알립니다."
-                                           Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                                           Foreground="#2196F3" FontWeight="SemiBold" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
                                 <TextBlock x:Name="txtResult3_3" Margin="0,8,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
                             </StackPanel>
                         </Expander>
@@ -541,7 +541,7 @@
                                 </StackPanel>
                                 <TextBlock x:Name="txtHint4_1"
                                            Text="힌트: Path 에 Address.City 처럼 점으로 연결합니다."
-                                           Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                                           Foreground="#2196F3" FontWeight="SemiBold" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
                                 <Border x:Name="resultBorder4_1" Background="White" Margin="0,8,0,0" Padding="10" Visibility="Collapsed">
                                     <StackPanel x:Name="resultPanel4_1"/>
                                 </Border>
@@ -581,7 +581,7 @@
                                 </StackPanel>
                                 <TextBlock x:Name="txtHint4_2"
                                            Text="힌트: 대괄호 인덱서를 씁니다. 예: Items[0]"
-                                           Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                                           Foreground="#2196F3" FontWeight="SemiBold" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
                                 <Border x:Name="resultBorder4_2" Background="White" Margin="0,8,0,0" Padding="10" Visibility="Collapsed">
                                     <StackPanel x:Name="resultPanel4_2"/>
                                 </Border>
@@ -622,7 +622,7 @@
                                 </StackPanel>
                                 <TextBlock x:Name="txtHint4_3"
                                            Text="힌트: 점으로 연결해 두 단계를 파고듭니다."
-                                           Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                                           Foreground="#2196F3" FontWeight="SemiBold" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
                                 <Border x:Name="resultBorder4_3" Background="White" Margin="0,8,0,0" Padding="10" Visibility="Collapsed">
                                     <StackPanel x:Name="resultPanel4_3"/>
                                 </Border>
@@ -706,7 +706,7 @@
                                 </StackPanel>
                                 <TextBlock x:Name="txtHint5_1"
                                            Text="힌트: StackPanel 안에 TextBlock 두 개를 넣고 각각 Name, Age 를 바인딩합니다."
-                                           Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                                           Foreground="#2196F3" FontWeight="SemiBold" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
                                 <Border x:Name="resultBorder5_1" Background="White" Margin="0,8,0,0" Padding="10" Visibility="Collapsed">
                                     <StackPanel x:Name="resultPanel5_1"/>
                                 </Border>
@@ -744,7 +744,7 @@
                                 </StackPanel>
                                 <TextBlock x:Name="txtHint5_2"
                                            Text="힌트: null 조건 연산자(?.)와 new PropertyChangedEventArgs 를 씁니다."
-                                           Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                                           Foreground="#2196F3" FontWeight="SemiBold" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
                                 <TextBlock x:Name="txtResult5_2" Margin="0,8,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
                             </StackPanel>
                         </Expander>
@@ -810,7 +810,7 @@
                                 </StackPanel>
                                 <TextBlock x:Name="txtHint5_3"
                                            Text="힌트: TextBlock 두 개를 가로로 놓고 각각 다른 경로를 바인딩합니다."
-                                           Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                                           Foreground="#2196F3" FontWeight="SemiBold" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
                                 <Border x:Name="resultBorder5_3" Background="White" Margin="0,8,0,0" Padding="10" Visibility="Collapsed">
                                     <StackPanel x:Name="resultPanel5_3"/>
                                 </Border>

@@ -99,7 +99,7 @@
                                 </StackPanel>
                                 <TextBlock x:Name="txtHint1_1"
                                            Text="힌트: ElementName 에 원본 컨트롤 이름을, Path 에 속성 이름을 씁니다."
-                                           Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                                           Foreground="#2196F3" FontWeight="SemiBold" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
                                 <Border x:Name="resultBorder1_1" Background="White" Margin="0,8,0,0" Padding="10" Visibility="Collapsed">
                                     <StackPanel x:Name="resultPanel1_1"/>
                                 </Border>
@@ -139,7 +139,7 @@
                                 </StackPanel>
                                 <TextBlock x:Name="txtHint1_2"
                                            Text="힌트: Path 를 Text 로 지정합니다. Path= 는 생략해도 됩니다."
-                                           Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                                           Foreground="#2196F3" FontWeight="SemiBold" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
                                 <Border x:Name="resultBorder1_2" Background="White" Margin="0,8,0,0" Padding="10" Visibility="Collapsed">
                                     <StackPanel x:Name="resultPanel1_2"/>
                                 </Border>
@@ -173,7 +173,7 @@
                                 </StackPanel>
                                 <TextBlock x:Name="txtHint1_3"
                                            Text="힌트: Path 를 IsChecked 로 지정합니다."
-                                           Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                                           Foreground="#2196F3" FontWeight="SemiBold" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
                                 <Border x:Name="resultBorder1_3" Background="White" Margin="0,8,0,0" Padding="10" Visibility="Collapsed">
                                     <StackPanel x:Name="resultPanel1_3"/>
                                 </Border>
@@ -206,7 +206,7 @@
                                 </StackPanel>
                                 <TextBlock x:Name="txtHint1_4"
                                            Text="힌트: {Binding ElementName=enableCheckBox, Path=IsChecked} 를 IsEnabled 에 넣습니다."
-                                           Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                                           Foreground="#2196F3" FontWeight="SemiBold" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
                                 <Border x:Name="resultBorder1_4" Background="White" Margin="0,8,0,0" Padding="10" Visibility="Collapsed">
                                     <StackPanel x:Name="resultPanel1_4"/>
                                 </Border>
@@ -254,7 +254,7 @@
                                 </StackPanel>
                                 <TextBlock x:Name="txtHint2_1"
                                            Text="힌트: Mode=TwoWay 를 지정합니다."
-                                           Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                                           Foreground="#2196F3" FontWeight="SemiBold" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
                                 <Border x:Name="resultBorder2_1" Background="White" Margin="0,8,0,0" Padding="10" Visibility="Collapsed">
                                     <StackPanel x:Name="resultPanel2_1"/>
                                 </Border>
@@ -291,7 +291,7 @@
                                 </StackPanel>
                                 <TextBlock x:Name="txtHint2_2"
                                            Text="힌트: Mode=OneWay 는 원본에서 대상으로만 값이 흐릅니다."
-                                           Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                                           Foreground="#2196F3" FontWeight="SemiBold" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
                                 <Border x:Name="resultBorder2_2" Background="White" Margin="0,8,0,0" Padding="10" Visibility="Collapsed">
                                     <StackPanel x:Name="resultPanel2_2"/>
                                 </Border>
@@ -328,7 +328,7 @@
                                 </StackPanel>
                                 <TextBlock x:Name="txtHint2_3"
                                            Text="힌트: Button 의 IsEnabled 를 CheckBox 의 IsChecked 에 묶습니다."
-                                           Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                                           Foreground="#2196F3" FontWeight="SemiBold" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
                                 <Border x:Name="resultBorder2_3" Background="White" Margin="0,8,0,0" Padding="10" Visibility="Collapsed">
                                     <StackPanel x:Name="resultPanel2_3"/>
                                 </Border>
@@ -365,7 +365,7 @@
                                 </StackPanel>
                                 <TextBlock x:Name="txtHint2_4"
                                            Text="힌트: Mode=OneTime 을 붙이면 처음 한 번만 값을 가져오고 이후 변경은 무시합니다."
-                                           Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                                           Foreground="#2196F3" FontWeight="SemiBold" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
                                 <Border x:Name="resultBorder2_4" Background="White" Margin="0,8,0,0" Padding="10" Visibility="Collapsed">
                                     <StackPanel x:Name="resultPanel2_4"/>
                                 </Border>
@@ -421,7 +421,7 @@
                                 </StackPanel>
                                 <TextBlock x:Name="txtHint3_1"
                                            Text="힌트: UpdateSourceTrigger=PropertyChanged 를 추가합니다."
-                                           Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                                           Foreground="#2196F3" FontWeight="SemiBold" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
                                 <Border x:Name="resultBorder3_1" Background="White" Margin="0,8,0,0" Padding="10" Visibility="Collapsed">
                                     <StackPanel x:Name="resultPanel3_1"/>
                                 </Border>
@@ -455,7 +455,7 @@
                                 </StackPanel>
                                 <TextBlock x:Name="txtHint3_2"
                                            Text="힌트: TextBox 의 기본값이 LostFocus 지만, 명시적으로 적어 봅니다."
-                                           Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                                           Foreground="#2196F3" FontWeight="SemiBold" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
                                 <Border x:Name="resultBorder3_2" Background="White" Margin="0,8,0,0" Padding="10" Visibility="Collapsed">
                                     <StackPanel x:Name="resultPanel3_2"/>
                                 </Border>
@@ -489,7 +489,7 @@
                                 </StackPanel>
                                 <TextBlock x:Name="txtHint3_3"
                                            Text="힌트: UpdateSourceTrigger=PropertyChanged 를 붙입니다."
-                                           Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                                           Foreground="#2196F3" FontWeight="SemiBold" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
                                 <Border x:Name="resultBorder3_3" Background="White" Margin="0,8,0,0" Padding="10" Visibility="Collapsed">
                                     <StackPanel x:Name="resultPanel3_3"/>
                                 </Border>
@@ -527,7 +527,7 @@
                                 </StackPanel>
                                 <TextBlock x:Name="txtHint3_4"
                                            Text="힌트: GetBindingExpression(TextBox.TextProperty) 로 바인딩을 얻고 UpdateSource() 를 호출합니다."
-                                           Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                                           Foreground="#2196F3" FontWeight="SemiBold" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
                                 <TextBlock x:Name="txtResult3_4" Margin="0,8,0,0" FontWeight="Bold"
                                            Visibility="Collapsed" TextWrapping="Wrap"/>
                             </StackPanel>
@@ -574,7 +574,7 @@
                                 </StackPanel>
                                 <TextBlock x:Name="txtHint4_1"
                                            Text="힌트: StringFormat='현재 값: {0:F0} 점' 처럼 씁니다."
-                                           Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                                           Foreground="#2196F3" FontWeight="SemiBold" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
                                 <Border x:Name="resultBorder4_1" Background="White" Margin="0,8,0,0" Padding="10" Visibility="Collapsed">
                                     <StackPanel x:Name="resultPanel4_1"/>
                                 </Border>
@@ -615,7 +615,7 @@
                                 </StackPanel>
                                 <TextBlock x:Name="txtHint4_2"
                                            Text="힌트: 바인딩이 실패할 때 쓰이는 값이 FallbackValue 입니다."
-                                           Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                                           Foreground="#2196F3" FontWeight="SemiBold" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
                                 <Border x:Name="resultBorder4_2" Background="White" Margin="0,8,0,0" Padding="10" Visibility="Collapsed">
                                     <StackPanel x:Name="resultPanel4_2"/>
                                 </Border>
@@ -652,7 +652,7 @@
                                 </StackPanel>
                                 <TextBlock x:Name="txtHint4_3"
                                            Text="힌트: 형식 문자열이 중괄호로 시작하면 XAML 이 마크업 확장으로 오해하므로 앞에 {} 를 붙여 {}{0:F2} 로 씁니다."
-                                           Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                                           Foreground="#2196F3" FontWeight="SemiBold" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
                                 <Border x:Name="resultBorder4_3" Background="White" Margin="0,8,0,0" Padding="10" Visibility="Collapsed">
                                     <StackPanel x:Name="resultPanel4_3"/>
                                 </Border>
@@ -690,7 +690,7 @@
                                 </StackPanel>
                                 <TextBlock x:Name="txtHint4_4"
                                            Text="힌트: Binding 안에 FallbackValue=기본값 을 덧붙입니다."
-                                           Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                                           Foreground="#2196F3" FontWeight="SemiBold" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
                                 <Border x:Name="resultBorder4_4" Background="White" Margin="0,8,0,0" Padding="10" Visibility="Collapsed">
                                     <StackPanel x:Name="resultPanel4_4"/>
                                 </Border>
@@ -759,7 +759,7 @@
                                 </StackPanel>
                                 <TextBlock x:Name="txtHint5_1"
                                            Text="힌트: 같은 Slider 를 ElementName 으로 두 번 바인딩하면 됩니다."
-                                           Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                                           Foreground="#2196F3" FontWeight="SemiBold" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
                                 <Border x:Name="resultBorder5_1" Background="White" Margin="0,8,0,0" Padding="10" Visibility="Collapsed">
                                     <StackPanel x:Name="resultPanel5_1"/>
                                 </Border>
@@ -826,7 +826,7 @@
                                 </StackPanel>
                                 <TextBlock x:Name="txtHint5_2"
                                            Text="힌트: new Binding(&quot;Text&quot;) { Source = src } 를 만들고 SetBinding 으로 연결합니다."
-                                           Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                                           Foreground="#2196F3" FontWeight="SemiBold" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
                                 <TextBlock x:Name="txtResult5_2" Margin="0,8,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
                             </StackPanel>
                         </Expander>
@@ -861,7 +861,7 @@
                                 </StackPanel>
                                 <TextBlock x:Name="txtHint5_3"
                                            Text="힌트: TextBlock 의 FontSize 를 Slider 의 Value 에 바인딩합니다."
-                                           Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                                           Foreground="#2196F3" FontWeight="SemiBold" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
                                 <Border x:Name="resultBorder5_3" Background="White" Margin="0,8,0,0" Padding="10" Visibility="Collapsed">
                                     <StackPanel x:Name="resultPanel5_3"/>
                                 </Border>

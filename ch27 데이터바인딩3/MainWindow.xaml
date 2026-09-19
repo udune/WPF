@@ -105,7 +105,7 @@
                                 </StackPanel>
                                 <TextBlock x:Name="txtHint1_1"
                                            Text="힌트: ListBoxItem 을 나열하거나 문자열을 그대로 넣어도 됩니다."
-                                           Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                                           Foreground="#2196F3" FontWeight="SemiBold" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
                                 <Border x:Name="resultBorder1_1" Background="White" Margin="0,8,0,0" Padding="10" Visibility="Collapsed">
                                     <StackPanel x:Name="resultPanel1_1"/>
                                 </Border>
@@ -136,7 +136,7 @@
                                 </StackPanel>
                                 <TextBlock x:Name="txtHint1_2"
                                            Text="힌트: new List&lt;string&gt; { ... } 를 만들고 list.ItemsSource 에 대입합니다."
-                                           Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                                           Foreground="#2196F3" FontWeight="SemiBold" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
                                 <TextBlock x:Name="txtResult1_2" Margin="0,8,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
                             </StackPanel>
                         </Expander>
@@ -167,7 +167,7 @@
                                 </StackPanel>
                                 <TextBlock x:Name="txtHint1_3"
                                            Text="힌트: SelectedIndex 는 0부터 셉니다."
-                                           Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                                           Foreground="#2196F3" FontWeight="SemiBold" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
                                 <Border x:Name="resultBorder1_3" Background="White" Margin="0,8,0,0" Padding="10" Visibility="Collapsed">
                                     <StackPanel x:Name="resultPanel1_3"/>
                                 </Border>
@@ -213,7 +213,7 @@
                                 </StackPanel>
                                 <TextBlock x:Name="txtHint1_4"
                                            Text="힌트: SelectedItem 은 객체 자체, SelectedValue 는 SelectedValuePath 가 가리키는 값입니다."
-                                           Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                                           Foreground="#2196F3" FontWeight="SemiBold" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
                                 <TextBlock x:Name="txtResult1_4" Margin="0,8,0,0" FontWeight="Bold"
                                            Visibility="Collapsed" TextWrapping="Wrap"/>
                             </StackPanel>
@@ -264,7 +264,7 @@
                                 </StackPanel>
                                 <TextBlock x:Name="txtHint2_1"
                                            Text="힌트: &lt;ListBox.ItemTemplate&gt;&lt;DataTemplate&gt;...&lt;/DataTemplate&gt;&lt;/ListBox.ItemTemplate&gt; 구조입니다."
-                                           Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                                           Foreground="#2196F3" FontWeight="SemiBold" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
                                 <Border x:Name="resultBorder2_1" Background="White" Margin="0,8,0,0" Padding="10" Visibility="Collapsed">
                                     <StackPanel x:Name="resultPanel2_1"/>
                                 </Border>
@@ -306,7 +306,7 @@
                                 </StackPanel>
                                 <TextBlock x:Name="txtHint2_2"
                                            Text="힌트: StackPanel Orientation=&quot;Horizontal&quot; 안에 Rectangle 과 TextBlock 을 넣습니다."
-                                           Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                                           Foreground="#2196F3" FontWeight="SemiBold" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
                                 <Border x:Name="resultBorder2_2" Background="White" Margin="0,8,0,0" Padding="10" Visibility="Collapsed">
                                     <StackPanel x:Name="resultPanel2_2"/>
                                 </Border>
@@ -365,7 +365,7 @@
                                 </StackPanel>
                                 <TextBlock x:Name="txtHint2_3"
                                            Text="힌트: StackPanel 안에 TextBlock 두 개를 세로로 넣습니다."
-                                           Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                                           Foreground="#2196F3" FontWeight="SemiBold" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
                                 <Border x:Name="resultBorder2_3" Background="White" Margin="0,8,0,0" Padding="10" Visibility="Collapsed">
                                     <StackPanel x:Name="resultPanel2_3"/>
                                 </Border>
@@ -429,7 +429,7 @@
                                 </StackPanel>
                                 <TextBlock x:Name="txtHint3_1"
                                            Text="힌트: &lt;ListView.View&gt;&lt;GridView&gt;&lt;GridViewColumn Header=&quot;..&quot; DisplayMemberBinding=&quot;{Binding ..}&quot;/&gt;"
-                                           Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                                           Foreground="#2196F3" FontWeight="SemiBold" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
                                 <Border x:Name="resultBorder3_1" Background="White" Margin="0,8,0,0" Padding="10" Visibility="Collapsed">
                                     <StackPanel x:Name="resultPanel3_1"/>
                                 </Border>
@@ -468,7 +468,7 @@
                                 </StackPanel>
                                 <TextBlock x:Name="txtHint3_2"
                                            Text="힌트: &lt;GridViewColumn.CellTemplate&gt;&lt;DataTemplate&gt;...&lt;/DataTemplate&gt;&lt;/GridViewColumn.CellTemplate&gt;"
-                                           Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                                           Foreground="#2196F3" FontWeight="SemiBold" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
                                 <Border x:Name="resultBorder3_2" Background="White" Margin="0,8,0,0" Padding="10" Visibility="Collapsed">
                                     <StackPanel x:Name="resultPanel3_2"/>
                                 </Border>
@@ -526,7 +526,7 @@
                                 </StackPanel>
                                 <TextBlock x:Name="txtHint3_3"
                                            Text="힌트: GridViewColumn 을 더 넣고 Width 를 다르게 지정합니다."
-                                           Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                                           Foreground="#2196F3" FontWeight="SemiBold" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
                                 <Border x:Name="resultBorder3_3" Background="White" Margin="0,8,0,0" Padding="10" Visibility="Collapsed">
                                     <StackPanel x:Name="resultPanel3_3"/>
                                 </Border>
@@ -571,7 +571,7 @@
                                 </StackPanel>
                                 <TextBlock x:Name="txtHint4_1"
                                            Text="힌트: SelectedIndex 는 0부터 시작합니다."
-                                           Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                                           Foreground="#2196F3" FontWeight="SemiBold" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
                                 <Border x:Name="resultBorder4_1" Background="White" Margin="0,8,0,0" Padding="10" Visibility="Collapsed">
                                     <StackPanel x:Name="resultPanel4_1"/>
                                 </Border>
@@ -616,7 +616,7 @@
                                 </StackPanel>
                                 <TextBlock x:Name="txtHint4_2"
                                            Text="힌트: DisplayMemberPath 와 SelectedValuePath 를 함께 씁니다."
-                                           Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                                           Foreground="#2196F3" FontWeight="SemiBold" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
                                 <Border x:Name="resultBorder4_2" Background="White" Margin="0,8,0,0" Padding="10" Visibility="Collapsed">
                                     <StackPanel x:Name="resultPanel4_2"/>
                                 </Border>
@@ -660,7 +660,7 @@
                                 </StackPanel>
                                 <TextBlock x:Name="txtHint4_3"
                                            Text="힌트: IsEditable=&quot;True&quot; 를 지정하면 사용자가 직접 칠 수 있습니다."
-                                           Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                                           Foreground="#2196F3" FontWeight="SemiBold" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
                                 <Border x:Name="resultBorder4_3" Background="White" Margin="0,8,0,0" Padding="10" Visibility="Collapsed">
                                     <StackPanel x:Name="resultPanel4_3"/>
                                 </Border>
@@ -694,7 +694,7 @@
                                 </StackPanel>
                                 <TextBlock x:Name="txtHint4_4"
                                            Text="힌트: IsEditable=&quot;True&quot; 를 주면 입력란이 생깁니다."
-                                           Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                                           Foreground="#2196F3" FontWeight="SemiBold" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
                                 <Border x:Name="resultBorder4_4" Background="White" Margin="0,8,0,0" Padding="10" Visibility="Collapsed">
                                     <StackPanel x:Name="resultPanel4_4"/>
                                 </Border>
@@ -758,7 +758,7 @@
                                 </StackPanel>
                                 <TextBlock x:Name="txtHint5_1"
                                            Text="힌트: ObservableCollection 은 Add 만 해도 화면이 자동으로 갱신됩니다."
-                                           Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                                           Foreground="#2196F3" FontWeight="SemiBold" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
                                 <TextBlock x:Name="txtResult5_1" Margin="0,8,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
                             </StackPanel>
                         </Expander>
@@ -804,7 +804,7 @@
                                 </StackPanel>
                                 <TextBlock x:Name="txtHint5_2"
                                            Text="힌트: SelectedItem 이 null 이 아닐 때만 Remove 를 호출합니다."
-                                           Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                                           Foreground="#2196F3" FontWeight="SemiBold" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
                                 <TextBlock x:Name="txtResult5_2" Margin="0,8,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
                             </StackPanel>
                         </Expander>
@@ -839,7 +839,7 @@
                                 </StackPanel>
                                 <TextBlock x:Name="txtHint5_3"
                                            Text="힌트: Clear() 하나면 화면 목록도 함께 비워집니다."
-                                           Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                                           Foreground="#2196F3" FontWeight="SemiBold" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
                                 <TextBlock x:Name="txtResult5_3" Margin="0,8,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
                             </StackPanel>
                         </Expander>
