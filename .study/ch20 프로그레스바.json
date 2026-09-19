@@ -1,10 +1,10 @@
 {
   "Chapter": "ch20 프로그레스바",
   "FirstStudiedAt": "2026-09-18T14:10:39.7503795+09:00",
-  "LastStudiedAt": "2026-09-18T14:12:49.8101478+09:00",
-  "TotalStudySeconds": 86,
-  "LaunchCount": 1,
-  "LastTab": 0,
+  "LastStudiedAt": "2026-09-20T01:59:53.6014019+09:00",
+  "TotalStudySeconds": 126,
+  "LaunchCount": 4,
+  "LastTab": 1,
   "PracticeTotal": 18,
   "Practices": {
     "5_4": {
@@ -127,7 +127,7 @@
     "2_2": {
       "Runs": 0,
       "Successes": 0,
-      "Hints": 0,
+      "Hints": 2,
       "Answers": 0,
       "Status": "미완료",
       "Draft": null,
@@ -136,7 +136,7 @@
     "2_1": {
       "Runs": 0,
       "Successes": 0,
-      "Hints": 0,
+      "Hints": 3,
       "Answers": 0,
       "Status": "미완료",
       "Draft": null,
@@ -163,7 +163,7 @@
     "1_1": {
       "Runs": 1,
       "Successes": 1,
-      "Hints": 0,
+      "Hints": 1,
       "Answers": 0,
       "Status": "완료",
       "Draft": "<ProgressBar Value=\"50\" Height=\"25\"/>",
