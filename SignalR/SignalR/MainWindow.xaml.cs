@@ -17,8 +17,6 @@ namespace SignalR
     /// </summary>
     public partial class MainWindow : Window
     {
-        HubConnection hubConnection;
-
         public MainWindow()
         {
             InitializeComponent();

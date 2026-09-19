@@ -9,7 +9,13 @@ namespace ch34_MVVM.Commands
 {
     public class PersonCommand : ICommand
     {
-        public event EventHandler? CanExecuteChanged;
+        // CommandManager에 위임해 UI 상태가 바뀔 때마다 CanExecute가 다시 평가되도록 한다
+        public event EventHandler? CanExecuteChanged
+        {
+            add { CommandManager.RequerySuggested += value; }
+            remove { CommandManager.RequerySuggested -= value; }
+        }
+
         Action<string?> execute;
         Predicate<string?> canExecute;
         public PersonCommand(Action<string?> msg, Predicate<string?> check)
