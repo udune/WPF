@@ -103,7 +103,7 @@
                             </StackPanel>
                             <TextBlock x:Name="txtHint1_1"
                                        Text="힌트: DockPanel.Dock=&quot;Top&quot;과 DockPanel.Dock=&quot;Left&quot;를 사용합니다."
-                                       Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                                       Foreground="#2196F3" FontWeight="SemiBold" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
                             <Border x:Name="resultBorder1_1" Background="White" Margin="0,8,0,0" Padding="10" Visibility="Collapsed">
                                 <StackPanel x:Name="resultPanel1_1"/>
                             </Border>
@@ -139,7 +139,7 @@
                             </StackPanel>
                             <TextBlock x:Name="txtHint1_2"
                                        Text="힌트: DockPanel.Dock=&quot;Top&quot;을 두 개의 Button에 적용합니다."
-                                       Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                                       Foreground="#2196F3" FontWeight="SemiBold" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
                             <Border x:Name="resultBorder1_2" Background="White" Margin="0,8,0,0" Padding="10" Visibility="Collapsed">
                                 <StackPanel x:Name="resultPanel1_2"/>
                             </Border>
@@ -178,7 +178,7 @@
                         </StackPanel>
                         <TextBlock x:Name="txtHint1_3"
                                    Text="힌트: DockPanel.Dock=&quot;Top&quot; 과 &quot;Bottom&quot; 을 씁니다."
-                                   Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                                   Foreground="#2196F3" FontWeight="SemiBold" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
                         <Border x:Name="resultBorder1_3" Background="White" Margin="0,8,0,0" Padding="10" Visibility="Collapsed">
                             <StackPanel x:Name="resultPanel1_3"/>
                         </Border>
@@ -235,7 +235,7 @@
                             </StackPanel>
                             <TextBlock x:Name="txtHint2_1"
                                        Text="힌트: Left Button을 Top Button보다 먼저 선언합니다."
-                                       Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                                       Foreground="#2196F3" FontWeight="SemiBold" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
                             <Border x:Name="resultBorder2_1" Background="White" Margin="0,8,0,0" Padding="10" Visibility="Collapsed">
                                 <StackPanel x:Name="resultPanel2_1"/>
                             </Border>
@@ -279,7 +279,7 @@
                             </StackPanel>
                             <TextBlock x:Name="txtHint2_2"
                                        Text="힌트: DockPanel에 LastChildFill=&quot;False&quot;를 추가합니다."
-                                       Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                                       Foreground="#2196F3" FontWeight="SemiBold" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
                             <Border x:Name="resultBorder2_2" Background="White" Margin="0,8,0,0" Padding="10" Visibility="Collapsed">
                                 <StackPanel x:Name="resultPanel2_2"/>
                             </Border>
@@ -301,7 +301,7 @@
                         </StackPanel>
                         <TextBlock x:Name="txtHint2_3"
                                    Text="힌트: LastChildFill=&quot;False&quot; 를 DockPanel 에 지정합니다."
-                                   Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                                   Foreground="#2196F3" FontWeight="SemiBold" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
                         <Border x:Name="resultBorder2_3" Background="White" Margin="0,8,0,0" Padding="10" Visibility="Collapsed">
                             <StackPanel x:Name="resultPanel2_3"/>
                         </Border>
@@ -372,7 +372,7 @@
                             </StackPanel>
                             <TextBlock x:Name="txtHint3_1"
                                        Text="힌트: Top, Bottom 순서로 배치하고 마지막에 콘텐츠 영역을 둡니다."
-                                       Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                                       Foreground="#2196F3" FontWeight="SemiBold" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
                             <Border x:Name="resultBorder3_1" Background="White" Margin="0,8,0,0" Padding="10" Visibility="Collapsed">
                                 <StackPanel x:Name="resultPanel3_1"/>
                             </Border>
@@ -414,7 +414,7 @@
                             </StackPanel>
                             <TextBlock x:Name="txtHint3_2"
                                        Text="힌트: Bottom에 StackPanel(Horizontal)을 두고 Button을 배치합니다."
-                                       Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                                       Foreground="#2196F3" FontWeight="SemiBold" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
                             <Border x:Name="resultBorder3_2" Background="White" Margin="0,8,0,0" Padding="10" Visibility="Collapsed">
                                 <StackPanel x:Name="resultPanel3_2"/>
                             </Border>
@@ -463,7 +463,7 @@
                         </StackPanel>
                         <TextBlock x:Name="txtHint3_3"
                                    Text="힌트: 왼쪽을 Dock=&quot;Left&quot; 로 고정하면 나머지 자식이 본문이 됩니다."
-                                   Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                                   Foreground="#2196F3" FontWeight="SemiBold" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
                         <Border x:Name="resultBorder3_3" Background="White" Margin="0,8,0,0" Padding="10" Visibility="Collapsed">
                             <StackPanel x:Name="resultPanel3_3"/>
                         </Border>
@@ -508,7 +508,7 @@
                             </StackPanel>
                             <TextBlock x:Name="txtHint4_1"
                                        Text="힌트: Background=&quot;LightBlue&quot;를 DockPanel에 추가합니다."
-                                       Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                                       Foreground="#2196F3" FontWeight="SemiBold" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
                             <Border x:Name="resultBorder4_1" Background="White" Margin="0,8,0,0" Padding="10" Visibility="Collapsed">
                                 <StackPanel x:Name="resultPanel4_1"/>
                             </Border>
@@ -550,7 +550,7 @@
                             </StackPanel>
                             <TextBlock x:Name="txtHint4_2"
                                        Text="힌트: 각 Button에 Margin=&quot;5&quot;를 추가합니다."
-                                       Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                                       Foreground="#2196F3" FontWeight="SemiBold" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
                             <Border x:Name="resultBorder4_2" Background="White" Margin="0,8,0,0" Padding="10" Visibility="Collapsed">
                                 <StackPanel x:Name="resultPanel4_2"/>
                             </Border>
@@ -593,7 +593,7 @@
                         </StackPanel>
                         <TextBlock x:Name="txtHint4_3"
                                    Text="힌트: 각 자식 Border 에 Background 를 다르게 지정합니다."
-                                   Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                                   Foreground="#2196F3" FontWeight="SemiBold" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
                         <Border x:Name="resultBorder4_3" Background="White" Margin="0,8,0,0" Padding="10" Visibility="Collapsed">
                             <StackPanel x:Name="resultPanel4_3"/>
                         </Border>
@@ -647,7 +647,7 @@
                             </StackPanel>
                             <TextBlock x:Name="txtHint5_1"
                                        Text="힌트: DockPanel.SetDock(element, Dock.Bottom);"
-                                       Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                                       Foreground="#2196F3" FontWeight="SemiBold" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
                             <TextBlock x:Name="txtResult5_1"
                                        Margin="0,8,0,0" FontWeight="Bold" Visibility="Collapsed"/>
                         </StackPanel>
@@ -687,7 +687,7 @@
                             </StackPanel>
                             <TextBlock x:Name="txtHint5_2"
                                        Text="힌트: DockPanel.SetDock(btn, Dock.Left); 후 Children.Add 또는 Insert 사용"
-                                       Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                                       Foreground="#2196F3" FontWeight="SemiBold" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
                             <TextBlock x:Name="txtResult5_2"
                                        Margin="0,8,0,0" FontWeight="Bold" Visibility="Collapsed"/>
                         </StackPanel>
@@ -727,7 +727,7 @@
                             </StackPanel>
                             <TextBlock x:Name="txtHint5_3"
                                        Text="힌트: .LastChildFill = false;"
-                                       Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                                       Foreground="#2196F3" FontWeight="SemiBold" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
                             <TextBlock x:Name="txtResult5_3"
                                        Margin="0,8,0,0" FontWeight="Bold" Visibility="Collapsed"/>
                         </StackPanel>

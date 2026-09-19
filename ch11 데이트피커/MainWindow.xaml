@@ -190,7 +190,7 @@
                             </StackPanel>
                             <TextBlock x:Name="txtHint1_4"
                                        Text="힌트: DatePicker 에도 Calendar 와 같은 DisplayDate 속성이 있습니다."
-                                       Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                                       Foreground="#2196F3" FontWeight="SemiBold" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
                             <Border x:Name="resultBorder1_4" Background="White" Margin="0,8,0,0" Padding="10" Visibility="Collapsed">
                                 <StackPanel x:Name="resultPanel1_4"/>
                             </Border>
@@ -284,7 +284,7 @@
                             </StackPanel>
                             <TextBlock x:Name="txtHint2_3"
                                        Text="힌트: DisplayDateStart 와 DisplayDateEnd 를 함께 지정합니다."
-                                       Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                                       Foreground="#2196F3" FontWeight="SemiBold" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
                             <Border x:Name="resultBorder2_3" Background="White" Margin="0,8,0,0" Padding="10" Visibility="Collapsed">
                                 <StackPanel x:Name="resultPanel2_3"/>
                             </Border>
@@ -322,7 +322,7 @@
                             </StackPanel>
                             <TextBlock x:Name="txtHint2_4"
                                        Text="힌트: FirstDayOfWeek=&quot;Monday&quot; 를 추가합니다."
-                                       Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                                       Foreground="#2196F3" FontWeight="SemiBold" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
                             <Border x:Name="resultBorder2_4" Background="White" Margin="0,8,0,0" Padding="10" Visibility="Collapsed">
                                 <StackPanel x:Name="resultPanel2_4"/>
                             </Border>
@@ -418,7 +418,7 @@
                             </StackPanel>
                             <TextBlock x:Name="txtHint3_3"
                                        Text="힌트: SelectedDateFormat=&quot;Long&quot; 을 지정합니다."
-                                       Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                                       Foreground="#2196F3" FontWeight="SemiBold" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
                             <Border x:Name="resultBorder3_3" Background="White" Margin="0,8,0,0" Padding="10" Visibility="Collapsed">
                                 <StackPanel x:Name="resultPanel3_3"/>
                             </Border>
@@ -456,7 +456,7 @@
                             </StackPanel>
                             <TextBlock x:Name="txtHint3_4"
                                        Text="힌트: IsTodayHighlighted 기본값은 True 입니다. False 로 바꾸세요."
-                                       Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                                       Foreground="#2196F3" FontWeight="SemiBold" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
                             <Border x:Name="resultBorder3_4" Background="White" Margin="0,8,0,0" Padding="10" Visibility="Collapsed">
                                 <StackPanel x:Name="resultPanel3_4"/>
                             </Border>
@@ -535,7 +535,7 @@
                             </StackPanel>
                             <TextBlock x:Name="txtHint4_2"
                                        Text="힌트: ElementName=dp, Path=SelectedDate 로 바인딩합니다."
-                                       Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                                       Foreground="#2196F3" FontWeight="SemiBold" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
                             <Border x:Name="resultBorder4_2" Background="White" Margin="0,8,0,0" Padding="10" Visibility="Collapsed">
                                 <StackPanel x:Name="resultPanel4_2"/>
                             </Border>
@@ -573,7 +573,7 @@
                             </StackPanel>
                             <TextBlock x:Name="txtHint4_3"
                                        Text="힌트: DateTime.Today.AddDays(7) 을 SelectedDate 에 대입합니다."
-                                       Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                                       Foreground="#2196F3" FontWeight="SemiBold" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
                             <TextBlock x:Name="txtResult4_3" Margin="0,8,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
                         </StackPanel>
                     </Expander>
@@ -708,7 +708,7 @@
                             </StackPanel>
                             <TextBlock x:Name="txtHint5_4"
                                        Text="힌트: DatePicker 도 SelectedDate 로 값을 넣고, null 로 지웁니다."
-                                       Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                                       Foreground="#2196F3" FontWeight="SemiBold" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
                             <TextBlock x:Name="txtResult5_4" Margin="0,8,0,0" FontWeight="Bold"
                                        Visibility="Collapsed" TextWrapping="Wrap"/>
                         </StackPanel>

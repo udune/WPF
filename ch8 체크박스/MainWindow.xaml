@@ -90,7 +90,7 @@
                             </StackPanel>
                             <TextBlock x:Name="txtHint1_1"
                                        Text="힌트: Content 속성에 텍스트를 지정합니다."
-                                       Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                                       Foreground="#2196F3" FontWeight="SemiBold" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
                             <Border x:Name="resultBorder1_1" Background="White" Margin="0,8,0,0" Padding="10" Visibility="Collapsed">
                                 <StackPanel x:Name="resultPanel1_1"/>
                             </Border>
@@ -116,7 +116,7 @@
                             </StackPanel>
                             <TextBlock x:Name="txtHint1_2"
                                        Text="힌트: IsChecked 속성을 True로 설정합니다."
-                                       Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                                       Foreground="#2196F3" FontWeight="SemiBold" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
                             <Border x:Name="resultBorder1_2" Background="White" Margin="0,8,0,0" Padding="10" Visibility="Collapsed">
                                 <StackPanel x:Name="resultPanel1_2"/>
                             </Border>
@@ -147,7 +147,7 @@
                             </StackPanel>
                             <TextBlock x:Name="txtHint1_3"
                                        Text="힌트: IsThreeState 속성을 True로 설정하면 True/False/Null 세 상태를 가집니다."
-                                       Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                                       Foreground="#2196F3" FontWeight="SemiBold" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
                             <Border x:Name="resultBorder1_3" Background="White" Margin="0,8,0,0" Padding="10" Visibility="Collapsed">
                                 <StackPanel x:Name="resultPanel1_3"/>
                             </Border>
@@ -180,7 +180,7 @@
                             </StackPanel>
                             <TextBlock x:Name="txtHint1_4"
                                        Text="힌트: IsThreeState=&quot;True&quot; 와 IsChecked=&quot;{x:Null}&quot; 을 함께 쓰면 불확정 상태가 됩니다."
-                                       Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                                       Foreground="#2196F3" FontWeight="SemiBold" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
                             <Border x:Name="resultBorder1_4" Background="White" Margin="0,8,0,0" Padding="10" Visibility="Collapsed">
                                 <StackPanel x:Name="resultPanel1_4"/>
                             </Border>
@@ -213,7 +213,7 @@
                             </StackPanel>
                             <TextBlock x:Name="txtHint1_5"
                                        Text="힌트: IsEnabled 와 IsChecked 는 서로 다른 속성이라 함께 쓸 수 있습니다."
-                                       Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                                       Foreground="#2196F3" FontWeight="SemiBold" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
                             <Border x:Name="resultBorder1_5" Background="White" Margin="0,8,0,0" Padding="10" Visibility="Collapsed">
                                 <StackPanel x:Name="resultPanel1_5"/>
                             </Border>
@@ -246,7 +246,7 @@
                             </StackPanel>
                             <TextBlock x:Name="txtHint1_6"
                                        Text="힌트: Hover 는 마우스를 올리기만 해도 상태가 바뀝니다. 직접 눌러 차이를 확인해 보세요."
-                                       Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                                       Foreground="#2196F3" FontWeight="SemiBold" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
                             <Border x:Name="resultBorder1_6" Background="White" Margin="0,8,0,0" Padding="10" Visibility="Collapsed">
                                 <StackPanel x:Name="resultPanel1_6"/>
                             </Border>
@@ -285,7 +285,7 @@
                             </StackPanel>
                             <TextBlock x:Name="txtHint2_1"
                                        Text="힌트: HorizontalAlignment 속성으로 컨트롤의 수평 위치를 지정합니다."
-                                       Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                                       Foreground="#2196F3" FontWeight="SemiBold" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
                             <Border x:Name="resultBorder2_1" Background="White" Margin="0,8,0,0" Padding="10" Visibility="Collapsed">
                                 <StackPanel x:Name="resultPanel2_1"/>
                             </Border>
@@ -312,7 +312,7 @@
                             </StackPanel>
                             <TextBlock x:Name="txtHint2_2"
                                        Text="힌트: FlowDirection 속성을 RightToLeft로 설정합니다."
-                                       Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                                       Foreground="#2196F3" FontWeight="SemiBold" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
                             <Border x:Name="resultBorder2_2" Background="White" Margin="0,8,0,0" Padding="10" Visibility="Collapsed">
                                 <StackPanel x:Name="resultPanel2_2"/>
                             </Border>
@@ -347,7 +347,7 @@
                             </StackPanel>
                             <TextBlock x:Name="txtHint2_3"
                                        Text="힌트: StackPanel 에 HorizontalAlignment=&quot;Center&quot; 를 주면 자식이 가운데로 모입니다."
-                                       Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                                       Foreground="#2196F3" FontWeight="SemiBold" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
                             <Border x:Name="resultBorder2_3" Background="White" Margin="0,8,0,0" Padding="10" Visibility="Collapsed">
                                 <StackPanel x:Name="resultPanel2_3"/>
                             </Border>
@@ -378,7 +378,7 @@
                             </StackPanel>
                             <TextBlock x:Name="txtHint2_4"
                                        Text="힌트: FlowDirection=&quot;RightToLeft&quot; 를 주면 글자와 체크 상자의 좌우가 뒤바뀝니다."
-                                       Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                                       Foreground="#2196F3" FontWeight="SemiBold" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
                             <Border x:Name="resultBorder2_4" Background="White" Margin="0,8,0,0" Padding="10" Visibility="Collapsed">
                                 <StackPanel x:Name="resultPanel2_4"/>
                             </Border>
@@ -418,7 +418,7 @@
                             </StackPanel>
                             <TextBlock x:Name="txtHint3_1"
                                        Text="힌트: FontSize 속성에 숫자를 지정합니다."
-                                       Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                                       Foreground="#2196F3" FontWeight="SemiBold" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
                             <Border x:Name="resultBorder3_1" Background="White" Margin="0,8,0,0" Padding="10" Visibility="Collapsed">
                                 <StackPanel x:Name="resultPanel3_1"/>
                             </Border>
@@ -447,7 +447,7 @@
                             </StackPanel>
                             <TextBlock x:Name="txtHint3_2"
                                        Text="힌트: FontWeight와 FontStyle 속성을 함께 사용합니다."
-                                       Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                                       Foreground="#2196F3" FontWeight="SemiBold" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
                             <Border x:Name="resultBorder3_2" Background="White" Margin="0,8,0,0" Padding="10" Visibility="Collapsed">
                                 <StackPanel x:Name="resultPanel3_2"/>
                             </Border>
@@ -475,7 +475,7 @@
                             </StackPanel>
                             <TextBlock x:Name="txtHint3_3"
                                        Text="힌트: 밑줄은 TextBlock 을 Content 로 넣어 TextDecorations 를 지정합니다."
-                                       Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                                       Foreground="#2196F3" FontWeight="SemiBold" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
                             <Border x:Name="resultBorder3_3" Background="White" Margin="0,8,0,0" Padding="10" Visibility="Collapsed">
                                 <StackPanel x:Name="resultPanel3_3"/>
                             </Border>
@@ -504,7 +504,7 @@
                             </StackPanel>
                             <TextBlock x:Name="txtHint3_4"
                                        Text="힌트: FontFamily 에 Arial, Consolas, 맑은 고딕 등을 지정합니다."
-                                       Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                                       Foreground="#2196F3" FontWeight="SemiBold" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
                             <Border x:Name="resultBorder3_4" Background="White" Margin="0,8,0,0" Padding="10" Visibility="Collapsed">
                                 <StackPanel x:Name="resultPanel3_4"/>
                             </Border>
@@ -543,7 +543,7 @@
                             </StackPanel>
                             <TextBlock x:Name="txtHint4_1"
                                        Text="힌트: Background와 Foreground 속성을 함께 사용합니다."
-                                       Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                                       Foreground="#2196F3" FontWeight="SemiBold" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
                             <Border x:Name="resultBorder4_1" Background="White" Margin="0,8,0,0" Padding="10" Visibility="Collapsed">
                                 <StackPanel x:Name="resultPanel4_1"/>
                             </Border>
@@ -570,7 +570,7 @@
                             </StackPanel>
                             <TextBlock x:Name="txtHint4_2"
                                        Text="힌트: Opacity 속성에 0.0~1.0 사이의 값을 지정합니다."
-                                       Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                                       Foreground="#2196F3" FontWeight="SemiBold" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
                             <Border x:Name="resultBorder4_2" Background="White" Margin="0,8,0,0" Padding="10" Visibility="Collapsed">
                                 <StackPanel x:Name="resultPanel4_2"/>
                             </Border>
@@ -599,7 +599,7 @@
                             </StackPanel>
                             <TextBlock x:Name="txtHint4_3"
                                        Text="힌트: Foreground, Background, Padding 을 함께 지정합니다."
-                                       Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                                       Foreground="#2196F3" FontWeight="SemiBold" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
                             <Border x:Name="resultBorder4_3" Background="White" Margin="0,8,0,0" Padding="10" Visibility="Collapsed">
                                 <StackPanel x:Name="resultPanel4_3"/>
                             </Border>
@@ -630,7 +630,7 @@
                             </StackPanel>
                             <TextBlock x:Name="txtHint4_4"
                                        Text="힌트: 체크 상자와 글자 사이가 Padding 만큼 벌어집니다."
-                                       Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                                       Foreground="#2196F3" FontWeight="SemiBold" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
                             <Border x:Name="resultBorder4_4" Background="White" Margin="0,8,0,0" Padding="10" Visibility="Collapsed">
                                 <StackPanel x:Name="resultPanel4_4"/>
                             </Border>
@@ -674,7 +674,7 @@
                             </StackPanel>
                             <TextBlock x:Name="txtHint5_1"
                                        Text="힌트: txtStatus.Text 속성에 문자열을 할당합니다."
-                                       Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                                       Foreground="#2196F3" FontWeight="SemiBold" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
                             <TextBlock x:Name="txtResult5_1" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
                         </StackPanel>
                     </Expander>
@@ -705,7 +705,7 @@
                             </StackPanel>
                             <TextBlock x:Name="txtHint5_2"
                                        Text="힌트: IsChecked는 bool? 타입이므로 == true로 비교합니다."
-                                       Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                                       Foreground="#2196F3" FontWeight="SemiBold" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
                             <TextBlock x:Name="txtResult5_2" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
                         </StackPanel>
                     </Expander>
@@ -737,7 +737,7 @@
                             </StackPanel>
                             <TextBlock x:Name="txtHint5_3"
                                        Text="힌트: 각 체크박스의 IsChecked 속성을 true로 설정합니다."
-                                       Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                                       Foreground="#2196F3" FontWeight="SemiBold" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
                             <TextBlock x:Name="txtResult5_3" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
                         </StackPanel>
                     </Expander>
@@ -773,7 +773,7 @@
                             </StackPanel>
                             <TextBlock x:Name="txtHint5_4"
                                        Text="힌트: 각 항목의 IsChecked 에 true / false 를 직접 넣습니다."
-                                       Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                                       Foreground="#2196F3" FontWeight="SemiBold" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
                             <TextBlock x:Name="txtResult5_4" Margin="0,8,0,0" FontWeight="Bold"
                                        Visibility="Collapsed" TextWrapping="Wrap"/>
                         </StackPanel>

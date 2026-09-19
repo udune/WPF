@@ -144,7 +144,7 @@
                                 </StackPanel>
                                 <TextBlock x:Name="txtHint2_1"
                                            Text="힌트: Frame 도 일반 컨트롤처럼 테두리 속성을 가집니다."
-                                           Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                                           Foreground="#2196F3" FontWeight="SemiBold" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
                                 <Border x:Name="resultBorder2_1" Background="White" Margin="0,8,0,0" Padding="10" Visibility="Collapsed">
                                     <StackPanel x:Name="resultPanel2_1"/>
                                 </Border>
@@ -195,7 +195,7 @@
                                 </StackPanel>
                                 <TextBlock x:Name="txtHint2_2"
                                            Text="힌트: NavigationUIVisibility=&quot;Hidden&quot; 을 지정합니다."
-                                           Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                                           Foreground="#2196F3" FontWeight="SemiBold" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
                                 <Border x:Name="resultBorder2_2" Background="White" Margin="0,8,0,0" Padding="10" Visibility="Collapsed">
                                     <StackPanel x:Name="resultPanel2_2"/>
                                 </Border>
@@ -246,7 +246,7 @@
                                 </StackPanel>
                                 <TextBlock x:Name="txtHint2_3"
                                            Text="힌트: 제목은 Dock=&quot;Top&quot;, Frame 은 마지막 자식으로 두면 남은 공간을 채웁니다."
-                                           Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                                           Foreground="#2196F3" FontWeight="SemiBold" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
                                 <Border x:Name="resultBorder2_3" Background="White" Margin="0,8,0,0" Padding="10" Visibility="Collapsed">
                                     <StackPanel x:Name="resultPanel2_3"/>
                                 </Border>
@@ -300,7 +300,7 @@
                                 </StackPanel>
                                 <TextBlock x:Name="txtHint3_1"
                                            Text="힌트: TextBlock 두 개를 세로로 쌓습니다."
-                                           Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                                           Foreground="#2196F3" FontWeight="SemiBold" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
                                 <Border x:Name="resultBorder3_1" Background="White" Margin="0,8,0,0" Padding="10" Visibility="Collapsed">
                                     <StackPanel x:Name="resultPanel3_1"/>
                                 </Border>
@@ -351,7 +351,7 @@
                                 </StackPanel>
                                 <TextBlock x:Name="txtHint3_2"
                                            Text="힌트: Button 에 Content 와 Width 를 지정합니다."
-                                           Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                                           Foreground="#2196F3" FontWeight="SemiBold" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
                                 <Border x:Name="resultBorder3_2" Background="White" Margin="0,8,0,0" Padding="10" Visibility="Collapsed">
                                     <StackPanel x:Name="resultPanel3_2"/>
                                 </Border>
@@ -398,7 +398,7 @@
                                 </StackPanel>
                                 <TextBlock x:Name="txtHint3_3"
                                            Text="힌트: 버튼 줄을 Dock=&quot;Top&quot; 으로 올리고 본문을 아래에 둡니다."
-                                           Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                                           Foreground="#2196F3" FontWeight="SemiBold" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
                                 <Border x:Name="resultBorder3_3" Background="White" Margin="0,8,0,0" Padding="10" Visibility="Collapsed">
                                     <StackPanel x:Name="resultPanel3_3"/>
                                 </Border>
@@ -449,7 +449,7 @@
                                 </StackPanel>
                                 <TextBlock x:Name="txtHint4_1"
                                            Text="힌트: NavigationService.Navigate(new Page2()); 형태입니다."
-                                           Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                                           Foreground="#2196F3" FontWeight="SemiBold" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
                                 <TextBlock x:Name="txtResult4_1" Margin="0,8,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
                             </StackPanel>
                         </Expander>
@@ -499,7 +499,7 @@
                                 </StackPanel>
                                 <TextBlock x:Name="txtHint4_2"
                                            Text="힌트: CanGoBack 으로 확인한 뒤 GoBack() 을 호출합니다."
-                                           Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                                           Foreground="#2196F3" FontWeight="SemiBold" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
                                 <TextBlock x:Name="txtResult4_2" Margin="0,8,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
                             </StackPanel>
                         </Expander>
@@ -538,7 +538,7 @@
                                 </StackPanel>
                                 <TextBlock x:Name="txtHint4_3"
                                            Text="힌트: CanGoForward 로 확인한 뒤 GoForward() 를 호출합니다."
-                                           Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                                           Foreground="#2196F3" FontWeight="SemiBold" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
                                 <TextBlock x:Name="txtResult4_3" Margin="0,8,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
                             </StackPanel>
                         </Expander>
@@ -569,7 +569,7 @@
                                 </StackPanel>
                                 <TextBlock x:Name="txtHint4_4"
                                            Text="힌트: Navigated 는 탐색 완료, Navigating 은 탐색 시작입니다. += 로 핸들러를 붙입니다."
-                                           Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                                           Foreground="#2196F3" FontWeight="SemiBold" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
                                 <TextBlock x:Name="txtResult4_4" Margin="0,8,0,0" FontWeight="Bold"
                                            Visibility="Collapsed" TextWrapping="Wrap"/>
                             </StackPanel>
@@ -620,7 +620,7 @@
                                 </StackPanel>
                                 <TextBlock x:Name="txtHint5_1"
                                            Text="힌트: new Page2(값) 으로 만든 뒤 Navigate 에 넘깁니다."
-                                           Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                                           Foreground="#2196F3" FontWeight="SemiBold" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
                                 <TextBlock x:Name="txtResult5_1" Margin="0,8,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
                             </StackPanel>
                         </Expander>
@@ -650,7 +650,7 @@
                                 </StackPanel>
                                 <TextBlock x:Name="txtHint5_2"
                                            Text="힌트: 페이지를 만든 뒤 속성에 대입하고 Navigate 합니다."
-                                           Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                                           Foreground="#2196F3" FontWeight="SemiBold" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
                                 <TextBlock x:Name="txtResult5_2" Margin="0,8,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
                             </StackPanel>
                         </Expander>
@@ -680,7 +680,7 @@
                                 </StackPanel>
                                 <TextBlock x:Name="txtHint5_3"
                                            Text="힌트: NavigationService.RemoveBackEntry() 를 더 이상 없을 때까지 반복합니다."
-                                           Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                                           Foreground="#2196F3" FontWeight="SemiBold" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
                                 <TextBlock x:Name="txtResult5_3" Margin="0,8,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
                             </StackPanel>
                         </Expander>
@@ -715,7 +715,7 @@
                                 </StackPanel>
                                 <TextBlock x:Name="txtHint5_4"
                                            Text="힌트: MessageBoxResult.No 일 때 e.Cancel = true; 로 탐색을 막습니다."
-                                           Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                                           Foreground="#2196F3" FontWeight="SemiBold" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
                                 <TextBlock x:Name="txtResult5_4" Margin="0,8,0,0" FontWeight="Bold"
                                            Visibility="Collapsed" TextWrapping="Wrap"/>
                             </StackPanel>

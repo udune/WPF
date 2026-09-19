@@ -91,7 +91,7 @@
                             </StackPanel>
                             <TextBlock x:Name="txtHint1_1"
                                        Text="힌트: &lt;TextBlock&gt; 태그 사이에 텍스트를 직접 입력하세요."
-                                       Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                                       Foreground="#2196F3" FontWeight="SemiBold" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
                             <Border x:Name="resultBorder1_1" Background="White" Margin="0,8,0,0" Padding="10" Visibility="Collapsed">
                                 <StackPanel x:Name="resultPanel1_1"/>
                             </Border>
@@ -117,7 +117,7 @@
                             </StackPanel>
                             <TextBlock x:Name="txtHint1_2"
                                        Text="힌트: Text=&quot;내용&quot; 형식으로 속성을 지정하세요."
-                                       Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                                       Foreground="#2196F3" FontWeight="SemiBold" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
                             <Border x:Name="resultBorder1_2" Background="White" Margin="0,8,0,0" Padding="10" Visibility="Collapsed">
                                 <StackPanel x:Name="resultPanel1_2"/>
                             </Border>
@@ -144,7 +144,7 @@
                             </StackPanel>
                             <TextBlock x:Name="txtHint1_3"
                                        Text="힌트: _count++ 로 증가시키고, tbCounter.Text = $&quot;클릭 횟수: {_count}회&quot;; 로 표시하세요."
-                                       Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                                       Foreground="#2196F3" FontWeight="SemiBold" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
                             <TextBlock x:Name="txtResult1_3"
                                        Margin="0,8,0,0" FontWeight="Bold" Visibility="Collapsed"/>
                         </StackPanel>
@@ -173,7 +173,7 @@
                             </StackPanel>
                             <TextBlock x:Name="txtHint1_4"
                                        Text="힌트: &lt;LineBreak/&gt; 태그를 텍스트 사이에 넣으세요."
-                                       Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                                       Foreground="#2196F3" FontWeight="SemiBold" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
                             <Border x:Name="resultBorder1_4" Background="White" Margin="0,8,0,0" Padding="10" Visibility="Collapsed">
                                 <StackPanel x:Name="resultPanel1_4"/>
                             </Border>
@@ -204,7 +204,7 @@
                             </StackPanel>
                             <TextBlock x:Name="txtHint1_5"
                                        Text="힌트: &lt;Hyperlink NavigateUri=&quot;https://google.co.kr&quot;&gt;보일 글자&lt;/Hyperlink&gt; 를 문장 안에 끼워 넣습니다."
-                                       Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                                       Foreground="#2196F3" FontWeight="SemiBold" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
                             <Border x:Name="resultBorder1_5" Background="White" Margin="0,8,0,0" Padding="10" Visibility="Collapsed">
                                 <StackPanel x:Name="resultPanel1_5"/>
                             </Border>
@@ -231,7 +231,7 @@
                             </StackPanel>
                             <TextBlock x:Name="txtHint1_6"
                                        Text="힌트: ToolTip 속성에 설명 문구를 넣습니다."
-                                       Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                                       Foreground="#2196F3" FontWeight="SemiBold" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
                             <Border x:Name="resultBorder1_6" Background="White" Margin="0,8,0,0" Padding="10" Visibility="Collapsed">
                                 <StackPanel x:Name="resultPanel1_6"/>
                             </Border>
@@ -271,7 +271,7 @@
                             </StackPanel>
                             <TextBlock x:Name="txtHint2_1"
                                        Text="힌트: &lt;Bold&gt;텍스트&lt;/Bold&gt;와 &lt;Italic&gt;텍스트&lt;/Italic&gt; 형식을 사용하세요."
-                                       Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                                       Foreground="#2196F3" FontWeight="SemiBold" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
                             <Border x:Name="resultBorder2_1" Background="White" Margin="0,8,0,0" Padding="10" Visibility="Collapsed">
                                 <StackPanel x:Name="resultPanel2_1"/>
                             </Border>
@@ -304,7 +304,7 @@
                             </StackPanel>
                             <TextBlock x:Name="txtHint2_2"
                                        Text="힌트: &lt;Run Text=&quot;텍스트&quot; Foreground=&quot;색상&quot;/&gt; 형식을 사용하세요."
-                                       Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                                       Foreground="#2196F3" FontWeight="SemiBold" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
                             <Border x:Name="resultBorder2_2" Background="White" Margin="0,8,0,0" Padding="10" Visibility="Collapsed">
                                 <StackPanel x:Name="resultPanel2_2"/>
                             </Border>
@@ -333,7 +333,7 @@
                             </StackPanel>
                             <TextBlock x:Name="txtHint2_3"
                                        Text="힌트: &lt;Span Background=&quot;Yellow&quot; FontWeight=&quot;Bold&quot;&gt;텍스트&lt;/Span&gt; 형식을 사용하세요."
-                                       Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                                       Foreground="#2196F3" FontWeight="SemiBold" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
                             <Border x:Name="resultBorder2_3" Background="White" Margin="0,8,0,0" Padding="10" Visibility="Collapsed">
                                 <StackPanel x:Name="resultPanel2_3"/>
                             </Border>
@@ -368,7 +368,7 @@
                             </StackPanel>
                             <TextBlock x:Name="txtHint2_4"
                                        Text="힌트: &lt;InlineUIContainer&gt;&lt;Ellipse .../&gt;&lt;/InlineUIContainer&gt; 로 컨트롤을 글 흐름에 넣습니다."
-                                       Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                                       Foreground="#2196F3" FontWeight="SemiBold" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
                             <Border x:Name="resultBorder2_4" Background="White" Margin="0,8,0,0" Padding="10" Visibility="Collapsed">
                                 <StackPanel x:Name="resultPanel2_4"/>
                             </Border>
@@ -401,7 +401,7 @@
                             </StackPanel>
                             <TextBlock x:Name="txtHint2_5"
                                        Text="힌트: 각 인라인 요소는 태그처럼 문장 안에 바로 씁니다. 줄바꿈은 &lt;LineBreak/&gt; 입니다."
-                                       Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                                       Foreground="#2196F3" FontWeight="SemiBold" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
                             <Border x:Name="resultBorder2_5" Background="White" Margin="0,8,0,0" Padding="10" Visibility="Collapsed">
                                 <StackPanel x:Name="resultPanel2_5"/>
                             </Border>
@@ -451,7 +451,7 @@
                             </StackPanel>
                             <TextBlock x:Name="txtHint3_1"
                                        Text="힌트: TextWrapping=&quot;Wrap&quot; 속성을 추가하세요."
-                                       Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                                       Foreground="#2196F3" FontWeight="SemiBold" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
                             <Border x:Name="resultBorder3_1" Background="White" Margin="0,8,0,0" Padding="10" Visibility="Collapsed">
                                 <StackPanel x:Name="resultPanel3_1"/>
                             </Border>
@@ -490,7 +490,7 @@
                             </StackPanel>
                             <TextBlock x:Name="txtHint3_2"
                                        Text="힌트: TextTrimming=&quot;CharacterEllipsis&quot; 속성을 추가하세요."
-                                       Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                                       Foreground="#2196F3" FontWeight="SemiBold" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
                             <Border x:Name="resultBorder3_2" Background="White" Margin="0,8,0,0" Padding="10" Visibility="Collapsed">
                                 <StackPanel x:Name="resultPanel3_2"/>
                             </Border>
@@ -518,7 +518,7 @@
                             </StackPanel>
                             <TextBlock x:Name="txtHint3_3"
                                        Text="힌트: TextAlignment=&quot;Center&quot; 속성을 추가하세요."
-                                       Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                                       Foreground="#2196F3" FontWeight="SemiBold" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
                             <Border x:Name="resultBorder3_3" Background="White" Margin="0,8,0,0" Padding="10" Visibility="Collapsed">
                                 <StackPanel x:Name="resultPanel3_3"/>
                             </Border>
@@ -554,7 +554,7 @@
                             </StackPanel>
                             <TextBlock x:Name="txtHint3_4"
                                        Text="힌트: LineHeight 속성에 숫자를 주면 줄 사이가 벌어집니다."
-                                       Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                                       Foreground="#2196F3" FontWeight="SemiBold" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
                             <Border x:Name="resultBorder3_4" Background="White" Margin="0,8,0,0" Padding="10" Visibility="Collapsed">
                                 <StackPanel x:Name="resultPanel3_4"/>
                             </Border>
@@ -595,7 +595,7 @@
                             </StackPanel>
                             <TextBlock x:Name="txtHint4_1"
                                        Text="힌트: FontSize=&quot;24&quot; 속성을 추가하세요."
-                                       Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                                       Foreground="#2196F3" FontWeight="SemiBold" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
                             <Border x:Name="resultBorder4_1" Background="White" Margin="0,8,0,0" Padding="10" Visibility="Collapsed">
                                 <StackPanel x:Name="resultPanel4_1"/>
                             </Border>
@@ -626,7 +626,7 @@
                             </StackPanel>
                             <TextBlock x:Name="txtHint4_2"
                                        Text="힌트: FontWeight=&quot;Bold&quot; 속성을 추가하세요."
-                                       Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                                       Foreground="#2196F3" FontWeight="SemiBold" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
                             <Border x:Name="resultBorder4_2" Background="White" Margin="0,8,0,0" Padding="10" Visibility="Collapsed">
                                 <StackPanel x:Name="resultPanel4_2"/>
                             </Border>
@@ -655,7 +655,7 @@
                             </StackPanel>
                             <TextBlock x:Name="txtHint4_3"
                                        Text="힌트: FontFamily=&quot;Consolas&quot; 속성을 추가하세요."
-                                       Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                                       Foreground="#2196F3" FontWeight="SemiBold" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
                             <Border x:Name="resultBorder4_3" Background="White" Margin="0,8,0,0" Padding="10" Visibility="Collapsed">
                                 <StackPanel x:Name="resultPanel4_3"/>
                             </Border>
@@ -683,7 +683,7 @@
                             </StackPanel>
                             <TextBlock x:Name="txtHint4_4"
                                        Text="힌트: TextDecorations=&quot;Underline&quot; 속성을 추가하세요."
-                                       Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                                       Foreground="#2196F3" FontWeight="SemiBold" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
                             <Border x:Name="resultBorder4_4" Background="White" Margin="0,8,0,0" Padding="10" Visibility="Collapsed">
                                 <StackPanel x:Name="resultPanel4_4"/>
                             </Border>
@@ -712,7 +712,7 @@
                             </StackPanel>
                             <TextBlock x:Name="txtHint4_5"
                                        Text="힌트: TextDecorations 에 Underline / Strikethrough / OverLine 을 지정합니다."
-                                       Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                                       Foreground="#2196F3" FontWeight="SemiBold" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
                             <Border x:Name="resultBorder4_5" Background="White" Margin="0,8,0,0" Padding="10" Visibility="Collapsed">
                                 <StackPanel x:Name="resultPanel4_5"/>
                             </Border>
@@ -750,7 +750,7 @@
                             </StackPanel>
                             <TextBlock x:Name="txtHint5_1"
                                        Text="힌트: Background=&quot;LightBlue&quot; Foreground=&quot;DarkBlue&quot; 속성을 추가하세요."
-                                       Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                                       Foreground="#2196F3" FontWeight="SemiBold" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
                             <Border x:Name="resultBorder5_1" Background="White" Margin="0,8,0,0" Padding="10" Visibility="Collapsed">
                                 <StackPanel x:Name="resultPanel5_1"/>
                             </Border>
@@ -779,7 +779,7 @@
                             </StackPanel>
                             <TextBlock x:Name="txtHint5_2"
                                        Text="힌트: Opacity=&quot;0.5&quot; 속성을 추가하세요."
-                                       Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                                       Foreground="#2196F3" FontWeight="SemiBold" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
                             <Border x:Name="resultBorder5_2" Background="White" Margin="0,8,0,0" Padding="10" Visibility="Collapsed">
                                 <StackPanel x:Name="resultPanel5_2"/>
                             </Border>
@@ -809,7 +809,7 @@
                             </StackPanel>
                             <TextBlock x:Name="txtHint5_3"
                                        Text="힌트: Brushes.Green, Brushes.White, FontWeights.Bold를 사용하세요."
-                                       Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                                       Foreground="#2196F3" FontWeight="SemiBold" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
                             <TextBlock x:Name="txtResult5_3"
                                        Margin="0,8,0,0" FontWeight="Bold" Visibility="Collapsed"/>
                         </StackPanel>
@@ -839,7 +839,7 @@
                             </StackPanel>
                             <TextBlock x:Name="txtHint5_4"
                                        Text="힌트: Padding 은 글자와 테두리 사이의 안쪽 여백입니다. 배경색을 줘야 차이가 보입니다."
-                                       Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                                       Foreground="#2196F3" FontWeight="SemiBold" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
                             <Border x:Name="resultBorder5_4" Background="White" Margin="0,8,0,0" Padding="10" Visibility="Collapsed">
                                 <StackPanel x:Name="resultPanel5_4"/>
                             </Border>
@@ -875,7 +875,7 @@
                             </StackPanel>
                             <TextBlock x:Name="txtHint5_5"
                                        Text="힌트: 글자 굵기는 FontWeights.Bold, 색은 Brushes.Tomato / Brushes.White 를 씁니다."
-                                       Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                                       Foreground="#2196F3" FontWeight="SemiBold" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
                             <TextBlock x:Name="txtResult5_5" Margin="0,8,0,0" FontWeight="Bold"
                                        Visibility="Collapsed" TextWrapping="Wrap"/>
                         </StackPanel>

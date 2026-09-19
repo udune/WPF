@@ -90,7 +90,7 @@
                             </StackPanel>
                             <TextBlock x:Name="txtHint1_1"
                                        Text="힌트: PasswordChar 속성에 마스킹할 문자를 지정합니다."
-                                       Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                                       Foreground="#2196F3" FontWeight="SemiBold" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
                             <Border x:Name="resultBorder1_1" Background="White" Margin="0,8,0,0" Padding="10" Visibility="Collapsed">
                                 <StackPanel x:Name="resultPanel1_1"/>
                             </Border>
@@ -127,7 +127,7 @@
                             </StackPanel>
                             <TextBlock x:Name="txtHint1_2"
                                        Text="힌트: MaxLength 속성으로 최대 입력 글자 수를 제한합니다."
-                                       Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                                       Foreground="#2196F3" FontWeight="SemiBold" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
                             <Border x:Name="resultBorder1_2" Background="White" Margin="0,8,0,0" Padding="10" Visibility="Collapsed">
                                 <StackPanel x:Name="resultPanel1_2"/>
                             </Border>
@@ -158,7 +158,7 @@
                             </StackPanel>
                             <TextBlock x:Name="txtHint1_3"
                                        Text="힌트: Password=&quot;값&quot;과 PasswordChar=&quot;문자&quot;를 함께 사용합니다."
-                                       Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                                       Foreground="#2196F3" FontWeight="SemiBold" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
                             <Border x:Name="resultBorder1_3" Background="White" Margin="0,8,0,0" Padding="10" Visibility="Collapsed">
                                 <StackPanel x:Name="resultPanel1_3"/>
                             </Border>
@@ -190,7 +190,7 @@
                             </StackPanel>
                             <TextBlock x:Name="txtHint1_4"
                                        Text="힌트: Password 속성으로 초기값을 주고, IsEnabled=&quot;False&quot; 로 잠급니다."
-                                       Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                                       Foreground="#2196F3" FontWeight="SemiBold" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
                             <Border x:Name="resultBorder1_4" Background="White" Margin="0,8,0,0" Padding="10" Visibility="Collapsed">
                                 <StackPanel x:Name="resultPanel1_4"/>
                             </Border>
@@ -223,7 +223,7 @@
                             </StackPanel>
                             <TextBlock x:Name="txtHint1_5"
                                        Text="힌트: Password 는 DependencyProperty 가 아니라 평범한 속성입니다. myPasswordBox.Password 로 직접 읽습니다."
-                                       Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                                       Foreground="#2196F3" FontWeight="SemiBold" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
                             <TextBlock x:Name="txtResult1_5" Margin="0,8,0,0" FontWeight="Bold"
                                        Visibility="Collapsed" TextWrapping="Wrap"/>
                         </StackPanel>
@@ -261,7 +261,7 @@
                             </StackPanel>
                             <TextBlock x:Name="txtHint2_1"
                                        Text="힌트: HorizontalAlignment 속성으로 컨트롤의 수평 위치를 지정합니다."
-                                       Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                                       Foreground="#2196F3" FontWeight="SemiBold" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
                             <Border x:Name="resultBorder2_1" Background="White" Margin="0,8,0,0" Padding="10" Visibility="Collapsed">
                                 <StackPanel x:Name="resultPanel2_1"/>
                             </Border>
@@ -288,7 +288,7 @@
                             </StackPanel>
                             <TextBlock x:Name="txtHint2_2"
                                        Text="힌트: HorizontalContentAlignment 속성으로 내부 콘텐츠의 수평 정렬을 지정합니다."
-                                       Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                                       Foreground="#2196F3" FontWeight="SemiBold" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
                             <Border x:Name="resultBorder2_2" Background="White" Margin="0,8,0,0" Padding="10" Visibility="Collapsed">
                                 <StackPanel x:Name="resultPanel2_2"/>
                             </Border>
@@ -323,7 +323,7 @@
                             </StackPanel>
                             <TextBlock x:Name="txtHint2_3"
                                        Text="힌트: HorizontalAlignment=&quot;Center&quot; 와 Width 를 함께 씁니다."
-                                       Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                                       Foreground="#2196F3" FontWeight="SemiBold" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
                             <Border x:Name="resultBorder2_3" Background="White" Margin="0,8,0,0" Padding="10" Visibility="Collapsed">
                                 <StackPanel x:Name="resultPanel2_3"/>
                             </Border>
@@ -353,7 +353,7 @@
                             </StackPanel>
                             <TextBlock x:Name="txtHint2_4"
                                        Text="힌트: Width 와 Height 를 직접 지정합니다."
-                                       Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                                       Foreground="#2196F3" FontWeight="SemiBold" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
                             <Border x:Name="resultBorder2_4" Background="White" Margin="0,8,0,0" Padding="10" Visibility="Collapsed">
                                 <StackPanel x:Name="resultPanel2_4"/>
                             </Border>
@@ -393,7 +393,7 @@
                             </StackPanel>
                             <TextBlock x:Name="txtHint3_1"
                                        Text="힌트: FontSize 속성에 숫자를 지정합니다."
-                                       Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                                       Foreground="#2196F3" FontWeight="SemiBold" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
                             <Border x:Name="resultBorder3_1" Background="White" Margin="0,8,0,0" Padding="10" Visibility="Collapsed">
                                 <StackPanel x:Name="resultPanel3_1"/>
                             </Border>
@@ -422,7 +422,7 @@
                             </StackPanel>
                             <TextBlock x:Name="txtHint3_2"
                                        Text="힌트: FontWeight 속성으로 굵기를 지정합니다. Bold, Normal, Light 등 사용 가능합니다."
-                                       Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                                       Foreground="#2196F3" FontWeight="SemiBold" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
                             <Border x:Name="resultBorder3_2" Background="White" Margin="0,8,0,0" Padding="10" Visibility="Collapsed">
                                 <StackPanel x:Name="resultPanel3_2"/>
                             </Border>
@@ -449,7 +449,7 @@
                             </StackPanel>
                             <TextBlock x:Name="txtHint3_3"
                                        Text="힌트: FontFamily 속성으로 글꼴을 지정합니다."
-                                       Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                                       Foreground="#2196F3" FontWeight="SemiBold" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
                             <Border x:Name="resultBorder3_3" Background="White" Margin="0,8,0,0" Padding="10" Visibility="Collapsed">
                                 <StackPanel x:Name="resultPanel3_3"/>
                             </Border>
@@ -478,7 +478,7 @@
                             </StackPanel>
                             <TextBlock x:Name="txtHint3_4"
                                        Text="힌트: 가려진 문자(●)의 모양도 글꼴을 따라갑니다."
-                                       Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                                       Foreground="#2196F3" FontWeight="SemiBold" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
                             <Border x:Name="resultBorder3_4" Background="White" Margin="0,8,0,0" Padding="10" Visibility="Collapsed">
                                 <StackPanel x:Name="resultPanel3_4"/>
                             </Border>
@@ -516,7 +516,7 @@
                             </StackPanel>
                             <TextBlock x:Name="txtHint4_1"
                                        Text="힌트: Background와 Foreground 속성에 색상 이름을 지정합니다."
-                                       Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                                       Foreground="#2196F3" FontWeight="SemiBold" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
                             <Border x:Name="resultBorder4_1" Background="White" Margin="0,8,0,0" Padding="10" Visibility="Collapsed">
                                 <StackPanel x:Name="resultPanel4_1"/>
                             </Border>
@@ -543,7 +543,7 @@
                             </StackPanel>
                             <TextBlock x:Name="txtHint4_2"
                                        Text="힌트: BorderBrush로 테두리 색상, BorderThickness로 테두리 두께를 지정합니다."
-                                       Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                                       Foreground="#2196F3" FontWeight="SemiBold" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
                             <Border x:Name="resultBorder4_2" Background="White" Margin="0,8,0,0" Padding="10" Visibility="Collapsed">
                                 <StackPanel x:Name="resultPanel4_2"/>
                             </Border>
@@ -571,7 +571,7 @@
                             </StackPanel>
                             <TextBlock x:Name="txtHint4_3"
                                        Text="힌트: Opacity 속성은 0.0(투명)부터 1.0(불투명) 사이의 값을 가집니다."
-                                       Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                                       Foreground="#2196F3" FontWeight="SemiBold" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
                             <Border x:Name="resultBorder4_3" Background="White" Margin="0,8,0,0" Padding="10" Visibility="Collapsed">
                                 <StackPanel x:Name="resultPanel4_3"/>
                             </Border>
@@ -602,7 +602,7 @@
                             </StackPanel>
                             <TextBlock x:Name="txtHint4_4"
                                        Text="힌트: Padding 이 커지면 내용이 테두리에서 더 멀어집니다."
-                                       Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                                       Foreground="#2196F3" FontWeight="SemiBold" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
                             <Border x:Name="resultBorder4_4" Background="White" Margin="0,8,0,0" Padding="10" Visibility="Collapsed">
                                 <StackPanel x:Name="resultPanel4_4"/>
                             </Border>
@@ -633,7 +633,7 @@
                             </StackPanel>
                             <TextBlock x:Name="txtHint4_5"
                                        Text="힌트: TextBox 와 마찬가지로 CaretBrush / SelectionBrush 를 씁니다."
-                                       Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                                       Foreground="#2196F3" FontWeight="SemiBold" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
                             <Border x:Name="resultBorder4_5" Background="White" Margin="0,8,0,0" Padding="10" Visibility="Collapsed">
                                 <StackPanel x:Name="resultPanel4_5"/>
                             </Border>
@@ -676,7 +676,7 @@
                             </StackPanel>
                             <TextBlock x:Name="txtHint5_1"
                                        Text="힌트: PasswordBox의 Password 속성으로 입력된 비밀번호에 접근하고, .Length로 길이를 구합니다."
-                                       Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                                       Foreground="#2196F3" FontWeight="SemiBold" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
                             <TextBlock x:Name="txtResult5_1"
                                        Margin="0,8,0,0" FontWeight="Bold" Visibility="Collapsed"/>
                         </StackPanel>
@@ -707,7 +707,7 @@
                             </StackPanel>
                             <TextBlock x:Name="txtHint5_2"
                                        Text="힌트: if-else if-else 구문으로 password.Length를 비교합니다."
-                                       Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                                       Foreground="#2196F3" FontWeight="SemiBold" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
                             <TextBlock x:Name="txtResult5_2"
                                        Margin="0,8,0,0" FontWeight="Bold" Visibility="Collapsed"/>
                         </StackPanel>
@@ -740,7 +740,7 @@
                             </StackPanel>
                             <TextBlock x:Name="txtHint5_3"
                                        Text="힌트: == 연산자로 두 문자열을 비교하거나 string.Equals() 메서드를 사용합니다."
-                                       Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                                       Foreground="#2196F3" FontWeight="SemiBold" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
                             <TextBlock x:Name="txtResult5_3"
                                        Margin="0,8,0,0" FontWeight="Bold" Visibility="Collapsed"/>
                         </StackPanel>
@@ -773,7 +773,7 @@
                             </StackPanel>
                             <TextBlock x:Name="txtHint5_4"
                                        Text="힌트: e.Key 가 Key.Enter 인지 확인한 뒤 pwdKeyDown.Password 를 읽습니다."
-                                       Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                                       Foreground="#2196F3" FontWeight="SemiBold" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
                             <TextBlock x:Name="txtResult5_4" Margin="0,8,0,0" FontWeight="Bold"
                                        Visibility="Collapsed" TextWrapping="Wrap"/>
                         </StackPanel>
@@ -809,7 +809,7 @@
                             </StackPanel>
                             <TextBlock x:Name="txtHint5_5"
                                        Text="힌트: 빈 값부터 걸러낸 뒤 == 로 두 Password 를 비교합니다."
-                                       Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                                       Foreground="#2196F3" FontWeight="SemiBold" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
                             <TextBlock x:Name="txtResult5_5" Margin="0,8,0,0" FontWeight="Bold"
                                        Visibility="Collapsed" TextWrapping="Wrap"/>
                         </StackPanel>

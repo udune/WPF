@@ -208,7 +208,7 @@
                                 </StackPanel>
                                 <TextBlock x:Name="txtHint2_1"
                                            Text="힌트: 값을 넣은 뒤 OnPropertyChanged(&quot;Score&quot;) 를 호출합니다."
-                                           Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                                           Foreground="#2196F3" FontWeight="SemiBold" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
                                 <TextBlock x:Name="txtResult2_1" Margin="0,8,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
                             </StackPanel>
                         </Expander>
@@ -244,7 +244,7 @@
                                 </StackPanel>
                                 <TextBlock x:Name="txtHint2_2"
                                            Text="힌트: PropertyChanged?.Invoke 로 이벤트를 발생시킵니다."
-                                           Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                                           Foreground="#2196F3" FontWeight="SemiBold" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
                                 <TextBlock x:Name="txtResult2_2" Margin="0,8,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
                             </StackPanel>
                         </Expander>
@@ -280,7 +280,7 @@
                                 </StackPanel>
                                 <TextBlock x:Name="txtHint2_3"
                                            Text="힌트: 값이 바뀐 뒤 Progress 라는 이름으로 알림을 보냅니다."
-                                           Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                                           Foreground="#2196F3" FontWeight="SemiBold" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
                                 <TextBlock x:Name="txtResult2_3" Margin="0,8,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
                             </StackPanel>
                         </Expander>
@@ -332,7 +332,7 @@
                                 </StackPanel>
                                 <TextBlock x:Name="txtHint3_1"
                                            Text="힌트: &lt;ItemsControl.ItemsPanel&gt;&lt;ItemsPanelTemplate&gt;&lt;WrapPanel/&gt;..."
-                                           Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                                           Foreground="#2196F3" FontWeight="SemiBold" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
                                 <Border x:Name="resultBorder3_1" Background="White" Margin="0,8,0,0" Padding="10" Visibility="Collapsed">
                                     <StackPanel x:Name="resultPanel3_1"/>
                                 </Border>
@@ -383,7 +383,7 @@
                                 </StackPanel>
                                 <TextBlock x:Name="txtHint3_2"
                                            Text="힌트: &lt;ItemsControl.ItemTemplate&gt;&lt;DataTemplate&gt;&lt;Button .../&gt;&lt;/DataTemplate&gt;"
-                                           Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                                           Foreground="#2196F3" FontWeight="SemiBold" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
                                 <Border x:Name="resultBorder3_2" Background="White" Margin="0,8,0,0" Padding="10" Visibility="Collapsed">
                                     <StackPanel x:Name="resultPanel3_2"/>
                                 </Border>
@@ -418,7 +418,7 @@
                                 </StackPanel>
                                 <TextBlock x:Name="txtHint3_3"
                                            Text="힌트: ItemsPanelTemplate 안에 UniformGrid 를 넣습니다."
-                                           Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                                           Foreground="#2196F3" FontWeight="SemiBold" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
                                 <Border x:Name="resultBorder3_3" Background="White" Margin="0,8,0,0" Padding="10" Visibility="Collapsed">
                                     <StackPanel x:Name="resultPanel3_3"/>
                                 </Border>
@@ -464,7 +464,7 @@
                                 </StackPanel>
                                 <TextBlock x:Name="txtHint4_1"
                                            Text="힌트: 대소문자 구분 없이 비교하려면 ToLower() 로 맞춘 뒤 == 로 비교합니다."
-                                           Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                                           Foreground="#2196F3" FontWeight="SemiBold" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
                                 <TextBlock x:Name="txtResult4_1" Margin="0,8,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
                             </StackPanel>
                         </Expander>
@@ -506,7 +506,7 @@
                                 </StackPanel>
                                 <TextBlock x:Name="txtHint4_2"
                                            Text="힌트: 나머지 연산자(%)를 쓰면 마지막 다음에 자동으로 0 이 됩니다."
-                                           Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                                           Foreground="#2196F3" FontWeight="SemiBold" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
                                 <TextBlock x:Name="txtResult4_2" Margin="0,8,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
                             </StackPanel>
                         </Expander>
@@ -551,7 +551,7 @@
                                 </StackPanel>
                                 <TextBlock x:Name="txtHint4_3"
                                            Text="힌트: 값을 줄인 뒤 0 이하인지 검사합니다."
-                                           Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                                           Foreground="#2196F3" FontWeight="SemiBold" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
                                 <TextBlock x:Name="txtResult4_3" Margin="0,8,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
                             </StackPanel>
                         </Expander>
@@ -601,7 +601,7 @@
                                 </StackPanel>
                                 <TextBlock x:Name="txtHint5_1"
                                            Text="힌트: Button 의 IsEnabled 속성을 true/false 로 바꿉니다."
-                                           Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                                           Foreground="#2196F3" FontWeight="SemiBold" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
                                 <TextBlock x:Name="txtResult5_1" Margin="0,8,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
                             </StackPanel>
                         </Expander>
@@ -639,7 +639,7 @@
                                 </StackPanel>
                                 <TextBlock x:Name="txtHint5_2"
                                            Text="힌트: 점수와 인덱스를 0 으로 되돌립니다."
-                                           Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                                           Foreground="#2196F3" FontWeight="SemiBold" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
                                 <TextBlock x:Name="txtResult5_2" Margin="0,8,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
                             </StackPanel>
                         </Expander>
@@ -672,7 +672,7 @@
                                 </StackPanel>
                                 <TextBlock x:Name="txtHint5_3"
                                            Text="힌트: Text 를 빈 문자열로 만들고 Focus() 를 호출합니다."
-                                           Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                                           Foreground="#2196F3" FontWeight="SemiBold" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
                                 <TextBlock x:Name="txtResult5_3" Margin="0,8,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
                             </StackPanel>
                         </Expander>
@@ -703,7 +703,7 @@
                                 </StackPanel>
                                 <TextBlock x:Name="txtHint5_4"
                                            Text="힌트: GetChildrenCount 로 자식 수를 세고, GetChild 로 하나씩 꺼내 재귀로 다시 내려갑니다."
-                                           Foreground="#FF9800" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
+                                           Foreground="#2196F3" FontWeight="SemiBold" Margin="0,5,0,0" Visibility="Collapsed" TextWrapping="Wrap"/>
                                 <TextBlock x:Name="txtResult5_4" Margin="0,8,0,0" FontWeight="Bold"
                                            Visibility="Collapsed" TextWrapping="Wrap"/>
                             </StackPanel>
