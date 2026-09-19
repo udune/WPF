@@ -23,7 +23,7 @@
             <Setter Property="TextWrapping" Value="Wrap"/>
             <Setter Property="AcceptsReturn" Value="True"/>
             <Setter Property="VerticalScrollBarVisibility" Value="Auto"/>
-            <Setter Property="MaxHeight" Value="300"/>
+            <Setter Property="MaxHeight" Value="420"/>
             <Setter Property="BorderBrush" Value="#333333"/>
             <Setter Property="BorderThickness" Value="1"/>
         </Style>
@@ -39,9 +39,10 @@
             <Setter Property="AcceptsReturn" Value="True"/>
             <Setter Property="FontFamily" Value="Consolas"/>
             <Setter Property="FontSize" Value="12"/>
-            <Setter Property="Height" Value="80"/>
             <Setter Property="VerticalScrollBarVisibility" Value="Auto"/>
             <Setter Property="Padding" Value="5"/>
+            <Setter Property="MinHeight" Value="160"/>
+            <Setter Property="MaxHeight" Value="420"/>
         </Style>
         <Style x:Key="RunButtonStyle" TargetType="Button">
             <Setter Property="Width" Value="60"/>
@@ -214,7 +215,7 @@
                                 <TextBlock Text="과제: 컨텍스트 메뉴 항목을 누르면 알림 상자를 띄우는 핸들러를 완성하세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
                                 <TextBox x:Name="txtPractice1_4"
                                          Style="{StaticResource PracticeInputStyle}"
-                                         Height="120" AcceptsReturn="True"
+                                         AcceptsReturn="True"
                                          Text="private void ShowMessage_Click(object sender, RoutedEventArgs e)&#10;{&#10;    &#10;}"/>
                                 <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
                                     <Button Content="확인" Style="{StaticResource RunButtonStyle}" Click="BtnCheck_Click" Tag="1_4"/>
@@ -760,7 +761,7 @@
                                 <TextBlock Text="과제: 버튼을 왼쪽 클릭해도 그 버튼의 ContextMenu가 열리도록 핸들러를 완성하세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
                                 <TextBox x:Name="txtPractice4_4"
                                          Style="{StaticResource PracticeInputStyle}"
-                                         Height="120" AcceptsReturn="True"
+                                         AcceptsReturn="True"
                                          Text="private void OpenContextMenu_Click(object sender, RoutedEventArgs e)&#10;{&#10;    &#10;}"/>
                                 <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
                                     <Button Content="확인" Style="{StaticResource RunButtonStyle}" Click="BtnCheck_Click" Tag="4_4"/>

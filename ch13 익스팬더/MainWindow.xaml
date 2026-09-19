@@ -23,7 +23,7 @@
             <Setter Property="TextWrapping" Value="Wrap"/>
             <Setter Property="AcceptsReturn" Value="True"/>
             <Setter Property="VerticalScrollBarVisibility" Value="Auto"/>
-            <Setter Property="MaxHeight" Value="300"/>
+            <Setter Property="MaxHeight" Value="420"/>
             <Setter Property="BorderBrush" Value="#333333"/>
             <Setter Property="BorderThickness" Value="1"/>
         </Style>
@@ -39,9 +39,10 @@
             <Setter Property="AcceptsReturn" Value="True"/>
             <Setter Property="FontFamily" Value="Consolas"/>
             <Setter Property="FontSize" Value="12"/>
-            <Setter Property="Height" Value="50"/>
             <Setter Property="VerticalScrollBarVisibility" Value="Auto"/>
             <Setter Property="Padding" Value="5"/>
+            <Setter Property="MinHeight" Value="160"/>
+            <Setter Property="MaxHeight" Value="420"/>
         </Style>
         <Style x:Key="RunButtonStyle" TargetType="Button">
             <Setter Property="Width" Value="60"/>
@@ -86,7 +87,6 @@
                             <TextBlock Text="과제: Header가 '정보 보기'인 Expander를 만들어보세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
                             <TextBox x:Name="txtPractice1_1"
                                      Style="{StaticResource PracticeInputStyle}"
-                                     Height="60"
                                      Text="&lt;Expander&gt;&#x0a;&lt;/Expander&gt;"/>
                             <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
                                 <Button Content="실행" Style="{StaticResource RunButtonStyle}" Click="BtnRun_Click" Tag="1_1"/>
@@ -123,7 +123,6 @@
                             <TextBlock Text="과제: IsExpanded=True로 처음부터 펼쳐진 Expander를 만들어보세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
                             <TextBox x:Name="txtPractice1_2"
                                      Style="{StaticResource PracticeInputStyle}"
-                                     Height="60"
                                      Text="&lt;Expander Header=&quot;열린 상태&quot;&gt;&#x0a;    &lt;TextBlock Text=&quot;내용&quot;/&gt;&#x0a;&lt;/Expander&gt;"/>
                             <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
                                 <Button Content="실행" Style="{StaticResource RunButtonStyle}" Click="BtnRun_Click" Tag="1_2"/>
@@ -159,7 +158,6 @@
                             <TextBlock Text="과제: Expander 안에 StackPanel을 넣고 TextBlock 2개를 배치해보세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
                             <TextBox x:Name="txtPractice1_3"
                                      Style="{StaticResource PracticeInputStyle}"
-                                     Height="100"
                                      Text="&lt;Expander Header=&quot;목록&quot;&gt;&#x0a;    &#x0a;&lt;/Expander&gt;"/>
                             <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
                                 <Button Content="실행" Style="{StaticResource RunButtonStyle}" Click="BtnRun_Click" Tag="1_3"/>
@@ -203,7 +201,6 @@
                             <TextBlock Text="과제: ExpandDirection을 Up으로 설정한 Expander를 만들어보세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
                             <TextBox x:Name="txtPractice2_1"
                                      Style="{StaticResource PracticeInputStyle}"
-                                     Height="60"
                                      Text="&lt;Expander Header=&quot;위로 펼침&quot;&gt;&#x0a;    &lt;TextBlock Text=&quot;내용&quot;/&gt;&#x0a;&lt;/Expander&gt;"/>
                             <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
                                 <Button Content="실행" Style="{StaticResource RunButtonStyle}" Click="BtnRun_Click" Tag="2_1"/>
@@ -253,7 +250,6 @@
                             <TextBlock Text="과제: ExpandDirection을 Right로 설정한 Expander를 만들어보세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
                             <TextBox x:Name="txtPractice2_2"
                                      Style="{StaticResource PracticeInputStyle}"
-                                     Height="60"
                                      Text="&lt;Expander Header=&quot;오른쪽으로&quot;&gt;&#x0a;    &lt;TextBlock Text=&quot;내용&quot;/&gt;&#x0a;&lt;/Expander&gt;"/>
                             <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
                                 <Button Content="실행" Style="{StaticResource RunButtonStyle}" Click="BtnRun_Click" Tag="2_2"/>
@@ -331,7 +327,6 @@
                             <TextBlock Text="과제: Background를 LightBlue로 설정한 Expander를 만들어보세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
                             <TextBox x:Name="txtPractice3_1"
                                      Style="{StaticResource PracticeInputStyle}"
-                                     Height="60"
                                      Text="&lt;Expander Header=&quot;배경색&quot;&gt;&#x0a;    &lt;TextBlock Text=&quot;내용&quot;/&gt;&#x0a;&lt;/Expander&gt;"/>
                             <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
                                 <Button Content="실행" Style="{StaticResource RunButtonStyle}" Click="BtnRun_Click" Tag="3_1"/>
@@ -368,7 +363,6 @@
                             <TextBlock Text="과제: FontWeight를 Bold, Foreground를 Red로 설정한 Expander를 만들어보세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
                             <TextBox x:Name="txtPractice3_2"
                                      Style="{StaticResource PracticeInputStyle}"
-                                     Height="60"
                                      Text="&lt;Expander Header=&quot;빨간 굵은 글씨&quot;&gt;&#x0a;    &lt;TextBlock Text=&quot;내용&quot;/&gt;&#x0a;&lt;/Expander&gt;"/>
                             <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
                                 <Button Content="실행" Style="{StaticResource RunButtonStyle}" Click="BtnRun_Click" Tag="3_2"/>
@@ -405,7 +399,6 @@
                             <TextBlock Text="과제: BorderBrush를 Green, BorderThickness를 3으로 설정한 Expander를 만들어보세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
                             <TextBox x:Name="txtPractice3_3"
                                      Style="{StaticResource PracticeInputStyle}"
-                                     Height="60"
                                      Text="&lt;Expander Header=&quot;테두리&quot;&gt;&#x0a;    &lt;TextBlock Text=&quot;내용&quot;/&gt;&#x0a;&lt;/Expander&gt;"/>
                             <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
                                 <Button Content="실행" Style="{StaticResource RunButtonStyle}" Click="BtnRun_Click" Tag="3_3"/>
@@ -452,7 +445,6 @@
                             <TextBlock Text="과제: Expanded 이벤트 핸들러를 작성하세요. TextBlock의 Text를 '펼쳐짐!'으로 변경하세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
                             <TextBox x:Name="txtPractice4_1"
                                      Style="{StaticResource PracticeInputStyle}"
-                                     Height="100"
                                      Text="private void Expander_Expanded(object sender, RoutedEventArgs e)&#x0a;{&#x0a;    &#x0a;}"/>
                             <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
                                 <Button Content="확인" Style="{StaticResource RunButtonStyle}" Click="BtnCheck_Click" Tag="4_1"/>
@@ -490,7 +482,6 @@
                             <TextBlock Text="과제: Expander의 IsExpanded를 토글하는 코드를 작성하세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
                             <TextBox x:Name="txtPractice4_2"
                                      Style="{StaticResource PracticeInputStyle}"
-                                     Height="100"
                                      Text="private void ToggleExpander()&#x0a;{&#x0a;    // myExpander의 IsExpanded를 토글&#x0a;    &#x0a;}"/>
                             <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
                                 <Button Content="확인" Style="{StaticResource RunButtonStyle}" Click="BtnCheck_Click" Tag="4_2"/>
@@ -571,7 +562,6 @@
                             <TextBlock Text="과제: ElementName 바인딩을 사용하여 CheckBox의 IsChecked를 Expander의 IsExpanded에 연결하는 XAML을 작성하세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
                             <TextBox x:Name="txtPractice5_1"
                                      Style="{StaticResource PracticeInputStyle}"
-                                     Height="60"
                                      Text="IsExpanded=&quot;{Binding }&quot;"/>
                             <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
                                 <Button Content="확인" Style="{StaticResource RunButtonStyle}" Click="BtnCheck_Click" Tag="5_1"/>
@@ -605,7 +595,6 @@
                             <TextBlock Text="과제: TextBox의 Text를 Expander의 Header에 바인딩하는 XAML을 작성하세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
                             <TextBox x:Name="txtPractice5_2"
                                      Style="{StaticResource PracticeInputStyle}"
-                                     Height="60"
                                      Text="Header=&quot;{Binding }&quot;"/>
                             <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
                                 <Button Content="확인" Style="{StaticResource RunButtonStyle}" Click="BtnCheck_Click" Tag="5_2"/>

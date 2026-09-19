@@ -1,0 +1,155 @@
+{
+  "Chapter": "ch31 유저컨트롤",
+  "FirstStudiedAt": "2026-09-18T20:58:37.6211339+09:00",
+  "LastStudiedAt": "2026-09-18T21:21:25.9998742+09:00",
+  "TotalStudySeconds": 113,
+  "LaunchCount": 1,
+  "LastTab": 0,
+  "PracticeTotal": 16,
+  "Practices": {
+    "5_4": {
+      "Runs": 0,
+      "Successes": 0,
+      "Hints": 0,
+      "Answers": 0,
+      "Status": "미완료",
+      "Draft": null,
+      "CompletedAt": null
+    },
+    "5_3": {
+      "Runs": 0,
+      "Successes": 0,
+      "Hints": 0,
+      "Answers": 0,
+      "Status": "미완료",
+      "Draft": null,
+      "CompletedAt": null
+    },
+    "5_2": {
+      "Runs": 0,
+      "Successes": 0,
+      "Hints": 0,
+      "Answers": 0,
+      "Status": "미완료",
+      "Draft": null,
+      "CompletedAt": null
+    },
+    "5_1": {
+      "Runs": 0,
+      "Successes": 0,
+      "Hints": 0,
+      "Answers": 0,
+      "Status": "미완료",
+      "Draft": null,
+      "CompletedAt": null
+    },
+    "4_3": {
+      "Runs": 0,
+      "Successes": 0,
+      "Hints": 0,
+      "Answers": 0,
+      "Status": "미완료",
+      "Draft": null,
+      "CompletedAt": null
+    },
+    "4_2": {
+      "Runs": 0,
+      "Successes": 0,
+      "Hints": 0,
+      "Answers": 0,
+      "Status": "미완료",
+      "Draft": null,
+      "CompletedAt": null
+    },
+    "4_1": {
+      "Runs": 0,
+      "Successes": 0,
+      "Hints": 0,
+      "Answers": 0,
+      "Status": "미완료",
+      "Draft": null,
+      "CompletedAt": null
+    },
+    "3_3": {
+      "Runs": 0,
+      "Successes": 0,
+      "Hints": 0,
+      "Answers": 0,
+      "Status": "미완료",
+      "Draft": null,
+      "CompletedAt": null
+    },
+    "3_2": {
+      "Runs": 0,
+      "Successes": 0,
+      "Hints": 0,
+      "Answers": 0,
+      "Status": "미완료",
+      "Draft": null,
+      "CompletedAt": null
+    },
+    "3_1": {
+      "Runs": 0,
+      "Successes": 0,
+      "Hints": 0,
+      "Answers": 0,
+      "Status": "미완료",
+      "Draft": null,
+      "CompletedAt": null
+    },
+    "2_3": {
+      "Runs": 0,
+      "Successes": 0,
+      "Hints": 0,
+      "Answers": 0,
+      "Status": "미완료",
+      "Draft": null,
+      "CompletedAt": null
+    },
+    "2_2": {
+      "Runs": 0,
+      "Successes": 0,
+      "Hints": 0,
+      "Answers": 0,
+      "Status": "미완료",
+      "Draft": null,
+      "CompletedAt": null
+    },
+    "2_1": {
+      "Runs": 0,
+      "Successes": 0,
+      "Hints": 0,
+      "Answers": 0,
+      "Status": "미완료",
+      "Draft": null,
+      "CompletedAt": null
+    },
+    "1_3": {
+      "Runs": 1,
+      "Successes": 1,
+      "Hints": 0,
+      "Answers": 1,
+      "Status": "부분완료",
+      "Draft": "<Border BorderBrush=\"#90A4AE\" BorderThickness=\"1\" Width=\"240\">\n    <DockPanel>\n        <Border DockPanel.Dock=\"Top\" Background=\"#90A4AE\">\n            <TextBlock Text=\"제목\" Foreground=\"White\" Margin=\"8,4\"/>\n        </Border>\n        <TextBlock Text=\"본문\" Margin=\"8\"/>\n    </DockPanel>\n</Border>",
+      "CompletedAt": "2026-09-18T21:21:18.6979754+09:00"
+    },
+    "1_2": {
+      "Runs": 4,
+      "Successes": 4,
+      "Hints": 1,
+      "Answers": 1,
+      "Status": "부분완료",
+      "Draft": "private void Add_Click(object sender, RoutedEventArgs e)\n{\n    MyControl control = new MyControl();\n    host.Children.Add(control);\n}",
+      "CompletedAt": "2026-09-18T21:20:56.1907796+09:00"
+    },
+    "1_1": {
+      "Runs": 2,
+      "Successes": 2,
+      "Hints": 0,
+      "Answers": 1,
+      "Status": "완료",
+      "Draft": "<Border BorderBrush=\"#999999\" BorderThickness=\"1\" Padding=\"10\">\n    <TextBlock Text=\"내 사용자 컨트롤\" FontWeight=\"Bold\"/>\n</Border>",
+      "CompletedAt": "2026-09-18T21:12:03.9919885+09:00"
+    }
+  }
+}

@@ -23,7 +23,7 @@
             <Setter Property="TextWrapping" Value="Wrap"/>
             <Setter Property="AcceptsReturn" Value="True"/>
             <Setter Property="VerticalScrollBarVisibility" Value="Auto"/>
-            <Setter Property="MaxHeight" Value="300"/>
+            <Setter Property="MaxHeight" Value="420"/>
             <Setter Property="BorderBrush" Value="#333333"/>
             <Setter Property="BorderThickness" Value="1"/>
         </Style>
@@ -39,9 +39,10 @@
             <Setter Property="AcceptsReturn" Value="True"/>
             <Setter Property="FontFamily" Value="Consolas"/>
             <Setter Property="FontSize" Value="12"/>
-            <Setter Property="Height" Value="50"/>
             <Setter Property="VerticalScrollBarVisibility" Value="Auto"/>
             <Setter Property="Padding" Value="5"/>
+            <Setter Property="MinHeight" Value="160"/>
+            <Setter Property="MaxHeight" Value="420"/>
         </Style>
         <Style x:Key="RunButtonStyle" TargetType="Button">
             <Setter Property="Width" Value="60"/>
@@ -213,7 +214,7 @@
                             <TextBlock Text="과제: PasswordBox는 바인딩이 안 되므로, 코드에서 직접 값을 읽어 길이를 표시하세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
                             <TextBox x:Name="txtPractice1_5"
                                      Style="{StaticResource PracticeInputStyle}"
-                                     Height="120" AcceptsReturn="True"
+                                     AcceptsReturn="True"
                                      Text="private void BtnShowLength_Click(object sender, RoutedEventArgs e)&#10;{&#10;    &#10;}"/>
                             <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
                                 <Button Content="확인" Style="{StaticResource RunButtonStyle}" Click="BtnCheck_Click" Tag="1_5"/>
@@ -666,7 +667,6 @@
                             <TextBlock Text="과제: PasswordChanged 이벤트 핸들러를 작성하세요. 비밀번호 길이를 txtLength.Text에 표시해야 합니다." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
                             <TextBox x:Name="txtPractice5_1"
                                      Style="{StaticResource PracticeInputStyle}"
-                                     Height="120"
                                      AcceptsReturn="True"
                                      Text="private void Pwd_PasswordChanged(object sender, RoutedEventArgs e)&#x0a;{&#x0a;    &#x0a;}"/>
                             <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
@@ -698,7 +698,6 @@
                             <TextBlock Text="과제: 비밀번호 강도 체크 함수를 작성하세요. 4자 미만은 '약함', 4~7자는 '보통', 8자 이상은 '강함'으로 txtStrengthResult.Text에 표시합니다." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
                             <TextBox x:Name="txtPractice5_2"
                                      Style="{StaticResource PracticeInputStyle}"
-                                     Height="150"
                                      AcceptsReturn="True"
                                      Text="private void CheckStrength(string password)&#x0a;{&#x0a;    &#x0a;}"/>
                             <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
@@ -732,7 +731,6 @@
                             <TextBlock Text="과제: 두 비밀번호 일치 검사 함수를 작성하세요. pwd1과 pwd2가 일치하면 true, 아니면 false를 반환합니다." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
                             <TextBox x:Name="txtPractice5_3"
                                      Style="{StaticResource PracticeInputStyle}"
-                                     Height="120"
                                      AcceptsReturn="True"
                                      Text="private bool CheckMatch(string pwd1, string pwd2)&#x0a;{&#x0a;    &#x0a;}"/>
                             <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
@@ -766,7 +764,7 @@
                             <TextBlock Text="과제: PasswordBox에서 Enter를 누르면 입력값을 txtPwdKeyResult에 표시하세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
                             <TextBox x:Name="txtPractice5_4"
                                      Style="{StaticResource PracticeInputStyle}"
-                                     Height="120" AcceptsReturn="True"
+                                     AcceptsReturn="True"
                                      Text="private void PwdKeyDown_KeyDown(object sender, KeyEventArgs e)&#10;{&#10;    &#10;}"/>
                             <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
                                 <Button Content="확인" Style="{StaticResource RunButtonStyle}" Click="BtnCheck_Click" Tag="5_4"/>
@@ -802,7 +800,7 @@
                             <TextBlock Text="과제: 두 PasswordBox의 값이 같은지 확인해 결과 문구를 표시하는 핸들러를 완성하세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
                             <TextBox x:Name="txtPractice5_5"
                                      Style="{StaticResource PracticeInputStyle}"
-                                     Height="120" AcceptsReturn="True"
+                                     AcceptsReturn="True"
                                      Text="private void BtnCheckMatch_Click(object sender, RoutedEventArgs e)&#10;{&#10;    &#10;}"/>
                             <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
                                 <Button Content="확인" Style="{StaticResource RunButtonStyle}" Click="BtnCheck_Click" Tag="5_5"/>

@@ -1,0 +1,128 @@
+{
+  "Chapter": "ch28 영어단어맞추기",
+  "FirstStudiedAt": "2026-09-18T19:31:31.7589586+09:00",
+  "LastStudiedAt": "2026-09-18T19:37:59.184572+09:00",
+  "TotalStudySeconds": 354,
+  "LaunchCount": 1,
+  "LastTab": 0,
+  "PracticeTotal": 13,
+  "Practices": {
+    "5_4": {
+      "Runs": 0,
+      "Successes": 0,
+      "Hints": 0,
+      "Answers": 0,
+      "Status": "미완료",
+      "Draft": null,
+      "CompletedAt": null
+    },
+    "5_3": {
+      "Runs": 0,
+      "Successes": 0,
+      "Hints": 0,
+      "Answers": 0,
+      "Status": "미완료",
+      "Draft": null,
+      "CompletedAt": null
+    },
+    "5_2": {
+      "Runs": 0,
+      "Successes": 0,
+      "Hints": 0,
+      "Answers": 0,
+      "Status": "미완료",
+      "Draft": null,
+      "CompletedAt": null
+    },
+    "5_1": {
+      "Runs": 0,
+      "Successes": 0,
+      "Hints": 0,
+      "Answers": 0,
+      "Status": "미완료",
+      "Draft": null,
+      "CompletedAt": null
+    },
+    "4_3": {
+      "Runs": 0,
+      "Successes": 0,
+      "Hints": 0,
+      "Answers": 0,
+      "Status": "미완료",
+      "Draft": null,
+      "CompletedAt": null
+    },
+    "4_2": {
+      "Runs": 0,
+      "Successes": 0,
+      "Hints": 0,
+      "Answers": 0,
+      "Status": "미완료",
+      "Draft": null,
+      "CompletedAt": null
+    },
+    "4_1": {
+      "Runs": 0,
+      "Successes": 0,
+      "Hints": 0,
+      "Answers": 0,
+      "Status": "미완료",
+      "Draft": null,
+      "CompletedAt": null
+    },
+    "3_3": {
+      "Runs": 0,
+      "Successes": 0,
+      "Hints": 0,
+      "Answers": 0,
+      "Status": "미완료",
+      "Draft": null,
+      "CompletedAt": null
+    },
+    "3_2": {
+      "Runs": 0,
+      "Successes": 0,
+      "Hints": 0,
+      "Answers": 0,
+      "Status": "미완료",
+      "Draft": null,
+      "CompletedAt": null
+    },
+    "3_1": {
+      "Runs": 0,
+      "Successes": 0,
+      "Hints": 0,
+      "Answers": 0,
+      "Status": "미완료",
+      "Draft": null,
+      "CompletedAt": null
+    },
+    "2_3": {
+      "Runs": 10,
+      "Successes": 9,
+      "Hints": 1,
+      "Answers": 7,
+      "Status": "완료",
+      "Draft": "public string Progress\n{\n    get { return _correct + \" / \" + _total; }\n}\n\nprivate void UpdateProgress()\n{\n    OnPropertyChanged(\"Progress\");\n}",
+      "CompletedAt": "2026-09-18T19:37:25.9579863+09:00"
+    },
+    "2_2": {
+      "Runs": 4,
+      "Successes": 4,
+      "Hints": 2,
+      "Answers": 2,
+      "Status": "부분완료",
+      "Draft": "public event PropertyChangedEventHandler? PropertyChanged;\n\nprotected void OnPropertyChanged(string name)\n{\n    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));\n}",
+      "CompletedAt": "2026-09-18T19:35:29.2159677+09:00"
+    },
+    "2_1": {
+      "Runs": 14,
+      "Successes": 14,
+      "Hints": 1,
+      "Answers": 1,
+      "Status": "완료",
+      "Draft": "private int _score;\npublic int Score\n{\n    get { return _score; }\n    set\n    {\n        _score = value;\n        OnPropertyChanged(\"Score\");\n    }\n}",
+      "CompletedAt": "2026-09-18T19:33:09.0804709+09:00"
+    }
+  }
+}

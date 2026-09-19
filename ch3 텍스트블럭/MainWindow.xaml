@@ -24,7 +24,7 @@
             <Setter Property="TextWrapping" Value="Wrap"/>
             <Setter Property="AcceptsReturn" Value="True"/>
             <Setter Property="VerticalScrollBarVisibility" Value="Auto"/>
-            <Setter Property="MaxHeight" Value="300"/>
+            <Setter Property="MaxHeight" Value="420"/>
             <Setter Property="BorderBrush" Value="#333333"/>
             <Setter Property="BorderThickness" Value="1"/>
         </Style>
@@ -40,9 +40,10 @@
             <Setter Property="AcceptsReturn" Value="True"/>
             <Setter Property="FontFamily" Value="Consolas"/>
             <Setter Property="FontSize" Value="12"/>
-            <Setter Property="Height" Value="50"/>
             <Setter Property="VerticalScrollBarVisibility" Value="Auto"/>
             <Setter Property="Padding" Value="5"/>
+            <Setter Property="MinHeight" Value="160"/>
+            <Setter Property="MaxHeight" Value="420"/>
         </Style>
         <Style x:Key="RunButtonStyle" TargetType="Button">
             <Setter Property="Width" Value="60"/>
@@ -135,7 +136,6 @@
                             <TextBlock Text="과제 3: 클릭 횟수를 세어 TextBlock에 표시하는 이벤트 핸들러를 작성하세요. (tbCounter.Text에 횟수 표시)" FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
                             <TextBox x:Name="txtPractice1_3"
                                      Style="{StaticResource PracticeInputStyle}"
-                                     Height="120"
                                      Text="private void BtnCount_Click(object sender, RoutedEventArgs e)&#x0a;{&#x0a;    &#x0a;}"/>
                             <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
                                 <Button Content="확인" Style="{StaticResource RunButtonStyle}" Click="BtnCheck_Click" Tag="1_3"/>
@@ -165,7 +165,6 @@
                             <TextBlock Text="과제 4: LineBreak를 사용하여 '첫째줄', '둘째줄', '셋째줄'을 각각 다른 줄에 표시하세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
                             <TextBox x:Name="txtPractice1_4"
                                      Style="{StaticResource PracticeInputStyle}"
-                                     Height="80"
                                      Text="&lt;TextBlock&gt;첫째줄&lt;/TextBlock&gt;"/>
                             <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
                                 <Button Content="실행" Style="{StaticResource RunButtonStyle}" Click="BtnRun_Click" Tag="1_4"/>
@@ -264,7 +263,6 @@
                             <TextBlock Text="과제 1: Bold와 Italic을 사용하여 '굵게'와 '기울임'이라는 텍스트를 만드세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
                             <TextBox x:Name="txtPractice2_1"
                                      Style="{StaticResource PracticeInputStyle}"
-                                     Height="60"
                                      Text="&lt;TextBlock&gt;&lt;/TextBlock&gt;"/>
                             <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
                                 <Button Content="실행" Style="{StaticResource RunButtonStyle}" Click="BtnRun_Click" Tag="2_1"/>
@@ -298,7 +296,6 @@
                             <TextBlock Text="과제 2: Run 요소로 '빨강'(Red), '파랑'(Blue) 텍스트를 각각의 색상으로 표시하세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
                             <TextBox x:Name="txtPractice2_2"
                                      Style="{StaticResource PracticeInputStyle}"
-                                     Height="80"
                                      Text="&lt;TextBlock&gt;&lt;/TextBlock&gt;"/>
                             <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
                                 <Button Content="실행" Style="{StaticResource RunButtonStyle}" Click="BtnRun_Click" Tag="2_2"/>
@@ -328,7 +325,6 @@
                             <TextBlock Text="과제 3: Span을 사용하여 노란색(Yellow) 배경에 Bold 스타일의 '강조' 텍스트를 만드세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
                             <TextBox x:Name="txtPractice2_3"
                                      Style="{StaticResource PracticeInputStyle}"
-                                     Height="60"
                                      Text="&lt;TextBlock&gt;&lt;/TextBlock&gt;"/>
                             <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
                                 <Button Content="실행" Style="{StaticResource RunButtonStyle}" Click="BtnRun_Click" Tag="2_3"/>
@@ -447,7 +443,6 @@
                             <TextBlock Text="과제 1: TextWrapping='Wrap'을 적용한 TextBlock에 긴 텍스트를 넣으세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
                             <TextBox x:Name="txtPractice3_1"
                                      Style="{StaticResource PracticeInputStyle}"
-                                     Height="60"
                                      Text="&lt;TextBlock&gt;이것은 매우 긴 텍스트입니다&lt;/TextBlock&gt;"/>
                             <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
                                 <Button Content="실행" Style="{StaticResource RunButtonStyle}" Click="BtnRun_Click" Tag="3_1"/>
@@ -487,7 +482,6 @@
                             <TextBlock Text="과제 2: TextTrimming='CharacterEllipsis'를 사용하여 말줄임(...) 처리를 하세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
                             <TextBox x:Name="txtPractice3_2"
                                      Style="{StaticResource PracticeInputStyle}"
-                                     Height="60"
                                      Text="&lt;TextBlock&gt;이 텍스트는 말줄임 처리됩니다&lt;/TextBlock&gt;"/>
                             <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
                                 <Button Content="실행" Style="{StaticResource RunButtonStyle}" Click="BtnRun_Click" Tag="3_2"/>
@@ -807,7 +801,6 @@
                             <TextBlock Text="과제 3: TextBlock의 스타일을 변경하는 이벤트 핸들러를 작성하세요. (tbTarget에 적용)" FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
                             <TextBox x:Name="txtPractice5_3"
                                      Style="{StaticResource PracticeInputStyle}"
-                                     Height="150"
                                      Text="private void BtnApplyStyle_Click(object sender, RoutedEventArgs e)&#x0a;{&#x0a;    // tbTarget의 Background를 Green으로&#x0a;    // tbTarget의 Foreground를 White로&#x0a;    // tbTarget의 FontWeight를 Bold로&#x0a;}"/>
                             <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
                                 <Button Content="확인" Style="{StaticResource RunButtonStyle}" Click="BtnCheck_Click" Tag="5_3"/>
@@ -873,7 +866,7 @@
                             <TextBlock Text="과제: 버튼을 누르면 tbStyleDemo를 빨간 배경 + 흰 글자 + 굵게 바꾸는 핸들러를 완성하세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
                             <TextBox x:Name="txtPractice5_5"
                                      Style="{StaticResource PracticeInputStyle}"
-                                     Height="120" AcceptsReturn="True"
+                                     AcceptsReturn="True"
                                      Text="private void BtnRedStyle_Click(object sender, RoutedEventArgs e)&#10;{&#10;    &#10;}"/>
                             <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
                                 <Button Content="확인" Style="{StaticResource RunButtonStyle}" Click="BtnCheck_Click" Tag="5_5"/>

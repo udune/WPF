@@ -23,7 +23,7 @@
             <Setter Property="TextWrapping" Value="Wrap"/>
             <Setter Property="AcceptsReturn" Value="True"/>
             <Setter Property="VerticalScrollBarVisibility" Value="Auto"/>
-            <Setter Property="MaxHeight" Value="300"/>
+            <Setter Property="MaxHeight" Value="420"/>
             <Setter Property="BorderBrush" Value="#333333"/>
             <Setter Property="BorderThickness" Value="1"/>
         </Style>
@@ -39,9 +39,10 @@
             <Setter Property="AcceptsReturn" Value="True"/>
             <Setter Property="FontFamily" Value="Consolas"/>
             <Setter Property="FontSize" Value="12"/>
-            <Setter Property="Height" Value="80"/>
             <Setter Property="VerticalScrollBarVisibility" Value="Auto"/>
             <Setter Property="Padding" Value="5"/>
+            <Setter Property="MinHeight" Value="160"/>
+            <Setter Property="MaxHeight" Value="420"/>
         </Style>
         <Style x:Key="RunButtonStyle" TargetType="Button">
             <Setter Property="Width" Value="60"/>
@@ -217,7 +218,7 @@
                             <TextBlock Text="과제: 비밀번호를 코드에 박지 않고 환경 변수에서 연결 문자열을 읽어 오도록 바꾸세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
                             <TextBox x:Name="txtPractice1_4"
                                      Style="{StaticResource PracticeInputStyle}"
-                                     Height="120" AcceptsReturn="True"
+                                     AcceptsReturn="True"
                                      Text="// 이렇게 쓰면 비밀번호가 소스에 남습니다&#10;// string connectionString = &quot;Server=localhost;Uid=root;Pwd=1234;Database=study&quot;;&#10;&#10;"/>
                             <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
                                 <Button Content="확인" Style="{StaticResource RunButtonStyle}" Click="BtnCheck_Click" Tag="1_4"/>
@@ -361,7 +362,7 @@
                             <TextBlock Text="과제: using 문으로 연결과 명령, 리더를 모두 자동 정리하는 조회 메서드를 완성하세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
                             <TextBox x:Name="txtPractice2_4"
                                      Style="{StaticResource PracticeInputStyle}"
-                                     Height="120" AcceptsReturn="True"
+                                     AcceptsReturn="True"
                                      Text="private void LoadData()&#10;{&#10;    DataTable dataTable = new DataTable();&#10;&#10;    &#10;&#10;    Grid.ItemsSource = dataTable.DefaultView;&#10;}"/>
                             <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
                                 <Button Content="확인" Style="{StaticResource RunButtonStyle}" Click="BtnCheck_Click" Tag="2_4"/>
@@ -517,7 +518,7 @@
                             <TextBlock Text="과제: AddWithValue 대신 타입을 명시해 파라미터를 추가하도록 바꾸세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
                             <TextBox x:Name="txtPractice3_4"
                                      Style="{StaticResource PracticeInputStyle}"
-                                     Height="120" AcceptsReturn="True"
+                                     AcceptsReturn="True"
                                      Text="// AddWithValue 는 타입을 추론합니다&#10;// command.Parameters.AddWithValue(&quot;@name&quot;, TxtName.Text);&#10;&#10;"/>
                             <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
                                 <Button Content="확인" Style="{StaticResource RunButtonStyle}" Click="BtnCheck_Click" Tag="3_4"/>
@@ -652,7 +653,7 @@
                             <TextBlock Text="과제: 행을 지우지 않고 삭제 표시만 남기는 소프트 삭제 SQL을 작성하세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
                             <TextBox x:Name="txtPractice4_4"
                                      Style="{StaticResource PracticeInputStyle}"
-                                     Height="120" AcceptsReturn="True"
+                                     AcceptsReturn="True"
                                      Text="-- 실제 DELETE 대신 삭제 표시만 남깁니다&#10;&#10;"/>
                             <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
                                 <Button Content="확인" Style="{StaticResource RunButtonStyle}" Click="BtnCheck_Click" Tag="4_4"/>

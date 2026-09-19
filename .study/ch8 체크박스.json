@@ -1,0 +1,146 @@
+{
+  "Chapter": "ch8 체크박스",
+  "FirstStudiedAt": "2026-09-12T22:43:38.8434855+09:00",
+  "LastStudiedAt": "2026-09-15T00:05:06.0095253+09:00",
+  "TotalStudySeconds": 851,
+  "LaunchCount": 3,
+  "LastTab": 4,
+  "PracticeTotal": 15,
+  "Practices": {
+    "5_3": {
+      "Runs": 2,
+      "Successes": 1,
+      "Hints": 0,
+      "Answers": 1,
+      "Status": "완료",
+      "Draft": "private void ChkAll_Checked(object sender, RoutedEventArgs e)\n{\n    chkItem1.IsChecked = true;\n    chkItem2.IsChecked = true;\n    chkItem3.IsChecked = true;\n}",
+      "CompletedAt": "2026-09-15T00:05:00.2651627+09:00"
+    },
+    "5_2": {
+      "Runs": 1,
+      "Successes": 1,
+      "Hints": 1,
+      "Answers": 1,
+      "Status": "완료",
+      "Draft": "private void CheckStatus()\n{\n    if (chkBox.IsChecked == true)\n        txtResult.Text = \"체크됨\";\n    else\n        txtResult.Text = \"해제됨\";\n}",
+      "CompletedAt": "2026-09-15T00:03:03.8511408+09:00"
+    },
+    "5_1": {
+      "Runs": 1,
+      "Successes": 1,
+      "Hints": 0,
+      "Answers": 2,
+      "Status": "부분완료",
+      "Draft": "private void Chk_Checked(object sender, RoutedEventArgs e)\n{\n    txtStatus.Text = \"체크됨\";\n}",
+      "CompletedAt": "2026-09-15T00:01:51.8361408+09:00"
+    },
+    "4_3": {
+      "Runs": 2,
+      "Successes": 1,
+      "Hints": 0,
+      "Answers": 0,
+      "Status": "완료",
+      "Draft": "<CheckBox Content=\"다크 모드\" Foreground=\"White\" Background=\"DarkGray\"/>",
+      "CompletedAt": "2026-09-14T23:57:26.4511953+09:00"
+    },
+    "4_2": {
+      "Runs": 1,
+      "Successes": 1,
+      "Hints": 0,
+      "Answers": 0,
+      "Status": "완료",
+      "Draft": "<CheckBox Content=\"반투명\" IsChecked=\"True\" Opacity=\"0.5\"/>",
+      "CompletedAt": "2026-09-14T23:56:28.9323403+09:00"
+    },
+    "4_1": {
+      "Runs": 1,
+      "Successes": 1,
+      "Hints": 0,
+      "Answers": 0,
+      "Status": "완료",
+      "Draft": "<CheckBox Content=\"녹색 테마\" Background=\"LightGreen\" Foreground=\"DarkGreen\"/>",
+      "CompletedAt": "2026-09-14T23:56:09.4355418+09:00"
+    },
+    "3_3": {
+      "Runs": 2,
+      "Successes": 2,
+      "Hints": 0,
+      "Answers": 1,
+      "Status": "완료",
+      "Draft": "<CheckBox FontSize=\"16\" FontWeight=\"Bold\">\n    <TextBlock Text=\"동의합니다\" TextDecorations=\"Underline\"/>\n</CheckBox>",
+      "CompletedAt": "2026-09-14T23:54:54.8420966+09:00"
+    },
+    "3_2": {
+      "Runs": 1,
+      "Successes": 1,
+      "Hints": 0,
+      "Answers": 0,
+      "Status": "완료",
+      "Draft": "<CheckBox Content=\"굵은 기울임\" FontWeight=\"Bold\" FontStyle=\"Italic\"/>",
+      "CompletedAt": "2026-09-14T23:54:18.2371106+09:00"
+    },
+    "3_1": {
+      "Runs": 1,
+      "Successes": 1,
+      "Hints": 0,
+      "Answers": 0,
+      "Status": "완료",
+      "Draft": "<CheckBox Content=\"큰 글씨\" FontSize=\"18\"/>",
+      "CompletedAt": "2026-09-14T23:53:57.3456529+09:00"
+    },
+    "2_3": {
+      "Runs": 2,
+      "Successes": 2,
+      "Hints": 0,
+      "Answers": 1,
+      "Status": "완료",
+      "Draft": "<StackPanel HorizontalAlignment=\"Center\">\n    <CheckBox Content=\"사과\"/>\n    <CheckBox Content=\"바나나\"/>\n    <CheckBox Content=\"포도\"/>\n</StackPanel>",
+      "CompletedAt": "2026-09-14T23:53:12.2543655+09:00"
+    },
+    "2_2": {
+      "Runs": 1,
+      "Successes": 1,
+      "Hints": 0,
+      "Answers": 2,
+      "Status": "완료",
+      "Draft": "<CheckBox Content=\"오른쪽 체크\" FlowDirection=\"RightToLeft\"/>",
+      "CompletedAt": "2026-09-14T23:51:55.3388518+09:00"
+    },
+    "2_1": {
+      "Runs": 1,
+      "Successes": 1,
+      "Hints": 0,
+      "Answers": 1,
+      "Status": "완료",
+      "Draft": "<CheckBox Content=\"중앙 정렬\" HorizontalAlignment=\"Center\"/>",
+      "CompletedAt": "2026-09-14T23:51:39.8294636+09:00"
+    },
+    "1_3": {
+      "Runs": 1,
+      "Successes": 1,
+      "Hints": 0,
+      "Answers": 0,
+      "Status": "완료",
+      "Draft": "<CheckBox Content=\"부분 선택\" IsThreeState=\"True\"/>",
+      "CompletedAt": "2026-09-14T23:51:03.6932788+09:00"
+    },
+    "1_2": {
+      "Runs": 1,
+      "Successes": 1,
+      "Hints": 0,
+      "Answers": 0,
+      "Status": "완료",
+      "Draft": "<CheckBox Content=\"자동 로그인\" IsChecked=\"True\"/>",
+      "CompletedAt": "2026-09-14T23:50:48.5160169+09:00"
+    },
+    "1_1": {
+      "Runs": 1,
+      "Successes": 1,
+      "Hints": 0,
+      "Answers": 0,
+      "Status": "완료",
+      "Draft": "<CheckBox Content=\"약관에 동의합니다\"/>",
+      "CompletedAt": "2026-09-14T23:50:21.6422029+09:00"
+    }
+  }
+}

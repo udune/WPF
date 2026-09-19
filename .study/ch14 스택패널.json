@@ -1,0 +1,146 @@
+{
+  "Chapter": "ch14 스택패널",
+  "FirstStudiedAt": "2026-09-17T22:01:52.7680565+09:00",
+  "LastStudiedAt": "2026-09-17T22:44:48.3548403+09:00",
+  "TotalStudySeconds": 1219,
+  "LaunchCount": 1,
+  "LastTab": 4,
+  "PracticeTotal": 15,
+  "Practices": {
+    "5_3": {
+      "Runs": 1,
+      "Successes": 1,
+      "Hints": 0,
+      "Answers": 1,
+      "Status": "완료",
+      "Draft": "private void ShowCount()\n{\n    // myPanel의 자식 요소 수를 txtResult.Text에 표시\n    txtResult.Text = myPanel.Children.Count.ToString();\n}",
+      "CompletedAt": "2026-09-17T22:44:17.1849246+09:00"
+    },
+    "5_2": {
+      "Runs": 1,
+      "Successes": 1,
+      "Hints": 0,
+      "Answers": 1,
+      "Status": "완료",
+      "Draft": "private void ChangeOrientation()\n{\n    // myPanel의 Orientation 변경\n    myPanel.Orientation = Orientation.Horizontal;\n}",
+      "CompletedAt": "2026-09-17T22:43:11.7448444+09:00"
+    },
+    "5_1": {
+      "Runs": 1,
+      "Successes": 1,
+      "Hints": 1,
+      "Answers": 1,
+      "Status": "부분완료",
+      "Draft": "private void AddButton()\n{\n    // myPanel에 Button 추가\n    myPanel.Children.Add(new Button { Content = \"새 버튼\" });\n}",
+      "CompletedAt": "2026-09-17T22:42:45.1822654+09:00"
+    },
+    "4_3": {
+      "Runs": 1,
+      "Successes": 1,
+      "Hints": 1,
+      "Answers": 1,
+      "Status": "부분완료",
+      "Draft": "<StackPanel>\n    <StackPanel.Resources>\n        <Style TargetType=\"Button\">\n            <Setter Property=\"Width\" Value=\"140\"/>\n            <Setter Property=\"Margin\" Value=\"0,4,0,4\"/>\n        </Style>\n    </StackPanel.Resources>\n    <Button Content=\"첫째\"/>\n    <Button Content=\"둘째\"/>\n</StackPanel>",
+      "CompletedAt": "2026-09-17T22:38:35.5777005+09:00"
+    },
+    "4_2": {
+      "Runs": 1,
+      "Successes": 1,
+      "Hints": 0,
+      "Answers": 15,
+      "Status": "완료",
+      "Draft": "<StackPanel Orientation=\"Horizontal\" FlowDirection=\"RightToLeft\">\n    <Button Content=\"첫번째\"/>\n    <Button Content=\"두번째\"/>\n</StackPanel>",
+      "CompletedAt": "2026-09-17T22:37:11.0536176+09:00"
+    },
+    "4_1": {
+      "Runs": 1,
+      "Successes": 1,
+      "Hints": 0,
+      "Answers": 0,
+      "Status": "완료",
+      "Draft": "<StackPanel Background=\"LightGreen\">\n    <TextBlock Text=\"배경색 있는 패널\" Margin=\"10\"/>\n</StackPanel>",
+      "CompletedAt": "2026-09-17T22:35:43.1430729+09:00"
+    },
+    "3_3": {
+      "Runs": 2,
+      "Successes": 2,
+      "Hints": 0,
+      "Answers": 1,
+      "Status": "완료",
+      "Draft": "<StackPanel Orientation=\"Horizontal\">\n    <StackPanel Margin=\"10\">\n        <TextBlock Text=\"왼쪽 1\"/>\n        <TextBlock Text=\"왼쪽 2\"/>\n    </StackPanel>\n    <StackPanel Margin=\"10\">\n        <TextBlock Text=\"오른쪽 1\"/>\n        <TextBlock Text=\"오른쪽 2\"/>\n    </StackPanel>\n</StackPanel>",
+      "CompletedAt": "2026-09-17T22:17:53.7767988+09:00"
+    },
+    "3_2": {
+      "Runs": 1,
+      "Successes": 1,
+      "Hints": 0,
+      "Answers": 0,
+      "Status": "완료",
+      "Draft": "<StackPanel Orientation=\"Horizontal\">\r\n    <TextBlock Text=\"이름: \" Width=\"80\"/>\n    <TextBox Width=\"200\"/>\n</StackPanel>",
+      "CompletedAt": "2026-09-17T22:16:55.6500897+09:00"
+    },
+    "3_1": {
+      "Runs": 1,
+      "Successes": 1,
+      "Hints": 0,
+      "Answers": 0,
+      "Status": "완료",
+      "Draft": "<StackPanel>\n    <TextBlock Text=\"제목\"/>\n    <StackPanel Orientation=\"Horizontal\">\r\n        <Button Content=\"수정\"/>\r\n        <Button Content=\"삭제\"/>\r\n    </StackPanel>\n</StackPanel>",
+      "CompletedAt": "2026-09-17T22:15:48.8817034+09:00"
+    },
+    "2_3": {
+      "Runs": 1,
+      "Successes": 1,
+      "Hints": 0,
+      "Answers": 0,
+      "Status": "완료",
+      "Draft": "<StackPanel>\n    <Button Content=\"여백 있음\" Margin=\"10\"/>\n</StackPanel>",
+      "CompletedAt": "2026-09-17T22:14:21.2549439+09:00"
+    },
+    "2_2": {
+      "Runs": 3,
+      "Successes": 1,
+      "Hints": 0,
+      "Answers": 0,
+      "Status": "완료",
+      "Draft": "<StackPanel Orientation=\"Horizontal\" Height=\"100\">\n    <Button Content=\"아래 정렬\" VerticalAlignment=\"Bottom\"/>\n</StackPanel>",
+      "CompletedAt": "2026-09-17T22:11:57.7228852+09:00"
+    },
+    "2_1": {
+      "Runs": 1,
+      "Successes": 1,
+      "Hints": 0,
+      "Answers": 0,
+      "Status": "완료",
+      "Draft": "<StackPanel>\n    <Button Content=\"중앙 정렬\" HorizontalAlignment=\"Center\"/>\n</StackPanel>",
+      "CompletedAt": "2026-09-17T22:10:43.5723936+09:00"
+    },
+    "1_3": {
+      "Runs": 1,
+      "Successes": 1,
+      "Hints": 0,
+      "Answers": 1,
+      "Status": "완료",
+      "Draft": "<StackPanel>\n    <TextBlock Text=\"라벨\"/>\n    <TextBox/>\n    <Button Content=\"확인\"/>\n</StackPanel>",
+      "CompletedAt": "2026-09-17T22:06:00.0751929+09:00"
+    },
+    "1_2": {
+      "Runs": 1,
+      "Successes": 1,
+      "Hints": 0,
+      "Answers": 1,
+      "Status": "완료",
+      "Draft": "<StackPanel Orientation=\"Horizontal\">\n    <Button Content=\"A\"/>\n    <Button Content=\"B\"/>\n</StackPanel>",
+      "CompletedAt": "2026-09-17T22:03:29.1601938+09:00"
+    },
+    "1_1": {
+      "Runs": 1,
+      "Successes": 1,
+      "Hints": 0,
+      "Answers": 1,
+      "Status": "완료",
+      "Draft": "<StackPanel>\n    <Button Content=\"버튼 1\"/>\n    <Button Content=\"버튼 2\"/>\n</StackPanel>",
+      "CompletedAt": "2026-09-17T22:02:33.6489256+09:00"
+    }
+  }
+}

@@ -23,7 +23,7 @@
             <Setter Property="TextWrapping" Value="Wrap"/>
             <Setter Property="AcceptsReturn" Value="True"/>
             <Setter Property="VerticalScrollBarVisibility" Value="Auto"/>
-            <Setter Property="MaxHeight" Value="300"/>
+            <Setter Property="MaxHeight" Value="420"/>
             <Setter Property="BorderBrush" Value="#333333"/>
             <Setter Property="BorderThickness" Value="1"/>
         </Style>
@@ -44,9 +44,10 @@
             <Setter Property="AcceptsReturn" Value="True"/>
             <Setter Property="FontFamily" Value="Consolas"/>
             <Setter Property="FontSize" Value="12"/>
-            <Setter Property="Height" Value="60"/>
             <Setter Property="VerticalScrollBarVisibility" Value="Auto"/>
             <Setter Property="Padding" Value="5"/>
+            <Setter Property="MinHeight" Value="160"/>
+            <Setter Property="MaxHeight" Value="420"/>
         </Style>
         <Style x:Key="RunButtonStyle" TargetType="Button">
             <Setter Property="Width" Value="60"/>
@@ -96,7 +97,6 @@
                             <TextBlock Text="과제: WrapPanel 안에 Button 3개를 배치해보세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
                             <TextBox x:Name="txtPractice1_1"
                                      Style="{StaticResource PracticeInputStyle}"
-                                     Height="80"
                                      Text="&lt;WrapPanel&gt;&#x0a;    &#x0a;&lt;/WrapPanel&gt;"/>
                             <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
                                 <Button Content="실행" Style="{StaticResource RunButtonStyle}" Click="BtnRun_Click" Tag="1_1"/>
@@ -133,7 +133,6 @@
                             <TextBlock Text="과제: Orientation이 Vertical인 WrapPanel을 만들어보세요. (Height=&quot;100&quot; 필요)" FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
                             <TextBox x:Name="txtPractice1_2"
                                      Style="{StaticResource PracticeInputStyle}"
-                                     Height="80"
                                      Text="&lt;WrapPanel Height=&quot;100&quot;&gt;&#x0a;    &lt;Button Content=&quot;A&quot;/&gt;&#x0a;    &lt;Button Content=&quot;B&quot;/&gt;&#x0a;    &lt;Button Content=&quot;C&quot;/&gt;&#x0a;&lt;/WrapPanel&gt;"/>
                             <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
                                 <Button Content="실행" Style="{StaticResource RunButtonStyle}" Click="BtnRun_Click" Tag="1_2"/>
@@ -223,7 +222,6 @@
                             <TextBlock Text="과제: ItemWidth=&quot;120&quot;을 설정한 WrapPanel을 만들어보세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
                             <TextBox x:Name="txtPractice2_1"
                                      Style="{StaticResource PracticeInputStyle}"
-                                     Height="80"
                                      Text="&lt;WrapPanel&gt;&#x0a;    &lt;Button Content=&quot;항목 1&quot;/&gt;&#x0a;    &lt;Button Content=&quot;항목 2&quot;/&gt;&#x0a;&lt;/WrapPanel&gt;"/>
                             <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
                                 <Button Content="실행" Style="{StaticResource RunButtonStyle}" Click="BtnRun_Click" Tag="2_1"/>
@@ -258,7 +256,6 @@
                             <TextBlock Text="과제: ItemHeight=&quot;60&quot;을 설정한 WrapPanel을 만들어보세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
                             <TextBox x:Name="txtPractice2_2"
                                      Style="{StaticResource PracticeInputStyle}"
-                                     Height="80"
                                      Text="&lt;WrapPanel&gt;&#x0a;    &lt;Button Content=&quot;항목 1&quot;/&gt;&#x0a;    &lt;Button Content=&quot;항목 2&quot;/&gt;&#x0a;&lt;/WrapPanel&gt;"/>
                             <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
                                 <Button Content="실행" Style="{StaticResource RunButtonStyle}" Click="BtnRun_Click" Tag="2_2"/>
@@ -293,7 +290,6 @@
                             <TextBlock Text="과제: ItemWidth=&quot;100&quot;과 ItemHeight=&quot;40&quot;을 함께 설정해보세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
                             <TextBox x:Name="txtPractice2_3"
                                      Style="{StaticResource PracticeInputStyle}"
-                                     Height="80"
                                      Text="&lt;WrapPanel&gt;&#x0a;    &lt;Button Content=&quot;A&quot;/&gt;&#x0a;    &lt;Button Content=&quot;B&quot;/&gt;&#x0a;&lt;/WrapPanel&gt;"/>
                             <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
                                 <Button Content="실행" Style="{StaticResource RunButtonStyle}" Click="BtnRun_Click" Tag="2_3"/>
@@ -346,7 +342,6 @@
                             <TextBlock Text="과제: Border와 TextBlock을 사용해 태그 스타일을 만들어보세요. (CornerRadius=&quot;10&quot;, Padding=&quot;8,4&quot;)" FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
                             <TextBox x:Name="txtPractice3_1"
                                      Style="{StaticResource PracticeInputStyle}"
-                                     Height="100"
                                      Text="&lt;WrapPanel&gt;&#x0a;    &lt;Border Background=&quot;LightBlue&quot;&gt;&#x0a;        &lt;TextBlock Text=&quot;태그&quot;/&gt;&#x0a;    &lt;/Border&gt;&#x0a;&lt;/WrapPanel&gt;"/>
                             <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
                                 <Button Content="실행" Style="{StaticResource RunButtonStyle}" Click="BtnRun_Click" Tag="3_1"/>
@@ -389,7 +384,6 @@
                             <TextBlock Text="과제: ItemWidth=&quot;100&quot; ItemHeight=&quot;80&quot;을 설정하고 Border 2개를 배치해보세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
                             <TextBox x:Name="txtPractice3_2"
                                      Style="{StaticResource PracticeInputStyle}"
-                                     Height="120"
                                      Text="&lt;WrapPanel&gt;&#x0a;    &lt;Border Background=&quot;LightCoral&quot; Margin=&quot;4&quot;&gt;&#x0a;        &lt;TextBlock Text=&quot;카드 1&quot;/&gt;&#x0a;    &lt;/Border&gt;&#x0a;    &lt;Border Background=&quot;LightGreen&quot; Margin=&quot;4&quot;&gt;&#x0a;        &lt;TextBlock Text=&quot;카드 2&quot;/&gt;&#x0a;    &lt;/Border&gt;&#x0a;&lt;/WrapPanel&gt;"/>
                             <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
                                 <Button Content="실행" Style="{StaticResource RunButtonStyle}" Click="BtnRun_Click" Tag="3_2"/>
@@ -461,7 +455,6 @@
                             <TextBlock Text="과제: WrapPanel에 Background=&quot;LightGreen&quot;을 설정해보세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
                             <TextBox x:Name="txtPractice4_1"
                                      Style="{StaticResource PracticeInputStyle}"
-                                     Height="80"
                                      Text="&lt;WrapPanel&gt;&#x0a;    &lt;Button Content=&quot;버튼 1&quot;/&gt;&#x0a;    &lt;Button Content=&quot;버튼 2&quot;/&gt;&#x0a;&lt;/WrapPanel&gt;"/>
                             <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
                                 <Button Content="실행" Style="{StaticResource RunButtonStyle}" Click="BtnRun_Click" Tag="4_1"/>
@@ -506,7 +499,6 @@
                             <TextBlock Text="과제: FlowDirection=&quot;RightToLeft&quot;를 설정해보세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
                             <TextBox x:Name="txtPractice4_2"
                                      Style="{StaticResource PracticeInputStyle}"
-                                     Height="80"
                                      Text="&lt;WrapPanel&gt;&#x0a;    &lt;Button Content=&quot;첫번째&quot;/&gt;&#x0a;    &lt;Button Content=&quot;두번째&quot;/&gt;&#x0a;&lt;/WrapPanel&gt;"/>
                             <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
                                 <Button Content="실행" Style="{StaticResource RunButtonStyle}" Click="BtnRun_Click" Tag="4_2"/>
@@ -574,7 +566,6 @@
                             <TextBlock Text="과제: Children.Add를 사용하여 Button을 추가하는 코드를 작성하세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
                             <TextBox x:Name="txtPractice5_1"
                                      Style="{StaticResource PracticeInputStyle}"
-                                     Height="100"
                                      Text="private void AddButton()&#x0a;{&#x0a;    // myWrapPanel에 Button 추가&#x0a;    &#x0a;}"/>
                             <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
                                 <Button Content="확인" Style="{StaticResource RunButtonStyle}" Click="BtnCheck_Click" Tag="5_1"/>
@@ -616,7 +607,6 @@
                             <TextBlock Text="과제: WrapPanel의 Orientation을 Vertical로 변경하는 코드를 작성하세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
                             <TextBox x:Name="txtPractice5_2"
                                      Style="{StaticResource PracticeInputStyle}"
-                                     Height="100"
                                      Text="private void ChangeOrientation()&#x0a;{&#x0a;    // myWrapPanel의 Orientation 변경&#x0a;    &#x0a;}"/>
                             <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
                                 <Button Content="확인" Style="{StaticResource RunButtonStyle}" Click="BtnCheck_Click" Tag="5_2"/>
@@ -658,7 +648,6 @@
                             <TextBlock Text="과제: WrapPanel의 ItemWidth를 150으로 변경하는 코드를 작성하세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
                             <TextBox x:Name="txtPractice5_3"
                                      Style="{StaticResource PracticeInputStyle}"
-                                     Height="100"
                                      Text="private void ChangeItemWidth()&#x0a;{&#x0a;    // myWrapPanel의 ItemWidth 변경&#x0a;    &#x0a;}"/>
                             <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
                                 <Button Content="확인" Style="{StaticResource RunButtonStyle}" Click="BtnCheck_Click" Tag="5_3"/>

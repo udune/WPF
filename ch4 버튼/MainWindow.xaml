@@ -23,7 +23,7 @@
             <Setter Property="TextWrapping" Value="Wrap"/>
             <Setter Property="AcceptsReturn" Value="True"/>
             <Setter Property="VerticalScrollBarVisibility" Value="Auto"/>
-            <Setter Property="MaxHeight" Value="300"/>
+            <Setter Property="MaxHeight" Value="420"/>
             <Setter Property="BorderBrush" Value="#333333"/>
             <Setter Property="BorderThickness" Value="1"/>
         </Style>
@@ -37,9 +37,10 @@
             <Setter Property="AcceptsReturn" Value="True"/>
             <Setter Property="FontFamily" Value="Consolas"/>
             <Setter Property="FontSize" Value="12"/>
-            <Setter Property="Height" Value="50"/>
             <Setter Property="VerticalScrollBarVisibility" Value="Auto"/>
             <Setter Property="Padding" Value="5"/>
+            <Setter Property="MinHeight" Value="160"/>
+            <Setter Property="MaxHeight" Value="420"/>
         </Style>
         <Style x:Key="RunButtonStyle" TargetType="Button">
             <Setter Property="Width" Value="60"/>
@@ -671,7 +672,7 @@
                     <Expander Style="{StaticResource PracticeExpanderStyle}">
                         <StackPanel Margin="10">
                             <TextBlock Text="과제: 버튼 클릭 시 _count를 1 증가시키고, lblStatus.Content를 '클릭: N회' 형식으로 변경하는 이벤트 핸들러를 완성하세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
-                            <TextBox x:Name="txtPractice5_1" Style="{StaticResource PracticeInputStyle}" Height="120" AcceptsReturn="True" Text="private void BtnCount_Click(object sender, RoutedEventArgs e)&#x0a;{&#x0a;    &#x0a;    &#x0a;}"/>
+                            <TextBox x:Name="txtPractice5_1" Style="{StaticResource PracticeInputStyle}" AcceptsReturn="True" Text="private void BtnCount_Click(object sender, RoutedEventArgs e)&#x0a;{&#x0a;    &#x0a;    &#x0a;}"/>
                             <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
                                 <Button Content="확인" Style="{StaticResource RunButtonStyle}" Click="BtnCheck_Click" Tag="5_1"/>
                                 <Button Content="힌트" Style="{StaticResource HintButtonStyle}" Click="BtnHint_Click" Tag="5_1"/>
@@ -696,7 +697,7 @@
                     <Expander Style="{StaticResource PracticeExpanderStyle}">
                         <StackPanel Margin="10">
                             <TextBlock Text="과제: 마우스가 진입하면 btnTarget의 Background를 Yellow로, Foreground를 Blue로 변경하는 MouseEnter 이벤트 핸들러를 작성하세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
-                            <TextBox x:Name="txtPractice5_2" Style="{StaticResource PracticeInputStyle}" Height="120" AcceptsReturn="True" Text="private void Btn_MouseEnter(object sender, MouseEventArgs e)&#x0a;{&#x0a;    btnTarget.Background = &#x0a;    btnTarget.Foreground = &#x0a;}"/>
+                            <TextBox x:Name="txtPractice5_2" Style="{StaticResource PracticeInputStyle}" AcceptsReturn="True" Text="private void Btn_MouseEnter(object sender, MouseEventArgs e)&#x0a;{&#x0a;    btnTarget.Background = &#x0a;    btnTarget.Foreground = &#x0a;}"/>
                             <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
                                 <Button Content="확인" Style="{StaticResource RunButtonStyle}" Click="BtnCheck_Click" Tag="5_2"/>
                                 <Button Content="힌트" Style="{StaticResource HintButtonStyle}" Click="BtnHint_Click" Tag="5_2"/>
@@ -720,7 +721,7 @@
                     <Expander Style="{StaticResource PracticeExpanderStyle}">
                         <StackPanel Margin="10">
                             <TextBlock Text="과제: 버튼 클릭 시 btnTarget의 Background를 Green, Foreground를 White, FontWeight를 Bold로 변경하고 Content를 '스타일 적용됨'으로 설정하는 이벤트 핸들러를 작성하세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
-                            <TextBox x:Name="txtPractice5_3" Style="{StaticResource PracticeInputStyle}" Height="150" AcceptsReturn="True" Text="private void BtnApplyStyle_Click(object sender, RoutedEventArgs e)&#x0a;{&#x0a;    btnTarget.Background = &#x0a;    btnTarget.Foreground = &#x0a;    btnTarget.FontWeight = &#x0a;    btnTarget.Content = &#x0a;}"/>
+                            <TextBox x:Name="txtPractice5_3" Style="{StaticResource PracticeInputStyle}" AcceptsReturn="True" Text="private void BtnApplyStyle_Click(object sender, RoutedEventArgs e)&#x0a;{&#x0a;    btnTarget.Background = &#x0a;    btnTarget.Foreground = &#x0a;    btnTarget.FontWeight = &#x0a;    btnTarget.Content = &#x0a;}"/>
                             <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
                                 <Button Content="확인" Style="{StaticResource RunButtonStyle}" Click="BtnCheck_Click" Tag="5_3"/>
                                 <Button Content="힌트" Style="{StaticResource HintButtonStyle}" Click="BtnHint_Click" Tag="5_3"/>
@@ -749,7 +750,7 @@
                     <Expander Style="{StaticResource PracticeExpanderStyle}">
                         <StackPanel Margin="10">
                             <TextBlock Text="과제: 토글 버튼을 만드세요. btnTarget이 보이면 Collapsed로 숨기고, 숨겨져 있으면 Visible로 보이게 하는 이벤트 핸들러를 작성하세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
-                            <TextBox x:Name="txtPractice5_4" Style="{StaticResource PracticeInputStyle}" Height="180" AcceptsReturn="True" Text="private void BtnToggle_Click(object sender, RoutedEventArgs e)&#x0a;{&#x0a;    if (btnTarget.Visibility == Visibility.Visible)&#x0a;    {&#x0a;        &#x0a;    }&#x0a;    else&#x0a;    {&#x0a;        &#x0a;    }&#x0a;}"/>
+                            <TextBox x:Name="txtPractice5_4" Style="{StaticResource PracticeInputStyle}" AcceptsReturn="True" Text="private void BtnToggle_Click(object sender, RoutedEventArgs e)&#x0a;{&#x0a;    if (btnTarget.Visibility == Visibility.Visible)&#x0a;    {&#x0a;        &#x0a;    }&#x0a;    else&#x0a;    {&#x0a;        &#x0a;    }&#x0a;}"/>
                             <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
                                 <Button Content="확인" Style="{StaticResource RunButtonStyle}" Click="BtnCheck_Click" Tag="5_4"/>
                                 <Button Content="힌트" Style="{StaticResource HintButtonStyle}" Click="BtnHint_Click" Tag="5_4"/>
@@ -781,7 +782,7 @@
                             <TextBlock Text="과제: 버튼 세 개로 btnVisibility를 Visible / Hidden / Collapsed로 바꾸는 핸들러를 완성하세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
                             <TextBox x:Name="txtPractice5_5"
                                      Style="{StaticResource PracticeInputStyle}"
-                                     Height="120" AcceptsReturn="True"
+                                     AcceptsReturn="True"
                                      Text="private void BtnVisible_Click(object sender, RoutedEventArgs e)&#10;{&#10;    &#10;}&#10;&#10;private void BtnHidden_Click(object sender, RoutedEventArgs e)&#10;{&#10;    &#10;}&#10;&#10;private void BtnCollapsed_Click(object sender, RoutedEventArgs e)&#10;{&#10;    &#10;}"/>
                             <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
                                 <Button Content="확인" Style="{StaticResource RunButtonStyle}" Click="BtnCheck_Click" Tag="5_5"/>

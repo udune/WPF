@@ -1,0 +1,146 @@
+{
+  "Chapter": "ch6 패스워드박스",
+  "FirstStudiedAt": "2026-09-12T21:22:54.1442817+09:00",
+  "LastStudiedAt": "2026-09-12T21:43:03.2923358+09:00",
+  "TotalStudySeconds": 971,
+  "LaunchCount": 1,
+  "LastTab": 4,
+  "PracticeTotal": 15,
+  "Practices": {
+    "5_3": {
+      "Runs": 7,
+      "Successes": 7,
+      "Hints": 0,
+      "Answers": 1,
+      "Status": "완료",
+      "Draft": "private bool CheckMatch(string pwd1, string pwd2)\n{\n    return pwd1 == pwd2;\n}",
+      "CompletedAt": "2026-09-12T21:42:31.6282512+09:00"
+    },
+    "5_2": {
+      "Runs": 1,
+      "Successes": 1,
+      "Hints": 0,
+      "Answers": 1,
+      "Status": "완료",
+      "Draft": "private void CheckStrength(string password)\n{\n    if (password.Length < 4)\n        txtStrengthResult.Text = \"약함\";\n    else if (password.Length < 8)\n        txtStrengthResult.Text = \"보통\";\n    else\n        txtStrengthResult.Text = \"강함\";\n}",
+      "CompletedAt": "2026-09-12T21:40:52.9262047+09:00"
+    },
+    "5_1": {
+      "Runs": 2,
+      "Successes": 1,
+      "Hints": 0,
+      "Answers": 0,
+      "Status": "완료",
+      "Draft": "<PasswordBox x:Name=\"pwdInput\" PasswordChanged=\"Pwd_PasswordChanged\"/>\n<TextBlock x:Name=\"txtLength\" Text=\"입력된 글자 수: 0\"/>\r\n\r\nprivate void Pwd_PasswordChanged(object sender, RoutedEventArgs e)\n{\n    txtLength.Text = $\"입력된 글자 수: {pwdInput.Password.Length}\";\n}",
+      "CompletedAt": "2026-09-12T21:36:28.1661821+09:00"
+    },
+    "4_3": {
+      "Runs": 1,
+      "Successes": 1,
+      "Hints": 0,
+      "Answers": 0,
+      "Status": "완료",
+      "Draft": "<PasswordBox Opacity=\"0.5\" Background=\"Orange\"/>",
+      "CompletedAt": "2026-09-12T21:33:38.1305679+09:00"
+    },
+    "4_2": {
+      "Runs": 1,
+      "Successes": 1,
+      "Hints": 0,
+      "Answers": 0,
+      "Status": "완료",
+      "Draft": "<PasswordBox BorderBrush=\"Red\" BorderThickness=\"2\"/>",
+      "CompletedAt": "2026-09-12T21:33:19.7443395+09:00"
+    },
+    "4_1": {
+      "Runs": 1,
+      "Successes": 1,
+      "Hints": 0,
+      "Answers": 0,
+      "Status": "완료",
+      "Draft": "<PasswordBox Background=\"LightBlue\" Foreground=\"DarkBlue\"/>",
+      "CompletedAt": "2026-09-12T21:32:56.5015724+09:00"
+    },
+    "3_3": {
+      "Runs": 1,
+      "Successes": 1,
+      "Hints": 0,
+      "Answers": 0,
+      "Status": "완료",
+      "Draft": "<PasswordBox FontFamily=\"Consolas\"/>",
+      "CompletedAt": "2026-09-12T21:31:56.6467091+09:00"
+    },
+    "3_2": {
+      "Runs": 1,
+      "Successes": 1,
+      "Hints": 0,
+      "Answers": 0,
+      "Status": "완료",
+      "Draft": "<PasswordBox FontWeight=\"Bold\" FontSize=\"16\"/>",
+      "CompletedAt": "2026-09-12T21:31:40.9484724+09:00"
+    },
+    "3_1": {
+      "Runs": 1,
+      "Successes": 1,
+      "Hints": 0,
+      "Answers": 0,
+      "Status": "완료",
+      "Draft": "<PasswordBox FontSize=\"20\"/>",
+      "CompletedAt": "2026-09-12T21:31:22.6264359+09:00"
+    },
+    "2_3": {
+      "Runs": 1,
+      "Successes": 1,
+      "Hints": 0,
+      "Answers": 0,
+      "Status": "완료",
+      "Draft": "<PasswordBox HorizontalAlignment=\"Center\" Width=\"220\"/>",
+      "CompletedAt": "2026-09-12T21:27:37.9283402+09:00"
+    },
+    "2_2": {
+      "Runs": 1,
+      "Successes": 1,
+      "Hints": 0,
+      "Answers": 0,
+      "Status": "완료",
+      "Draft": "<PasswordBox HorizontalContentAlignment=\"Right\"/>",
+      "CompletedAt": "2026-09-12T21:27:10.8678067+09:00"
+    },
+    "2_1": {
+      "Runs": 1,
+      "Successes": 1,
+      "Hints": 0,
+      "Answers": 0,
+      "Status": "완료",
+      "Draft": "<PasswordBox HorizontalAlignment=\"Center\" Width=\"250\"/>",
+      "CompletedAt": "2026-09-12T21:26:49.4333932+09:00"
+    },
+    "1_3": {
+      "Runs": 1,
+      "Successes": 1,
+      "Hints": 0,
+      "Answers": 0,
+      "Status": "완료",
+      "Draft": "<PasswordBox Password=\"test1234\" PasswordChar=\"#\"/>",
+      "CompletedAt": "2026-09-12T21:25:10.5193197+09:00"
+    },
+    "1_2": {
+      "Runs": 1,
+      "Successes": 1,
+      "Hints": 0,
+      "Answers": 0,
+      "Status": "완료",
+      "Draft": "<PasswordBox MaxLength=\"6\"/>",
+      "CompletedAt": "2026-09-12T21:23:41.3231286+09:00"
+    },
+    "1_1": {
+      "Runs": 1,
+      "Successes": 1,
+      "Hints": 0,
+      "Answers": 0,
+      "Status": "완료",
+      "Draft": "<PasswordBox PasswordChar=\"*\"/>",
+      "CompletedAt": "2026-09-12T21:23:30.0727019+09:00"
+    }
+  }
+}

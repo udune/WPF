@@ -23,7 +23,7 @@
             <Setter Property="TextWrapping" Value="Wrap"/>
             <Setter Property="AcceptsReturn" Value="True"/>
             <Setter Property="VerticalScrollBarVisibility" Value="Auto"/>
-            <Setter Property="MaxHeight" Value="300"/>
+            <Setter Property="MaxHeight" Value="420"/>
             <Setter Property="BorderBrush" Value="#333333"/>
             <Setter Property="BorderThickness" Value="1"/>
         </Style>
@@ -39,9 +39,10 @@
             <Setter Property="AcceptsReturn" Value="True"/>
             <Setter Property="FontFamily" Value="Consolas"/>
             <Setter Property="FontSize" Value="12"/>
-            <Setter Property="Height" Value="50"/>
             <Setter Property="VerticalScrollBarVisibility" Value="Auto"/>
             <Setter Property="Padding" Value="5"/>
+            <Setter Property="MinHeight" Value="160"/>
+            <Setter Property="MaxHeight" Value="420"/>
         </Style>
         <Style x:Key="RunButtonStyle" TargetType="Button">
             <Setter Property="Width" Value="60"/>
@@ -665,7 +666,6 @@
                             <TextBlock Text="과제: Checked 이벤트 핸들러에서 txtStatus.Text를 '체크됨'으로 변경하는 코드를 작성하세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
                             <TextBox x:Name="txtPractice5_1"
                                      Style="{StaticResource PracticeInputStyle}"
-                                     Height="80"
                                      Text="private void Chk_Checked(object sender, RoutedEventArgs e)&#10;{&#10;    // 여기에 코드 작성&#10;}"/>
                             <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
                                 <Button Content="확인" Style="{StaticResource RunButtonStyle}" Click="BtnCheck_Click" Tag="5_1"/>
@@ -697,7 +697,6 @@
                             <TextBlock Text="과제: IsChecked 속성을 확인하여 체크 여부에 따라 다른 메시지를 표시하는 if문 코드를 작성하세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
                             <TextBox x:Name="txtPractice5_2"
                                      Style="{StaticResource PracticeInputStyle}"
-                                     Height="100"
                                      Text="private void CheckStatus()&#10;{&#10;    if (chkBox.IsChecked == true)&#10;        // 체크됨 처리&#10;    else&#10;        // 해제됨 처리&#10;}"/>
                             <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
                                 <Button Content="확인" Style="{StaticResource RunButtonStyle}" Click="BtnCheck_Click" Tag="5_2"/>
@@ -730,7 +729,6 @@
                             <TextBlock Text="과제: 전체 선택 체크박스의 Checked 이벤트에서 3개의 하위 체크박스를 모두 체크하는 코드를 작성하세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
                             <TextBox x:Name="txtPractice5_3"
                                      Style="{StaticResource PracticeInputStyle}"
-                                     Height="100"
                                      Text="private void ChkAll_Checked(object sender, RoutedEventArgs e)&#10;{&#10;    // chkItem1, chkItem2, chkItem3을 모두 체크&#10;}"/>
                             <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
                                 <Button Content="확인" Style="{StaticResource RunButtonStyle}" Click="BtnCheck_Click" Tag="5_3"/>
@@ -766,7 +764,7 @@
                             <TextBlock Text="과제: '전체 선택'을 켜면 하위 항목 세 개가 모두 켜지도록 핸들러를 완성하세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
                             <TextBox x:Name="txtPractice5_4"
                                      Style="{StaticResource PracticeInputStyle}"
-                                     Height="120" AcceptsReturn="True"
+                                     AcceptsReturn="True"
                                      Text="private void ChkSelectAll_Checked(object sender, RoutedEventArgs e)&#10;{&#10;    &#10;}&#10;&#10;private void ChkSelectAll_Unchecked(object sender, RoutedEventArgs e)&#10;{&#10;    &#10;}"/>
                             <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
                                 <Button Content="확인" Style="{StaticResource RunButtonStyle}" Click="BtnCheck_Click" Tag="5_4"/>

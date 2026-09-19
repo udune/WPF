@@ -1,0 +1,173 @@
+{
+  "Chapter": "ch21 스테이터스바",
+  "FirstStudiedAt": "2026-09-18T14:14:15.6151414+09:00",
+  "LastStudiedAt": "2026-09-18T14:17:02.527456+09:00",
+  "TotalStudySeconds": 157,
+  "LaunchCount": 1,
+  "LastTab": 0,
+  "PracticeTotal": 18,
+  "Practices": {
+    "5_4": {
+      "Runs": 0,
+      "Successes": 0,
+      "Hints": 0,
+      "Answers": 0,
+      "Status": "미완료",
+      "Draft": null,
+      "CompletedAt": null
+    },
+    "5_3": {
+      "Runs": 0,
+      "Successes": 0,
+      "Hints": 0,
+      "Answers": 0,
+      "Status": "미완료",
+      "Draft": null,
+      "CompletedAt": null
+    },
+    "5_2": {
+      "Runs": 0,
+      "Successes": 0,
+      "Hints": 0,
+      "Answers": 0,
+      "Status": "미완료",
+      "Draft": null,
+      "CompletedAt": null
+    },
+    "5_1": {
+      "Runs": 0,
+      "Successes": 0,
+      "Hints": 0,
+      "Answers": 0,
+      "Status": "미완료",
+      "Draft": null,
+      "CompletedAt": null
+    },
+    "4_4": {
+      "Runs": 0,
+      "Successes": 0,
+      "Hints": 0,
+      "Answers": 0,
+      "Status": "미완료",
+      "Draft": null,
+      "CompletedAt": null
+    },
+    "4_3": {
+      "Runs": 0,
+      "Successes": 0,
+      "Hints": 0,
+      "Answers": 0,
+      "Status": "미완료",
+      "Draft": null,
+      "CompletedAt": null
+    },
+    "4_2": {
+      "Runs": 0,
+      "Successes": 0,
+      "Hints": 0,
+      "Answers": 0,
+      "Status": "미완료",
+      "Draft": null,
+      "CompletedAt": null
+    },
+    "4_1": {
+      "Runs": 0,
+      "Successes": 0,
+      "Hints": 0,
+      "Answers": 0,
+      "Status": "미완료",
+      "Draft": null,
+      "CompletedAt": null
+    },
+    "3_4": {
+      "Runs": 0,
+      "Successes": 0,
+      "Hints": 0,
+      "Answers": 0,
+      "Status": "미완료",
+      "Draft": null,
+      "CompletedAt": null
+    },
+    "3_3": {
+      "Runs": 0,
+      "Successes": 0,
+      "Hints": 0,
+      "Answers": 0,
+      "Status": "미완료",
+      "Draft": null,
+      "CompletedAt": null
+    },
+    "3_2": {
+      "Runs": 0,
+      "Successes": 0,
+      "Hints": 0,
+      "Answers": 0,
+      "Status": "미완료",
+      "Draft": null,
+      "CompletedAt": null
+    },
+    "3_1": {
+      "Runs": 0,
+      "Successes": 0,
+      "Hints": 0,
+      "Answers": 0,
+      "Status": "미완료",
+      "Draft": null,
+      "CompletedAt": null
+    },
+    "2_3": {
+      "Runs": 0,
+      "Successes": 0,
+      "Hints": 0,
+      "Answers": 0,
+      "Status": "미완료",
+      "Draft": null,
+      "CompletedAt": null
+    },
+    "2_2": {
+      "Runs": 0,
+      "Successes": 0,
+      "Hints": 0,
+      "Answers": 0,
+      "Status": "미완료",
+      "Draft": null,
+      "CompletedAt": null
+    },
+    "2_1": {
+      "Runs": 0,
+      "Successes": 0,
+      "Hints": 0,
+      "Answers": 0,
+      "Status": "미완료",
+      "Draft": null,
+      "CompletedAt": null
+    },
+    "1_3": {
+      "Runs": 8,
+      "Successes": 8,
+      "Hints": 0,
+      "Answers": 12,
+      "Status": "완료",
+      "Draft": "<StatusBar>\n    <StatusBarItem Content=\"report.txt\"/>\n    <Separator/>\n    <StatusBarItem Content=\"UTF-8\"/>\n</StatusBar>",
+      "CompletedAt": "2026-09-18T14:16:42.0564418+09:00"
+    },
+    "1_2": {
+      "Runs": 5,
+      "Successes": 5,
+      "Hints": 0,
+      "Answers": 5,
+      "Status": "완료",
+      "Draft": "<StatusBar>\n    <StatusBarItem Content=\"파일명\"/>\n    <Separator/>\n    <StatusBarItem Content=\"100%\"/>\n    <Separator/>\n    <StatusBarItem Content=\"저장됨\"/>\n</StatusBar>",
+      "CompletedAt": "2026-09-18T14:15:50.5305023+09:00"
+    },
+    "1_1": {
+      "Runs": 1,
+      "Successes": 1,
+      "Hints": 0,
+      "Answers": 0,
+      "Status": "완료",
+      "Draft": "<StatusBar>\n    <StatusBarItem Content=\"상태: 준비됨\"/>\n</StatusBar>",
+      "CompletedAt": "2026-09-18T14:15:09.0989292+09:00"
+    }
+  }
+}

@@ -1,0 +1,164 @@
+{
+  "Chapter": "ch27 데이터바인딩3",
+  "FirstStudiedAt": "2026-09-18T18:49:36.1343268+09:00",
+  "LastStudiedAt": "2026-09-18T19:16:32.7409072+09:00",
+  "TotalStudySeconds": 328,
+  "LaunchCount": 1,
+  "LastTab": 0,
+  "PracticeTotal": 17,
+  "Practices": {
+    "5_3": {
+      "Runs": 0,
+      "Successes": 0,
+      "Hints": 0,
+      "Answers": 0,
+      "Status": "미완료",
+      "Draft": null,
+      "CompletedAt": null
+    },
+    "5_2": {
+      "Runs": 0,
+      "Successes": 0,
+      "Hints": 0,
+      "Answers": 0,
+      "Status": "미완료",
+      "Draft": null,
+      "CompletedAt": null
+    },
+    "5_1": {
+      "Runs": 0,
+      "Successes": 0,
+      "Hints": 0,
+      "Answers": 0,
+      "Status": "미완료",
+      "Draft": null,
+      "CompletedAt": null
+    },
+    "4_4": {
+      "Runs": 0,
+      "Successes": 0,
+      "Hints": 0,
+      "Answers": 0,
+      "Status": "미완료",
+      "Draft": null,
+      "CompletedAt": null
+    },
+    "4_3": {
+      "Runs": 0,
+      "Successes": 0,
+      "Hints": 0,
+      "Answers": 0,
+      "Status": "미완료",
+      "Draft": null,
+      "CompletedAt": null
+    },
+    "4_2": {
+      "Runs": 0,
+      "Successes": 0,
+      "Hints": 0,
+      "Answers": 0,
+      "Status": "미완료",
+      "Draft": null,
+      "CompletedAt": null
+    },
+    "4_1": {
+      "Runs": 0,
+      "Successes": 0,
+      "Hints": 0,
+      "Answers": 0,
+      "Status": "미완료",
+      "Draft": null,
+      "CompletedAt": null
+    },
+    "3_3": {
+      "Runs": 0,
+      "Successes": 0,
+      "Hints": 0,
+      "Answers": 0,
+      "Status": "미완료",
+      "Draft": null,
+      "CompletedAt": null
+    },
+    "3_2": {
+      "Runs": 0,
+      "Successes": 0,
+      "Hints": 0,
+      "Answers": 0,
+      "Status": "미완료",
+      "Draft": null,
+      "CompletedAt": null
+    },
+    "3_1": {
+      "Runs": 0,
+      "Successes": 0,
+      "Hints": 0,
+      "Answers": 0,
+      "Status": "미완료",
+      "Draft": null,
+      "CompletedAt": null
+    },
+    "2_3": {
+      "Runs": 0,
+      "Successes": 0,
+      "Hints": 0,
+      "Answers": 0,
+      "Status": "미완료",
+      "Draft": null,
+      "CompletedAt": null
+    },
+    "2_2": {
+      "Runs": 0,
+      "Successes": 0,
+      "Hints": 0,
+      "Answers": 0,
+      "Status": "미완료",
+      "Draft": null,
+      "CompletedAt": null
+    },
+    "2_1": {
+      "Runs": 0,
+      "Successes": 0,
+      "Hints": 0,
+      "Answers": 0,
+      "Status": "미완료",
+      "Draft": null,
+      "CompletedAt": null
+    },
+    "1_4": {
+      "Runs": 1,
+      "Successes": 1,
+      "Hints": 1,
+      "Answers": 4,
+      "Status": "완료",
+      "Draft": "private void ListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)\n{\n    var person = listBox.SelectedItem as Person;\n    var age = listBox.SelectedValue;\n}",
+      "CompletedAt": "2026-09-18T19:16:26.9900741+09:00"
+    },
+    "1_3": {
+      "Runs": 1,
+      "Successes": 1,
+      "Hints": 1,
+      "Answers": 1,
+      "Status": "부분완료",
+      "Draft": "<ListBox Width=\"200\" Height=\"90\" SelectedIndex=\"2\">\n    <ListBoxItem Content=\"하나\"/>\n    <ListBoxItem Content=\"둘\"/>\n    <ListBoxItem Content=\"셋\"/>\n</ListBox>",
+      "CompletedAt": "2026-09-18T19:15:36.9289356+09:00"
+    },
+    "1_2": {
+      "Runs": 3,
+      "Successes": 2,
+      "Hints": 0,
+      "Answers": 1,
+      "Status": "완료",
+      "Draft": "private void Load_Click(object sender, RoutedEventArgs e)\n{\n    List<string> items = new List<string> { \"사과\", \"바나나\", \"포도\" };\n    list.ItemsSource = items;\n}",
+      "CompletedAt": "2026-09-18T19:14:28.1273006+09:00"
+    },
+    "1_1": {
+      "Runs": 4,
+      "Successes": 2,
+      "Hints": 2,
+      "Answers": 1,
+      "Status": "완료",
+      "Draft": "<ListBox Width=\"200\" Height=\"90\">\n    <ListBoxItem Content=\"사과\"/>\n    <ListBoxItem Content=\"바나나\"/>\n    <ListBoxItem Content=\"포도\"/>\n</ListBox>",
+      "CompletedAt": "2026-09-18T19:12:41.0826589+09:00"
+    }
+  }
+}

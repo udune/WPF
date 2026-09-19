@@ -19,7 +19,7 @@
             <Setter Property="TextWrapping" Value="Wrap"/>
             <Setter Property="AcceptsReturn" Value="True"/>
             <Setter Property="VerticalScrollBarVisibility" Value="Auto"/>
-            <Setter Property="MaxHeight" Value="300"/>
+            <Setter Property="MaxHeight" Value="420"/>
             <Setter Property="BorderBrush" Value="#333333"/>
             <Setter Property="BorderThickness" Value="1"/>
         </Style>
@@ -39,9 +39,10 @@
             <Setter Property="AcceptsReturn" Value="True"/>
             <Setter Property="FontFamily" Value="Consolas"/>
             <Setter Property="FontSize" Value="12"/>
-            <Setter Property="Height" Value="80"/>
             <Setter Property="VerticalScrollBarVisibility" Value="Auto"/>
             <Setter Property="Padding" Value="5"/>
+            <Setter Property="MinHeight" Value="160"/>
+            <Setter Property="MaxHeight" Value="420"/>
         </Style>
         <Style x:Key="RunButtonStyle" TargetType="Button">
             <Setter Property="Width" Value="60"/>
@@ -94,7 +95,6 @@
                             <TextBlock Text="과제: DockPanel에 Button을 Top과 Left에 배치해보세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
                             <TextBox x:Name="txtPractice1_1"
                                      Style="{StaticResource PracticeInputStyle}"
-                                     Height="100"
                                      Text="&lt;DockPanel Height=&quot;120&quot;&gt;&#x0a;    &#x0a;&lt;/DockPanel&gt;"/>
                             <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
                                 <Button Content="실행" Style="{StaticResource RunButtonStyle}" Click="BtnRun_Click" Tag="1_1"/>
@@ -131,7 +131,6 @@
                             <TextBlock Text="과제: DockPanel.Dock=&quot;Top&quot;으로 Button 2개를 순서대로 배치해보세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
                             <TextBox x:Name="txtPractice1_2"
                                      Style="{StaticResource PracticeInputStyle}"
-                                     Height="100"
                                      Text="&lt;DockPanel Height=&quot;120&quot;&gt;&#x0a;    &#x0a;&lt;/DockPanel&gt;"/>
                             <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
                                 <Button Content="실행" Style="{StaticResource RunButtonStyle}" Click="BtnRun_Click" Tag="1_2"/>
@@ -228,7 +227,6 @@
                             <TextBlock Text="과제: Left를 먼저 배치하여 Left가 전체 높이를 차지하도록 해보세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
                             <TextBox x:Name="txtPractice2_1"
                                      Style="{StaticResource PracticeInputStyle}"
-                                     Height="120"
                                      Text="&lt;DockPanel Height=&quot;120&quot;&gt;&#x0a;    &lt;Button DockPanel.Dock=&quot;Top&quot;&gt;Top&lt;/Button&gt;&#x0a;    &lt;Button DockPanel.Dock=&quot;Left&quot;&gt;Left&lt;/Button&gt;&#x0a;    &lt;Border Background=&quot;LightYellow&quot;&gt;&#x0a;        &lt;TextBlock Text=&quot;Center&quot;/&gt;&#x0a;    &lt;/Border&gt;&#x0a;&lt;/DockPanel&gt;"/>
                             <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
                                 <Button Content="실행" Style="{StaticResource RunButtonStyle}" Click="BtnRun_Click" Tag="2_1"/>
@@ -273,7 +271,6 @@
                             <TextBlock Text="과제: LastChildFill=&quot;False&quot;를 설정하여 마지막 자식도 도킹되도록 해보세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
                             <TextBox x:Name="txtPractice2_2"
                                      Style="{StaticResource PracticeInputStyle}"
-                                     Height="120"
                                      Text="&lt;DockPanel Height=&quot;100&quot;&gt;&#x0a;    &lt;Button DockPanel.Dock=&quot;Left&quot;&gt;Left&lt;/Button&gt;&#x0a;    &lt;Button DockPanel.Dock=&quot;Right&quot;&gt;Right&lt;/Button&gt;&#x0a;&lt;/DockPanel&gt;"/>
                             <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
                                 <Button Content="실행" Style="{StaticResource RunButtonStyle}" Click="BtnRun_Click" Tag="2_2"/>
@@ -367,7 +364,6 @@
                             <TextBlock Text="과제: Top에 헤더, Bottom에 상태바, 중앙에 콘텐츠를 배치해보세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
                             <TextBox x:Name="txtPractice3_1"
                                      Style="{StaticResource PracticeInputStyle}"
-                                     Height="140"
                                      Text="&lt;DockPanel Height=&quot;150&quot;&gt;&#x0a;    &#x0a;&lt;/DockPanel&gt;"/>
                             <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
                                 <Button Content="실행" Style="{StaticResource RunButtonStyle}" Click="BtnRun_Click" Tag="3_1"/>
@@ -410,7 +406,6 @@
                             <TextBlock Text="과제: 하단에 버튼 영역(확인/취소), 나머지는 콘텐츠로 구성해보세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
                             <TextBox x:Name="txtPractice3_2"
                                      Style="{StaticResource PracticeInputStyle}"
-                                     Height="140"
                                      Text="&lt;DockPanel Height=&quot;120&quot;&gt;&#x0a;    &#x0a;&lt;/DockPanel&gt;"/>
                             <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
                                 <Button Content="실행" Style="{StaticResource RunButtonStyle}" Click="BtnRun_Click" Tag="3_2"/>
@@ -505,7 +500,6 @@
                             <TextBlock Text="과제: DockPanel에 Background=&quot;LightBlue&quot;를 설정해보세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
                             <TextBox x:Name="txtPractice4_1"
                                      Style="{StaticResource PracticeInputStyle}"
-                                     Height="100"
                                      Text="&lt;DockPanel Height=&quot;100&quot;&gt;&#x0a;    &lt;Button DockPanel.Dock=&quot;Top&quot;&gt;상단&lt;/Button&gt;&#x0a;    &lt;TextBlock Text=&quot;콘텐츠&quot;/&gt;&#x0a;&lt;/DockPanel&gt;"/>
                             <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
                                 <Button Content="실행" Style="{StaticResource RunButtonStyle}" Click="BtnRun_Click" Tag="4_1"/>
@@ -548,7 +542,6 @@
                             <TextBlock Text="과제: 자식 요소들에 Margin=&quot;5&quot;를 추가하여 간격을 만들어보세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
                             <TextBox x:Name="txtPractice4_2"
                                      Style="{StaticResource PracticeInputStyle}"
-                                     Height="120"
                                      Text="&lt;DockPanel Height=&quot;100&quot; Background=&quot;Gray&quot;&gt;&#x0a;    &lt;Button DockPanel.Dock=&quot;Top&quot;&gt;Top&lt;/Button&gt;&#x0a;    &lt;Button DockPanel.Dock=&quot;Left&quot;&gt;Left&lt;/Button&gt;&#x0a;    &lt;Button&gt;Center&lt;/Button&gt;&#x0a;&lt;/DockPanel&gt;"/>
                             <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
                                 <Button Content="실행" Style="{StaticResource RunButtonStyle}" Click="BtnRun_Click" Tag="4_2"/>
@@ -646,7 +639,6 @@
                             <TextBlock Text="과제: DockPanel.SetDock을 사용하여 요소를 Bottom으로 이동하는 코드를 작성하세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
                             <TextBox x:Name="txtPractice5_1"
                                      Style="{StaticResource PracticeInputStyle}"
-                                     Height="100"
                                      Text="private void MoveToBottom()&#x0a;{&#x0a;    // myElement를 Bottom으로 이동&#x0a;    &#x0a;}"/>
                             <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
                                 <Button Content="확인" Style="{StaticResource RunButtonStyle}" Click="BtnCheck_Click" Tag="5_1"/>
@@ -687,7 +679,6 @@
                             <TextBlock Text="과제: DockPanel에 Button을 추가하고 Left에 도킹하는 코드를 작성하세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
                             <TextBox x:Name="txtPractice5_2"
                                      Style="{StaticResource PracticeInputStyle}"
-                                     Height="120"
                                      Text="private void AddLeftButton()&#x0a;{&#x0a;    var btn = new Button { Content = &quot;새 버튼&quot; };&#x0a;    // btn을 Left에 도킹하고 myDockPanel에 추가&#x0a;    &#x0a;}"/>
                             <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
                                 <Button Content="확인" Style="{StaticResource RunButtonStyle}" Click="BtnCheck_Click" Tag="5_2"/>
@@ -728,7 +719,6 @@
                             <TextBlock Text="과제: LastChildFill을 false로 변경하는 코드를 작성하세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
                             <TextBox x:Name="txtPractice5_3"
                                      Style="{StaticResource PracticeInputStyle}"
-                                     Height="100"
                                      Text="private void DisableLastChildFill()&#x0a;{&#x0a;    // myDockPanel의 LastChildFill 변경&#x0a;    &#x0a;}"/>
                             <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
                                 <Button Content="확인" Style="{StaticResource RunButtonStyle}" Click="BtnCheck_Click" Tag="5_3"/>

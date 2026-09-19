@@ -1,0 +1,128 @@
+{
+  "Chapter": "ch30 탭컨트롤 모달 모달리스",
+  "FirstStudiedAt": "2026-09-18T20:16:47.2776017+09:00",
+  "LastStudiedAt": "2026-09-18T20:20:17.1880511+09:00",
+  "TotalStudySeconds": 184,
+  "LaunchCount": 1,
+  "LastTab": 1,
+  "PracticeTotal": 13,
+  "Practices": {
+    "5_4": {
+      "Runs": 0,
+      "Successes": 0,
+      "Hints": 0,
+      "Answers": 0,
+      "Status": "미완료",
+      "Draft": null,
+      "CompletedAt": null
+    },
+    "5_3": {
+      "Runs": 0,
+      "Successes": 0,
+      "Hints": 0,
+      "Answers": 0,
+      "Status": "미완료",
+      "Draft": null,
+      "CompletedAt": null
+    },
+    "5_2": {
+      "Runs": 0,
+      "Successes": 0,
+      "Hints": 0,
+      "Answers": 0,
+      "Status": "미완료",
+      "Draft": null,
+      "CompletedAt": null
+    },
+    "5_1": {
+      "Runs": 0,
+      "Successes": 0,
+      "Hints": 0,
+      "Answers": 0,
+      "Status": "미완료",
+      "Draft": null,
+      "CompletedAt": null
+    },
+    "4_3": {
+      "Runs": 0,
+      "Successes": 0,
+      "Hints": 0,
+      "Answers": 0,
+      "Status": "미완료",
+      "Draft": null,
+      "CompletedAt": null
+    },
+    "4_2": {
+      "Runs": 0,
+      "Successes": 0,
+      "Hints": 0,
+      "Answers": 0,
+      "Status": "미완료",
+      "Draft": null,
+      "CompletedAt": null
+    },
+    "4_1": {
+      "Runs": 0,
+      "Successes": 0,
+      "Hints": 0,
+      "Answers": 0,
+      "Status": "미완료",
+      "Draft": null,
+      "CompletedAt": null
+    },
+    "3_3": {
+      "Runs": 0,
+      "Successes": 0,
+      "Hints": 0,
+      "Answers": 0,
+      "Status": "미완료",
+      "Draft": null,
+      "CompletedAt": null
+    },
+    "3_2": {
+      "Runs": 0,
+      "Successes": 0,
+      "Hints": 0,
+      "Answers": 0,
+      "Status": "미완료",
+      "Draft": null,
+      "CompletedAt": null
+    },
+    "3_1": {
+      "Runs": 0,
+      "Successes": 0,
+      "Hints": 0,
+      "Answers": 0,
+      "Status": "미완료",
+      "Draft": null,
+      "CompletedAt": null
+    },
+    "2_3": {
+      "Runs": 3,
+      "Successes": 3,
+      "Hints": 0,
+      "Answers": 1,
+      "Status": "완료",
+      "Draft": "<TabControl Height=\"120\" SelectedIndex=\"1\">\n    <TabItem Header=\"첫째\"/>\n    <TabItem Header=\"둘째\"/>\n    <TabItem Header=\"셋째\"/>\n</TabControl>",
+      "CompletedAt": "2026-09-18T20:20:12.5198312+09:00"
+    },
+    "2_2": {
+      "Runs": 2,
+      "Successes": 2,
+      "Hints": 0,
+      "Answers": 1,
+      "Status": "완료",
+      "Draft": "<TabControl Height=\"120\">\n    <TabItem Header=\"홈\">\n        <TextBlock Text=\"홈 화면입니다.\" Margin=\"10\"/>\n    </TabItem>\n    <TabItem Header=\"설정\">\n        <TextBlock Text=\"설정 화면입니다.\" Margin=\"10\"/>\n    </TabItem>\n</TabControl>",
+      "CompletedAt": "2026-09-18T20:19:22.1686777+09:00"
+    },
+    "2_1": {
+      "Runs": 5,
+      "Successes": 5,
+      "Hints": 1,
+      "Answers": 0,
+      "Status": "완료",
+      "Draft": "<TabControl Height=\"120\">\n    <TabItem Header=\"탭 1\">\r\n        <TextBlock Text=\"탭 1의 내용\"/>\r\n    </TabItem>\r\n    <TabItem Header=\"탭 2\">\r\n        <TextBlock Text=\"탭 2의 내용\"/>\r\n    </TabItem>\r\n    <TabItem Header=\"탭 3\">\r\n        <TextBlock Text=\"탭 3의 내용\"/>\r\n    </TabItem>\n</TabControl>",
+      "CompletedAt": "2026-09-18T20:18:08.1781559+09:00"
+    }
+  }
+}

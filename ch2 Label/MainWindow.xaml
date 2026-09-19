@@ -23,7 +23,7 @@
             <Setter Property="TextWrapping" Value="Wrap"/>
             <Setter Property="AcceptsReturn" Value="True"/>
             <Setter Property="VerticalScrollBarVisibility" Value="Auto"/>
-            <Setter Property="MaxHeight" Value="300"/>
+            <Setter Property="MaxHeight" Value="420"/>
             <Setter Property="BorderBrush" Value="#333333"/>
             <Setter Property="BorderThickness" Value="1"/>
         </Style>
@@ -37,9 +37,10 @@
             <Setter Property="AcceptsReturn" Value="True"/>
             <Setter Property="FontFamily" Value="Consolas"/>
             <Setter Property="FontSize" Value="12"/>
-            <Setter Property="Height" Value="50"/>
             <Setter Property="VerticalScrollBarVisibility" Value="Auto"/>
             <Setter Property="Padding" Value="5"/>
+            <Setter Property="MinHeight" Value="160"/>
+            <Setter Property="MaxHeight" Value="420"/>
         </Style>
         <Style x:Key="RunButtonStyle" TargetType="Button">
             <Setter Property="Width" Value="60"/>
@@ -125,7 +126,7 @@
                     <Expander Style="{StaticResource PracticeExpanderStyle}">
                         <StackPanel Margin="10">
                             <TextBlock Text="과제: 클릭할 때마다 카운트가 증가하는 이벤트 핸들러를 완성하세요. _count 변수를 1 증가시키고, lblCounter의 Content를 '클릭 횟수: N회' 형식으로 표시하세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
-                            <TextBox x:Name="txtPractice1_3" Style="{StaticResource PracticeInputStyle}" Height="120" AcceptsReturn="True" Text="private void BtnCount_Click(object sender, RoutedEventArgs e)&#x0a;{&#x0a;    &#x0a;    &#x0a;}"/>
+                            <TextBox x:Name="txtPractice1_3" Style="{StaticResource PracticeInputStyle}" AcceptsReturn="True" Text="private void BtnCount_Click(object sender, RoutedEventArgs e)&#x0a;{&#x0a;    &#x0a;    &#x0a;}"/>
                             <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
                                 <Button Content="확인" Style="{StaticResource RunButtonStyle}" Click="BtnCheck_Click" Tag="1_3"/>
                                 <Button Content="힌트" Style="{StaticResource HintButtonStyle}" Click="BtnHint_Click" Tag="1_3"/>
@@ -504,7 +505,7 @@
                     <Expander Style="{StaticResource PracticeExpanderStyle}">
                         <StackPanel Margin="10">
                             <TextBlock Text="과제: Alt+P를 누르면 Password TextBox로 포커스가 이동하도록 Label을 작성하세요. (위 예제를 참고하여 따라 쳐보세요)" FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
-                            <TextBox x:Name="txtPractice5_1" Style="{StaticResource PracticeInputStyle}" Height="80" Text="&lt;Label Content=&quot;&quot; Target=&quot;&quot;/&gt;&#10;&lt;TextBox x:Name=&quot;&quot; Width=&quot;200&quot;/&gt;"/>
+                            <TextBox x:Name="txtPractice5_1" Style="{StaticResource PracticeInputStyle}" Text="&lt;Label Content=&quot;&quot; Target=&quot;&quot;/&gt;&#10;&lt;TextBox x:Name=&quot;&quot; Width=&quot;200&quot;/&gt;"/>
                             <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
                                 <Button Content="확인" Style="{StaticResource RunButtonStyle}" Click="BtnCheck_Click" Tag="5_1"/>
                                 <Button Content="힌트" Style="{StaticResource HintButtonStyle}" Click="BtnHint_Click" Tag="5_1"/>
@@ -533,7 +534,7 @@
                     <Expander Style="{StaticResource PracticeExpanderStyle}">
                         <StackPanel Margin="10">
                             <TextBlock Text="과제: 버튼 클릭 시 Label의 배경을 Green, 글자색을 Yellow, 굵기를 Bold로 변경하고, Content를 '스타일 변경됨'으로 설정하는 이벤트 핸들러를 완성하세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
-                            <TextBox x:Name="txtPractice5_2" Style="{StaticResource PracticeInputStyle}" Height="150" AcceptsReturn="True" Text="private void BtnGreenStyle_Click(object sender, RoutedEventArgs e)&#x0a;{&#x0a;    lblStyleDemo.Background = &#x0a;    lblStyleDemo.Foreground = &#x0a;    lblStyleDemo.FontWeight = &#x0a;    lblStyleDemo.Content = &#x0a;}"/>
+                            <TextBox x:Name="txtPractice5_2" Style="{StaticResource PracticeInputStyle}" AcceptsReturn="True" Text="private void BtnGreenStyle_Click(object sender, RoutedEventArgs e)&#x0a;{&#x0a;    lblStyleDemo.Background = &#x0a;    lblStyleDemo.Foreground = &#x0a;    lblStyleDemo.FontWeight = &#x0a;    lblStyleDemo.Content = &#x0a;}"/>
                             <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
                                 <Button Content="확인" Style="{StaticResource RunButtonStyle}" Click="BtnCheck_Click" Tag="5_2"/>
                                 <Button Content="힌트" Style="{StaticResource HintButtonStyle}" Click="BtnHint_Click" Tag="5_2"/>
@@ -560,7 +561,7 @@
                     <Expander Style="{StaticResource PracticeExpanderStyle}">
                         <StackPanel Margin="10">
                             <TextBlock Text="과제: 토글 버튼 클릭 시 Label이 보이면 숨기고(Collapsed), 숨겨져 있으면 보이게(Visible) 하는 이벤트 핸들러를 완성하세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
-                            <TextBox x:Name="txtPractice5_3" Style="{StaticResource PracticeInputStyle}" Height="180" AcceptsReturn="True" Text="private void BtnToggle_Click(object sender, RoutedEventArgs e)&#x0a;{&#x0a;    if (lblMessage.Visibility == Visibility.Visible)&#x0a;    {&#x0a;        &#x0a;    }&#x0a;    else&#x0a;    {&#x0a;        &#x0a;    }&#x0a;}"/>
+                            <TextBox x:Name="txtPractice5_3" Style="{StaticResource PracticeInputStyle}" AcceptsReturn="True" Text="private void BtnToggle_Click(object sender, RoutedEventArgs e)&#x0a;{&#x0a;    if (lblMessage.Visibility == Visibility.Visible)&#x0a;    {&#x0a;        &#x0a;    }&#x0a;    else&#x0a;    {&#x0a;        &#x0a;    }&#x0a;}"/>
                             <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
                                 <Button Content="확인" Style="{StaticResource RunButtonStyle}" Click="BtnCheck_Click" Tag="5_3"/>
                                 <Button Content="힌트" Style="{StaticResource HintButtonStyle}" Click="BtnHint_Click" Tag="5_3"/>

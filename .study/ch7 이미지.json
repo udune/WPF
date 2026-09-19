@@ -1,0 +1,146 @@
+{
+  "Chapter": "ch7 이미지",
+  "FirstStudiedAt": "2026-09-12T21:43:22.5727214+09:00",
+  "LastStudiedAt": "2026-09-12T22:43:30.1916032+09:00",
+  "TotalStudySeconds": 1481,
+  "LaunchCount": 4,
+  "LastTab": 0,
+  "PracticeTotal": 15,
+  "Practices": {
+    "5_3": {
+      "Runs": 1,
+      "Successes": 1,
+      "Hints": 0,
+      "Answers": 1,
+      "Status": "완료",
+      "Draft": "private void ToggleVisibility()\n{\n    if (img.Visibility == Visibility.Visible)\n        img.Visibility = Visibility.Collapsed;\n    else\n        img.Visibility = Visibility.Visible;\n}",
+      "CompletedAt": "2026-09-12T22:41:02.3321355+09:00"
+    },
+    "5_2": {
+      "Runs": 3,
+      "Successes": 3,
+      "Hints": 0,
+      "Answers": 2,
+      "Status": "부분완료",
+      "Draft": "private void SetWebImage()\r\n{\r\n    img.Source = new BitmapImage(new Uri(\"https://example.com/image.png\"));\r\n}",
+      "CompletedAt": "2026-09-12T22:41:25.0802808+09:00"
+    },
+    "5_1": {
+      "Runs": 1,
+      "Successes": 1,
+      "Hints": 0,
+      "Answers": 0,
+      "Status": "완료",
+      "Draft": "<Image x:Name=\"img\" Source=\"/1.png\" Width=\"80\" Height=\"80\"\n       MouseEnter=\"Img_MouseEnter\"/>\r\n\r\nprivate void Img_MouseEnter(object sender, MouseEventArgs e)\n{\n    img.Width=\"150\";\r\n    img.Height=\"150\";\n}",
+      "CompletedAt": "2026-09-12T22:35:00.697061+09:00"
+    },
+    "4_3": {
+      "Runs": 1,
+      "Successes": 1,
+      "Hints": 0,
+      "Answers": 0,
+      "Status": "완료",
+      "Draft": "<Border BorderBrush=\"Gray\">\n    <Image Width=\"120\" Height=\"90\" Opacity=\"0.5\"/>\n</Border>",
+      "CompletedAt": "2026-09-12T22:23:40.125849+09:00"
+    },
+    "4_2": {
+      "Runs": 1,
+      "Successes": 1,
+      "Hints": 0,
+      "Answers": 0,
+      "Status": "완료",
+      "Draft": "<Border BorderBrush=\"Blue\" BorderThickness=\"3\">\n    <Image Source=\"https://via.placeholder.com/80\" Width=\"80\" Height=\"80\"/>\n</Border>",
+      "CompletedAt": "2026-09-12T22:15:16.9074534+09:00"
+    },
+    "4_1": {
+      "Runs": 1,
+      "Successes": 1,
+      "Hints": 0,
+      "Answers": 0,
+      "Status": "완료",
+      "Draft": "<Image Source=\"https://via.placeholder.com/80\" Width=\"80\" Height=\"80\" Opacity=\"0.5\"/>",
+      "CompletedAt": "2026-09-12T22:08:32.401555+09:00"
+    },
+    "3_3": {
+      "Runs": 1,
+      "Successes": 1,
+      "Hints": 0,
+      "Answers": 0,
+      "Status": "완료",
+      "Draft": "<Image Source=\"https://via.placeholder.com/80\" Width=\"150\" Height=\"150\" Stretch=\"None\"/>",
+      "CompletedAt": "2026-09-12T22:07:34.9301411+09:00"
+    },
+    "3_2": {
+      "Runs": 1,
+      "Successes": 1,
+      "Hints": 0,
+      "Answers": 0,
+      "Status": "완료",
+      "Draft": "<Image Source=\"https://via.placeholder.com/150\" Width=\"200\" Height=\"100\" Stretch=\"Uniform\"/>",
+      "CompletedAt": "2026-09-12T22:07:18.9220832+09:00"
+    },
+    "3_1": {
+      "Runs": 1,
+      "Successes": 1,
+      "Hints": 0,
+      "Answers": 0,
+      "Status": "완료",
+      "Draft": "<Image Source=\"https://via.placeholder.com/150\" Width=\"200\" Height=\"100\" Stretch=\"Fill\"/>",
+      "CompletedAt": "2026-09-12T22:06:38.1241918+09:00"
+    },
+    "2_3": {
+      "Runs": 1,
+      "Successes": 1,
+      "Hints": 0,
+      "Answers": 0,
+      "Status": "완료",
+      "Draft": "<Image Width=\"120\" Height=\"90\" HorizontalAlignment=\"Right\" VerticalAlignment=\"Top\"/>",
+      "CompletedAt": "2026-09-12T22:03:32.3727434+09:00"
+    },
+    "2_2": {
+      "Runs": 1,
+      "Successes": 1,
+      "Hints": 0,
+      "Answers": 0,
+      "Status": "완료",
+      "Draft": "<Image Source=\"https://via.placeholder.com/60\" Width=\"60\" Height=\"60\" Margin=\"15\"/>",
+      "CompletedAt": "2026-09-12T22:02:01.3065411+09:00"
+    },
+    "2_1": {
+      "Runs": 1,
+      "Successes": 1,
+      "Hints": 0,
+      "Answers": 0,
+      "Status": "완료",
+      "Draft": "<Image Source=\"https://via.placeholder.com/60\" Width=\"60\" Height=\"60\" HorizontalAlignment=\"Center\"/>",
+      "CompletedAt": "2026-09-12T21:58:04.4696051+09:00"
+    },
+    "1_3": {
+      "Runs": 2,
+      "Successes": 2,
+      "Hints": 0,
+      "Answers": 1,
+      "Status": "부분완료",
+      "Draft": "private void Load_Click(object sender, RoutedEventArgs e)\n{\n    img.Source = new BitmapImage(new Uri(\"1.png\", UriKind.Relative));\n}",
+      "CompletedAt": "2026-09-12T21:53:26.9625794+09:00"
+    },
+    "1_2": {
+      "Runs": 1,
+      "Successes": 1,
+      "Hints": 0,
+      "Answers": 0,
+      "Status": "완료",
+      "Draft": null,
+      "CompletedAt": "2026-09-12T22:41:56.1568139+09:00"
+    },
+    "1_1": {
+      "Runs": 1,
+      "Successes": 1,
+      "Hints": 0,
+      "Answers": 0,
+      "Status": "완료",
+      "Draft": "<Image Source=\"https://via.placeholder.com/100\"/>",
+      "CompletedAt": "2026-09-12T21:44:02.2585566+09:00"
+    }
+  }
+}

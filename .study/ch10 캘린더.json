@@ -1,0 +1,173 @@
+{
+  "Chapter": "ch10 캘린더",
+  "FirstStudiedAt": "2026-09-15T23:53:21.4303675+09:00",
+  "LastStudiedAt": "2026-09-16T00:58:19.4914468+09:00",
+  "TotalStudySeconds": 1733,
+  "LaunchCount": 3,
+  "LastTab": 2,
+  "PracticeTotal": 18,
+  "Practices": {
+    "5_4": {
+      "Runs": 1,
+      "Successes": 1,
+      "Hints": 1,
+      "Answers": 1,
+      "Status": "완료",
+      "Draft": "private void SelectToday_Click(object sender, RoutedEventArgs e)\n{\n    calCode.SelectedDate = DateTime.Today;\n}\n\nprivate void ClearSelection_Click(object sender, RoutedEventArgs e)\n{\n    calCode.SelectedDate = null;\n}",
+      "CompletedAt": "2026-09-16T00:56:26.6289616+09:00"
+    },
+    "5_3": {
+      "Runs": 1,
+      "Successes": 1,
+      "Hints": 0,
+      "Answers": 1,
+      "Status": "완료",
+      "Draft": "private void SelectTodayDate()\n{\n    myCalendar.SelectedDate = DateTime.Today;\n}",
+      "CompletedAt": "2026-09-16T00:55:25.873514+09:00"
+    },
+    "5_2": {
+      "Runs": 1,
+      "Successes": 1,
+      "Hints": 0,
+      "Answers": 0,
+      "Status": "완료",
+      "Draft": "<Calendar FirstDayOfWeek=\"Monday\"/>",
+      "CompletedAt": "2026-09-16T00:54:46.0778488+09:00"
+    },
+    "5_1": {
+      "Runs": 1,
+      "Successes": 1,
+      "Hints": 0,
+      "Answers": 0,
+      "Status": "완료",
+      "Draft": "<Calendar Background=\"LightBlue\"\r\n          BorderBrush=\"Navy\"/>",
+      "CompletedAt": "2026-09-16T00:54:28.0730093+09:00"
+    },
+    "4_3": {
+      "Runs": 2,
+      "Successes": 1,
+      "Hints": 1,
+      "Answers": 1,
+      "Status": "완료",
+      "Draft": "private void Today_Click(object sender, RoutedEventArgs e)\n{\n    cal.SelectedDate = DateTime.Today;\n}",
+      "CompletedAt": "2026-09-16T00:58:07.9158228+09:00"
+    },
+    "4_2": {
+      "Runs": 8,
+      "Successes": 2,
+      "Hints": 3,
+      "Answers": 1,
+      "Status": "부분완료",
+      "Draft": "<StackPanel>\n    <Calendar x:Name=\"cal\"/>\n    <TextBlock Text=\"{Binding ElementName=cal, Path=SelectedDate, StringFormat='선택: {0:yyyy-MM-dd}'}\" Margin=\"0,8,0,0\"/>\n</StackPanel>",
+      "CompletedAt": "2026-09-16T00:41:12.6786315+09:00"
+    },
+    "4_1": {
+      "Runs": 2,
+      "Successes": 1,
+      "Hints": 0,
+      "Answers": 1,
+      "Status": "완료",
+      "Draft": "<Calendar IsTodayHighlighted=\"False\"/>",
+      "CompletedAt": "2026-09-16T00:31:33.6550243+09:00"
+    },
+    "3_4": {
+      "Runs": 1,
+      "Successes": 1,
+      "Hints": 1,
+      "Answers": 1,
+      "Status": "완료",
+      "Draft": "private void CalPick_SelectedDatesChanged(object sender, SelectionChangedEventArgs e)\n{\n    if (calPick.SelectedDate.HasValue)\n    {\n        tbPick.Text = \"선택: \" + calPick.SelectedDate.Value.ToString(\"yyyy-MM-dd\");\n    }\n}",
+      "CompletedAt": "2026-09-16T00:17:28.6680163+09:00"
+    },
+    "3_3": {
+      "Runs": 1,
+      "Successes": 1,
+      "Hints": 1,
+      "Answers": 0,
+      "Status": "완료",
+      "Draft": "<Calendar SelectionMode=\"MultipleRange\"/>",
+      "CompletedAt": "2026-09-16T00:14:26.3272811+09:00"
+    },
+    "3_2": {
+      "Runs": 1,
+      "Successes": 1,
+      "Hints": 3,
+      "Answers": 1,
+      "Status": "완료",
+      "Draft": "private void Calendar_SelectedDatesChanged(object sender, SelectionChangedEventArgs e)\n{\n    if (myCalendar.SelectedDate.HasValue)\n    {\n        txtResult.Text = myCalendar.SelectedDate.Value.ToString(\"yyyy-MM-dd\");\n    }\n}",
+      "CompletedAt": "2026-09-16T00:04:06.6105348+09:00"
+    },
+    "3_1": {
+      "Runs": 1,
+      "Successes": 1,
+      "Hints": 0,
+      "Answers": 0,
+      "Status": "완료",
+      "Draft": "<Calendar SelectionMode=\"MultipleRange\"/>",
+      "CompletedAt": "2026-09-16T00:02:22.8340303+09:00"
+    },
+    "2_3": {
+      "Runs": 1,
+      "Successes": 1,
+      "Hints": 3,
+      "Answers": 1,
+      "Status": "부분완료",
+      "Draft": "<Calendar>\n    <Calendar.BlackoutDates>\n        <CalendarDateRange Start=\"2020-01-01\" End=\"2024-12-31\"/>\n    </Calendar.BlackoutDates>\n</Calendar>",
+      "CompletedAt": "2026-09-16T00:01:48.5129664+09:00"
+    },
+    "2_2": {
+      "Runs": 1,
+      "Successes": 1,
+      "Hints": 0,
+      "Answers": 1,
+      "Status": "완료",
+      "Draft": "private void DisablePastDates()\n{\n    calendarControl.BlackoutDates.AddDatesInPast();\n}",
+      "CompletedAt": "2026-09-15T23:59:01.205978+09:00"
+    },
+    "2_1": {
+      "Runs": 1,
+      "Successes": 1,
+      "Hints": 0,
+      "Answers": 0,
+      "Status": "완료",
+      "Draft": "<Calendar DisplayDateStart=\"2025-03-01\" DisplayDateEnd=\"2025-03-31\"/>",
+      "CompletedAt": "2026-09-15T23:56:30.4485146+09:00"
+    },
+    "1_4": {
+      "Runs": 2,
+      "Successes": 1,
+      "Hints": 0,
+      "Answers": 0,
+      "Status": "완료",
+      "Draft": "<Calendar DisplayDate=\"2026-03-01\"/>",
+      "CompletedAt": "2026-09-15T23:55:45.8674969+09:00"
+    },
+    "1_3": {
+      "Runs": 1,
+      "Successes": 1,
+      "Hints": 0,
+      "Answers": 0,
+      "Status": "완료",
+      "Draft": "<Calendar SelectedDate=\"2025-12-25\"/>",
+      "CompletedAt": "2026-09-15T23:54:34.1192632+09:00"
+    },
+    "1_2": {
+      "Runs": 1,
+      "Successes": 1,
+      "Hints": 0,
+      "Answers": 0,
+      "Status": "완료",
+      "Draft": "<Calendar DisplayMode=\"Year\"/>",
+      "CompletedAt": "2026-09-15T23:54:08.6934142+09:00"
+    },
+    "1_1": {
+      "Runs": 1,
+      "Successes": 1,
+      "Hints": 0,
+      "Answers": 0,
+      "Status": "완료",
+      "Draft": "<Calendar/>",
+      "CompletedAt": "2026-09-15T23:53:41.5109235+09:00"
+    }
+  }
+}

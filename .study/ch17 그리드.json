@@ -1,0 +1,155 @@
+{
+  "Chapter": "ch17 그리드",
+  "FirstStudiedAt": "2026-09-18T12:13:09.7973515+09:00",
+  "LastStudiedAt": "2026-09-18T12:32:31.982241+09:00",
+  "TotalStudySeconds": 791,
+  "LaunchCount": 1,
+  "LastTab": 1,
+  "PracticeTotal": 16,
+  "Practices": {
+    "5_3": {
+      "Runs": 0,
+      "Successes": 0,
+      "Hints": 0,
+      "Answers": 0,
+      "Status": "미완료",
+      "Draft": null,
+      "CompletedAt": null
+    },
+    "5_2": {
+      "Runs": 0,
+      "Successes": 0,
+      "Hints": 0,
+      "Answers": 0,
+      "Status": "미완료",
+      "Draft": null,
+      "CompletedAt": null
+    },
+    "5_1": {
+      "Runs": 0,
+      "Successes": 0,
+      "Hints": 0,
+      "Answers": 0,
+      "Status": "미완료",
+      "Draft": null,
+      "CompletedAt": null
+    },
+    "4_3": {
+      "Runs": 0,
+      "Successes": 0,
+      "Hints": 0,
+      "Answers": 0,
+      "Status": "미완료",
+      "Draft": null,
+      "CompletedAt": null
+    },
+    "4_2": {
+      "Runs": 0,
+      "Successes": 0,
+      "Hints": 0,
+      "Answers": 0,
+      "Status": "미완료",
+      "Draft": null,
+      "CompletedAt": null
+    },
+    "4_1": {
+      "Runs": 0,
+      "Successes": 0,
+      "Hints": 0,
+      "Answers": 0,
+      "Status": "미완료",
+      "Draft": null,
+      "CompletedAt": null
+    },
+    "3_3": {
+      "Runs": 0,
+      "Successes": 0,
+      "Hints": 0,
+      "Answers": 0,
+      "Status": "미완료",
+      "Draft": null,
+      "CompletedAt": null
+    },
+    "3_2": {
+      "Runs": 0,
+      "Successes": 0,
+      "Hints": 0,
+      "Answers": 0,
+      "Status": "미완료",
+      "Draft": null,
+      "CompletedAt": null
+    },
+    "3_1": {
+      "Runs": 0,
+      "Successes": 0,
+      "Hints": 0,
+      "Answers": 0,
+      "Status": "미완료",
+      "Draft": null,
+      "CompletedAt": null
+    },
+    "2_4": {
+      "Runs": 0,
+      "Successes": 0,
+      "Hints": 0,
+      "Answers": 0,
+      "Status": "미완료",
+      "Draft": null,
+      "CompletedAt": null
+    },
+    "2_3": {
+      "Runs": 0,
+      "Successes": 0,
+      "Hints": 0,
+      "Answers": 0,
+      "Status": "미완료",
+      "Draft": null,
+      "CompletedAt": null
+    },
+    "2_2": {
+      "Runs": 0,
+      "Successes": 0,
+      "Hints": 0,
+      "Answers": 0,
+      "Status": "미완료",
+      "Draft": null,
+      "CompletedAt": null
+    },
+    "2_1": {
+      "Runs": 0,
+      "Successes": 0,
+      "Hints": 0,
+      "Answers": 0,
+      "Status": "미완료",
+      "Draft": null,
+      "CompletedAt": null
+    },
+    "1_3": {
+      "Runs": 26,
+      "Successes": 8,
+      "Hints": 1,
+      "Answers": 1,
+      "Status": "완료",
+      "Draft": "<Grid Height=\"120\">\n    <Grid.RowDefinitions>\n        <RowDefinition/>\n        <RowDefinition/>\n    </Grid.RowDefinitions>\n    <Grid.ColumnDefinitions>\n        <ColumnDefinition/>\n        <ColumnDefinition/>\n    </Grid.ColumnDefinitions>\n    <TextBlock Grid.Row=\"0\" Grid.Column=\"0\" Text=\"0,0\"/>\n    <TextBlock Grid.Row=\"0\" Grid.Column=\"1\" Text=\"0,1\"/>\n    <TextBlock Grid.Row=\"1\" Grid.Column=\"0\" Text=\"1,0\"/>\n    <TextBlock Grid.Row=\"1\" Grid.Column=\"1\" Text=\"1,1\"/>\n</Grid>",
+      "CompletedAt": "2026-09-18T12:32:18.8869722+09:00"
+    },
+    "1_2": {
+      "Runs": 1,
+      "Successes": 1,
+      "Hints": 1,
+      "Answers": 1,
+      "Status": "완료",
+      "Draft": "<Grid Height=\"50\">\n    <Grid.ColumnDefinitions>\n        <ColumnDefinition/>\n        <ColumnDefinition/>\n        <ColumnDefinition/>\n    </Grid.ColumnDefinitions>\n    <Button Content=\"버튼1\" Grid.Column=\"0\" Margin=\"2\"/>\n    <Button Content=\"버튼2\" Grid.Column=\"1\" Margin=\"2\"/>\n    <Button Content=\"버튼3\" Grid.Column=\"2\" Margin=\"2\"/>\n</Grid>",
+      "CompletedAt": "2026-09-18T12:29:00.3869496+09:00"
+    },
+    "1_1": {
+      "Runs": 3,
+      "Successes": 1,
+      "Hints": 0,
+      "Answers": 0,
+      "Status": "완료",
+      "Draft": "<Grid ShowGridLines=\"True\">\r\n   <Grid.RowDefinitions>\r\n      <RowDefinition/>\r\n      <RowDefinition/>\r\n   </Grid.RowDefinitions>\r\n   <Grid.ColumnDefinitions>\r\n      <ColumnDefinition/>\r\n      <ColumnDefinition/>\r\n   </Grid.ColumnDefinitions>\r\n\r\n   <TextBlock Text=\"Row=0, Col=0\" Grid.Row=\"0\" Grid.Column=\"0\"/>\r\n   <TextBlock Text=\"Row=0, Col=1\" Grid.Row=\"0\" Grid.Column=\"1\"/>\r\n   <TextBlock Text=\"Row=1, Col=0\" Grid.Row=\"1\" Grid.Column=\"0\"/>\r\n   <TextBlock Text=\"Row=1, Col=1\" Grid.Row=\"1\" Grid.Column=\"1\"/>\n</Grid>",
+      "CompletedAt": "2026-09-18T12:27:07.5151515+09:00"
+    }
+  }
+}

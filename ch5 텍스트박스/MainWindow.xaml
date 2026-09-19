@@ -24,7 +24,7 @@
             <Setter Property="TextWrapping" Value="Wrap"/>
             <Setter Property="AcceptsReturn" Value="True"/>
             <Setter Property="VerticalScrollBarVisibility" Value="Auto"/>
-            <Setter Property="MaxHeight" Value="300"/>
+            <Setter Property="MaxHeight" Value="420"/>
             <Setter Property="BorderBrush" Value="#333333"/>
             <Setter Property="BorderThickness" Value="1"/>
         </Style>
@@ -40,9 +40,10 @@
             <Setter Property="AcceptsReturn" Value="True"/>
             <Setter Property="FontFamily" Value="Consolas"/>
             <Setter Property="FontSize" Value="12"/>
-            <Setter Property="Height" Value="50"/>
             <Setter Property="VerticalScrollBarVisibility" Value="Auto"/>
             <Setter Property="Padding" Value="5"/>
+            <Setter Property="MinHeight" Value="160"/>
+            <Setter Property="MaxHeight" Value="420"/>
         </Style>
         <Style x:Key="RunButtonStyle" TargetType="Button">
             <Setter Property="Width" Value="60"/>
@@ -108,7 +109,6 @@
                             <TextBlock Text="과제 2: TextWrapping='Wrap'과 AcceptsReturn='True'를 설정하여 여러 줄 입력이 가능한 TextBox를 만드세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
                             <TextBox x:Name="txtPractice1_2"
                                      Style="{StaticResource PracticeInputStyle}"
-                                     Height="60"
                                      Text="&lt;TextBox Text=&quot;여러 줄 입력&quot; /&gt;"/>
                             <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
                                 <Button Content="실행" Style="{StaticResource RunButtonStyle}" Click="BtnRun_Click" Tag="1_2"/>
@@ -740,7 +740,6 @@
                             <TextBlock Text="과제 1: TextChanged 이벤트에서 글자 수를 세는 코드를 작성하세요. (txtCount.Text에 표시)" FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
                             <TextBox x:Name="txtPractice5_1"
                                      Style="{StaticResource PracticeInputStyle}"
-                                     Height="120"
                                      Text="private void TxtInput_TextChanged(object sender, TextChangedEventArgs e)&#x0a;{&#x0a;    &#x0a;}"/>
                             <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
                                 <Button Content="확인" Style="{StaticResource RunButtonStyle}" Click="BtnCheck_Click" Tag="5_1"/>
@@ -771,7 +770,6 @@
                             <TextBlock Text="과제 2: GotFocus 이벤트에서 배경색을 LightYellow로 변경하는 코드를 작성하세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
                             <TextBox x:Name="txtPractice5_2"
                                      Style="{StaticResource PracticeInputStyle}"
-                                     Height="120"
                                      Text="private void TxtBox_GotFocus(object sender, RoutedEventArgs e)&#x0a;{&#x0a;    &#x0a;}"/>
                             <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
                                 <Button Content="확인" Style="{StaticResource RunButtonStyle}" Click="BtnCheck_Click" Tag="5_2"/>
@@ -804,7 +802,6 @@
                             <TextBlock Text="과제 3: Enter 키를 감지하여 입력을 확정하는 KeyDown 이벤트 핸들러를 작성하세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
                             <TextBox x:Name="txtPractice5_3"
                                      Style="{StaticResource PracticeInputStyle}"
-                                     Height="150"
                                      Text="private void TxtBox_KeyDown(object sender, KeyEventArgs e)&#x0a;{&#x0a;    // Enter 키 확인 후 txtResult.Text에 입력값 표시&#x0a;}"/>
                             <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
                                 <Button Content="확인" Style="{StaticResource RunButtonStyle}" Click="BtnCheck_Click" Tag="5_3"/>
@@ -837,7 +834,7 @@
                             <TextBlock Text="과제: TextBox에서 Enter를 누르면 입력값을 txtKeyResult에 표시하는 핸들러를 완성하세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
                             <TextBox x:Name="txtPractice5_4"
                                      Style="{StaticResource PracticeInputStyle}"
-                                     Height="120" AcceptsReturn="True"
+                                     AcceptsReturn="True"
                                      Text="private void TxtKeyDown_KeyDown(object sender, KeyEventArgs e)&#10;{&#10;    &#10;}"/>
                             <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
                                 <Button Content="확인" Style="{StaticResource RunButtonStyle}" Click="BtnCheck_Click" Tag="5_4"/>
@@ -874,7 +871,7 @@
                             <TextBlock Text="과제: 버튼으로 txtDynamic의 내용을 지우고, 대문자로 바꾸는 두 핸들러를 완성하세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
                             <TextBox x:Name="txtPractice5_5"
                                      Style="{StaticResource PracticeInputStyle}"
-                                     Height="120" AcceptsReturn="True"
+                                     AcceptsReturn="True"
                                      Text="private void BtnClear_Click(object sender, RoutedEventArgs e)&#10;{&#10;    &#10;}&#10;&#10;private void BtnUpperCase_Click(object sender, RoutedEventArgs e)&#10;{&#10;    &#10;}"/>
                             <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
                                 <Button Content="확인" Style="{StaticResource RunButtonStyle}" Click="BtnCheck_Click" Tag="5_5"/>

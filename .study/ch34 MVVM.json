@@ -1,0 +1,191 @@
+{
+  "Chapter": "ch34 MVVM",
+  "FirstStudiedAt": "2026-09-16T00:52:58.3918196+09:00",
+  "LastStudiedAt": "2026-09-18T10:04:01.7992011+09:00",
+  "TotalStudySeconds": 2568,
+  "LaunchCount": 2,
+  "LastTab": 4,
+  "PracticeTotal": 20,
+  "Practices": {
+    "5_3": {
+      "Runs": 1,
+      "Successes": 1,
+      "Hints": 0,
+      "Answers": 1,
+      "Status": "부분완료",
+      "Draft": "<ListView ItemsSource=\"{Binding People}\" SelectedItem=\"{Binding Selected, Mode=TwoWay}\" Height=\"110\"/>",
+      "CompletedAt": "2026-09-18T10:03:51.3584842+09:00"
+    },
+    "5_2": {
+      "Runs": 1,
+      "Successes": 1,
+      "Hints": 1,
+      "Answers": 1,
+      "Status": "부분완료",
+      "Draft": "<ListView ItemsSource=\"{Binding People}\" Height=\"110\">\n    <ListView.View>\n        <GridView>\n            <GridViewColumn Header=\"이름\" Width=\"120\" DisplayMemberBinding=\"{Binding Name}\"/>\n            <GridViewColumn Header=\"나이\" Width=\"80\" DisplayMemberBinding=\"{Binding Age}\"/>\n        </GridView>\n    </ListView.View>\n</ListView>",
+      "CompletedAt": "2026-09-18T10:03:45.5266027+09:00"
+    },
+    "5_1": {
+      "Runs": 1,
+      "Successes": 1,
+      "Hints": 1,
+      "Answers": 1,
+      "Status": "부분완료",
+      "Draft": "<StackPanel>\n    <TextBox x:Name=\"input\" Width=\"200\"/>\n    <Button Content=\"실행\" Width=\"100\" Margin=\"0,6,0,0\"\n            Command=\"{Binding PersonCommand}\"\n            CommandParameter=\"{Binding ElementName=input, Path=Text}\"/>\n</StackPanel>",
+      "CompletedAt": "2026-09-18T10:03:58.0545891+09:00"
+    },
+    "4_5": {
+      "Runs": 1,
+      "Successes": 1,
+      "Hints": 0,
+      "Answers": 3,
+      "Status": "완료",
+      "Draft": "public class RelayCommand : ICommand\n{\n    private readonly Action<object?> _execute;\n    private readonly Predicate<object?>? _canExecute;\n\n    public RelayCommand(Action<object?> execute, Predicate<object?>? canExecute = null)\n    {\n        _execute = execute;\n        _canExecute = canExecute;\n    }\n\n    public event EventHandler? CanExecuteChanged\n    {\n        add => CommandManager.RequerySuggested += value;\n        remove => CommandManager.RequerySuggested -= value;\n    }\n\n    public bool CanExecute(object? parameter)\n        => _canExecute == null || _canExecute(parameter);\n\n    public void Execute(object? parameter) => _execute(parameter);\n}",
+      "CompletedAt": "2026-09-18T09:57:46.9761392+09:00"
+    },
+    "4_4": {
+      "Runs": 1,
+      "Successes": 1,
+      "Hints": 0,
+      "Answers": 1,
+      "Status": "완료",
+      "Draft": "public void Execute(object? parameter)\n{\n    execute.Invoke(parameter as string);\n}",
+      "CompletedAt": "2026-09-18T09:54:22.9993249+09:00"
+    },
+    "4_3": {
+      "Runs": 0,
+      "Successes": 0,
+      "Hints": 1,
+      "Answers": 1,
+      "Status": "미완료",
+      "Draft": "public void RaiseCanExecuteChanged()\n{\n    CanExecuteChanged?.Invoke(this, EventArgs.Empty);\n}",
+      "CompletedAt": null
+    },
+    "4_2": {
+      "Runs": 1,
+      "Successes": 1,
+      "Hints": 5,
+      "Answers": 1,
+      "Status": "부분완료",
+      "Draft": "public bool CanExecute(object? parameter)\n{\r\n    return !string.IsNullOrEmpty(parameter as string);\n}",
+      "CompletedAt": "2026-09-18T09:51:55.8688834+09:00"
+    },
+    "4_1": {
+      "Runs": 1,
+      "Successes": 1,
+      "Hints": 3,
+      "Answers": 1,
+      "Status": "완료",
+      "Draft": "public class RelayCommand : ICommand\n{\n    private readonly Action<object?> _execute;\n\n    public RelayCommand(Action<object?> execute)\n    {\n        _execute = execute;\n    }\n\n    public event EventHandler? CanExecuteChanged;\n\n    public bool CanExecute(object? parameter) => true;\n\n    public void Execute(object? parameter) => _execute(parameter);\n}",
+      "CompletedAt": "2026-09-18T09:49:26.6506484+09:00"
+    },
+    "3_5": {
+      "Runs": 5,
+      "Successes": 4,
+      "Hints": 1,
+      "Answers": 3,
+      "Status": "완료",
+      "Draft": "public class PersonViewModel\n{\n    public PersonCommand PersonCommand { get; set; }\n    public List<PersonModel> PersonList { get; set; }\n\n    public PersonViewModel()\n    {\n        PersonList = new List<PersonModel>\n        {\n            new PersonModel { Name = \"홍길동\", Age = 100 },\n            new PersonModel { Name = \"임꺽정\", Age = 90 }\n        };\n\n        PersonCommand = new PersonCommand(Message, CheckMessage);\n    }\n\n    private void Message(string? txt) => MessageBox.Show(txt);\n    private bool CheckMessage(string? txt) => txt?.Length > 0;\n}",
+      "CompletedAt": "2026-09-18T09:43:37.3603614+09:00"
+    },
+    "3_4": {
+      "Runs": 1,
+      "Successes": 1,
+      "Hints": 1,
+      "Answers": 1,
+      "Status": "완료",
+      "Draft": "private void Message(string? txt)\n{\n    MessageBox.Show(txt);\n}\n\nprivate bool CheckMessage(string? txt)\n{\n    return !string.IsNullOrEmpty(txt);\n}",
+      "CompletedAt": "2026-09-18T09:40:45.5716862+09:00"
+    },
+    "3_3": {
+      "Runs": 1,
+      "Successes": 1,
+      "Hints": 3,
+      "Answers": 3,
+      "Status": "완료",
+      "Draft": "private PersonModel? _selected;\npublic PersonModel? Selected\n{\n    get { return _selected; }\n    set\n    {\n        _selected = value;\n        OnPropertyChanged(\"Selected\");\n    }\n}",
+      "CompletedAt": "2026-09-18T09:39:06.7514844+09:00"
+    },
+    "3_2": {
+      "Runs": 3,
+      "Successes": 2,
+      "Hints": 3,
+      "Answers": 44,
+      "Status": "완료",
+      "Draft": "public ObservableCollection<PersonModel> People { get; set; } = new ObservableCollection<PersonModel>();",
+      "CompletedAt": "2026-09-18T09:37:24.994783+09:00"
+    },
+    "3_1": {
+      "Runs": 1,
+      "Successes": 1,
+      "Hints": 2,
+      "Answers": 2,
+      "Status": "부분완료",
+      "Draft": "public class PersonViewModel : INotifyPropertyChanged\n{\n    public event PropertyChangedEventHandler? PropertyChanged;\n\n    protected void OnPropertyChanged(string name)\n    {\n        PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));\n    }\n}",
+      "CompletedAt": "2026-09-18T09:36:18.4350211+09:00"
+    },
+    "2_4": {
+      "Runs": 1,
+      "Successes": 1,
+      "Hints": 0,
+      "Answers": 1,
+      "Status": "완료",
+      "Draft": "public class PersonModel : INotifyPropertyChanged\n{\n    public event PropertyChangedEventHandler? PropertyChanged;\n\n    private void OnPropertyChanged(string name)\n    {\n        PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));\n    }\n\n    private string name = string.Empty;\n    public string Name\n    {\n        get => name;\n        set { name = value; OnPropertyChanged(\"Name\"); }\n    }\n}",
+      "CompletedAt": "2026-09-18T09:31:52.9788469+09:00"
+    },
+    "2_3": {
+      "Runs": 3,
+      "Successes": 2,
+      "Hints": 1,
+      "Answers": 1,
+      "Status": "부분완료",
+      "Draft": "public class PersonModel\n{\n    public string Name { get; set; } = \"\";\n    public int Age { get; set; }\r\n    public string Display { get { return $\"{Name} : {Age}\"} }\n}",
+      "CompletedAt": "2026-09-18T09:28:08.0149382+09:00"
+    },
+    "2_2": {
+      "Runs": 4,
+      "Successes": 1,
+      "Hints": 2,
+      "Answers": 1,
+      "Status": "완료",
+      "Draft": "public List<PersonModel> People { get; set; }\n\npublic void Load()\n{\n    People = new List<PersonModel>\n    {\n        new PersonModel { Name = \"홍길동\", Age = 30 },\n        new PersonModel { Name = \"임꺽정\", Age = 40 },\n        new PersonModel { Name = \"장길산\", Age = 50 }\n    };\n}",
+      "CompletedAt": "2026-09-18T09:24:49.6396883+09:00"
+    },
+    "2_1": {
+      "Runs": 2,
+      "Successes": 1,
+      "Hints": 1,
+      "Answers": 17,
+      "Status": "완료",
+      "Draft": "public class PersonModel\n{\n    public string Name { get; set; } = \"\";\n    public int Age { get; set; }\n}",
+      "CompletedAt": "2026-09-18T09:18:42.0508644+09:00"
+    },
+    "1_3": {
+      "Runs": 1,
+      "Successes": 1,
+      "Hints": 1,
+      "Answers": 1,
+      "Status": "부분완료",
+      "Draft": "// View 와 ViewModel 의 연결\n// DataContext 에 ViewModel 을 넣고 View 는 Binding 으로만 접근한다\n// 따라서 View 의 code-behind 에는 화면 로직이 남지 않는다",
+      "CompletedAt": "2026-09-18T09:15:32.3237728+09:00"
+    },
+    "1_2": {
+      "Runs": 1,
+      "Successes": 1,
+      "Hints": 1,
+      "Answers": 3,
+      "Status": "완료",
+      "Draft": "public MainWindow()\n{\n    InitializeComponent();\n    this.DataContext = new PersonViewModel();\n}",
+      "CompletedAt": "2026-09-18T09:12:38.9265992+09:00"
+    },
+    "1_1": {
+      "Runs": 1,
+      "Successes": 1,
+      "Hints": 1,
+      "Answers": 1,
+      "Status": "완료",
+      "Draft": "// MVVM 역할 정리\n// Model: 순수한 데이터와 업무 규칙\n// View: 화면을 그리는 XAML\n// ViewModel: Model 을 View 가 쓰기 좋은 형태로 노출하고 Command 를 제공",
+      "CompletedAt": "2026-09-18T09:10:12.102051+09:00"
+    }
+  }
+}

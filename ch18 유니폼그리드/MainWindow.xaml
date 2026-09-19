@@ -19,7 +19,7 @@
             <Setter Property="TextWrapping" Value="Wrap"/>
             <Setter Property="AcceptsReturn" Value="True"/>
             <Setter Property="VerticalScrollBarVisibility" Value="Auto"/>
-            <Setter Property="MaxHeight" Value="300"/>
+            <Setter Property="MaxHeight" Value="420"/>
             <Setter Property="BorderBrush" Value="#333333"/>
             <Setter Property="BorderThickness" Value="1"/>
         </Style>
@@ -35,9 +35,10 @@
             <Setter Property="AcceptsReturn" Value="True"/>
             <Setter Property="FontFamily" Value="Consolas"/>
             <Setter Property="FontSize" Value="12"/>
-            <Setter Property="Height" Value="80"/>
             <Setter Property="VerticalScrollBarVisibility" Value="Auto"/>
             <Setter Property="Padding" Value="5"/>
+            <Setter Property="MinHeight" Value="160"/>
+            <Setter Property="MaxHeight" Value="420"/>
         </Style>
         <Style x:Key="RunButtonStyle" TargetType="Button">
             <Setter Property="Width" Value="60"/>
@@ -135,7 +136,6 @@
                             <TextBlock Text="과제: 2행 4열의 UniformGrid에 Border 8개를 배치하고, 각 Border에 서로 다른 배경색을 지정하세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
                             <TextBox x:Name="txtPractice1_2"
                                      Style="{StaticResource PracticeInputStyle}"
-                                     Height="120"
                                      Text="&lt;UniformGrid Rows=&quot;2&quot; Columns=&quot;4&quot;&gt;&#10;    &lt;Border Background=&quot;Red&quot; Margin=&quot;2&quot;/&gt;&#10;&lt;/UniformGrid&gt;"/>
                             <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
                                 <Button Content="실행" Style="{StaticResource RunButtonStyle}" Click="BtnRun_Click" Tag="1_2"/>
@@ -230,7 +230,6 @@
                             <TextBlock Text="과제: Columns만 3으로 지정하고 버튼 7개를 배치하세요. (행은 자동 계산)" FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
                             <TextBox x:Name="txtPractice2_1"
                                      Style="{StaticResource PracticeInputStyle}"
-                                     Height="100"
                                      Text="&lt;UniformGrid&gt;&#10;    &lt;Button Content=&quot;1&quot;/&gt;&#10;&lt;/UniformGrid&gt;"/>
                             <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
                                 <Button Content="실행" Style="{StaticResource RunButtonStyle}" Click="BtnRun_Click" Tag="2_1"/>
@@ -270,7 +269,6 @@
                             <TextBlock Text="과제: 5열짜리 UniformGrid에 FirstColumn=2를 설정하여 첫 두 셀을 비우고 버튼 6개를 배치하세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
                             <TextBox x:Name="txtPractice2_2"
                                      Style="{StaticResource PracticeInputStyle}"
-                                     Height="100"
                                      Text="&lt;UniformGrid Columns=&quot;5&quot;&gt;&#10;    &lt;Button Content=&quot;1&quot;/&gt;&#10;&lt;/UniformGrid&gt;"/>
                             <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
                                 <Button Content="실행" Style="{StaticResource RunButtonStyle}" Click="BtnRun_Click" Tag="2_2"/>
@@ -400,7 +398,6 @@
                             <TextBlock Text="과제: 3열 4행의 간단한 계산기 키패드를 만드세요. (7,8,9,4,5,6,1,2,3,0,+,-)" FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
                             <TextBox x:Name="txtPractice3_1"
                                      Style="{StaticResource PracticeInputStyle}"
-                                     Height="140"
                                      Text="&lt;UniformGrid Columns=&quot;3&quot; Rows=&quot;4&quot;&gt;&#10;    &lt;Button Content=&quot;7&quot;/&gt;&#10;&lt;/UniformGrid&gt;"/>
                             <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
                                 <Button Content="실행" Style="{StaticResource RunButtonStyle}" Click="BtnRun_Click" Tag="3_1"/>
@@ -447,7 +444,6 @@
                             <TextBlock Text="과제: 4열 2행의 무지개색 팔레트를 만드세요. (빨강, 주황, 노랑, 초록, 파랑, 남색, 보라, 분홍)" FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
                             <TextBox x:Name="txtPractice3_2"
                                      Style="{StaticResource PracticeInputStyle}"
-                                     Height="120"
                                      Text="&lt;UniformGrid Columns=&quot;4&quot; Rows=&quot;2&quot;&gt;&#10;    &lt;Border Background=&quot;Red&quot; Margin=&quot;2&quot;/&gt;&#10;&lt;/UniformGrid&gt;"/>
                             <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
                                 <Button Content="실행" Style="{StaticResource RunButtonStyle}" Click="BtnRun_Click" Tag="3_2"/>
@@ -608,7 +604,6 @@
                             <TextBlock Text="과제: 연한 파랑 배경(#E3F2FD)의 2행 3열 UniformGrid에 버튼 6개를 배치하세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
                             <TextBox x:Name="txtPractice4_1"
                                      Style="{StaticResource PracticeInputStyle}"
-                                     Height="100"
                                      Text="&lt;UniformGrid Rows=&quot;2&quot; Columns=&quot;3&quot;&gt;&#10;    &lt;Button Content=&quot;1&quot;/&gt;&#10;&lt;/UniformGrid&gt;"/>
                             <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
                                 <Button Content="실행" Style="{StaticResource RunButtonStyle}" Click="BtnRun_Click" Tag="4_1"/>
@@ -654,7 +649,6 @@
                             <TextBlock Text="과제: 3열 UniformGrid에 각각 다른 Margin(10, 5, 2)을 가진 Border 3개를 배치하세요. 각 Border에는 Background를 지정하세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
                             <TextBox x:Name="txtPractice4_2"
                                      Style="{StaticResource PracticeInputStyle}"
-                                     Height="100"
                                      Text="&lt;UniformGrid Columns=&quot;3&quot;&gt;&#10;    &lt;Border Background=&quot;LightBlue&quot; Margin=&quot;10&quot;/&gt;&#10;&lt;/UniformGrid&gt;"/>
                             <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
                                 <Button Content="실행" Style="{StaticResource RunButtonStyle}" Click="BtnRun_Click" Tag="4_2"/>
@@ -766,7 +760,6 @@
                             <TextBlock Text="과제: UniformGrid에 버튼을 동적으로 추가하는 코드를 작성하세요. 버튼 내용은 &quot;Item&quot; + 번호로 설정합니다." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
                             <TextBox x:Name="txtPractice5_1"
                                      Style="{StaticResource PracticeInputStyle}"
-                                     Height="120"
                                      Text="private void AddItem_Click(object sender, RoutedEventArgs e)&#x0a;{&#x0a;    // 코드 작성&#x0a;}"/>
                             <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
                                 <Button Content="확인" Style="{StaticResource RunButtonStyle}" Click="BtnCheck_Click" Tag="5_1"/>
@@ -812,7 +805,6 @@
                             <TextBlock Text="과제: UniformGrid를 4행 2열로 변경하는 코드를 작성하세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
                             <TextBox x:Name="txtPractice5_2"
                                      Style="{StaticResource PracticeInputStyle}"
-                                     Height="120"
                                      Text="private void SetLayout_Click(object sender, RoutedEventArgs e)&#x0a;{&#x0a;    // 코드 작성&#x0a;}"/>
                             <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
                                 <Button Content="확인" Style="{StaticResource RunButtonStyle}" Click="BtnCheck_Click" Tag="5_2"/>
@@ -856,7 +848,6 @@
                             <TextBlock Text="과제: FirstColumn을 3으로 설정하여 첫 3개의 셀을 비우는 코드를 작성하세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
                             <TextBox x:Name="txtPractice5_3"
                                      Style="{StaticResource PracticeInputStyle}"
-                                     Height="120"
                                      Text="private void SetOffset_Click(object sender, RoutedEventArgs e)&#x0a;{&#x0a;    // 코드 작성&#x0a;}"/>
                             <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
                                 <Button Content="확인" Style="{StaticResource RunButtonStyle}" Click="BtnCheck_Click" Tag="5_3"/>

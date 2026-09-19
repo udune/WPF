@@ -1,11 +1,11 @@
 {
   "Chapter": "ch3 텍스트블럭",
   "FirstStudiedAt": "2026-09-12T21:17:54+09:00",
-  "LastStudiedAt": "2026-09-12T21:17:54+09:00",
-  "TotalStudySeconds": 0,
-  "LaunchCount": 0,
-  "LastTab": 0,
-  "PracticeTotal": 17,
+  "LastStudiedAt": "2026-09-18T18:44:01.02381+09:00",
+  "TotalStudySeconds": 712,
+  "LaunchCount": 2,
+  "LastTab": 4,
+  "PracticeTotal": 25,
   "Practices": {
     "1_1": {
       "Runs": 1,
@@ -159,6 +159,78 @@
       "Status": "완료",
       "Draft": null,
       "CompletedAt": "2026-09-12T21:17:54+09:00"
+    },
+    "5_5": {
+      "Runs": 7,
+      "Successes": 6,
+      "Hints": 1,
+      "Answers": 1,
+      "Status": "완료",
+      "Draft": "private void BtnRedStyle_Click(object sender, RoutedEventArgs e)\n{\n    tbStyleDemo.Background = Brushes.Tomato;\n    tbStyleDemo.Foreground = Brushes.White;\n    tbStyleDemo.FontWeight = FontWeights.Bold;\n    tbStyleDemo.Text = \"빨간 스타일 적용됨\";\n}",
+      "CompletedAt": "2026-09-18T18:43:52.5044143+09:00"
+    },
+    "5_4": {
+      "Runs": 1,
+      "Successes": 1,
+      "Hints": 0,
+      "Answers": 0,
+      "Status": "완료",
+      "Draft": "<StackPanel>\n    <TextBlock Text=\"Padding 0\" Background=\"Blue\" Padding=\"0\"/>\r\n    <TextBlock Text=\"Padding 10\" Background=\"LightGreen\" Padding=\"10\"/>\r\n    <TextBlock Text=\"Padding 20\" Background=\"Silver\" Padding=\"20\"/>\n</StackPanel>",
+      "CompletedAt": "2026-09-18T18:42:26.9592882+09:00"
+    },
+    "4_5": {
+      "Runs": 1,
+      "Successes": 1,
+      "Hints": 0,
+      "Answers": 0,
+      "Status": "완료",
+      "Draft": "<StackPanel>\n    <TextBlock TextDecorations=\"Underline\">밑줄</TextBlock>\r\n    <TextBlock TextDecorations=\"Strikethrough\">취소선</TextBlock>\r\n    <TextBlock TextDecorations=\"OverLine\">윗줄</TextBlock>\r\n    <TextBlock TextDecorations=\"Baseline\">기준선</TextBlock>\n</StackPanel>",
+      "CompletedAt": "2026-09-18T18:41:09.208862+09:00"
+    },
+    "3_4": {
+      "Runs": 1,
+      "Successes": 1,
+      "Hints": 1,
+      "Answers": 0,
+      "Status": "완료",
+      "Draft": "<StackPanel>\n    <TextBlock TextWrapping=\"Wrap\">기본 줄 간격</TextBlock>\r\n    <TextBlock TextWrapping=\"Wrap\" LineHeight=\"40\">40</TextBlock>\n</StackPanel>",
+      "CompletedAt": "2026-09-18T18:39:30.7589194+09:00"
+    },
+    "2_5": {
+      "Runs": 2,
+      "Successes": 1,
+      "Hints": 0,
+      "Answers": 1,
+      "Status": "완료",
+      "Draft": "<TextBlock FontSize=\"16\" TextWrapping=\"Wrap\">\n    <Bold>WPF</Bold>의 <Italic>TextBlock</Italic>은\n    <Span Foreground=\"CornflowerBlue\" FontSize=\"20\">다양한</Span> 인라인 요소를\n    <Underline>자유롭게</Underline> 조합할 수 있습니다.<LineBreak/>\n    <Span Foreground=\"Gray\" FontSize=\"12\">— WPF 튜토리얼 中</Span>\n</TextBlock>",
+      "CompletedAt": "2026-09-15T01:20:16.6818499+09:00"
+    },
+    "2_4": {
+      "Runs": 1,
+      "Successes": 1,
+      "Hints": 0,
+      "Answers": 1,
+      "Status": "완료",
+      "Draft": "<TextBlock FontSize=\"14\">\n    상태: <InlineUIContainer>\n        <Ellipse Width=\"12\" Height=\"12\" Fill=\"LimeGreen\"/>\n    </InlineUIContainer> 온라인\n</TextBlock>",
+      "CompletedAt": "2026-09-15T01:18:17.4016633+09:00"
+    },
+    "1_6": {
+      "Runs": 1,
+      "Successes": 1,
+      "Hints": 0,
+      "Answers": 1,
+      "Status": "완료",
+      "Draft": "<TextBlock Text=\"마우스를 올려보세요\" ToolTip=\"이것은 TextBlock의 ToolTip입니다\"/>",
+      "CompletedAt": "2026-09-15T01:16:41.6492862+09:00"
+    },
+    "1_5": {
+      "Runs": 10,
+      "Successes": 9,
+      "Hints": 0,
+      "Answers": 1,
+      "Status": "부분완료",
+      "Draft": "<TextBlock TextWrapping=\"Wrap\">\n    검색은 <Hyperlink NavigateUri=\"https://google.co.kr\">구글 바로가기</Hyperlink>를 이용하세요.\n</TextBlock>",
+      "CompletedAt": "2026-09-15T01:16:05.8037516+09:00"
     }
   }
 }

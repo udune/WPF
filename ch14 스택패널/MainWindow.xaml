@@ -23,7 +23,7 @@
             <Setter Property="TextWrapping" Value="Wrap"/>
             <Setter Property="AcceptsReturn" Value="True"/>
             <Setter Property="VerticalScrollBarVisibility" Value="Auto"/>
-            <Setter Property="MaxHeight" Value="300"/>
+            <Setter Property="MaxHeight" Value="420"/>
             <Setter Property="BorderBrush" Value="#333333"/>
             <Setter Property="BorderThickness" Value="1"/>
         </Style>
@@ -45,9 +45,10 @@
             <Setter Property="AcceptsReturn" Value="True"/>
             <Setter Property="FontFamily" Value="Consolas"/>
             <Setter Property="FontSize" Value="12"/>
-            <Setter Property="Height" Value="60"/>
             <Setter Property="VerticalScrollBarVisibility" Value="Auto"/>
             <Setter Property="Padding" Value="5"/>
+            <Setter Property="MinHeight" Value="160"/>
+            <Setter Property="MaxHeight" Value="420"/>
         </Style>
         <Style x:Key="RunButtonStyle" TargetType="Button">
             <Setter Property="Width" Value="60"/>
@@ -94,7 +95,6 @@
                             <TextBlock Text="과제: StackPanel 안에 Button 2개를 배치해보세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
                             <TextBox x:Name="txtPractice1_1"
                                      Style="{StaticResource PracticeInputStyle}"
-                                     Height="80"
                                      Text="&lt;StackPanel&gt;&#x0a;    &#x0a;&lt;/StackPanel&gt;"/>
                             <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
                                 <Button Content="실행" Style="{StaticResource RunButtonStyle}" Click="BtnRun_Click" Tag="1_1"/>
@@ -128,7 +128,6 @@
                             <TextBlock Text="과제: Orientation이 Horizontal인 StackPanel을 만들어보세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
                             <TextBox x:Name="txtPractice1_2"
                                      Style="{StaticResource PracticeInputStyle}"
-                                     Height="80"
                                      Text="&lt;StackPanel&gt;&#x0a;    &lt;Button Content=&quot;A&quot;/&gt;&#x0a;    &lt;Button Content=&quot;B&quot;/&gt;&#x0a;&lt;/StackPanel&gt;"/>
                             <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
                                 <Button Content="실행" Style="{StaticResource RunButtonStyle}" Click="BtnRun_Click" Tag="1_2"/>
@@ -162,7 +161,6 @@
                             <TextBlock Text="과제: TextBlock, TextBox, Button을 순서대로 배치해보세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
                             <TextBox x:Name="txtPractice1_3"
                                      Style="{StaticResource PracticeInputStyle}"
-                                     Height="100"
                                      Text="&lt;StackPanel&gt;&#x0a;    &#x0a;&lt;/StackPanel&gt;"/>
                             <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
                                 <Button Content="실행" Style="{StaticResource RunButtonStyle}" Click="BtnRun_Click" Tag="1_3"/>
@@ -207,7 +205,6 @@
                             <TextBlock Text="과제: Button의 HorizontalAlignment를 Center로 설정해보세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
                             <TextBox x:Name="txtPractice2_1"
                                      Style="{StaticResource PracticeInputStyle}"
-                                     Height="80"
                                      Text="&lt;StackPanel&gt;&#x0a;    &lt;Button Content=&quot;중앙 정렬&quot;/&gt;&#x0a;&lt;/StackPanel&gt;"/>
                             <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
                                 <Button Content="실행" Style="{StaticResource RunButtonStyle}" Click="BtnRun_Click" Tag="2_1"/>
@@ -242,7 +239,6 @@
                             <TextBlock Text="과제: Horizontal StackPanel에서 Button의 VerticalAlignment를 Bottom으로 설정해보세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
                             <TextBox x:Name="txtPractice2_2"
                                      Style="{StaticResource PracticeInputStyle}"
-                                     Height="80"
                                      Text="&lt;StackPanel Orientation=&quot;Horizontal&quot; Height=&quot;100&quot;&gt;&#x0a;    &lt;Button Content=&quot;아래 정렬&quot;/&gt;&#x0a;&lt;/StackPanel&gt;"/>
                             <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
                                 <Button Content="실행" Style="{StaticResource RunButtonStyle}" Click="BtnRun_Click" Tag="2_2"/>
@@ -276,7 +272,6 @@
                             <TextBlock Text="과제: Button에 Margin=&quot;10&quot;을 설정해보세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
                             <TextBox x:Name="txtPractice2_3"
                                      Style="{StaticResource PracticeInputStyle}"
-                                     Height="80"
                                      Text="&lt;StackPanel&gt;&#x0a;    &lt;Button Content=&quot;여백 있음&quot;/&gt;&#x0a;&lt;/StackPanel&gt;"/>
                             <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
                                 <Button Content="실행" Style="{StaticResource RunButtonStyle}" Click="BtnRun_Click" Tag="2_3"/>
@@ -327,7 +322,6 @@
                             <TextBlock Text="과제: Vertical StackPanel 안에 Horizontal StackPanel을 중첩하여 버튼 2개를 가로로 배치해보세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
                             <TextBox x:Name="txtPractice3_1"
                                      Style="{StaticResource PracticeInputStyle}"
-                                     Height="120"
                                      Text="&lt;StackPanel&gt;&#x0a;    &lt;TextBlock Text=&quot;제목&quot;/&gt;&#x0a;    &#x0a;&lt;/StackPanel&gt;"/>
                             <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
                                 <Button Content="실행" Style="{StaticResource RunButtonStyle}" Click="BtnRun_Click" Tag="3_1"/>
@@ -370,7 +364,6 @@
                             <TextBlock Text="과제: 라벨과 입력 필드를 가로로 배치하는 패턴을 만들어보세요. (TextBlock Width=&quot;80&quot; + TextBox)" FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
                             <TextBox x:Name="txtPractice3_2"
                                      Style="{StaticResource PracticeInputStyle}"
-                                     Height="100"
                                      Text="&lt;StackPanel Orientation=&quot;Horizontal&quot;&gt;&#x0a;    &#x0a;&lt;/StackPanel&gt;"/>
                             <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
                                 <Button Content="실행" Style="{StaticResource RunButtonStyle}" Click="BtnRun_Click" Tag="3_2"/>
@@ -453,7 +446,6 @@
                             <TextBlock Text="과제: StackPanel에 Background=&quot;LightGreen&quot;을 설정해보세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
                             <TextBox x:Name="txtPractice4_1"
                                      Style="{StaticResource PracticeInputStyle}"
-                                     Height="80"
                                      Text="&lt;StackPanel&gt;&#x0a;    &lt;TextBlock Text=&quot;배경색 있는 패널&quot; Margin=&quot;10&quot;/&gt;&#x0a;&lt;/StackPanel&gt;"/>
                             <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
                                 <Button Content="실행" Style="{StaticResource RunButtonStyle}" Click="BtnRun_Click" Tag="4_1"/>
@@ -496,7 +488,6 @@
                             <TextBlock Text="과제: FlowDirection=&quot;RightToLeft&quot;를 설정해보세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
                             <TextBox x:Name="txtPractice4_2"
                                      Style="{StaticResource PracticeInputStyle}"
-                                     Height="80"
                                      Text="&lt;StackPanel Orientation=&quot;Horizontal&quot;&gt;&#x0a;    &lt;Button Content=&quot;첫번째&quot;/&gt;&#x0a;    &lt;Button Content=&quot;두번째&quot;/&gt;&#x0a;&lt;/StackPanel&gt;"/>
                             <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
                                 <Button Content="실행" Style="{StaticResource RunButtonStyle}" Click="BtnRun_Click" Tag="4_2"/>
@@ -582,7 +573,6 @@
                             <TextBlock Text="과제: Children.Add를 사용하여 Button을 추가하는 코드를 작성하세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
                             <TextBox x:Name="txtPractice5_1"
                                      Style="{StaticResource PracticeInputStyle}"
-                                     Height="100"
                                      Text="private void AddButton()&#x0a;{&#x0a;    // myPanel에 Button 추가&#x0a;    &#x0a;}"/>
                             <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
                                 <Button Content="확인" Style="{StaticResource RunButtonStyle}" Click="BtnCheck_Click" Tag="5_1"/>
@@ -622,7 +612,6 @@
                             <TextBlock Text="과제: StackPanel의 Orientation을 Horizontal로 변경하는 코드를 작성하세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
                             <TextBox x:Name="txtPractice5_2"
                                      Style="{StaticResource PracticeInputStyle}"
-                                     Height="100"
                                      Text="private void ChangeOrientation()&#x0a;{&#x0a;    // myPanel의 Orientation 변경&#x0a;    &#x0a;}"/>
                             <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
                                 <Button Content="확인" Style="{StaticResource RunButtonStyle}" Click="BtnCheck_Click" Tag="5_2"/>
@@ -659,7 +648,6 @@
                             <TextBlock Text="과제: Children.Count를 사용하여 자식 요소 수를 확인하는 코드를 작성하세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
                             <TextBox x:Name="txtPractice5_3"
                                      Style="{StaticResource PracticeInputStyle}"
-                                     Height="100"
                                      Text="private void ShowCount()&#x0a;{&#x0a;    // myPanel의 자식 요소 수를 txtResult.Text에 표시&#x0a;    &#x0a;}"/>
                             <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
                                 <Button Content="확인" Style="{StaticResource RunButtonStyle}" Click="BtnCheck_Click" Tag="5_3"/>

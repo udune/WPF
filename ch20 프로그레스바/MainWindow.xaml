@@ -24,7 +24,7 @@
             <Setter Property="TextWrapping" Value="Wrap"/>
             <Setter Property="AcceptsReturn" Value="True"/>
             <Setter Property="VerticalScrollBarVisibility" Value="Auto"/>
-            <Setter Property="MaxHeight" Value="300"/>
+            <Setter Property="MaxHeight" Value="420"/>
             <Setter Property="BorderBrush" Value="#333333"/>
             <Setter Property="BorderThickness" Value="1"/>
         </Style>
@@ -40,9 +40,10 @@
             <Setter Property="AcceptsReturn" Value="True"/>
             <Setter Property="FontFamily" Value="Consolas"/>
             <Setter Property="FontSize" Value="12"/>
-            <Setter Property="Height" Value="80"/>
             <Setter Property="VerticalScrollBarVisibility" Value="Auto"/>
             <Setter Property="Padding" Value="5"/>
+            <Setter Property="MinHeight" Value="160"/>
+            <Setter Property="MaxHeight" Value="420"/>
         </Style>
         <Style x:Key="RunButtonStyle" TargetType="Button">
             <Setter Property="Width" Value="60"/>
@@ -97,7 +98,6 @@
                             <TextBlock Text="과제: Value=50인 ProgressBar를 만드세요. Height=&quot;25&quot;로 설정하세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
                             <TextBox x:Name="txtPractice1_1"
                                      Style="{StaticResource PracticeInputStyle}"
-                                     Height="50"
                                      Text="&lt;ProgressBar /&gt;"/>
                             <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
                                 <Button Content="실행" Style="{StaticResource RunButtonStyle}" Click="BtnRun_Click" Tag="1_1"/>
@@ -134,7 +134,6 @@
                             <TextBlock Text="과제: Maximum=500, Value=250인 ProgressBar를 만드세요. (50% 진행률) Height=&quot;25&quot;로 설정하세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
                             <TextBox x:Name="txtPractice1_2"
                                      Style="{StaticResource PracticeInputStyle}"
-                                     Height="50"
                                      Text="&lt;ProgressBar /&gt;"/>
                             <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
                                 <Button Content="실행" Style="{StaticResource RunButtonStyle}" Click="BtnRun_Click" Tag="1_2"/>
@@ -217,7 +216,6 @@
                             <TextBlock Text="과제: 불확정 모드(Indeterminate) ProgressBar를 만드세요. Height=&quot;25&quot;로 설정하세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
                             <TextBox x:Name="txtPractice2_1"
                                      Style="{StaticResource PracticeInputStyle}"
-                                     Height="50"
                                      Text="&lt;ProgressBar /&gt;"/>
                             <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
                                 <Button Content="실행" Style="{StaticResource RunButtonStyle}" Click="BtnRun_Click" Tag="2_1"/>
@@ -251,7 +249,6 @@
                             <TextBlock Text="과제: progressBar라는 이름의 ProgressBar를 불확정 모드로 전환하는 코드를 작성하세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
                             <TextBox x:Name="txtPractice2_2"
                                      Style="{StaticResource PracticeInputStyle}"
-                                     Height="50"
                                      Text="// progressBar를 불확정 모드로 설정&#x0a;"/>
                             <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
                                 <Button Content="확인" Style="{StaticResource RunButtonStyle}" Click="BtnCheck_Click" Tag="2_2"/>
@@ -352,7 +349,6 @@
                             <TextBlock Text="과제: Value=80, Foreground=&quot;DodgerBlue&quot;인 ProgressBar를 만드세요. Height=&quot;25&quot;로 설정하세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
                             <TextBox x:Name="txtPractice3_1"
                                      Style="{StaticResource PracticeInputStyle}"
-                                     Height="50"
                                      Text="&lt;ProgressBar /&gt;"/>
                             <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
                                 <Button Content="실행" Style="{StaticResource RunButtonStyle}" Click="BtnRun_Click" Tag="3_1"/>
@@ -387,7 +383,6 @@
                             <TextBlock Text="과제: Background=&quot;#E0E0E0&quot;, Foreground=&quot;Green&quot;, Value=90인 ProgressBar를 만드세요. Height=&quot;30&quot;으로 설정하세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
                             <TextBox x:Name="txtPractice3_2"
                                      Style="{StaticResource PracticeInputStyle}"
-                                     Height="50"
                                      Text="&lt;ProgressBar /&gt;"/>
                             <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
                                 <Button Content="실행" Style="{StaticResource RunButtonStyle}" Click="BtnRun_Click" Tag="3_2"/>
@@ -460,7 +455,7 @@
                             <TextBlock Text="과제: 값이 30 미만이면 빨강, 70 미만이면 주황, 그 이상이면 초록이 되도록 핸들러를 완성하세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
                             <TextBox x:Name="txtPractice3_4"
                                      Style="{StaticResource PracticeInputStyle}"
-                                     Height="120" AcceptsReturn="True"
+                                     AcceptsReturn="True"
                                      Text="private void StatusSlider_ValueChanged(object sender, RoutedPropertyChangedEventArgs&lt;double&gt; e)&#10;{&#10;    double value = statusSlider.Value;&#10;    statusProgressBar.Value = value;&#10;&#10;    &#10;}"/>
                             <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
                                 <Button Content="확인" Style="{StaticResource RunButtonStyle}" Click="BtnCheck_Click" Tag="3_4"/>
@@ -509,7 +504,6 @@
                             <TextBlock Text="과제: Grid 안에 ProgressBar(Height=30, Value=65)와 TextBlock(&quot;65%&quot;)을 겹쳐서 배치하세요. TextBlock은 HorizontalAlignment=&quot;Center&quot;, VerticalAlignment=&quot;Center&quot;로 설정하세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
                             <TextBox x:Name="txtPractice4_1"
                                      Style="{StaticResource PracticeInputStyle}"
-                                     Height="100"
                                      Text="&lt;Grid&gt;&#10;    &lt;!-- ProgressBar와 TextBlock 추가 --&gt;&#10;&lt;/Grid&gt;"/>
                             <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
                                 <Button Content="실행" Style="{StaticResource RunButtonStyle}" Click="BtnRun_Click" Tag="4_1"/>
@@ -558,7 +552,6 @@
                             <TextBlock Text="과제: progressBar의 Value를 75로 설정하고, percentText.Text를 &quot;75%&quot;로 업데이트하는 코드를 작성하세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
                             <TextBox x:Name="txtPractice4_2"
                                      Style="{StaticResource PracticeInputStyle}"
-                                     Height="60"
                                      Text="// progressBar와 percentText 업데이트&#x0a;"/>
                             <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
                                 <Button Content="확인" Style="{StaticResource RunButtonStyle}" Click="BtnCheck_Click" Tag="4_2"/>
@@ -642,7 +635,7 @@
                             <TextBlock Text="과제: 슬라이더 값을 ProgressBar에 반영하고, 옆 TextBlock에 '45%' 형식으로 표시하세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
                             <TextBox x:Name="txtPractice4_4"
                                      Style="{StaticResource PracticeInputStyle}"
-                                     Height="120" AcceptsReturn="True"
+                                     AcceptsReturn="True"
                                      Text="private void ValueSlider_ValueChanged(object sender, RoutedPropertyChangedEventArgs&lt;double&gt; e)&#10;{&#10;    &#10;}"/>
                             <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
                                 <Button Content="확인" Style="{StaticResource RunButtonStyle}" Click="BtnCheck_Click" Tag="4_4"/>
@@ -693,7 +686,6 @@
                             <TextBlock Text="과제: DispatcherTimer를 생성하고 Interval을 200밀리초로 설정하는 코드를 작성하세요. TimeSpan.FromMilliseconds를 사용하세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
                             <TextBox x:Name="txtPractice5_1"
                                      Style="{StaticResource PracticeInputStyle}"
-                                     Height="80"
                                      Text="DispatcherTimer timer = new DispatcherTimer();&#x0a;// Interval 설정"/>
                             <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
                                 <Button Content="확인" Style="{StaticResource RunButtonStyle}" Click="BtnCheck_Click" Tag="5_1"/>
@@ -732,7 +724,6 @@
                             <TextBlock Text="과제: progressBar의 값에 따라 Foreground 색상을 변경하는 조건문을 작성하세요. value &lt; 30이면 Brushes.Red, value &lt; 70이면 Brushes.Orange, 그 외에는 Brushes.Green으로 설정하세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
                             <TextBox x:Name="txtPractice5_2"
                                      Style="{StaticResource PracticeInputStyle}"
-                                     Height="120"
                                      Text="if (value &lt; 30)&#x0a;{&#x0a;    // Red 설정&#x0a;}&#x0a;// 나머지 조건 추가"/>
                             <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
                                 <Button Content="확인" Style="{StaticResource RunButtonStyle}" Click="BtnCheck_Click" Tag="5_2"/>

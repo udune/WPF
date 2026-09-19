@@ -23,7 +23,7 @@
             <Setter Property="TextWrapping" Value="Wrap"/>
             <Setter Property="AcceptsReturn" Value="True"/>
             <Setter Property="VerticalScrollBarVisibility" Value="Auto"/>
-            <Setter Property="MaxHeight" Value="300"/>
+            <Setter Property="MaxHeight" Value="420"/>
             <Setter Property="BorderBrush" Value="#333333"/>
             <Setter Property="BorderThickness" Value="1"/>
         </Style>
@@ -39,9 +39,10 @@
             <Setter Property="AcceptsReturn" Value="True"/>
             <Setter Property="FontFamily" Value="Consolas"/>
             <Setter Property="FontSize" Value="12"/>
-            <Setter Property="Height" Value="50"/>
             <Setter Property="VerticalScrollBarVisibility" Value="Auto"/>
             <Setter Property="Padding" Value="5"/>
+            <Setter Property="MinHeight" Value="160"/>
+            <Setter Property="MaxHeight" Value="420"/>
         </Style>
         <Style x:Key="RunButtonStyle" TargetType="Button">
             <Setter Property="Width" Value="60"/>
@@ -606,7 +607,6 @@
                             <TextBlock Text="과제: Border로 이미지를 감싸고 BorderBrush를 Blue, BorderThickness를 3으로 설정해보세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
                             <TextBox x:Name="txtPractice4_2"
                                      Style="{StaticResource PracticeInputStyle}"
-                                     Height="80"
                                      Text="&lt;Border&gt;&#x0a;    &lt;Image Source=&quot;https://via.placeholder.com/80&quot; Width=&quot;80&quot; Height=&quot;80&quot;/&gt;&#x0a;&lt;/Border&gt;"/>
                             <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
                                 <Button Content="실행" Style="{StaticResource RunButtonStyle}" Click="BtnRun_Click" Tag="4_2"/>
@@ -734,7 +734,6 @@
                             <TextBlock Text="과제: MouseEnter 이벤트 핸들러를 작성하세요. img.Width와 img.Height를 150으로 변경합니다." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
                             <TextBox x:Name="txtPractice5_1"
                                      Style="{StaticResource PracticeInputStyle}"
-                                     Height="120"
                                      AcceptsReturn="True"
                                      Text="private void Img_MouseEnter(object sender, MouseEventArgs e)&#x0a;{&#x0a;    &#x0a;}"/>
                             <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
@@ -767,7 +766,6 @@
                             <TextBlock Text="과제: BitmapImage를 사용하여 img.Source에 웹 이미지 URL을 설정하는 코드를 작성하세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
                             <TextBox x:Name="txtPractice5_2"
                                      Style="{StaticResource PracticeInputStyle}"
-                                     Height="120"
                                      AcceptsReturn="True"
                                      Text="private void SetWebImage()&#x0a;{&#x0a;    &#x0a;}"/>
                             <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
@@ -803,7 +801,6 @@
                             <TextBlock Text="과제: Visibility를 토글하는 함수를 작성하세요. Visible이면 Collapsed로, 아니면 Visible로 변경합니다." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
                             <TextBox x:Name="txtPractice5_3"
                                      Style="{StaticResource PracticeInputStyle}"
-                                     Height="150"
                                      AcceptsReturn="True"
                                      Text="private void ToggleVisibility()&#x0a;{&#x0a;    &#x0a;}"/>
                             <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
@@ -840,7 +837,7 @@
                             <TextBlock Text="과제: 버튼 세 개로 imgVisibility를 Visible / Hidden / Collapsed로 바꾸는 핸들러를 완성하세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
                             <TextBox x:Name="txtPractice5_4"
                                      Style="{StaticResource PracticeInputStyle}"
-                                     Height="120" AcceptsReturn="True"
+                                     AcceptsReturn="True"
                                      Text="private void BtnImgVisible_Click(object sender, RoutedEventArgs e)&#10;{&#10;    &#10;}&#10;&#10;private void BtnImgHidden_Click(object sender, RoutedEventArgs e)&#10;{&#10;    &#10;}&#10;&#10;private void BtnImgCollapsed_Click(object sender, RoutedEventArgs e)&#10;{&#10;    &#10;}"/>
                             <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
                                 <Button Content="확인" Style="{StaticResource RunButtonStyle}" Click="BtnCheck_Click" Tag="5_4"/>

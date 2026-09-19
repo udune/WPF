@@ -1,0 +1,146 @@
+{
+  "Chapter": "ch15 랩패널",
+  "FirstStudiedAt": "2026-09-17T22:45:02.6625633+09:00",
+  "LastStudiedAt": "2026-09-18T09:07:37.0456279+09:00",
+  "TotalStudySeconds": 844,
+  "LaunchCount": 2,
+  "LastTab": 4,
+  "PracticeTotal": 15,
+  "Practices": {
+    "5_3": {
+      "Runs": 1,
+      "Successes": 1,
+      "Hints": 0,
+      "Answers": 3,
+      "Status": "완료",
+      "Draft": "private void ChangeItemWidth()\n{\n    // myWrapPanel의 ItemWidth 변경\n    myWrapPanel.ItemWidth = 150;\n}",
+      "CompletedAt": "2026-09-18T09:07:33.8737402+09:00"
+    },
+    "5_2": {
+      "Runs": 1,
+      "Successes": 1,
+      "Hints": 0,
+      "Answers": 1,
+      "Status": "완료",
+      "Draft": "private void ChangeOrientation()\n{\n    // myWrapPanel의 Orientation 변경\n    myWrapPanel.Orientation = Orientation.Vertical;\n}",
+      "CompletedAt": "2026-09-18T09:07:06.3266105+09:00"
+    },
+    "5_1": {
+      "Runs": 1,
+      "Successes": 1,
+      "Hints": 1,
+      "Answers": 1,
+      "Status": "완료",
+      "Draft": "private void AddButton()\n{\n    // myWrapPanel에 Button 추가\n    myWrapPanel.Children.Add(new Button { Content = \"새 버튼\" });\n}",
+      "CompletedAt": "2026-09-18T09:06:33.3151177+09:00"
+    },
+    "4_3": {
+      "Runs": 1,
+      "Successes": 1,
+      "Hints": 1,
+      "Answers": 1,
+      "Status": "완료",
+      "Draft": "<Border BorderBrush=\"#BBBBBB\" BorderThickness=\"1\">\n    <WrapPanel Background=\"#F5F5F5\">\n        <Button Content=\"항목\" Margin=\"3\"/>\n        <Button Content=\"항목\" Margin=\"3\"/>\n    </WrapPanel>\n</Border>",
+      "CompletedAt": "2026-09-18T09:05:44.0055162+09:00"
+    },
+    "4_2": {
+      "Runs": 1,
+      "Successes": 1,
+      "Hints": 0,
+      "Answers": 0,
+      "Status": "완료",
+      "Draft": "<WrapPanel FlowDirection=\"RightToLeft\">\n    <Button Content=\"첫번째\"/>\n    <Button Content=\"두번째\"/>\n</WrapPanel>",
+      "CompletedAt": "2026-09-18T09:04:40.0539+09:00"
+    },
+    "4_1": {
+      "Runs": 1,
+      "Successes": 1,
+      "Hints": 0,
+      "Answers": 0,
+      "Status": "완료",
+      "Draft": "<WrapPanel Background=\"LightGreen\">\n    <Button Content=\"버튼 1\"/>\n    <Button Content=\"버튼 2\"/>\n</WrapPanel>",
+      "CompletedAt": "2026-09-18T09:04:16.402964+09:00"
+    },
+    "3_3": {
+      "Runs": 1,
+      "Successes": 1,
+      "Hints": 1,
+      "Answers": 0,
+      "Status": "완료",
+      "Draft": "<WrapPanel Height=\"120\" Orientation=\"Vertical\">\n    <Button Content=\"가\" Margin=\"3\"/>\n    <Button Content=\"나\" Margin=\"3\"/>\n    <Button Content=\"다\" Margin=\"3\"/>\n</WrapPanel>",
+      "CompletedAt": "2026-09-18T09:03:58.8017029+09:00"
+    },
+    "3_2": {
+      "Runs": 1,
+      "Successes": 1,
+      "Hints": 0,
+      "Answers": 1,
+      "Status": "완료",
+      "Draft": "<WrapPanel ItemWidth=\"100\" ItemHeight=\"80\">\n    <Border Background=\"LightCoral\" Margin=\"4\">\n        <TextBlock Text=\"카드 1\"/>\n    </Border>\n    <Border Background=\"LightGreen\" Margin=\"4\">\n        <TextBlock Text=\"카드 2\"/>\n    </Border>\n</WrapPanel>",
+      "CompletedAt": "2026-09-18T09:02:52.4815398+09:00"
+    },
+    "3_1": {
+      "Runs": 1,
+      "Successes": 1,
+      "Hints": 0,
+      "Answers": 1,
+      "Status": "완료",
+      "Draft": "<WrapPanel>\n    <Border Background=\"LightBlue\" CornerRadius=\"10\" Padding=\"8,4\">\n        <TextBlock Text=\"태그\"/>\n    </Border>\n</WrapPanel>",
+      "CompletedAt": "2026-09-18T09:02:20.0224445+09:00"
+    },
+    "2_3": {
+      "Runs": 1,
+      "Successes": 1,
+      "Hints": 0,
+      "Answers": 0,
+      "Status": "완료",
+      "Draft": "<WrapPanel ItemWidth=\"100\" ItemHeight=\"40\">\n    <Button Content=\"A\"/>\n    <Button Content=\"B\"/>\n</WrapPanel>",
+      "CompletedAt": "2026-09-17T23:02:59.2738127+09:00"
+    },
+    "2_2": {
+      "Runs": 1,
+      "Successes": 1,
+      "Hints": 0,
+      "Answers": 1,
+      "Status": "완료",
+      "Draft": "<WrapPanel ItemHeight=\"60\">\n    <Button Content=\"항목 1\"/>\n    <Button Content=\"항목 2\"/>\n</WrapPanel>",
+      "CompletedAt": "2026-09-17T23:02:01.9296081+09:00"
+    },
+    "2_1": {
+      "Runs": 2,
+      "Successes": 2,
+      "Hints": 0,
+      "Answers": 1,
+      "Status": "완료",
+      "Draft": "<WrapPanel ItemWidth=\"120\">\n    <Button Content=\"항목 1\"/>\n    <Button Content=\"항목 2\"/>\n</WrapPanel>",
+      "CompletedAt": "2026-09-17T23:00:25.9274384+09:00"
+    },
+    "1_3": {
+      "Runs": 2,
+      "Successes": 2,
+      "Hints": 0,
+      "Answers": 1,
+      "Status": "완료",
+      "Draft": "<WrapPanel Width=\"220\">\n    <Button Content=\"1\" Width=\"60\" Margin=\"3\"/>\n    <Button Content=\"2\" Width=\"60\" Margin=\"3\"/>\n    <Button Content=\"3\" Width=\"60\" Margin=\"3\"/>\n    <Button Content=\"4\" Width=\"60\" Margin=\"3\"/>\n    <Button Content=\"5\" Width=\"60\" Margin=\"3\"/>\n    <Button Content=\"6\" Width=\"60\" Margin=\"3\"/>\n</WrapPanel>",
+      "CompletedAt": "2026-09-17T22:59:46.3068924+09:00"
+    },
+    "1_2": {
+      "Runs": 2,
+      "Successes": 1,
+      "Hints": 1,
+      "Answers": 0,
+      "Status": "완료",
+      "Draft": "<WrapPanel Height=\"100\" Orientation=\"Vertical\">\n    <Button Content=\"A\"/>\n    <Button Content=\"B\"/>\n    <Button Content=\"C\"/>\n</WrapPanel>",
+      "CompletedAt": "2026-09-17T22:46:57.4130872+09:00"
+    },
+    "1_1": {
+      "Runs": 1,
+      "Successes": 1,
+      "Hints": 0,
+      "Answers": 1,
+      "Status": "완료",
+      "Draft": "<WrapPanel>\n    <Button Content=\"버튼 1\"/>\n    <Button Content=\"버튼 2\"/>\n    <Button Content=\"버튼 3\"/>\n</WrapPanel>",
+      "CompletedAt": "2026-09-17T22:45:32.3734491+09:00"
+    }
+  }
+}

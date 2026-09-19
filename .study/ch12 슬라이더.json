@@ -1,0 +1,200 @@
+{
+  "Chapter": "ch12 슬라이더",
+  "FirstStudiedAt": "2026-09-16T22:30:56.5786779+09:00",
+  "LastStudiedAt": "2026-09-16T23:34:04.8327841+09:00",
+  "TotalStudySeconds": 848,
+  "LaunchCount": 1,
+  "LastTab": 4,
+  "PracticeTotal": 21,
+  "Practices": {
+    "5_5": {
+      "Runs": 1,
+      "Successes": 1,
+      "Hints": 1,
+      "Answers": 5,
+      "Status": "완료",
+      "Draft": "private void SldRGB_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)\n{\n    byte r = (byte)sldR.Value;\n    byte g = (byte)sldG.Value;\n    byte b = (byte)sldB.Value;\n    brushPreview.Color = Color.FromRgb(r, g, b);\n}",
+      "CompletedAt": "2026-09-16T23:33:59.7129599+09:00"
+    },
+    "5_4": {
+      "Runs": 2,
+      "Successes": 2,
+      "Hints": 0,
+      "Answers": 1,
+      "Status": "완료",
+      "Draft": "<Slider Width=\"200\" Minimum=\"0\" Maximum=\"100\" Value=\"50\"\n        TickFrequency=\"10\" TickPlacement=\"BottomRight\"\n        IsSnapToTickEnabled=\"True\"/>",
+      "CompletedAt": "2026-09-16T23:30:51.1342676+09:00"
+    },
+    "5_3": {
+      "Runs": 1,
+      "Successes": 1,
+      "Hints": 0,
+      "Answers": 1,
+      "Status": "완료",
+      "Draft": "private void SetSliderValue()\n{\n    mySlider.Value = 50;\n}",
+      "CompletedAt": "2026-09-16T23:30:03.525227+09:00"
+    },
+    "5_2": {
+      "Runs": 2,
+      "Successes": 1,
+      "Hints": 0,
+      "Answers": 0,
+      "Status": "완료",
+      "Draft": "<Slider x:Name=\"sldBinding\" Minimum=\"10\" Maximum=\"50\" Value=\"20\" />\r\n<TextBlock Text=\"연동테스트\" FontSize=\"{Binding ElementName=sldBinding, Path=Value}\"/>",
+      "CompletedAt": "2026-09-16T23:10:59.1432976+09:00"
+    },
+    "5_1": {
+      "Runs": 1,
+      "Successes": 1,
+      "Hints": 0,
+      "Answers": 0,
+      "Status": "완료",
+      "Draft": "<Slider x:Name=\"sldEvent\" ValueChanged=\"Slider_ValueChanged\" />\n<TextBlock x:Name=\"txtEventValue\" Text=\"현재 값: 0\" />\r\n\r\nprivate void Slider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)\n{\n    txtEventValue.Text = $\"현재 값: {e.NewValue:F1}\";\n}",
+      "CompletedAt": "2026-09-16T23:09:23.2147533+09:00"
+    },
+    "4_4": {
+      "Runs": 1,
+      "Successes": 1,
+      "Hints": 0,
+      "Answers": 0,
+      "Status": "완료",
+      "Draft": "<Slider AutoToolTipPlacement=\"TopLeft\"/>",
+      "CompletedAt": "2026-09-16T23:08:10.1091433+09:00"
+    },
+    "4_3": {
+      "Runs": 1,
+      "Successes": 1,
+      "Hints": 0,
+      "Answers": 0,
+      "Status": "완료",
+      "Draft": "<Slider Margin=\"10\" Background=\"LightPink\"/>",
+      "CompletedAt": "2026-09-16T23:07:48.2565018+09:00"
+    },
+    "4_2": {
+      "Runs": 1,
+      "Successes": 1,
+      "Hints": 0,
+      "Answers": 0,
+      "Status": "완료",
+      "Draft": "<Slider Foreground=\"Blue\" TickPlacement=\"Both\"/>",
+      "CompletedAt": "2026-09-16T23:07:27.1767737+09:00"
+    },
+    "4_1": {
+      "Runs": 1,
+      "Successes": 1,
+      "Hints": 0,
+      "Answers": 0,
+      "Status": "완료",
+      "Draft": "<Slider Background=\"LightGreen\"/>",
+      "CompletedAt": "2026-09-16T23:07:07.6627478+09:00"
+    },
+    "3_4": {
+      "Runs": 1,
+      "Successes": 1,
+      "Hints": 0,
+      "Answers": 0,
+      "Status": "완료",
+      "Draft": "<Slider TickPlacement=\"BottomRight\" Ticks=\"0,2,4,6,8,10\"/>",
+      "CompletedAt": "2026-09-16T23:06:47.5476844+09:00"
+    },
+    "3_3": {
+      "Runs": 1,
+      "Successes": 1,
+      "Hints": 0,
+      "Answers": 0,
+      "Status": "완료",
+      "Draft": "<Slider TickFrequency=\"5\" IsSnapToTickEnabled=\"True\" TickPlacement=\"BottomRight\" />",
+      "CompletedAt": "2026-09-16T23:06:27.2333222+09:00"
+    },
+    "3_2": {
+      "Runs": 1,
+      "Successes": 1,
+      "Hints": 0,
+      "Answers": 0,
+      "Status": "완료",
+      "Draft": "<Slider TickPlacement=\"TopLeft\" TickFrequency=\"2\"/>",
+      "CompletedAt": "2026-09-16T23:06:00.230422+09:00"
+    },
+    "3_1": {
+      "Runs": 1,
+      "Successes": 1,
+      "Hints": 0,
+      "Answers": 0,
+      "Status": "완료",
+      "Draft": "<Slider TickPlacement=\"Both\"/>",
+      "CompletedAt": "2026-09-16T23:05:37.0355106+09:00"
+    },
+    "2_4": {
+      "Runs": 1,
+      "Successes": 1,
+      "Hints": 0,
+      "Answers": 0,
+      "Status": "완료",
+      "Draft": "<Slider Width=\"150\" HorizontalAlignment=\"Right\"/>",
+      "CompletedAt": "2026-09-16T23:05:18.1049677+09:00"
+    },
+    "2_3": {
+      "Runs": 1,
+      "Successes": 1,
+      "Hints": 0,
+      "Answers": 0,
+      "Status": "완료",
+      "Draft": "<Slider IsDirectionReversed=\"True\"/>",
+      "CompletedAt": "2026-09-16T23:03:53.3269996+09:00"
+    },
+    "2_2": {
+      "Runs": 1,
+      "Successes": 1,
+      "Hints": 0,
+      "Answers": 0,
+      "Status": "완료",
+      "Draft": "<Slider Width=\"300\"/>",
+      "CompletedAt": "2026-09-16T23:03:32.4122631+09:00"
+    },
+    "2_1": {
+      "Runs": 1,
+      "Successes": 1,
+      "Hints": 0,
+      "Answers": 0,
+      "Status": "완료",
+      "Draft": "<Slider Orientation=\"Vertical\" Height=\"150\"/>",
+      "CompletedAt": "2026-09-16T23:03:13.9705783+09:00"
+    },
+    "1_4": {
+      "Runs": 1,
+      "Successes": 1,
+      "Hints": 0,
+      "Answers": 0,
+      "Status": "완료",
+      "Draft": "<Slider Value=\"60\" IsEnabled=\"False\"/>",
+      "CompletedAt": "2026-09-16T22:58:38.9293068+09:00"
+    },
+    "1_3": {
+      "Runs": 1,
+      "Successes": 1,
+      "Hints": 0,
+      "Answers": 0,
+      "Status": "완료",
+      "Draft": "<Slider Minimum=\"0\" Maximum=\"100\" SmallChange=\"1\" LargeChange=\"10\"/>",
+      "CompletedAt": "2026-09-16T22:58:02.7269171+09:00"
+    },
+    "1_2": {
+      "Runs": 4,
+      "Successes": 1,
+      "Hints": 0,
+      "Answers": 1,
+      "Status": "부분완료",
+      "Draft": "<Slider Minimum=\"0\" Maximum=\"200\" Value=\"100\"/>",
+      "CompletedAt": "2026-09-16T22:55:43.3008766+09:00"
+    },
+    "1_1": {
+      "Runs": 1,
+      "Successes": 1,
+      "Hints": 0,
+      "Answers": 0,
+      "Status": "완료",
+      "Draft": null,
+      "CompletedAt": "2026-09-16T22:51:14.0500133+09:00"
+    }
+  }
+}

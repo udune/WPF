@@ -19,7 +19,7 @@
             <Setter Property="TextWrapping" Value="Wrap"/>
             <Setter Property="AcceptsReturn" Value="True"/>
             <Setter Property="VerticalScrollBarVisibility" Value="Auto"/>
-            <Setter Property="MaxHeight" Value="300"/>
+            <Setter Property="MaxHeight" Value="420"/>
             <Setter Property="BorderBrush" Value="#333333"/>
             <Setter Property="BorderThickness" Value="1"/>
         </Style>
@@ -35,9 +35,10 @@
             <Setter Property="AcceptsReturn" Value="True"/>
             <Setter Property="FontFamily" Value="Consolas"/>
             <Setter Property="FontSize" Value="12"/>
-            <Setter Property="Height" Value="80"/>
             <Setter Property="VerticalScrollBarVisibility" Value="Auto"/>
             <Setter Property="Padding" Value="5"/>
+            <Setter Property="MinHeight" Value="160"/>
+            <Setter Property="MaxHeight" Value="420"/>
         </Style>
         <Style x:Key="RunButtonStyle" TargetType="Button">
             <Setter Property="Width" Value="60"/>
@@ -97,7 +98,6 @@
                             <TextBlock Text="과제: 2행 2열 Grid를 만들고, 각 셀에 (행,열) 좌표를 표시하는 TextBlock을 배치하세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
                             <TextBox x:Name="txtPractice1_1"
                                      Style="{StaticResource PracticeInputStyle}"
-                                     Height="150"
                                      Text="&lt;Grid ShowGridLines=&quot;True&quot;&gt;&#x0a;    &lt;!-- 여기에 RowDefinitions와 ColumnDefinitions 추가 --&gt;&#x0a;    &lt;!-- 각 셀에 TextBlock 배치 --&gt;&#x0a;&lt;/Grid&gt;"/>
                             <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
                                 <Button Content="실행" Style="{StaticResource RunButtonStyle}" Click="BtnRun_Click" Tag="1_1"/>
@@ -142,7 +142,6 @@
                             <TextBlock Text="과제: 1행 3열 Grid를 만들고 각 열에 버튼을 배치하세요. (버튼1, 버튼2, 버튼3)" FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
                             <TextBox x:Name="txtPractice1_2"
                                      Style="{StaticResource PracticeInputStyle}"
-                                     Height="120"
                                      Text="&lt;Grid&gt;&#x0a;    &lt;!-- 3개의 ColumnDefinition 추가 --&gt;&#x0a;    &lt;!-- 각 열에 Button 배치 --&gt;&#x0a;&lt;/Grid&gt;"/>
                             <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
                                 <Button Content="실행" Style="{StaticResource RunButtonStyle}" Click="BtnRun_Click" Tag="1_2"/>
@@ -231,7 +230,6 @@
                             <TextBlock Text="과제: 3열 Grid를 만들고 1:2:1 비율로 열을 분배하세요. 각 열에 비율을 표시하는 Border를 넣으세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
                             <TextBox x:Name="txtPractice2_1"
                                      Style="{StaticResource PracticeInputStyle}"
-                                     Height="150"
                                      Text="&lt;Grid Height=&quot;80&quot;&gt;&#x0a;    &lt;Grid.ColumnDefinitions&gt;&#x0a;        &lt;!-- 1:2:1 비율 설정 --&gt;&#x0a;    &lt;/Grid.ColumnDefinitions&gt;&#x0a;    &lt;!-- 각 열에 Border와 TextBlock --&gt;&#x0a;&lt;/Grid&gt;"/>
                             <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
                                 <Button Content="실행" Style="{StaticResource RunButtonStyle}" Click="BtnRun_Click" Tag="2_1"/>
@@ -291,7 +289,6 @@
                             <TextBlock Text="과제: 3열 Grid에서 첫 번째 열은 Auto, 두 번째는 100px 고정, 세 번째는 나머지(*)로 설정하세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
                             <TextBox x:Name="txtPractice2_2"
                                      Style="{StaticResource PracticeInputStyle}"
-                                     Height="150"
                                      Text="&lt;Grid Height=&quot;60&quot;&gt;&#x0a;    &lt;Grid.ColumnDefinitions&gt;&#x0a;        &lt;!-- Auto, 100, * 설정 --&gt;&#x0a;    &lt;/Grid.ColumnDefinitions&gt;&#x0a;    &lt;Button Content=&quot;Auto&quot; Grid.Column=&quot;0&quot;/&gt;&#x0a;    &lt;Button Content=&quot;100px&quot; Grid.Column=&quot;1&quot;/&gt;&#x0a;    &lt;Button Content=&quot;나머지&quot; Grid.Column=&quot;2&quot;/&gt;&#x0a;&lt;/Grid&gt;"/>
                             <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
                                 <Button Content="실행" Style="{StaticResource RunButtonStyle}" Click="BtnRun_Click" Tag="2_2"/>
@@ -437,7 +434,6 @@
                             <TextBlock Text="과제: 2행 3열 Grid에서 첫 번째 행에 ColumnSpan=3인 헤더 Border를 만드세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
                             <TextBox x:Name="txtPractice3_1"
                                      Style="{StaticResource PracticeInputStyle}"
-                                     Height="180"
                                      Text="&lt;Grid Height=&quot;120&quot; ShowGridLines=&quot;True&quot;&gt;&#x0a;    &lt;Grid.RowDefinitions&gt;&#x0a;        &lt;RowDefinition Height=&quot;Auto&quot;/&gt;&#x0a;        &lt;RowDefinition/&gt;&#x0a;    &lt;/Grid.RowDefinitions&gt;&#x0a;    &lt;Grid.ColumnDefinitions&gt;&#x0a;        &lt;ColumnDefinition/&gt;&#x0a;        &lt;ColumnDefinition/&gt;&#x0a;        &lt;ColumnDefinition/&gt;&#x0a;    &lt;/Grid.ColumnDefinitions&gt;&#x0a;    &lt;!-- 여기에 ColumnSpan=3 헤더 추가 --&gt;&#x0a;&lt;/Grid&gt;"/>
                             <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
                                 <Button Content="실행" Style="{StaticResource RunButtonStyle}" Click="BtnRun_Click" Tag="3_1"/>
@@ -480,7 +476,6 @@
                             <TextBlock Text="과제: 3행 2열 Grid에서 첫 번째 열에 RowSpan=3인 사이드바 Border를 만드세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
                             <TextBox x:Name="txtPractice3_2"
                                      Style="{StaticResource PracticeInputStyle}"
-                                     Height="180"
                                      Text="&lt;Grid Height=&quot;150&quot; ShowGridLines=&quot;True&quot;&gt;&#x0a;    &lt;Grid.RowDefinitions&gt;&#x0a;        &lt;RowDefinition/&gt;&#x0a;        &lt;RowDefinition/&gt;&#x0a;        &lt;RowDefinition/&gt;&#x0a;    &lt;/Grid.RowDefinitions&gt;&#x0a;    &lt;Grid.ColumnDefinitions&gt;&#x0a;        &lt;ColumnDefinition Width=&quot;80&quot;/&gt;&#x0a;        &lt;ColumnDefinition/&gt;&#x0a;    &lt;/Grid.ColumnDefinitions&gt;&#x0a;    &lt;!-- 여기에 RowSpan=3 사이드바 추가 --&gt;&#x0a;&lt;/Grid&gt;"/>
                             <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
                                 <Button Content="실행" Style="{StaticResource RunButtonStyle}" Click="BtnRun_Click" Tag="3_2"/>
@@ -594,7 +589,6 @@
                             <TextBlock Text="과제: 수직 GridSplitter를 포함한 좌우 분할 Grid를 만드세요. 왼쪽과 오른쪽에 각각 Border를 넣으세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
                             <TextBox x:Name="txtPractice4_1"
                                      Style="{StaticResource PracticeInputStyle}"
-                                     Height="200"
                                      Text="&lt;Grid Height=&quot;120&quot;&gt;&#x0a;    &lt;Grid.ColumnDefinitions&gt;&#x0a;        &lt;ColumnDefinition Width=&quot;1*&quot;/&gt;&#x0a;        &lt;ColumnDefinition Width=&quot;Auto&quot;/&gt;&#x0a;        &lt;ColumnDefinition Width=&quot;1*&quot;/&gt;&#x0a;    &lt;/Grid.ColumnDefinitions&gt;&#x0a;    &lt;Border Grid.Column=&quot;0&quot; Background=&quot;#BBDEFB&quot;&gt;&#x0a;        &lt;TextBlock Text=&quot;왼쪽&quot; HorizontalAlignment=&quot;Center&quot; VerticalAlignment=&quot;Center&quot;/&gt;&#x0a;    &lt;/Border&gt;&#x0a;    &lt;!-- 여기에 GridSplitter 추가 --&gt;&#x0a;    &lt;Border Grid.Column=&quot;2&quot; Background=&quot;#C8E6C9&quot;&gt;&#x0a;        &lt;TextBlock Text=&quot;오른쪽&quot; HorizontalAlignment=&quot;Center&quot; VerticalAlignment=&quot;Center&quot;/&gt;&#x0a;    &lt;/Border&gt;&#x0a;&lt;/Grid&gt;"/>
                             <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
                                 <Button Content="실행" Style="{StaticResource RunButtonStyle}" Click="BtnRun_Click" Tag="4_1"/>
@@ -747,7 +741,6 @@
                             <TextBlock Text="과제: Grid에 새 행을 추가하는 코드를 작성하세요. myGrid라는 Grid에 RowDefinition을 추가합니다." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
                             <TextBox x:Name="txtPractice5_1"
                                      Style="{StaticResource PracticeInputStyle}"
-                                     Height="80"
                                      Text="// myGrid에 새 행 추가&#x0a;myGrid.RowDefinitions.Add(             );"/>
                             <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
                                 <Button Content="확인" Style="{StaticResource RunButtonStyle}" Click="BtnCheck_Click" Tag="5_1"/>
@@ -797,7 +790,6 @@
                             <TextBlock Text="과제: 요소의 Grid 위치를 코드에서 변경하세요. myElement를 2행 3열로 이동시키는 코드를 작성하세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
                             <TextBox x:Name="txtPractice5_2"
                                      Style="{StaticResource PracticeInputStyle}"
-                                     Height="80"
                                      Text="// myElement를 2행 3열로 이동&#x0a;Grid.SetRow(myElement,     );&#x0a;Grid.SetColumn(myElement,     );"/>
                             <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
                                 <Button Content="확인" Style="{StaticResource RunButtonStyle}" Click="BtnCheck_Click" Tag="5_2"/>
@@ -844,7 +836,6 @@
                             <TextBlock Text="과제: 열 크기를 코드에서 2:1 비율로 변경하세요. col1은 2*, col2는 1*로 설정합니다." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
                             <TextBox x:Name="txtPractice5_3"
                                      Style="{StaticResource PracticeInputStyle}"
-                                     Height="80"
                                      Text="// col1을 2*, col2를 1*로 설정&#x0a;col1.Width = new GridLength(  , GridUnitType.Star);&#x0a;col2.Width = new GridLength(  , GridUnitType.Star);"/>
                             <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
                                 <Button Content="확인" Style="{StaticResource RunButtonStyle}" Click="BtnCheck_Click" Tag="5_3"/>

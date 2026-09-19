@@ -1,0 +1,182 @@
+{
+  "Chapter": "ch11 데이트피커",
+  "FirstStudiedAt": "2026-09-16T00:58:31.2694357+09:00",
+  "LastStudiedAt": "2026-09-16T01:27:49.1298204+09:00",
+  "TotalStudySeconds": 993,
+  "LaunchCount": 1,
+  "LastTab": 4,
+  "PracticeTotal": 19,
+  "Practices": {
+    "5_4": {
+      "Runs": 1,
+      "Successes": 1,
+      "Hints": 0,
+      "Answers": 12,
+      "Status": "완료",
+      "Draft": "private void SelectToday_Click(object sender, RoutedEventArgs e)\n{\n    dpCode.SelectedDate = DateTime.Today;\n}\n\nprivate void ClearDate_Click(object sender, RoutedEventArgs e)\n{\n    dpCode.SelectedDate = null;\n}",
+      "CompletedAt": "2026-09-16T01:27:35.3541069+09:00"
+    },
+    "5_3": {
+      "Runs": 1,
+      "Successes": 1,
+      "Hints": 0,
+      "Answers": 15,
+      "Status": "완료",
+      "Draft": "private void SelectTodayDate()\n{\n    myDatePicker.SelectedDate = DateTime.Today;\n}",
+      "CompletedAt": "2026-09-16T01:26:38.5880079+09:00"
+    },
+    "5_2": {
+      "Runs": 1,
+      "Successes": 1,
+      "Hints": 1,
+      "Answers": 0,
+      "Status": "완료",
+      "Draft": "<DatePicker FirstDayOfWeek=\"Monday\"/>",
+      "CompletedAt": "2026-09-16T01:26:02.0102195+09:00"
+    },
+    "5_1": {
+      "Runs": 1,
+      "Successes": 1,
+      "Hints": 1,
+      "Answers": 5,
+      "Status": "완료",
+      "Draft": "<DatePicker Background=\"LightGreen\" BorderBrush=\"Green\"/>",
+      "CompletedAt": "2026-09-16T01:25:19.1272097+09:00"
+    },
+    "4_3": {
+      "Runs": 1,
+      "Successes": 1,
+      "Hints": 1,
+      "Answers": 1,
+      "Status": "완료",
+      "Draft": "private void NextWeek_Click(object sender, RoutedEventArgs e)\n{\n    dp.SelectedDate = DateTime.Today.AddDays(7);\n}",
+      "CompletedAt": "2026-09-16T01:24:29.0194571+09:00"
+    },
+    "4_2": {
+      "Runs": 4,
+      "Successes": 2,
+      "Hints": 0,
+      "Answers": 1,
+      "Status": "완료",
+      "Draft": "<StackPanel>\n    <DatePicker x:Name=\"dp\" Width=\"180\" HorizontalAlignment=\"Left\"/>\n    <TextBlock Text=\"{Binding ElementName=dp, Path=SelectedDate, StringFormat='예약일: {0:yyyy-MM-dd}'}\" Margin=\"0,8,0,0\"/>\n</StackPanel>",
+      "CompletedAt": "2026-09-16T01:23:21.1295828+09:00"
+    },
+    "4_1": {
+      "Runs": 2,
+      "Successes": 1,
+      "Hints": 1,
+      "Answers": 1,
+      "Status": "완료",
+      "Draft": "<TextBlock Text=\"{Binding ElementName=dpSource, Path=Text}\"/>",
+      "CompletedAt": "2026-09-16T01:21:01.2794584+09:00"
+    },
+    "3_4": {
+      "Runs": 1,
+      "Successes": 1,
+      "Hints": 0,
+      "Answers": 1,
+      "Status": "완료",
+      "Draft": "<DatePicker IsTodayHighlighted=\"False\"/>",
+      "CompletedAt": "2026-09-16T01:19:37.2042853+09:00"
+    },
+    "3_3": {
+      "Runs": 1,
+      "Successes": 1,
+      "Hints": 1,
+      "Answers": 1,
+      "Status": "완료",
+      "Draft": "<DatePicker SelectedDateFormat=\"Long\"/>",
+      "CompletedAt": "2026-09-16T01:19:13.7366899+09:00"
+    },
+    "3_2": {
+      "Runs": 1,
+      "Successes": 1,
+      "Hints": 1,
+      "Answers": 1,
+      "Status": "완료",
+      "Draft": "<DatePicker IsTodayHighlighted=\"False\"/>",
+      "CompletedAt": "2026-09-16T01:18:35.128628+09:00"
+    },
+    "3_1": {
+      "Runs": 1,
+      "Successes": 1,
+      "Hints": 1,
+      "Answers": 1,
+      "Status": "완료",
+      "Draft": "private void DatePicker_SelectedDateChanged(object sender, SelectionChangedEventArgs e)\n{\n    if (myDatePicker.SelectedDate.HasValue)\n    {\n        txtResult.Text = myDatePicker.SelectedDate.Value.ToString(\"yyyy-MM-dd\");\n    }\n}",
+      "CompletedAt": "2026-09-16T01:18:02.4367457+09:00"
+    },
+    "2_4": {
+      "Runs": 1,
+      "Successes": 1,
+      "Hints": 0,
+      "Answers": 0,
+      "Status": "완료",
+      "Draft": "<DatePicker FirstDayOfWeek=\"Monday\"/>",
+      "CompletedAt": "2026-09-16T01:13:35.6402996+09:00"
+    },
+    "2_3": {
+      "Runs": 1,
+      "Successes": 1,
+      "Hints": 1,
+      "Answers": 0,
+      "Status": "완료",
+      "Draft": "<DatePicker DisplayDateStart=\"2025-01-01\" DisplayDateEnd=\"2025-12-31\"/>\r\n",
+      "CompletedAt": "2026-09-16T01:13:14.549036+09:00"
+    },
+    "2_2": {
+      "Runs": 1,
+      "Successes": 1,
+      "Hints": 1,
+      "Answers": 1,
+      "Status": "완료",
+      "Draft": "private void DisablePastDates()\n{\n    datePickerControl.BlackoutDates.AddDatesInPast();\n}",
+      "CompletedAt": "2026-09-16T01:11:56.5536911+09:00"
+    },
+    "2_1": {
+      "Runs": 1,
+      "Successes": 1,
+      "Hints": 0,
+      "Answers": 0,
+      "Status": "완료",
+      "Draft": "<DatePicker DisplayDateStart=\"2025-03-01\" DisplayDateEnd=\"2025-03-31\"/>",
+      "CompletedAt": "2026-09-16T01:06:17.3759414+09:00"
+    },
+    "1_4": {
+      "Runs": 1,
+      "Successes": 1,
+      "Hints": 0,
+      "Answers": 1,
+      "Status": "완료",
+      "Draft": "<DatePicker DisplayDate=\"2026-03-01\"/>",
+      "CompletedAt": "2026-09-16T01:00:07.7037627+09:00"
+    },
+    "1_3": {
+      "Runs": 1,
+      "Successes": 1,
+      "Hints": 1,
+      "Answers": 1,
+      "Status": "완료",
+      "Draft": "<DatePicker SelectedDateFormat=\"Long\"/>",
+      "CompletedAt": "2026-09-16T00:59:45.8769234+09:00"
+    },
+    "1_2": {
+      "Runs": 1,
+      "Successes": 1,
+      "Hints": 1,
+      "Answers": 1,
+      "Status": "완료",
+      "Draft": "<DatePicker SelectedDate=\"2025-12-25\"/>",
+      "CompletedAt": "2026-09-16T00:59:09.8285609+09:00"
+    },
+    "1_1": {
+      "Runs": 1,
+      "Successes": 1,
+      "Hints": 1,
+      "Answers": 1,
+      "Status": "완료",
+      "Draft": "<DatePicker/>",
+      "CompletedAt": "2026-09-16T00:58:41.0297622+09:00"
+    }
+  }
+}

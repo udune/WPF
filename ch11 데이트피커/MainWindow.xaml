@@ -23,7 +23,7 @@
             <Setter Property="TextWrapping" Value="Wrap"/>
             <Setter Property="AcceptsReturn" Value="True"/>
             <Setter Property="VerticalScrollBarVisibility" Value="Auto"/>
-            <Setter Property="MaxHeight" Value="300"/>
+            <Setter Property="MaxHeight" Value="420"/>
             <Setter Property="BorderBrush" Value="#333333"/>
             <Setter Property="BorderThickness" Value="1"/>
         </Style>
@@ -42,12 +42,12 @@
             <Setter Property="FontSize" Value="13"/>
             <Setter Property="AcceptsReturn" Value="True"/>
             <Setter Property="TextWrapping" Value="Wrap"/>
-            <Setter Property="MinHeight" Value="60"/>
-            <Setter Property="MaxHeight" Value="150"/>
             <Setter Property="VerticalScrollBarVisibility" Value="Auto"/>
             <Setter Property="Padding" Value="8"/>
             <Setter Property="BorderBrush" Value="#CCC"/>
             <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="MinHeight" Value="160"/>
+            <Setter Property="MaxHeight" Value="420"/>
         </Style>
         <Style x:Key="RunButtonStyle" TargetType="Button">
             <Setter Property="Content" Value="실행"/>
@@ -248,7 +248,7 @@
                         <StackPanel>
                             <TextBlock Text="문제: DatePicker에서 오늘 이전 날짜를 선택 불가로 만드는 C# 메서드를 작성하세요." FontWeight="Bold" Margin="0,0,0,8"/>
                             <TextBlock Text="(datePickerControl이라는 이름의 DatePicker가 있다고 가정)" Foreground="Gray" Margin="0,0,0,8"/>
-                            <TextBox x:Name="txtPractice2_2" Style="{StaticResource PracticeInputStyle}" Text="" MinHeight="80"/>
+                            <TextBox x:Name="txtPractice2_2" Style="{StaticResource PracticeInputStyle}" Text=""/>
                             <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
                                 <Button Content="확인" Tag="2_2" Click="BtnCheck_Click" Padding="16,6" Background="#9C27B0" Foreground="White" BorderThickness="0" Margin="0,0,8,0"/>
                                 <Button Style="{StaticResource HintButtonStyle}" Tag="2_2" Click="BtnHint_Click" Margin="0,0,8,0"/>
@@ -354,7 +354,7 @@
                         <StackPanel>
                             <TextBlock Text="문제: DatePicker의 SelectedDateChanged 이벤트 핸들러를 작성하세요." FontWeight="Bold" Margin="0,0,0,8"/>
                             <TextBlock Text="(myDatePicker와 txtResult라는 이름의 컨트롤이 있다고 가정)" Foreground="Gray" Margin="0,0,0,8"/>
-                            <TextBox x:Name="txtPractice3_1" Style="{StaticResource PracticeInputStyle}" Text="" MinHeight="100"/>
+                            <TextBox x:Name="txtPractice3_1" Style="{StaticResource PracticeInputStyle}" Text=""/>
                             <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
                                 <Button Content="확인" Tag="3_1" Click="BtnCheck_Click" Padding="16,6" Background="#9C27B0" Foreground="White" BorderThickness="0" Margin="0,0,8,0"/>
                                 <Button Style="{StaticResource HintButtonStyle}" Tag="3_1" Click="BtnHint_Click" Margin="0,0,8,0"/>
@@ -666,7 +666,7 @@
                         <StackPanel>
                             <TextBlock Text="문제: DatePicker에 오늘 날짜를 선택하는 C# 메서드를 작성하세요." FontWeight="Bold" Margin="0,0,0,8"/>
                             <TextBlock Text="(myDatePicker라는 이름의 DatePicker가 있다고 가정)" Foreground="Gray" Margin="0,0,0,8"/>
-                            <TextBox x:Name="txtPractice5_3" Style="{StaticResource PracticeInputStyle}" Text="" MinHeight="80"/>
+                            <TextBox x:Name="txtPractice5_3" Style="{StaticResource PracticeInputStyle}" Text=""/>
                             <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
                                 <Button Content="확인" Tag="5_3" Click="BtnCheck_Click" Padding="16,6" Background="#9C27B0" Foreground="White" BorderThickness="0" Margin="0,0,8,0"/>
                                 <Button Style="{StaticResource HintButtonStyle}" Tag="5_3" Click="BtnHint_Click" Margin="0,0,8,0"/>
@@ -699,7 +699,7 @@
                             <TextBlock Text="과제: 버튼으로 오늘 날짜를 넣고, 다른 버튼으로 선택을 해제하는 두 핸들러를 완성하세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
                             <TextBox x:Name="txtPractice5_4"
                                      Style="{StaticResource PracticeInputStyle}"
-                                     Height="120" AcceptsReturn="True"
+                                     AcceptsReturn="True"
                                      Text="private void SelectToday_Click(object sender, RoutedEventArgs e)&#10;{&#10;    &#10;}&#10;&#10;private void ClearDate_Click(object sender, RoutedEventArgs e)&#10;{&#10;    &#10;}"/>
                             <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
                                 <Button Content="확인" Style="{StaticResource RunButtonStyle}" Click="BtnCheck_Click" Tag="5_4"/>

@@ -1,0 +1,164 @@
+{
+  "Chapter": "ch9 라디오버튼",
+  "FirstStudiedAt": "2026-09-15T00:10:47.0112779+09:00",
+  "LastStudiedAt": "2026-09-15T00:44:33.3604095+09:00",
+  "TotalStudySeconds": 1731,
+  "LaunchCount": 2,
+  "LastTab": 0,
+  "PracticeTotal": 17,
+  "Practices": {
+    "5_3": {
+      "Runs": 1,
+      "Successes": 1,
+      "Hints": 0,
+      "Answers": 1,
+      "Status": "완료",
+      "Draft": "private void SelectOptionB()\n{\n    rbOption2.IsChecked = true;\n}",
+      "CompletedAt": "2026-09-15T00:39:33.6134107+09:00"
+    },
+    "5_2": {
+      "Runs": 2,
+      "Successes": 1,
+      "Hints": 0,
+      "Answers": 1,
+      "Status": "완료",
+      "Draft": "private string GetSelectedSize()\n{\n    if (rbSmall.IsChecked == true) return \"Small\";\n    else if (rbMedium.IsChecked == true) return \"Medium\";\n    else return \"Large\";\n}",
+      "CompletedAt": "2026-09-15T00:38:47.2239031+09:00"
+    },
+    "5_1": {
+      "Runs": 1,
+      "Successes": 1,
+      "Hints": 0,
+      "Answers": 1,
+      "Status": "완료",
+      "Draft": "private void RadioButton_Checked(object sender, RoutedEventArgs e)\n{\n    var rb = sender as RadioButton;\n    MessageBox.Show($\"선택됨: {rb.Content}\");\n}",
+      "CompletedAt": "2026-09-15T00:36:12.6138687+09:00"
+    },
+    "4_4": {
+      "Runs": 1,
+      "Successes": 1,
+      "Hints": 0,
+      "Answers": 0,
+      "Status": "완료",
+      "Draft": "<RadioButton Content=\"여백 있는 버튼\" Padding=\"10\" Background=\"LightBlue\"/>",
+      "CompletedAt": "2026-09-15T00:34:07.0918462+09:00"
+    },
+    "4_3": {
+      "Runs": 1,
+      "Successes": 1,
+      "Hints": 0,
+      "Answers": 0,
+      "Status": "완료",
+      "Draft": "<RadioButton Content=\"주황 테두리\" BorderThickness=\"2\" BorderBrush=\"Orange\"/>",
+      "CompletedAt": "2026-09-15T00:33:37.8907844+09:00"
+    },
+    "4_2": {
+      "Runs": 1,
+      "Successes": 1,
+      "Hints": 0,
+      "Answers": 0,
+      "Status": "완료",
+      "Draft": "<RadioButton Content=\"초록 배경\" Background=\"LightGreen\"/>",
+      "CompletedAt": "2026-09-15T00:32:55.7495531+09:00"
+    },
+    "4_1": {
+      "Runs": 1,
+      "Successes": 1,
+      "Hints": 0,
+      "Answers": 0,
+      "Status": "완료",
+      "Draft": "<RadioButton Content=\"파란 글씨\" Foreground=\"Blue\"/>",
+      "CompletedAt": "2026-09-15T00:32:39.2197999+09:00"
+    },
+    "3_4": {
+      "Runs": 2,
+      "Successes": 2,
+      "Hints": 0,
+      "Answers": 0,
+      "Status": "완료",
+      "Draft": "<RadioButton Content=\"코드 폰트\" FontFamily=\"Consolas\"/>",
+      "CompletedAt": "2026-09-15T00:21:15.7607818+09:00"
+    },
+    "3_3": {
+      "Runs": 1,
+      "Successes": 1,
+      "Hints": 0,
+      "Answers": 0,
+      "Status": "완료",
+      "Draft": "<RadioButton Content=\"기울임체\" FontStyle=\"Italic\"/>",
+      "CompletedAt": "2026-09-15T00:21:00.2870581+09:00"
+    },
+    "3_2": {
+      "Runs": 1,
+      "Successes": 1,
+      "Hints": 0,
+      "Answers": 0,
+      "Status": "완료",
+      "Draft": "<RadioButton Content=\"굵은 글씨\" FontWeight=\"Bold\"/>",
+      "CompletedAt": "2026-09-15T00:19:42.9259207+09:00"
+    },
+    "3_1": {
+      "Runs": 1,
+      "Successes": 1,
+      "Hints": 0,
+      "Answers": 0,
+      "Status": "완료",
+      "Draft": "<RadioButton Content=\"큰 글씨\" FontSize=\"20\"/>",
+      "CompletedAt": "2026-09-15T00:40:33.168288+09:00"
+    },
+    "2_3": {
+      "Runs": 3,
+      "Successes": 3,
+      "Hints": 0,
+      "Answers": 4,
+      "Status": "완료",
+      "Draft": "<StackPanel Orientation=\"Horizontal\">\n    <RadioButton Content=\"작게\" GroupName=\"size\" Margin=\"4\"/>\n    <RadioButton Content=\"크게\" GroupName=\"size\" Margin=\"4\"/>\n    <RadioButton Content=\"빨강\" GroupName=\"color\" Margin=\"4\"/>\n    <RadioButton Content=\"파랑\" GroupName=\"color\" Margin=\"4\"/>\n</StackPanel>",
+      "CompletedAt": "2026-09-15T00:18:00.745283+09:00"
+    },
+    "2_2": {
+      "Runs": 2,
+      "Successes": 2,
+      "Hints": 0,
+      "Answers": 0,
+      "Status": "완료",
+      "Draft": "<StackPanel Orientation=\"Horizontal\">\n    <RadioButton Content=\"예\" />\n    <RadioButton Content=\"아니오\" />\n</StackPanel>",
+      "CompletedAt": "2026-09-15T00:14:05.9421824+09:00"
+    },
+    "2_1": {
+      "Runs": 1,
+      "Successes": 1,
+      "Hints": 0,
+      "Answers": 0,
+      "Status": "완료",
+      "Draft": "<RadioButton Content=\"가운데 정렬\" HorizontalAlignment=\"Center\"/>",
+      "CompletedAt": "2026-09-15T00:13:46.0038517+09:00"
+    },
+    "1_3": {
+      "Runs": 3,
+      "Successes": 1,
+      "Hints": 0,
+      "Answers": 2,
+      "Status": "완료",
+      "Draft": "<RadioButton Content=\"기본 선택\" IsChecked=\"True\"/>",
+      "CompletedAt": "2026-09-15T00:44:21.6438963+09:00"
+    },
+    "1_2": {
+      "Runs": 1,
+      "Successes": 1,
+      "Hints": 0,
+      "Answers": 1,
+      "Status": "완료",
+      "Draft": "<StackPanel>\n    <RadioButton GroupName=\"Fruit\" Content=\"사과\"/>\n    <RadioButton GroupName=\"Fruit\" Content=\"바나나\"/>\n</StackPanel>",
+      "CompletedAt": "2026-09-15T00:42:50.6228696+09:00"
+    },
+    "1_1": {
+      "Runs": 2,
+      "Successes": 1,
+      "Hints": 0,
+      "Answers": 0,
+      "Status": "완료",
+      "Draft": "<RadioButton Content=\"좋아요\"/>",
+      "CompletedAt": "2026-09-15T00:41:31.0461431+09:00"
+    }
+  }
+}

@@ -1,0 +1,182 @@
+{
+  "Chapter": "ch25 데이터바인딩1",
+  "FirstStudiedAt": "2026-09-18T18:31:51.1182873+09:00",
+  "LastStudiedAt": "2026-09-18T18:37:41.3938445+09:00",
+  "TotalStudySeconds": 316,
+  "LaunchCount": 1,
+  "LastTab": 0,
+  "PracticeTotal": 19,
+  "Practices": {
+    "5_3": {
+      "Runs": 0,
+      "Successes": 0,
+      "Hints": 0,
+      "Answers": 0,
+      "Status": "미완료",
+      "Draft": null,
+      "CompletedAt": null
+    },
+    "5_2": {
+      "Runs": 0,
+      "Successes": 0,
+      "Hints": 0,
+      "Answers": 0,
+      "Status": "미완료",
+      "Draft": null,
+      "CompletedAt": null
+    },
+    "5_1": {
+      "Runs": 0,
+      "Successes": 0,
+      "Hints": 0,
+      "Answers": 0,
+      "Status": "미완료",
+      "Draft": null,
+      "CompletedAt": null
+    },
+    "4_4": {
+      "Runs": 0,
+      "Successes": 0,
+      "Hints": 0,
+      "Answers": 0,
+      "Status": "미완료",
+      "Draft": null,
+      "CompletedAt": null
+    },
+    "4_3": {
+      "Runs": 0,
+      "Successes": 0,
+      "Hints": 0,
+      "Answers": 0,
+      "Status": "미완료",
+      "Draft": null,
+      "CompletedAt": null
+    },
+    "4_2": {
+      "Runs": 0,
+      "Successes": 0,
+      "Hints": 0,
+      "Answers": 0,
+      "Status": "미완료",
+      "Draft": null,
+      "CompletedAt": null
+    },
+    "4_1": {
+      "Runs": 0,
+      "Successes": 0,
+      "Hints": 0,
+      "Answers": 0,
+      "Status": "미완료",
+      "Draft": null,
+      "CompletedAt": null
+    },
+    "3_4": {
+      "Runs": 0,
+      "Successes": 0,
+      "Hints": 0,
+      "Answers": 0,
+      "Status": "미완료",
+      "Draft": null,
+      "CompletedAt": null
+    },
+    "3_3": {
+      "Runs": 0,
+      "Successes": 0,
+      "Hints": 0,
+      "Answers": 0,
+      "Status": "미완료",
+      "Draft": null,
+      "CompletedAt": null
+    },
+    "3_2": {
+      "Runs": 0,
+      "Successes": 0,
+      "Hints": 0,
+      "Answers": 0,
+      "Status": "미완료",
+      "Draft": null,
+      "CompletedAt": null
+    },
+    "3_1": {
+      "Runs": 0,
+      "Successes": 0,
+      "Hints": 0,
+      "Answers": 0,
+      "Status": "미완료",
+      "Draft": null,
+      "CompletedAt": null
+    },
+    "2_4": {
+      "Runs": 0,
+      "Successes": 0,
+      "Hints": 0,
+      "Answers": 0,
+      "Status": "미완료",
+      "Draft": null,
+      "CompletedAt": null
+    },
+    "2_3": {
+      "Runs": 0,
+      "Successes": 0,
+      "Hints": 0,
+      "Answers": 0,
+      "Status": "미완료",
+      "Draft": null,
+      "CompletedAt": null
+    },
+    "2_2": {
+      "Runs": 0,
+      "Successes": 0,
+      "Hints": 0,
+      "Answers": 0,
+      "Status": "미완료",
+      "Draft": null,
+      "CompletedAt": null
+    },
+    "2_1": {
+      "Runs": 0,
+      "Successes": 0,
+      "Hints": 0,
+      "Answers": 0,
+      "Status": "미완료",
+      "Draft": null,
+      "CompletedAt": null
+    },
+    "1_4": {
+      "Runs": 1,
+      "Successes": 1,
+      "Hints": 1,
+      "Answers": 0,
+      "Status": "완료",
+      "Draft": "<StackPanel>\n    <CheckBox x:Name=\"enableCheckBox\" Content=\"버튼 활성화\" IsChecked=\"True\"/>\n    <Button Content=\"실행\" IsEnabled=\"{Binding ElementName=enableCheckBox, Path=IsCheked}\" Margin=\"0,8,0,0\"/>\n</StackPanel>",
+      "CompletedAt": "2026-09-18T18:37:15.9951751+09:00"
+    },
+    "1_3": {
+      "Runs": 3,
+      "Successes": 2,
+      "Hints": 1,
+      "Answers": 1,
+      "Status": "완료",
+      "Draft": "<StackPanel>\n    <CheckBox x:Name=\"chk\" Content=\"동의\"/>\n    <TextBlock Text=\"{Binding ElementName=chk, Path=IsChecked}\" Margin=\"0,6,0,0\"/>\n</StackPanel>",
+      "CompletedAt": "2026-09-18T18:35:56.5677085+09:00"
+    },
+    "1_2": {
+      "Runs": 3,
+      "Successes": 3,
+      "Hints": 7,
+      "Answers": 0,
+      "Status": "완료",
+      "Draft": "<StackPanel>\n    <TextBox x:Name=\"input\" Width=\"200\"/>\n    <TextBlock Text=\"{Binding ElementName=input, Path=Text}\"/>\n</StackPanel>",
+      "CompletedAt": "2026-09-18T18:34:25.1890698+09:00"
+    },
+    "1_1": {
+      "Runs": 2,
+      "Successes": 2,
+      "Hints": 1,
+      "Answers": 3,
+      "Status": "완료",
+      "Draft": "<StackPanel>\n    <Slider x:Name=\"sld\" Minimum=\"0\" Maximum=\"100\" Width=\"200\"/>\n    <TextBlock Text=\"{Binding ElementName=sld, Path=Value}\"/>\n</StackPanel>",
+      "CompletedAt": "2026-09-18T18:33:18.0356762+09:00"
+    }
+  }
+}

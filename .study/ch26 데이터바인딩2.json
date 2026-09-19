@@ -1,0 +1,146 @@
+{
+  "Chapter": "ch26 데이터바인딩2",
+  "FirstStudiedAt": "2026-09-18T18:44:16.7148457+09:00",
+  "LastStudiedAt": "2026-09-18T18:49:25.3670548+09:00",
+  "TotalStudySeconds": 254,
+  "LaunchCount": 1,
+  "LastTab": 0,
+  "PracticeTotal": 15,
+  "Practices": {
+    "5_3": {
+      "Runs": 0,
+      "Successes": 0,
+      "Hints": 0,
+      "Answers": 0,
+      "Status": "미완료",
+      "Draft": null,
+      "CompletedAt": null
+    },
+    "5_2": {
+      "Runs": 0,
+      "Successes": 0,
+      "Hints": 0,
+      "Answers": 0,
+      "Status": "미완료",
+      "Draft": null,
+      "CompletedAt": null
+    },
+    "5_1": {
+      "Runs": 0,
+      "Successes": 0,
+      "Hints": 0,
+      "Answers": 0,
+      "Status": "미완료",
+      "Draft": null,
+      "CompletedAt": null
+    },
+    "4_3": {
+      "Runs": 0,
+      "Successes": 0,
+      "Hints": 0,
+      "Answers": 0,
+      "Status": "미완료",
+      "Draft": null,
+      "CompletedAt": null
+    },
+    "4_2": {
+      "Runs": 0,
+      "Successes": 0,
+      "Hints": 0,
+      "Answers": 0,
+      "Status": "미완료",
+      "Draft": null,
+      "CompletedAt": null
+    },
+    "4_1": {
+      "Runs": 0,
+      "Successes": 0,
+      "Hints": 0,
+      "Answers": 0,
+      "Status": "미완료",
+      "Draft": null,
+      "CompletedAt": null
+    },
+    "3_3": {
+      "Runs": 0,
+      "Successes": 0,
+      "Hints": 0,
+      "Answers": 0,
+      "Status": "미완료",
+      "Draft": null,
+      "CompletedAt": null
+    },
+    "3_2": {
+      "Runs": 0,
+      "Successes": 0,
+      "Hints": 0,
+      "Answers": 0,
+      "Status": "미완료",
+      "Draft": null,
+      "CompletedAt": null
+    },
+    "3_1": {
+      "Runs": 0,
+      "Successes": 0,
+      "Hints": 0,
+      "Answers": 0,
+      "Status": "미완료",
+      "Draft": null,
+      "CompletedAt": null
+    },
+    "2_3": {
+      "Runs": 0,
+      "Successes": 0,
+      "Hints": 0,
+      "Answers": 0,
+      "Status": "미완료",
+      "Draft": null,
+      "CompletedAt": null
+    },
+    "2_2": {
+      "Runs": 0,
+      "Successes": 0,
+      "Hints": 0,
+      "Answers": 0,
+      "Status": "미완료",
+      "Draft": null,
+      "CompletedAt": null
+    },
+    "2_1": {
+      "Runs": 0,
+      "Successes": 0,
+      "Hints": 0,
+      "Answers": 0,
+      "Status": "미완료",
+      "Draft": null,
+      "CompletedAt": null
+    },
+    "1_3": {
+      "Runs": 3,
+      "Successes": 1,
+      "Hints": 1,
+      "Answers": 1,
+      "Status": "부분완료",
+      "Draft": "<TextBlock Text=\"{Binding Name, StringFormat='이름: {0}'}\"/>",
+      "CompletedAt": "2026-09-18T18:49:20.872818+09:00"
+    },
+    "1_2": {
+      "Runs": 4,
+      "Successes": 4,
+      "Hints": 1,
+      "Answers": 5,
+      "Status": "완료",
+      "Draft": "public MainWindow()\n{\n    InitializeComponent();\n    this.DataContext = this;\n}",
+      "CompletedAt": "2026-09-18T18:46:06.8095632+09:00"
+    },
+    "1_1": {
+      "Runs": 16,
+      "Successes": 16,
+      "Hints": 8,
+      "Answers": 4,
+      "Status": "완료",
+      "Draft": "<StackPanel>\n    <TextBlock Text=\"{Binding Name}\" FontSize=\"16\"/>\n</StackPanel>",
+      "CompletedAt": "2026-09-18T18:45:12.7499339+09:00"
+    }
+  }
+}

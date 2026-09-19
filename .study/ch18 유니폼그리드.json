@@ -1,0 +1,173 @@
+{
+  "Chapter": "ch18 유니폼그리드",
+  "FirstStudiedAt": "2026-09-18T13:20:25.0640913+09:00",
+  "LastStudiedAt": "2026-09-18T14:02:39.1746803+09:00",
+  "TotalStudySeconds": 193,
+  "LaunchCount": 1,
+  "LastTab": 1,
+  "PracticeTotal": 18,
+  "Practices": {
+    "5_3": {
+      "Runs": 0,
+      "Successes": 0,
+      "Hints": 0,
+      "Answers": 0,
+      "Status": "미완료",
+      "Draft": null,
+      "CompletedAt": null
+    },
+    "5_2": {
+      "Runs": 0,
+      "Successes": 0,
+      "Hints": 0,
+      "Answers": 0,
+      "Status": "미완료",
+      "Draft": null,
+      "CompletedAt": null
+    },
+    "5_1": {
+      "Runs": 0,
+      "Successes": 0,
+      "Hints": 0,
+      "Answers": 0,
+      "Status": "미완료",
+      "Draft": null,
+      "CompletedAt": null
+    },
+    "4_4": {
+      "Runs": 0,
+      "Successes": 0,
+      "Hints": 0,
+      "Answers": 0,
+      "Status": "미완료",
+      "Draft": null,
+      "CompletedAt": null
+    },
+    "4_3": {
+      "Runs": 0,
+      "Successes": 0,
+      "Hints": 0,
+      "Answers": 0,
+      "Status": "미완료",
+      "Draft": null,
+      "CompletedAt": null
+    },
+    "4_2": {
+      "Runs": 0,
+      "Successes": 0,
+      "Hints": 0,
+      "Answers": 0,
+      "Status": "미완료",
+      "Draft": null,
+      "CompletedAt": null
+    },
+    "4_1": {
+      "Runs": 0,
+      "Successes": 0,
+      "Hints": 0,
+      "Answers": 0,
+      "Status": "미완료",
+      "Draft": null,
+      "CompletedAt": null
+    },
+    "3_4": {
+      "Runs": 0,
+      "Successes": 0,
+      "Hints": 0,
+      "Answers": 0,
+      "Status": "미완료",
+      "Draft": null,
+      "CompletedAt": null
+    },
+    "3_3": {
+      "Runs": 0,
+      "Successes": 0,
+      "Hints": 0,
+      "Answers": 0,
+      "Status": "미완료",
+      "Draft": null,
+      "CompletedAt": null
+    },
+    "3_2": {
+      "Runs": 0,
+      "Successes": 0,
+      "Hints": 0,
+      "Answers": 0,
+      "Status": "미완료",
+      "Draft": null,
+      "CompletedAt": null
+    },
+    "3_1": {
+      "Runs": 0,
+      "Successes": 0,
+      "Hints": 0,
+      "Answers": 0,
+      "Status": "미완료",
+      "Draft": null,
+      "CompletedAt": null
+    },
+    "2_4": {
+      "Runs": 0,
+      "Successes": 0,
+      "Hints": 0,
+      "Answers": 0,
+      "Status": "미완료",
+      "Draft": null,
+      "CompletedAt": null
+    },
+    "2_3": {
+      "Runs": 0,
+      "Successes": 0,
+      "Hints": 0,
+      "Answers": 0,
+      "Status": "미완료",
+      "Draft": null,
+      "CompletedAt": null
+    },
+    "2_2": {
+      "Runs": 0,
+      "Successes": 0,
+      "Hints": 0,
+      "Answers": 0,
+      "Status": "미완료",
+      "Draft": null,
+      "CompletedAt": null
+    },
+    "2_1": {
+      "Runs": 0,
+      "Successes": 0,
+      "Hints": 0,
+      "Answers": 0,
+      "Status": "미완료",
+      "Draft": null,
+      "CompletedAt": null
+    },
+    "1_3": {
+      "Runs": 1,
+      "Successes": 1,
+      "Hints": 0,
+      "Answers": 0,
+      "Status": "완료",
+      "Draft": "<UniformGrid Rows=\"2\" Columns=\"2\" Height=\"120\">\n    <Button/>\r\n    <Button/>\r\n    <Button/>\r\n    <Button/>\n</UniformGrid>",
+      "CompletedAt": "2026-09-18T14:02:33.040365+09:00"
+    },
+    "1_2": {
+      "Runs": 1,
+      "Successes": 1,
+      "Hints": 0,
+      "Answers": 0,
+      "Status": "완료",
+      "Draft": "<UniformGrid Rows=\"2\" Columns=\"4\">\n    <Border Background=\"Red\" Margin=\"2\"/>\r\n    <Border Background=\"Blue\" Margin=\"2\"/>\r\n    <Border Background=\"Yellow\" Margin=\"2\"/>\r\n    <Border Background=\"Green\" Margin=\"2\"/>\r\n    <Border Background=\"Black\" Margin=\"2\"/>\r\n    <Border Background=\"Ivory\" Margin=\"2\"/>\r\n    <Border Background=\"LightGreen\" Margin=\"2\"/>\r\n    <Border Background=\"Violet\" Margin=\"2\"/>\n</UniformGrid>",
+      "CompletedAt": "2026-09-18T14:00:04.8549055+09:00"
+    },
+    "1_1": {
+      "Runs": 1,
+      "Successes": 1,
+      "Hints": 0,
+      "Answers": 0,
+      "Status": "완료",
+      "Draft": "<UniformGrid Rows=\"3\" Columns=\"2\">\n    <Button Content=\"A\"/>\r\n    <Button Content=\"B\"/>\r\n    <Button Content=\"C\"/>\r\n    <Button Content=\"D\"/>\r\n    <Button Content=\"E\"/>\r\n    <Button Content=\"F\"/>\n</UniformGrid>",
+      "CompletedAt": "2026-09-18T13:30:25.0990836+09:00"
+    }
+  }
+}

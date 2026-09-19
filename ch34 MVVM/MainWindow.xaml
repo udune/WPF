@@ -24,7 +24,7 @@
             <Setter Property="TextWrapping" Value="Wrap"/>
             <Setter Property="AcceptsReturn" Value="True"/>
             <Setter Property="VerticalScrollBarVisibility" Value="Auto"/>
-            <Setter Property="MaxHeight" Value="300"/>
+            <Setter Property="MaxHeight" Value="420"/>
             <Setter Property="BorderBrush" Value="#333333"/>
             <Setter Property="BorderThickness" Value="1"/>
         </Style>
@@ -40,9 +40,10 @@
             <Setter Property="AcceptsReturn" Value="True"/>
             <Setter Property="FontFamily" Value="Consolas"/>
             <Setter Property="FontSize" Value="12"/>
-            <Setter Property="Height" Value="80"/>
             <Setter Property="VerticalScrollBarVisibility" Value="Auto"/>
             <Setter Property="Padding" Value="5"/>
+            <Setter Property="MinHeight" Value="160"/>
+            <Setter Property="MaxHeight" Value="420"/>
         </Style>
         <Style x:Key="RunButtonStyle" TargetType="Button">
             <Setter Property="Width" Value="60"/>
@@ -359,7 +360,7 @@
                             <TextBlock Text="과제: 값이 바뀔 때 화면에 알릴 수 있도록 PersonModel의 Name 속성을 완성하세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
                             <TextBox x:Name="txtPractice2_4"
                                      Style="{StaticResource PracticeInputStyle}"
-                                     Height="120" AcceptsReturn="True"
+                                     AcceptsReturn="True"
                                      Text="public class PersonModel : INotifyPropertyChanged&#10;{&#10;    public event PropertyChangedEventHandler? PropertyChanged;&#10;&#10;    private void OnPropertyChanged(string name)&#10;    {&#10;        PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));&#10;    }&#10;&#10;    private string name = string.Empty;&#10;    public string Name&#10;    {&#10;        &#10;    }&#10;}"/>
                             <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
                                 <Button Content="확인" Style="{StaticResource RunButtonStyle}" Click="BtnCheck_Click" Tag="2_4"/>
@@ -529,7 +530,7 @@
                             <TextBlock Text="과제: 입력값이 있을 때만 버튼이 켜지도록 Execute/CanExecute 두 메서드를 완성하세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
                             <TextBox x:Name="txtPractice3_4"
                                      Style="{StaticResource PracticeInputStyle}"
-                                     Height="120" AcceptsReturn="True"
+                                     AcceptsReturn="True"
                                      Text="private void Message(string? txt)&#10;{&#10;    &#10;}&#10;&#10;private bool CheckMessage(string? txt)&#10;{&#10;    &#10;}"/>
                             <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
                                 <Button Content="확인" Style="{StaticResource RunButtonStyle}" Click="BtnCheck_Click" Tag="3_4"/>
@@ -559,7 +560,7 @@
                             <TextBlock Text="과제: 목록과 명령을 함께 들고 있는 PersonViewModel의 생성자를 완성하세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
                             <TextBox x:Name="txtPractice3_5"
                                      Style="{StaticResource PracticeInputStyle}"
-                                     Height="120" AcceptsReturn="True"
+                                     AcceptsReturn="True"
                                      Text="public class PersonViewModel&#10;{&#10;    public PersonCommand PersonCommand { get; set; }&#10;    public List&lt;PersonModel&gt; PersonList { get; set; }&#10;&#10;    public PersonViewModel()&#10;    {&#10;        &#10;    }&#10;&#10;    private void Message(string? txt) =&gt; MessageBox.Show(txt);&#10;    private bool CheckMessage(string? txt) =&gt; txt?.Length &gt; 0;&#10;}"/>
                             <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
                                 <Button Content="확인" Style="{StaticResource RunButtonStyle}" Click="BtnCheck_Click" Tag="3_5"/>
@@ -721,7 +722,7 @@
                             <TextBlock Text="과제: ICommand의 Execute가 전달받은 parameter를 실행 메서드로 넘기도록 완성하세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
                             <TextBox x:Name="txtPractice4_4"
                                      Style="{StaticResource PracticeInputStyle}"
-                                     Height="120" AcceptsReturn="True"
+                                     AcceptsReturn="True"
                                      Text="public void Execute(object? parameter)&#10;{&#10;    &#10;}"/>
                             <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
                                 <Button Content="확인" Style="{StaticResource RunButtonStyle}" Click="BtnCheck_Click" Tag="4_4"/>
@@ -751,7 +752,7 @@
                             <TextBlock Text="과제: CommandManager와 연동되는 RelayCommand의 CanExecuteChanged와 CanExecute를 완성하세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
                             <TextBox x:Name="txtPractice4_5"
                                      Style="{StaticResource PracticeInputStyle}"
-                                     Height="120" AcceptsReturn="True"
+                                     AcceptsReturn="True"
                                      Text="public class RelayCommand : ICommand&#10;{&#10;    private readonly Action&lt;object?&gt; _execute;&#10;    private readonly Predicate&lt;object?&gt;? _canExecute;&#10;&#10;    public RelayCommand(Action&lt;object?&gt; execute, Predicate&lt;object?&gt;? canExecute = null)&#10;    {&#10;        _execute = execute;&#10;        _canExecute = canExecute;&#10;    }&#10;&#10;    &#10;&#10;    public void Execute(object? parameter) =&gt; _execute(parameter);&#10;}"/>
                             <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
                                 <Button Content="확인" Style="{StaticResource RunButtonStyle}" Click="BtnCheck_Click" Tag="4_5"/>

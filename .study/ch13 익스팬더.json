@@ -1,0 +1,146 @@
+{
+  "Chapter": "ch13 익스팬더",
+  "FirstStudiedAt": "2026-09-17T00:10:39.9694053+09:00",
+  "LastStudiedAt": "2026-09-17T00:28:13.3779208+09:00",
+  "TotalStudySeconds": 940,
+  "LaunchCount": 1,
+  "LastTab": 4,
+  "PracticeTotal": 15,
+  "Practices": {
+    "5_3": {
+      "Runs": 0,
+      "Successes": 0,
+      "Hints": 0,
+      "Answers": 1,
+      "Status": "미완료",
+      "Draft": "<StackPanel>\n    <CheckBox x:Name=\"chk\" Content=\"펼치기\"/>\n    <Expander Header=\"내용\" IsExpanded=\"{Binding ElementName=chk, Path=IsChecked}\">\n        <TextBlock Text=\"본문\" Margin=\"8\"/>\n    </Expander>\n</StackPanel>",
+      "CompletedAt": null
+    },
+    "5_2": {
+      "Runs": 0,
+      "Successes": 0,
+      "Hints": 0,
+      "Answers": 0,
+      "Status": "미완료",
+      "Draft": "<Expander Header=\"{Binding ElementName=txtHeader, Path=Text}\">\r\n   <TextB\r\n</Expander>",
+      "CompletedAt": null
+    },
+    "5_1": {
+      "Runs": 1,
+      "Successes": 1,
+      "Hints": 0,
+      "Answers": 1,
+      "Status": "완료",
+      "Draft": "IsExpanded=\"{Binding ElementName=chkExpand, Path=IsChecked}\"",
+      "CompletedAt": "2026-09-17T00:20:52.5978998+09:00"
+    },
+    "4_3": {
+      "Runs": 1,
+      "Successes": 1,
+      "Hints": 1,
+      "Answers": 1,
+      "Status": "부분완료",
+      "Draft": "private void Exp_Expanded(object sender, RoutedEventArgs e)\n{\n    statusText.Text = \"펼쳐짐\";\n}",
+      "CompletedAt": "2026-09-17T00:19:16.8581674+09:00"
+    },
+    "4_2": {
+      "Runs": 2,
+      "Successes": 1,
+      "Hints": 1,
+      "Answers": 0,
+      "Status": "완료",
+      "Draft": "private void ToggleExpander()\n{\n    // myExpander의 IsExpanded를 토글\n    myExpander.IsExpanded = !myExpander.IsExpanded;\n}",
+      "CompletedAt": "2026-09-17T00:18:14.3867121+09:00"
+    },
+    "4_1": {
+      "Runs": 1,
+      "Successes": 1,
+      "Hints": 0,
+      "Answers": 1,
+      "Status": "완료",
+      "Draft": "private void Expander_Expanded(object sender, RoutedEventArgs e)\n{\n    txtStatus.Text = \"펼쳐짐!\";\n}",
+      "CompletedAt": "2026-09-17T00:16:51.6738194+09:00"
+    },
+    "3_3": {
+      "Runs": 1,
+      "Successes": 1,
+      "Hints": 0,
+      "Answers": 0,
+      "Status": "완료",
+      "Draft": "<Expander Header=\"테두리\" BorderBrush=\"Green\" BorderThickness=\"3\">\n    <TextBlock Text=\"내용\"/>\n</Expander>",
+      "CompletedAt": "2026-09-17T00:15:28.9434959+09:00"
+    },
+    "3_2": {
+      "Runs": 1,
+      "Successes": 1,
+      "Hints": 0,
+      "Answers": 0,
+      "Status": "완료",
+      "Draft": "<Expander Header=\"빨간 굵은 글씨\" FontWeight=\"Bold\" Foreground=\"Red\">\n    <TextBlock Text=\"내용\"/>\n</Expander>",
+      "CompletedAt": "2026-09-17T00:14:57.5245903+09:00"
+    },
+    "3_1": {
+      "Runs": 1,
+      "Successes": 1,
+      "Hints": 0,
+      "Answers": 0,
+      "Status": "완료",
+      "Draft": "<Expander Header=\"배경색\" Background=\"LightBlue\">\n    <TextBlock Text=\"내용\"/>\n</Expander>",
+      "CompletedAt": "2026-09-17T00:14:33.1847354+09:00"
+    },
+    "2_3": {
+      "Runs": 1,
+      "Successes": 1,
+      "Hints": 0,
+      "Answers": 0,
+      "Status": "완료",
+      "Draft": "<Expander Header=\"옆으로 열기\" ExpandDirection=\"Right\">\n    <TextBlock Text=\"내용\" Margin=\"8\"/>\n</Expander>",
+      "CompletedAt": "2026-09-17T00:14:07.4297729+09:00"
+    },
+    "2_2": {
+      "Runs": 1,
+      "Successes": 1,
+      "Hints": 0,
+      "Answers": 0,
+      "Status": "완료",
+      "Draft": "<Expander Header=\"오른쪽으로\" ExpandDirection=\"Right\">\n    <TextBlock Text=\"내용\"/>\n</Expander>",
+      "CompletedAt": "2026-09-17T00:13:49.2518786+09:00"
+    },
+    "2_1": {
+      "Runs": 1,
+      "Successes": 1,
+      "Hints": 0,
+      "Answers": 0,
+      "Status": "완료",
+      "Draft": "<Expander Header=\"위로 펼침\" ExpandDirection=\"Up\">\n    <TextBlock Text=\"내용\"/>\n</Expander>",
+      "CompletedAt": "2026-09-17T00:13:09.1030015+09:00"
+    },
+    "1_3": {
+      "Runs": 1,
+      "Successes": 1,
+      "Hints": 0,
+      "Answers": 5,
+      "Status": "완료",
+      "Draft": "<Expander Header=\"목록\">\n    <StackPanel>\n        <TextBlock Text=\"항목 1\"/>\n        <TextBlock Text=\"항목 2\"/>\n    </StackPanel>\n</Expander>",
+      "CompletedAt": "2026-09-17T00:12:43.1320382+09:00"
+    },
+    "1_2": {
+      "Runs": 1,
+      "Successes": 1,
+      "Hints": 0,
+      "Answers": 0,
+      "Status": "완료",
+      "Draft": "<Expander Header=\"열린 상태\" IsExpanded=\"True\">\n    <TextBlock Text=\"내용\"/>\n</Expander>",
+      "CompletedAt": "2026-09-17T00:11:43.7283365+09:00"
+    },
+    "1_1": {
+      "Runs": 1,
+      "Successes": 1,
+      "Hints": 0,
+      "Answers": 0,
+      "Status": "완료",
+      "Draft": "<Expander Header=\"정보 보기\">\n</Expander>",
+      "CompletedAt": "2026-09-17T00:11:15.6296835+09:00"
+    }
+  }
+}

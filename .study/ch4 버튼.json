@@ -1,11 +1,11 @@
 {
   "Chapter": "ch4 버튼",
   "FirstStudiedAt": "2026-09-12T21:17:54+09:00",
-  "LastStudiedAt": "2026-09-12T21:17:54+09:00",
-  "TotalStudySeconds": 0,
-  "LaunchCount": 0,
-  "LastTab": 0,
-  "PracticeTotal": 17,
+  "LastStudiedAt": "2026-09-18T19:41:13.0482889+09:00",
+  "TotalStudySeconds": 431,
+  "LaunchCount": 3,
+  "LastTab": 3,
+  "PracticeTotal": 25,
   "Practices": {
     "1_1": {
       "Runs": 1,
@@ -159,6 +159,78 @@
       "Status": "완료",
       "Draft": null,
       "CompletedAt": "2026-09-12T21:17:54+09:00"
+    },
+    "5_5": {
+      "Runs": 0,
+      "Successes": 0,
+      "Hints": 0,
+      "Answers": 0,
+      "Status": "미완료",
+      "Draft": null,
+      "CompletedAt": null
+    },
+    "4_5": {
+      "Runs": 0,
+      "Successes": 0,
+      "Hints": 0,
+      "Answers": 0,
+      "Status": "미완료",
+      "Draft": null,
+      "CompletedAt": null
+    },
+    "4_4": {
+      "Runs": 0,
+      "Successes": 0,
+      "Hints": 0,
+      "Answers": 0,
+      "Status": "미완료",
+      "Draft": null,
+      "CompletedAt": null
+    },
+    "3_5": {
+      "Runs": 4,
+      "Successes": 4,
+      "Hints": 0,
+      "Answers": 1,
+      "Status": "완료",
+      "Draft": "<Button Content=\"둥근 버튼\" Width=\"120\" Height=\"36\">\n    <Button.Resources>\n        <Style TargetType=\"Border\">\n            <Setter Property=\"CornerRadius\" Value=\"10\"/>\n        </Style>\n    </Button.Resources>\n</Button>",
+      "CompletedAt": "2026-09-18T19:41:02.490809+09:00"
+    },
+    "3_4": {
+      "Runs": 1,
+      "Successes": 1,
+      "Hints": 0,
+      "Answers": 0,
+      "Status": "완료",
+      "Draft": "<StackPanel>\n    <Button Content=\"Arial\" FontFamily=\"Arial\"/>\r\n    <Button Content=\"Consolas\" FontFamily=\"Consolas\"/>\r\n    <Button Content=\"Times New Roman\" FontFamily=\"Times New Roman\"/>\r\n    <Button Content=\"맑은 고딕\" FontFamily=\"맑은 고딕\"/>\n</StackPanel>",
+      "CompletedAt": "2026-09-18T19:39:43.5511365+09:00"
+    },
+    "2_4": {
+      "Runs": 2,
+      "Successes": 2,
+      "Hints": 1,
+      "Answers": 1,
+      "Status": "완료",
+      "Draft": "<StackPanel>\n    <Button Content=\"100x30\" Width=\"100\" Height=\"30\" Margin=\"0,4\"/>\n    <Button Content=\"150x40\" Width=\"150\" Height=\"40\" Margin=\"0,4\"/>\n    <Button Content=\"200x50\" Width=\"200\" Height=\"50\" Margin=\"0,4\"/>\n</StackPanel>",
+      "CompletedAt": "2026-09-18T19:24:09.1810613+09:00"
+    },
+    "1_6": {
+      "Runs": 3,
+      "Successes": 3,
+      "Hints": 0,
+      "Answers": 1,
+      "Status": "완료",
+      "Draft": "<StackPanel Orientation=\"Horizontal\">\n    <Button Content=\"활성 버튼\" Margin=\"0,0,8,0\" Padding=\"10,4\"/>\n    <Button Content=\"비활성 버튼\" IsEnabled=\"False\" Padding=\"10,4\"/>\n</StackPanel>",
+      "CompletedAt": "2026-09-16T01:30:29.8489267+09:00"
+    },
+    "1_5": {
+      "Runs": 2,
+      "Successes": 2,
+      "Hints": 0,
+      "Answers": 1,
+      "Status": "완료",
+      "Draft": "<StackPanel Orientation=\"Horizontal\">\n    <Button Content=\"확인 (Enter)\" IsDefault=\"True\" Margin=\"0,0,8,0\" Padding=\"10,4\"/>\n    <Button Content=\"취소 (Esc)\" IsCancel=\"True\" Padding=\"10,4\"/>\n</StackPanel>",
+      "CompletedAt": "2026-09-16T01:29:04.5795759+09:00"
     }
   }
 }

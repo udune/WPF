@@ -24,7 +24,7 @@
             <Setter Property="TextWrapping" Value="Wrap"/>
             <Setter Property="AcceptsReturn" Value="True"/>
             <Setter Property="VerticalScrollBarVisibility" Value="Auto"/>
-            <Setter Property="MaxHeight" Value="300"/>
+            <Setter Property="MaxHeight" Value="420"/>
             <Setter Property="BorderBrush" Value="#333333"/>
             <Setter Property="BorderThickness" Value="1"/>
         </Style>
@@ -40,9 +40,10 @@
             <Setter Property="AcceptsReturn" Value="True"/>
             <Setter Property="FontFamily" Value="Consolas"/>
             <Setter Property="FontSize" Value="12"/>
-            <Setter Property="Height" Value="80"/>
             <Setter Property="VerticalScrollBarVisibility" Value="Auto"/>
             <Setter Property="Padding" Value="5"/>
+            <Setter Property="MinHeight" Value="160"/>
+            <Setter Property="MaxHeight" Value="420"/>
         </Style>
         <Style x:Key="RunButtonStyle" TargetType="Button">
             <Setter Property="Width" Value="60"/>
@@ -251,7 +252,6 @@
                             <TextBlock Text="과제: 4개의 Ellipse를 각 모서리에 배치하세요. 각각 Width=40, Height=40으로 설정하고, 각 모서리에서 10픽셀 떨어진 곳에 배치하세요. Fill 색상은 Red, Blue, Green, Yellow를 사용하세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
                             <TextBox x:Name="txtPractice2_2"
                                      Style="{StaticResource PracticeInputStyle}"
-                                     Height="100"
                                      Text="&lt;Canvas Height=&quot;120&quot; Background=&quot;#ECEFF1&quot;&gt;&#10;    &lt;!-- 좌상단: Red --&gt;&#10;    &lt;!-- 우상단: Blue --&gt;&#10;    &lt;!-- 좌하단: Green --&gt;&#10;    &lt;!-- 우하단: Yellow --&gt;&#10;&lt;/Canvas&gt;"/>
                             <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
                                 <Button Content="실행" Style="{StaticResource RunButtonStyle}" Click="BtnRun_Click" Tag="2_2"/>
@@ -374,7 +374,6 @@
                             <TextBlock Text="과제: 3개의 겹치는 Ellipse를 만들고, Panel.ZIndex를 사용하여 Yellow가 맨 위, Red가 중간, Blue가 맨 아래에 오도록 하세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
                             <TextBox x:Name="txtPractice3_1"
                                      Style="{StaticResource PracticeInputStyle}"
-                                     Height="120"
                                      Text="&lt;Canvas Height=&quot;130&quot; Background=&quot;#FAFAFA&quot;&gt;&#10;    &lt;Ellipse Fill=&quot;Blue&quot; Width=&quot;80&quot; Height=&quot;80&quot; Canvas.Left=&quot;50&quot; Canvas.Top=&quot;25&quot;/&gt;&#10;    &lt;Ellipse Fill=&quot;Red&quot; Width=&quot;80&quot; Height=&quot;80&quot; Canvas.Left=&quot;90&quot; Canvas.Top=&quot;35&quot;/&gt;&#10;    &lt;Ellipse Fill=&quot;Yellow&quot; Width=&quot;80&quot; Height=&quot;80&quot; Canvas.Left=&quot;130&quot; Canvas.Top=&quot;25&quot;/&gt;&#10;&lt;/Canvas&gt;"/>
                             <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
                                 <Button Content="실행" Style="{StaticResource RunButtonStyle}" Click="BtnRun_Click" Tag="3_1"/>
@@ -411,7 +410,6 @@
                             <TextBlock Text="과제: Panel.SetZIndex 메서드를 사용하여 element를 맨 위로 올리는 코드를 작성하세요. ZIndex 값은 10으로 설정하세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
                             <TextBox x:Name="txtPractice3_2"
                                      Style="{StaticResource PracticeInputStyle}"
-                                     Height="60"
                                      Text="// element를 맨 위로 올리기&#x0a;"/>
                             <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
                                 <Button Content="확인" Style="{StaticResource RunButtonStyle}" Click="BtnCheck_Click" Tag="3_2"/>
@@ -484,7 +482,7 @@
                             <TextBlock Text="과제: 빨간 사각형(rectA)을 초록 사각형(rectB) 위로 올리는 핸들러를 완성하세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
                             <TextBox x:Name="txtPractice3_4"
                                      Style="{StaticResource PracticeInputStyle}"
-                                     Height="120" AcceptsReturn="True"
+                                     AcceptsReturn="True"
                                      Text="private void BringRedToFront_Click(object sender, RoutedEventArgs e)&#10;{&#10;    &#10;}"/>
                             <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
                                 <Button Content="확인" Style="{StaticResource RunButtonStyle}" Click="BtnCheck_Click" Tag="3_4"/>
@@ -708,7 +706,6 @@
                             <TextBlock Text="과제: Canvas에 동적으로 Rectangle을 추가하는 코드를 작성하세요. Width=50, Height=50, Fill=Brushes.Blue로 설정하고, Canvas.SetLeft와 Canvas.SetTop으로 (100, 50)에 배치한 후 myCanvas.Children.Add로 추가하세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
                             <TextBox x:Name="txtPractice5_1"
                                      Style="{StaticResource PracticeInputStyle}"
-                                     Height="120"
                                      Text="Rectangle rect = new Rectangle&#x0a;{&#x0a;    // 속성 설정&#x0a;};&#x0a;// 위치 설정 및 추가"/>
                             <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
                                 <Button Content="확인" Style="{StaticResource RunButtonStyle}" Click="BtnCheck_Click" Tag="5_1"/>
@@ -757,7 +754,6 @@
                             <TextBlock Text="과제: 드래그 시작 시 마우스를 캡처하는 MouseLeftButtonDown 이벤트 핸들러를 작성하세요. sender를 UIElement로 캐스팅하고, CaptureMouse()를 호출하세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
                             <TextBox x:Name="txtPractice5_2"
                                      Style="{StaticResource PracticeInputStyle}"
-                                     Height="100"
                                      Text="private void Element_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)&#x0a;{&#x0a;    // 구현&#x0a;}"/>
                             <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
                                 <Button Content="확인" Style="{StaticResource RunButtonStyle}" Click="BtnCheck_Click" Tag="5_2"/>

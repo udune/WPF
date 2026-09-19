@@ -24,7 +24,7 @@
             <Setter Property="TextWrapping" Value="Wrap"/>
             <Setter Property="AcceptsReturn" Value="True"/>
             <Setter Property="VerticalScrollBarVisibility" Value="Auto"/>
-            <Setter Property="MaxHeight" Value="200"/>
+            <Setter Property="MaxHeight" Value="420"/>
         </Style>
 
         <!-- 직접 해보기 스타일 -->
@@ -38,9 +38,10 @@
             <Setter Property="AcceptsReturn" Value="True"/>
             <Setter Property="FontFamily" Value="Consolas"/>
             <Setter Property="FontSize" Value="12"/>
-            <Setter Property="Height" Value="50"/>
             <Setter Property="VerticalScrollBarVisibility" Value="Auto"/>
             <Setter Property="Padding" Value="5"/>
+            <Setter Property="MinHeight" Value="160"/>
+            <Setter Property="MaxHeight" Value="420"/>
         </Style>
         <Style x:Key="RunButtonStyle" TargetType="Button">
             <Setter Property="Width" Value="60"/>
@@ -130,7 +131,6 @@
                             <TextBlock Text="과제: GroupName이 'Fruit'인 RadioButton 2개를 만들어보세요 (사과, 바나나)." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
                             <TextBox x:Name="txtPractice1_2"
                                      Style="{StaticResource PracticeInputStyle}"
-                                     Height="60"
                                      Text="&lt;StackPanel&gt;&#x0a;    &#x0a;&lt;/StackPanel&gt;"/>
                             <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
                                 <Button Content="실행" Style="{StaticResource RunButtonStyle}" Click="BtnRun_Click" Tag="1_2"/>
@@ -306,7 +306,6 @@
                             <TextBlock Text="과제: StackPanel을 사용해 RadioButton 2개를 가로로 배치해보세요 (예, 아니오)." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
                             <TextBox x:Name="txtPractice2_2"
                                      Style="{StaticResource PracticeInputStyle}"
-                                     Height="70"
                                      Text="&lt;StackPanel&gt;&#x0a;    &lt;RadioButton Content=&quot;예&quot; /&gt;&#x0a;    &lt;RadioButton Content=&quot;아니오&quot; /&gt;&#x0a;&lt;/StackPanel&gt;"/>
                             <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
                                 <Button Content="실행" Style="{StaticResource RunButtonStyle}" Click="BtnRun_Click" Tag="2_2"/>
@@ -761,7 +760,6 @@
                             <TextBlock Text="과제: RadioButton의 Checked 이벤트 핸들러를 작성하세요. sender를 RadioButton으로 캐스팅하고 Content를 출력하세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
                             <TextBox x:Name="txtPractice5_1"
                                      Style="{StaticResource PracticeInputStyle}"
-                                     Height="120"
                                      Text="private void RadioButton_Checked(object sender, RoutedEventArgs e)&#x0a;{&#x0a;    &#x0a;}"/>
                             <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
                                 <Button Content="확인" Style="{StaticResource RunButtonStyle}" Click="BtnCheck_Click" Tag="5_1"/>
@@ -813,7 +811,6 @@
                             <TextBlock Text="과제: 여러 RadioButton의 IsChecked 상태를 확인하여 선택된 옵션을 반환하는 코드를 작성하세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
                             <TextBox x:Name="txtPractice5_2"
                                      Style="{StaticResource PracticeInputStyle}"
-                                     Height="120"
                                      Text="private string GetSelectedSize()&#x0a;{&#x0a;    // rbSmall, rbMedium, rbLarge 중 선택된 것 반환&#x0a;    &#x0a;}"/>
                             <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
                                 <Button Content="확인" Style="{StaticResource RunButtonStyle}" Click="BtnCheck_Click" Tag="5_2"/>
@@ -851,7 +848,6 @@
                             <TextBlock Text="과제: 코드로 RadioButton의 IsChecked를 true로 설정하여 선택하는 함수를 작성하세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
                             <TextBox x:Name="txtPractice5_3"
                                      Style="{StaticResource PracticeInputStyle}"
-                                     Height="100"
                                      Text="private void SelectOptionB()&#x0a;{&#x0a;    // rbOption2를 선택 상태로 변경&#x0a;    &#x0a;}"/>
                             <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
                                 <Button Content="확인" Style="{StaticResource RunButtonStyle}" Click="BtnCheck_Click" Tag="5_3"/>
@@ -892,7 +888,7 @@
                             <TextBlock Text="과제: 선택한 라디오 버튼에 따라 brdPreview의 배경색이 바뀌도록 핸들러를 완성하세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
                             <TextBox x:Name="txtPractice5_4"
                                      Style="{StaticResource PracticeInputStyle}"
-                                     Height="120" AcceptsReturn="True"
+                                     AcceptsReturn="True"
                                      Text="private void RbPreview_Checked(object sender, RoutedEventArgs e)&#10;{&#10;    &#10;}"/>
                             <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
                                 <Button Content="확인" Style="{StaticResource RunButtonStyle}" Click="BtnCheck_Click" Tag="5_4"/>

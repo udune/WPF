@@ -24,7 +24,7 @@
             <Setter Property="TextWrapping" Value="Wrap"/>
             <Setter Property="AcceptsReturn" Value="True"/>
             <Setter Property="VerticalScrollBarVisibility" Value="Auto"/>
-            <Setter Property="MaxHeight" Value="300"/>
+            <Setter Property="MaxHeight" Value="420"/>
             <Setter Property="BorderBrush" Value="#333333"/>
             <Setter Property="BorderThickness" Value="1"/>
         </Style>
@@ -40,9 +40,10 @@
             <Setter Property="AcceptsReturn" Value="True"/>
             <Setter Property="FontFamily" Value="Consolas"/>
             <Setter Property="FontSize" Value="12"/>
-            <Setter Property="Height" Value="80"/>
             <Setter Property="VerticalScrollBarVisibility" Value="Auto"/>
             <Setter Property="Padding" Value="5"/>
+            <Setter Property="MinHeight" Value="160"/>
+            <Setter Property="MaxHeight" Value="420"/>
         </Style>
         <Style x:Key="RunButtonStyle" TargetType="Button">
             <Setter Property="Width" Value="60"/>
@@ -235,7 +236,6 @@
                             <TextBlock Text="과제: DockPanel ItemsPanel을 사용하여 '좌측' 항목은 왼쪽에, '우측' 항목은 오른쪽에 고정하세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
                             <TextBox x:Name="txtPractice2_1"
                                      Style="{StaticResource PracticeInputStyle}"
-                                     Height="150"
                                      Text="&lt;StatusBar&gt;&#10;    &lt;StatusBar.ItemsPanel&gt;&#10;        &lt;ItemsPanelTemplate&gt;&#10;            &lt;DockPanel/&gt;&#10;        &lt;/ItemsPanelTemplate&gt;&#10;    &lt;/StatusBar.ItemsPanel&gt;&#10;    &#10;&lt;/StatusBar&gt;"/>
                             <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
                                 <Button Content="실행" Style="{StaticResource RunButtonStyle}" Click="BtnRun_Click" Tag="2_1"/>
@@ -365,7 +365,6 @@
                             <TextBlock Text="과제: StatusBar에 ProgressBar(Width=100, Height=15, Value=50)와 '50%' 텍스트를 표시하세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
                             <TextBox x:Name="txtPractice3_1"
                                      Style="{StaticResource PracticeInputStyle}"
-                                     Height="100"
                                      Text="&lt;StatusBar&gt;&#10;    &lt;StatusBarItem&gt;&#10;        &#10;    &lt;/StatusBarItem&gt;&#10;&lt;/StatusBar&gt;"/>
                             <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
                                 <Button Content="실행" Style="{StaticResource RunButtonStyle}" Click="BtnRun_Click" Tag="3_1"/>
@@ -413,7 +412,6 @@
                             <TextBlock Text="과제: 초록색 Ellipse(10x10)와 '온라인' 텍스트를 StackPanel(Horizontal)로 묶어 상태 아이콘을 만드세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
                             <TextBox x:Name="txtPractice3_2"
                                      Style="{StaticResource PracticeInputStyle}"
-                                     Height="120"
                                      Text="&lt;StatusBar&gt;&#10;    &lt;StatusBarItem&gt;&#10;        &lt;StackPanel Orientation=&quot;Horizontal&quot;&gt;&#10;            &#10;        &lt;/StackPanel&gt;&#10;    &lt;/StatusBarItem&gt;&#10;&lt;/StatusBar&gt;"/>
                             <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
                                 <Button Content="실행" Style="{StaticResource RunButtonStyle}" Click="BtnRun_Click" Tag="3_2"/>
@@ -556,7 +554,6 @@
                             <TextBlock Text="과제: 버튼 클릭 시 StatusBarItem의 Content를 '작업 완료!'로 변경하는 이벤트 핸들러를 작성하세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
                             <TextBox x:Name="txtPractice4_1"
                                      Style="{StaticResource PracticeInputStyle}"
-                                     Height="100"
                                      Text="private void BtnComplete_Click(object sender, RoutedEventArgs e)&#x0a;{&#x0a;    &#x0a;}"/>
                             <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
                                 <Button Content="확인" Style="{StaticResource RunButtonStyle}" Click="BtnCheck_Click" Tag="4_1"/>
@@ -597,7 +594,6 @@
                             <TextBlock Text="과제: Ellipse의 Fill을 Brushes.Red로, TextBlock의 Text를 '오류 발생'으로 변경하는 코드를 작성하세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
                             <TextBox x:Name="txtPractice4_2"
                                      Style="{StaticResource PracticeInputStyle}"
-                                     Height="100"
                                      Text="private void SetError_Click(object sender, RoutedEventArgs e)&#x0a;{&#x0a;    &#x0a;}"/>
                             <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
                                 <Button Content="확인" Style="{StaticResource RunButtonStyle}" Click="BtnCheck_Click" Tag="4_2"/>
@@ -677,7 +673,7 @@
                             <TextBlock Text="과제: 연결 버튼을 누르면 표시등(connectionIndicator)을 초록으로, 문구를 '연결됨'으로 바꾸세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
                             <TextBox x:Name="txtPractice4_4"
                                      Style="{StaticResource PracticeInputStyle}"
-                                     Height="120" AcceptsReturn="True"
+                                     AcceptsReturn="True"
                                      Text="private void Connect_Click(object sender, RoutedEventArgs e)&#10;{&#10;    &#10;}"/>
                             <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
                                 <Button Content="확인" Style="{StaticResource RunButtonStyle}" Click="BtnCheck_Click" Tag="4_4"/>
@@ -748,7 +744,6 @@
                             <TextBlock Text="과제: 파일 브라우저 스타일 StatusBar를 만드세요. '10개 파일' | '2개 선택' | '500 KB' 형식으로 Separator로 구분합니다." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
                             <TextBox x:Name="txtPractice5_1"
                                      Style="{StaticResource PracticeInputStyle}"
-                                     Height="100"
                                      Text="&lt;StatusBar&gt;&#10;    &#10;&lt;/StatusBar&gt;"/>
                             <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
                                 <Button Content="실행" Style="{StaticResource RunButtonStyle}" Click="BtnRun_Click" Tag="5_1"/>
@@ -786,7 +781,6 @@
                             <TextBlock Text="과제: 어두운 배경(#333333)의 StatusBar에 파란색 Ellipse와 흰색 '동기화 중' 텍스트를 표시하세요." FontWeight="Bold" Margin="0,0,0,8" TextWrapping="Wrap"/>
                             <TextBox x:Name="txtPractice5_2"
                                      Style="{StaticResource PracticeInputStyle}"
-                                     Height="120"
                                      Text="&lt;StatusBar Background=&quot;#333333&quot;&gt;&#10;    &lt;StatusBarItem&gt;&#10;        &lt;StackPanel Orientation=&quot;Horizontal&quot;&gt;&#10;            &#10;        &lt;/StackPanel&gt;&#10;    &lt;/StatusBarItem&gt;&#10;&lt;/StatusBar&gt;"/>
                             <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
                                 <Button Content="실행" Style="{StaticResource RunButtonStyle}" Click="BtnRun_Click" Tag="5_2"/>

@@ -1,0 +1,146 @@
+{
+  "Chapter": "ch16 독패널",
+  "FirstStudiedAt": "2026-09-18T09:07:47.0635543+09:00",
+  "LastStudiedAt": "2026-09-18T10:48:43.905698+09:00",
+  "TotalStudySeconds": 195,
+  "LaunchCount": 2,
+  "LastTab": 0,
+  "PracticeTotal": 15,
+  "Practices": {
+    "5_3": {
+      "Runs": 0,
+      "Successes": 0,
+      "Hints": 0,
+      "Answers": 0,
+      "Status": "미완료",
+      "Draft": null,
+      "CompletedAt": null
+    },
+    "5_2": {
+      "Runs": 0,
+      "Successes": 0,
+      "Hints": 0,
+      "Answers": 0,
+      "Status": "미완료",
+      "Draft": null,
+      "CompletedAt": null
+    },
+    "5_1": {
+      "Runs": 0,
+      "Successes": 0,
+      "Hints": 0,
+      "Answers": 0,
+      "Status": "미완료",
+      "Draft": null,
+      "CompletedAt": null
+    },
+    "4_3": {
+      "Runs": 0,
+      "Successes": 0,
+      "Hints": 0,
+      "Answers": 0,
+      "Status": "미완료",
+      "Draft": null,
+      "CompletedAt": null
+    },
+    "4_2": {
+      "Runs": 0,
+      "Successes": 0,
+      "Hints": 0,
+      "Answers": 0,
+      "Status": "미완료",
+      "Draft": null,
+      "CompletedAt": null
+    },
+    "4_1": {
+      "Runs": 0,
+      "Successes": 0,
+      "Hints": 0,
+      "Answers": 0,
+      "Status": "미완료",
+      "Draft": null,
+      "CompletedAt": null
+    },
+    "3_3": {
+      "Runs": 0,
+      "Successes": 0,
+      "Hints": 0,
+      "Answers": 0,
+      "Status": "미완료",
+      "Draft": null,
+      "CompletedAt": null
+    },
+    "3_2": {
+      "Runs": 0,
+      "Successes": 0,
+      "Hints": 0,
+      "Answers": 0,
+      "Status": "미완료",
+      "Draft": null,
+      "CompletedAt": null
+    },
+    "3_1": {
+      "Runs": 0,
+      "Successes": 0,
+      "Hints": 0,
+      "Answers": 0,
+      "Status": "미완료",
+      "Draft": null,
+      "CompletedAt": null
+    },
+    "2_3": {
+      "Runs": 0,
+      "Successes": 0,
+      "Hints": 0,
+      "Answers": 0,
+      "Status": "미완료",
+      "Draft": null,
+      "CompletedAt": null
+    },
+    "2_2": {
+      "Runs": 0,
+      "Successes": 0,
+      "Hints": 0,
+      "Answers": 0,
+      "Status": "미완료",
+      "Draft": null,
+      "CompletedAt": null
+    },
+    "2_1": {
+      "Runs": 0,
+      "Successes": 0,
+      "Hints": 0,
+      "Answers": 0,
+      "Status": "미완료",
+      "Draft": null,
+      "CompletedAt": null
+    },
+    "1_3": {
+      "Runs": 4,
+      "Successes": 4,
+      "Hints": 0,
+      "Answers": 8,
+      "Status": "완료",
+      "Draft": "<DockPanel Height=\"140\">\n    <Border DockPanel.Dock=\"Top\" Background=\"#2196F3\" Height=\"30\">\n        <TextBlock Text=\"제목\" Foreground=\"White\" Margin=\"8,6\"/>\n    </Border>\n    <Border DockPanel.Dock=\"Bottom\" Background=\"#EEEEEE\" Height=\"24\">\n        <TextBlock Text=\"준비\" Margin=\"8,3\"/>\n    </Border>\n</DockPanel>",
+      "CompletedAt": "2026-09-18T10:48:26.4697162+09:00"
+    },
+    "1_2": {
+      "Runs": 2,
+      "Successes": 1,
+      "Hints": 0,
+      "Answers": 0,
+      "Status": "완료",
+      "Draft": "<DockPanel Height=\"120\">\n    <Button DockPanel.Dock=\"Top\">Top1</Button>\r\n    <Button DockPanel.Dock=\"Top\">Top1</Button>\n</DockPanel>",
+      "CompletedAt": "2026-09-18T10:47:21.6931231+09:00"
+    },
+    "1_1": {
+      "Runs": 1,
+      "Successes": 1,
+      "Hints": 0,
+      "Answers": 0,
+      "Status": "완료",
+      "Draft": "<DockPanel Height=\"120\">\n    <Button DockPanel.Dock=\"Top\">Top</Button>\r\n    <Button DockPanel.Dock=\"Left\">Left</Button>\n</DockPanel>",
+      "CompletedAt": "2026-09-18T10:14:06.8634138+09:00"
+    }
+  }
+}
