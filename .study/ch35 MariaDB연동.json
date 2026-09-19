@@ -1,21 +1,12 @@
 {
-  "Chapter": "ch22 툴바",
-  "FirstStudiedAt": "2026-09-18T14:24:58.0032929+09:00",
-  "LastStudiedAt": "2026-09-19T17:55:54.8828219+09:00",
-  "TotalStudySeconds": 257,
-  "LaunchCount": 2,
+  "Chapter": "ch35 MariaDB연동",
+  "FirstStudiedAt": "2026-09-19T18:02:23.6028751+09:00",
+  "LastStudiedAt": "2026-09-19T18:21:05.4924449+09:00",
+  "TotalStudySeconds": 210,
+  "LaunchCount": 3,
   "LastTab": 0,
   "PracticeTotal": 19,
   "Practices": {
-    "5_4": {
-      "Runs": 0,
-      "Successes": 0,
-      "Hints": 0,
-      "Answers": 0,
-      "Status": "미완료",
-      "Draft": null,
-      "CompletedAt": null
-    },
     "5_3": {
       "Runs": 0,
       "Successes": 0,
@@ -71,6 +62,15 @@
       "CompletedAt": null
     },
     "4_1": {
+      "Runs": 0,
+      "Successes": 0,
+      "Hints": 0,
+      "Answers": 0,
+      "Status": "미완료",
+      "Draft": null,
+      "CompletedAt": null
+    },
+    "3_4": {
       "Runs": 0,
       "Successes": 0,
       "Hints": 0,
@@ -146,37 +146,37 @@
       "Runs": 1,
       "Successes": 1,
       "Hints": 1,
-      "Answers": 0,
-      "Status": "완료",
-      "Draft": "<ToolBarTray>\n    <ToolBar Header=\"편집\">\r\n        <Button Content=\"굵게\"/>\r\n        <Button Content=\"기울임\"/>\r\n        <Button Content=\"밑줄\"/>\r\n    </ToolBar>\n</ToolBarTray>",
-      "CompletedAt": "2026-09-18T14:29:25.4713352+09:00"
+      "Answers": 1,
+      "Status": "부분완료",
+      "Draft": "string? connectionString = Environment.GetEnvironmentVariable(\"MARIADB_CONNECTION\");\n\nif (string.IsNullOrEmpty(connectionString))\n{\n    MessageBox.Show(\"연결 문자열이 설정되지 않았습니다.\");\n    return;\n}",
+      "CompletedAt": "2026-09-19T18:20:50.292134+09:00"
     },
     "1_3": {
-      "Runs": 2,
-      "Successes": 2,
-      "Hints": 0,
+      "Runs": 1,
+      "Successes": 1,
+      "Hints": 2,
       "Answers": 1,
-      "Status": "완료",
-      "Draft": "<ToolBarTray>\n    <ToolBar Header=\"편집\">\n        <Button Content=\"복사\"/>\n        <Button Content=\"붙여넣기\"/>\n    </ToolBar>\n</ToolBarTray>",
-      "CompletedAt": "2026-09-18T14:27:55.282197+09:00"
+      "Status": "부분완료",
+      "Draft": "private const string ConnectionString =\n    \"Server=localhost;Port=3306;Database=testdb;Uid=root;Pwd=1234;CharSet=utf8mb4;\";",
+      "CompletedAt": "2026-09-19T18:20:59.412578+09:00"
     },
     "1_2": {
-      "Runs": 2,
-      "Successes": 2,
-      "Hints": 0,
-      "Answers": 1,
+      "Runs": 15,
+      "Successes": 6,
+      "Hints": 3,
+      "Answers": 12,
       "Status": "완료",
-      "Draft": "<ToolBarTray>\n    <ToolBar>\n        <Button Content=\"새로 만들기\"/>\n        <Separator/>\n        <Button Content=\"열기\"/>\n    </ToolBar>\n    <ToolBar>\n        <Button Content=\"저장\"/>\n    </ToolBar>\n</ToolBarTray>",
-      "CompletedAt": "2026-09-18T14:27:19.0078275+09:00"
+      "Draft": "private void Connect_Click(object sender, RoutedEventArgs e)\n{\n    using (var conn = new MySqlConnection(ConnectionString))\n    {\n        conn.Open();\n        MessageBox.Show(\"연결 성공\");\n    }\n}",
+      "CompletedAt": "2026-09-19T18:09:01.6778028+09:00"
     },
     "1_1": {
       "Runs": 1,
       "Successes": 1,
-      "Hints": 1,
-      "Answers": 0,
-      "Status": "완료",
-      "Draft": "<ToolBar>\n    <Button Content=\"굵게\"/>\r\n    <Button Content=\"열기\"/>\r\n    <Button Content=\"저장\"/>\n</ToolBar>",
-      "CompletedAt": "2026-09-18T14:25:38.8929107+09:00"
+      "Hints": 3,
+      "Answers": 1,
+      "Status": "부분완료",
+      "Draft": "private const string ConnectionString = \"Server=localhost;Port=3306;Database=testdb;Uid=root;Pwd=1234;\";",
+      "CompletedAt": "2026-09-19T18:07:24.0726391+09:00"
     }
   }
 }

@@ -1,10 +1,10 @@
 {
   "Chapter": "ch34 MVVM",
   "FirstStudiedAt": "2026-09-16T00:52:58.3918196+09:00",
-  "LastStudiedAt": "2026-09-18T10:04:01.7992011+09:00",
-  "TotalStudySeconds": 2568,
-  "LaunchCount": 2,
-  "LastTab": 4,
+  "LastStudiedAt": "2026-09-19T19:23:37.5036147+09:00",
+  "TotalStudySeconds": 2719,
+  "LaunchCount": 3,
+  "LastTab": 2,
   "PracticeTotal": 20,
   "Practices": {
     "5_3": {
@@ -164,7 +164,7 @@
       "Runs": 1,
       "Successes": 1,
       "Hints": 1,
-      "Answers": 1,
+      "Answers": 2,
       "Status": "부분완료",
       "Draft": "// View 와 ViewModel 의 연결\n// DataContext 에 ViewModel 을 넣고 View 는 Binding 으로만 접근한다\n// 따라서 View 의 code-behind 에는 화면 로직이 남지 않는다",
       "CompletedAt": "2026-09-18T09:15:32.3237728+09:00"
@@ -172,7 +172,7 @@
     "1_2": {
       "Runs": 1,
       "Successes": 1,
-      "Hints": 1,
+      "Hints": 2,
       "Answers": 3,
       "Status": "완료",
       "Draft": "public MainWindow()\n{\n    InitializeComponent();\n    this.DataContext = new PersonViewModel();\n}",

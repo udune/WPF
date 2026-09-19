@@ -1,10 +1,10 @@
 {
   "Chapter": "ch19 캔버스",
   "FirstStudiedAt": "2026-09-18T14:02:54.4101092+09:00",
-  "LastStudiedAt": "2026-09-18T14:10:24.8296262+09:00",
-  "TotalStudySeconds": 263,
-  "LaunchCount": 1,
-  "LastTab": 0,
+  "LastStudiedAt": "2026-09-19T19:19:16.4024304+09:00",
+  "TotalStudySeconds": 634,
+  "LaunchCount": 2,
+  "LastTab": 1,
   "PracticeTotal": 19,
   "Practices": {
     "5_4": {
@@ -116,40 +116,40 @@
       "CompletedAt": null
     },
     "2_4": {
-      "Runs": 0,
-      "Successes": 0,
-      "Hints": 0,
+      "Runs": 1,
+      "Successes": 1,
+      "Hints": 1,
       "Answers": 0,
-      "Status": "미완료",
-      "Draft": null,
-      "CompletedAt": null
+      "Status": "완료",
+      "Draft": "<Canvas Height=\"100\" Background=\"#FFFDE7\">\n    <Button Content=\"위치 미지정\"/>\r\n    <Button Content=\"위치 지정\" Canvas.Left=\"120\" Canvas.Top=\"40\"/>\n</Canvas>",
+      "CompletedAt": "2026-09-19T19:19:11.6009697+09:00"
     },
     "2_3": {
-      "Runs": 0,
-      "Successes": 0,
-      "Hints": 0,
-      "Answers": 0,
-      "Status": "미완료",
-      "Draft": null,
-      "CompletedAt": null
+      "Runs": 5,
+      "Successes": 5,
+      "Hints": 1,
+      "Answers": 2,
+      "Status": "완료",
+      "Draft": "<Canvas Height=\"140\" Background=\"#FAFAFA\">\n    <Ellipse Canvas.Right=\"15\" Canvas.Bottom=\"15\" Width=\"50\" Height=\"50\" Fill=\"Tomato\"/>\n</Canvas>",
+      "CompletedAt": "2026-09-19T19:18:05.6377451+09:00"
     },
     "2_2": {
-      "Runs": 0,
-      "Successes": 0,
-      "Hints": 0,
-      "Answers": 0,
-      "Status": "미완료",
-      "Draft": null,
-      "CompletedAt": null
+      "Runs": 6,
+      "Successes": 4,
+      "Hints": 1,
+      "Answers": 18,
+      "Status": "완료",
+      "Draft": "<Canvas Height=\"120\" Background=\"#ECEFF1\">\n    <Ellipse Fill=\"Red\" Width=\"40\" Height=\"40\" Canvas.Left=\"10\" Canvas.Top=\"10\"/>\n    <Ellipse Fill=\"Blue\" Width=\"40\" Height=\"40\" Canvas.Right=\"10\" Canvas.Top=\"10\"/>\n    <Ellipse Fill=\"Green\" Width=\"40\" Height=\"40\" Canvas.Left=\"10\" Canvas.Bottom=\"10\"/>\n    <Ellipse Fill=\"Yellow\" Width=\"40\" Height=\"40\" Canvas.Right=\"10\" Canvas.Bottom=\"10\"/>\n</Canvas>",
+      "CompletedAt": "2026-09-19T19:17:02.6510159+09:00"
     },
     "2_1": {
-      "Runs": 0,
-      "Successes": 0,
-      "Hints": 0,
-      "Answers": 0,
-      "Status": "미완료",
-      "Draft": null,
-      "CompletedAt": null
+      "Runs": 4,
+      "Successes": 3,
+      "Hints": 1,
+      "Answers": 2,
+      "Status": "완료",
+      "Draft": "<Canvas Height=\"120\" Background=\"#E8EAF6\">\n    <Rectangle Fill=\"Purple\" Width=\"80\" Height=\"50\" Canvas.Right=\"20\" Canvas.Bottom=\"20\"/>\n</Canvas>",
+      "CompletedAt": "2026-09-19T19:14:29.6679491+09:00"
     },
     "1_3": {
       "Runs": 1,

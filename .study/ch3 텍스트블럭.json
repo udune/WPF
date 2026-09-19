@@ -1,10 +1,10 @@
 {
   "Chapter": "ch3 텍스트블럭",
   "FirstStudiedAt": "2026-09-12T21:17:54+09:00",
-  "LastStudiedAt": "2026-09-18T18:44:01.02381+09:00",
-  "TotalStudySeconds": 712,
-  "LaunchCount": 2,
-  "LastTab": 4,
+  "LastStudiedAt": "2026-09-19T18:24:44.4150975+09:00",
+  "TotalStudySeconds": 748,
+  "LaunchCount": 4,
+  "LastTab": 0,
   "PracticeTotal": 25,
   "Practices": {
     "1_1": {
@@ -136,7 +136,7 @@
     "5_1": {
       "Runs": 1,
       "Successes": 1,
-      "Hints": 0,
+      "Hints": 2,
       "Answers": 0,
       "Status": "완료",
       "Draft": null,
@@ -224,8 +224,8 @@
       "CompletedAt": "2026-09-15T01:16:41.6492862+09:00"
     },
     "1_5": {
-      "Runs": 10,
-      "Successes": 9,
+      "Runs": 11,
+      "Successes": 10,
       "Hints": 0,
       "Answers": 1,
       "Status": "부분완료",

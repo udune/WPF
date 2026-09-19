@@ -1,10 +1,10 @@
 {
   "Chapter": "ch4 버튼",
   "FirstStudiedAt": "2026-09-12T21:17:54+09:00",
-  "LastStudiedAt": "2026-09-18T19:41:13.0482889+09:00",
-  "TotalStudySeconds": 431,
-  "LaunchCount": 3,
-  "LastTab": 3,
+  "LastStudiedAt": "2026-09-19T18:24:03.4447559+09:00",
+  "TotalStudySeconds": 589,
+  "LaunchCount": 4,
+  "LastTab": 4,
   "PracticeTotal": 25,
   "Practices": {
     "1_1": {
@@ -161,31 +161,31 @@
       "CompletedAt": "2026-09-12T21:17:54+09:00"
     },
     "5_5": {
-      "Runs": 0,
-      "Successes": 0,
-      "Hints": 0,
-      "Answers": 0,
-      "Status": "미완료",
-      "Draft": null,
-      "CompletedAt": null
+      "Runs": 1,
+      "Successes": 1,
+      "Hints": 1,
+      "Answers": 1,
+      "Status": "완료",
+      "Draft": "private void BtnVisible_Click(object sender, RoutedEventArgs e)\n{\n    btnVisibility.Visibility = Visibility.Visible;\n}\n\nprivate void BtnHidden_Click(object sender, RoutedEventArgs e)\n{\n    btnVisibility.Visibility = Visibility.Hidden;\n}\n\nprivate void BtnCollapsed_Click(object sender, RoutedEventArgs e)\n{\n    btnVisibility.Visibility = Visibility.Collapsed;\n}",
+      "CompletedAt": "2026-09-19T18:22:20.1749898+09:00"
     },
     "4_5": {
-      "Runs": 0,
-      "Successes": 0,
-      "Hints": 0,
-      "Answers": 0,
-      "Status": "미완료",
-      "Draft": null,
-      "CompletedAt": null
+      "Runs": 1,
+      "Successes": 1,
+      "Hints": 1,
+      "Answers": 1,
+      "Status": "완료",
+      "Draft": "<StackPanel Orientation=\"Horizontal\" Background=\"#F5F5F5\">\n    <Button Content=\"Margin 0\" Margin=\"0\"/>\n    <Button Content=\"Margin 10\" Margin=\"10\"/>\n    <Button Content=\"Margin 20\" Margin=\"20\"/>\n</StackPanel>",
+      "CompletedAt": "2026-09-19T18:23:29.6127385+09:00"
     },
     "4_4": {
-      "Runs": 0,
-      "Successes": 0,
-      "Hints": 0,
+      "Runs": 1,
+      "Successes": 1,
+      "Hints": 1,
       "Answers": 0,
-      "Status": "미완료",
-      "Draft": null,
-      "CompletedAt": null
+      "Status": "완료",
+      "Draft": "<StackPanel>\n    <Button Content=\"Padding 0\" Padding=\"0\"/>\r\n    <Button Content=\"Padding 10\" Padding=\"10\"/>\r\n    <Button Content=\"Padding 20\" Padding=\"20\"/>\n</StackPanel>",
+      "CompletedAt": "2026-09-19T18:22:57.5423096+09:00"
     },
     "3_5": {
       "Runs": 4,

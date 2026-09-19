@@ -1,11 +1,11 @@
 {
   "Chapter": "ch6 패스워드박스",
   "FirstStudiedAt": "2026-09-12T21:22:54.1442817+09:00",
-  "LastStudiedAt": "2026-09-12T21:43:03.2923358+09:00",
-  "TotalStudySeconds": 971,
-  "LaunchCount": 1,
+  "LastStudiedAt": "2026-09-19T17:56:17.9211824+09:00",
+  "TotalStudySeconds": 976,
+  "LaunchCount": 2,
   "LastTab": 4,
-  "PracticeTotal": 15,
+  "PracticeTotal": 23,
   "Practices": {
     "5_3": {
       "Runs": 7,
@@ -28,7 +28,7 @@
     "5_1": {
       "Runs": 2,
       "Successes": 1,
-      "Hints": 0,
+      "Hints": 1,
       "Answers": 0,
       "Status": "완료",
       "Draft": "<PasswordBox x:Name=\"pwdInput\" PasswordChanged=\"Pwd_PasswordChanged\"/>\n<TextBlock x:Name=\"txtLength\" Text=\"입력된 글자 수: 0\"/>\r\n\r\nprivate void Pwd_PasswordChanged(object sender, RoutedEventArgs e)\n{\n    txtLength.Text = $\"입력된 글자 수: {pwdInput.Password.Length}\";\n}",
@@ -141,6 +141,78 @@
       "Status": "완료",
       "Draft": "<PasswordBox PasswordChar=\"*\"/>",
       "CompletedAt": "2026-09-12T21:23:30.0727019+09:00"
+    },
+    "5_5": {
+      "Runs": 0,
+      "Successes": 0,
+      "Hints": 0,
+      "Answers": 0,
+      "Status": "미완료",
+      "Draft": null,
+      "CompletedAt": null
+    },
+    "5_4": {
+      "Runs": 0,
+      "Successes": 0,
+      "Hints": 0,
+      "Answers": 0,
+      "Status": "미완료",
+      "Draft": null,
+      "CompletedAt": null
+    },
+    "4_5": {
+      "Runs": 0,
+      "Successes": 0,
+      "Hints": 0,
+      "Answers": 0,
+      "Status": "미완료",
+      "Draft": null,
+      "CompletedAt": null
+    },
+    "4_4": {
+      "Runs": 0,
+      "Successes": 0,
+      "Hints": 0,
+      "Answers": 0,
+      "Status": "미완료",
+      "Draft": null,
+      "CompletedAt": null
+    },
+    "3_4": {
+      "Runs": 0,
+      "Successes": 0,
+      "Hints": 0,
+      "Answers": 0,
+      "Status": "미완료",
+      "Draft": null,
+      "CompletedAt": null
+    },
+    "2_4": {
+      "Runs": 0,
+      "Successes": 0,
+      "Hints": 0,
+      "Answers": 0,
+      "Status": "미완료",
+      "Draft": null,
+      "CompletedAt": null
+    },
+    "1_5": {
+      "Runs": 0,
+      "Successes": 0,
+      "Hints": 0,
+      "Answers": 0,
+      "Status": "미완료",
+      "Draft": null,
+      "CompletedAt": null
+    },
+    "1_4": {
+      "Runs": 0,
+      "Successes": 0,
+      "Hints": 0,
+      "Answers": 0,
+      "Status": "미완료",
+      "Draft": null,
+      "CompletedAt": null
     }
   }
 }

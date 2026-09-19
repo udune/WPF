@@ -1,9 +1,9 @@
 {
   "Chapter": "ch10 캘린더",
   "FirstStudiedAt": "2026-09-15T23:53:21.4303675+09:00",
-  "LastStudiedAt": "2026-09-16T00:58:19.4914468+09:00",
-  "TotalStudySeconds": 1733,
-  "LaunchCount": 3,
+  "LastStudiedAt": "2026-09-19T18:10:14.5008475+09:00",
+  "TotalStudySeconds": 1737,
+  "LaunchCount": 4,
   "LastTab": 2,
   "PracticeTotal": 18,
   "Practices": {
@@ -82,7 +82,7 @@
     "3_3": {
       "Runs": 1,
       "Successes": 1,
-      "Hints": 1,
+      "Hints": 2,
       "Answers": 0,
       "Status": "완료",
       "Draft": "<Calendar SelectionMode=\"MultipleRange\"/>",

@@ -1,11 +1,11 @@
 {
-  "Chapter": "ch22 툴바",
-  "FirstStudiedAt": "2026-09-18T14:24:58.0032929+09:00",
-  "LastStudiedAt": "2026-09-19T17:55:54.8828219+09:00",
-  "TotalStudySeconds": 257,
-  "LaunchCount": 2,
+  "Chapter": "ch33 애니메이션",
+  "FirstStudiedAt": "2026-09-19T16:54:50.4996902+09:00",
+  "LastStudiedAt": "2026-09-19T18:05:12.9574154+09:00",
+  "TotalStudySeconds": 523,
+  "LaunchCount": 4,
   "LastTab": 0,
-  "PracticeTotal": 19,
+  "PracticeTotal": 18,
   "Practices": {
     "5_4": {
       "Runs": 0,
@@ -142,41 +142,32 @@
       "Draft": null,
       "CompletedAt": null
     },
-    "1_4": {
-      "Runs": 1,
-      "Successes": 1,
-      "Hints": 1,
-      "Answers": 0,
-      "Status": "완료",
-      "Draft": "<ToolBarTray>\n    <ToolBar Header=\"편집\">\r\n        <Button Content=\"굵게\"/>\r\n        <Button Content=\"기울임\"/>\r\n        <Button Content=\"밑줄\"/>\r\n    </ToolBar>\n</ToolBarTray>",
-      "CompletedAt": "2026-09-18T14:29:25.4713352+09:00"
-    },
     "1_3": {
-      "Runs": 2,
-      "Successes": 2,
-      "Hints": 0,
+      "Runs": 4,
+      "Successes": 1,
+      "Hints": 4,
       "Answers": 1,
-      "Status": "완료",
-      "Draft": "<ToolBarTray>\n    <ToolBar Header=\"편집\">\n        <Button Content=\"복사\"/>\n        <Button Content=\"붙여넣기\"/>\n    </ToolBar>\n</ToolBarTray>",
-      "CompletedAt": "2026-09-18T14:27:55.282197+09:00"
+      "Status": "부분완료",
+      "Draft": "<Rectangle Width=\"120\" Height=\"30\" Fill=\"#8E24AA\" HorizontalAlignment=\"Left\">\n    <Rectangle.Triggers>\n        <EventTrigger RoutedEvent=\"MouseEnter\">\n            <BeginStoryboard>\n                <Storyboard>\n                    <DoubleAnimation Storyboard.TargetProperty=\"Height\" To=\"100\" Duration=\"0:0:0.4\"/>\n                </Storyboard>\n            </BeginStoryboard>\n        </EventTrigger>\n    </Rectangle.Triggers>\n</Rectangle>",
+      "CompletedAt": "2026-09-19T18:01:00.6180838+09:00"
     },
     "1_2": {
       "Runs": 2,
-      "Successes": 2,
-      "Hints": 0,
+      "Successes": 1,
+      "Hints": 10,
       "Answers": 1,
-      "Status": "완료",
-      "Draft": "<ToolBarTray>\n    <ToolBar>\n        <Button Content=\"새로 만들기\"/>\n        <Separator/>\n        <Button Content=\"열기\"/>\n    </ToolBar>\n    <ToolBar>\n        <Button Content=\"저장\"/>\n    </ToolBar>\n</ToolBarTray>",
-      "CompletedAt": "2026-09-18T14:27:19.0078275+09:00"
+      "Status": "부분완료",
+      "Draft": "<Rectangle Width=\"120\" Height=\"40\" Fill=\"Tomato\" HorizontalAlignment=\"Left\">\n    <Rectangle.Triggers>\n        <EventTrigger RoutedEvent=\"MouseEnter\">\n            <BeginStoryboard>\n                <Storyboard>\n                    <DoubleAnimation Storyboard.TargetProperty=\"Opacity\" From=\"1\" To=\"0.2\" Duration=\"0:0:0.6\"/>\n                </Storyboard>\n            </BeginStoryboard>\n        </EventTrigger>\n    </Rectangle.Triggers>\n</Rectangle>",
+      "CompletedAt": "2026-09-19T17:55:26.5415752+09:00"
     },
     "1_1": {
       "Runs": 1,
       "Successes": 1,
       "Hints": 1,
-      "Answers": 0,
+      "Answers": 8,
       "Status": "완료",
-      "Draft": "<ToolBar>\n    <Button Content=\"굵게\"/>\r\n    <Button Content=\"열기\"/>\r\n    <Button Content=\"저장\"/>\n</ToolBar>",
-      "CompletedAt": "2026-09-18T14:25:38.8929107+09:00"
+      "Draft": "<Rectangle Width=\"100\" Height=\"40\" Fill=\"SteelBlue\" HorizontalAlignment=\"Left\">\n    <Rectangle.Triggers>\n        <EventTrigger RoutedEvent=\"MouseEnter\">\n            <BeginStoryboard>\n                <Storyboard>\n                    <DoubleAnimation Storyboard.TargetProperty=\"Width\" To=\"250\" Duration=\"0:0:0.4\"/>\n                </Storyboard>\n            </BeginStoryboard>\n        </EventTrigger>\n    </Rectangle.Triggers>\n</Rectangle>",
+      "CompletedAt": "2026-09-19T17:02:27.7165286+09:00"
     }
   }
 }

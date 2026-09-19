@@ -1,10 +1,10 @@
 {
   "Chapter": "ch16 독패널",
   "FirstStudiedAt": "2026-09-18T09:07:47.0635543+09:00",
-  "LastStudiedAt": "2026-09-18T10:48:43.905698+09:00",
-  "TotalStudySeconds": 195,
-  "LaunchCount": 2,
-  "LastTab": 0,
+  "LastStudiedAt": "2026-09-19T18:27:19.2719764+09:00",
+  "TotalStudySeconds": 328,
+  "LaunchCount": 3,
+  "LastTab": 2,
   "PracticeTotal": 15,
   "Practices": {
     "5_3": {
@@ -89,31 +89,31 @@
       "CompletedAt": null
     },
     "2_3": {
-      "Runs": 0,
-      "Successes": 0,
-      "Hints": 0,
-      "Answers": 0,
-      "Status": "미완료",
-      "Draft": null,
-      "CompletedAt": null
+      "Runs": 1,
+      "Successes": 1,
+      "Hints": 1,
+      "Answers": 1,
+      "Status": "완료",
+      "Draft": "<DockPanel Height=\"120\" LastChildFill=\"False\">\n    <Button DockPanel.Dock=\"Left\" Content=\"왼쪽\"/>\n    <Button Content=\"나머지\"/>\n</DockPanel>",
+      "CompletedAt": "2026-09-19T18:27:06.5665476+09:00"
     },
     "2_2": {
-      "Runs": 0,
-      "Successes": 0,
-      "Hints": 0,
+      "Runs": 1,
+      "Successes": 1,
+      "Hints": 1,
       "Answers": 0,
-      "Status": "미완료",
-      "Draft": null,
-      "CompletedAt": null
+      "Status": "완료",
+      "Draft": "<DockPanel Height=\"100\" LastChildFill=\"False\">\n    <Button DockPanel.Dock=\"Left\">Left</Button>\n    <Button DockPanel.Dock=\"Right\">Right</Button>\n</DockPanel>",
+      "CompletedAt": "2026-09-19T18:26:13.8192924+09:00"
     },
     "2_1": {
-      "Runs": 0,
-      "Successes": 0,
-      "Hints": 0,
-      "Answers": 0,
-      "Status": "미완료",
-      "Draft": null,
-      "CompletedAt": null
+      "Runs": 1,
+      "Successes": 1,
+      "Hints": 1,
+      "Answers": 1,
+      "Status": "완료",
+      "Draft": "<DockPanel Height=\"120\">\n    <Button DockPanel.Dock=\"Left\">Left</Button>\n    <Button DockPanel.Dock=\"Top\">Top</Button>\n    <Border Background=\"LightYellow\">\n        <TextBlock Text=\"Center\"/>\n    </Border>\n</DockPanel>",
+      "CompletedAt": "2026-09-19T18:25:32.7962754+09:00"
     },
     "1_3": {
       "Runs": 4,

@@ -1,11 +1,11 @@
 {
   "Chapter": "ch5 텍스트박스",
   "FirstStudiedAt": "2026-09-12T21:17:54+09:00",
-  "LastStudiedAt": "2026-09-12T21:17:54+09:00",
-  "TotalStudySeconds": 0,
-  "LaunchCount": 0,
-  "LastTab": 0,
-  "PracticeTotal": 16,
+  "LastStudiedAt": "2026-09-19T19:05:24.9332605+09:00",
+  "TotalStudySeconds": 459,
+  "LaunchCount": 1,
+  "LastTab": 4,
+  "PracticeTotal": 26,
   "Practices": {
     "1_1": {
       "Runs": 1,
@@ -150,6 +150,96 @@
       "Status": "완료",
       "Draft": null,
       "CompletedAt": "2026-09-12T21:17:54+09:00"
+    },
+    "5_5": {
+      "Runs": 1,
+      "Successes": 1,
+      "Hints": 1,
+      "Answers": 1,
+      "Status": "완료",
+      "Draft": "private void BtnClear_Click(object sender, RoutedEventArgs e)\n{\n    txtDynamic.Clear();\n}\n\nprivate void BtnUpperCase_Click(object sender, RoutedEventArgs e)\n{\n    txtDynamic.Text = txtDynamic.Text.ToUpper();\n}",
+      "CompletedAt": "2026-09-19T19:05:22.1444456+09:00"
+    },
+    "5_4": {
+      "Runs": 1,
+      "Successes": 1,
+      "Hints": 1,
+      "Answers": 4,
+      "Status": "완료",
+      "Draft": "private void TxtKeyDown_KeyDown(object sender, KeyEventArgs e)\n{\n    if (e.Key == Key.Enter)\n    {\n        txtKeyResult.Text = $\"입력 확정: {txtKeyDown.Text}\";\n    }\n}",
+      "CompletedAt": "2026-09-19T19:04:36.2827422+09:00"
+    },
+    "4_5": {
+      "Runs": 2,
+      "Successes": 2,
+      "Hints": 1,
+      "Answers": 2,
+      "Status": "완료",
+      "Draft": "<StackPanel>\n    <TextBox Text=\"빨간 커서\" CaretBrush=\"Red\" Margin=\"0,4\"/>\n    <TextBox Text=\"초록 선택 (드래그해 보세요)\" SelectionBrush=\"Green\" Margin=\"0,4\"/>\n</StackPanel>",
+      "CompletedAt": "2026-09-19T19:03:02.2285027+09:00"
+    },
+    "4_4": {
+      "Runs": 2,
+      "Successes": 2,
+      "Hints": 0,
+      "Answers": 1,
+      "Status": "완료",
+      "Draft": "<StackPanel>\n    <TextBox Text=\"Padding 0\" Padding=\"0\" Margin=\"0,4\"/>\n    <TextBox Text=\"Padding 10\" Padding=\"10\" Margin=\"0,4\"/>\n    <TextBox Text=\"Padding 20\" Padding=\"20\" Margin=\"0,4\"/>\n</StackPanel>",
+      "CompletedAt": "2026-09-19T19:02:18.104343+09:00"
+    },
+    "3_5": {
+      "Runs": 5,
+      "Successes": 5,
+      "Hints": 0,
+      "Answers": 1,
+      "Status": "완료",
+      "Draft": "<StackPanel>\n    <TextBox Text=\"밑줄 텍스트\" TextDecorations=\"Underline\" Margin=\"0,4\"/>\n    <TextBox Text=\"취소선 텍스트\" TextDecorations=\"Strikethrough\" Margin=\"0,4\"/>\n</StackPanel>",
+      "CompletedAt": "2026-09-19T19:01:44.3284657+09:00"
+    },
+    "3_4": {
+      "Runs": 2,
+      "Successes": 2,
+      "Hints": 0,
+      "Answers": 1,
+      "Status": "완료",
+      "Draft": "<StackPanel>\n    <TextBox Text=\"Arial\" FontFamily=\"Arial\" Margin=\"0,4\"/>\n    <TextBox Text=\"Consolas\" FontFamily=\"Consolas\" Margin=\"0,4\"/>\n    <TextBox Text=\"맑은 고딕\" FontFamily=\"맑은 고딕\" Margin=\"0,4\"/>\n</StackPanel>",
+      "CompletedAt": "2026-09-19T19:00:56.9624948+09:00"
+    },
+    "2_4": {
+      "Runs": 1,
+      "Successes": 1,
+      "Hints": 1,
+      "Answers": 0,
+      "Status": "완료",
+      "Draft": "<StackPanel>\n    <TextBox Text=\"200x30\" Width=\"200\" Height=\"30\"/>\r\n    <TextBox Text=\"250x40\" Width=\"250\" Height=\"40\"/>\r\n    <TextBox Text=\"300x50\" Width=\"300\" Height=\"50\"/>\n</StackPanel>",
+      "CompletedAt": "2026-09-19T19:00:01.752914+09:00"
+    },
+    "1_7": {
+      "Runs": 1,
+      "Successes": 1,
+      "Hints": 0,
+      "Answers": 0,
+      "Status": "완료",
+      "Draft": "<TextBox Height=\"60\" Width=\"240\" AcceptsTab=\"True\" AcceptsReturn=\"True\"/>",
+      "CompletedAt": "2026-09-19T18:59:05.6779841+09:00"
+    },
+    "1_6": {
+      "Runs": 1,
+      "Successes": 1,
+      "Hints": 1,
+      "Answers": 0,
+      "Status": "완료",
+      "Draft": "<StackPanel>\n    <TextBox Text=\"읽기 전용\" IsReadOnly=\"True\"/>\r\n    <TextBox Text=\"비활성화\" IsEnabled=\"False\"/>\n</StackPanel>",
+      "CompletedAt": "2026-09-19T18:58:23.986927+09:00"
+    },
+    "1_5": {
+      "Runs": 1,
+      "Successes": 1,
+      "Hints": 0,
+      "Answers": 0,
+      "Status": "완료",
+      "Draft": "<TextBox Width=\"200\" MaxLength=\"10\"/>",
+      "CompletedAt": "2026-09-19T18:57:40.1489711+09:00"
     }
   }
 }
