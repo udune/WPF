@@ -1,10 +1,10 @@
 {
   "Chapter": "ch6 패스워드박스",
   "FirstStudiedAt": "2026-09-12T21:22:54.1442817+09:00",
-  "LastStudiedAt": "2026-09-19T17:56:17.9211824+09:00",
-  "TotalStudySeconds": 976,
-  "LaunchCount": 2,
-  "LastTab": 4,
+  "LastStudiedAt": "2026-09-20T19:25:32.2040622+09:00",
+  "TotalStudySeconds": 1498,
+  "LaunchCount": 3,
+  "LastTab": 0,
   "PracticeTotal": 23,
   "Practices": {
     "5_3": {
@@ -143,76 +143,76 @@
       "CompletedAt": "2026-09-12T21:23:30.0727019+09:00"
     },
     "5_5": {
-      "Runs": 0,
-      "Successes": 0,
-      "Hints": 0,
-      "Answers": 0,
-      "Status": "미완료",
-      "Draft": null,
-      "CompletedAt": null
+      "Runs": 1,
+      "Successes": 1,
+      "Hints": 1,
+      "Answers": 1,
+      "Status": "완료",
+      "Draft": "private void BtnCheckMatch_Click(object sender, RoutedEventArgs e)\n{\n    if (string.IsNullOrEmpty(pwdFirst.Password))\n        txtMatchResult.Text = \"비밀번호를 입력해주세요.\";\n    else if (pwdFirst.Password == pwdSecond.Password)\n        txtMatchResult.Text = \"비밀번호가 일치합니다!\";\n    else\n        txtMatchResult.Text = \"비밀번호가 일치하지 않습니다.\";\n}",
+      "CompletedAt": "2026-09-20T19:19:51.4863133+09:00"
     },
     "5_4": {
-      "Runs": 0,
-      "Successes": 0,
-      "Hints": 0,
-      "Answers": 0,
-      "Status": "미완료",
-      "Draft": null,
-      "CompletedAt": null
+      "Runs": 1,
+      "Successes": 1,
+      "Hints": 1,
+      "Answers": 1,
+      "Status": "완료",
+      "Draft": "private void PwdKeyDown_KeyDown(object sender, KeyEventArgs e)\n{\n    if (e.Key == Key.Enter)\n    {\n        txtPwdKeyResult.Text = $\"입력된 비밀번호: {pwdKeyDown.Password}\";\n    }\n}",
+      "CompletedAt": "2026-09-20T19:17:12.2838461+09:00"
     },
     "4_5": {
-      "Runs": 0,
-      "Successes": 0,
-      "Hints": 0,
-      "Answers": 0,
-      "Status": "미완료",
-      "Draft": null,
-      "CompletedAt": null
+      "Runs": 4,
+      "Successes": 4,
+      "Hints": 1,
+      "Answers": 1,
+      "Status": "완료",
+      "Draft": "<StackPanel>\n    <PasswordBox Password=\"1234\" CaretBrush=\"Red\" Margin=\"0,4\"/>\n    <PasswordBox Password=\"1234\" SelectionBrush=\"Green\" Margin=\"0,4\"/>\n</StackPanel>",
+      "CompletedAt": "2026-09-20T19:21:19.3466357+09:00"
     },
     "4_4": {
-      "Runs": 0,
-      "Successes": 0,
-      "Hints": 0,
-      "Answers": 0,
-      "Status": "미완료",
-      "Draft": null,
-      "CompletedAt": null
+      "Runs": 2,
+      "Successes": 2,
+      "Hints": 1,
+      "Answers": 1,
+      "Status": "완료",
+      "Draft": "<StackPanel>\n    <PasswordBox Password=\"1234\" Padding=\"0\" Margin=\"0,4\"/>\n    <PasswordBox Password=\"1234\" Padding=\"10\" Margin=\"0,4\"/>\n    <PasswordBox Password=\"1234\" Padding=\"20\" Margin=\"0,4\"/>\n</StackPanel>",
+      "CompletedAt": "2026-09-20T19:20:24.5013956+09:00"
     },
     "3_4": {
-      "Runs": 0,
-      "Successes": 0,
-      "Hints": 0,
-      "Answers": 0,
-      "Status": "미완료",
-      "Draft": null,
-      "CompletedAt": null
+      "Runs": 2,
+      "Successes": 2,
+      "Hints": 3,
+      "Answers": 1,
+      "Status": "완료",
+      "Draft": "<StackPanel>\n    <PasswordBox Password=\"abcdef\" FontFamily=\"Arial\" Margin=\"0,4\"/>\n    <PasswordBox Password=\"abcdef\" FontFamily=\"Consolas\" Margin=\"0,4\"/>\n    <PasswordBox Password=\"abcdef\" FontFamily=\"맑은 고딕\" Margin=\"0,4\"/>\n</StackPanel>",
+      "CompletedAt": "2026-09-20T19:22:19.6790542+09:00"
     },
     "2_4": {
-      "Runs": 0,
-      "Successes": 0,
-      "Hints": 0,
-      "Answers": 0,
-      "Status": "미완료",
-      "Draft": null,
-      "CompletedAt": null
+      "Runs": 8,
+      "Successes": 8,
+      "Hints": 2,
+      "Answers": 7,
+      "Status": "완료",
+      "Draft": "<StackPanel>\n    <PasswordBox Password=\"1234\" Width=\"200\" Height=\"30\" Margin=\"0,4\" HorizontalAlignment=\"Left\"/>\n    <PasswordBox Password=\"1234\" Width=\"250\" Height=\"40\" Margin=\"0,4\" HorizontalAlignment=\"Left\"/>\n    <PasswordBox Password=\"1234\" Width=\"300\" Height=\"50\" Margin=\"0,4\" HorizontalAlignment=\"Left\"/>\n</StackPanel>",
+      "CompletedAt": "2026-09-20T19:23:32.3041269+09:00"
     },
     "1_5": {
-      "Runs": 0,
-      "Successes": 0,
-      "Hints": 0,
-      "Answers": 0,
-      "Status": "미완료",
-      "Draft": null,
-      "CompletedAt": null
+      "Runs": 7,
+      "Successes": 6,
+      "Hints": 5,
+      "Answers": 1,
+      "Status": "완료",
+      "Draft": "private void BtnShowLength_Click(object sender, RoutedEventArgs e)\n{\n    string pw = myPasswordBox.Password;\n    txtLength.Text = $\"입력한 길이: {pw.Length}자\";\n}",
+      "CompletedAt": "2026-09-20T19:25:21.8922599+09:00"
     },
     "1_4": {
-      "Runs": 0,
-      "Successes": 0,
-      "Hints": 0,
-      "Answers": 0,
-      "Status": "미완료",
-      "Draft": null,
-      "CompletedAt": null
+      "Runs": 9,
+      "Successes": 9,
+      "Hints": 2,
+      "Answers": 4,
+      "Status": "완료",
+      "Draft": "<StackPanel>\n    <PasswordBox Password=\"active\" Margin=\"0,4\"/>\n    <PasswordBox Password=\"disabled\" IsEnabled=\"False\" Margin=\"0,4\"/>\n</StackPanel>",
+      "CompletedAt": "2026-09-20T19:24:09.9771094+09:00"
     }
   }
 }

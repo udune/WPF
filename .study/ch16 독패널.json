@@ -1,9 +1,9 @@
 {
   "Chapter": "ch16 독패널",
   "FirstStudiedAt": "2026-09-18T09:07:47.0635543+09:00",
-  "LastStudiedAt": "2026-09-19T18:27:19.2719764+09:00",
-  "TotalStudySeconds": 328,
-  "LaunchCount": 3,
+  "LastStudiedAt": "2026-09-20T19:49:25.0382285+09:00",
+  "TotalStudySeconds": 845,
+  "LaunchCount": 4,
   "LastTab": 2,
   "PracticeTotal": 15,
   "Practices": {
@@ -62,31 +62,31 @@
       "CompletedAt": null
     },
     "3_3": {
-      "Runs": 0,
-      "Successes": 0,
-      "Hints": 0,
-      "Answers": 0,
-      "Status": "미완료",
-      "Draft": null,
-      "CompletedAt": null
+      "Runs": 5,
+      "Successes": 5,
+      "Hints": 1,
+      "Answers": 5,
+      "Status": "완료",
+      "Draft": "<DockPanel Height=\"140\">\n    <Border DockPanel.Dock=\"Left\" Background=\"#37474F\" Width=\"90\">\n        <TextBlock Text=\"메뉴\" Foreground=\"White\" Margin=\"8\"/>\n    </Border>\n    <Border Background=\"White\">\n        <TextBlock Text=\"본문 영역\" Margin=\"8\"/>\n    </Border>\n</DockPanel>",
+      "CompletedAt": "2026-09-20T19:49:15.9960172+09:00"
     },
     "3_2": {
-      "Runs": 0,
-      "Successes": 0,
-      "Hints": 0,
-      "Answers": 0,
-      "Status": "미완료",
-      "Draft": null,
-      "CompletedAt": null
+      "Runs": 9,
+      "Successes": 9,
+      "Hints": 1,
+      "Answers": 1,
+      "Status": "완료",
+      "Draft": "<DockPanel Height=\"120\">\n    <StackPanel DockPanel.Dock=\"Bottom\" Orientation=\"Horizontal\" HorizontalAlignment=\"Right\">\n        <Button Content=\"확인\" Margin=\"5\"/>\n        <Button Content=\"취소\" Margin=\"5\"/>\n    </StackPanel>\n    <Border Background=\"LightYellow\" Padding=\"10\">\n        <TextBlock Text=\"콘텐츠 영역\"/>\n    </Border>\n</DockPanel>",
+      "CompletedAt": "2026-09-20T19:46:18.2754423+09:00"
     },
     "3_1": {
-      "Runs": 0,
-      "Successes": 0,
-      "Hints": 0,
-      "Answers": 0,
-      "Status": "미완료",
-      "Draft": null,
-      "CompletedAt": null
+      "Runs": 12,
+      "Successes": 6,
+      "Hints": 1,
+      "Answers": 1,
+      "Status": "부분완료",
+      "Draft": "<DockPanel Height=\"150\">\n    <Border DockPanel.Dock=\"Top\" Background=\"LightBlue\" Padding=\"8\">\n        <TextBlock Text=\"헤더\"/>\n    </Border>\n    <Border DockPanel.Dock=\"Bottom\" Background=\"LightGray\" Padding=\"4\">\n        <TextBlock Text=\"상태바\"/>\n    </Border>\n    <Border Background=\"White\" Padding=\"10\">\n        <TextBlock Text=\"콘텐츠\"/>\n    </Border>\n</DockPanel>",
+      "CompletedAt": "2026-09-20T19:43:15.7139312+09:00"
     },
     "2_3": {
       "Runs": 1,

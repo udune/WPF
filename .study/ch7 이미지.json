@@ -1,11 +1,11 @@
 {
   "Chapter": "ch7 이미지",
   "FirstStudiedAt": "2026-09-12T21:43:22.5727214+09:00",
-  "LastStudiedAt": "2026-09-12T22:43:30.1916032+09:00",
-  "TotalStudySeconds": 1481,
-  "LaunchCount": 4,
+  "LastStudiedAt": "2026-09-20T20:01:48.5003641+09:00",
+  "TotalStudySeconds": 1769,
+  "LaunchCount": 5,
   "LastTab": 0,
-  "PracticeTotal": 15,
+  "PracticeTotal": 21,
   "Practices": {
     "5_3": {
       "Runs": 1,
@@ -141,6 +141,60 @@
       "Status": "완료",
       "Draft": "<Image Source=\"https://via.placeholder.com/100\"/>",
       "CompletedAt": "2026-09-12T21:44:02.2585566+09:00"
+    },
+    "5_4": {
+      "Runs": 0,
+      "Successes": 0,
+      "Hints": 0,
+      "Answers": 0,
+      "Status": "미완료",
+      "Draft": null,
+      "CompletedAt": null
+    },
+    "4_4": {
+      "Runs": 0,
+      "Successes": 0,
+      "Hints": 0,
+      "Answers": 0,
+      "Status": "미완료",
+      "Draft": null,
+      "CompletedAt": null
+    },
+    "3_5": {
+      "Runs": 0,
+      "Successes": 0,
+      "Hints": 0,
+      "Answers": 0,
+      "Status": "미완료",
+      "Draft": null,
+      "CompletedAt": null
+    },
+    "3_4": {
+      "Runs": 0,
+      "Successes": 0,
+      "Hints": 0,
+      "Answers": 0,
+      "Status": "미완료",
+      "Draft": null,
+      "CompletedAt": null
+    },
+    "1_5": {
+      "Runs": 6,
+      "Successes": 1,
+      "Hints": 2,
+      "Answers": 1,
+      "Status": "부분완료",
+      "Draft": "<Button Padding=\"8\" HorizontalAlignment=\"Left\">\n    <StackPanel Orientation=\"Horizontal\">\n        <Image Source=\"https://via.placeholder.com/24\" Width=\"24\" Height=\"24\" Margin=\"0,0,6,0\"/>\n        <TextBlock Text=\"이미지 버튼\" VerticalAlignment=\"Center\"/>\n    </StackPanel>\n</Button>",
+      "CompletedAt": "2026-09-20T20:01:45.1565021+09:00"
+    },
+    "1_4": {
+      "Runs": 10,
+      "Successes": 10,
+      "Hints": 5,
+      "Answers": 6,
+      "Status": "완료",
+      "Draft": "<StackPanel Orientation=\"Horizontal\">\n    <Image Source=\"/1.png\" Width=\"50\" Height=\"50\" Margin=\"4\"/>\n    <Image Source=\"/1.png\" Width=\"80\" Height=\"80\" Margin=\"4\"/>\n    <Image Source=\"/1.png\" Width=\"120\" Height=\"120\" Margin=\"4\"/>\n</StackPanel>",
+      "CompletedAt": "2026-09-20T19:57:34.5103093+09:00"
     }
   }
 }

@@ -1,10 +1,10 @@
 {
   "Chapter": "ch25 데이터바인딩1",
   "FirstStudiedAt": "2026-09-18T18:31:51.1182873+09:00",
-  "LastStudiedAt": "2026-09-18T18:37:41.3938445+09:00",
-  "TotalStudySeconds": 316,
-  "LaunchCount": 1,
-  "LastTab": 0,
+  "LastStudiedAt": "2026-09-20T19:35:42.9740742+09:00",
+  "TotalStudySeconds": 791,
+  "LaunchCount": 2,
+  "LastTab": 2,
   "PracticeTotal": 19,
   "Practices": {
     "5_3": {
@@ -107,40 +107,40 @@
       "CompletedAt": null
     },
     "2_4": {
-      "Runs": 0,
-      "Successes": 0,
-      "Hints": 0,
-      "Answers": 0,
-      "Status": "미완료",
-      "Draft": null,
-      "CompletedAt": null
+      "Runs": 8,
+      "Successes": 8,
+      "Hints": 3,
+      "Answers": 7,
+      "Status": "완료",
+      "Draft": "<StackPanel>\n    <TextBox x:Name=\"oneTimeSource\" Text=\"처음 값\"/>\n    <TextBlock Margin=\"0,8,0,0\"\n               Text=\"{Binding ElementName=oneTimeSource, Path=Text, Mode=OneTime}\"/>\n</StackPanel>",
+      "CompletedAt": "2026-09-20T19:35:08.3795277+09:00"
     },
     "2_3": {
-      "Runs": 0,
-      "Successes": 0,
-      "Hints": 0,
-      "Answers": 0,
-      "Status": "미완료",
-      "Draft": null,
-      "CompletedAt": null
+      "Runs": 10,
+      "Successes": 10,
+      "Hints": 1,
+      "Answers": 14,
+      "Status": "완료",
+      "Draft": "<StackPanel>\n    <CheckBox x:Name=\"agree\" Content=\"약관에 동의합니다\"/>\n    <Button Content=\"다음\" Width=\"120\" HorizontalAlignment=\"Left\" Margin=\"0,6,0,0\" IsEnabled=\"{Binding ElementName=agree, Path=IsChecked}\"/>\n</StackPanel>",
+      "CompletedAt": "2026-09-20T19:33:19.8702983+09:00"
     },
     "2_2": {
-      "Runs": 0,
-      "Successes": 0,
-      "Hints": 0,
-      "Answers": 0,
-      "Status": "미완료",
-      "Draft": null,
-      "CompletedAt": null
+      "Runs": 4,
+      "Successes": 4,
+      "Hints": 1,
+      "Answers": 3,
+      "Status": "완료",
+      "Draft": "<StackPanel>\n    <Slider x:Name=\"s2\" Minimum=\"0\" Maximum=\"100\" Width=\"200\"/>\n    <ProgressBar Height=\"20\" Minimum=\"0\" Maximum=\"100\" Value=\"{Binding ElementName=s2, Path=Value, Mode=OneWay}\"/>\n</StackPanel>",
+      "CompletedAt": "2026-09-20T19:31:24.7675034+09:00"
     },
     "2_1": {
-      "Runs": 0,
-      "Successes": 0,
-      "Hints": 0,
-      "Answers": 0,
-      "Status": "미완료",
-      "Draft": null,
-      "CompletedAt": null
+      "Runs": 4,
+      "Successes": 4,
+      "Hints": 1,
+      "Answers": 5,
+      "Status": "완료",
+      "Draft": "<StackPanel>\n    <TextBox x:Name=\"a\" Width=\"200\" Text=\"처음 값\"/>\n    <TextBox Width=\"200\" Text=\"{Binding ElementName=a, Path=Text, Mode=TwoWay}\"/>\n</StackPanel>",
+      "CompletedAt": "2026-09-20T19:27:50.9548674+09:00"
     },
     "1_4": {
       "Runs": 1,
