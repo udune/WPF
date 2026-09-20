@@ -1,8 +1,8 @@
 {
   "Chapter": "ch20 프로그레스바",
   "FirstStudiedAt": "2026-09-18T14:10:39.7503795+09:00",
-  "LastStudiedAt": "2026-09-20T01:59:53.6014019+09:00",
-  "TotalStudySeconds": 126,
+  "LastStudiedAt": "2026-09-20T02:01:52.4718432+09:00",
+  "TotalStudySeconds": 213,
   "LaunchCount": 4,
   "LastTab": 1,
   "PracticeTotal": 18,
@@ -116,22 +116,22 @@
       "CompletedAt": null
     },
     "2_3": {
-      "Runs": 0,
-      "Successes": 0,
-      "Hints": 0,
-      "Answers": 0,
-      "Status": "미완료",
-      "Draft": null,
-      "CompletedAt": null
+      "Runs": 1,
+      "Successes": 1,
+      "Hints": 1,
+      "Answers": 4,
+      "Status": "완료",
+      "Draft": "<ProgressBar Height=\"22\" Width=\"260\" IsIndeterminate=\"True\"/>",
+      "CompletedAt": "2026-09-20T02:01:46.4579797+09:00"
     },
     "2_2": {
-      "Runs": 0,
-      "Successes": 0,
-      "Hints": 2,
-      "Answers": 0,
-      "Status": "미완료",
-      "Draft": null,
-      "CompletedAt": null
+      "Runs": 5,
+      "Successes": 4,
+      "Hints": 3,
+      "Answers": 8,
+      "Status": "완료",
+      "Draft": "progressBar.IsIndeterminate = true;",
+      "CompletedAt": "2026-09-20T02:01:12.172338+09:00"
     },
     "2_1": {
       "Runs": 0,

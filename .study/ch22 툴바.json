@@ -1,10 +1,10 @@
 {
   "Chapter": "ch22 툴바",
   "FirstStudiedAt": "2026-09-18T14:24:58.0032929+09:00",
-  "LastStudiedAt": "2026-09-19T17:55:54.8828219+09:00",
-  "TotalStudySeconds": 257,
-  "LaunchCount": 2,
-  "LastTab": 0,
+  "LastStudiedAt": "2026-09-20T02:14:08.2970989+09:00",
+  "TotalStudySeconds": 558,
+  "LaunchCount": 3,
+  "LastTab": 1,
   "PracticeTotal": 19,
   "Practices": {
     "5_4": {
@@ -107,40 +107,40 @@
       "CompletedAt": null
     },
     "2_4": {
-      "Runs": 0,
-      "Successes": 0,
-      "Hints": 0,
-      "Answers": 0,
-      "Status": "미완료",
-      "Draft": null,
-      "CompletedAt": null
+      "Runs": 5,
+      "Successes": 5,
+      "Hints": 1,
+      "Answers": 1,
+      "Status": "완료",
+      "Draft": "<ToolBar>\n    <TextBlock Text=\"볼륨:\" VerticalAlignment=\"Center\"/>\n    <Slider Width=\"100\" Minimum=\"0\" Maximum=\"100\" Value=\"50\"/>\n    <Separator/>\n    <ProgressBar Width=\"100\" Height=\"15\" Value=\"65\"/>\n</ToolBar>",
+      "CompletedAt": "2026-09-20T02:13:50.5208271+09:00"
     },
     "2_3": {
-      "Runs": 0,
-      "Successes": 0,
-      "Hints": 0,
-      "Answers": 0,
-      "Status": "미완료",
-      "Draft": null,
-      "CompletedAt": null
+      "Runs": 1,
+      "Successes": 1,
+      "Hints": 3,
+      "Answers": 1,
+      "Status": "부분완료",
+      "Draft": "<ToolBar>\n    <Button>\n        <Ellipse Width=\"14\" Height=\"14\" Fill=\"Crimson\"/>\n    </Button>\n    <Button>\n        <Rectangle Width=\"14\" Height=\"14\" Fill=\"SeaGreen\"/>\n    </Button>\n</ToolBar>",
+      "CompletedAt": "2026-09-20T02:12:28.8253921+09:00"
     },
     "2_2": {
-      "Runs": 0,
-      "Successes": 0,
-      "Hints": 0,
-      "Answers": 0,
-      "Status": "미완료",
-      "Draft": null,
-      "CompletedAt": null
+      "Runs": 2,
+      "Successes": 2,
+      "Hints": 1,
+      "Answers": 1,
+      "Status": "완료",
+      "Draft": "<ToolBar>\n    <ToggleButton Content=\"굵게\"/>\n    <Separator/>\n    <CheckBox Content=\"자동 줄바꿈\" VerticalAlignment=\"Center\"/>\n</ToolBar>",
+      "CompletedAt": "2026-09-20T02:11:01.38234+09:00"
     },
     "2_1": {
-      "Runs": 0,
-      "Successes": 0,
-      "Hints": 0,
-      "Answers": 0,
-      "Status": "미완료",
-      "Draft": null,
-      "CompletedAt": null
+      "Runs": 5,
+      "Successes": 5,
+      "Hints": 2,
+      "Answers": 3,
+      "Status": "완료",
+      "Draft": "<ToolBar>\n    <ComboBox Width=\"100\" SelectedIndex=\"0\">\n        <ComboBoxItem Content=\"맑은 고딕\"/>\n        <ComboBoxItem Content=\"굴림\"/>\n        <ComboBoxItem Content=\"바탕\"/>\n    </ComboBox>\n</ToolBar>",
+      "CompletedAt": "2026-09-20T02:09:53.6648249+09:00"
     },
     "1_4": {
       "Runs": 1,
