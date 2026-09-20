@@ -1,10 +1,10 @@
 {
   "Chapter": "ch29 화면이동 프레임",
   "FirstStudiedAt": "2026-09-18T19:42:15.4154937+09:00",
-  "LastStudiedAt": "2026-09-18T20:09:14.9957588+09:00",
-  "TotalStudySeconds": 251,
-  "LaunchCount": 1,
-  "LastTab": 1,
+  "LastStudiedAt": "2026-09-21T00:15:50.9369596+09:00",
+  "TotalStudySeconds": 429,
+  "LaunchCount": 2,
+  "LastTab": 2,
   "PracticeTotal": 14,
   "Practices": {
     "5_4": {
@@ -80,31 +80,31 @@
       "CompletedAt": null
     },
     "3_3": {
-      "Runs": 0,
-      "Successes": 0,
-      "Hints": 0,
-      "Answers": 0,
-      "Status": "미완료",
-      "Draft": null,
-      "CompletedAt": null
+      "Runs": 1,
+      "Successes": 1,
+      "Hints": 1,
+      "Answers": 1,
+      "Status": "부분완료",
+      "Draft": "<DockPanel Height=\"140\">\n    <StackPanel DockPanel.Dock=\"Top\" Orientation=\"Horizontal\" Margin=\"6\">\n        <Button Content=\"뒤로\" Width=\"70\" Margin=\"0,0,6,0\"/>\n        <Button Content=\"앞으로\" Width=\"70\"/>\n    </StackPanel>\n    <TextBlock Text=\"페이지 본문\" Margin=\"8\"/>\n</DockPanel>",
+      "CompletedAt": "2026-09-21T00:15:30.9798111+09:00"
     },
     "3_2": {
-      "Runs": 0,
-      "Successes": 0,
-      "Hints": 0,
-      "Answers": 0,
-      "Status": "미완료",
-      "Draft": null,
-      "CompletedAt": null
+      "Runs": 8,
+      "Successes": 8,
+      "Hints": 1,
+      "Answers": 5,
+      "Status": "완료",
+      "Draft": "<StackPanel Margin=\"10\">\n    <TextBlock Text=\"1 단계\" FontSize=\"16\"/>\n    <Button Content=\"다음 단계로\" Width=\"120\" HorizontalAlignment=\"Left\" Margin=\"0,8,0,0\"/>\n</StackPanel>",
+      "CompletedAt": "2026-09-21T00:14:26.1612259+09:00"
     },
     "3_1": {
-      "Runs": 0,
-      "Successes": 0,
-      "Hints": 0,
-      "Answers": 0,
-      "Status": "미완료",
-      "Draft": null,
-      "CompletedAt": null
+      "Runs": 5,
+      "Successes": 5,
+      "Hints": 1,
+      "Answers": 1,
+      "Status": "부분완료",
+      "Draft": "<StackPanel Margin=\"10\">\n    <TextBlock Text=\"첫 번째 페이지\" FontSize=\"18\" FontWeight=\"Bold\"/>\n    <TextBlock Text=\"Page 는 Frame 안에 표시되는 화면 단위입니다.\" Margin=\"0,6,0,0\"/>\n</StackPanel>",
+      "CompletedAt": "2026-09-21T00:13:17.8073154+09:00"
     },
     "2_3": {
       "Runs": 6,

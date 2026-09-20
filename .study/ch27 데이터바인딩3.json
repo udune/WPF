@@ -1,10 +1,10 @@
 {
   "Chapter": "ch27 데이터바인딩3",
   "FirstStudiedAt": "2026-09-18T18:49:36.1343268+09:00",
-  "LastStudiedAt": "2026-09-18T19:16:32.7409072+09:00",
-  "TotalStudySeconds": 328,
-  "LaunchCount": 1,
-  "LastTab": 0,
+  "LastStudiedAt": "2026-09-21T00:37:12.6680833+09:00",
+  "TotalStudySeconds": 831,
+  "LaunchCount": 2,
+  "LastTab": 1,
   "PracticeTotal": 17,
   "Practices": {
     "5_3": {
@@ -98,31 +98,31 @@
       "CompletedAt": null
     },
     "2_3": {
-      "Runs": 0,
-      "Successes": 0,
-      "Hints": 0,
-      "Answers": 0,
-      "Status": "미완료",
-      "Draft": null,
-      "CompletedAt": null
+      "Runs": 12,
+      "Successes": 11,
+      "Hints": 3,
+      "Answers": 1,
+      "Status": "완료",
+      "Draft": "<ListBox Width=\"240\" Height=\"110\">\n    <ListBox.ItemTemplate>\n        <DataTemplate>\n            <StackPanel Margin=\"0,3,0,3\">\n                <TextBlock Text=\"{Binding Name}\" FontWeight=\"Bold\"/>\n                <TextBlock Text=\"{Binding Description}\" FontSize=\"11\" Foreground=\"Gray\"/>\n            </StackPanel>\n        </DataTemplate>\n    </ListBox.ItemTemplate>\n</ListBox>",
+      "CompletedAt": "2026-09-20T23:35:52.3130008+09:00"
     },
     "2_2": {
-      "Runs": 0,
-      "Successes": 0,
-      "Hints": 0,
-      "Answers": 0,
-      "Status": "미완료",
-      "Draft": null,
-      "CompletedAt": null
+      "Runs": 4,
+      "Successes": 4,
+      "Hints": 7,
+      "Answers": 4,
+      "Status": "완료",
+      "Draft": "<ListBox Width=\"220\" Height=\"90\">\n    <ListBox.ItemTemplate>\n        <DataTemplate>\n            <StackPanel Orientation=\"Horizontal\">\n                <Rectangle Width=\"12\" Height=\"12\" Fill=\"SteelBlue\" Margin=\"0,0,6,0\"/>\n                <TextBlock Text=\"{Binding Name}\"/>\n            </StackPanel>\n        </DataTemplate>\n    </ListBox.ItemTemplate>\n</ListBox>",
+      "CompletedAt": "2026-09-20T23:32:17.1627653+09:00"
     },
     "2_1": {
-      "Runs": 0,
-      "Successes": 0,
-      "Hints": 0,
-      "Answers": 0,
-      "Status": "미완료",
-      "Draft": null,
-      "CompletedAt": null
+      "Runs": 3,
+      "Successes": 3,
+      "Hints": 1,
+      "Answers": 1,
+      "Status": "완료",
+      "Draft": "<ListBox Width=\"220\" Height=\"90\">\n    <ListBox.ItemTemplate>\n        <DataTemplate>\n            <TextBlock Text=\"{Binding Name}\" FontWeight=\"Bold\"/>\n        </DataTemplate>\n    </ListBox.ItemTemplate>\n</ListBox>",
+      "CompletedAt": "2026-09-20T23:29:31.5961511+09:00"
     },
     "1_4": {
       "Runs": 1,

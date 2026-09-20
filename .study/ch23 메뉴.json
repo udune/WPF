@@ -1,10 +1,10 @@
 {
   "Chapter": "ch23 메뉴",
   "FirstStudiedAt": "2026-09-18T15:04:47.0388702+09:00",
-  "LastStudiedAt": "2026-09-18T15:08:54.1850769+09:00",
-  "TotalStudySeconds": 234,
-  "LaunchCount": 1,
-  "LastTab": 0,
+  "LastStudiedAt": "2026-09-20T22:59:53.3358004+09:00",
+  "TotalStudySeconds": 395,
+  "LaunchCount": 2,
+  "LastTab": 2,
   "PracticeTotal": 19,
   "Practices": {
     "5_3": {
@@ -107,40 +107,40 @@
       "CompletedAt": null
     },
     "2_4": {
-      "Runs": 0,
-      "Successes": 0,
+      "Runs": 1,
+      "Successes": 1,
       "Hints": 0,
       "Answers": 0,
-      "Status": "미완료",
-      "Draft": null,
-      "CompletedAt": null
+      "Status": "완료",
+      "Draft": "<Menu>\n    <MenuItem Header=\"편집\">\n        <MenuItem Header=\"실행 취소\" IsEnabled=\"False\"/>\r\n        <MenuItem Header=\"붙여넣기\" IsEnabled=\"False\"/>\n    </MenuItem>\n</Menu>",
+      "CompletedAt": "2026-09-20T22:59:42.4103915+09:00"
     },
     "2_3": {
-      "Runs": 0,
-      "Successes": 0,
+      "Runs": 1,
+      "Successes": 1,
       "Hints": 0,
       "Answers": 0,
-      "Status": "미완료",
-      "Draft": null,
-      "CompletedAt": null
+      "Status": "완료",
+      "Draft": "<Menu>\n    <MenuItem Header=\"삽입\">\n        <MenuItem Header=\"표\">\r\n            <MenuItem Header=\"행 추가\"/>\r\n            <MenuItem Header=\"열 추가\"/>\r\n        </MenuItem>\n    </MenuItem>\n</Menu>",
+      "CompletedAt": "2026-09-20T22:59:01.9016088+09:00"
     },
     "2_2": {
-      "Runs": 0,
-      "Successes": 0,
+      "Runs": 1,
+      "Successes": 1,
       "Hints": 0,
       "Answers": 0,
-      "Status": "미완료",
-      "Draft": null,
-      "CompletedAt": null
+      "Status": "완료",
+      "Draft": "<Menu>\n    <MenuItem Header=\"파일\">\n        <MenuItem Header=\"저장\"/>\n        <Separator/>\n        <MenuItem Header=\"종료\"/>\n    </MenuItem>\n</Menu>",
+      "CompletedAt": "2026-09-20T22:58:00.6252896+09:00"
     },
     "2_1": {
-      "Runs": 0,
-      "Successes": 0,
+      "Runs": 4,
+      "Successes": 4,
       "Hints": 0,
-      "Answers": 0,
-      "Status": "미완료",
-      "Draft": null,
-      "CompletedAt": null
+      "Answers": 5,
+      "Status": "완료",
+      "Draft": "<Menu>\n    <MenuItem Header=\"편집\">\n        <MenuItem Header=\"찾기\">\n            <MenuItem Header=\"현재 문서\"/>\n            <MenuItem Header=\"전체 문서\"/>\n        </MenuItem>\n    </MenuItem>\n</Menu>",
+      "CompletedAt": "2026-09-20T22:11:52.4213104+09:00"
     },
     "1_4": {
       "Runs": 2,

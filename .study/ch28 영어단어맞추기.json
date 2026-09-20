@@ -1,10 +1,10 @@
 {
   "Chapter": "ch28 영어단어맞추기",
   "FirstStudiedAt": "2026-09-18T19:31:31.7589586+09:00",
-  "LastStudiedAt": "2026-09-18T19:37:59.184572+09:00",
-  "TotalStudySeconds": 354,
-  "LaunchCount": 1,
-  "LastTab": 0,
+  "LastStudiedAt": "2026-09-21T00:03:48.7695858+09:00",
+  "TotalStudySeconds": 1542,
+  "LaunchCount": 2,
+  "LastTab": 2,
   "PracticeTotal": 13,
   "Practices": {
     "5_4": {
@@ -71,31 +71,31 @@
       "CompletedAt": null
     },
     "3_3": {
-      "Runs": 0,
-      "Successes": 0,
-      "Hints": 0,
-      "Answers": 0,
-      "Status": "미완료",
-      "Draft": null,
-      "CompletedAt": null
+      "Runs": 18,
+      "Successes": 18,
+      "Hints": 1,
+      "Answers": 1,
+      "Status": "완료",
+      "Draft": "<ItemsControl>\n    <ItemsControl.ItemsPanel>\n        <ItemsPanelTemplate>\n            <UniformGrid Rows=\"2\" Columns=\"2\"/>\n        </ItemsPanelTemplate>\n    </ItemsControl.ItemsPanel>\n</ItemsControl>",
+      "CompletedAt": "2026-09-21T00:03:11.1035927+09:00"
     },
     "3_2": {
-      "Runs": 0,
-      "Successes": 0,
-      "Hints": 0,
-      "Answers": 0,
-      "Status": "미완료",
-      "Draft": null,
-      "CompletedAt": null
+      "Runs": 5,
+      "Successes": 5,
+      "Hints": 1,
+      "Answers": 1,
+      "Status": "완료",
+      "Draft": "<ItemsControl>\n    <ItemsControl.ItemTemplate>\n        <DataTemplate>\n            <Button Content=\"{Binding}\" Width=\"40\" Margin=\"3\"/>\n        </DataTemplate>\n    </ItemsControl.ItemTemplate>\n</ItemsControl>",
+      "CompletedAt": "2026-09-20T23:57:42.0443122+09:00"
     },
     "3_1": {
-      "Runs": 0,
-      "Successes": 0,
-      "Hints": 0,
-      "Answers": 0,
-      "Status": "미완료",
-      "Draft": null,
-      "CompletedAt": null
+      "Runs": 3,
+      "Successes": 3,
+      "Hints": 1,
+      "Answers": 4,
+      "Status": "부분완료",
+      "Draft": "<ItemsControl>\n    <ItemsControl.ItemsPanel>\n        <ItemsPanelTemplate>\n            <WrapPanel/>\n        </ItemsPanelTemplate>\n    </ItemsControl.ItemsPanel>\n</ItemsControl>",
+      "CompletedAt": "2026-09-20T23:44:04.669143+09:00"
     },
     "2_3": {
       "Runs": 10,

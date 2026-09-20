@@ -1,29 +1,29 @@
 {
   "Chapter": "ch13 익스팬더",
   "FirstStudiedAt": "2026-09-17T00:10:39.9694053+09:00",
-  "LastStudiedAt": "2026-09-17T00:28:13.3779208+09:00",
-  "TotalStudySeconds": 940,
-  "LaunchCount": 1,
+  "LastStudiedAt": "2026-09-21T00:36:47.6970516+09:00",
+  "TotalStudySeconds": 1173,
+  "LaunchCount": 2,
   "LastTab": 4,
   "PracticeTotal": 15,
   "Practices": {
     "5_3": {
-      "Runs": 0,
-      "Successes": 0,
+      "Runs": 11,
+      "Successes": 11,
       "Hints": 0,
       "Answers": 1,
-      "Status": "미완료",
+      "Status": "부분완료",
       "Draft": "<StackPanel>\n    <CheckBox x:Name=\"chk\" Content=\"펼치기\"/>\n    <Expander Header=\"내용\" IsExpanded=\"{Binding ElementName=chk, Path=IsChecked}\">\n        <TextBlock Text=\"본문\" Margin=\"8\"/>\n    </Expander>\n</StackPanel>",
-      "CompletedAt": null
+      "CompletedAt": "2026-09-21T00:34:40.2192866+09:00"
     },
     "5_2": {
-      "Runs": 0,
-      "Successes": 0,
-      "Hints": 0,
-      "Answers": 0,
-      "Status": "미완료",
-      "Draft": "<Expander Header=\"{Binding ElementName=txtHeader, Path=Text}\">\r\n   <TextB\r\n</Expander>",
-      "CompletedAt": null
+      "Runs": 4,
+      "Successes": 4,
+      "Hints": 3,
+      "Answers": 1,
+      "Status": "완료",
+      "Draft": "Header=\"{Binding ElementName=txtHeader, Path=Text}\"",
+      "CompletedAt": "2026-09-21T00:25:44.1636036+09:00"
     },
     "5_1": {
       "Runs": 1,

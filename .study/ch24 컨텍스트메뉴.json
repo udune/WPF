@@ -1,10 +1,10 @@
 {
   "Chapter": "ch24 컨텍스트메뉴",
   "FirstStudiedAt": "2026-09-18T15:11:35.873904+09:00",
-  "LastStudiedAt": "2026-09-18T15:18:05.8517831+09:00",
-  "TotalStudySeconds": 357,
-  "LaunchCount": 1,
-  "LastTab": 0,
+  "LastStudiedAt": "2026-09-20T23:20:40.5593868+09:00",
+  "TotalStudySeconds": 806,
+  "LaunchCount": 2,
+  "LastTab": 1,
   "PracticeTotal": 19,
   "Practices": {
     "5_3": {
@@ -107,40 +107,40 @@
       "CompletedAt": null
     },
     "2_4": {
-      "Runs": 0,
-      "Successes": 0,
-      "Hints": 0,
+      "Runs": 1,
+      "Successes": 1,
+      "Hints": 1,
       "Answers": 0,
-      "Status": "미완료",
-      "Draft": null,
-      "CompletedAt": null
+      "Status": "완료",
+      "Draft": "<Button Content=\"마우스 오른쪽 클릭\" Padding=\"10\">\n    <Button.ContextMenu>\n        <ContextMenu>\n            <MenuItem Header=\"실행 취소\" IsEnabled=\"False\"/>\r\n            <MenuItem Header=\"붙여넣기\" IsEnabled=\"False\"/>\n        </ContextMenu>\n    </Button.ContextMenu>\n</Button>",
+      "CompletedAt": "2026-09-20T23:20:29.4815825+09:00"
     },
     "2_3": {
-      "Runs": 0,
-      "Successes": 0,
-      "Hints": 0,
-      "Answers": 0,
-      "Status": "미완료",
-      "Draft": null,
-      "CompletedAt": null
+      "Runs": 18,
+      "Successes": 3,
+      "Hints": 1,
+      "Answers": 1,
+      "Status": "부분완료",
+      "Draft": "<Button Content=\"오른쪽 클릭\" Padding=\"20,10\">\n    <Button.ContextMenu>\n        <ContextMenu>\n            <MenuItem Header=\"열기\">\n                <MenuItem.Icon>\n                    <Rectangle Width=\"12\" Height=\"12\" Fill=\"#2196F3\"/>\n                </MenuItem.Icon>\n            </MenuItem>\n            <Separator/>\n            <MenuItem Header=\"삭제\"/>\n        </ContextMenu>\n    </Button.ContextMenu>\n</Button>",
+      "CompletedAt": "2026-09-20T23:19:41.3153443+09:00"
     },
     "2_2": {
-      "Runs": 0,
-      "Successes": 0,
-      "Hints": 0,
-      "Answers": 0,
-      "Status": "미완료",
-      "Draft": null,
-      "CompletedAt": null
+      "Runs": 9,
+      "Successes": 9,
+      "Hints": 1,
+      "Answers": 1,
+      "Status": "완료",
+      "Draft": "<Button Content=\"오른쪽 클릭\" Padding=\"20,10\">\n    <Button.ContextMenu>\n        <ContextMenu Background=\"#FFFDE7\">\n            <MenuItem Header=\"기본 동작\" FontWeight=\"Bold\"/>\n            <MenuItem Header=\"그 외\"/>\n        </ContextMenu>\n    </Button.ContextMenu>\n</Button>",
+      "CompletedAt": "2026-09-20T23:16:34.0139464+09:00"
     },
     "2_1": {
-      "Runs": 0,
-      "Successes": 0,
-      "Hints": 0,
-      "Answers": 0,
-      "Status": "미완료",
-      "Draft": null,
-      "CompletedAt": null
+      "Runs": 27,
+      "Successes": 2,
+      "Hints": 3,
+      "Answers": 1,
+      "Status": "완료",
+      "Draft": "<Border Background=\"#EEEEEE\" Padding=\"30\">\n    <TextBlock Text=\"오른쪽 클릭\"/>\n    <Border.ContextMenu>\n        <ContextMenu>\n            <MenuItem Header=\"정렬\">\n                <MenuItem Header=\"이름순\"/>\n                <MenuItem Header=\"날짜순\"/>\n            </MenuItem>\n        </ContextMenu>\n    </Border.ContextMenu>\n</Border>",
+      "CompletedAt": "2026-09-20T23:02:49.8401382+09:00"
     },
     "1_4": {
       "Runs": 1,

@@ -1,10 +1,10 @@
 {
   "Chapter": "ch26 데이터바인딩2",
   "FirstStudiedAt": "2026-09-18T18:44:16.7148457+09:00",
-  "LastStudiedAt": "2026-09-18T18:49:25.3670548+09:00",
-  "TotalStudySeconds": 254,
-  "LaunchCount": 1,
-  "LastTab": 0,
+  "LastStudiedAt": "2026-09-20T23:26:59.2534994+09:00",
+  "TotalStudySeconds": 603,
+  "LaunchCount": 2,
+  "LastTab": 1,
   "PracticeTotal": 15,
   "Practices": {
     "5_3": {
@@ -89,31 +89,31 @@
       "CompletedAt": null
     },
     "2_3": {
-      "Runs": 0,
-      "Successes": 0,
-      "Hints": 0,
-      "Answers": 0,
-      "Status": "미완료",
-      "Draft": null,
-      "CompletedAt": null
+      "Runs": 7,
+      "Successes": 7,
+      "Hints": 1,
+      "Answers": 4,
+      "Status": "완료",
+      "Draft": "private void Swap_Click(object sender, RoutedEventArgs e)\n{\n    panel.DataContext = new Person { Name = \"임꺽정\" };\n}",
+      "CompletedAt": "2026-09-20T23:26:45.7979069+09:00"
     },
     "2_2": {
-      "Runs": 0,
-      "Successes": 0,
-      "Hints": 0,
-      "Answers": 0,
-      "Status": "미완료",
-      "Draft": null,
-      "CompletedAt": null
+      "Runs": 5,
+      "Successes": 4,
+      "Hints": 1,
+      "Answers": 1,
+      "Status": "완료",
+      "Draft": "<StackPanel>\n    <TextBlock Text=\"{Binding Name}\"/>\n    <Border BorderBrush=\"Gray\" BorderThickness=\"1\" Padding=\"8\" DataContext=\"{Binding Address}\">\n        <TextBlock Text=\"{Binding City}\"/>\n    </Border>\n</StackPanel>",
+      "CompletedAt": "2026-09-20T23:25:35.4479215+09:00"
     },
     "2_1": {
-      "Runs": 0,
-      "Successes": 0,
-      "Hints": 0,
-      "Answers": 0,
-      "Status": "미완료",
-      "Draft": null,
-      "CompletedAt": null
+      "Runs": 5,
+      "Successes": 5,
+      "Hints": 1,
+      "Answers": 1,
+      "Status": "완료",
+      "Draft": "<StackPanel>\n    <TextBlock Text=\"{Binding Name}\"/>\n    <TextBlock Text=\"{Binding Age}\"/>\n</StackPanel>",
+      "CompletedAt": "2026-09-20T23:22:25.2807455+09:00"
     },
     "1_3": {
       "Runs": 3,

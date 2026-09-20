@@ -1,10 +1,10 @@
 {
   "Chapter": "ch7 이미지",
   "FirstStudiedAt": "2026-09-12T21:43:22.5727214+09:00",
-  "LastStudiedAt": "2026-09-20T20:01:48.5003641+09:00",
-  "TotalStudySeconds": 1769,
-  "LaunchCount": 5,
-  "LastTab": 0,
+  "LastStudiedAt": "2026-09-20T22:11:05.5164387+09:00",
+  "TotalStudySeconds": 2024,
+  "LaunchCount": 6,
+  "LastTab": 4,
   "PracticeTotal": 21,
   "Practices": {
     "5_3": {
@@ -17,12 +17,12 @@
       "CompletedAt": "2026-09-12T22:41:02.3321355+09:00"
     },
     "5_2": {
-      "Runs": 3,
-      "Successes": 3,
+      "Runs": 4,
+      "Successes": 4,
       "Hints": 0,
       "Answers": 2,
       "Status": "부분완료",
-      "Draft": "private void SetWebImage()\r\n{\r\n    img.Source = new BitmapImage(new Uri(\"https://example.com/image.png\"));\r\n}",
+      "Draft": "private void SetWebImage()\r\n{\r\n    img.Source = new BitmapImage(new Uri(\"/1.png\"));\r\n}",
       "CompletedAt": "2026-09-12T22:41:25.0802808+09:00"
     },
     "5_1": {
@@ -143,40 +143,40 @@
       "CompletedAt": "2026-09-12T21:44:02.2585566+09:00"
     },
     "5_4": {
-      "Runs": 0,
-      "Successes": 0,
+      "Runs": 1,
+      "Successes": 1,
       "Hints": 0,
       "Answers": 0,
-      "Status": "미완료",
-      "Draft": null,
-      "CompletedAt": null
+      "Status": "완료",
+      "Draft": "private void BtnImgVisible_Click(object sender, RoutedEventArgs e)\n{\n    imgVisibility.Visibility = Visibility.Visible;\n}\n\nprivate void BtnImgHidden_Click(object sender, RoutedEventArgs e)\n{\n    imgVisibility.Visibility = Visibility.Hidden;    \n}\n\nprivate void BtnImgCollapsed_Click(object sender, RoutedEventArgs e)\n{\n    imgVisibility.Visibility = Visibility.Collapsed;    \n}",
+      "CompletedAt": "2026-09-20T22:11:01.1891941+09:00"
     },
     "4_4": {
-      "Runs": 0,
-      "Successes": 0,
-      "Hints": 0,
+      "Runs": 1,
+      "Successes": 1,
+      "Hints": 1,
       "Answers": 0,
-      "Status": "미완료",
-      "Draft": null,
-      "CompletedAt": null
+      "Status": "완료",
+      "Draft": "<Image Source=\"/1.png\" Width=\"100\" Height=\"100\">\n    <Image.Effect>\r\n        <DropShadowEffect Color=\"Black\" Direction=\"315\" ShadowDepth=\"5\" Opacity=\"0.5\" BlurRadius=\"10\"/>\r\n    </Image.Effect>\n</Image>",
+      "CompletedAt": "2026-09-20T22:09:35.6376631+09:00"
     },
     "3_5": {
-      "Runs": 0,
-      "Successes": 0,
+      "Runs": 1,
+      "Successes": 1,
       "Hints": 0,
       "Answers": 0,
-      "Status": "미완료",
-      "Draft": null,
-      "CompletedAt": null
+      "Status": "완료",
+      "Draft": "<Border BorderBrush=\"Gray\" BorderThickness=\"1\" Width=\"200\" Height=\"120\">\n    <Image Source=\"/1.png\" Stretch=\"Uniform\" StretchDirection=\"DownOnly\"/>\n</Border>",
+      "CompletedAt": "2026-09-20T22:06:58.6324066+09:00"
     },
     "3_4": {
-      "Runs": 0,
-      "Successes": 0,
-      "Hints": 0,
-      "Answers": 0,
-      "Status": "미완료",
-      "Draft": null,
-      "CompletedAt": null
+      "Runs": 11,
+      "Successes": 11,
+      "Hints": 1,
+      "Answers": 1,
+      "Status": "완료",
+      "Draft": "<Border BorderBrush=\"Gray\" BorderThickness=\"1\" Width=\"200\" Height=\"100\">\n    <Image Source=\"/1.png\" Stretch=\"UniformToFill\"/>\n</Border>",
+      "CompletedAt": "2026-09-20T22:06:03.5234407+09:00"
     },
     "1_5": {
       "Runs": 6,
