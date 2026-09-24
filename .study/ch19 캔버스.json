@@ -1,119 +1,119 @@
 {
   "Chapter": "ch19 캔버스",
   "FirstStudiedAt": "2026-09-18T14:02:54.4101092+09:00",
-  "LastStudiedAt": "2026-09-24T10:58:23.5328603+09:00",
-  "TotalStudySeconds": 25703,
-  "LaunchCount": 3,
-  "LastTab": 2,
+  "LastStudiedAt": "2026-09-24T11:19:53.0692497+09:00",
+  "TotalStudySeconds": 26866,
+  "LaunchCount": 4,
+  "LastTab": 4,
   "PracticeTotal": 19,
   "Practices": {
     "5_4": {
-      "Runs": 0,
-      "Successes": 0,
+      "Runs": 6,
+      "Successes": 6,
       "Hints": 0,
       "Answers": 0,
-      "Status": "미완료",
-      "Draft": null,
-      "CompletedAt": null
+      "Status": "완료",
+      "Draft": "<Canvas Width=\"150\" Height=\"100\" Background=\"#E8F5E9\" ClipToBounds=\"True\">\n    <Ellipse Fill=\"Blue\" Width=\"100\" Height=\"100\" Canvas.Left=\"80\" Canvas.Top=\"20\"/>\n</Canvas>",
+      "CompletedAt": "2026-09-24T11:19:38.3492227+09:00"
     },
     "5_3": {
-      "Runs": 0,
-      "Successes": 0,
+      "Runs": 3,
+      "Successes": 3,
       "Hints": 0,
       "Answers": 0,
-      "Status": "미완료",
-      "Draft": null,
-      "CompletedAt": null
+      "Status": "완료",
+      "Draft": "<Canvas Height=\"400\" Background=\"#FAFAFA\">\n    <Line X1=\"100\" Y1=\"100\" X2=\"200\" Y2=\"100\" Stroke=\"Gray\"/>\r\n    <Line X1=\"100\" Y1=\"200\" X2=\"200\" Y2=\"200\" Stroke=\"Gray\"/>\r\n    <Line X1=\"100\" Y1=\"300\" X2=\"200\" Y2=\"300\" Stroke=\"Gray\"/>\n</Canvas>",
+      "CompletedAt": "2026-09-24T11:17:49.5684739+09:00"
     },
     "5_2": {
-      "Runs": 0,
-      "Successes": 0,
+      "Runs": 4,
+      "Successes": 4,
       "Hints": 0,
-      "Answers": 0,
-      "Status": "미완료",
-      "Draft": null,
-      "CompletedAt": null
+      "Answers": 1,
+      "Status": "부분완료",
+      "Draft": "private void Element_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)\n{\n    UIElement element = sender as UIElement;\n    element.CaptureMouse();\n}",
+      "CompletedAt": "2026-09-24T11:16:50.9526003+09:00"
     },
     "5_1": {
-      "Runs": 0,
-      "Successes": 0,
+      "Runs": 4,
+      "Successes": 4,
       "Hints": 0,
-      "Answers": 0,
-      "Status": "미완료",
-      "Draft": null,
-      "CompletedAt": null
+      "Answers": 2,
+      "Status": "완료",
+      "Draft": "Rectangle rect = new Rectangle\n{\n    Width = 50,\n    Height = 50,\n    Fill = Brushes.Blue\n};\nCanvas.SetLeft(rect, 100);\nCanvas.SetTop(rect, 50);\nmyCanvas.Children.Add(rect);",
+      "CompletedAt": "2026-09-24T11:15:36.6635568+09:00"
     },
     "4_4": {
-      "Runs": 0,
-      "Successes": 0,
+      "Runs": 1,
+      "Successes": 1,
       "Hints": 0,
       "Answers": 0,
-      "Status": "미완료",
-      "Draft": null,
-      "CompletedAt": null
+      "Status": "완료",
+      "Draft": "<Path Stroke=\"Crimson\" StrokeThickness=\"2\" Data=\"M 0,50 L 25,0 L 50,50 L 25,100 Z\"/>",
+      "CompletedAt": "2026-09-24T11:13:51.162991+09:00"
     },
     "4_3": {
-      "Runs": 0,
-      "Successes": 0,
+      "Runs": 1,
+      "Successes": 1,
       "Hints": 0,
       "Answers": 0,
-      "Status": "미완료",
-      "Draft": null,
-      "CompletedAt": null
+      "Status": "완료",
+      "Draft": "<Canvas Height=\"120\" Background=\"#FFF8E1\">\n    <!-- Polygon 삼각형 -->\r\n    <Polygon Points=\"100,20 150,100 50,100\" Fill=\"LightCoral\" Stroke=\"DarkRed\" StrokeThickness=\"2\"/>\n</Canvas>",
+      "CompletedAt": "2026-09-24T11:13:26.0885543+09:00"
     },
     "4_2": {
-      "Runs": 0,
-      "Successes": 0,
+      "Runs": 1,
+      "Successes": 1,
       "Hints": 0,
       "Answers": 0,
-      "Status": "미완료",
-      "Draft": null,
-      "CompletedAt": null
+      "Status": "완료",
+      "Draft": "<Canvas Height=\"100\" Background=\"#EDE7F6\">\n    <!-- Line 추가 -->\r\n    <Line X1=\"30\" Y1=\"20\" X2=\"200\" Y2=\"80\" Stroke=\"Purple\" StrokeThickness=\"3\"/>\n</Canvas>",
+      "CompletedAt": "2026-09-24T11:12:44.7796678+09:00"
     },
     "4_1": {
-      "Runs": 0,
-      "Successes": 0,
+      "Runs": 1,
+      "Successes": 1,
       "Hints": 0,
       "Answers": 0,
-      "Status": "미완료",
-      "Draft": null,
-      "CompletedAt": null
+      "Status": "완료",
+      "Draft": "<Canvas Height=\"120\" Background=\"#F5F5F5\">\n    <Rectangle Fill=\"LightGreen\" Stroke=\"DarkGreen\" StrokeThickness=\"2\" Width=\"100\" Height=\"60\" RadiusX=\"10\" RadiusY=\"10\" Canvas.Left=\"50\" Canvas.Top=\"30\"/>\n</Canvas>",
+      "CompletedAt": "2026-09-24T11:12:09.3451828+09:00"
     },
     "3_4": {
-      "Runs": 0,
-      "Successes": 0,
+      "Runs": 1,
+      "Successes": 1,
       "Hints": 0,
-      "Answers": 0,
-      "Status": "미완료",
-      "Draft": null,
-      "CompletedAt": null
+      "Answers": 1,
+      "Status": "완료",
+      "Draft": "private void BringRedToFront_Click(object sender, RoutedEventArgs e)\n{\n    Panel.SetZIndex(rectA, 1);\n    Panel.SetZIndex(rectB, 0);\n}",
+      "CompletedAt": "2026-09-24T11:10:54.6774623+09:00"
     },
     "3_3": {
-      "Runs": 0,
-      "Successes": 0,
+      "Runs": 4,
+      "Successes": 3,
       "Hints": 0,
       "Answers": 0,
-      "Status": "미완료",
-      "Draft": null,
-      "CompletedAt": null
+      "Status": "완료",
+      "Draft": "<Canvas Height=\"140\" Background=\"#FAFAFA\">\n    <Rectangle Fill=\"Red\" Width=\"50\" Height=\"50\" Canvas.Left=\"100\" Canvas.Top=\"15\" Panel.ZIndex=\"0\"/>\r\n    <Rectangle Fill=\"Blue\" Width=\"50\" Height=\"50\" Canvas.Left=\"120\" Canvas.Top=\"25\" Panel.ZIndex=\"1\"/>\r\n    <Rectangle Fill=\"Green\" Width=\"50\" Height=\"50\" Canvas.Left=\"140\" Canvas.Top=\"35\" Panel.ZIndex=\"2\"/>\n</Canvas>",
+      "CompletedAt": "2026-09-24T11:09:45.2925388+09:00"
     },
     "3_2": {
-      "Runs": 0,
-      "Successes": 0,
+      "Runs": 1,
+      "Successes": 1,
       "Hints": 0,
       "Answers": 0,
-      "Status": "미완료",
-      "Draft": null,
-      "CompletedAt": null
+      "Status": "완료",
+      "Draft": "// element를 맨 위로 올리기\nPanel.SetZIndex(element, 10);",
+      "CompletedAt": "2026-09-24T11:08:19.2354025+09:00"
     },
     "3_1": {
-      "Runs": 0,
-      "Successes": 0,
+      "Runs": 1,
+      "Successes": 1,
       "Hints": 0,
       "Answers": 0,
-      "Status": "미완료",
-      "Draft": null,
-      "CompletedAt": null
+      "Status": "완료",
+      "Draft": "<Canvas Height=\"130\" Background=\"#FAFAFA\">\n    <Ellipse Fill=\"Blue\" Width=\"80\" Height=\"80\" Canvas.Left=\"50\" Canvas.Top=\"25\" Panel.ZIndex=\"0\"/>\n    <Ellipse Fill=\"Red\" Width=\"80\" Height=\"80\" Canvas.Left=\"90\" Canvas.Top=\"35\" Panel.ZIndex=\"1\"/>\n    <Ellipse Fill=\"Yellow\" Width=\"80\" Height=\"80\" Canvas.Left=\"130\" Canvas.Top=\"25\" Panel.ZIndex=\"2\"/>\n</Canvas>",
+      "CompletedAt": "2026-09-24T11:08:03.9693787+09:00"
     },
     "2_4": {
       "Runs": 1,

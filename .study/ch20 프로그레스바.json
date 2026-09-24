@@ -1,119 +1,119 @@
 {
   "Chapter": "ch20 프로그레스바",
   "FirstStudiedAt": "2026-09-18T14:10:39.7503795+09:00",
-  "LastStudiedAt": "2026-09-20T02:01:52.4718432+09:00",
-  "TotalStudySeconds": 213,
-  "LaunchCount": 4,
-  "LastTab": 1,
+  "LastStudiedAt": "2026-09-24T16:57:29.4553508+09:00",
+  "TotalStudySeconds": 1932,
+  "LaunchCount": 6,
+  "LastTab": 4,
   "PracticeTotal": 18,
   "Practices": {
     "5_4": {
-      "Runs": 0,
-      "Successes": 0,
+      "Runs": 8,
+      "Successes": 8,
       "Hints": 0,
-      "Answers": 0,
-      "Status": "미완료",
-      "Draft": null,
-      "CompletedAt": null
+      "Answers": 3,
+      "Status": "완료",
+      "Draft": "<Grid>\n    <ProgressBar Height=\"35\" Value=\"48\" Foreground=\"#673AB7\" Background=\"#E0E0E0\"/>\n    <TextBlock Text=\"3 / 6 파일 완료 (48%)\" HorizontalAlignment=\"Center\"\n               VerticalAlignment=\"Center\" FontWeight=\"Bold\"/>\n</Grid>",
+      "CompletedAt": "2026-09-24T16:57:21.4547556+09:00"
     },
     "5_3": {
-      "Runs": 0,
-      "Successes": 0,
+      "Runs": 2,
+      "Successes": 2,
       "Hints": 0,
-      "Answers": 0,
-      "Status": "미완료",
-      "Draft": null,
-      "CompletedAt": null
+      "Answers": 2,
+      "Status": "완료",
+      "Draft": "<ProgressBar Width=\"24\" Height=\"120\" Value=\"70\" Orientation=\"Vertical\"/>",
+      "CompletedAt": "2026-09-24T16:56:00.2953035+09:00"
     },
     "5_2": {
-      "Runs": 0,
-      "Successes": 0,
+      "Runs": 4,
+      "Successes": 4,
       "Hints": 0,
-      "Answers": 0,
-      "Status": "미완료",
-      "Draft": null,
-      "CompletedAt": null
+      "Answers": 1,
+      "Status": "완료",
+      "Draft": "if (value < 30)\n{\n    progressBar.Foreground = Brushes.Red;\n}\nelse if (value < 70)\n{\n    progressBar.Foreground = Brushes.Orange;\n}\nelse\n{\n    progressBar.Foreground = Brushes.Green;\n}",
+      "CompletedAt": "2026-09-24T16:54:57.5429172+09:00"
     },
     "5_1": {
-      "Runs": 0,
-      "Successes": 0,
+      "Runs": 4,
+      "Successes": 4,
       "Hints": 0,
-      "Answers": 0,
-      "Status": "미완료",
-      "Draft": null,
-      "CompletedAt": null
+      "Answers": 3,
+      "Status": "완료",
+      "Draft": "DispatcherTimer timer = new DispatcherTimer();\ntimer.Interval = TimeSpan.FromMilliseconds(200);",
+      "CompletedAt": "2026-09-24T16:53:12.9140699+09:00"
     },
     "4_4": {
-      "Runs": 0,
-      "Successes": 0,
+      "Runs": 4,
+      "Successes": 4,
       "Hints": 0,
-      "Answers": 0,
-      "Status": "미완료",
-      "Draft": null,
-      "CompletedAt": null
+      "Answers": 1,
+      "Status": "완료",
+      "Draft": "private void ValueSlider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)\n{\n    dynamicValueBar.Value = valueSlider.Value;\n    dynamicValueText.Text = $\"{valueSlider.Value:0}%\";\n}",
+      "CompletedAt": "2026-09-24T16:52:27.8689393+09:00"
     },
     "4_3": {
-      "Runs": 0,
-      "Successes": 0,
+      "Runs": 4,
+      "Successes": 4,
       "Hints": 0,
       "Answers": 0,
-      "Status": "미완료",
-      "Draft": null,
-      "CompletedAt": null
+      "Status": "완료",
+      "Draft": "<Grid Width=\"260\">\n    <ProgressBar Height=\"35\" Value=\"85\"/>\r\n    <TextBlock Text=\"85%\" FontSize=\"14\" FontWeight=\"Bold\" Foreground=\"White\" HorizontalAlignment=\"Center\" VerticalAlignment=\"Center\"/>\n</Grid>",
+      "CompletedAt": "2026-09-24T16:50:28.5282249+09:00"
     },
     "4_2": {
-      "Runs": 0,
-      "Successes": 0,
+      "Runs": 15,
+      "Successes": 1,
       "Hints": 0,
-      "Answers": 0,
-      "Status": "미완료",
-      "Draft": null,
-      "CompletedAt": null
+      "Answers": 1,
+      "Status": "부분완료",
+      "Draft": "progressBar.Value = 75;\r\npercentText.Text = \"75%\";",
+      "CompletedAt": "2026-09-24T16:28:34.1515741+09:00"
     },
     "4_1": {
-      "Runs": 0,
-      "Successes": 0,
-      "Hints": 0,
-      "Answers": 0,
-      "Status": "미완료",
-      "Draft": null,
-      "CompletedAt": null
+      "Runs": 5,
+      "Successes": 5,
+      "Hints": 1,
+      "Answers": 1,
+      "Status": "완료",
+      "Draft": "<Grid>\n    <ProgressBar Height=\"30\" Value=\"65\"/>\n    <TextBlock Text=\"65%\" HorizontalAlignment=\"Center\" VerticalAlignment=\"Center\"/>\n</Grid>",
+      "CompletedAt": "2026-09-24T16:25:35.5058004+09:00"
     },
     "3_4": {
-      "Runs": 0,
-      "Successes": 0,
+      "Runs": 4,
+      "Successes": 4,
       "Hints": 0,
-      "Answers": 0,
-      "Status": "미완료",
-      "Draft": null,
-      "CompletedAt": null
+      "Answers": 4,
+      "Status": "완료",
+      "Draft": "private void StatusSlider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)\n{\n    double value = statusSlider.Value;\n    statusProgressBar.Value = value;\n\n    if (value < 30)\n        statusProgressBar.Foreground = Brushes.Red;\n    else if (value < 70)\n        statusProgressBar.Foreground = Brushes.Orange;\n    else\n        statusProgressBar.Foreground = Brushes.Green;\n}",
+      "CompletedAt": "2026-09-24T15:35:06.1586625+09:00"
     },
     "3_3": {
-      "Runs": 0,
-      "Successes": 0,
+      "Runs": 26,
+      "Successes": 26,
       "Hints": 0,
-      "Answers": 0,
-      "Status": "미완료",
-      "Draft": null,
-      "CompletedAt": null
+      "Answers": 4,
+      "Status": "완료",
+      "Draft": "<ProgressBar Height=\"22\" Width=\"260\" Value=\"60\" Foreground=\"Orange\" Background=\"#EEEEEE\"/>",
+      "CompletedAt": "2026-09-24T15:32:51.2862118+09:00"
     },
     "3_2": {
-      "Runs": 0,
-      "Successes": 0,
-      "Hints": 0,
-      "Answers": 0,
-      "Status": "미완료",
-      "Draft": null,
-      "CompletedAt": null
+      "Runs": 4,
+      "Successes": 4,
+      "Hints": 1,
+      "Answers": 1,
+      "Status": "완료",
+      "Draft": "<ProgressBar Height=\"30\" Value=\"90\" Background=\"#E0E0E0\" Foreground=\"Green\"/>",
+      "CompletedAt": "2026-09-24T15:32:05.4808651+09:00"
     },
     "3_1": {
-      "Runs": 0,
-      "Successes": 0,
-      "Hints": 0,
-      "Answers": 0,
-      "Status": "미완료",
-      "Draft": null,
-      "CompletedAt": null
+      "Runs": 1,
+      "Successes": 1,
+      "Hints": 1,
+      "Answers": 1,
+      "Status": "완료",
+      "Draft": "<ProgressBar Height=\"25\" Value=\"80\" Foreground=\"DodgerBlue\"/>",
+      "CompletedAt": "2026-09-24T14:58:01.8262093+09:00"
     },
     "2_3": {
       "Runs": 1,
@@ -134,13 +134,13 @@
       "CompletedAt": "2026-09-20T02:01:12.172338+09:00"
     },
     "2_1": {
-      "Runs": 0,
-      "Successes": 0,
-      "Hints": 3,
-      "Answers": 0,
-      "Status": "미완료",
-      "Draft": null,
-      "CompletedAt": null
+      "Runs": 3,
+      "Successes": 3,
+      "Hints": 4,
+      "Answers": 3,
+      "Status": "완료",
+      "Draft": "<ProgressBar Height=\"25\" IsIndeterminate=\"True\"/>",
+      "CompletedAt": "2026-09-24T14:57:18.360974+09:00"
     },
     "1_3": {
       "Runs": 1,

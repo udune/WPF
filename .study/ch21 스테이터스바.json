@@ -1,119 +1,119 @@
 {
   "Chapter": "ch21 스테이터스바",
   "FirstStudiedAt": "2026-09-18T14:14:15.6151414+09:00",
-  "LastStudiedAt": "2026-09-20T02:07:45.5545329+09:00",
-  "TotalStudySeconds": 328,
-  "LaunchCount": 2,
-  "LastTab": 1,
+  "LastStudiedAt": "2026-09-24T19:22:43.8034684+09:00",
+  "TotalStudySeconds": 1734,
+  "LaunchCount": 3,
+  "LastTab": 4,
   "PracticeTotal": 18,
   "Practices": {
     "5_4": {
-      "Runs": 0,
-      "Successes": 0,
+      "Runs": 30,
+      "Successes": 17,
       "Hints": 0,
-      "Answers": 0,
-      "Status": "미완료",
-      "Draft": null,
-      "CompletedAt": null
+      "Answers": 1,
+      "Status": "완료",
+      "Draft": "<StatusBar Background=\"#2D2D30\">\n    <StatusBarItem>\n        <StackPanel Orientation=\"Horizontal\">\n            <Ellipse Width=\"8\" Height=\"8\" Fill=\"LimeGreen\" Margin=\"0,0,6,0\"/>\n            <TextBlock Text=\"온라인\" Foreground=\"White\"/>\n        </StackPanel>\n    </StatusBarItem>\n    <Separator/>\n    <StatusBarItem>\n        <TextBlock Text=\"↓ 2.5 MB/s\" Foreground=\"LightGreen\"/>\n    </StatusBarItem>\n</StatusBar>",
+      "CompletedAt": "2026-09-24T19:22:16.48248+09:00"
     },
     "5_3": {
-      "Runs": 0,
-      "Successes": 0,
+      "Runs": 4,
+      "Successes": 4,
       "Hints": 0,
-      "Answers": 0,
-      "Status": "미완료",
-      "Draft": null,
-      "CompletedAt": null
+      "Answers": 1,
+      "Status": "완료",
+      "Draft": "<StatusBar>\n    <StatusBarItem Content=\"줄 12, 열 34\"/>\n    <Separator/>\n    <StatusBarItem Content=\"UTF-8\"/>\n    <Separator/>\n    <StatusBarItem Content=\"저장됨\"/>\n</StatusBar>",
+      "CompletedAt": "2026-09-24T19:18:27.5026391+09:00"
     },
     "5_2": {
-      "Runs": 0,
-      "Successes": 0,
+      "Runs": 2,
+      "Successes": 2,
       "Hints": 0,
-      "Answers": 0,
-      "Status": "미완료",
-      "Draft": null,
-      "CompletedAt": null
+      "Answers": 1,
+      "Status": "완료",
+      "Draft": "<StatusBar Background=\"#333333\">\n    <StatusBarItem>\n        <StackPanel Orientation=\"Horizontal\">\n            <Ellipse Width=\"10\" Height=\"10\" Fill=\"Blue\" Margin=\"0,0,5,0\"/>\n            <TextBlock Text=\"동기화 중\" Foreground=\"White\"/>\n        </StackPanel>\n    </StatusBarItem>\n</StatusBar>",
+      "CompletedAt": "2026-09-24T19:16:47.6904429+09:00"
     },
     "5_1": {
-      "Runs": 0,
-      "Successes": 0,
-      "Hints": 0,
-      "Answers": 0,
-      "Status": "미완료",
-      "Draft": null,
-      "CompletedAt": null
+      "Runs": 15,
+      "Successes": 15,
+      "Hints": 1,
+      "Answers": 1,
+      "Status": "완료",
+      "Draft": "<StatusBar>\n    <StatusBarItem Content=\"10개 파일\"/>\n    <Separator/>\n    <StatusBarItem Content=\"2개 선택\"/>\n    <Separator/>\n    <StatusBarItem Content=\"500 KB\"/>\n</StatusBar>",
+      "CompletedAt": "2026-09-24T19:15:55.077877+09:00"
     },
     "4_4": {
-      "Runs": 0,
-      "Successes": 0,
+      "Runs": 3,
+      "Successes": 2,
       "Hints": 0,
-      "Answers": 0,
-      "Status": "미완료",
-      "Draft": null,
-      "CompletedAt": null
+      "Answers": 2,
+      "Status": "완료",
+      "Draft": "private void Connect_Click(object sender, RoutedEventArgs e)\n{\n    connectionIndicator.Fill = Brushes.Green;\n    connectionText.Text = \"연결됨\";\n}",
+      "CompletedAt": "2026-09-24T19:12:03.647718+09:00"
     },
     "4_3": {
-      "Runs": 0,
-      "Successes": 0,
-      "Hints": 0,
-      "Answers": 0,
-      "Status": "미완료",
-      "Draft": null,
-      "CompletedAt": null
+      "Runs": 8,
+      "Successes": 4,
+      "Hints": 1,
+      "Answers": 3,
+      "Status": "완료",
+      "Draft": "private void ShowTime_Click(object sender, RoutedEventArgs e)\n{\n    statusText.Content = DateTime.Now.ToString(\"HH:mm:ss\");\n}",
+      "CompletedAt": "2026-09-24T19:11:12.9931721+09:00"
     },
     "4_2": {
-      "Runs": 0,
-      "Successes": 0,
+      "Runs": 13,
+      "Successes": 13,
       "Hints": 0,
-      "Answers": 0,
-      "Status": "미완료",
-      "Draft": null,
-      "CompletedAt": null
+      "Answers": 4,
+      "Status": "완료",
+      "Draft": "private void SetError_Click(object sender, RoutedEventArgs e)\n{\n    ellipse.Fill = Brushes.Red;\n    textBlock.Text = \"오류 발생\";\n}",
+      "CompletedAt": "2026-09-24T19:10:28.244116+09:00"
     },
     "4_1": {
-      "Runs": 0,
-      "Successes": 0,
+      "Runs": 2,
+      "Successes": 2,
       "Hints": 0,
-      "Answers": 0,
-      "Status": "미완료",
-      "Draft": null,
-      "CompletedAt": null
+      "Answers": 1,
+      "Status": "완료",
+      "Draft": "private void BtnComplete_Click(object sender, RoutedEventArgs e)\n{\n    statusBarItem.Content = \"작업 완료!\";\n}",
+      "CompletedAt": "2026-09-24T19:08:36.7912647+09:00"
     },
     "3_4": {
-      "Runs": 0,
-      "Successes": 0,
+      "Runs": 3,
+      "Successes": 2,
       "Hints": 0,
       "Answers": 0,
-      "Status": "미완료",
-      "Draft": null,
-      "CompletedAt": null
+      "Status": "완료",
+      "Draft": "<StatusBar>\n    <TextBlock Text=\"확대/축소:\"/>\r\n    <Slider Minimum=\"50\" Maximum=\"200\" Value=\"100\" Width=\"100\"/>\n</StatusBar>",
+      "CompletedAt": "2026-09-24T18:59:46.8476573+09:00"
     },
     "3_3": {
-      "Runs": 0,
-      "Successes": 0,
+      "Runs": 1,
+      "Successes": 1,
       "Hints": 0,
       "Answers": 0,
-      "Status": "미완료",
-      "Draft": null,
-      "CompletedAt": null
+      "Status": "완료",
+      "Draft": "<StatusBar>\n    <StatusBarItem>\r\n        <StackPanel Orientation=\"Horizontal\">\r\n            <Ellipse Width=\"10\" Height=\"10\" Fill=\"Green\" Margin=\"5,0\"/>\r\n            <TextBlock Text=\"연결됨\"/>\r\n        </StackPanel>\r\n    </StatusBarItem>\n</StatusBar>",
+      "CompletedAt": "2026-09-24T18:54:53.1079095+09:00"
     },
     "3_2": {
-      "Runs": 0,
-      "Successes": 0,
+      "Runs": 3,
+      "Successes": 3,
       "Hints": 0,
       "Answers": 0,
-      "Status": "미완료",
-      "Draft": null,
-      "CompletedAt": null
+      "Status": "완료",
+      "Draft": "<StatusBar>\n    <StatusBarItem>\n        <StackPanel Orientation=\"Horizontal\">\n            <Ellipse Width=\"10\" Height=\"10\" Margin=\"10,0\" Fill=\"Orange\"/>\r\n            <TextBlock Text=\"온라인\"/>\n        </StackPanel>\n    </StatusBarItem>\n</StatusBar>",
+      "CompletedAt": "2026-09-24T18:52:13.1124486+09:00"
     },
     "3_1": {
-      "Runs": 0,
-      "Successes": 0,
+      "Runs": 2,
+      "Successes": 1,
       "Hints": 0,
       "Answers": 0,
-      "Status": "미완료",
-      "Draft": null,
-      "CompletedAt": null
+      "Status": "완료",
+      "Draft": "<StatusBar>\n    <StatusBarItem>\n        <ProgressBar Width=\"100\" Height=\"15\" Value=\"50\"/>\n    </StatusBarItem>\r\n    <StatusBarItem Content=\"50%\"/>\n</StatusBar>",
+      "CompletedAt": "2026-09-24T18:50:58.9471858+09:00"
     },
     "2_3": {
       "Runs": 2,

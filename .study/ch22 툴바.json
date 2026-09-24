@@ -1,110 +1,110 @@
 {
   "Chapter": "ch22 툴바",
   "FirstStudiedAt": "2026-09-18T14:24:58.0032929+09:00",
-  "LastStudiedAt": "2026-09-20T02:14:08.2970989+09:00",
-  "TotalStudySeconds": 558,
-  "LaunchCount": 3,
-  "LastTab": 1,
+  "LastStudiedAt": "2026-09-24T21:56:38.312352+09:00",
+  "TotalStudySeconds": 3518,
+  "LaunchCount": 4,
+  "LastTab": 4,
   "PracticeTotal": 19,
   "Practices": {
     "5_4": {
-      "Runs": 0,
-      "Successes": 0,
-      "Hints": 0,
-      "Answers": 0,
-      "Status": "미완료",
-      "Draft": null,
-      "CompletedAt": null
+      "Runs": 6,
+      "Successes": 6,
+      "Hints": 1,
+      "Answers": 2,
+      "Status": "완료",
+      "Draft": "<ToolBar>\n    <RadioButton GroupName=\"Tool\" Content=\"선택\" IsChecked=\"True\"/>\n    <RadioButton GroupName=\"Tool\" Content=\"사각형\"/>\n    <RadioButton GroupName=\"Tool\" Content=\"원\"/>\n    <Separator/>\n    <TextBlock Text=\"색상:\" VerticalAlignment=\"Center\"/>\n    <ComboBox Width=\"80\" SelectedIndex=\"0\">\n        <ComboBoxItem Content=\"검정\"/>\n        <ComboBoxItem Content=\"빨강\"/>\n    </ComboBox>\n</ToolBar>",
+      "CompletedAt": "2026-09-24T21:50:01.8254439+09:00"
     },
     "5_3": {
-      "Runs": 0,
-      "Successes": 0,
-      "Hints": 0,
-      "Answers": 0,
-      "Status": "미완료",
-      "Draft": null,
-      "CompletedAt": null
+      "Runs": 7,
+      "Successes": 7,
+      "Hints": 3,
+      "Answers": 4,
+      "Status": "완료",
+      "Draft": "<ToolBar>\n    <Button Content=\"재생\"/>\n    <Button Content=\"일시정지\"/>\n    <Button Content=\"정지\"/>\n    <Separator/>\n    <Slider Width=\"100\" Minimum=\"0\" Maximum=\"100\" Value=\"70\" VerticalAlignment=\"Center\"/>\n</ToolBar>",
+      "CompletedAt": "2026-09-24T21:44:20.11088+09:00"
     },
     "5_2": {
-      "Runs": 0,
-      "Successes": 0,
-      "Hints": 0,
-      "Answers": 0,
-      "Status": "미완료",
-      "Draft": null,
-      "CompletedAt": null
+      "Runs": 3,
+      "Successes": 3,
+      "Hints": 1,
+      "Answers": 3,
+      "Status": "완료",
+      "Draft": "private void Lock_Click(object sender, RoutedEventArgs e)\n{\n    tray.IsLocked = true;\n}",
+      "CompletedAt": "2026-09-24T21:42:01.9626195+09:00"
     },
     "5_1": {
-      "Runs": 0,
-      "Successes": 0,
-      "Hints": 0,
-      "Answers": 0,
-      "Status": "미완료",
-      "Draft": null,
-      "CompletedAt": null
+      "Runs": 9,
+      "Successes": 8,
+      "Hints": 1,
+      "Answers": 1,
+      "Status": "완료",
+      "Draft": "<ToolBar>\n    <Button Content=\"새로 만들기\"/>\n    <Button Content=\"열기\"/>\n    <Button Content=\"저장\"/>\n    <Separator/>\n    <ToggleButton Content=\"굵게\"/>\n    <ToggleButton Content=\"기울임\"/>\n</ToolBar>",
+      "CompletedAt": "2026-09-24T21:41:15.8329194+09:00"
     },
     "4_4": {
-      "Runs": 0,
-      "Successes": 0,
+      "Runs": 3,
+      "Successes": 3,
       "Hints": 0,
-      "Answers": 0,
-      "Status": "미완료",
-      "Draft": null,
-      "CompletedAt": null
+      "Answers": 3,
+      "Status": "완료",
+      "Draft": "private void LockCheckBox_Checked(object sender, RoutedEventArgs e)\n{\n    toggleableTray.IsLocked = true;\n}\n\nprivate void LockCheckBox_Unchecked(object sender, RoutedEventArgs e)\n{\n    toggleableTray.IsLocked = false;\n}",
+      "CompletedAt": "2026-09-24T21:36:29.0760178+09:00"
     },
     "4_3": {
-      "Runs": 0,
-      "Successes": 0,
+      "Runs": 4,
+      "Successes": 4,
       "Hints": 0,
-      "Answers": 0,
-      "Status": "미완료",
-      "Draft": null,
-      "CompletedAt": null
+      "Answers": 1,
+      "Status": "완료",
+      "Draft": "<ToolBarTray>\n    <ToolBar Band=\"0\" BandIndex=\"0\">\n        <Button Content=\"앞\"/>\n    </ToolBar>\n    <ToolBar Band=\"0\" BandIndex=\"1\">\n        <Button Content=\"뒤\"/>\n    </ToolBar>\n</ToolBarTray>",
+      "CompletedAt": "2026-09-24T21:28:25.5730769+09:00"
     },
     "4_2": {
-      "Runs": 0,
-      "Successes": 0,
+      "Runs": 2,
+      "Successes": 1,
       "Hints": 0,
       "Answers": 0,
-      "Status": "미완료",
-      "Draft": null,
-      "CompletedAt": null
+      "Status": "완료",
+      "Draft": "<ToolBarTray Orientation=\"Vertical\">\r\n    <ToolBar Band=\"0\">\n        <Button Content=\"A\" Width=\"50\"/>\r\n        <Button Content=\"B\" Width=\"50\"/>\r\n        <Button Content=\"C\" Width=\"50\"/>\r\n    </ToolBar>\n</ToolBarTray>",
+      "CompletedAt": "2026-09-24T21:26:26.4557239+09:00"
     },
     "4_1": {
-      "Runs": 0,
-      "Successes": 0,
-      "Hints": 0,
-      "Answers": 0,
-      "Status": "미완료",
-      "Draft": null,
-      "CompletedAt": null
+      "Runs": 8,
+      "Successes": 8,
+      "Hints": 1,
+      "Answers": 7,
+      "Status": "완료",
+      "Draft": "<ToolBarTray>\n    <ToolBar Band=\"0\" BandIndex=\"0\">\n        <Button Content=\"첫째 줄\"/>\n    </ToolBar>\n    <ToolBar Band=\"1\" BandIndex=\"0\">\n        <Button Content=\"둘째 줄\"/>\n    </ToolBar>\n</ToolBarTray>",
+      "CompletedAt": "2026-09-24T21:24:36.0686506+09:00"
     },
     "3_3": {
-      "Runs": 0,
-      "Successes": 0,
+      "Runs": 1,
+      "Successes": 1,
       "Hints": 0,
       "Answers": 0,
-      "Status": "미완료",
-      "Draft": null,
-      "CompletedAt": null
+      "Status": "완료",
+      "Draft": "<ToolBar Width=\"180\">\n    <Button Content=\"새로 만들기\" ToolBar.OverflowMode=\"AsNeeded\"/>\r\n    <Button Content=\"새로 만들기\" ToolBar.OverflowMode=\"AsNeeded\"/>\r\n    <Button Content=\"새로 만들기\" ToolBar.OverflowMode=\"AsNeeded\"/>\r\n    <Button Content=\"새로 만들기\" ToolBar.OverflowMode=\"AsNeeded\"/>\r\n    <Button Content=\"새로 만들기\" ToolBar.OverflowMode=\"AsNeeded\"/>\n</ToolBar>",
+      "CompletedAt": "2026-09-24T21:07:29.0348867+09:00"
     },
     "3_2": {
-      "Runs": 0,
-      "Successes": 0,
+      "Runs": 6,
+      "Successes": 1,
       "Hints": 0,
       "Answers": 0,
-      "Status": "미완료",
-      "Draft": null,
-      "CompletedAt": null
+      "Status": "완료",
+      "Draft": "<ToolBar Width=\"150\">\n    <Button Content=\"Never\" ToolBar.OverflowMode=\"Never\"/>\r\n    <Button Content=\"Always\" ToolBar.OverflowMode=\"Always\"/>\r\n    <Button Content=\"AsNeeded\" ToolBar.OverflowMode=\"AsNeeded\"/>\n</ToolBar>",
+      "CompletedAt": "2026-09-24T21:06:05.8405478+09:00"
     },
     "3_1": {
-      "Runs": 0,
-      "Successes": 0,
-      "Hints": 0,
-      "Answers": 0,
-      "Status": "미완료",
-      "Draft": null,
-      "CompletedAt": null
+      "Runs": 5,
+      "Successes": 5,
+      "Hints": 1,
+      "Answers": 1,
+      "Status": "완료",
+      "Draft": "<ToolBar Width=\"200\">\n    <Button Content=\"자주 쓰는 명령\"/>\n    <Button Content=\"가끔 쓰는 명령\" ToolBar.OverflowMode=\"Always\"/>\n</ToolBar>",
+      "CompletedAt": "2026-09-24T21:03:50.3189287+09:00"
     },
     "2_4": {
       "Runs": 5,
