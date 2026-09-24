@@ -1,92 +1,92 @@
 {
   "Chapter": "ch17 그리드",
   "FirstStudiedAt": "2026-09-18T12:13:09.7973515+09:00",
-  "LastStudiedAt": "2026-09-19T18:33:09.1537323+09:00",
-  "TotalStudySeconds": 1107,
-  "LaunchCount": 2,
-  "LastTab": 1,
+  "LastStudiedAt": "2026-09-24T01:33:33.6843656+09:00",
+  "TotalStudySeconds": 1795,
+  "LaunchCount": 3,
+  "LastTab": 4,
   "PracticeTotal": 16,
   "Practices": {
     "5_3": {
-      "Runs": 0,
-      "Successes": 0,
+      "Runs": 4,
+      "Successes": 4,
       "Hints": 0,
-      "Answers": 0,
-      "Status": "미완료",
-      "Draft": null,
-      "CompletedAt": null
+      "Answers": 3,
+      "Status": "완료",
+      "Draft": "// col1을 2*, col2를 1*로 설정\ncol1.Width = new GridLength(2, GridUnitType.Star);\ncol2.Width = new GridLength(1, GridUnitType.Star);",
+      "CompletedAt": "2026-09-24T01:33:29.1499997+09:00"
     },
     "5_2": {
-      "Runs": 0,
-      "Successes": 0,
+      "Runs": 4,
+      "Successes": 4,
       "Hints": 0,
-      "Answers": 0,
-      "Status": "미완료",
-      "Draft": null,
-      "CompletedAt": null
+      "Answers": 6,
+      "Status": "완료",
+      "Draft": "// myElement를 2행 3열로 이동\nGrid.SetRow(myElement, 2);\nGrid.SetColumn(myElement, 3);",
+      "CompletedAt": "2026-09-24T01:32:37.6875497+09:00"
     },
     "5_1": {
-      "Runs": 0,
-      "Successes": 0,
-      "Hints": 0,
-      "Answers": 0,
-      "Status": "미완료",
-      "Draft": null,
-      "CompletedAt": null
+      "Runs": 3,
+      "Successes": 3,
+      "Hints": 1,
+      "Answers": 3,
+      "Status": "완료",
+      "Draft": "// myGrid에 새 행 추가\nmyGrid.RowDefinitions.Add(new RowDefinition());",
+      "CompletedAt": "2026-09-24T01:31:53.0909133+09:00"
     },
     "4_3": {
-      "Runs": 0,
-      "Successes": 0,
-      "Hints": 0,
-      "Answers": 0,
-      "Status": "미완료",
-      "Draft": null,
-      "CompletedAt": null
+      "Runs": 4,
+      "Successes": 4,
+      "Hints": 1,
+      "Answers": 4,
+      "Status": "완료",
+      "Draft": "<Grid Height=\"140\">\n    <Grid.RowDefinitions>\n        <RowDefinition Height=\"*\"/>\n        <RowDefinition Height=\"5\"/>\n        <RowDefinition Height=\"*\"/>\n    </Grid.RowDefinitions>\n    <Border Grid.Row=\"0\" Background=\"#FFE0B2\"/>\n    <GridSplitter Grid.Row=\"1\" Height=\"5\" HorizontalAlignment=\"Stretch\" Background=\"#999999\"/>\n    <Border Grid.Row=\"2\" Background=\"#D1C4E9\"/>\n</Grid>",
+      "CompletedAt": "2026-09-24T01:30:30.5777299+09:00"
     },
     "4_2": {
-      "Runs": 0,
-      "Successes": 0,
-      "Hints": 0,
-      "Answers": 0,
-      "Status": "미완료",
-      "Draft": null,
-      "CompletedAt": null
+      "Runs": 7,
+      "Successes": 7,
+      "Hints": 1,
+      "Answers": 3,
+      "Status": "완료",
+      "Draft": "<Grid Height=\"120\">\n    <Grid.ColumnDefinitions>\n        <ColumnDefinition Width=\"*\"/>\n        <ColumnDefinition Width=\"5\"/>\n        <ColumnDefinition Width=\"*\"/>\n    </Grid.ColumnDefinitions>\n    <Border Grid.Column=\"0\" Background=\"#BBDEFB\"/>\n    <GridSplitter Grid.Column=\"1\" Width=\"5\" HorizontalAlignment=\"Stretch\" Background=\"#999999\"/>\n    <Border Grid.Column=\"2\" Background=\"#C8E6C9\"/>\n</Grid>",
+      "CompletedAt": "2026-09-24T01:29:18.0874388+09:00"
     },
     "4_1": {
-      "Runs": 0,
-      "Successes": 0,
-      "Hints": 0,
-      "Answers": 0,
-      "Status": "미완료",
-      "Draft": null,
-      "CompletedAt": null
+      "Runs": 4,
+      "Successes": 4,
+      "Hints": 1,
+      "Answers": 1,
+      "Status": "완료",
+      "Draft": "<Grid Height=\"120\">\n    <Grid.ColumnDefinitions>\n        <ColumnDefinition Width=\"1*\"/>\n        <ColumnDefinition Width=\"Auto\"/>\n        <ColumnDefinition Width=\"1*\"/>\n    </Grid.ColumnDefinitions>\n    <Border Grid.Column=\"0\" Background=\"#BBDEFB\">\n        <TextBlock Text=\"왼쪽\" HorizontalAlignment=\"Center\" VerticalAlignment=\"Center\"/>\n    </Border>\n    <GridSplitter Grid.Column=\"1\" Width=\"5\" HorizontalAlignment=\"Center\" VerticalAlignment=\"Stretch\" Background=\"#666666\"/>\n    <Border Grid.Column=\"2\" Background=\"#C8E6C9\">\n        <TextBlock Text=\"오른쪽\" HorizontalAlignment=\"Center\" VerticalAlignment=\"Center\"/>\n    </Border>\n</Grid>",
+      "CompletedAt": "2026-09-24T01:27:47.8932295+09:00"
     },
     "3_3": {
-      "Runs": 0,
-      "Successes": 0,
-      "Hints": 0,
-      "Answers": 0,
-      "Status": "미완료",
-      "Draft": null,
-      "CompletedAt": null
+      "Runs": 6,
+      "Successes": 6,
+      "Hints": 2,
+      "Answers": 6,
+      "Status": "완료",
+      "Draft": "<Grid Height=\"120\">\n    <Grid.RowDefinitions>\n        <RowDefinition Height=\"30\"/>\n        <RowDefinition/>\n    </Grid.RowDefinitions>\n    <Grid.ColumnDefinitions>\n        <ColumnDefinition/>\n        <ColumnDefinition/>\n    </Grid.ColumnDefinitions>\n    <TextBlock Grid.Row=\"0\" Grid.Column=\"0\" Grid.ColumnSpan=\"2\" Text=\"제목\" Background=\"#E0E0E0\"/>\n    <TextBlock Grid.Row=\"1\" Grid.Column=\"0\" Text=\"왼쪽\"/>\n    <TextBlock Grid.Row=\"1\" Grid.Column=\"1\" Text=\"오른쪽\"/>\n</Grid>",
+      "CompletedAt": "2026-09-24T01:26:31.4128488+09:00"
     },
     "3_2": {
-      "Runs": 0,
-      "Successes": 0,
-      "Hints": 0,
-      "Answers": 0,
-      "Status": "미완료",
-      "Draft": null,
-      "CompletedAt": null
+      "Runs": 32,
+      "Successes": 11,
+      "Hints": 9,
+      "Answers": 4,
+      "Status": "완료",
+      "Draft": "<Grid Height=\"150\" ShowGridLines=\"True\">\n    <Grid.RowDefinitions>\n        <RowDefinition/>\n        <RowDefinition/>\n        <RowDefinition/>\n    </Grid.RowDefinitions>\n    <Grid.ColumnDefinitions>\n        <ColumnDefinition Width=\"80\"/>\n        <ColumnDefinition/>\n    </Grid.ColumnDefinitions>\n    <Border Grid.Row=\"0\" Grid.Column=\"0\" Grid.RowSpan=\"3\" Background=\"#E3F2FD\" Padding=\"8\">\n        <TextBlock Text=\"사이드바\" VerticalAlignment=\"Center\"/>\n    </Border>\n</Grid>",
+      "CompletedAt": "2026-09-24T01:25:41.1338777+09:00"
     },
     "3_1": {
-      "Runs": 0,
-      "Successes": 0,
-      "Hints": 0,
-      "Answers": 0,
-      "Status": "미완료",
-      "Draft": null,
-      "CompletedAt": null
+      "Runs": 10,
+      "Successes": 10,
+      "Hints": 1,
+      "Answers": 3,
+      "Status": "완료",
+      "Draft": "<Grid Height=\"120\" ShowGridLines=\"True\">\n    <Grid.RowDefinitions>\n        <RowDefinition Height=\"Auto\"/>\n        <RowDefinition/>\n    </Grid.RowDefinitions>\n    <Grid.ColumnDefinitions>\n        <ColumnDefinition/>\n        <ColumnDefinition/>\n        <ColumnDefinition/>\n    </Grid.ColumnDefinitions>\n    <Border Grid.Row=\"0\" Grid.Column=\"0\" Grid.ColumnSpan=\"3\" Background=\"#1976D2\" Padding=\"8\">\n        <TextBlock Text=\"헤더\" Foreground=\"White\" HorizontalAlignment=\"Center\"/>\n    </Border>\n</Grid>",
+      "CompletedAt": "2026-09-24T01:22:42.9040528+09:00"
     },
     "2_4": {
       "Runs": 3,

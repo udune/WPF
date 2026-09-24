@@ -1,110 +1,110 @@
 {
   "Chapter": "ch18 유니폼그리드",
   "FirstStudiedAt": "2026-09-18T13:20:25.0640913+09:00",
-  "LastStudiedAt": "2026-09-19T18:52:49.1338622+09:00",
-  "TotalStudySeconds": 423,
-  "LaunchCount": 2,
-  "LastTab": 1,
+  "LastStudiedAt": "2026-09-24T02:59:37.4493154+09:00",
+  "TotalStudySeconds": 1154,
+  "LaunchCount": 4,
+  "LastTab": 0,
   "PracticeTotal": 18,
   "Practices": {
     "5_3": {
-      "Runs": 0,
-      "Successes": 0,
+      "Runs": 2,
+      "Successes": 2,
       "Hints": 0,
-      "Answers": 0,
-      "Status": "미완료",
-      "Draft": null,
-      "CompletedAt": null
+      "Answers": 4,
+      "Status": "완료",
+      "Draft": "private void SetOffset_Click(object sender, RoutedEventArgs e)\n{\n    ugGrid.FirstColumn = 3;\n}",
+      "CompletedAt": "2026-09-24T02:03:35.6227213+09:00"
     },
     "5_2": {
-      "Runs": 0,
-      "Successes": 0,
-      "Hints": 0,
-      "Answers": 0,
-      "Status": "미완료",
-      "Draft": null,
-      "CompletedAt": null
+      "Runs": 4,
+      "Successes": 4,
+      "Hints": 1,
+      "Answers": 4,
+      "Status": "완료",
+      "Draft": "private void SetLayout_Click(object sender, RoutedEventArgs e)\n{\n    ugGrid.Rows = 4;\n    ugGrid.Columns = 2;\n}",
+      "CompletedAt": "2026-09-24T02:01:41.9216434+09:00"
     },
     "5_1": {
-      "Runs": 0,
-      "Successes": 0,
-      "Hints": 0,
-      "Answers": 0,
-      "Status": "미완료",
-      "Draft": null,
-      "CompletedAt": null
+      "Runs": 4,
+      "Successes": 4,
+      "Hints": 3,
+      "Answers": 44,
+      "Status": "완료",
+      "Draft": "private void AddItem_Click(object sender, RoutedEventArgs e)\n{\n    _count++;\n    var btn = new Button { Content = \"Item\" + _count };\n    ugGrid.Children.Add(btn);\n}",
+      "CompletedAt": "2026-09-24T02:00:47.0829569+09:00"
     },
     "4_4": {
-      "Runs": 0,
-      "Successes": 0,
+      "Runs": 12,
+      "Successes": 9,
       "Hints": 0,
-      "Answers": 0,
-      "Status": "미완료",
-      "Draft": null,
-      "CompletedAt": null
+      "Answers": 4,
+      "Status": "완료",
+      "Draft": "<UniformGrid Columns=\"3\" Height=\"60\">\n    <Border Margin=\"8\" Background=\"#FFCDD2\"/>\n    <Border Margin=\"8\" Background=\"#C8E6C9\"/>\n    <Border Margin=\"8\" Background=\"#BBDEFB\"/>\n</UniformGrid>",
+      "CompletedAt": "2026-09-24T01:58:34.0826438+09:00"
     },
     "4_3": {
-      "Runs": 0,
-      "Successes": 0,
-      "Hints": 0,
-      "Answers": 0,
-      "Status": "미완료",
-      "Draft": null,
-      "CompletedAt": null
+      "Runs": 4,
+      "Successes": 4,
+      "Hints": 2,
+      "Answers": 1,
+      "Status": "완료",
+      "Draft": "<UniformGrid Rows=\"2\" Columns=\"3\" FirstColumn=\"1\" Height=\"100\">\n    <Button Content=\"A\" Margin=\"3\"/>\n    <Button Content=\"B\" Margin=\"3\"/>\n</UniformGrid>",
+      "CompletedAt": "2026-09-24T01:56:24.6270556+09:00"
     },
     "4_2": {
-      "Runs": 0,
-      "Successes": 0,
-      "Hints": 0,
-      "Answers": 0,
-      "Status": "미완료",
-      "Draft": null,
-      "CompletedAt": null
+      "Runs": 6,
+      "Successes": 6,
+      "Hints": 1,
+      "Answers": 3,
+      "Status": "완료",
+      "Draft": "<UniformGrid Columns=\"3\">\n    <Border Background=\"LightBlue\" Margin=\"10\"/>\n    <Border Background=\"LightGreen\" Margin=\"5\"/>\n    <Border Background=\"LightCoral\" Margin=\"2\"/>\n</UniformGrid>",
+      "CompletedAt": "2026-09-24T01:55:55.8075055+09:00"
     },
     "4_1": {
-      "Runs": 0,
-      "Successes": 0,
+      "Runs": 6,
+      "Successes": 6,
       "Hints": 0,
-      "Answers": 0,
-      "Status": "미완료",
-      "Draft": null,
-      "CompletedAt": null
+      "Answers": 5,
+      "Status": "완료",
+      "Draft": "<UniformGrid Rows=\"2\" Columns=\"3\" Background=\"#E3F2FD\">\n    <Button Content=\"1\" Margin=\"2\"/>\n    <Button Content=\"2\" Margin=\"2\"/>\n    <Button Content=\"3\" Margin=\"2\"/>\n    <Button Content=\"4\" Margin=\"2\"/>\n    <Button Content=\"5\" Margin=\"2\"/>\n    <Button Content=\"6\" Margin=\"2\"/>\n</UniformGrid>",
+      "CompletedAt": "2026-09-24T01:54:43.0078109+09:00"
     },
     "3_4": {
-      "Runs": 0,
-      "Successes": 0,
+      "Runs": 6,
+      "Successes": 6,
       "Hints": 0,
-      "Answers": 0,
-      "Status": "미완료",
-      "Draft": null,
-      "CompletedAt": null
+      "Answers": 5,
+      "Status": "완료",
+      "Draft": "<UniformGrid Columns=\"7\">\n    <TextBlock Text=\"일\" Foreground=\"Red\" HorizontalAlignment=\"Center\"/>\n    <TextBlock Text=\"월\" HorizontalAlignment=\"Center\"/>\n    <TextBlock Text=\"화\" HorizontalAlignment=\"Center\"/>\n    <TextBlock Text=\"수\" HorizontalAlignment=\"Center\"/>\n    <TextBlock Text=\"목\" HorizontalAlignment=\"Center\"/>\n    <TextBlock Text=\"금\" HorizontalAlignment=\"Center\"/>\n    <TextBlock Text=\"토\" Foreground=\"Blue\" HorizontalAlignment=\"Center\"/>\n</UniformGrid>",
+      "CompletedAt": "2026-09-24T01:52:37.7142392+09:00"
     },
     "3_3": {
-      "Runs": 0,
-      "Successes": 0,
+      "Runs": 5,
+      "Successes": 5,
       "Hints": 0,
-      "Answers": 0,
-      "Status": "미완료",
-      "Draft": null,
-      "CompletedAt": null
+      "Answers": 2,
+      "Status": "완료",
+      "Draft": "<UniformGrid Rows=\"3\" Columns=\"3\" Width=\"180\" Height=\"180\">\n    <Button Content=\"7\" Margin=\"2\"/>\n    <Button Content=\"8\" Margin=\"2\"/>\n    <Button Content=\"9\" Margin=\"2\"/>\n    <Button Content=\"4\" Margin=\"2\"/>\n    <Button Content=\"5\" Margin=\"2\"/>\n    <Button Content=\"6\" Margin=\"2\"/>\n    <Button Content=\"1\" Margin=\"2\"/>\n    <Button Content=\"2\" Margin=\"2\"/>\n    <Button Content=\"3\" Margin=\"2\"/>\n</UniformGrid>",
+      "CompletedAt": "2026-09-24T01:51:51.6495479+09:00"
     },
     "3_2": {
-      "Runs": 0,
-      "Successes": 0,
+      "Runs": 7,
+      "Successes": 7,
       "Hints": 0,
-      "Answers": 0,
-      "Status": "미완료",
-      "Draft": null,
-      "CompletedAt": null
+      "Answers": 3,
+      "Status": "완료",
+      "Draft": "<UniformGrid Columns=\"4\" Rows=\"2\">\n    <Border Background=\"Red\" Margin=\"2\"/>\n    <Border Background=\"Orange\" Margin=\"2\"/>\n    <Border Background=\"Yellow\" Margin=\"2\"/>\n    <Border Background=\"Green\" Margin=\"2\"/>\n    <Border Background=\"Blue\" Margin=\"2\"/>\n    <Border Background=\"Navy\" Margin=\"2\"/>\n    <Border Background=\"Purple\" Margin=\"2\"/>\n    <Border Background=\"Pink\" Margin=\"2\"/>\n</UniformGrid>",
+      "CompletedAt": "2026-09-24T01:46:04.2568706+09:00"
     },
     "3_1": {
-      "Runs": 0,
-      "Successes": 0,
-      "Hints": 0,
-      "Answers": 0,
-      "Status": "미완료",
-      "Draft": null,
-      "CompletedAt": null
+      "Runs": 1,
+      "Successes": 1,
+      "Hints": 1,
+      "Answers": 3,
+      "Status": "완료",
+      "Draft": "<UniformGrid Columns=\"3\" Rows=\"4\">\n    <Button Content=\"7\"/>\n    <Button Content=\"8\"/>\n    <Button Content=\"9\"/>\n    <Button Content=\"4\"/>\n    <Button Content=\"5\"/>\n    <Button Content=\"6\"/>\n    <Button Content=\"1\"/>\n    <Button Content=\"2\"/>\n    <Button Content=\"3\"/>\n    <Button Content=\"0\"/>\n    <Button Content=\"+\"/>\n    <Button Content=\"-\"/>\n</UniformGrid>",
+      "CompletedAt": "2026-09-24T01:44:57.0106889+09:00"
     },
     "2_4": {
       "Runs": 7,

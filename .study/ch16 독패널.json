@@ -1,65 +1,65 @@
 {
   "Chapter": "ch16 독패널",
   "FirstStudiedAt": "2026-09-18T09:07:47.0635543+09:00",
-  "LastStudiedAt": "2026-09-20T19:49:25.0382285+09:00",
-  "TotalStudySeconds": 845,
-  "LaunchCount": 4,
-  "LastTab": 2,
+  "LastStudiedAt": "2026-09-24T01:20:58.4410589+09:00",
+  "TotalStudySeconds": 1307,
+  "LaunchCount": 5,
+  "LastTab": 4,
   "PracticeTotal": 15,
   "Practices": {
     "5_3": {
-      "Runs": 0,
-      "Successes": 0,
-      "Hints": 0,
-      "Answers": 0,
-      "Status": "미완료",
-      "Draft": null,
-      "CompletedAt": null
+      "Runs": 3,
+      "Successes": 3,
+      "Hints": 3,
+      "Answers": 2,
+      "Status": "완료",
+      "Draft": "private void DisableLastChildFill()\n{\n    // myDockPanel의 LastChildFill 변경\n    myDockPanel.LastChildFill = false;\n}",
+      "CompletedAt": "2026-09-24T01:20:53.2419442+09:00"
     },
     "5_2": {
-      "Runs": 0,
-      "Successes": 0,
-      "Hints": 0,
-      "Answers": 0,
-      "Status": "미완료",
-      "Draft": null,
-      "CompletedAt": null
+      "Runs": 11,
+      "Successes": 11,
+      "Hints": 3,
+      "Answers": 2,
+      "Status": "완료",
+      "Draft": "private void AddLeftButton()\n{\n    var btn = new Button { Content = \"새 버튼\" };\n    // btn을 Left에 도킹하고 myDockPanel에 추가\n    DockPanel.SetDock(btn, Dock.Left);\n    myDockPanel.Children.Add(btn);\n}",
+      "CompletedAt": "2026-09-24T01:19:55.1709381+09:00"
     },
     "5_1": {
-      "Runs": 0,
-      "Successes": 0,
-      "Hints": 0,
-      "Answers": 0,
-      "Status": "미완료",
-      "Draft": null,
-      "CompletedAt": null
+      "Runs": 4,
+      "Successes": 4,
+      "Hints": 1,
+      "Answers": 5,
+      "Status": "완료",
+      "Draft": "private void MoveToBottom()\n{\n    // myElement를 Bottom으로 이동\n    DockPanel.SetDock(myElement, Dock.Bottom);\n}",
+      "CompletedAt": "2026-09-24T01:18:54.3002533+09:00"
     },
     "4_3": {
-      "Runs": 0,
-      "Successes": 0,
-      "Hints": 0,
-      "Answers": 0,
-      "Status": "미완료",
-      "Draft": null,
-      "CompletedAt": null
+      "Runs": 45,
+      "Successes": 9,
+      "Hints": 3,
+      "Answers": 5,
+      "Status": "부분완료",
+      "Draft": "<DockPanel Height=\"140\">\n    <Border DockPanel.Dock=\"Top\" Background=\"#FFCDD2\" Height=\"30\"/>\n    <Border DockPanel.Dock=\"Bottom\" Background=\"#C8E6C9\" Height=\"30\"/>\n    <Border DockPanel.Dock=\"Left\" Background=\"#BBDEFB\" Width=\"70\"/>\n    <Border Background=\"#FFF9C4\"/>\n</DockPanel>",
+      "CompletedAt": "2026-09-24T01:17:30.2107106+09:00"
     },
     "4_2": {
-      "Runs": 0,
-      "Successes": 0,
-      "Hints": 0,
-      "Answers": 0,
-      "Status": "미완료",
-      "Draft": null,
-      "CompletedAt": null
+      "Runs": 6,
+      "Successes": 6,
+      "Hints": 3,
+      "Answers": 7,
+      "Status": "완료",
+      "Draft": "<DockPanel Height=\"100\" Background=\"Gray\">\n    <Button DockPanel.Dock=\"Top\" Margin=\"5\">Top</Button>\n    <Button DockPanel.Dock=\"Left\" Margin=\"5\">Left</Button>\n    <Button Margin=\"5\">Center</Button>\n</DockPanel>",
+      "CompletedAt": "2026-09-24T01:09:09.6545227+09:00"
     },
     "4_1": {
-      "Runs": 0,
-      "Successes": 0,
-      "Hints": 0,
-      "Answers": 0,
-      "Status": "미완료",
-      "Draft": null,
-      "CompletedAt": null
+      "Runs": 5,
+      "Successes": 5,
+      "Hints": 3,
+      "Answers": 3,
+      "Status": "완료",
+      "Draft": "<DockPanel Height=\"100\" Background=\"LightBlue\">\n    <Button DockPanel.Dock=\"Top\">상단</Button>\n    <TextBlock Text=\"콘텐츠\"/>\n</DockPanel>",
+      "CompletedAt": "2026-09-24T01:08:40.9372659+09:00"
     },
     "3_3": {
       "Runs": 5,
