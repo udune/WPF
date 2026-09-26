@@ -1,10 +1,10 @@
 {
   "Chapter": "ch23 메뉴",
   "FirstStudiedAt": "2026-09-18T15:04:47.0388702+09:00",
-  "LastStudiedAt": "2026-09-20T22:59:53.3358004+09:00",
-  "TotalStudySeconds": 395,
-  "LaunchCount": 2,
-  "LastTab": 2,
+  "LastStudiedAt": "2026-09-27T01:12:02.5078906+09:00",
+  "TotalStudySeconds": 1141,
+  "LaunchCount": 4,
+  "LastTab": 4,
   "PracticeTotal": 19,
   "Practices": {
     "5_3": {
@@ -26,85 +26,85 @@
       "CompletedAt": null
     },
     "5_1": {
-      "Runs": 0,
-      "Successes": 0,
-      "Hints": 0,
-      "Answers": 0,
-      "Status": "미완료",
-      "Draft": null,
-      "CompletedAt": null
+      "Runs": 3,
+      "Successes": 3,
+      "Hints": 1,
+      "Answers": 1,
+      "Status": "완료",
+      "Draft": "<Menu>\n    <MenuItem Header=\"파일\">\n        <MenuItem Header=\"새로 만들기\"/>\n        <MenuItem Header=\"열기\"/>\n        <Separator/>\n        <MenuItem Header=\"종료\"/>\n    </MenuItem>\n    <MenuItem Header=\"도움말\">\n        <MenuItem Header=\"정보\"/>\n    </MenuItem>\n</Menu>",
+      "CompletedAt": "2026-09-27T01:11:50.2587685+09:00"
     },
     "4_4": {
-      "Runs": 0,
-      "Successes": 0,
-      "Hints": 0,
-      "Answers": 0,
-      "Status": "미완료",
-      "Draft": null,
-      "CompletedAt": null
+      "Runs": 6,
+      "Successes": 6,
+      "Hints": 1,
+      "Answers": 1,
+      "Status": "완료",
+      "Draft": "private void DarkTheme_Click(object sender, RoutedEventArgs e)\n{\n    themedMenu.Background = new SolidColorBrush(Color.FromRgb(45, 45, 48));\n    themedMenu.Foreground = Brushes.White;\n}",
+      "CompletedAt": "2026-09-27T01:09:01.2690511+09:00"
     },
     "4_3": {
-      "Runs": 0,
-      "Successes": 0,
-      "Hints": 0,
+      "Runs": 1,
+      "Successes": 1,
+      "Hints": 1,
       "Answers": 0,
-      "Status": "미완료",
-      "Draft": null,
-      "CompletedAt": null
+      "Status": "완료",
+      "Draft": "<Menu>\n    <MenuItem Header=\"편집\">\n        <MenuItem Header=\"실행 취소\" IsEnabled=\"False\"/>\n    </MenuItem>\n</Menu>",
+      "CompletedAt": "2026-09-27T01:06:41.7976444+09:00"
     },
     "4_2": {
-      "Runs": 0,
-      "Successes": 0,
-      "Hints": 0,
+      "Runs": 4,
+      "Successes": 4,
+      "Hints": 1,
       "Answers": 0,
-      "Status": "미완료",
-      "Draft": null,
-      "CompletedAt": null
+      "Status": "완료",
+      "Draft": "<Menu>\n    <MenuItem Header=\"보기\">\n        <MenuItem Header=\"자동 줄바꿈\" IsCheckable=\"true\" IsChecked=\"true\"/>\n    </MenuItem>\n</Menu>",
+      "CompletedAt": "2026-09-27T01:05:35.5819415+09:00"
     },
     "4_1": {
-      "Runs": 0,
-      "Successes": 0,
+      "Runs": 2,
+      "Successes": 1,
       "Hints": 0,
       "Answers": 0,
-      "Status": "미완료",
-      "Draft": null,
-      "CompletedAt": null
+      "Status": "완료",
+      "Draft": "<Menu Background=\"#333333\">\n    <MenuItem Header=\"파일\" Foreground=\"White\"/>\n</Menu>",
+      "CompletedAt": "2026-09-27T01:03:57.8415515+09:00"
     },
     "3_4": {
-      "Runs": 0,
-      "Successes": 0,
-      "Hints": 0,
-      "Answers": 0,
-      "Status": "미완료",
-      "Draft": null,
-      "CompletedAt": null
+      "Runs": 4,
+      "Successes": 4,
+      "Hints": 3,
+      "Answers": 2,
+      "Status": "완료",
+      "Draft": "private void SortOption_Checked(object sender, RoutedEventArgs e)\n{\n    var item = sender as MenuItem;\n    sortByName.IsChecked = (item == sortByName);\n    sortByDate.IsChecked = (item == sortByDate);\n    sortBySize.IsChecked = (item == sortBySize);\n}",
+      "CompletedAt": "2026-09-27T01:03:16.3639526+09:00"
     },
     "3_3": {
-      "Runs": 0,
-      "Successes": 0,
+      "Runs": 2,
+      "Successes": 2,
       "Hints": 0,
-      "Answers": 0,
-      "Status": "미완료",
-      "Draft": null,
-      "CompletedAt": null
+      "Answers": 1,
+      "Status": "완료",
+      "Draft": "<Menu>\n    <MenuItem Header=\"편집\">\n        <MenuItem Header=\"붙여넣기\" InputGestureText=\"Ctrl+V\">\n            <MenuItem.Icon>\n                <Ellipse Width=\"12\" Height=\"12\" Fill=\"Green\"/>\n            </MenuItem.Icon>\n        </MenuItem>\n    </MenuItem>\n</Menu>",
+      "CompletedAt": "2026-09-27T01:01:46.9624872+09:00"
     },
     "3_2": {
-      "Runs": 0,
-      "Successes": 0,
+      "Runs": 4,
+      "Successes": 4,
       "Hints": 0,
-      "Answers": 0,
-      "Status": "미완료",
-      "Draft": null,
-      "CompletedAt": null
+      "Answers": 1,
+      "Status": "완료",
+      "Draft": "<Menu>\n    <MenuItem Header=\"편집\">\n        <MenuItem Header=\"복사\" InputGestureText=\"Ctrl+C\"/>\n    </MenuItem>\n</Menu>",
+      "CompletedAt": "2026-09-27T01:00:07.9193594+09:00"
     },
     "3_1": {
-      "Runs": 0,
-      "Successes": 0,
-      "Hints": 0,
-      "Answers": 0,
-      "Status": "미완료",
-      "Draft": null,
-      "CompletedAt": null
+      "Runs": 2,
+      "Successes": 2,
+      "Hints": 1,
+      "Answers": 1,
+      "Status": "완료",
+      "Draft": "<Menu>\n    <MenuItem Header=\"파일\">\n        <MenuItem Header=\"저장\">\n            <MenuItem.Icon>\n                <Rectangle Width=\"12\" Height=\"12\" Fill=\"Blue\"/>\n            </MenuItem.Icon>\n        </MenuItem>\n    </MenuItem>\n</Menu>",
+      "CompletedAt": "2026-09-27T00:59:15.7975586+09:00"
     },
     "2_4": {
       "Runs": 1,
